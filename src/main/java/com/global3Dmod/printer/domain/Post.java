@@ -17,10 +17,6 @@ import com.global3Dmod.printer.domain.Essence;
 @NamedQuery(name="Post.findAll", query="select p from Post p")
 public class Post implements Essence {
 
-	public Post() {
-		super();
-	}
-
 	@Id
 	@Column(name = "idPost")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -61,6 +57,10 @@ public class Post implements Essence {
 
 	@Column(name = "countDownload")
 	private int countDownload;
+	
+	public Post() {
+		super();
+	}
 
 	public int getIdPost() {
 		return idPost;
@@ -246,5 +246,20 @@ public class Post implements Essence {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Post [idPost=" + idPost + ", user_idUser=" + user_idUser
+				+ ", category_idCategory=" + category_idCategory
+				+ ", subcategory_idSubcategory=" + subcategory_idSubcategory
+				+ ", disProgram_idDisProgram=" + disProgram_idDisProgram
+				+ ", dateReg=" + dateReg + ", dateUpdate=" + dateUpdate
+				+ ", title=" + title + ", description=" + description
+				+ ", instruction=" + instruction + ", registrationDate="
+				+ registrationDate + ", isDisplay=" + isDisplay
+				+ ", countDownload=" + countDownload + "]";
+	}
+	
+	
 
 }

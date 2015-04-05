@@ -14,11 +14,7 @@ import com.global3Dmod.printer.domain.Essence;
 @Table(name = "FILES")
 @NamedQuery(name="File.findAll", query="select f from File f")
 public class File implements Essence {
-
-	public File() {
-		super();
-	}
-
+	
 	@Id
 	@Column(name = "idFile")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +25,10 @@ public class File implements Essence {
 
 	@Column(name = "filePath")
 	private String filePath;
+	
+	public File() {
+		super();
+	}
 
 	public int getIdFile() {
 		return idFile;
@@ -85,5 +85,13 @@ public class File implements Essence {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "File [idFile=" + idFile + ", post_idPost=" + post_idPost
+				+ ", filePath=" + filePath + "]";
+	}
+	
+	
 
 }

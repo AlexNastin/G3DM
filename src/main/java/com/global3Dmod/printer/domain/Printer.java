@@ -15,10 +15,6 @@ import com.global3Dmod.printer.domain.Essence;
 @NamedQuery(name="Printer.findAll", query="select p from Printer p")
 public class Printer implements Essence {
 
-	public Printer() {
-		super();
-	}
-
 	@Id
 	@Column(name = "idPrinter")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +22,10 @@ public class Printer implements Essence {
 	
 	@Column(name = "title")
 	private String title;
+	
+	public Printer() {
+		super();
+	}
 
 	public int getIdPrinter() {
 		return idPrinter;
@@ -70,5 +70,12 @@ public class Printer implements Essence {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Printer [idPrinter=" + idPrinter + ", title=" + title + "]";
+	}
+	
+	
 
 }

@@ -14,5 +14,12 @@
 		<mapping class="com.global3Dmod.printer.domain.Role" />
 		<mapping class="com.global3Dmod.printer.domain.Subcategory" />
 		<mapping class="com.global3Dmod.printer.domain.Votecheck" />
+		<mapping class="com.global3Dmod.printer.domain.Category" />
+		<mapping class="com.global3Dmod.printer.domain.DisProgram" />
+		<mapping class="com.global3Dmod.printer.domain.File" />
+		<mapping class="com.global3Dmod.printer.domain.Post" />
+		<mapping class="com.global3Dmod.printer.domain.PostPhoto" />
+		<mapping class="com.global3Dmod.printer.domain.Printer" />
+		<mapping class="com.global3Dmod.printer.domain.Rating" />
 	</session-factory>
 </hibernate-configuration>

@@ -15,10 +15,6 @@ import com.global3Dmod.printer.domain.Essence;
 @NamedQuery(name="Category.findAll", query="select c from Category c")
 public class Category implements Essence {
 
-	public Category() {
-		super();
-	}
-
 	@Id
 	@Column(name = "idCategory")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +22,10 @@ public class Category implements Essence {
 	
 	@Column(name = "title")
 	private String title;
+	
+	public Category() {
+		super();
+	}
 
 	public int getIdCategory() {
 		return idCategory;
@@ -69,6 +69,11 @@ public class Category implements Essence {
 		} else if (!title.equals(other.title))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Category [idCategory=" + idCategory + ", title=" + title + "]";
 	}
 
 	

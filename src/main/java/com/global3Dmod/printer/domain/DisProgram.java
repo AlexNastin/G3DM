@@ -15,10 +15,6 @@ import com.global3Dmod.printer.domain.Essence;
 @NamedQuery(name="DisProgram.findAll", query="select d from DisProgram d")
 public class DisProgram implements Essence {
 
-	public DisProgram() {
-		super();
-	}
-
 	@Id
 	@Column(name = "idDisProgram")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,6 +22,10 @@ public class DisProgram implements Essence {
 	
 	@Column(name = "title")
 	private String title;
+	
+	public DisProgram() {
+		super();
+	}
 
 	public int getIdDisProgram() {
 		return idDisProgram;
@@ -70,5 +70,13 @@ public class DisProgram implements Essence {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "DisProgram [idDisProgram=" + idDisProgram + ", title=" + title
+				+ "]";
+	}
+	
+	
 
 }

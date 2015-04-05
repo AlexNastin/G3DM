@@ -15,10 +15,6 @@ import com.global3Dmod.printer.domain.Essence;
 @NamedQuery(name="PostPhoto.findAll", query="select p from PostPhoto p")
 public class PostPhoto implements Essence {
 
-	public PostPhoto() {
-		super();
-	}
-
 	@Id
 	@Column(name = "idPostPhoto")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +25,10 @@ public class PostPhoto implements Essence {
 
 	@Column(name = "photoPath")
 	private String photoPath;
+	
+	public PostPhoto() {
+		super();
+	}
 
 	public int getIdPostPhoto() {
 		return idPostPhoto;
@@ -84,6 +84,12 @@ public class PostPhoto implements Essence {
 		if (post_idPost != other.post_idPost)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "PostPhoto [idPostPhoto=" + idPostPhoto + ", post_idPost="
+				+ post_idPost + ", photoPath=" + photoPath + "]";
 	}
 
 	

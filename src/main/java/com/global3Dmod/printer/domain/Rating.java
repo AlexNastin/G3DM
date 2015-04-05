@@ -15,10 +15,6 @@ import com.global3Dmod.printer.domain.Essence;
 @NamedQuery(name="Rating.findAll", query="select r from Rating r")
 public class Rating implements Essence {
 
-	public Rating() {
-		super();
-	}
-
 	@Id
 	@Column(name = "idRating")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +25,10 @@ public class Rating implements Essence {
 
 	@Column(name = "rating")
 	private int rating;
+
+	public Rating() {
+		super();
+	}
 
 	public int getIdRating() {
 		return idRating;
@@ -81,5 +81,13 @@ public class Rating implements Essence {
 			return false;
 		return true;
 	}
+
+	@Override
+	public String toString() {
+		return "Rating [idRating=" + idRating + ", post_idPost=" + post_idPost
+				+ ", rating=" + rating + "]";
+	}
+	
+	
 	
 }

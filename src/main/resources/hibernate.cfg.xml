@@ -14,6 +14,5 @@
 		<mapping class="com.global3Dmod.printer.domain.Role" />
 		<mapping class="com.global3Dmod.printer.domain.Subcategory" />
 		<mapping class="com.global3Dmod.printer.domain.Votecheck" />
-
 	</session-factory>
 </hibernate-configuration>

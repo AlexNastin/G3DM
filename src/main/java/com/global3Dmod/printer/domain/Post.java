@@ -21,7 +21,7 @@ public class Post implements Essence {
 	@Column(name = "idPost")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPost;
-	
+
 	@Column(name = "user_idUser")
 	private int user_idUser;
 

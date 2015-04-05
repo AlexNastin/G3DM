@@ -2,7 +2,6 @@ package com.global3Dmod.printer.dao.impl;
 
 import java.util.List;
 
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -14,20 +13,18 @@ import com.global3Dmod.printer.dao.IUserDAO;
 import com.global3Dmod.printer.domain.User;
 
 @Component
-@Repository("jpaServiceUser")
+@Repository("jpaUserDAO")
 @Transactional
-public class UserDAOImpl  implements IUserDAO{
+public class UserDAOImpl implements IUserDAO {
 
-	
 	@PersistenceContext
 	private EntityManager em;
-	
-	
+
 	@Override
 	@Transactional
 	public void addUser(User user) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
@@ -42,7 +39,7 @@ public class UserDAOImpl  implements IUserDAO{
 	@Transactional
 	public void removeUser(Integer id) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 }

@@ -46,6 +46,9 @@ public class User implements Essence {
 
 	@Column(name = "surname")
 	private String surname;
+	
+	@Column(name = "gender")
+	private boolean gender;
 
 	@Column(name = "registrationDate")
 	private Date registrationDate;
@@ -128,6 +131,14 @@ public class User implements Essence {
 	public String getSurname() {
 		return surname;
 	}
+	
+	public boolean isGender() {
+		return gender;
+	}
+
+	public void setGender(boolean gender) {
+		this.gender = gender;
+	}
 
 	public void setSurname(String surname) {
 		this.surname = surname;
@@ -165,6 +176,7 @@ public class User implements Essence {
 		result = prime * result + country_id—ountry;
 		result = prime * result
 				+ ((dateBirth == null) ? 0 : dateBirth.hashCode());
+		result = prime * result + (gender ? 1231 : 1237);
 		result = prime * result + idUser;
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -200,6 +212,8 @@ public class User implements Essence {
 			if (other.dateBirth != null)
 				return false;
 		} else if (!dateBirth.equals(other.dateBirth))
+			return false;
+		if (gender != other.gender)
 			return false;
 		if (idUser != other.idUser)
 			return false;
@@ -247,8 +261,11 @@ public class User implements Essence {
 				+ ", country_id—ountry=" + country_id—ountry + ", city_id—ity="
 				+ city_id—ity + ", nickName=" + nickName + ", login=" + login
 				+ ", password=" + password + ", name=" + name + ", surname="
-				+ surname + ", registrationDate=" + registrationDate
-				+ ", dateBirth=" + dateBirth + ", rating=" + rating + "]";
+				+ surname + ", gender=" + gender + ", registrationDate="
+				+ registrationDate + ", dateBirth=" + dateBirth + ", rating="
+				+ rating + "]";
 	}
+	
+	
 
 }

@@ -2,18 +2,21 @@ package com.global3Dmod.printer.dao.impl;
 
 import java.util.List;
 
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.printer.dao.UserDAO;
+import com.global3Dmod.printer.dao.IUserDAO;
 import com.global3Dmod.printer.domain.User;
 
+@Component
 @Repository("jpaServiceUser")
 @Transactional
-public class UserDAOImpl  implements UserDAO{
+public class UserDAOImpl  implements IUserDAO{
 
 	
 	@PersistenceContext

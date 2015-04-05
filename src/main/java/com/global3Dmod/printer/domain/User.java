@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -19,7 +20,7 @@ public class User implements Essence {
 
 	@Id
 	@Column(name = "idUser")
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUser;
 	
 	@Column(name = "role_idRole")
@@ -54,6 +55,11 @@ public class User implements Essence {
 
 	@Column(name = "rating")
 	private double rating;
+
+	
+	public User() {
+		super();
+	}
 
 	public int getIdUser() {
 		return idUser;

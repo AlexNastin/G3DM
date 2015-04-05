@@ -12,7 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.global3Dmod.printer.dao.UserDAO;
+import com.global3Dmod.printer.dao.IUserDAO;
 
 /**
  * Handles requests for the application home page.
@@ -23,7 +23,7 @@ public class UserController {
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 	
 	@Autowired
-	private  UserDAO userDAO;
+	private  IUserDAO userDAO;
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */

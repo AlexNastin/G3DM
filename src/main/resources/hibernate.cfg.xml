@@ -6,5 +6,13 @@
 <hibernate-configuration>
 	<session-factory>
 		<mapping class="com.global3Dmod.printer.domain.User" />
+		<mapping class="com.global3Dmod.printer.domain.Сity" />
+		<mapping class="com.global3Dmod.printer.domain.Сomment" />
+		<mapping class="com.global3Dmod.printer.domain.Сountry" />
+		<mapping class="com.global3Dmod.printer.domain.Avatar" />
+		<mapping class="com.global3Dmod.printer.domain.Blacklist" />
+		<mapping class="com.global3Dmod.printer.domain.Role" />
+		<mapping class="com.global3Dmod.printer.domain.Subcategory" />
+		<mapping class="com.global3Dmod.printer.domain.Votecheck" />
 	</session-factory>
 </hibernate-configuration>

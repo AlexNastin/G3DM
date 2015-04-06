@@ -10,8 +10,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "—ities")
-@NamedQuery(name="—ity.findAll", query="select c from —ity c")
-public class —ity implements Essence {
+@NamedQuery(name="—ity.findAll", query="select c from City c")
+public class City implements Essence {
 
 	@Id
 	@Column(name = "id—ity")
@@ -24,7 +24,7 @@ public class —ity implements Essence {
 	@Column(name = "title")
 	private String title;
 
-	public —ity() {
+	public City() {
 		super();
 	}
 
@@ -70,7 +70,7 @@ public class —ity implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		—ity other = (—ity) obj;
+		City other = (City) obj;
 		if (country_id—ountry != other.country_id—ountry)
 			return false;
 		if (id—ity != other.id—ity)

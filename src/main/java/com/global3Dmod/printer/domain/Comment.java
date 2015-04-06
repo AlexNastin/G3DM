@@ -12,8 +12,8 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "—omments")
-@NamedQuery(name="—omment.findAll", query="select c from —omment c")
-public class —omment implements Essence {
+@NamedQuery(name="—omment.findAll", query="select c from Comment c")
+public class Comment implements Essence {
 
 	@Id
 	@Column(name = "id—omment")
@@ -32,7 +32,7 @@ public class —omment implements Essence {
 	@Column(name = "text")
 	private String text;
 
-	public —omment() {
+	public Comment() {
 		super();
 	}
 
@@ -97,7 +97,7 @@ public class —omment implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		—omment other = (—omment) obj;
+		Comment other = (Comment) obj;
 		if (dateTime == null) {
 			if (other.dateTime != null)
 				return false;

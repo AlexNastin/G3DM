@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Subcategories")
+@NamedQuery(name="Subcategory.findAll", query="select s from Subcategory s")
 public class Subcategory implements Essence {
 
 	@Id

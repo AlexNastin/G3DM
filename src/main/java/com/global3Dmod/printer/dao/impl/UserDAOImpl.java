@@ -22,8 +22,8 @@ public class UserDAOImpl implements IUserDAO {
 
 	@Override
 	@Transactional
-	public void addUser(User user) {
-		// TODO Auto-generated method stub
+	public void add(User user) {
+		em.persist(user);
 
 	}
 
@@ -37,9 +37,16 @@ public class UserDAOImpl implements IUserDAO {
 
 	@Override
 	@Transactional
-	public void removeUser(Integer id) {
-		// TODO Auto-generated method stub
+	public void remove(Integer id) {
+		User user = em.find(User.class, id);
+		em.remove(user);
+	}
 
+	@Override
+	@Transactional
+	public void update(User user) {
+		em.merge(user);
+		
 	}
 
 }

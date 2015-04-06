@@ -5,10 +5,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Avatars")
+@NamedQuery(name="Avatar.findAll", query="select a from Avatar a")
 public class Avatar implements Essence {
 
 	@Id

@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Blacklists")
+@NamedQuery(name="Blacklist.findAll", query="select b from Blacklist b")
 public class Blacklist implements Essence {
 
 	@Id

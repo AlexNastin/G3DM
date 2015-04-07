@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -14,6 +15,9 @@ import com.global3Dmod.printer.domain.Essence;
 
 @Entity
 @Table(name = "USERS")
+@NamedQueries({
+	@NamedQuery(name="User.findTop3", query="select u from User u order by u.rating desc")
+})
 @NamedQuery(name="User.findAll", query="select u from User u")
 public class User implements Essence {
 

@@ -44,5 +44,21 @@
 			</c:forEach>
 		</table>
 	</c:if>
+	<c:if test="${!empty userTop}">
+		<table class="data">
+			<tr>
+				<th><spring:message code="label.login" /></th>
+				<th><spring:message code="label.password" /></th>
+				<th>Rating</th>
+			</tr>
+			<c:forEach items="${userTop}" var="user">
+				<tr>
+					<td>${user.login}</td>
+					<td>${user.password}</td>
+					<td>${user.rating}</td>
+				</tr>
+			</c:forEach>
+		</table>
+	</c:if>
 </body>
 </html>

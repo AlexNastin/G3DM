@@ -11,6 +11,8 @@ public interface IUserDAO {
 	public void add(User user);
 
 	public List<User> getAllUsers();
+	
+	public List<User> getTop3Users();
 
 	public void remove(Integer id);
 

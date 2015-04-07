@@ -39,6 +39,7 @@ public class UserController {
 		String formattedDate = dateFormat.format(date);
 
 		 model.addAttribute("userList", userService.getAllUsers());
+		 model.addAttribute("userTop", userService.getTop3Users());
 		model.addAttribute("serverTime", formattedDate);
 
 		return "home";

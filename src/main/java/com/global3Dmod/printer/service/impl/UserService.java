@@ -19,4 +19,9 @@ public class UserService implements IUserService{
 		return userDAO.getAllUsers();
 	}
 
+	@Override
+	public List<User> getTop3Users() {
+		return userDAO.getTop3Users();
+	}
+
 }

@@ -49,4 +49,12 @@ public class UserDAOImpl implements IUserDAO {
 		
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<User> getTop3Users() {
+		List<User> usersTop = em.createNamedQuery("User.findTop3").setFirstResult(0).setMaxResults(3).getResultList();
+		return usersTop;
+	}
+
 }

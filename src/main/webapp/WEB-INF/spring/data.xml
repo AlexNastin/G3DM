@@ -38,7 +38,7 @@
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="jpaVendorAdapter" ref="jpaVendorAdapter" />
-		<property name="packagesToScan" value="com.global3Dmod.printer.domain"/>
+		<property name="packagesToScan" value="com.global3Dmod.ЗDmodels.domain"/>
 		
 	</bean>
 	

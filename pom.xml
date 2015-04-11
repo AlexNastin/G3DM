@@ -3,7 +3,6 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.global3Dmod</groupId>
-	<artifactId>printer</artifactId>
 	<name>Global3Dmod</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
@@ -167,11 +166,11 @@
 			<artifactId>validation-api</artifactId>
 			<version>1.1.0.Final</version>
 		</dependency>
-		<dependency>
+	<!--	<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-validator</artifactId>
 			<version>4.1.0.Final</version>
-		</dependency>
+		</dependency> -->
 
 		<!-- Transactional -->
 		<dependency>
@@ -232,4 +231,5 @@
 			</plugin>
 		</plugins>
 	</build>
+	<artifactId>global3dmod</artifactId>
 </project>

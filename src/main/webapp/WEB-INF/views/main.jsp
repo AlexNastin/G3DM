@@ -1,14 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ page language="java" contentType="text/html; charset=utf8"
+	pageEncoding="utf8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE HTML>
 <html>
 <head>
 <title>Global3Dmod</title>
-<link href="<c:url value="/resources/css/bootstrap.css"  rel="stylesheet"/>"
+<link href="<c:url value="/resources/css/bootstrap.css"  />" rel="stylesheet"/>
 <script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
-<link href="<c:url value="/resources/css/style.css" rel="stylesheet" />"
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" />
 
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,14 +20,14 @@
 <!--webfont-->
 
 
-<link href="<c:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" />"
+<link href="<c:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" />" rel="stylesheet" />
 <script src="<c:url value="/resources/js/jquery.easydropdown.js" />"> </script>
 <script src="<c:url value="/resources/js/login.js" />"> </script>
 
 <!--Animation-->
 <script src="js/wow.min.js"></script>
 <script src="<c:url value="/resources/js/wow.min.js" />"> </script>
-<link href="<c:url value="/resources/css/animate.css"  rel="stylesheet"/>"
+<link href="<c:url value="/resources/css/animate.css"  />" rel="stylesheet"/>
 
 <script>
 	new WOW().init();
@@ -87,7 +91,7 @@
    			<div class="col-md-3">
    			  <div class="grid1">
    				<div class="view view-first">
-                  <div class="index_img"><img src="images/pic1.jpg" class="img-responsive" alt=""/></div>
+                  <div class="index_img"><img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt=""/></div>
 					<div class="mask">
                         	<p class="star mask_img info">For HOME</p>
 					</div>

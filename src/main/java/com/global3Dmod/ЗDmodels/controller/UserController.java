@@ -26,38 +26,46 @@ public class UserController {
 	@Autowired
 	private IUserService userService;
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-				DateFormat.LONG, locale);
-
-		String formattedDate = dateFormat.format(date);
-
-		 model.addAttribute("userList", userService.getAllUsers());
-		 model.addAttribute("userTop", userService.getTop3Users());
-		model.addAttribute("serverTime", formattedDate);
+	public String home(Locale locale, Model model) throws Exception {
 
 		return "main";
 	}
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-//				DateFormat.LONG, locale);
-//
-//		String formattedDate = dateFormat.format(date);
-//
-//		 model.addAttribute("userList", userService.getAllUsers());
-//		 model.addAttribute("userTop", userService.getTop3Users());
-//		model.addAttribute("serverTime", formattedDate);
-//
-//		return "home";
-//	}
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 * 
+	 * @throws Exception
+	 */
+	// @RequestMapping(value = "/", method = RequestMethod.GET)
+	// public String home(Locale locale, Model model) throws Exception {
+	// logger.info("Welcome home! The client locale is {}.", locale);
+	// Date date = new Date();
+	// DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
+	// DateFormat.LONG, locale);
+	//
+	// String formattedDate = dateFormat.format(date);
+	// if (formattedDate != null) {
+	// model.addAttribute("userList", userService.getAllUsers());
+	// model.addAttribute("userTop", userService.getTop3Users());
+	// model.addAttribute("serverTime", formattedDate);
+	// throw new Exception("OLOLO");
+	// }
+	// return "main";
+	// }
+	// @RequestMapping(value = "/", method = RequestMethod.GET)
+	// public String home(Locale locale, Model model) {
+	// logger.info("Welcome home! The client locale is {}.", locale);
+	// Date date = new Date();
+	// DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
+	// DateFormat.LONG, locale);
+	//
+	// String formattedDate = dateFormat.format(date);
+	//
+	// model.addAttribute("userList", userService.getAllUsers());
+	// model.addAttribute("userTop", userService.getTop3Users());
+	// model.addAttribute("serverTime", formattedDate);
+	//
+	// return "home";
+	// }
 
 }

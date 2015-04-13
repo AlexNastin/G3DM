@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.IFileDAO;
 import com.global3Dmod.ÇDmodels.domain.File;
 
-@Component
+
 @Repository("jpaFileDAO")
 @Transactional
 public class FileDAOImpl implements IFileDAO {

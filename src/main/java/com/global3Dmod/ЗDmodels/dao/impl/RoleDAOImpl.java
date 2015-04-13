@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.IRoleDAO;
 import com.global3Dmod.ÇDmodels.domain.Role;
 
-@Component
+
 @Repository("jpaRoleDAO")
 @Transactional
 public class RoleDAOImpl implements IRoleDAO {

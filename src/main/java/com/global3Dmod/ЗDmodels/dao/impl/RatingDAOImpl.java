@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.IRatingDAO;
 import com.global3Dmod.ÇDmodels.domain.Rating;
 
-@Component
+
 @Repository("jpaRatingDAO")
 @Transactional
 public class RatingDAOImpl implements IRatingDAO {

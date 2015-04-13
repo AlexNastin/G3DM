@@ -7,21 +7,37 @@ import org.springframework.stereotype.Service;
 
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.User;
+import com.global3Dmod.ÇDmodels.exception.DaoException;
+import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Service
-public class UserService implements IUserService{
+public class UserService implements IUserService {
 
 	@Autowired
 	private IUserDAO userDAO;
 
-	public List<User> getAllUsers() {
-		return userDAO.getAllUsers();
+	public List<User> getAllUsers() throws ServiceException {
+		List<User> users = null;
+		try {
+			users = userDAO.getAllUsers();
+		} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return users;
 	}
 
 	@Override
 	public List<User> getTop3Users() {
-		return userDAO.getTop3Users();
+		List<User> users = null;
+		try {
+			userDAO.getTop3Users();
+		} catch (DaoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return users;
 	}
 
 }

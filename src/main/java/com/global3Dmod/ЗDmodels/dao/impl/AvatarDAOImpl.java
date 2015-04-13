@@ -12,7 +12,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.IAvatarDAO;
 import com.global3Dmod.ÇDmodels.domain.Avatar;
 
-@Component
 @Repository("jpaAvatarDAO")
 @Transactional
 public class AvatarDAOImpl implements IAvatarDAO {

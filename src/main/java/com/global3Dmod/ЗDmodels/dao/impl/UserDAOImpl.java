@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.User;
 
-@Component
+
 @Repository("jpaUserDAO")
 @Transactional
 public class UserDAOImpl implements IUserDAO {

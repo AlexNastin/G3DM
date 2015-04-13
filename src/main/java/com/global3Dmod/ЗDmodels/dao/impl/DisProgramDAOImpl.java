@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
 import com.global3Dmod.ÇDmodels.domain.DisProgram;
 
-@Component
+
 @Repository("jpaDisProgramDAO")
 @Transactional
 public class DisProgramDAOImpl implements IDisProgramDAO {

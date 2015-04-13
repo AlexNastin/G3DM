@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.ICityDAO;
 import com.global3Dmod.ÇDmodels.domain.City;
 
-@Component
+
 @Repository("jpaCityDAO")
 @Transactional
 public class CityDAOImpl implements ICityDAO {

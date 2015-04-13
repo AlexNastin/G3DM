@@ -12,10 +12,10 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.ICountryDAO;
 import com.global3Dmod.ÇDmodels.domain.Country;
 
-@Component
+
 @Repository("jpaCountryDAO")
 @Transactional
-public class ICountryDAOImpl implements ICountryDAO {
+public class CountryDAOImpl implements ICountryDAO {
 
 	@PersistenceContext
 	private EntityManager em;

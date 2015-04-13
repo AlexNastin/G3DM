@@ -6,7 +6,7 @@ import com.global3Dmod.ÇDmodels.domain.Avatar;
 
 public interface IAvatarDAO {
 	
-	public void update(Avatar avatar);
+	public void update(Avatar avatar) ;
 
 	public void add(Avatar avatar);
 

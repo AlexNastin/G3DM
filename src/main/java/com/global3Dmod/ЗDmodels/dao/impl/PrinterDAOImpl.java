@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.IPrinterDAO;
 import com.global3Dmod.ÇDmodels.domain.Printer;
 
-@Component
+
 @Repository("jpaPrinterDAO")
 @Transactional
 public class PrinterDAOImpl implements IPrinterDAO {

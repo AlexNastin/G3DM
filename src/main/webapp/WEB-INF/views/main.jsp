@@ -298,7 +298,6 @@
 
 	<div class="footer">
 		<div class="container">
-
 			<div class="footer_grids">
 				<div class="footer-grid">
 					<h4>Ipsum Quis</h4>
@@ -329,7 +328,6 @@
 						<li><a href=""><i class="google"> </i> </a></li>
 						<li><a href=""><i class="u_tube"> </i> </a></li>
 					</ul>
-
 				</div>
 				<div class="clearfix"></div>
 			</div>

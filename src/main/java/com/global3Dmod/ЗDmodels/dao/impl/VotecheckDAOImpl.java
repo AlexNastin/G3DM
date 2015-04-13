@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.IVotecheckDAO;
 import com.global3Dmod.ÇDmodels.domain.Votecheck;
 
-@Component
+
 @Repository("jpaVotecheckDAO")
 @Transactional
 public class VotecheckDAOImpl implements IVotecheckDAO {

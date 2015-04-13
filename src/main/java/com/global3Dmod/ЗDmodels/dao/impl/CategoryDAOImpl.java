@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.domain.Category;
 
-@Component
+
 @Repository("jpaCategoryDAO")
 @Transactional
 public class CategoryDAOImpl implements ICategoryDAO {

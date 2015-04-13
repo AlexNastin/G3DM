@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
 import com.global3Dmod.ÇDmodels.domain.Comment;
 
-@Component
+
 @Repository("jpaCommentDAO")
 @Transactional
 public class CommentDAOImpl implements ICommentDAO {

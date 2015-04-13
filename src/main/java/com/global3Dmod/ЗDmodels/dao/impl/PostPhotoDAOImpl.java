@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.IPostPhotoDAO;
 import com.global3Dmod.ÇDmodels.domain.PostPhoto;
 
-@Component
+
 @Repository("jpaPostPhotoDAO")
 @Transactional
 public class PostPhotoDAOImpl implements IPostPhotoDAO {

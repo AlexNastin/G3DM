@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.dao.IBlacklistDAO;
 import com.global3Dmod.ÇDmodels.domain.Blacklist;
 
-@Component
+
 @Repository("jpaBlacklistDAO")
 @Transactional
 public class BlacklistDAOImpl implements IBlacklistDAO {

@@ -8,11 +8,11 @@
 <html>
 <head>
 <title>Global3Dmod</title>
-<link href="<c:url value="/resources/css/bootstrap.css"  />"
-	rel="stylesheet" />
 <script src="<c:url value="/resources/js/jquery-2.1.1.js" />">
 	
 </script>
+<link href="<c:url value="/resources/css/bootstrap.css"  />"
+	rel="stylesheet" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" />
@@ -25,9 +25,9 @@
 <!--webfont-->
 
 
-<link
-	href="<c:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" />"
+<link href="<c:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" />"
 	rel="stylesheet" />
+	<script src="<c:url value="/resources/js/jquery-1.11.1.js" />"> </script>
 <script src="<c:url value="/resources/js/jquery.easydropdown.js" />">
 	
 </script>
@@ -35,13 +35,14 @@
 	
 </script>
 
+
 <!--Animation-->
-<script src="js/wow.min.js"></script>
-<script src="<c:url value="/resources/js/wow.min.js" />">
+
+<script src="<c:url value="/resources/js/wow.min.js" />"> </script>
+<link href="<c:url value="/resources/css/animate.css"  />"	rel="stylesheet" />
+<script src="<c:url value="/resources/js/responsive-nav.js" />">
 	
 </script>
-<link href="<c:url value="/resources/css/animate.css"  />"
-	rel="stylesheet" />
 
 <script>
 	new WOW().init();

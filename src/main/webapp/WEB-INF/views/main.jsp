@@ -78,7 +78,7 @@
 			<!----//search-scripts---->
 			<div class="clearfix"></div>
 		</div>
-		<div class="col-sm-4 header_right">
+		<div class="col-sm-4 header_right ">
 			<span class="menu btn btn-primary"><spring:message code="main.login" /></span> 
 		<span>	<a href="?locale=en">EN</a>|<a href="?locale=ru">RU</a></span>
 		</div>
@@ -129,10 +129,10 @@
 						<div class="grid1">
 							<div class="view view-first">
 								<div class="index_img1">
-									<img src="images/pic6.jpg" class="img-responsive" alt="" />
+									<img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive" alt="" />
 								</div>
 								<div class="mask">
-									<p class="star mask_img info">For HOME</p>
+									<p class="star mask_img info">For auto</p>
 								</div>
 							</div>
 
@@ -142,11 +142,11 @@
 						<div class="grid1">
 							<div class="view view-first">
 								<div class="index_img2">
-									<img src="images/pic2.jpg" class="img-responsive" alt="" />
+									<img src="<c:url value="/resources/images/garden.jpg" />" class="img-responsive" alt="" />
 								</div>
 								<div class="mask">
 									<div class="mask">
-										<p class="star mask_img info">For HOME</p>
+										<p class="star mask_img info">For garden</p>
 									</div>
 								</div>
 							</div>
@@ -156,11 +156,11 @@
 						<div class="grid1">
 							<div class="view view-first">
 								<div class="index_img2">
-									<img src="images/pic2.jpg" class="img-responsive" alt="" />
+									<img src="<c:url value="/resources/images/architecture.jpg" />" class="img-responsive" alt="" />
 								</div>
 								<div class="mask">
 									<div class="mask">
-										<p class="star mask_img info">For HOME</p>
+										<p class="star mask_img info">architecture</p>
 									</div>
 								</div>
 							</div>
@@ -176,7 +176,21 @@
 				<div class="grid1">
 					<div class="view view-first">
 						<div class="index_img2">
-							<img src="images/pic2.jpg" class="img-responsive" alt="" />
+							<img src="<c:url value="/resources/images/toys.jpg" />" class="img-responsive" alt="" />
+						</div>
+						<div class="mask">
+							<div class="mask">
+								<p class="star mask_img info">toys and games</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-3">
+				<div class="grid1">
+					<div class="view view-first">
+						<div class="index_img2">
+							<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
 						</div>
 						<div class="mask">
 							<div class="mask">
@@ -190,7 +204,7 @@
 				<div class="grid1">
 					<div class="view view-first">
 						<div class="index_img2">
-							<img src="images/pic2.jpg" class="img-responsive" alt="" />
+							<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
 						</div>
 						<div class="mask">
 							<div class="mask">
@@ -204,21 +218,7 @@
 				<div class="grid1">
 					<div class="view view-first">
 						<div class="index_img2">
-							<img src="images/pic2.jpg" class="img-responsive" alt="" />
-						</div>
-						<div class="mask">
-							<div class="mask">
-								<p class="star mask_img info">For HOME</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="grid1">
-					<div class="view view-first">
-						<div class="index_img2">
-							<img src="images/pic2.jpg" class="img-responsive" alt="" />
+							<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
 						</div>
 						<div class="mask">
 							<div class="mask">
@@ -237,7 +237,7 @@
 					<div class="grid1">
 						<div class="view view-first">
 							<div class="index_img2">
-								<img src="images/pic2.jpg" class="img-responsive" alt="" />
+								<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
 							</div>
 							<div class="mask">
 								<div class="mask">
@@ -251,7 +251,7 @@
 					<div class="grid1">
 						<div class="view view-first">
 							<div class="index_img2">
-								<img src="images/pic2.jpg" class="img-responsive" alt="" />
+								<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
 							</div>
 							<div class="mask">
 								<div class="mask">
@@ -265,7 +265,7 @@
 					<div class="grid1">
 						<div class="view view-first">
 							<div class="index_img2">
-								<img src="images/pic2.jpg" class="img-responsive" alt="" />
+								<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
 							</div>
 							<div class="mask">
 								<div class="mask">
@@ -279,7 +279,7 @@
 					<div class="grid1">
 						<div class="view view-first">
 							<div class="index_img2">
-								<img src="images/pic2.jpg" class="img-responsive" alt="" />
+								<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
 							</div>
 							<div class="mask">
 								<div class="mask">

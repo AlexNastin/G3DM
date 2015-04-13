@@ -62,7 +62,7 @@
 					<li><a href="#">Projects</a></li>
 					<li><a href="#">link</a></li>
 					<li><a href="#">link</a></li>
-					<li><a href="#">link</a></li>
+					<li><a href="<c:url value="/test" />">Test</a></li>
 					<div class="clearfix"></div>
 				</ul>
 				<script type="text/javascript" src="js/responsive-nav.js"></script>

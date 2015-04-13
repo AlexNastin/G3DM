@@ -23,14 +23,7 @@ public class UserController {
 	private static final Logger logger = LoggerFactory
 			.getLogger(UserController.class);
 
-	@Autowired
-	private IUserService userService;
-
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) throws Exception {
-
-		return "main";
-	}
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 * 

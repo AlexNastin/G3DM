@@ -25,13 +25,6 @@ public class GuestController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) throws Exception {
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG,
-				DateFormat.LONG, locale);
-		String formattedDate = dateFormat.format(date);
-		if (formattedDate != null) {
-			throw new Exception();
-		}
 		return "main";
 	}
 

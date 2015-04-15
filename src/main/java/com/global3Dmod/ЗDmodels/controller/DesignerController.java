@@ -11,29 +11,31 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class DesignerController {
-	
-	@RequestMapping(value="/upload", method=RequestMethod.POST)
-	  public String handleUpload(@RequestParam("description") String description, @RequestParam("file") MultipartFile file) {
-	    if (!file.isEmpty()) {
-	      System.out.println("File uploaded.");
-	      System.out.println("Description: " + description);
-	      String orgName = file.getOriginalFilename();
-//	      Как задать путь не жестко???
-	      String filePlaceToUpload = "C:/Users/User/git/G3DM/src/main/webapp/resources/images/modelImages/";
-	      String filePath = filePlaceToUpload + orgName;
-	      File dest = new File(filePath);
-	      
-	        try {
-	            file.transferTo(dest);
-	        } catch (IllegalStateException e) {
-	            e.printStackTrace();
-	        } catch (IOException e) {
-	            e.printStackTrace();
-	        }
-	       return "main";
-	    } else {
-	       return "test";
-	    }
-	  }
+
+	@RequestMapping(value = "/upload", method = RequestMethod.POST)
+	public String handleUpload(@RequestParam("description") String description,
+			@RequestParam("file") MultipartFile file) throws Exception{
+		if (!file.isEmpty()) {
+			System.out.println("File uploaded.");
+			System.out.println("Description: " + description);
+
+			String orgName = file.getOriginalFilename();
+
+			final String PREFIX = this.getClass().getResource("/").getPath();
+//			C:\Java\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\G3DM\resources\files
+			System.out.println(PREFIX);
+			// Как задать путь не жестко???
+			String filePlaceToUpload = "C:/Java/workspasdasdasdasdasdasdace/G3DM/src/main/webapp/resources/files/";
+			String filePath = filePlaceToUpload + orgName;
+			File dest = new File(filePath);
+
+			
+				file.transferTo(dest);
+			
+			return "main";
+		} else {
+			return "test";
+		}
+	}
 
 }

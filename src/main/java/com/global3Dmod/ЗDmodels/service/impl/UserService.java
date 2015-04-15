@@ -19,12 +19,13 @@ public class UserService implements IUserService {
 
 	public List<User> getAllUsers() throws ServiceException {
 		List<User> users = null;
+
 		try {
 			users = userDAO.getAllUsers();
 		} catch (DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ServiceException(e);
 		}
+
 		return users;
 	}
 

@@ -8,11 +8,11 @@
 <html>
 <head>
 <title>Global3Dmod</title>
+<link href="<c:url value="/resources/css/bootstrap.css"  />"
+	rel="stylesheet" />
 <script src="<c:url value="/resources/js/jquery-2.1.1.js" />">
 	
 </script>
-<link href="<c:url value="/resources/css/bootstrap.css"  />"
-	rel="stylesheet" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!-- Custom Theme files -->
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" />
@@ -20,14 +20,16 @@
 <!-- Custom Theme files -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script type="application/x-javascript">
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 </script>
 <!--webfont-->
 
 
-<link href="<c:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" />"
+<link
+	href="<c:url value="http://fonts.googleapis.com/css?family=Montserrat:400,700" />"
 	rel="stylesheet" />
-	<script src="<c:url value="/resources/js/jquery-1.11.1.js" />"> </script>
 <script src="<c:url value="/resources/js/jquery.easydropdown.js" />">
 	
 </script>
@@ -35,14 +37,13 @@
 	
 </script>
 
-
 <!--Animation-->
-
-<script src="<c:url value="/resources/js/wow.min.js" />"> </script>
-<link href="<c:url value="/resources/css/animate.css"  />"	rel="stylesheet" />
-<script src="<c:url value="/resources/js/responsive-nav.js" />">
+<script src="js/wow.min.js"></script>
+<script src="<c:url value="/resources/js/wow.min.js" />">
 	
 </script>
+<link href="<c:url value="/resources/css/animate.css"  />"
+	rel="stylesheet" />
 
 <script>
 	new WOW().init();
@@ -80,8 +81,10 @@
 			<div class="clearfix"></div>
 		</div>
 		<div class="col-sm-4 header_right ">
-			<span class="menu btn btn-primary"><spring:message code="main.login" /></span> 
-		<span>	<a href="?locale=en">EN</a>|<a href="?locale=ru">RU</a></span>
+			<a href="<c:url  value="/signin" />"><span
+				class="menu btn btn-primary"><spring:message
+						code="main.login" /></span></a> <span> <a href="?locale=en">EN</a>|<a
+				href="?locale=ru">RU</a></span>
 		</div>
 		<div class="clearfix"></div>
 	</div>
@@ -106,7 +109,9 @@
 	<div class="content_middle">
 		<p>
 		<h1>
-			<center><spring:message code="main.categories" /></center>
+			<center>
+				<spring:message code="main.categories" />
+			</center>
 		</h1>
 		<div class="container">
 			<div class="content_middle_box">
@@ -130,7 +135,8 @@
 						<div class="grid1">
 							<div class="view view-first">
 								<div class="index_img1">
-									<img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive" alt="" />
+									<img src="<c:url value="/resources/images/auto.jpg" />"
+										class="img-responsive" alt="" />
 								</div>
 								<div class="mask">
 									<p class="star mask_img info">For auto</p>
@@ -143,7 +149,8 @@
 						<div class="grid1">
 							<div class="view view-first">
 								<div class="index_img2">
-									<img src="<c:url value="/resources/images/garden.jpg" />" class="img-responsive" alt="" />
+									<img src="<c:url value="/resources/images/garden.jpg" />"
+										class="img-responsive" alt="" />
 								</div>
 								<div class="mask">
 									<div class="mask">
@@ -157,7 +164,8 @@
 						<div class="grid1">
 							<div class="view view-first">
 								<div class="index_img2">
-									<img src="<c:url value="/resources/images/architecture.jpg" />" class="img-responsive" alt="" />
+									<img src="<c:url value="/resources/images/architecture.jpg" />"
+										class="img-responsive" alt="" />
 								</div>
 								<div class="mask">
 									<div class="mask">
@@ -177,7 +185,8 @@
 				<div class="grid1">
 					<div class="view view-first">
 						<div class="index_img2">
-							<img src="<c:url value="/resources/images/toys.jpg" />" class="img-responsive" alt="" />
+							<img src="<c:url value="/resources/images/toys.jpg" />"
+								class="img-responsive" alt="" />
 						</div>
 						<div class="mask">
 							<div class="mask">
@@ -191,7 +200,8 @@
 				<div class="grid1">
 					<div class="view view-first">
 						<div class="index_img2">
-							<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
+							<img src="<c:url value="/resources/images/pic1.jpg" />"
+								class="img-responsive" alt="" />
 						</div>
 						<div class="mask">
 							<div class="mask">
@@ -205,7 +215,8 @@
 				<div class="grid1">
 					<div class="view view-first">
 						<div class="index_img2">
-							<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
+							<img src="<c:url value="/resources/images/pic1.jpg" />"
+								class="img-responsive" alt="" />
 						</div>
 						<div class="mask">
 							<div class="mask">
@@ -219,7 +230,8 @@
 				<div class="grid1">
 					<div class="view view-first">
 						<div class="index_img2">
-							<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
+							<img src="<c:url value="/resources/images/pic1.jpg" />"
+								class="img-responsive" alt="" />
 						</div>
 						<div class="mask">
 							<div class="mask">
@@ -238,7 +250,8 @@
 					<div class="grid1">
 						<div class="view view-first">
 							<div class="index_img2">
-								<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
+								<img src="<c:url value="/resources/images/pic1.jpg" />"
+									class="img-responsive" alt="" />
 							</div>
 							<div class="mask">
 								<div class="mask">
@@ -252,7 +265,8 @@
 					<div class="grid1">
 						<div class="view view-first">
 							<div class="index_img2">
-								<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
+								<img src="<c:url value="/resources/images/pic1.jpg" />"
+									class="img-responsive" alt="" />
 							</div>
 							<div class="mask">
 								<div class="mask">
@@ -266,7 +280,8 @@
 					<div class="grid1">
 						<div class="view view-first">
 							<div class="index_img2">
-								<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
+								<img src="<c:url value="/resources/images/pic1.jpg" />"
+									class="img-responsive" alt="" />
 							</div>
 							<div class="mask">
 								<div class="mask">
@@ -280,7 +295,8 @@
 					<div class="grid1">
 						<div class="view view-first">
 							<div class="index_img2">
-								<img src="<c:url value="/resources/images/pic1.jpg" />" class="img-responsive" alt="" />
+								<img src="<c:url value="/resources/images/pic1.jpg" />"
+									class="img-responsive" alt="" />
 							</div>
 							<div class="mask">
 								<div class="mask">

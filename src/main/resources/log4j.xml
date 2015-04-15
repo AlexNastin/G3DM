@@ -9,6 +9,7 @@
 			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
 		</layout>
 	</appender>
+	
 	<appender name="infoFileAppender" class="org.apache.log4j.RollingFileAppender">
 		<param name="file" value="${catalina.home}/Global3dMOD_Logs/logs.txt" />
 		<param name="MaxFileSize" value="1MB" />

@@ -49,7 +49,7 @@
 <div class="form-group">
   <label class="col-md-3 control-label signin-text-color" for="password"><spring:message code="signup.password" /></label>
   <div class="col-md-8">
-    <input id="password" title="Minimum length is 6 characters. Use Latin characters, digits, and underscores" name="password" placeholder="<spring:message code="signup.password" />" class="form-control input-md" required pattern="&#40;?=^.&#123;6,&#125;$&#41;&#40;&#40;?=.*\d&#41;|&#40;?=.*\W+&#41;&#41;&#40;?!&#91;.\n&#93;&#41;&#40;?=.*&#91;A-Z&#93;&#41;&#40;?=.*&#91;a-z&#93;&#41;.*$" type="password">
+    <input  id="password" title="Minimum length is 6 characters. Use Latin characters, digits, and underscores" name="password" placeholder="<spring:message code="signup.password" />" class="form-control input-md" required pattern="&#40;?=^.&#123;6,&#125;$&#41;&#40;&#40;?=.*\d&#41;|&#40;?=.*\W+&#41;&#41;&#40;?!&#91;.\n&#93;&#41;&#40;?=.*&#91;A-Z&#93;&#41;&#40;?=.*&#91;a-z&#93;&#41;.*$" type="password">
     
   </div>
 </div>
@@ -58,8 +58,8 @@
 <div class="form-group">
   <label class="col-md-3 control-label signin-text-color" for="repeatpassword"><spring:message code="signup.confirmpassword" /></label>
   <div class="col-md-8">
-    <input id="repeatpassword" name="repeatpassword" placeholder="<spring:message code="signup.confirmpassword" />" class="form-control input-md" required="" type="password">
-    
+    <input id="repeatpassword"  name="repeatpassword" placeholder="<spring:message code="signup.confirmpassword" />" class="form-control input-md" required="" type="password">
+   
   </div>
 </div>
 

@@ -55,7 +55,7 @@
      <label class="col-md-3 control-label" for="button1id"></label>
      <div class="col-md-8">
       <button type="submit" class="btn btn-primary signin-button-color"><spring:message code="signin.signin" /></button>
-      <button type="button" class="btn btn-primary signin-margin-button" onClick='location.href="<c:url value="/signup" />"'>
+      <button type="button" class="btn btn-primary signin-margin-button" onClick='location.href="<c:url value="/go/signup" />"'>
       <spring:message code="signin.signup" />
       </button>
       </div>    

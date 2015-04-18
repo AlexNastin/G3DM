@@ -22,7 +22,7 @@ public class PostPhotoDAOImpl implements IPostPhotoDAO {
 
 	@Override
 	@Transactional
-	public void add(PostPhoto postPhoto) {
+	public void insertPostPhoto(PostPhoto postPhoto) {
 		em.persist(postPhoto);
 
 	}
@@ -30,21 +30,21 @@ public class PostPhotoDAOImpl implements IPostPhotoDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<PostPhoto> getAllPostPhotos() {
+	public List<PostPhoto> selectAllPostPhotos() {
 		List<PostPhoto> postPhoto = em.createNamedQuery("PostPhoto.findAll").getResultList();
 		return postPhoto;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deletePostPhoto(Integer id) {
 		PostPhoto postPhoto = em.find(PostPhoto.class, id);
 		em.remove(postPhoto);
 	}
 
 	@Override
 	@Transactional
-	public void update(PostPhoto postPhoto) {
+	public void updatePostPhoto(PostPhoto postPhoto) {
 		em.merge(postPhoto);
 		
 	}

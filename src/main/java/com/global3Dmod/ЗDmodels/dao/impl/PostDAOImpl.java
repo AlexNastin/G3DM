@@ -22,7 +22,7 @@ public class PostDAOImpl implements IPostDAO {
 
 	@Override
 	@Transactional
-	public void add(Post post) {
+	public void insertPost(Post post) {
 		em.persist(post);
 
 	}
@@ -30,21 +30,21 @@ public class PostDAOImpl implements IPostDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Post> getAllPosts() {
+	public List<Post> selectAllPosts() {
 		List<Post> post = em.createNamedQuery("Post.findAll").getResultList();
 		return post;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deletePost(Integer id) {
 		Post post = em.find(Post.class, id);
 		em.remove(post);
 	}
 
 	@Override
 	@Transactional
-	public void update(Post post) {
+	public void updatePost(Post post) {
 		em.merge(post);
 		
 	}

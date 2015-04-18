@@ -22,7 +22,7 @@ public class CommentDAOImpl implements ICommentDAO {
 
 	@Override
 	@Transactional
-	public void add(Comment comment) {
+	public void insertComment(Comment comment) {
 		em.persist(comment);
 
 	}
@@ -30,21 +30,21 @@ public class CommentDAOImpl implements ICommentDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Comment> getAllComments() {
+	public List<Comment> selectAllComments() {
 		List<Comment> comments = em.createNamedQuery("Comment.findAll").getResultList();
 		return comments;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteComment(Integer id) {
 		Comment comment = em.find(Comment.class, id);
 		em.remove(comment);
 	}
 
 	@Override
 	@Transactional
-	public void update(Comment comment) {
+	public void updateComment(Comment comment) {
 		em.merge(comment);
 		
 	}

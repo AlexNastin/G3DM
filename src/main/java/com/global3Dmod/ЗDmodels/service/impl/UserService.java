@@ -21,7 +21,7 @@ public class UserService implements IUserService {
 		List<User> users = null;
 
 		try {
-			users = userDAO.getAllUsers();
+			users = userDAO.selectAllUsers();
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -33,7 +33,7 @@ public class UserService implements IUserService {
 	public List<User> getTop3Users() {
 		List<User> users = null;
 		try {
-			userDAO.getTop3Users();
+			userDAO.selectTop3Users();
 		} catch (DaoException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

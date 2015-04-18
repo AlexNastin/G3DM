@@ -7,12 +7,12 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface IPrinterDAO {
 	
-	public void update(Printer printer) throws DaoException;
+	public void updatePrinter(Printer printer) throws DaoException;
 
-	public void add(Printer printer) throws DaoException;
+	public void insertPrinter(Printer printer) throws DaoException;
 
-	public List<Printer> getAllPrinters() throws DaoException;
+	public List<Printer> selectAllPrinters() throws DaoException;
 
-	public void remove(Integer id) throws DaoException;
+	public void deletePrinter(Integer id) throws DaoException;
 
 }

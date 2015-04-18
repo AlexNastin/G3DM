@@ -7,12 +7,12 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface ICategoryDAO {
 	
-	public void update(Category category) throws DaoException;
+	public void updateCategory(Category category) throws DaoException;
 
-	public void add(Category category) throws DaoException;
+	public void insertCategory(Category category) throws DaoException;
 
-	public List<Category> getAllCategories() throws DaoException;
+	public List<Category> selectAllCategories() throws DaoException;
 
-	public void remove(Integer id) throws DaoException;
+	public void deleteCategory(Integer id) throws DaoException;
 
 }

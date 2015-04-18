@@ -7,12 +7,12 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface IRatingDAO {
 	
-	public void update(Rating rating) throws DaoException;
+	public void updateRating(Rating rating) throws DaoException;
 
-	public void add(Rating rating) throws DaoException;
+	public void insertRating(Rating rating) throws DaoException;
 	
-	public List<Rating> getAllRatings() throws DaoException;
+	public List<Rating> selectAllRatings() throws DaoException;
 
-	public void remove(Integer id) throws DaoException;
+	public void deleteRating(Integer id) throws DaoException;
 
 }

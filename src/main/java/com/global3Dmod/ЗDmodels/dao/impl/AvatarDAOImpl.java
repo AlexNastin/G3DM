@@ -21,7 +21,7 @@ public class AvatarDAOImpl implements IAvatarDAO {
 
 	@Override
 	@Transactional
-	public void add(Avatar avatar) {
+	public void insertAvatar(Avatar avatar) {
 		em.persist(avatar);
 
 	}
@@ -29,21 +29,21 @@ public class AvatarDAOImpl implements IAvatarDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Avatar> getAllAvatars() {
+	public List<Avatar> selectAllAvatars() {
 		List<Avatar> avatar = em.createNamedQuery("Avatar.findAll").getResultList();
 		return avatar;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteAvatar(Integer id) {
 		Avatar avatar = em.find(Avatar.class, id);
 		em.remove(avatar);
 	}
 
 	@Override
 	@Transactional
-	public void update(Avatar avatar) {
+	public void updateAvatar(Avatar avatar) {
 		em.merge(avatar);
 		
 	}

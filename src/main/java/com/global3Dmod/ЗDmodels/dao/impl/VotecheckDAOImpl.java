@@ -22,7 +22,7 @@ public class VotecheckDAOImpl implements IVotecheckDAO {
 
 	@Override
 	@Transactional
-	public void add(Votecheck votecheck) {
+	public void insertVotecheck(Votecheck votecheck) {
 		em.persist(votecheck);
 
 	}
@@ -30,21 +30,21 @@ public class VotecheckDAOImpl implements IVotecheckDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Votecheck> getAllVotechecks() {
+	public List<Votecheck> selectAllVotechecks() {
 		List<Votecheck> votecheck = em.createNamedQuery("Votecheck.findAll").getResultList();
 		return votecheck;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteVotecheck(Integer id) {
 		Votecheck votecheck = em.find(Votecheck.class, id);
 		em.remove(votecheck);
 	}
 
 	@Override
 	@Transactional
-	public void update(Votecheck votecheck) {
+	public void updateVotecheck(Votecheck votecheck) {
 		em.merge(votecheck);
 		
 	}

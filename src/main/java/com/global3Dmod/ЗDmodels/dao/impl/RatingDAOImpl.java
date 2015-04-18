@@ -22,7 +22,7 @@ public class RatingDAOImpl implements IRatingDAO {
 
 	@Override
 	@Transactional
-	public void add(Rating rating) {
+	public void insertRating(Rating rating) {
 		em.persist(rating);
 
 	}
@@ -30,21 +30,21 @@ public class RatingDAOImpl implements IRatingDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Rating> getAllRatings() {
+	public List<Rating> selectAllRatings() {
 		List<Rating> rating = em.createNamedQuery("Rating.findAll").getResultList();
 		return rating;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteRating(Integer id) {
 		Rating rating = em.find(Rating.class, id);
 		em.remove(rating);
 	}
 
 	@Override
 	@Transactional
-	public void update(Rating rating) {
+	public void updateRating(Rating rating) {
 		em.merge(rating);
 		
 	}

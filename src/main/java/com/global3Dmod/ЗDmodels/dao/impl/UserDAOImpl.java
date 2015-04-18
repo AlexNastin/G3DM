@@ -22,7 +22,7 @@ public class UserDAOImpl implements IUserDAO {
 
 	@Override
 	@Transactional
-	public void add(User user) {
+	public void insertUser(User user) {
 		em.persist(user);
 
 	}
@@ -30,21 +30,21 @@ public class UserDAOImpl implements IUserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<User> getAllUsers() {
+	public List<User> selectAllUsers() {
 		List<User> users = em.createNamedQuery("User.findAll").getResultList();
 		return users;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteUser(Integer id) {
 		User user = em.find(User.class, id);
 		em.remove(user);
 	}
 
 	@Override
 	@Transactional
-	public void update(User user) {
+	public void updateUser(User user) {
 		em.merge(user);
 		
 	}
@@ -52,7 +52,7 @@ public class UserDAOImpl implements IUserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<User> getTop3Users() {
+	public List<User> selectTop3Users() {
 		List<User> usersTop = em.createNamedQuery("User.findTop3").setFirstResult(0).setMaxResults(3).getResultList();
 		return usersTop;
 	}

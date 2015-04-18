@@ -22,7 +22,7 @@ public class CityDAOImpl implements ICityDAO {
 
 	@Override
 	@Transactional
-	public void add(City city) {
+	public void insertCity(City city) {
 		em.persist(city);
 
 	}
@@ -30,21 +30,21 @@ public class CityDAOImpl implements ICityDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<City> getAllCities() {
+	public List<City> selectAllCities() {
 		List<City> cities = em.createNamedQuery("City.findAll").getResultList();
 		return cities;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteCity(Integer id) {
 		City city = em.find(City.class, id);
 		em.remove(city);
 	}
 
 	@Override
 	@Transactional
-	public void update(City city) {
+	public void updateCity(City city) {
 		em.merge(city);
 		
 	}

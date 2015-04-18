@@ -22,7 +22,7 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 
 	@Override
 	@Transactional
-	public void add(Blacklist blacklist) {
+	public void insertBlacklist(Blacklist blacklist) {
 		em.persist(blacklist);
 
 	}
@@ -30,21 +30,21 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Blacklist> getAllBlacklists() {
+	public List<Blacklist> selectAllBlacklists() {
 		List<Blacklist> blacklist = em.createNamedQuery("Blacklist.findAll").getResultList();
 		return blacklist;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteBlacklist(Integer id) {
 		Blacklist blacklist = em.find(Blacklist.class, id);
 		em.remove(blacklist);
 	}
 
 	@Override
 	@Transactional
-	public void update(Blacklist blacklist) {
+	public void updateBlacklist(Blacklist blacklist) {
 		em.merge(blacklist);
 		
 	}

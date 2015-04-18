@@ -2,7 +2,6 @@ package com.global3Dmod.ÇDmodels.controller;
 
 import java.util.Locale;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
@@ -24,7 +24,6 @@ public class GuestController {
 		return modelAndView;
 	}
 
-	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("main");
@@ -37,9 +36,18 @@ public class GuestController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/signin", method = RequestMethod.GET)
+	@RequestMapping(value = "/go/signin", method = RequestMethod.GET)
 	public ModelAndView signIn(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
+		return modelAndView;
+	}
+
+	@RequestMapping(value = "/go/signup", method = RequestMethod.GET)
+	public ModelAndView goRegistration(Locale locale, Model model)
+			throws Exception {
+	
+		ModelAndView modelAndView = new ModelAndView("login/signup2");
+		modelAndView.addObject("user", new User());
 		return modelAndView;
 	}
 

@@ -22,7 +22,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 
 	@Override
 	@Transactional
-	public void add(Category category) {
+	public void insertCategory(Category category) {
 		em.persist(category);
 
 	}
@@ -30,21 +30,21 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Category> getAllCategories() {
+	public List<Category> selectAllCategories() {
 		List<Category> category = em.createNamedQuery("Category.findAll").getResultList();
 		return category;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteCategory(Integer id) {
 		Category category = em.find(Category.class, id);
 		em.remove(category);
 	}
 
 	@Override
 	@Transactional
-	public void update(Category category) {
+	public void updateCategory(Category category) {
 		em.merge(category);
 		
 	}

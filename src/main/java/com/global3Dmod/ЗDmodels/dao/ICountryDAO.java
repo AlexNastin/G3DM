@@ -7,12 +7,12 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface ICountryDAO {
 	
-	public void update(Country country) throws DaoException;
+	public void updateCountry(Country country) throws DaoException;
 
-	public void add(Country country) throws DaoException;
+	public void insertCountry(Country country) throws DaoException;
 
-	public List<Country> getAllCountries() throws DaoException;
+	public List<Country> selectAllCountries() throws DaoException;
 
-	public void remove(Integer id) throws DaoException;
+	public void deleteCountry(Integer id) throws DaoException;
 
 }

@@ -7,12 +7,12 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface ISubcategoryDAO {
 
-	public void update(Subcategory subcategory) throws DaoException;
+	public void updateSubcategory(Subcategory subcategory) throws DaoException;
 
-	public void add(Subcategory subcategory) throws DaoException;
+	public void insertSubcategory(Subcategory subcategory) throws DaoException;
 
-	public List<Subcategory> getAllSubcategories() throws DaoException;
+	public List<Subcategory> selectAllSubcategories() throws DaoException;
 
-	public void remove(Integer id) throws DaoException;
+	public void deleteSubcategory(Integer id) throws DaoException;
 
 }

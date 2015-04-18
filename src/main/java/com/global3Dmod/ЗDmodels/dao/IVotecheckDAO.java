@@ -7,11 +7,11 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface IVotecheckDAO {
 	
-	public void update(Votecheck votecheck) throws DaoException;
+	public void updateVotecheck(Votecheck votecheck) throws DaoException;
 
-	public void add(Votecheck votecheck) throws DaoException;
+	public void insertVotecheck(Votecheck votecheck) throws DaoException;
 
-	public List<Votecheck> getAllVotechecks() throws DaoException;
+	public List<Votecheck> selectAllVotechecks() throws DaoException;
 
-	public void remove(Integer id) throws DaoException;
+	public void deleteVotecheck(Integer id) throws DaoException;
 }

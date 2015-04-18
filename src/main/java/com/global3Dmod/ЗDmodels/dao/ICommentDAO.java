@@ -7,12 +7,12 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface ICommentDAO {
 	
-	public void update(Comment comment) throws DaoException;
+	public void updateComment(Comment comment) throws DaoException;
 
-	public void add(Comment comment) throws DaoException;
+	public void insertComment(Comment comment) throws DaoException;
 
-	public List<Comment> getAllComments() throws DaoException;
+	public List<Comment> selectAllComments() throws DaoException;
 
-	public void remove(Integer id) throws DaoException;
+	public void deleteComment(Integer id) throws DaoException;
 
 }

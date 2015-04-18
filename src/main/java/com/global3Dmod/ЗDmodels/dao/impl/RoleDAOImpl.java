@@ -22,7 +22,7 @@ public class RoleDAOImpl implements IRoleDAO {
 
 	@Override
 	@Transactional
-	public void add(Role role) {
+	public void insertRole(Role role) {
 		em.persist(role);
 
 	}
@@ -30,21 +30,21 @@ public class RoleDAOImpl implements IRoleDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Role> getAllRoles() {
+	public List<Role> selectAllRoles() {
 		List<Role> role = em.createNamedQuery("Role.findAll").getResultList();
 		return role;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteRole(Integer id) {
 		Role role = em.find(Role.class, id);
 		em.remove(role);
 	}
 
 	@Override
 	@Transactional
-	public void update(Role role) {
+	public void updateRole(Role role) {
 		em.merge(role);
 		
 	}

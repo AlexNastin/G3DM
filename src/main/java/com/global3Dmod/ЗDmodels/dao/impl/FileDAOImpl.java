@@ -22,7 +22,7 @@ public class FileDAOImpl implements IFileDAO {
 
 	@Override
 	@Transactional
-	public void add(File file) {
+	public void insertFile(File file) {
 		em.persist(file);
 
 	}
@@ -30,21 +30,21 @@ public class FileDAOImpl implements IFileDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<File> getAllFiles() {
+	public List<File> selectAllFiles() {
 		List<File> file = em.createNamedQuery("File.findAll").getResultList();
 		return file;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteFile(Integer id) {
 		File file = em.find(File.class, id);
 		em.remove(file);
 	}
 
 	@Override
 	@Transactional
-	public void update(File file) {
+	public void updateFile(File file) {
 		em.merge(file);
 		
 	}

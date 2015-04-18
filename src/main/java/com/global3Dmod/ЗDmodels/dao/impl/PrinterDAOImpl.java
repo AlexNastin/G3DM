@@ -22,7 +22,7 @@ public class PrinterDAOImpl implements IPrinterDAO {
 
 	@Override
 	@Transactional
-	public void add(Printer printer) {
+	public void insertPrinter(Printer printer) {
 		em.persist(printer);
 
 	}
@@ -30,21 +30,21 @@ public class PrinterDAOImpl implements IPrinterDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Printer> getAllPrinters() {
+	public List<Printer> selectAllPrinters() {
 		List<Printer> printer = em.createNamedQuery("Printer.findAll").getResultList();
 		return printer;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deletePrinter(Integer id) {
 		Printer printer = em.find(Printer.class, id);
 		em.remove(printer);
 	}
 
 	@Override
 	@Transactional
-	public void update(Printer printer) {
+	public void updatePrinter(Printer printer) {
 		em.merge(printer);
 		
 	}

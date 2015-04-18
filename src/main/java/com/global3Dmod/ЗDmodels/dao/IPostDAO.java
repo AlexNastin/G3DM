@@ -7,12 +7,12 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface IPostDAO {
 	
-	public void update(Post post) throws DaoException;
+	public void updatePost(Post post) throws DaoException;
 
-	public void add(Post post) throws DaoException;
+	public void insertPost(Post post) throws DaoException;
 
-	public List<Post> getAllPosts() throws DaoException;
+	public List<Post> selectAllPosts() throws DaoException;
 
-	public void remove(Integer id) throws DaoException;
+	public void deletePost(Integer id) throws DaoException;
 
 }

@@ -22,7 +22,7 @@ public class CountryDAOImpl implements ICountryDAO {
 
 	@Override
 	@Transactional
-	public void add(Country country) {
+	public void insertCountry(Country country) {
 		em.persist(country);
 
 	}
@@ -30,21 +30,21 @@ public class CountryDAOImpl implements ICountryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Country> getAllCountries() {
+	public List<Country> selectAllCountries() {
 		List<Country> country = em.createNamedQuery("Country.findAll").getResultList();
 		return country;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteCountry(Integer id) {
 		Country country = em.find(Country.class, id);
 		em.remove(country);
 	}
 
 	@Override
 	@Transactional
-	public void update(Country country) {
+	public void updateCountry(Country country) {
 		em.merge(country);
 		
 	}

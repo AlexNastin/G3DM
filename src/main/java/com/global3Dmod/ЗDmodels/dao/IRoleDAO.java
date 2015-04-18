@@ -7,12 +7,12 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface IRoleDAO {
 	
-	public void update(Role role) throws DaoException;
+	public void updateRole(Role role) throws DaoException;
 
-	public void add(Role role) throws DaoException;
+	public void insertRole(Role role) throws DaoException;
 
-	public List<Role> getAllRoles() throws DaoException;
+	public List<Role> selectAllRoles() throws DaoException;
 
-	public void remove(Integer id) throws DaoException;
+	public void deleteRole(Integer id) throws DaoException;
 
 }

@@ -22,7 +22,7 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 
 	@Override
 	@Transactional
-	public void add(Subcategory subcategory) {
+	public void insertSubcategory(Subcategory subcategory) {
 		em.persist(subcategory);
 
 	}
@@ -30,21 +30,21 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Subcategory> getAllSubcategories() {
+	public List<Subcategory> selectAllSubcategories() {
 		List<Subcategory> subcategory = em.createNamedQuery("Subcategory.findAll").getResultList();
 		return subcategory;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteSubcategory(Integer id) {
 		Subcategory subcategory = em.find(Subcategory.class, id);
 		em.remove(subcategory);
 	}
 
 	@Override
 	@Transactional
-	public void update(Subcategory subcategory) {
+	public void updateSubcategory(Subcategory subcategory) {
 		em.merge(subcategory);
 		
 	}

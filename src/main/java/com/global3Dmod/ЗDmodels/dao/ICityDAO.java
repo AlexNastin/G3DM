@@ -7,12 +7,12 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface ICityDAO {
 	
-	public void update(City city) throws DaoException;
+	public void updateCity(City city) throws DaoException;
 
-	public void add(City city) throws DaoException;
+	public void insertCity(City city) throws DaoException;
 
-	public List<City> getAllCities() throws DaoException;
+	public List<City> selectAllCities() throws DaoException;
 
-	public void remove(Integer id) throws DaoException;
+	public void deleteCity(Integer id) throws DaoException;
 
 }

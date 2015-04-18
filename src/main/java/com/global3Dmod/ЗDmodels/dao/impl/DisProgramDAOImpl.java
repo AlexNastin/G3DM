@@ -22,7 +22,7 @@ public class DisProgramDAOImpl implements IDisProgramDAO {
 
 	@Override
 	@Transactional
-	public void add(DisProgram disProgram) {
+	public void insertDisProgram(DisProgram disProgram) {
 		em.persist(disProgram);
 
 	}
@@ -30,21 +30,21 @@ public class DisProgramDAOImpl implements IDisProgramDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<DisProgram> getAllDisPrograms() {
+	public List<DisProgram> selectAllDisPrograms() {
 		List<DisProgram> disProgram = em.createNamedQuery("DisProgram.findAll").getResultList();
 		return disProgram;
 	}
 
 	@Override
 	@Transactional
-	public void remove(Integer id) {
+	public void deleteDisProgram(Integer id) {
 		DisProgram disProgram = em.find(DisProgram.class, id);
 		em.remove(disProgram);
 	}
 
 	@Override
 	@Transactional
-	public void update(DisProgram disProgram) {
+	public void updateDisProgram(DisProgram disProgram) {
 		em.merge(disProgram);
 		
 	}

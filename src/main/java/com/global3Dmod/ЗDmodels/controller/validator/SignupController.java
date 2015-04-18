@@ -1,4 +1,4 @@
-package com.global3Dmod.ÇDmodels.controller;
+package com.global3Dmod.ÇDmodels.controller.validator;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

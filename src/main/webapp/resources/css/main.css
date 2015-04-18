@@ -605,7 +605,7 @@ textarea#message {
 
 div#carousel {
   perspective: 1200px;
-  padding-top: 10%;
+  padding-top: 1%;
   font-size:0;
   margin-bottom: 3rem;
   overflow: hidden;

@@ -1,6 +1,8 @@
 package com.global3Dmod.ÇDmodels.form;
 
-public class SignupForm {
+import com.global3Dmod.ÇDmodels.domain.Essence;
+
+public class SignupForm implements Essence {
 	
 	private int role_idRole;
 	private String login;

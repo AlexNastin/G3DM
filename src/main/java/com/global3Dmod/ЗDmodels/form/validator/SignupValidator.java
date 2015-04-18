@@ -33,8 +33,9 @@ public class SignupValidator implements Validator {
 			errors.rejectValue("confirmPassword", "confirmPassword.passwordDontMatch", "Passwords don't match.");
 		}
 		//Валидация логина (email)
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "login.empty", "Email must not be empty.");
 		if( !EmailValidator.getInstance().isValid( signupForm.getLogin() ) ){
-			errors.rejectValue("email", "email.notValid", "Email address is not valid.");
+			errors.rejectValue("login", "login.notValid", "Email address is not valid.");
 		}
 		
 	}

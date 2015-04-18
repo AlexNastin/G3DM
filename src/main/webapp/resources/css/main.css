@@ -761,7 +761,7 @@ div#carousel ~ span:hover { color: #888; cursor: pointer; }
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
-	min-height: 410px;
+	min-height: 250px;
 	text-align: center;
 	padding-top:4em;
 }

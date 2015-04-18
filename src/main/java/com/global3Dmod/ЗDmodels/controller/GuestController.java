@@ -20,13 +20,18 @@ public class GuestController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("redirect:/index");
+		ModelAndView modelAndView = new ModelAndView("main");
 		return modelAndView;
 	}
 
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	 public String home(Locale locale, Model model) throws Exception {
+//	  return "main";
+//	 }
+	
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("main");
+		ModelAndView modelAndView = new ModelAndView("");
 		return modelAndView;
 	}
 

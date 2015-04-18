@@ -56,7 +56,7 @@
                 <li><a href="#">Contact</a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
-                    <li><button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signin" />"'>
+                    <li><button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/signin" />"'>
       <spring:message code="signin.signin" />
       </button>
                 </li>
@@ -69,10 +69,11 @@
     <div class="container_wrap">
         <h1>What are you looking for?</h1>
         <form>
-            <input type="text" class="searchline" value="Type your query here" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Type your query here';}">
-            <div class="contact_btn">
-                <label class="btn1 btn-2 btn-2g"><input name="submit" type="submit" id="submit" value="Search"></label>
-            </div>
+        <span>
+            <input type="text" value="Enter your query" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your query';}">
+		    <label class="btn1 btn2 btn-2 btn-2g"> <input name="submit" type="submit" id="submit" value="Search"> </label>
+		    <div class="clearfix"> </div>
+		</span>    
         </form>
         <div class="clearfix"></div>
     </div>

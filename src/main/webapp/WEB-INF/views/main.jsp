@@ -56,8 +56,8 @@
                 <li><a href="#">Contact</a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
-                    <li><button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/signup" />"'>
-      <spring:message code="signin.signup" />
+                    <li><button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/signin" />"'>
+      <spring:message code="signin.signin" />
       </button>
                 </li>
             </ul>

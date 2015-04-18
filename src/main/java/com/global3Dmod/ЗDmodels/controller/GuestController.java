@@ -46,21 +46,4 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		return modelAndView;
 	}
-
-//	@RequestMapping(value = "/go/signup", method = RequestMethod.GET)
-//	public ModelAndView goRegistration(Locale locale, Model model)
-//			throws Exception {
-//		ModelAndView modelAndView = new ModelAndView("login/signup2");
-//		modelAndView.addObject("signupForm", new SignupForm());
-//		return modelAndView;
-//	}
-//
-//	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-//	public String processSignup(SignupForm signupForm, BindingResult result) {
-//		signupValidator.validate(signupForm, result);
-//		if (result.hasErrors()) {
-//			return "login/signup2";
-//		}
-//		return "main";
-//	}
 }

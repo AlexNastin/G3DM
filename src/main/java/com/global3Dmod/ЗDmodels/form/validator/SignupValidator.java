@@ -20,22 +20,22 @@ public class SignupValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 		SignupForm signupForm = (SignupForm) target;
 		//Валидация никнейма
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName", "nickName.empty", "Nickname must not be empty.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName", "singup.valid.nickName.empty");
 		String username = signupForm.getNickName();
 		//Не более 16 символов
 		if ((username.length()) > 16) {
-			errors.rejectValue("nickName", "nickName.tooLong", "Nickname must not more than 16 characters.");
+			errors.rejectValue("nickName", "singup.valid.nickName.tooLong");
 		}
 		//Валидация пароля и совпадение основного пароля и подтверждённого
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "password.empty", "Password must not be empty.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "singup.valid.password.empty");
 		if (!(signupForm.getPassword()).equals(signupForm
 				.getConfirmPassword())) {
-			errors.rejectValue("confirmPassword", "confirmPassword.passwordDontMatch", "Passwords don't match.");
+			errors.rejectValue("confirmPassword", "singup.valid.confirmPassword.passwordDontMatch");
 		}
 		//Валидация логина (email)
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "login.empty", "Email must not be empty.");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "singup.valid.login.empty");
 		if( !EmailValidator.getInstance().isValid( signupForm.getLogin() ) ){
-			errors.rejectValue("login", "login.notValid", "Email address is not valid.");
+			errors.rejectValue("login", "singup.valid.login.notValid");
 		}
 		
 	}

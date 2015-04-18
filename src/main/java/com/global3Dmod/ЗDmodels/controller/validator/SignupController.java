@@ -21,14 +21,14 @@ public class SignupController {
 	public String signup(ModelMap model) {
 		SignupForm signupForm = new SignupForm();
 		model.put("signupForm", signupForm);
-		return "login/signup2";
+		return "login/signup";
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public String processSignup(SignupForm signupForm, BindingResult result) {
 		signupValidator.validate(signupForm, result);
 		if (result.hasErrors()) {
-			return "login/signup2";
+			return "login/signup";
 		}
 		return "main";
 	}

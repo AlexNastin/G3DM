@@ -5,11 +5,14 @@ import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.domain.User;
+import com.global3Dmod.ÇDmodels.form.SignupForm;
+import com.global3Dmod.ÇDmodels.form.validator.SignupValidator;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
@@ -17,6 +20,8 @@ public class GuestController {
 
 	@Autowired
 	private IUserService userService;
+	
+	private SignupValidator signupValidator;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(Locale locale, Model model) throws Exception {
@@ -42,19 +47,20 @@ public class GuestController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/go/signup", method = RequestMethod.GET)
-	public ModelAndView goRegistration(Locale locale, Model model)
-			throws Exception {
-	
-		ModelAndView modelAndView = new ModelAndView("login/signup2");
-		modelAndView.addObject("user", new User());
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public ModelAndView registration(Locale locale, Model model)
-			throws Exception {
-		ModelAndView modelAndView = new ModelAndView("login/signup");
-		return modelAndView;
-	}
+//	@RequestMapping(value = "/go/signup", method = RequestMethod.GET)
+//	public ModelAndView goRegistration(Locale locale, Model model)
+//			throws Exception {
+//		ModelAndView modelAndView = new ModelAndView("login/signup2");
+//		modelAndView.addObject("signupForm", new SignupForm());
+//		return modelAndView;
+//	}
+//
+//	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+//	public String processSignup(SignupForm signupForm, BindingResult result) {
+//		signupValidator.validate(signupForm, result);
+//		if (result.hasErrors()) {
+//			return "login/signup2";
+//		}
+//		return "main";
+//	}
 }

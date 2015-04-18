@@ -29,8 +29,8 @@
 	<form:form class="form-horizontal" modelAttribute="signupForm" method="POST">
 	    <div class="form-group">
 	    <div class="col-md-9">
-		<form:radiobutton path="role_idRole" value="0" />Dis 
-		<form:radiobutton path="role_idRole" value="1" />User
+		<form:radiobutton path="role_idRole" value="0" /><spring:message code="signup.designer" />
+		<form:radiobutton path="role_idRole" value="1" /><spring:message code="signup.user" />
 		</div>
 		</div>
 		<div class="form-group">

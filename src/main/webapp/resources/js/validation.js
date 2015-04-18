@@ -16,7 +16,7 @@ $(document).ready(function(){
 	        minlength: 2,
 	        required: true
 	      },
-	      email: {
+	      inputEmail3: {
 	        required: true,
 	        email: true
 	      },
@@ -28,6 +28,10 @@ $(document).ready(function(){
 	        minlength: 8,
 	        required: true,
 	        digits:true
+	      },
+	      inputPassword3: {
+	      required: true
+	      
 	      }
 	    },
 			highlight: function(element) {
@@ -35,7 +39,7 @@ $(document).ready(function(){
 			},
 			success: function(element) {
 				element
-				.text('OK!').addClass('valid')
+				.text('Success').addClass('valid')
 				.closest('.control-group').removeClass('error').addClass('success');
 			}
 	  });

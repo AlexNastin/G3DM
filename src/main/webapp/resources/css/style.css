@@ -2647,3 +2647,35 @@ label.btn1.btn2.btn-2.btn-2g {
 	width: 56%;
 }
 }
+.signin-lenght-string { 
+background-color:#D3D3D3; 
+margin-top: 1%;
+border-radius: 10px;
+}
+.signin-height-background{
+margin-top: 5%;
+}
+.signin-text-color{
+color: #265a88;
+}
+.signin-margin-button {
+margin-left: 1%;
+background-color:#A9A9A9;
+border-color: #A9A9A9;
+}
+.signin-button-color {
+background-color: #265a88;	
+}
+.signin-margin-input {
+padding-left: 4%;	
+}
+.signup-lenght-string { 
+background-color:#D3D3D3; 
+margin-top: 1%;
+border-radius: 10px;
+}
+.signup-button {
+background-color:#A9A9A9;
+border-color: #A9A9A9;
+color: white;
+}

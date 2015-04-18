@@ -17,7 +17,7 @@
 <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>	
 
 
-<title>Sign in</title>
+<title><spring:message code="signin.signin" /></title>
 </head>
 <body>
 
@@ -25,7 +25,7 @@
 <div class="container col-md-4 signin-lenght-string ">
  <form:form id="contact-form" class="form-horizontal">
   <div class="form-group signin-height-background">
-    <label for="inputEmail3" class="col-md-3 control-label signin-text-color">Email</label>
+    <label for="inputEmail3" class="col-md-3 control-label signin-text-color"><spring:message code="signin.login" /></label>
       <div class="col-md-8">
       <div class="signin-margin-input">
       <input type="text" class="form-control" required pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$" title="example@examle.com" id="inputEmail3" name="inputEmail3" path="inputEmail3" placeholder="Email">
@@ -33,10 +33,10 @@
       </div>
      </div>
     <div class="form-group">
-    <label for="inputPassword3" class="col-md-3 control-label signin-text-color">Password</label>
+    <label for="inputPassword3" class="col-md-3 control-label signin-text-color"><spring:message code="signin.password" /></label>
     <div class="col-md-8">   
     <div class="signin-margin-input">
-      <input type="password" class="form-control" id="inputPassword3" name="inputPassword3" required="" path="inputEmail3" placeholder="Password">
+      <input type="password" class="form-control" id="inputPassword3" name="inputPassword3" required="" path="inputEmail3" placeholder="<spring:message code="signin.password" />">
     </div>
     </div>
    
@@ -46,7 +46,7 @@
     <div class="col-md-8">
       <div class="checkbox">
         <label class="signin-text-color">
-          <input type="checkbox"> Remember me
+          <input type="checkbox"><spring:message code="signin.rememberme" />
         </label>
       </div>
     </div>
@@ -54,7 +54,7 @@
   <div class="form-group">
      <label class="col-md-3 control-label" for="button1id"></label>
      <div class="col-md-8">
-      <button type="submit" class="btn btn-primary signin-button-color">Sign in</button>
+      <button type="submit" class="btn btn-primary signin-button-color"><spring:message code="signin.signin" /></button>
       <button type="button" class="btn btn-primary signin-margin-button" onClick='location.href="<c:url value="/signup" />"'>
       <spring:message code="signin.signup" />
       </button>

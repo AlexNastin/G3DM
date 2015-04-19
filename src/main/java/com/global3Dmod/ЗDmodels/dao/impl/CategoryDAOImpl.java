@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ЗDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ЗDmodels.domain.Category;
+import com.global3Dmod.ЗDmodels.exception.DaoException;
 
 
 @Repository("jpaCategoryDAO")
@@ -20,9 +21,17 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Простое описание метода
+	 * 
+	 * 
+	 * @param category
+	 * @return void
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
-	public void insertCategory(Category category) {
+	public void insertCategory(Category category) throws DaoException { //Exeption
 		em.persist(category);
 
 	}
@@ -31,13 +40,15 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	@Override
 	@Transactional
 	public List<Category> selectAllCategories() {
+	
+	
 		List<Category> category = em.createNamedQuery("Category.findAll").getResultList();
 		return category;
 	}
 
 	@Override
 	@Transactional
-	public void deleteCategory(Integer id) {
+	public void deleteCategory(Integer id)  {
 		Category category = em.find(Category.class, id);
 		em.remove(category);
 	}

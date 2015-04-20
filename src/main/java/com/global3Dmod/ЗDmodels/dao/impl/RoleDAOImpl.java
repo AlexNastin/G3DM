@@ -5,12 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IRoleDAO;
 import com.global3Dmod.ÇDmodels.domain.Role;
+import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
 @Repository("jpaRoleDAO")
@@ -22,7 +22,7 @@ public class RoleDAOImpl implements IRoleDAO {
 
 	@Override
 	@Transactional
-	public void insertRole(Role role) {
+	public void insertRole(Role role) throws DaoException {
 		em.persist(role);
 
 	}
@@ -30,21 +30,21 @@ public class RoleDAOImpl implements IRoleDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Role> selectAllRoles() {
+	public List<Role> selectAllRoles() throws DaoException {
 		List<Role> role = em.createNamedQuery("Role.findAll").getResultList();
 		return role;
 	}
 
 	@Override
 	@Transactional
-	public void deleteRole(Integer id) {
+	public void deleteRole(Integer id) throws DaoException {
 		Role role = em.find(Role.class, id);
 		em.remove(role);
 	}
 
 	@Override
 	@Transactional
-	public void updateRole(Role role) {
+	public void updateRole(Role role) throws DaoException {
 		em.merge(role);
 		
 	}

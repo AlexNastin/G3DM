@@ -5,12 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.User;
+import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
 @Repository("jpaUserDAO")
@@ -22,7 +22,7 @@ public class UserDAOImpl implements IUserDAO {
 
 	@Override
 	@Transactional
-	public void insertUser(User user) {
+	public void insertUser(User user) throws DaoException {
 		em.persist(user);
 
 	}
@@ -30,21 +30,21 @@ public class UserDAOImpl implements IUserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<User> selectAllUsers() {
+	public List<User> selectAllUsers() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findAll").getResultList();
 		return users;
 	}
 
 	@Override
 	@Transactional
-	public void deleteUser(Integer id) {
+	public void deleteUser(Integer id) throws DaoException {
 		User user = em.find(User.class, id);
 		em.remove(user);
 	}
 
 	@Override
 	@Transactional
-	public void updateUser(User user) {
+	public void updateUser(User user) throws DaoException {
 		em.merge(user);
 		
 	}

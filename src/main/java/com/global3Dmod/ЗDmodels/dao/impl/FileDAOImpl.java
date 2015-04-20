@@ -5,12 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IFileDAO;
 import com.global3Dmod.ÇDmodels.domain.File;
+import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
 @Repository("jpaFileDAO")
@@ -22,7 +22,7 @@ public class FileDAOImpl implements IFileDAO {
 
 	@Override
 	@Transactional
-	public void insertFile(File file) {
+	public void insertFile(File file) throws DaoException {
 		em.persist(file);
 
 	}
@@ -30,21 +30,21 @@ public class FileDAOImpl implements IFileDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<File> selectAllFiles() {
+	public List<File> selectAllFiles() throws DaoException {
 		List<File> file = em.createNamedQuery("File.findAll").getResultList();
 		return file;
 	}
 
 	@Override
 	@Transactional
-	public void deleteFile(Integer id) {
+	public void deleteFile(Integer id) throws DaoException {
 		File file = em.find(File.class, id);
 		em.remove(file);
 	}
 
 	@Override
 	@Transactional
-	public void updateFile(File file) {
+	public void updateFile(File file) throws DaoException {
 		em.merge(file);
 		
 	}

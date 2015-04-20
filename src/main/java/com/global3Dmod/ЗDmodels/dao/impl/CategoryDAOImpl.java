@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,40 +21,50 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	private EntityManager em;
 
 	/**
-	 * Простое описание метода
-	 * 
-	 * 
-	 * @param category
-	 * @return void
+	 * Insert the category to the database
+	 * @param category object of type "Category"
 	 * @throws DaoException
 	 * */
 	@Override
 	@Transactional
-	public void insertCategory(Category category) throws DaoException { //Exeption
+	public void insertCategory(Category category) throws DaoException {
 		em.persist(category);
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "category" from the database
+	 * @return category collection of objects of type "Category"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Category> selectAllCategories() {
-	
-	
+	public List<Category> selectAllCategories() throws DaoException {
 		List<Category> category = em.createNamedQuery("Category.findAll").getResultList();
 		return category;
 	}
 
+	/**
+	 * Delete the category from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
-	public void deleteCategory(Integer id)  {
+	public void deleteCategory(Integer id) throws DaoException  {
 		Category category = em.find(Category.class, id);
 		em.remove(category);
 	}
 
+	/**
+	 * Update the category in the database
+	 * @param category object of type "Category"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
-	public void updateCategory(Category category) {
+	public void updateCategory(Category category) throws DaoException {
 		em.merge(category);
 		
 	}

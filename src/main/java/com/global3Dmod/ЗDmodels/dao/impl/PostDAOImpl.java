@@ -5,12 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
 @Repository("jpaPostDAO")
@@ -22,7 +22,7 @@ public class PostDAOImpl implements IPostDAO {
 
 	@Override
 	@Transactional
-	public void insertPost(Post post) {
+	public void insertPost(Post post) throws DaoException {
 		em.persist(post);
 
 	}
@@ -30,21 +30,21 @@ public class PostDAOImpl implements IPostDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Post> selectAllPosts() {
+	public List<Post> selectAllPosts() throws DaoException {
 		List<Post> post = em.createNamedQuery("Post.findAll").getResultList();
 		return post;
 	}
 
 	@Override
 	@Transactional
-	public void deletePost(Integer id) {
+	public void deletePost(Integer id) throws DaoException {
 		Post post = em.find(Post.class, id);
 		em.remove(post);
 	}
 
 	@Override
 	@Transactional
-	public void updatePost(Post post) {
+	public void updatePost(Post post) throws DaoException {
 		em.merge(post);
 		
 	}

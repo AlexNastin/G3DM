@@ -5,12 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IRatingDAO;
 import com.global3Dmod.ÇDmodels.domain.Rating;
+import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
 @Repository("jpaRatingDAO")
@@ -22,7 +22,7 @@ public class RatingDAOImpl implements IRatingDAO {
 
 	@Override
 	@Transactional
-	public void insertRating(Rating rating) {
+	public void insertRating(Rating rating) throws DaoException {
 		em.persist(rating);
 
 	}
@@ -30,21 +30,21 @@ public class RatingDAOImpl implements IRatingDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Rating> selectAllRatings() {
+	public List<Rating> selectAllRatings() throws DaoException {
 		List<Rating> rating = em.createNamedQuery("Rating.findAll").getResultList();
 		return rating;
 	}
 
 	@Override
 	@Transactional
-	public void deleteRating(Integer id) {
+	public void deleteRating(Integer id) throws DaoException {
 		Rating rating = em.find(Rating.class, id);
 		em.remove(rating);
 	}
 
 	@Override
 	@Transactional
-	public void updateRating(Rating rating) {
+	public void updateRating(Rating rating) throws DaoException {
 		em.merge(rating);
 		
 	}

@@ -317,6 +317,18 @@
       <div id="carousel-right"><img src=<c:url value="/resources/images/arrow-right.png" /> alt=""></div>
     </div>
    
+   <div id="wrapper">
+      <div data-carousel-3d > <img src="./images/left.png" data-carousel-3d-left /> <img src="./images/right.png" data-carousel-3d-right />
+        <ul data-carousel-3d-children>
+          <li><img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
+          <li selected><<img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
+          <li><img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
+          <li><<img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
+          <li><img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
+          <li><img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
+        </ul>
+      </div>
+    </div>
        
 
 <div class="footer">
@@ -354,7 +366,9 @@
     <!--<script src="js/jquery.prettyPhoto.js"></script>-->
     <script src="<c:url value="/resources/js/carousel.min.js" />"> </script> 
      <script src="<c:url value="/resources/js/slide.js" />"> </script> 
-       
+    <script src="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/jquery-resize/1.1/jquery.ba-resize.min.js" />"> </script>
+    <script src="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/carousel-3d.js" />"> </script> 
     
     
     

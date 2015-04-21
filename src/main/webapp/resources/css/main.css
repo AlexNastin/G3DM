@@ -881,3 +881,6 @@ ul.footer_social li a i.u_tube {
 .copy p a{
 	color:#e94e38;
 }
+#wrapper{
+	min-height:250px;
+}

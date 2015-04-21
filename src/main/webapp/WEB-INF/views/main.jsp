@@ -19,7 +19,7 @@
     <link href="<c:url value="/resources/css/font-awesome.min.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/prettyPhoto.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
-    <link href="<c:url value="/resources/css/slick/slick.css"  />" rel="stylesheet" />
+    <link href="<c:url value="/resources/css/feature-carousel.css"  />" rel="stylesheet" />
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
@@ -273,22 +273,51 @@
                          </div>
 
 <center><h1>Our top models</h1></center>
-
-    </section><!--/#portfolio-->
-    <div id=carousel>
-        <figure id=spinner>
-            <img src=//demosthenes.info/assets/images/wanaka-tree.jpg alt="">
-            <img src=//demosthenes.info/assets/images/still-lake.jpg alt="">
-            <img src=//demosthenes.info/assets/images/pink-milford-sound.jpg alt="">
-            <img src=//demosthenes.info/assets/images/paradise.jpg alt="">
-            <img src=//demosthenes.info/assets/images/morekai.jpg alt="">
-            <img src=//demosthenes.info/assets/images/milky-blue-lagoon.jpg alt="">
-            <img src=//demosthenes.info/assets/images/lake-tekapo.jpg alt="">
-            <img src=//demosthenes.info/assets/images/milford-sound.jpg alt="">
-        </figure>
+ <div class="carousel-container contanier">
+ 
+      <div id="carousel">
+        <div class="carousel-feature">
+          <a href="#"><img class="carousel-image" alt="Image Caption" src=<c:url value="/resources/images/sample1.jpg" />></a>
+          <div class="carousel-caption">
+            <p>
+              This area is typically used to display captions associated with the images. They are set to hide and fade in on rotation.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-feature">
+          <a href="#"><img class="carousel-image" alt="Image Caption" src=<c:url value="/resources/images/sample5.jpg" />></a>
+          <div class="carousel-caption">
+            <p>
+              The background will expand up or down to fit the caption.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-feature">
+          <a href="#"><img class="carousel-image" alt="Image Caption" src=<c:url value="/resources/images/sample2.jpg" />></a>
+          <div class="carousel-caption">
+            <p>
+              Images can be placed here as well.
+            </p>
+          </div>
+        </div>
+        <div class="carousel-feature">
+          <a href="#"><img class="carousel-image" alt="Image Caption" src=<c:url value="/resources/images/sample3.jpg" />></a>
+        </div>
+        <div class="carousel-feature">
+          <a href="#"><img class="carousel-image" alt="Image Caption" src=<c:url value="/resources/images/sample4.jpg" />></a>
+          <div class="carousel-caption">
+            <p>
+              The background color of the caption area can be changed using CSS. The opacity can be changed in the options, but it will also change the opacity of the text.
+            </p>
+          </div>
+        </div>
+      </div>
+    
+      <div id="carousel-left"><img src=<c:url value="/resources/images/arrow-left.png" /> alt=""></div>
+      <div id="carousel-right"><img src=<c:url value="/resources/images/arrow-right.png" /> alt=""></div>
     </div>
-    <span style=float:left class=ss-icon onclick="galleryspin('-')">&lt;</span>
-    <span style=float:right class=ss-icon onclick="galleryspin('')">&gt;</span>
+   
+       
 
 <div class="footer">
     <div class="container">
@@ -318,12 +347,16 @@
         </div>
     </div>
 </div>
-    <script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>
+    <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script>
-    <script src="<c:url value="/resources/js/slick/slick.min.js" />"> </script>
+ 
     <!---<script src="js/jquery.isotope.min.js"></script>--->
     <!--<script src="js/jquery.prettyPhoto.js"></script>-->
-    <script src="<c:url value="/resources/js/main.js" />"> </script>
+    <script src="<c:url value="/resources/js/carousel.min.js" />"> </script> 
+     <script src="<c:url value="/resources/js/slide.js" />"> </script> 
+       
+    
+    
     
 </body>
 </html>

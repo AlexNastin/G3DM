@@ -318,7 +318,7 @@
     </div>
    
    <div id="wrapper">
-      <div data-carousel-3d > <img src="./images/left.png" data-carousel-3d-left /> <img src="./images/right.png" data-carousel-3d-right />
+      <div data-carousel-3d > <img src=<c:url value="/resources/images/left.png" />  data-carousel-3d-left /> <img src=<c:url value="/resources/images/right.png" /> data-carousel-3d-right />
         <ul data-carousel-3d-children>
           <li><img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
           <li selected><<img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>

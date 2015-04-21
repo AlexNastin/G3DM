@@ -273,7 +273,8 @@
                          </div>
 
 <center><h1>Our top models</h1></center>
- <div class="carousel-container contanier">
+<div class="col-md-2"></div>
+ <div class="carousel-container contanier col-md-8">
  
       <div id="carousel">
         <div class="carousel-feature">
@@ -316,7 +317,8 @@
       <div id="carousel-left"><img src=<c:url value="/resources/images/arrow-left.png" /> alt=""></div>
       <div id="carousel-right"><img src=<c:url value="/resources/images/arrow-right.png" /> alt=""></div>
     </div>
-   
+    <div class="col-md-2"> </div>
+
    <div id="wrapper">
       <div data-carousel-3d > <img src=<c:url value="/resources/images/left.png" />  data-carousel-3d-left /> <img src=<c:url value="/resources/images/right.png" /> data-carousel-3d-right />
         <ul data-carousel-3d-children>

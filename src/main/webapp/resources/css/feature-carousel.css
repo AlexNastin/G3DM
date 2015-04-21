@@ -8,7 +8,7 @@
 #carousel {
   height:280px;
   width:960px;
-  background-color:#CCC;
+  background-color:#FFF;
   position:relative;
   margin-bottom:0.5em;
   font-size:12px;
@@ -81,4 +81,9 @@
   bottom:33px;
   right:220px;
   cursor:pointer;
+}
+
+.carousel-caption{
+	left:0%;
+	right:0%;
 }

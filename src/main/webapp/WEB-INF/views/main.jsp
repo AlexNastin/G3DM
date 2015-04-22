@@ -320,67 +320,7 @@
     </div>
     <div class="col-md-2"> </div>
     </div>
-   
-    <center><h1>Our best designers</h1></center>
-<div class="col-md-2"></div>
- <div class="carousel-container contanier col-md-8">
- 
-      <div id="carousel2">
-        <div class="carousel-feature">
-          <a href="#"><img class="carousel-image" alt="Image Caption" src=<c:url value="/resources/images/sample1.jpg" />></a>
-          <div class="carousel-caption">
-            <p>
-              This area is typically used to display captions associated with the images. They are set to hide and fade in on rotation.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-feature">
-          <a href="#"><img class="carousel-image" alt="Image Caption" src=<c:url value="/resources/images/sample5.jpg" />></a>
-          <div class="carousel-caption">
-            <p>
-              The background will expand up or down to fit the caption.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-feature">
-          <a href="#"><img class="carousel-image" alt="Image Caption" src=<c:url value="/resources/images/sample2.jpg" />></a>
-          <div class="carousel-caption">
-            <p>
-              Images can be placed here as well.
-            </p>
-          </div>
-        </div>
-        <div class="carousel-feature">
-          <a href="#"><img class="carousel-image" alt="Image Caption" src=<c:url value="/resources/images/sample3.jpg" />></a>
-        </div>
-        <div class="carousel-feature">
-          <a href="#"><img class="carousel-image" alt="Image Caption" src=<c:url value="/resources/images/sample4.jpg" />></a>
-          <div class="carousel-caption">
-            <p>
-              The background color of the caption area can be changed using CSS. The opacity can be changed in the options, but it will also change the opacity of the text.
-            </p>
-          </div>
-        </div>
-      </div>
-    
-      <div id="carousel-left2"><img src=<c:url value="/resources/images/arrow-left.png" /> alt=""></div>
-      <div id="carousel-right2"><img src=<c:url value="/resources/images/arrow-right.png" /> alt=""></div>
-    </div>
-    <div class="col-md-2"> </div>
-
-   <div id="wrapper">
-      <div data-carousel-3d > <img src=<c:url value="/resources/images/left.png" />  data-carousel-3d-left /> <img src=<c:url value="/resources/images/right.png" /> data-carousel-3d-right />
-        <ul data-carousel-3d-children>
-          <li><img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
-          <li selected><<img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
-          <li><img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
-          <li><<img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
-          <li><img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
-          <li><img src=<c:url value="/resources/images/auto.jpg" /> alt=""></li>
-        </ul>
-      </div>
-    </div>
-       
+          
 
 <div class="footer">
     <div class="container">

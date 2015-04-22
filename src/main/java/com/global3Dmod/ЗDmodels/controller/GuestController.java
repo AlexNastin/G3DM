@@ -1,7 +1,6 @@
 package com.global3Dmod.ÇDmodels.controller;
 
 import java.util.Locale;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,14 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
-import com.global3Dmod.ÇDmodels.service.IUserService;
+import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Controller
 public class GuestController {
 
 	@Autowired
-	private IUserService userService;
+	private IGuestService guestService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(Locale locale, Model model) throws Exception {
@@ -42,15 +42,15 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		return modelAndView;
 	}
-	
-//	@RequestMapping(value = "/signupAddUser", method = RequestMethod.GET)
-//	public ModelAndView signupAddUser(Locale locale, Model model) throws Exception {
-//		SignupForm signupForm = new SignupForm();
-//		ModelAndView modelAndView = new ModelAndView("main");
-//		Map modelMap = modelAndView.getModel();
-//		signupForm = (SignupForm) modelMap.get(signupForm);
-//		System.out.println(signupForm.getLogin());
-//		return modelAndView;
-//	}
-	
+
+	@RequestMapping(value = "/signupAddUser", method = RequestMethod.POST)
+	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,
+			Model model) throws Exception {
+		
+		User user = new User();
+//		guestService.addUser(signupForm, user);
+		ModelAndView modelAndView2 = new ModelAndView("redirect:/go/signin");
+		return modelAndView2;
+	}
+
 }

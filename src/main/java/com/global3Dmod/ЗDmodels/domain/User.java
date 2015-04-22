@@ -15,18 +15,15 @@ import com.global3Dmod.«Dmodels.domain.Essence;
 
 @Entity
 @Table(name = "USERS")
-@NamedQueries({
-	@NamedQuery(name="User.findTop3", query="select u from User u order by u.rating desc")
-})
-@NamedQuery(name="User.findAll", query="select u from User u")
+@NamedQueries({ @NamedQuery(name = "User.findTop3", query = "select u from User u order by u.rating desc") })
+@NamedQuery(name = "User.findAll", query = "select u from User u")
 public class User implements Essence {
-
 
 	@Id
 	@Column(name = "idUser")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUser;
-	
+
 	@Column(name = "role_idRole")
 	private int role_idRole;
 
@@ -50,9 +47,9 @@ public class User implements Essence {
 
 	@Column(name = "surname")
 	private String surname;
-	
+
 	@Column(name = "gender")
-	private boolean gender;
+	private String gender;
 
 	@Column(name = "registrationDate")
 	private Date registrationDate;
@@ -63,7 +60,6 @@ public class User implements Essence {
 	@Column(name = "rating")
 	private double rating;
 
-	
 	public User() {
 		super();
 	}
@@ -135,12 +131,12 @@ public class User implements Essence {
 	public String getSurname() {
 		return surname;
 	}
-	
-	public boolean isGender() {
+
+	public String getGender() {
 		return gender;
 	}
 
-	public void setGender(boolean gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 
@@ -180,7 +176,7 @@ public class User implements Essence {
 		result = prime * result + country_id—ountry;
 		result = prime * result
 				+ ((dateBirth == null) ? 0 : dateBirth.hashCode());
-		result = prime * result + (gender ? 1231 : 1237);
+		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
 		result = prime * result + idUser;
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -217,7 +213,10 @@ public class User implements Essence {
 				return false;
 		} else if (!dateBirth.equals(other.dateBirth))
 			return false;
-		if (gender != other.gender)
+		if (gender == null) {
+			if (other.gender != null)
+				return false;
+		} else if (!gender.equals(other.gender))
 			return false;
 		if (idUser != other.idUser)
 			return false;
@@ -269,7 +268,5 @@ public class User implements Essence {
 				+ registrationDate + ", dateBirth=" + dateBirth + ", rating="
 				+ rating + "]";
 	}
-	
-	
 
 }

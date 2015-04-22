@@ -35,9 +35,8 @@ public class SignupController {
 			ModelAndView modelAndView = new ModelAndView("login/signup");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("main");
-//		ModelAndView modelAndView = new ModelAndView("redirect:/signupAddUser");
-//		modelAndView.addObject("signupForm", signupForm);
+		ModelAndView modelAndView = new ModelAndView("forward:/signupAddUser");
+		modelAndView.addObject("signupForm", signupForm);
 		return modelAndView;
 	}
 

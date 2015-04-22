@@ -610,6 +610,14 @@ div#carousel {
   margin-bottom: 3rem;
   overflow: hidden;
 }
+
+div#carousel2 {
+  perspective: 1200px;
+  padding-top: 1%;
+  font-size:0;
+  margin-bottom: 3rem;
+  overflow: hidden;
+}
 figure#spinner {
   transform-style: preserve-3d;
   height: 300px;

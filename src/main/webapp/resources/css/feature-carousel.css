@@ -14,6 +14,15 @@
   font-size:12px;
   font-family: Arial;
 }
+#carousel2 {
+  height:280px;
+  width:960px;
+  background-color:#FFF;
+  position:relative;
+  margin-bottom:0.5em;
+  font-size:12px;
+  font-family: Arial;
+}
 .carousel-image {
   border:0;
   display:block;
@@ -77,6 +86,18 @@
   cursor:pointer;
 }
 #carousel-right {
+  position:absolute;
+  bottom:33px;
+  right:220px;
+  cursor:pointer;
+}
+#carousel-left2 {
+  position:absolute;
+  bottom:33px;
+  left:220px;
+  cursor:pointer;
+}
+#carousel-right2 {
   position:absolute;
   bottom:33px;
   right:220px;

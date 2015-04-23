@@ -1,9 +1,9 @@
 package com.global3Dmod.ÇDmodels.service.impl;
 
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +32,7 @@ public class GuestService implements IGuestService {
 		DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
-		
+
 		String md5Password = DigestUtils.md5Hex(signupForm.getPassword());
 
 		user.setRole_idRole(signupForm.getRole_idRole());
@@ -45,12 +45,34 @@ public class GuestService implements IGuestService {
 		user.setSurname(ParamConstant.EMPTY);
 		user.setGender(ParamConstant.GENDER);
 		user.setRegistrationDate(registrationDate);
-	
+
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
+	}
+
+	@Override
+	public List<String> getAllEmail() throws ServiceException {
+		List<String> emails;
+		try {
+			emails = userDAO.selectAllEmail();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return emails;
+	}
+
+	@Override
+	public List<String> getAllNickName() throws ServiceException {
+		List<String> nickNames;
+		try {
+			nickNames = userDAO.selectAllNickName();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return nickNames;
 	}
 
 }

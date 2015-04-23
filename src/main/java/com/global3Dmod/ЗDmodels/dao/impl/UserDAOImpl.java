@@ -56,12 +56,17 @@ public class UserDAOImpl implements IUserDAO {
 				.setFirstResult(0).setMaxResults(3).getResultList();
 		return usersTop;
 	}
-
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> selectAllEmail() throws DaoException {
-		@SuppressWarnings("unchecked")
-		List<String> emails = em.createNamedQuery("User.getAllEmail").getResultList();
+		List<String> emails = em.createNamedQuery("User.findAllEmail").getResultList();
 		return emails;
+	}
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> selectAllNickName() throws DaoException {
+		List<String> nickNames = em.createNamedQuery("User.findAllNickName").getResultList();
+		return nickNames;
 	}
 
 }

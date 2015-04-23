@@ -18,4 +18,6 @@ public interface IUserDAO {
 	public void deleteUser(Integer id) throws DaoException;
 
 	public List<String> selectAllEmail() throws DaoException;
+	
+	public List<String> selectAllNickName() throws DaoException;
 }

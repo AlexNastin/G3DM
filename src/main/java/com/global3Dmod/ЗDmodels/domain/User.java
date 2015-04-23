@@ -1,6 +1,5 @@
 package com.global3Dmod.ÇDmodels.domain;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,7 +16,8 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @NamedQueries({
 		@NamedQuery(name = "User.findTop3", query = "select u from User u order by u.rating desc"),
 		@NamedQuery(name = "User.findAll", query = "select u from User u"),
-		@NamedQuery(name = "User.getAllEmail", query = "select u.login from User u") })
+		@NamedQuery(name = "User.findAllEmail", query = "select u.login from User u"),
+		@NamedQuery(name = "User.findAllNickName", query = "select u.nickName from User u") })
 public class User implements Essence {
 
 	@Id

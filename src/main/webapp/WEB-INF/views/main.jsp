@@ -49,15 +49,15 @@
                 <!-- put some links here -->
                 </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">About</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Works</a></li>
-                <li><a href="#">News</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#"><spring:message code="main.about" /></a></li>
+                <li><a href="#"><spring:message code="main.servises" /></a></li>
+                <li><a href="#"><spring:message code="main.works" /></a></li>
+                <li><a href="#"><spring:message code="main.news" /></a></li>
+                <li><a href="#"><spring:message code="main.contact" /></a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
                     <li><button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signin" />"'>
-      <spring:message code="signin.signin" />
+      <spring:message code="main.signin" />
       </button>
                 </li>
             </ul>
@@ -67,11 +67,11 @@
 </nav><!-- /.navbar -->
 <div class="banner">
     <div class="container_wrap">
-        <h1>What are you looking for?</h1>
+        <h1><spring:message code="main.searchUp" /></h1>
         <form>
         <span>
-            <input type="text" value="Enter your query" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter your query';}">
-		    <label class="btn1 btn2 btn-2 btn-2g"> <input name="submit" type="submit" id="submit" value="Search"> </label>
+            <input type="text" value="<spring:message code="main.searchInto" />" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '<spring:message code="main.searchInto" />';}">
+		    <label class="btn1 btn2 btn-2 btn-2g"> <input name="submit" type="submit" id="submit" value="<spring:message code="main.search" />"> </label>
 		    <div class="clearfix"> </div>
 		</span>    
         </form>
@@ -80,7 +80,7 @@
 </div>
     <section id="portfolio">
         <div class="container">
-<center><h1>Categories</h1></center>
+<center><h1><spring:message code="main.categories" /></h1></center>
             <div class="row portfolio-items"> <!--1st element-->
                 <div class="portfolio-item apps  col-md-3">
                         <div class="item-inner">
@@ -272,7 +272,7 @@
             </div>
                          </div>
 
-<center><h1>Our top models</h1></center>
+<center><h1><spring:message code="main.topModels" /></h1></center>
 <div class="row">
 <div class="col-md-2"></div>
  <div class="carousel-container contanier col-md-8">

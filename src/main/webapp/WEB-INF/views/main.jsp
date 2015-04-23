@@ -80,10 +80,10 @@
 </div>
     <section id="portfolio">
         <div class="container">
-<center><h1><spring:message code="main.categories" /></h1></center>
-			<c:forEach items="${listCategory}" var="category" >
-			<c:set var="id" value="${category.idCategory}"></c:set>
-            <div class="row portfolio-items"> <!--1st element-->
+<center><h1><spring:message code="main.categories" /></h1></center>					
+            <div class="row portfolio-items"> 
+            <!--1st element-->
+            <c:forEach items="${listCategory}" var="category" >
                 <div class="portfolio-item apps  col-md-3">
                         <div class="item-inner">
                             <div class="portfolio-image">

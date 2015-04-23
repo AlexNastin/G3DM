@@ -48,7 +48,7 @@ public class GuestController {
 			Model model) throws Exception {
 		
 		User user = new User();
-//		guestService.addUser(signupForm, user);
+		guestService.addUser(signupForm, user);
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/go/signin");
 		return modelAndView2;
 	}

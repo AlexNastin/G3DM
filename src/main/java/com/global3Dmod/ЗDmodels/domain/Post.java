@@ -1,5 +1,6 @@
 package com.global3Dmod.ÇDmodels.domain;
 
+
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -30,15 +31,18 @@ public class Post implements Essence {
 
 	@Column(name = "subcategory_idSubcategory")
 	private int subcategory_idSubcategory;
-
+	
+	@Column(name = "numberPost")
+	private String numberPost;
+	
 	@Column(name = "disProgram_idDisProgram")
 	private int disProgram_idDisProgram;
 
 	@Column(name = "dateReg")
-	private Date dateReg;
+	private String dateReg;
 	
 	@Column(name = "dateUpdate")
-	private Date dateUpdate;
+	private String dateUpdate;
 
 	@Column(name = "title")
 	private String title;
@@ -50,7 +54,7 @@ public class Post implements Essence {
 	private String instruction;
 
 	@Column(name = "registrationDate")
-	private Date registrationDate;
+	private String registrationDate;
 
 	@Column(name = "isDisplay")
 	private boolean isDisplay;
@@ -102,19 +106,19 @@ public class Post implements Essence {
 		this.disProgram_idDisProgram = disProgram_idDisProgram;
 	}
 
-	public Date getDateReg() {
+	public String getDateReg() {
 		return dateReg;
 	}
 
-	public void setDateReg(Date dateReg) {
+	public void setDateReg(String dateReg) {
 		this.dateReg = dateReg;
 	}
 
-	public Date getDateUpdate() {
+	public String getDateUpdate() {
 		return dateUpdate;
 	}
 
-	public void setDateUpdate(Date dateUpdate) {
+	public void setDateUpdate(String dateUpdate) {
 		this.dateUpdate = dateUpdate;
 	}
 
@@ -134,6 +138,14 @@ public class Post implements Essence {
 		this.description = description;
 	}
 
+	public String getNumberPost() {
+		return numberPost;
+	}
+
+	public void setNumberPost(String numberPost) {
+		this.numberPost = numberPost;
+	}
+
 	public String getInstruction() {
 		return instruction;
 	}
@@ -142,11 +154,11 @@ public class Post implements Essence {
 		this.instruction = instruction;
 	}
 
-	public Date getRegistrationDate() {
+	public String getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(Date registrationDate) {
+	public void setRegistrationDate(String registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
@@ -182,6 +194,8 @@ public class Post implements Essence {
 		result = prime * result
 				+ ((instruction == null) ? 0 : instruction.hashCode());
 		result = prime * result + (isDisplay ? 1231 : 1237);
+		result = prime * result
+				+ ((numberPost == null) ? 0 : numberPost.hashCode());
 		result = prime
 				* result
 				+ ((registrationDate == null) ? 0 : registrationDate.hashCode());
@@ -230,6 +244,11 @@ public class Post implements Essence {
 			return false;
 		if (isDisplay != other.isDisplay)
 			return false;
+		if (numberPost == null) {
+			if (other.numberPost != null)
+				return false;
+		} else if (!numberPost.equals(other.numberPost))
+			return false;
 		if (registrationDate == null) {
 			if (other.registrationDate != null)
 				return false;
@@ -252,14 +271,16 @@ public class Post implements Essence {
 		return "Post [idPost=" + idPost + ", user_idUser=" + user_idUser
 				+ ", category_idCategory=" + category_idCategory
 				+ ", subcategory_idSubcategory=" + subcategory_idSubcategory
-				+ ", disProgram_idDisProgram=" + disProgram_idDisProgram
-				+ ", dateReg=" + dateReg + ", dateUpdate=" + dateUpdate
-				+ ", title=" + title + ", description=" + description
-				+ ", instruction=" + instruction + ", registrationDate="
-				+ registrationDate + ", isDisplay=" + isDisplay
-				+ ", countDownload=" + countDownload + "]";
+				+ ", numberPost=" + numberPost + ", disProgram_idDisProgram="
+				+ disProgram_idDisProgram + ", dateReg=" + dateReg
+				+ ", dateUpdate=" + dateUpdate + ", title=" + title
+				+ ", description=" + description + ", instruction="
+				+ instruction + ", registrationDate=" + registrationDate
+				+ ", isDisplay=" + isDisplay + ", countDownload="
+				+ countDownload + "]";
 	}
-	
+
+
 	
 
 }

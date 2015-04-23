@@ -16,10 +16,10 @@ import com.global3Dmod.ÇDmodels.form.validator.SignupValidator;
 @Controller
 @RequestMapping("/signup")
 public class SignupController {
-	
+
 	@Autowired
 	private SignupValidator signupValidator;
-	
+
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView signup(Locale locale, ModelMap model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("login/signup");
@@ -29,8 +29,10 @@ public class SignupController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView processSignup(SignupForm signupForm, BindingResult result) throws Exception {
+	public ModelAndView processSignup(SignupForm signupForm,
+			BindingResult result) throws Exception {
 		signupValidator.validate(signupForm, result);
+
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("login/signup");
 			return modelAndView;

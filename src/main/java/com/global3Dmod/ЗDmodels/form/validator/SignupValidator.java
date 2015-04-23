@@ -19,25 +19,33 @@ public class SignupValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		SignupForm signupForm = (SignupForm) target;
-		//Валидация никнейма
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName", "singup.valid.nickName.empty");
+		
+		// Валидация роли
+		if ((signupForm.getRole_idRole() == 0)) {
+			errors.rejectValue("role_idRole", "singup.valid.role.empty");
+		}
+		// Валидация никнейма
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName",
+				"singup.valid.nickName.empty");
 		String username = signupForm.getNickName();
-		//Не более 16 символов
+		// Не более 16 символов
 		if ((username.length()) > 16) {
 			errors.rejectValue("nickName", "singup.valid.nickName.tooLong");
 		}
-		//Валидация пароля и совпадение основного пароля и подтверждённого
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "singup.valid.password.empty");
-		if (!(signupForm.getPassword()).equals(signupForm
-				.getConfirmPassword())) {
-			errors.rejectValue("confirmPassword", "singup.valid.confirmPassword.passwordDontMatch");
+		// Валидация пароля и совпадение основного пароля и подтверждённого
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
+				"singup.valid.password.empty");
+		if (!(signupForm.getPassword()).equals(signupForm.getConfirmPassword())) {
+			errors.rejectValue("confirmPassword",
+					"singup.valid.confirmPassword.passwordDontMatch");
 		}
-		//Валидация логина (email)
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "singup.valid.login.empty");
-		if( !EmailValidator.getInstance().isValid( signupForm.getLogin() ) ){
+		// Валидация логина (email)
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login",
+				"singup.valid.login.empty");
+		if (!EmailValidator.getInstance().isValid(signupForm.getLogin())) {
 			errors.rejectValue("login", "singup.valid.login.notValid");
 		}
-		
+
 	}
 
 }

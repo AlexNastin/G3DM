@@ -12,7 +12,6 @@ import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
-
 @Repository("jpaUserDAO")
 @Transactional
 public class UserDAOImpl implements IUserDAO {
@@ -46,15 +45,23 @@ public class UserDAOImpl implements IUserDAO {
 	@Transactional
 	public void updateUser(User user) throws DaoException {
 		em.merge(user);
-		
+
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<User> selectTop3Users() {
-		List<User> usersTop = em.createNamedQuery("User.findTop3").setFirstResult(0).setMaxResults(3).getResultList();
+		List<User> usersTop = em.createNamedQuery("User.findTop3")
+				.setFirstResult(0).setMaxResults(3).getResultList();
 		return usersTop;
+	}
+
+	@Override
+	public List<String> selectAllEmail() throws DaoException {
+		@SuppressWarnings("unchecked")
+		List<String> emails = em.createNamedQuery("User.getAllEmail").getResultList();
+		return emails;
 	}
 
 }

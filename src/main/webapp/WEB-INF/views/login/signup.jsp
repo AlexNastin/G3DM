@@ -16,7 +16,7 @@
 <script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>
 <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
 <script src="<c:url value="/resources/js/validation.js" />"> </script>
-<title>Insert title here</title>
+<title><spring:message code="signup.signup" /></title>
 <spring:message code="signup.login" var="login"/>
 <spring:message code="signup.password" var="password"/>
 <spring:message code="signup.confirmpassword" var="confirmpassword"/>
@@ -28,9 +28,10 @@
 <div class="container col-md-5">
 	<form:form class="form-horizontal" modelAttribute="signupForm" method="POST">
 	    <div class="form-group">
-	    <div class="col-md-9">
-		<form:radiobutton path="role_idRole" value="0" /><spring:message code="signup.designer" />
-		<form:radiobutton path="role_idRole" value="1" /><spring:message code="signup.user" />
+	    <div class="col-md-9">  
+		<form:radiobutton path="role_idRole" value="2"  /><spring:message code="signup.designer" />
+		<form:radiobutton path="role_idRole" value="3"  /><spring:message code="signup.user" />
+		<span class="error"><form:errors path="role_idRole" /></span>
 		</div>
 		</div>
 		<div class="form-group">

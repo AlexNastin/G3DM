@@ -27,7 +27,7 @@ public class Blacklist implements Essence {
 	private String reason;
 
 	@Column(name = "dateTime")
-	private Date dateTime;
+	private String dateTime;
 
 	@Column(name = "isBanned")
 	private boolean isBanned;
@@ -60,11 +60,11 @@ public class Blacklist implements Essence {
 		this.reason = reason;
 	}
 
-	public Date getDateTime() {
+	public String getDateTime() {
 		return dateTime;
 	}
 
-	public void setDateTime(Date dateTime) {
+	public void setDateTime(String dateTime) {
 		this.dateTime = dateTime;
 	}
 

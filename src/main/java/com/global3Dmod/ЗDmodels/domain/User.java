@@ -1,6 +1,5 @@
 package com.global3Dmod.ÇDmodels.domain;
 
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,8 +14,10 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "USERS")
-@NamedQueries({ @NamedQuery(name = "User.findTop3", query = "select u from User u order by u.rating desc") })
-@NamedQuery(name = "User.findAll", query = "select u from User u")
+@NamedQueries({
+		@NamedQuery(name = "User.findTop3", query = "select u from User u order by u.rating desc"),
+		@NamedQuery(name = "User.findAll", query = "select u from User u"),
+		@NamedQuery(name = "User.getAllEmail", query = "select u.login from User u") })
 public class User implements Essence {
 
 	@Id
@@ -52,10 +53,10 @@ public class User implements Essence {
 	private String gender;
 
 	@Column(name = "registrationDate")
-	private Date registrationDate;
+	private String registrationDate;
 
 	@Column(name = "dateBirth")
-	private Date dateBirth;
+	private String dateBirth;
 
 	@Column(name = "rating")
 	private double rating;
@@ -144,19 +145,19 @@ public class User implements Essence {
 		this.surname = surname;
 	}
 
-	public Date getRegistrationDate() {
+	public String getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(Date registrationDate) {
+	public void setRegistrationDate(String registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
-	public Date getDateBirth() {
+	public String getDateBirth() {
 		return dateBirth;
 	}
 
-	public void setDateBirth(Date dateBirth) {
+	public void setDateBirth(String dateBirth) {
 		this.dateBirth = dateBirth;
 	}
 

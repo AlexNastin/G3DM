@@ -99,9 +99,9 @@
                         </div>
                     </div>
             </c:forEach>
-
+</section>
 <center><h1><spring:message code="main.topModels" /></h1></center>
-<div class="row">
+<div class="row nomargin">
 <div class="col-md-2"></div>
  <div class="carousel-container contanier col-md-8">
  

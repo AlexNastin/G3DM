@@ -895,3 +895,10 @@ ul.footer_social li a i.u_tube {
 carousel-container{
 	align: center;
 }
+
+navi-top{
+	width:100%;
+}
+.nomargin{
+	margin:0px;
+}

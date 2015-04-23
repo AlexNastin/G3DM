@@ -9,7 +9,11 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
+import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
+import com.global3Dmod.ÇDmodels.domain.Category;
+import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
@@ -24,6 +28,12 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private ICategoryDAO categoryDAO;
+	
+	@Autowired
+	private ISubcategoryDAO subcategoryDAO;
 
 	@Override
 	public void addUser(SignupForm signupForm, User user)
@@ -73,6 +83,28 @@ public class GuestService implements IGuestService {
 			throw new ServiceException(e);
 		}
 		return nickNames;
+	}
+
+	@Override
+	public List<Category> getAllCategories() throws ServiceException {
+		List<Category> categories;
+		try {
+			categories = categoryDAO.selectAllCategories();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return categories;
+	}
+
+	@Override
+	public List<Subcategory> getAllSubcategories() throws ServiceException {
+		List<Subcategory> subcategories;
+		try {
+			subcategories = subcategoryDAO.selectAllSubcategories();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return subcategories;
 	}
 
 }

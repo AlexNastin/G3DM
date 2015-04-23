@@ -81,196 +81,24 @@
     <section id="portfolio">
         <div class="container">
 <center><h1><spring:message code="main.categories" /></h1></center>
+			<c:forEach items="${listCategory}" var="category" >
+			<c:set var="id" value="${category.idCategory}"></c:set>
             <div class="row portfolio-items"> <!--1st element-->
                 <div class="portfolio-item apps  col-md-3">
                         <div class="item-inner">
                             <div class="portfolio-image">
-                                <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
+                                <img src=<c:url value="${category.imagePath}" /> alt="">
                                 <div class="overlay container">
                                     <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
-                                    <p><a href="dsfds">mexico</a></p>
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">${category.title}</a>
+                                    	<p><a href="#">Subcategory</a></p>
                                     </div>
                                 </div>
                             </div>
                             <h5>Lorem ipsum dolor sit amet</h5>
                         </div>
                     </div>
-                    <!--/.portfolio-item 2 -->
-                <div class="portfolio-item apps  col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                             <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                            <div class="overlay container">
-                                <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
-                                    <p><a href="dsfds">mexico</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                    </div>
-                </div>
-                     <!--/.portfolio-item 3 -->
-                <div class="portfolio-item apps  col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                             <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                            <div class="overlay container">
-                                <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
-                                    <p><a href="dsfds">mexico</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                    </div>
-                </div>
-                 <!--/.portfolio-item 4 -->
-                         <div class="portfolio-item apps col-md-3">
-                     <div class="item-inner">
-                         <div class="portfolio-image">
-                             <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                             <div class="overlay container">
-                                 <div class="menuis">
-                                     <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobile</a>
-                                     <p><a href="dsfds">mexico</a></p>
-                                 </div>
-                             </div>
-                         </div>
-
-                         <h5>Lorem ipsum dolor sit amet</h5>
-                     </div>
-                             </div>
-                         </div>
-            <div class="row portfolio-items">
-                <!--1st element-->
-                <div class="portfolio-item apps  col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                            <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                            <div class="overlay container">
-                                <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
-                                    <p><a href="dsfds">mexico</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                    </div>
-                </div>
-                <!--/.portfolio-item 2 -->
-                <div class="portfolio-item apps  col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                             <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                            <div class="overlay container">
-                                <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
-                                    <p><a href="dsfds">mexico</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                    </div>
-                </div>
-                <!--/.portfolio-item 3 -->
-                <div class="portfolio-item apps  col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                             <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                            <div class="overlay container">
-                                <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
-                                    <p><a href="dsfds">mexico</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                    </div>
-                </div>
-                <!--/.portfolio-item 4 -->
-                <div class="portfolio-item apps col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                            <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                            <div class="overlay container">
-                                <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobile</a>
-                                    <p><a href="dsfds">mexico</a></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                    </div>
-                </div>
-            </div>
-            <!--3rd line-->
-            <div class="row portfolio-items">
-                <!--1st element-->
-                <div class="portfolio-item apps  col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                            <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                            <div class="overlay container">
-                                <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
-                                    <p><a href="dsfds">mexico</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                    </div>
-                </div>
-                <!--/.portfolio-item 2 -->
-                <div class="portfolio-item apps  col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                             <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                            <div class="overlay container">
-                                <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
-                                    <p><a href="dsfds">mexico</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                    </div>
-                </div>
-                <!--/.portfolio-item 3 -->
-                <div class="portfolio-item apps  col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                             <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                            <div class="overlay container">
-                                <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
-                                    <p><a href="dsfds">mexico</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                    </div>
-                </div>
-                <!--/.portfolio-item 4 -->
-                <div class="portfolio-item apps col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                             <img src=<c:url value="/resources/images/auto.jpg" /> alt="">
-                            <div class="overlay container">
-                                <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobile</a>
-                                    <p><a href="dsfds">mexico</a></p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <h5>Lorem ipsum dolor sit amet</h5>
-                    </div>
-                </div>
-            </div>
-                         </div>
+            </c:forEach>
 
 <center><h1><spring:message code="main.topModels" /></h1></center>
 <div class="row">

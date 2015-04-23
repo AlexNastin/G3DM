@@ -28,6 +28,8 @@ public class GuestController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("main");
+		modelAndView.addObject("listCategory", guestService.getAllCategories());
+		modelAndView.addObject("listSubcategory", guestService.getAllSubcategories());
 		return modelAndView;
 	}
 

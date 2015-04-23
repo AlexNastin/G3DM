@@ -10,12 +10,12 @@ public class GlobalExceptionController {
 	private static final Logger logger = Logger
 			.getLogger(GlobalExceptionController.class);
 
-	@ExceptionHandler(Exception.class)
-	public ModelAndView handleAllException(Exception ex) {
-		ModelAndView model = new ModelAndView("error/generic_error");
-		model.addObject("errCode", "");
-		model.addObject("errMsg", "SS");
-		logger.error(ex);
-		return model;
-	}
+//	@ExceptionHandler(Exception.class)
+//	public ModelAndView handleAllException(Exception ex) {
+//		ModelAndView model = new ModelAndView("error/generic_error");
+//		model.addObject("errCode", "");
+//		model.addObject("errMsg", "SS");
+//		logger.error(ex);
+//		return model;
+//	}
 }

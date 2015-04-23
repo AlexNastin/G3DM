@@ -18,8 +18,8 @@ public class Subcategory implements Essence {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSubcategory;
 
-	@Column(name = "category_idÑategory")
-	private int category_idÑategory;
+	@Column(name = "category_idCategory")
+	private int category_idCategory;
 
 	@Column(name = "title")
 	private String title;
@@ -36,12 +36,12 @@ public class Subcategory implements Essence {
 		this.idSubcategory = idSubcategory;
 	}
 
-	public int getCategory_idÑategory() {
-		return category_idÑategory;
+	public int getCategory_idCategory() {
+		return category_idCategory;
 	}
 
-	public void setCategory_idÑategory(int category_idÑategory) {
-		this.category_idÑategory = category_idÑategory;
+	public void setCategory_idCategory(int category_idCategory) {
+		this.category_idCategory = category_idCategory;
 	}
 
 	public String getTitle() {
@@ -56,7 +56,7 @@ public class Subcategory implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + category_idÑategory;
+		result = prime * result + category_idCategory;
 		result = prime * result + idSubcategory;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
@@ -71,7 +71,7 @@ public class Subcategory implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		Subcategory other = (Subcategory) obj;
-		if (category_idÑategory != other.category_idÑategory)
+		if (category_idCategory != other.category_idCategory)
 			return false;
 		if (idSubcategory != other.idSubcategory)
 			return false;
@@ -86,8 +86,9 @@ public class Subcategory implements Essence {
 	@Override
 	public String toString() {
 		return "Subcategory [idSubcategory=" + idSubcategory
-				+ ", category_idÑategory=" + category_idÑategory + ", title="
+				+ ", category_idCategory=" + category_idCategory + ", title="
 				+ title + "]";
 	}
 
+	
 }

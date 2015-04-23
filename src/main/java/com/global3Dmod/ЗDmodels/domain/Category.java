@@ -23,6 +23,9 @@ public class Category implements Essence {
 	@Column(name = "title")
 	private String title;
 	
+	@Column(name = "imagePath")
+	private String imagePath;
+	
 	public Category() {
 		super();
 	}
@@ -43,11 +46,21 @@ public class Category implements Essence {
 		this.title = title;
 	}
 
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idCategory;
+		result = prime * result
+				+ ((imagePath == null) ? 0 : imagePath.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -63,6 +76,11 @@ public class Category implements Essence {
 		Category other = (Category) obj;
 		if (idCategory != other.idCategory)
 			return false;
+		if (imagePath == null) {
+			if (other.imagePath != null)
+				return false;
+		} else if (!imagePath.equals(other.imagePath))
+			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -73,8 +91,11 @@ public class Category implements Essence {
 
 	@Override
 	public String toString() {
-		return "Category [idCategory=" + idCategory + ", title=" + title + "]";
+		return "Category [idCategory=" + idCategory + ", title=" + title
+				+ ", imagePath=" + imagePath + "]";
 	}
+
+	
 
 	
 }

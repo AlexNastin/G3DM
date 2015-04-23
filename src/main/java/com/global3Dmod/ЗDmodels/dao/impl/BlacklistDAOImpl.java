@@ -20,6 +20,11 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the blacklist to the database
+	 * @param blacklist object of type "Blacklist"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertBlacklist(Blacklist blacklist) throws DaoException {
@@ -27,6 +32,11 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "blacklist" from the database
+	 * @return blacklist collection of objects of type "Blacklist"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 		return blacklist;
 	}
 
+	/**
+	 * Delete the blacklist from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deleteBlacklist(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 		em.remove(blacklist);
 	}
 
+	/**
+	 * Update the blacklist in the database
+	 * @param blacklist object of type "Blacklist"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updateBlacklist(Blacklist blacklist) throws DaoException {

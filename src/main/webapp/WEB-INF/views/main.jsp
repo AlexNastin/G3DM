@@ -100,10 +100,11 @@
                     </div>
             </c:forEach>
 </section>
-<center><h1><spring:message code="main.topModels" /></h1></center>
+
 <div class="row nomargin">
-<div class="col-md-2"></div>
- <div class="carousel-container contanier col-md-8">
+<div class="col-md-2"><h3 class="nothingelsematters">die</h3></div>
+ <div class="carousel-container contanier col-md-9">
+ <center><h1><spring:message code="main.topModels" /></h1></center>
  
       <div id="carousel">
         <div class="carousel-feature">
@@ -146,7 +147,7 @@
       <div id="carousel-left"><img src=<c:url value="/resources/images/arrow-left.png" /> alt=""></div>
       <div id="carousel-right"><img src=<c:url value="/resources/images/arrow-right.png" /> alt=""></div>
     </div>
-    <div class="col-md-2"> </div>
+    <div class="col-md-2"> <h3 class="nothingelsematters">die</h3></div>
     </div>
           
 

@@ -55,6 +55,7 @@
   padding:3px;
   margin:3px;
   background-color:#000;
+  visibility:hidden;
 }
 .tracker-individual-container {
   position:absolute;
@@ -63,9 +64,11 @@
   top:210px;
   padding:0;
   margin:0;
+  visibility:hidden;
 }
 .tracker-individual-container li {
   list-style:none;
+  visibility:hidden;
 }
 .tracker-individual-container .tracker-individual-blip {
   margin:0 3px;
@@ -73,11 +76,13 @@
   color:white;
   text-align:center;
   background-color:#DDD;
+  visibility:hidden;
 }
 .tracker-individual-container .tracker-individual-blip-selected {
   color:white;
   font-weight:bold;
   background-color:#000;
+  visibility:hidden;
 }
 #carousel-left {
   position:absolute;

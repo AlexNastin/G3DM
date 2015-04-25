@@ -26,7 +26,7 @@
     <![endif]-->
    </head>
 <body>
-	
+	<%@include file="/WEB-INF/views/header.jsp" %>   
 
 <!-- AFTER!!!! -->
 
@@ -191,6 +191,7 @@
     <script src="<c:url value="/resources/js/carousel-3d.js" />"> </script> 
     
     
-    
+	<%@include file="/WEB-INF/views/footer.jsp" %>    
+
 </body>
 </html>

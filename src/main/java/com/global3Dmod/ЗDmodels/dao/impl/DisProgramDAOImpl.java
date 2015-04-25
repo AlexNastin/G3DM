@@ -20,6 +20,11 @@ public class DisProgramDAOImpl implements IDisProgramDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the object of type "DisProgram" to the database
+	 * @param disProgram object of type "DisProgram"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertDisProgram(DisProgram disProgram) throws DaoException {
@@ -27,6 +32,11 @@ public class DisProgramDAOImpl implements IDisProgramDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "disprograms" from the database
+	 * @return disProgram collection of objects of type "DisProgram"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class DisProgramDAOImpl implements IDisProgramDAO {
 		return disProgram;
 	}
 
+	/**
+	 * Delete the object of type "DisProgram" from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deleteDisProgram(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class DisProgramDAOImpl implements IDisProgramDAO {
 		em.remove(disProgram);
 	}
 
+	/**
+	 * Update the object of type "DisProgram" in the database
+	 * @param disProgram object of type "DisProgram"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updateDisProgram(DisProgram disProgram) throws DaoException {

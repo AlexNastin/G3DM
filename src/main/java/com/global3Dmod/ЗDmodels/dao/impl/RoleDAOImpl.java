@@ -20,6 +20,11 @@ public class RoleDAOImpl implements IRoleDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the object of type "Role" to the database
+	 * @param role object of type "Role"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertRole(Role role) throws DaoException {
@@ -27,6 +32,11 @@ public class RoleDAOImpl implements IRoleDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "roles" from the database
+	 * @return role collection of objects of type "Role"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class RoleDAOImpl implements IRoleDAO {
 		return role;
 	}
 
+	/**
+	 * Delete the object of type "Role" from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deleteRole(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class RoleDAOImpl implements IRoleDAO {
 		em.remove(role);
 	}
 
+	/**
+	 * Update the object of type "Role" in the database
+	 * @param role object of type "Role"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updateRole(Role role) throws DaoException {

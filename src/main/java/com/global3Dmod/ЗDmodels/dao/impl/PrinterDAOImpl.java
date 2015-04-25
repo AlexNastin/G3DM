@@ -20,6 +20,11 @@ public class PrinterDAOImpl implements IPrinterDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the object of type "Printer" to the database
+	 * @param printer object of type "Printer"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertPrinter(Printer printer) throws DaoException {
@@ -27,6 +32,11 @@ public class PrinterDAOImpl implements IPrinterDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "printers" from the database
+	 * @return printer collection of objects of type "Printer"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class PrinterDAOImpl implements IPrinterDAO {
 		return printer;
 	}
 
+	/**
+	 * Delete the object of type "Printer" from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deletePrinter(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class PrinterDAOImpl implements IPrinterDAO {
 		em.remove(printer);
 	}
 
+	/**
+	 * Update the object of type "Printer" in the database
+	 * @param printer object of type "Printer"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updatePrinter(Printer printer) throws DaoException {

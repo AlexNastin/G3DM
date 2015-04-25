@@ -20,6 +20,11 @@ public class CountryDAOImpl implements ICountryDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the object of type "Country" to the database
+	 * @param country object of type "Country"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertCountry(Country country) throws DaoException {
@@ -27,6 +32,11 @@ public class CountryDAOImpl implements ICountryDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "countries" from the database
+	 * @return country collection of objects of type "Country"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class CountryDAOImpl implements ICountryDAO {
 		return country;
 	}
 
+	/**
+	 * Delete the object of type "Country" from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deleteCountry(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class CountryDAOImpl implements ICountryDAO {
 		em.remove(country);
 	}
 
+	/**
+	 * Update the object of type "Country" in the database
+	 * @param country object of type "Country"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updateCountry(Country country) throws DaoException {

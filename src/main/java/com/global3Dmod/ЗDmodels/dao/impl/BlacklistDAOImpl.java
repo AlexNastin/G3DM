@@ -21,7 +21,7 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	private EntityManager em;
 
 	/**
-	 * Insert the blacklist to the database
+	 * Insert the object of type "Blacklist" to the database
 	 * @param blacklist object of type "Blacklist"
 	 * @throws DaoException
 	 * */
@@ -33,7 +33,7 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	}
 
 	/**
-	 * Receipt of all elements of the table "blacklist" from the database
+	 * Receipt of all elements of the table "blacklists" from the database
 	 * @return blacklist collection of objects of type "Blacklist"
 	 * @throws DaoException
 	 * */
@@ -46,7 +46,7 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	}
 
 	/**
-	 * Delete the blacklist from the database
+	 * Delete the object of type "Blacklist" from the database
 	 * @param id row ID in the database
 	 * @throws DaoException
 	 * */
@@ -58,7 +58,7 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	}
 
 	/**
-	 * Update the blacklist in the database
+	 * Update the object of type "Blacklist" in the database
 	 * @param blacklist object of type "Blacklist"
 	 * @throws DaoException
 	 * */

@@ -21,7 +21,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	private EntityManager em;
 
 	/**
-	 * Insert the category to the database
+	 * Insert the object of type "Category" to the database
 	 * @param category object of type "Category"
 	 * @throws DaoException
 	 * */
@@ -33,7 +33,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	}
 
 	/**
-	 * Receipt of all elements of the table "category" from the database
+	 * Receipt of all elements of the table "categories" from the database
 	 * @return category collection of objects of type "Category"
 	 * @throws DaoException
 	 * */
@@ -46,7 +46,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	}
 
 	/**
-	 * Delete the category from the database
+	 * Delete the object of type "Category" from the database
 	 * @param id row ID in the database
 	 * @throws DaoException
 	 * */
@@ -58,7 +58,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	}
 
 	/**
-	 * Update the category in the database
+	 * Update the object of type "Category" in the database
 	 * @param category object of type "Category"
 	 * @throws DaoException
 	 * */

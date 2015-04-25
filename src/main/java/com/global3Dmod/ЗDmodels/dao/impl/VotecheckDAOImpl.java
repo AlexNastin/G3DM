@@ -20,6 +20,11 @@ public class VotecheckDAOImpl implements IVotecheckDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the object of type "Votecheck" to the database
+	 * @param votecheck object of type "Votecheck"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertVotecheck(Votecheck votecheck) throws DaoException {
@@ -27,6 +32,11 @@ public class VotecheckDAOImpl implements IVotecheckDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "votechecks" from the database
+	 * @return votecheck collection of objects of type "Votecheck"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class VotecheckDAOImpl implements IVotecheckDAO {
 		return votecheck;
 	}
 
+	/**
+	 * Delete the object of type "Votecheck" from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deleteVotecheck(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class VotecheckDAOImpl implements IVotecheckDAO {
 		em.remove(votecheck);
 	}
 
+	/**
+	 * Update the object of type "Votecheck" in the database
+	 * @param votecheck object of type "Votecheck"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updateVotecheck(Votecheck votecheck) throws DaoException {

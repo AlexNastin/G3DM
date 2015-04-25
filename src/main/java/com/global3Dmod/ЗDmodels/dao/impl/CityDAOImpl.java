@@ -20,6 +20,11 @@ public class CityDAOImpl implements ICityDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the object of type "City" to the database
+	 * @param city object of type "City"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertCity(City city) throws DaoException {
@@ -27,6 +32,11 @@ public class CityDAOImpl implements ICityDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "cities" from the database
+	 * @return cities collection of objects of type "City"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class CityDAOImpl implements ICityDAO {
 		return cities;
 	}
 
+	/**
+	 * Delete the object of type "City" from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deleteCity(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class CityDAOImpl implements ICityDAO {
 		em.remove(city);
 	}
 
+	/**
+	 * Update the object of type "City" in the database
+	 * @param city object of type "City"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updateCity(City city) throws DaoException {

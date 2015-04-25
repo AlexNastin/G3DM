@@ -20,6 +20,11 @@ public class PostPhotoDAOImpl implements IPostPhotoDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the object of type "PostPhoto" to the database
+	 * @param postPhoto object of type "PostPhoto"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertPostPhoto(PostPhoto postPhoto) throws DaoException {
@@ -27,6 +32,11 @@ public class PostPhotoDAOImpl implements IPostPhotoDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "postphotos" from the database
+	 * @return postPhoto collection of objects of type "PostPhoto"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class PostPhotoDAOImpl implements IPostPhotoDAO {
 		return postPhoto;
 	}
 
+	/**
+	 * Delete the object of type "PostPhoto" from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deletePostPhoto(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class PostPhotoDAOImpl implements IPostPhotoDAO {
 		em.remove(postPhoto);
 	}
 
+	/**
+	 * Update the object of type "PostPhoto" in the database
+	 * @param postPhoto object of type "PostPhoto"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updatePostPhoto(PostPhoto postPhoto) throws DaoException {

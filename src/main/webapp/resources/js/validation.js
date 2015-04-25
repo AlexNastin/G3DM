@@ -16,7 +16,7 @@ $(document).ready(function(){
 	        minlength: 2,
 	        required: true
 	      },
-	      inputEmail3: {
+	      login: {
 	        required: true,
 	        email: true
 	      },
@@ -43,5 +43,6 @@ $(document).ready(function(){
 				.closest('.control-group').removeClass('error').addClass('success');
 			}
 	  });
+		
 
 }); // end document.ready

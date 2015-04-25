@@ -26,7 +26,7 @@
 <body>
 <div class="col-md-4"></div>
 <div class="container col-md-5">
-	<form:form class="form-horizontal" modelAttribute="signupForm" method="POST">
+	<form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="signupForm" method="POST">
 	    <div class="form-group">
 	    <div class="col-md-9">  
 		<form:radiobutton path="role_idRole" value="2"  /><spring:message code="signup.designer" />
@@ -35,14 +35,18 @@
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-9">
-		<form:input class="form-control input-md" path="login" placeholder="${login}"></form:input>
+		<div class="col-md-5">
+		<form:input id="login" name="login" class="form-control input-md" path="login" placeholder="${login}"></form:input>
+		</div>
+		<div class="col-md-5">
 		<span class="error"><form:errors path="login" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-9">
+		<div class="col-md-5">
 		<form:password class="form-control input-md" path="password" placeholder="${password}"></form:password>
+		</div>
+		<div class="col-md-5">
 		<span class="error"><form:errors path="password" /></span>
 		</div>
 		</div>

@@ -3,13 +3,18 @@
 	background-color: #F8F8F8;
 	margin-top: 5%;
 	border-radius: 10px;
-	margin-bottom: 7%;
+	margin-bottom: 15%;
 	}
 .sign-feld-margin-top {
  margin-top: 5%;	
 }
 .signup-background {
-background: url(../images/signbackground.jpg) no-repeat center top;
+background: url(../images/logosign.jpg) no-repeat center top;
 width: 100%;
 height:100%;
+background-size:cover;
+  -webkit-background-size:cover;
+  -moz-background-size:cover;
+  -o-background-size:cover;
+ 
 }

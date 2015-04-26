@@ -15,10 +15,7 @@
 <link href="<c:url value="/resources/css/feature-carousel.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/sign.css"  />" rel="stylesheet" />
 <link rel="stylesheet" href="<c:url value="/resources/css/formValidation.css"/>">
-<script src="<c:url value="/resources/js/jquery.min.js" />"> </script>
-<script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>
-<script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
-<script src="<c:url value="/resources/js/validation.js" />"> </script>
+
 <title><spring:message code="signup.signup" /></title>
 <spring:message code="signup.login" var="login"/>
 <spring:message code="signup.password" var="password"/>
@@ -26,7 +23,7 @@
 <spring:message code="signup.nickname" var="nickname"/>
 
 </head>
-<body class="signup-image-background">
+<body>
 <%@include file="/WEB-INF/views/header.jsp" %> 
 <div class="signup-background">
 <div class="col-md-4"></div>
@@ -74,6 +71,10 @@
 	<div class="clearfix"></div>
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp" %>
-	
+	<script src="<c:url value="/resources/js/jquery.min.js" />"> </script>
+<script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>
+<script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
+<script src="<c:url value="/resources/js/validation.js" />"> </script>
+<script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script>
 </body>
 </html>

@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IPrinterDAO;
 import com.global3Dmod.ÇDmodels.domain.Printer;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -27,6 +28,7 @@ public class PrinterDAOImpl implements IPrinterDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void insertPrinter(Printer printer) throws DaoException {
 		em.persist(printer);
 
@@ -40,6 +42,7 @@ public class PrinterDAOImpl implements IPrinterDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public List<Printer> selectAllPrinters() throws DaoException {
 		List<Printer> printer = em.createNamedQuery("Printer.findAll").getResultList();
 		return printer;
@@ -52,6 +55,7 @@ public class PrinterDAOImpl implements IPrinterDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void deletePrinter(Integer id) throws DaoException {
 		Printer printer = em.find(Printer.class, id);
 		em.remove(printer);
@@ -64,6 +68,7 @@ public class PrinterDAOImpl implements IPrinterDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void updatePrinter(Printer printer) throws DaoException {
 		em.merge(printer);
 		

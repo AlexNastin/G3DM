@@ -15,6 +15,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @NamedQuery(name="Rating.findAll", query="select r from Rating r")
 public class Rating implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5249323890327421906L;
+
 	@Id
 	@Column(name = "idRating")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

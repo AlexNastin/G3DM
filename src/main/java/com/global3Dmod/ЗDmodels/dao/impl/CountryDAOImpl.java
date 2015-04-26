@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.ICountryDAO;
 import com.global3Dmod.ÇDmodels.domain.Country;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -27,6 +28,7 @@ public class CountryDAOImpl implements ICountryDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void insertCountry(Country country) throws DaoException {
 		em.persist(country);
 
@@ -40,6 +42,7 @@ public class CountryDAOImpl implements ICountryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public List<Country> selectAllCountries() throws DaoException {
 		List<Country> country = em.createNamedQuery("Country.findAll").getResultList();
 		return country;
@@ -52,6 +55,7 @@ public class CountryDAOImpl implements ICountryDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void deleteCountry(Integer id) throws DaoException {
 		Country country = em.find(Country.class, id);
 		em.remove(country);
@@ -64,6 +68,7 @@ public class CountryDAOImpl implements ICountryDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void updateCountry(Country country) throws DaoException {
 		em.merge(country);
 		

@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
 import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -27,6 +28,7 @@ public class CommentDAOImpl implements ICommentDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void insertComment(Comment comment) throws DaoException {
 		em.persist(comment);
 
@@ -40,6 +42,7 @@ public class CommentDAOImpl implements ICommentDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public List<Comment> selectAllComments() throws DaoException {
 		List<Comment> comments = em.createNamedQuery("Comment.findAll").getResultList();
 		return comments;
@@ -52,6 +55,7 @@ public class CommentDAOImpl implements ICommentDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void deleteComment(Integer id) throws DaoException {
 		Comment comment = em.find(Comment.class, id);
 		em.remove(comment);
@@ -64,6 +68,7 @@ public class CommentDAOImpl implements ICommentDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void updateComment(Comment comment) throws DaoException {
 		em.merge(comment);
 		

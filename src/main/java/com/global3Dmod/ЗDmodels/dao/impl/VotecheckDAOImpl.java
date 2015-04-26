@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IVotecheckDAO;
 import com.global3Dmod.ÇDmodels.domain.Votecheck;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -27,6 +28,7 @@ public class VotecheckDAOImpl implements IVotecheckDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void insertVotecheck(Votecheck votecheck) throws DaoException {
 		em.persist(votecheck);
 
@@ -40,6 +42,7 @@ public class VotecheckDAOImpl implements IVotecheckDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public List<Votecheck> selectAllVotechecks() throws DaoException {
 		List<Votecheck> votecheck = em.createNamedQuery("Votecheck.findAll").getResultList();
 		return votecheck;
@@ -52,6 +55,7 @@ public class VotecheckDAOImpl implements IVotecheckDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void deleteVotecheck(Integer id) throws DaoException {
 		Votecheck votecheck = em.find(Votecheck.class, id);
 		em.remove(votecheck);
@@ -64,6 +68,7 @@ public class VotecheckDAOImpl implements IVotecheckDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void updateVotecheck(Votecheck votecheck) throws DaoException {
 		em.merge(votecheck);
 		

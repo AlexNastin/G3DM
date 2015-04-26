@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
@@ -15,6 +14,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @Table(name = "DISPROGRAMS")
 @NamedQuery(name="DisProgram.findAll", query="select d from DisProgram d")
 public class DisProgram implements Essence {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1915603162840167080L;
 
 	@Id
 	@Column(name = "idDisProgram")

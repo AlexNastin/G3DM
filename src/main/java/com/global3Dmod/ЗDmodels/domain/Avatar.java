@@ -13,6 +13,11 @@ import javax.persistence.Table;
 @NamedQuery(name="Avatar.findAll", query="select a from Avatar a")
 public class Avatar implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5172161161427821282L;
+
 	@Id
 	@Column(name = "idAvatar")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -15,6 +15,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @NamedQuery(name="Printer.findAll", query="select p from Printer p")
 public class Printer implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5921169544747222752L;
+
 	@Id
 	@Column(name = "idPrinter")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -20,6 +20,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name = "User.findAllNickName", query = "select u.nickName from User u") })
 public class User implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3142125895303985813L;
+
 	@Id
 	@Column(name = "idUser")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

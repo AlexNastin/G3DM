@@ -13,6 +13,7 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
+	
 		<!-- Spring -->
 
 		<dependency>
@@ -54,16 +55,20 @@
 			<version>4.0.0.RELEASE</version>
 		</dependency>
 
-
-		<!-- AspectJ -->
+		<!-- AspectJ dependencies -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>${org.aspectj-version}</version>
+			<version>1.7.4</version>
+			<scope>runtime</scope>
 		</dependency>
-
+		<dependency>
+			<groupId>org.aspectj</groupId>
+			<artifactId>aspectjtools</artifactId>
+			<version>1.7.4</version>
+		</dependency>
+		
 		<!-- Logging -->
-
 
 		<dependency>
 			<groupId>log4j</groupId>
@@ -174,7 +179,7 @@
 			<artifactId>commons-validator</artifactId>
 			<version>1.4.0</version>
 		</dependency>
-		
+
 		<!-- MD5 -->
 		<dependency>
 			<groupId>commons-codec</groupId>

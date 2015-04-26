@@ -1,6 +1,5 @@
 package com.global3Dmod.ÇDmodels.domain;
 
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,6 +13,11 @@ import javax.persistence.Table;
 @Table(name = "Blacklists")
 @NamedQuery(name="Blacklist.findAll", query="select b from Blacklist b")
 public class Blacklist implements Essence {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8461822807280534133L;
 
 	@Id
 	@Column(name = "idBlacklist")

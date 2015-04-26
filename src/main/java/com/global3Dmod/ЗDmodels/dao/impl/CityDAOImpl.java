@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.ICityDAO;
 import com.global3Dmod.ÇDmodels.domain.City;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -27,6 +28,7 @@ public class CityDAOImpl implements ICityDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void insertCity(City city) throws DaoException {
 		em.persist(city);
 
@@ -40,6 +42,7 @@ public class CityDAOImpl implements ICityDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public List<City> selectAllCities() throws DaoException {
 		List<City> cities = em.createNamedQuery("City.findAll").getResultList();
 		return cities;
@@ -52,6 +55,7 @@ public class CityDAOImpl implements ICityDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void deleteCity(Integer id) throws DaoException {
 		City city = em.find(City.class, id);
 		em.remove(city);
@@ -64,6 +68,7 @@ public class CityDAOImpl implements ICityDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void updateCity(City city) throws DaoException {
 		em.merge(city);
 		

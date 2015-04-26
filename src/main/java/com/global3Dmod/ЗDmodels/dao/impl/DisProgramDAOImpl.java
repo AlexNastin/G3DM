@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
 import com.global3Dmod.ÇDmodels.domain.DisProgram;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -27,6 +28,7 @@ public class DisProgramDAOImpl implements IDisProgramDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void insertDisProgram(DisProgram disProgram) throws DaoException {
 		em.persist(disProgram);
 
@@ -40,6 +42,7 @@ public class DisProgramDAOImpl implements IDisProgramDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public List<DisProgram> selectAllDisPrograms() throws DaoException {
 		List<DisProgram> disProgram = em.createNamedQuery("DisProgram.findAll").getResultList();
 		return disProgram;
@@ -52,6 +55,7 @@ public class DisProgramDAOImpl implements IDisProgramDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void deleteDisProgram(Integer id) throws DaoException {
 		DisProgram disProgram = em.find(DisProgram.class, id);
 		em.remove(disProgram);
@@ -64,6 +68,7 @@ public class DisProgramDAOImpl implements IDisProgramDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void updateDisProgram(DisProgram disProgram) throws DaoException {
 		em.merge(disProgram);
 		

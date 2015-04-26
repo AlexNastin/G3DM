@@ -8,7 +8,6 @@
 <html>
 <head>
 <title>Global3Dmod</title>
-<!-- After -->
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,43 +27,9 @@
 <body>
 	<%@include file="/WEB-INF/views/header.jsp" %>   
 
-<!-- AFTER!!!! -->
 
-<nav class="navbar navbar-default">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/">Brand</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-2">
-            <ul class="nav navbar-nav navbar-left">
-                <!-- put some links here -->
-                </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><spring:message code="main.about" /></a></li>
-                <li><a href="#"><spring:message code="main.servises" /></a></li>
-                <li><a href="#"><spring:message code="main.works" /></a></li>
-                <li><a href="#"><spring:message code="main.news" /></a></li>
-                <li><a href="#"><spring:message code="main.contact" /></a></li>
-                <li><a class="supernav" href="?locale=en">EN |</a>
-                <li><a href="?locale=ru">RU</a></li>
-                    <li><button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signin" />"'>
-      <spring:message code="main.signin" />
-      </button>
-                </li>
-            </ul>
 
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
-</nav><!-- /.navbar -->
 <div class="banner">
     <div class="container_wrap">
         <h1><spring:message code="main.searchUp" /></h1>
@@ -150,35 +115,7 @@
     <div class="col-md-2"> <h3 class="nothingelsematters">die</h3></div>
     </div>
           
-
-<div class="footer">
-    <div class="container">
-
-        <div class="footer_grids">
-            <div class="footer-grid">
-                <h4>Ipsum Quis</h4>
-                <ul class="list1">
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="#">Mirum est</a></li>
-                    <li><a href="#">placerat facer</a></li>
-                    <li><a href="#">claritatem</a></li>
-                    <li><a href="#">sollemnes </a></li>
-                </ul>
-            </div>
-            <div class="footer-grid">
-                <h4>Quis Ipsum</h4>
-                <ul class="list1">
-                    <li><a href="#">placerat facer</a></li>
-                    <li><a href="#">claritatem</a></li>
-                    <li><a href="#">sollemnes </a></li>
-                    <li><a href="#">Claritas</a></li>
-                    <li><a href="#">Mirum est</a></li>
-                </ul>
-            </div>
-            <div class="clearfix"> </div>
-        </div>
-    </div>
-</div>
+<%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script>
  
@@ -191,7 +128,7 @@
     <script src="<c:url value="/resources/js/carousel-3d.js" />"> </script> 
     
     
-	<%@include file="/WEB-INF/views/footer.jsp" %>    
+	  
 
 </body>
 </html>

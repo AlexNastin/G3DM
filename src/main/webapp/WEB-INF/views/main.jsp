@@ -56,11 +56,13 @@
                                 <div class="overlay container">
                                     <div class="menuis">
                                     <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">${category.title}</a>
-                                    	<p><a href="#">Subcategory</a></p>
+                                    	<c:forEach items="${category.subcategories}" var="subcategory">
+                                    		<p><a href="/subcategory/${subcategory.idSubcategory}">${subcategory.title }</a></p>
+										</c:forEach>
                                     </div>
                                 </div>
                             </div>
-                            <h5>Lorem ipsum dolor sit amet</h5>
+                            <h5>${category.title}</h5>
                         </div>
                     </div>
             </c:forEach>

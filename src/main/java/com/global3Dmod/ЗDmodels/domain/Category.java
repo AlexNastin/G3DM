@@ -1,11 +1,17 @@
 package com.global3Dmod.ÇDmodels.domain;
 
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
@@ -25,6 +31,9 @@ public class Category implements Essence {
 	
 	@Column(name = "imagePath")
 	private String imagePath;
+	
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<Subcategory> subcategories = new HashSet<Subcategory>();
 	
 	public Category() {
 		super();
@@ -52,6 +61,14 @@ public class Category implements Essence {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+	
+	public Set<Subcategory> getSubcategories() {
+		return subcategories;
+	}
+
+	public void setSubcategories(Set<Subcategory> subcategories) {
+		this.subcategories = subcategories;
 	}
 
 	@Override

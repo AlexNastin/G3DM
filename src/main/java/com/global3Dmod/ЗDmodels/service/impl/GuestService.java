@@ -9,6 +9,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
@@ -34,6 +35,7 @@ public class GuestService implements IGuestService {
 	
 	@Autowired
 	private ISubcategoryDAO subcategoryDAO;
+
 
 	@Override
 	public void addUser(SignupForm signupForm, User user)

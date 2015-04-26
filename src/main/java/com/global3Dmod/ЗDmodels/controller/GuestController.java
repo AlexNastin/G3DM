@@ -1,6 +1,5 @@
 package com.global3Dmod.ÇDmodels.controller;
 
-import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
@@ -30,7 +28,8 @@ public class GuestController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("main");
-		modelAndView.addObject("listCategory", guestService.getAllCategoriesSubcategoriesTop3());
+		modelAndView.addObject("listCategory",
+				guestService.getAllCategoriesSubcategoriesTop3());
 		return modelAndView;
 	}
 
@@ -49,15 +48,16 @@ public class GuestController {
 	@RequestMapping(value = "/signupAddUser", method = RequestMethod.POST)
 	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,
 			Model model) throws Exception {
-		
+
 		User user = new User();
 		guestService.addUser(signupForm, user);
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/go/signin");
 		return modelAndView2;
 	}
-	
+
 	@RequestMapping(value = "/subcategory/cartoon characters", method = RequestMethod.GET)
-	public ModelAndView cartoonCharacters(Locale locale, Model model) throws Exception {
+	public ModelAndView cartoonCharacters(Locale locale, Model model)
+			throws Exception {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		return modelAndView;
 	}

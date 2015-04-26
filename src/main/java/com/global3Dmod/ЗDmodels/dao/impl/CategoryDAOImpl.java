@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.User;
@@ -28,6 +29,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void insertCategory(Category category) throws DaoException {
 		em.persist(category);
 
@@ -41,6 +43,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public List<Category> selectAllCategories() throws DaoException {
 		List<Category> category = em.createNamedQuery("Category.findAll").getResultList();
 		return category;
@@ -53,6 +56,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void deleteCategory(Integer id) throws DaoException  {
 		Category category = em.find(Category.class, id);
 		em.remove(category);
@@ -65,6 +69,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	 * */
 	@Override
 	@Transactional
+	@AspectDaoG3DM
 	public void updateCategory(Category category) throws DaoException {
 		em.merge(category);
 		

@@ -8,6 +8,7 @@
 <html>
 <head>
 <title>Global3Dmod</title>
+<spring:message code="main.search" var="search"/>
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +35,12 @@
 <div class="banner">
     <div class="container_wrap">
         <h1><spring:message code="main.searchUp" /></h1>
-        <form>
-        <span>
-            <input type="text" value="<spring:message code="main.searchInto" />" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = '<spring:message code="main.searchInto" />';}">
-		    <label class="btn1 btn2 btn-2 btn-2g"> <input name="submit" type="submit" id="submit" value="<spring:message code="main.search" />"> </label>
-		    <div class="clearfix"> </div>
-		</span>    
-        </form>
+            <form class="col-lg-12">
+            <div class="input-group" style="width:500px;text-align:center;margin:0 auto;">
+            <input class="form-control input-lg" placeholder="<spring:message code="main.searchInto" />" type="text">
+              <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">${search}</button></span>
+            </div>
+          </form>
         <div class="clearfix"></div>
     </div>
 </div>

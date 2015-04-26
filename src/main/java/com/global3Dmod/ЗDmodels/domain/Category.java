@@ -1,6 +1,8 @@
 package com.global3Dmod.ÇDmodels.domain;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -33,7 +35,7 @@ public class Category implements Essence {
 	private String imagePath;
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Set<Subcategory> subcategories = new HashSet<Subcategory>();
+	private List<Subcategory> subcategories = new ArrayList<Subcategory>();
 	
 	public Category() {
 		super();
@@ -63,11 +65,11 @@ public class Category implements Essence {
 		this.imagePath = imagePath;
 	}
 	
-	public Set<Subcategory> getSubcategories() {
+	public List<Subcategory> getSubcategories() {
 		return subcategories;
 	}
 
-	public void setSubcategories(Set<Subcategory> subcategories) {
+	public void setSubcategories(List<Subcategory> subcategories) {
 		this.subcategories = subcategories;
 	}
 

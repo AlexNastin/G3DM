@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
+import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
@@ -67,6 +68,20 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	public void updateSubcategory(Subcategory subcategory) throws DaoException {
 		em.merge(subcategory);
 		
+	}
+
+	/**
+	 * Receipt of 3 elements of the table "subcategories" from the database
+	 * @return subcategoriesTop collection of objects of type "Subcategory"
+	 * @throws DaoException
+	 * */
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Subcategory> selectTop3Subcategories(Integer id) throws DaoException {
+		List<Subcategory> subcategoriesTop = em.createNamedQuery("Subcategory.findTop3").setParameter("idCategory", id)
+				.setFirstResult(0).setMaxResults(3).getResultList();
+		return subcategoriesTop;
 	}
 
 }

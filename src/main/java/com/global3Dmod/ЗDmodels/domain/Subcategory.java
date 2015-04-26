@@ -7,12 +7,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Subcategories")
-@NamedQuery(name="Subcategory.findAll", query="select s from Subcategory s")
+@NamedQueries({
+	@NamedQuery(name = "Subcategory.findTop3", query = "select s from Subcategory s where s.category_idCategory = :idCategory order by s.idSubcategory"),
+	@NamedQuery(name="Subcategory.findAll", query="select s from Subcategory s")})
 public class Subcategory implements Essence {
 
 	@Id

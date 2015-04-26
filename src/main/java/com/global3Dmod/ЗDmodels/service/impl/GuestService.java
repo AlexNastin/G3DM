@@ -107,4 +107,25 @@ public class GuestService implements IGuestService {
 		return subcategories;
 	}
 
+	@Override
+	public List<Subcategory> getTop3Subcategories(Integer id) throws ServiceException {
+		List<Subcategory> subcategoriesTop;
+		try {
+			subcategoriesTop = subcategoryDAO.selectTop3Subcategories(id);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return subcategoriesTop;
+	}
+
+	@Override
+	public List<Category> getAllCategoriesSubcategoriesTop3()
+			throws ServiceException {
+		List<Category> categories = getAllCategories();
+		for (Category category : categories) {
+			category.setSubcategories(getTop3Subcategories(category.getIdCategory()));
+		}
+		return categories;
+	}
+
 }

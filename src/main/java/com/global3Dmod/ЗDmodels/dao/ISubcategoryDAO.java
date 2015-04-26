@@ -14,5 +14,7 @@ public interface ISubcategoryDAO {
 	public List<Subcategory> selectAllSubcategories() throws DaoException;
 
 	public void deleteSubcategory(Integer id) throws DaoException;
+	
+	public List<Subcategory> selectTop3Subcategories(Integer id) throws DaoException;
 
 }

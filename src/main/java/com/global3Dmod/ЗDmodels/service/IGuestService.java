@@ -19,4 +19,10 @@ public interface IGuestService {
 	public List<Category> getAllCategories() throws ServiceException;
 	
 	public List<Subcategory> getAllSubcategories() throws ServiceException;
+	
+	public List<Subcategory> getTop3Subcategories(Integer id) throws ServiceException;
+	
+	public List<Category> getAllCategoriesSubcategoriesTop3() throws ServiceException;
+	
+	
 }

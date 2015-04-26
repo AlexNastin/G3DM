@@ -1,5 +1,6 @@
 package com.global3Dmod.ÇDmodels.controller;
 
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
@@ -28,8 +30,7 @@ public class GuestController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("main");
-		modelAndView.addObject("listCategory", guestService.getAllCategories());
-		modelAndView.addObject("listSubcategory", guestService.getAllSubcategories());
+		modelAndView.addObject("listCategory", guestService.getAllCategoriesSubcategoriesTop3());
 		return modelAndView;
 	}
 

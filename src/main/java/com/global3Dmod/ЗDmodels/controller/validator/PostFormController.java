@@ -14,15 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.validator.PostFormValidator;
 
-@Controller
-@RequestMapping("/addPost")
+//@Controller
+//@RequestMapping("/addPost")
 public class PostFormController {
 
 	@Autowired
 	private PostFormValidator postValidator;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView signup(Locale locale, ModelMap model) throws Exception {
+	public ModelAndView post(Locale locale, ModelMap model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("&&&&&&&&&");
 		PostForm postForm = new PostForm();
 		modelAndView.addObject("postForm", postForm);
@@ -30,7 +30,7 @@ public class PostFormController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView processSignup(PostForm postForm, BindingResult result)
+	public ModelAndView postValid(PostForm postForm, BindingResult result)
 			throws Exception {
 
 		postValidator.validate(postForm, result);

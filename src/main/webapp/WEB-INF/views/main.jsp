@@ -49,16 +49,17 @@
 <center><h1><spring:message code="main.categories" /></h1></center>					
             <div class="row portfolio-items"> 
             <!--1st element-->
-            <c:forEach items="${listCategory}" var="category" >
+             <c:forEach items="${listCategory}" var="category" >
                 <div class="portfolio-item apps  col-md-3">
                         <div class="item-inner">
                             <div class="portfolio-image">
                                 <img src=<c:url value="${category.imagePath}" /> alt="">
                                 <div class="overlay container">
                                     <div class="menuis">
-                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">${category.title}</a>
+                                    <a href="<c:url value="/category/${category.title}" />" class="preview btn btn-primary" title="${category.title}">${category.title}</a>
                                     	<c:forEach items="${category.subcategories}" var="subcategory">
-                                    		<p><a href="/subcategory/${subcategory.idSubcategory}">${subcategory.title }</a></p>
+                                    		<p><a href="<c:url value="/subcategory/${subcategory.title}" />">${subcategory.title }</a></p>
+                                    		
 										</c:forEach>
                                     </div>
                                 </div>

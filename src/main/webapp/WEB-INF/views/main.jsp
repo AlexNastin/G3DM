@@ -93,8 +93,8 @@
 					
 					
 					<nav>
-						<a href="#">Top works</a>
-						<a href="#">Top authors</a>
+						<a href="#"><spring:message code="main.topModels" /></a>
+						<a href="#"><spring:message code="main.topDesigners" /></a>
 						
 					</nav>
 				</div>

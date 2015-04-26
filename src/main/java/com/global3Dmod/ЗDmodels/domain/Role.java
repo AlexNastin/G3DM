@@ -13,11 +13,6 @@ import javax.persistence.Table;
 @NamedQuery(name="Role.findAll", query="select r from Role r")
 public class Role implements Essence {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2846614242669935260L;
-
 	@Id
 	@Column(name = "idRole")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

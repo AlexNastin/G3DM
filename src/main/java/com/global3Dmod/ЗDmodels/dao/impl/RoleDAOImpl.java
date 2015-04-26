@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IRoleDAO;
 import com.global3Dmod.ÇDmodels.domain.Role;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -28,7 +27,6 @@ public class RoleDAOImpl implements IRoleDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void insertRole(Role role) throws DaoException {
 		em.persist(role);
 
@@ -42,7 +40,6 @@ public class RoleDAOImpl implements IRoleDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public List<Role> selectAllRoles() throws DaoException {
 		List<Role> role = em.createNamedQuery("Role.findAll").getResultList();
 		return role;
@@ -55,7 +52,6 @@ public class RoleDAOImpl implements IRoleDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void deleteRole(Integer id) throws DaoException {
 		Role role = em.find(Role.class, id);
 		em.remove(role);
@@ -68,7 +64,6 @@ public class RoleDAOImpl implements IRoleDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void updateRole(Role role) throws DaoException {
 		em.merge(role);
 		

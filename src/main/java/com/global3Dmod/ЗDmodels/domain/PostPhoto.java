@@ -15,11 +15,6 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @NamedQuery(name="PostPhoto.findAll", query="select p from PostPhoto p")
 public class PostPhoto implements Essence {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 4864358700971174823L;
-
 	@Id
 	@Column(name = "idPostPhoto")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

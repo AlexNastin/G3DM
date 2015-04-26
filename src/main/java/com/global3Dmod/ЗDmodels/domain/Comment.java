@@ -15,11 +15,6 @@ import javax.persistence.Table;
 @NamedQuery(name="—omment.findAll", query="select c from Comment c")
 public class Comment implements Essence {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3468913179091343000L;
-
 	@Id
 	@Column(name = "id—omment")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

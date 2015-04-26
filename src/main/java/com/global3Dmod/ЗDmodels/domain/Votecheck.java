@@ -13,11 +13,6 @@ import javax.persistence.Table;
 @NamedQuery(name="Votecheck.findAll", query="select v from Votecheck v")
 public class Votecheck implements Essence {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1581254661444054987L;
-
 	@Id
 	@Column(name = "idVotecheck")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

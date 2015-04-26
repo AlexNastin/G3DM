@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -27,7 +26,6 @@ public class UserDAOImpl implements IUserDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void insertUser(User user) throws DaoException {
 		em.persist(user);
 
@@ -41,7 +39,6 @@ public class UserDAOImpl implements IUserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public List<User> selectAllUsers() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findAll").getResultList();
 		return users;
@@ -54,7 +51,6 @@ public class UserDAOImpl implements IUserDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void deleteUser(Integer id) throws DaoException {
 		User user = em.find(User.class, id);
 		em.remove(user);
@@ -67,7 +63,6 @@ public class UserDAOImpl implements IUserDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void updateUser(User user) throws DaoException {
 		em.merge(user);
 
@@ -81,7 +76,6 @@ public class UserDAOImpl implements IUserDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public List<User> selectTop3Users() throws DaoException{
 		List<User> usersTop = em.createNamedQuery("User.findTop3")
 				.setFirstResult(0).setMaxResults(3).getResultList();
@@ -95,7 +89,6 @@ public class UserDAOImpl implements IUserDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@AspectDaoG3DM
 	public List<String> selectAllEmail() throws DaoException {
 		List<String> emails = em.createNamedQuery("User.findAllEmail").getResultList();
 		return emails;
@@ -108,7 +101,6 @@ public class UserDAOImpl implements IUserDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@AspectDaoG3DM
 	public List<String> selectAllNickName() throws DaoException {
 		List<String> nickNames = em.createNamedQuery("User.findAllNickName").getResultList();
 		return nickNames;

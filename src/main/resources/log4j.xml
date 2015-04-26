@@ -29,9 +29,8 @@
 			<param name="ConversionPattern" value="%d{DATE} %-5p %c{1} [%t] %X{ctx} ~ %m%n" />
 		</layout>
 	</appender>
-	
 	<!-- Application Loggers -->
-	<logger name="com.global3Dmod.printer">
+	<logger name="com.global3Dmod.3Dmodels">
 		<level value="info" />
 	</logger>
 

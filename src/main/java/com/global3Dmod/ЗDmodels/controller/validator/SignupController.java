@@ -11,14 +11,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.form.SignupForm;
-import com.global3Dmod.ÇDmodels.form.validator.SignupFormValidator;
+import com.global3Dmod.ÇDmodels.form.validator.SignupValidator;
+import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Controller
 @RequestMapping("/signup")
-public class SignupFormController {
+public class SignupController {
 	
 	@Autowired
-	private SignupFormValidator signupValidator;
+	private SignupValidator signupValidator;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView signup(Locale locale, ModelMap model) throws Exception {

@@ -13,11 +13,6 @@ import javax.persistence.Table;
 @NamedQuery(name="—ity.findAll", query="select c from City c")
 public class City implements Essence {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 6292675692744570355L;
-
 	@Id
 	@Column(name = "id—ity")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

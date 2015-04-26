@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IAvatarDAO;
 import com.global3Dmod.ÇDmodels.domain.Avatar;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -27,7 +26,6 @@ public class AvatarDAOImpl implements IAvatarDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void insertAvatar(Avatar avatar) throws DaoException {
 		em.persist(avatar);
 
@@ -41,7 +39,6 @@ public class AvatarDAOImpl implements IAvatarDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public List<Avatar> selectAllAvatars() throws DaoException {
 		List<Avatar> avatar = em.createNamedQuery("Avatar.findAll").getResultList();
 		return avatar;
@@ -54,7 +51,6 @@ public class AvatarDAOImpl implements IAvatarDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void deleteAvatar(Integer id) throws DaoException {
 		Avatar avatar = em.find(Avatar.class, id);
 		em.remove(avatar);
@@ -67,7 +63,6 @@ public class AvatarDAOImpl implements IAvatarDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void updateAvatar(Avatar avatar) throws DaoException {
 		em.merge(avatar);
 		

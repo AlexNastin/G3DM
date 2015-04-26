@@ -13,11 +13,6 @@ import javax.persistence.Table;
 @NamedQuery(name="—ountry.findAll", query="select c from Country c")
 public class Country implements Essence {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7532220523158191790L;
-
 	@Id
 	@Column(name = "id—ountry")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

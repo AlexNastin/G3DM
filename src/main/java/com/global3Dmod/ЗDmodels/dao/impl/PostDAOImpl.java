@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -28,7 +27,6 @@ public class PostDAOImpl implements IPostDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void insertPost(Post post) throws DaoException {
 		em.persist(post);
 
@@ -42,7 +40,6 @@ public class PostDAOImpl implements IPostDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public List<Post> selectAllPosts() throws DaoException {
 		List<Post> post = em.createNamedQuery("Post.findAll").getResultList();
 		return post;
@@ -55,7 +52,6 @@ public class PostDAOImpl implements IPostDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void deletePost(Integer id) throws DaoException {
 		Post post = em.find(Post.class, id);
 		em.remove(post);
@@ -68,7 +64,6 @@ public class PostDAOImpl implements IPostDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void updatePost(Post post) throws DaoException {
 		em.merge(post);
 		

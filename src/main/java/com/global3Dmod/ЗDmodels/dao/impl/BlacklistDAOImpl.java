@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IBlacklistDAO;
 import com.global3Dmod.ÇDmodels.domain.Blacklist;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -28,7 +27,6 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void insertBlacklist(Blacklist blacklist) throws DaoException {
 		em.persist(blacklist);
 
@@ -42,7 +40,6 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public List<Blacklist> selectAllBlacklists() throws DaoException {
 		List<Blacklist> blacklist = em.createNamedQuery("Blacklist.findAll").getResultList();
 		return blacklist;
@@ -55,7 +52,6 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void deleteBlacklist(Integer id) throws DaoException {
 		Blacklist blacklist = em.find(Blacklist.class, id);
 		em.remove(blacklist);
@@ -68,7 +64,6 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void updateBlacklist(Blacklist blacklist) throws DaoException {
 		em.merge(blacklist);
 		

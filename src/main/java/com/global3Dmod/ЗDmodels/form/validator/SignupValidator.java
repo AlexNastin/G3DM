@@ -2,6 +2,8 @@ package com.global3Dmod.ÇDmodels.form.validator;
 
 import java.util.List;
 
+import javax.validation.ValidationException;
+
 import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,7 +16,7 @@ import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Component
-public class SignupFormValidator implements Validator {
+public class SignupValidator implements Validator {
 
 	@Autowired
 	private IGuestService guestService;

@@ -1,6 +1,8 @@
 package com.global3Dmod.ÇDmodels.domain;
 
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,11 +17,6 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @Table(name = "POSTS")
 @NamedQuery(name="Post.findAll", query="select p from Post p")
 public class Post implements Essence {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 468663181206431332L;
 
 	@Id
 	@Column(name = "idPost")

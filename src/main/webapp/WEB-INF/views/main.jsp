@@ -72,8 +72,7 @@
 <div class="row nomargin">
 <div class="col-md-2"><h3 class="nothingelsematters">die</h3></div>
  <div class="carousel-container contanier col-md-9">
- <center><h1><spring:message code="main.topModels" /></h1></center>
- 
+  
 			<!-- Codrops top bar -->
 			
 			

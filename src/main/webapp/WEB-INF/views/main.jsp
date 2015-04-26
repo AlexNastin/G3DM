@@ -79,10 +79,10 @@
 			
 				<div id="mi-slider" class="mi-slider">
 					<ul>
-						<li><a href="#"><img src=<c:url value="resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/categories/toys.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/categories/architecture.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/categories/garden.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/categories/home.jpg" /> alt=""><h4>Boots</h4></a></li>
 					</ul>
 					<ul>
 						<li><a href="#"><img src=<c:url value="resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>

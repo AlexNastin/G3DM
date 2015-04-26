@@ -32,7 +32,7 @@ public class AvatarDAOImpl implements IAvatarDAO {
 	}
 
 	/**
-	 * Receipt of all elements of the table "avatar" from the database
+	 * Receipt of all elements of the table "avatars" from the database
 	 * @return avatar collection of objects of type "Avatar"
 	 * @throws DaoException
 	 * */

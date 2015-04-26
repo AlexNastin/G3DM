@@ -20,6 +20,11 @@ public class CommentDAOImpl implements ICommentDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the object of type "Comment" to the database
+	 * @param comment object of type "Comment"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertComment(Comment comment) throws DaoException {
@@ -27,6 +32,11 @@ public class CommentDAOImpl implements ICommentDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "comments" from the database
+	 * @return comments collection of objects of type "Comment"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class CommentDAOImpl implements ICommentDAO {
 		return comments;
 	}
 
+	/**
+	 * Delete the object of type "Comment" from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deleteComment(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class CommentDAOImpl implements ICommentDAO {
 		em.remove(comment);
 	}
 
+	/**
+	 * Update the object of type "Comment" in the database
+	 * @param comment object of type "Comment"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updateComment(Comment comment) throws DaoException {

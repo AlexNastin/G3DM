@@ -20,6 +20,11 @@ public class RatingDAOImpl implements IRatingDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the object of type "Rating" to the database
+	 * @param rating object of type "Rating"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertRating(Rating rating) throws DaoException {
@@ -27,6 +32,11 @@ public class RatingDAOImpl implements IRatingDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "ratings" from the database
+	 * @return rating collection of objects of type "Rating"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class RatingDAOImpl implements IRatingDAO {
 		return rating;
 	}
 
+	/**
+	 * Delete the object of type "Rating" from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deleteRating(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class RatingDAOImpl implements IRatingDAO {
 		em.remove(rating);
 	}
 
+	/**
+	 * Update the object of type "Rating" in the database
+	 * @param rating object of type "Rating"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updateRating(Rating rating) throws DaoException {

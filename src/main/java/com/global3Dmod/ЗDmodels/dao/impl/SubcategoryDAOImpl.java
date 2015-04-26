@@ -20,6 +20,11 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	@PersistenceContext
 	private EntityManager em;
 
+	/**
+	 * Insert the object of type "Subcategory" to the database
+	 * @param subcategory object of type "Subcategory"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void insertSubcategory(Subcategory subcategory) throws DaoException {
@@ -27,6 +32,11 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 
 	}
 
+	/**
+	 * Receipt of all elements of the table "subcategories" from the database
+	 * @return subcategory collection of objects of type "Subcategory"
+	 * @throws DaoException
+	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -35,6 +45,11 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 		return subcategory;
 	}
 
+	/**
+	 * Delete the object of type "Subcategory" from the database
+	 * @param id row ID in the database
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void deleteSubcategory(Integer id) throws DaoException {
@@ -42,6 +57,11 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 		em.remove(subcategory);
 	}
 
+	/**
+	 * Update the object of type "Subcategory" in the database
+	 * @param subcategory object of type "Subcategory"
+	 * @throws DaoException
+	 * */
 	@Override
 	@Transactional
 	public void updateSubcategory(Subcategory subcategory) throws DaoException {

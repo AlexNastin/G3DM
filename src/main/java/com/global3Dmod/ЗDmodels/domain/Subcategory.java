@@ -18,6 +18,11 @@ import javax.persistence.Table;
 	@NamedQuery(name="Subcategory.findAll", query="select s from Subcategory s")})
 public class Subcategory implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8661947578855201465L;
+
 	@Id
 	@Column(name = "idSubcategory")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

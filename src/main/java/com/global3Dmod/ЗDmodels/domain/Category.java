@@ -1,9 +1,7 @@
 package com.global3Dmod.ÇDmodels.domain;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,6 +20,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @Table(name = "CATEGORIES")
 @NamedQuery(name="Category.findAll", query="select c from Category c")
 public class Category implements Essence {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2661524242361610714L;
 
 	@Id
 	@Column(name = "idCategory")

@@ -24,6 +24,7 @@
 
 </head>
 <body>
+<%@include file="/WEB-INF/views/header.jsp" %>  
 <div class="col-md-4"></div>
 <div class="container col-md-5">
 	<form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="signupForm" method="POST">
@@ -70,5 +71,7 @@
 	</form:form>
 	</div>
 	<div class="col-md-4"></div>
+	 <div class="clearfix"></div>
+	<%@include file="/WEB-INF/views/footer.jsp" %>  
 </body>
 </html>

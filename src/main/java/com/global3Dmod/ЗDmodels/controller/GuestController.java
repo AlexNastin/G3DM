@@ -55,5 +55,11 @@ public class GuestController {
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/go/signin");
 		return modelAndView2;
 	}
+	
+	@RequestMapping(value = "/subcategory/cartoon characters", method = RequestMethod.GET)
+	public ModelAndView cartoonCharacters(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("login/signin");
+		return modelAndView;
+	}
 
 }

@@ -1,0 +1,15 @@
+@CHARSET "UTF-8";
+.sign-background{
+	background-color: #F8F8F8;
+	margin-top: 5%;
+	border-radius: 10px;
+	margin-bottom: 5%;
+	}
+.sign-feld-margin-top {
+ margin-top: 5%;	
+}
+.signup-background {
+background: url(../images/signbackground.jpg) no-repeat center top;
+width: 100%;
+height: 100%;
+}

@@ -12,8 +12,8 @@ $(document).ready(function(){
 
 		$('#contact-form').validate({
 	    rules: {
-	      firstname: {
-	        minlength: 2,
+	    	nickName: {
+	        minlength: 3,
 	        required: true
 	      },
 	      login: {
@@ -29,10 +29,15 @@ $(document).ready(function(){
 	        required: true,
 	        digits:true
 	      },
-	      inputPassword3: {
+	      password: {
+	      minlength: 6,
 	      required: true
-	      
+	      },
+	      confirmPassword: {
+	      minlength: 6,
+	      required: true  
 	      }
+	    	  
 	    },
 			highlight: function(element) {
 				$(element).closest('.control-group').removeClass('success').addClass('error');

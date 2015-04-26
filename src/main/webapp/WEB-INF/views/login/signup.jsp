@@ -7,10 +7,13 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<link href="<c:url value="/resources/css/stylesheet.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
+<link href="<c:url value="/resources/css/font-awesome.min.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/prettyPhoto.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/feature-carousel.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/sign.css"  />" rel="stylesheet" />
 <link rel="stylesheet" href="<c:url value="/resources/css/formValidation.css"/>">
 <script src="<c:url value="/resources/js/jquery.min.js" />"> </script>
 <script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>
@@ -23,55 +26,54 @@
 <spring:message code="signup.nickname" var="nickname"/>
 
 </head>
-<body>
-<%@include file="/WEB-INF/views/header.jsp" %>  
+<body class="signup-image-background">
+<%@include file="/WEB-INF/views/header.jsp" %> 
+<div class="signup-background">
 <div class="col-md-4"></div>
-<div class="container col-md-5">
+<div class="col-md-4"></div>
+<div class="container col-md-3 sign-background">
 	<form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="signupForm" method="POST">
-	    <div class="form-group">
-	    <div class="col-md-9">  
+	    <div class="form-group sign-feld-margin-top">
+	    <div class="col-md-12">
 		<form:radiobutton path="role_idRole" value="2"  /><spring:message code="signup.designer" />
 		<form:radiobutton path="role_idRole" value="3"  /><spring:message code="signup.user" />
 		<span class="error"><form:errors path="role_idRole" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-5">
+		<div class="col-md-12">
 		<form:input id="login" name="login" class="form-control input-md" path="login" placeholder="${login}"></form:input>
-		</div>
-		<div class="col-md-5">
 		<span class="error"><form:errors path="login" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-5">
-		<form:password class="form-control input-md" path="password" placeholder="${password}"></form:password>
-		</div>
-		<div class="col-md-5">
+		<div class="col-md-12">
+		<form:password id="password" name="password" class="form-control input-md" path="password" placeholder="${password}"></form:password>
 		<span class="error"><form:errors path="password" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-9">
-		<form:password class="form-control input-md" path="confirmPassword" placeholder="${confirmpassword}"></form:password>
+		<div class="col-md-12">
+		<form:password id="confirmPassword" name="confirmPassword" class="form-control input-md" path="confirmPassword" placeholder="${confirmpassword}"></form:password>
 		<span class="error"><form:errors path="confirmPassword" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-9">
-		<form:input class="form-control input-md" path="nickName" placeholder="${nickname}"></form:input>
+		<div class="col-md-12">
+		<form:input id="nickName" name="nickName" class="form-control input-md" path="nickName" placeholder="${nickname}"></form:input>
 		<span class="error"><form:errors path="nickName" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-9">
-		<input type="submit" class="btn btn-primary signin-button-color" value="<spring:message code="signup.signup"/>" />
+		<div class="col-md-12">
+		<input type="submit" class="btn btn-default btn-outline btn-circle" value="<spring:message code="signup.signup"/>" />
 		</div>
 		</div>
 	</form:form>
 	</div>
-	<div class="col-md-4"></div>
-	 <div class="clearfix"></div>
-	<%@include file="/WEB-INF/views/footer.jsp" %>  
+	<div class="clearfix"></div>
+	</div>
+	<%@include file="/WEB-INF/views/footer.jsp" %>
+	
 </body>
 </html>

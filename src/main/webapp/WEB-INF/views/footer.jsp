@@ -11,7 +11,7 @@
 
    </head>
 <body>
-<div class="footer margin-top">
+<div class="footer">
     <div class="container">
 
         <div class="footer_grids">

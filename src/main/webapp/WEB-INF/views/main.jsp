@@ -8,6 +8,7 @@
 <html>
 <head>
 <title>Global3Dmod</title>
+<!-- Init search variable -->
 <spring:message code="main.search" var="search"/>
 
  <meta charset="utf-8">
@@ -25,12 +26,10 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
+    <link rel="icon" href="<c:url value="resources/images/favicon.png" />" type="image/x-icon">
    </head>
 <body>
 	<%@include file="/WEB-INF/views/header.jsp" %>   
-
-
-
 
 <div class="banner">
     <div class="container_wrap">

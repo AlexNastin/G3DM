@@ -15,10 +15,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="global3dmod team">
-    <title>Global 3d Mod | Site</title>
     <link href="<c:url value="/resources/css/bootstrap.css"  />" rel="stylesheet" />
     <link href="<c:url value="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"  />" rel="stylesheet" />
-      
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
     
     <!--[if lt IE 9]>
@@ -28,6 +26,8 @@
     <link rel="icon" href="<c:url value="resources/images/favicon.png" />" type="image/x-icon">
    </head>
 <body>
+<!-- Here some place for ads -->
+<div class="row placeForAds"> </div> 
 	<%@include file="/WEB-INF/views/header.jsp" %>   
 
 <div class="banner">

@@ -1313,4 +1313,6 @@ navi-top{
 input:-moz-placeholder {
   color: #888
 }
-)
+.placeForAds{
+	margin-bottom:2%;
+}

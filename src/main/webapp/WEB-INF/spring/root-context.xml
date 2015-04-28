@@ -24,11 +24,15 @@
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.dao" />
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.service" />
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.form.validator" />
+	<context:component-scan base-package="com.global3Dmod.ЗDmodels.aop" />
 
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
 	<import resource="data.xml" />
 
 	<!-- Файл с настройками безопасности -->
 	<import resource="security.xml" />
+
+	<!-- Файл с настройками AOP -->
+	<import resource="aop-bean.xml" />
 
 </beans>

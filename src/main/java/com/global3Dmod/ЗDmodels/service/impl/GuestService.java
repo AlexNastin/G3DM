@@ -9,6 +9,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
@@ -28,13 +29,12 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private IUserDAO userDAO;
-	
+
 	@Autowired
 	private ICategoryDAO categoryDAO;
-	
+
 	@Autowired
 	private ISubcategoryDAO subcategoryDAO;
-
 
 	@Override
 	public void addUser(SignupForm signupForm, User user)
@@ -64,6 +64,7 @@ public class GuestService implements IGuestService {
 		}
 	}
 
+	@AspectDaoG3DM
 	@Override
 	public List<String> getAllEmail() throws ServiceException {
 		List<String> emails;
@@ -109,7 +110,8 @@ public class GuestService implements IGuestService {
 	}
 
 	@Override
-	public List<Subcategory> getTop3Subcategories(Integer id) throws ServiceException {
+	public List<Subcategory> getTop3Subcategories(Integer id)
+			throws ServiceException {
 		List<Subcategory> subcategoriesTop;
 		try {
 			subcategoriesTop = subcategoryDAO.selectTop3Subcategories(id);
@@ -124,7 +126,8 @@ public class GuestService implements IGuestService {
 			throws ServiceException {
 		List<Category> categories = getAllCategories();
 		for (Category category : categories) {
-			category.setSubcategories(getTop3Subcategories(category.getIdCategory()));
+			category.setSubcategories(getTop3Subcategories(category
+					.getIdCategory()));
 		}
 		return categories;
 	}

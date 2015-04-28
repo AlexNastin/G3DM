@@ -28,7 +28,6 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void insertSubcategory(Subcategory subcategory) throws DaoException {
 		em.persist(subcategory);
 
@@ -42,7 +41,6 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public List<Subcategory> selectAllSubcategories() throws DaoException {
 		List<Subcategory> subcategory = em.createNamedQuery("Subcategory.findAll").getResultList();
 		return subcategory;
@@ -55,7 +53,6 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void deleteSubcategory(Integer id) throws DaoException {
 		Subcategory subcategory = em.find(Subcategory.class, id);
 		em.remove(subcategory);
@@ -68,7 +65,6 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * */
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public void updateSubcategory(Subcategory subcategory) throws DaoException {
 		em.merge(subcategory);
 		
@@ -82,7 +78,6 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	@AspectDaoG3DM
 	public List<Subcategory> selectTop3Subcategories(Integer id) throws DaoException {
 		List<Subcategory> subcategoriesTop = em.createNamedQuery("Subcategory.findTop3").setParameter("idCategory", id)
 				.setFirstResult(0).setMaxResults(3).getResultList();

@@ -33,12 +33,14 @@
 <div class="banner">
     <div class="container_wrap">
         <h1><spring:message code="main.searchUp" /></h1>
-            <form class="col-lg-12">
-            <div class="input-group" style="width:500px;text-align:center;margin:0 auto;">
+        <div class="col-md-3"></div>
+            <form class="col-md-6">
+            <div class="input-group" style="width:100%; text-align:center;margin:0 auto;">
             <input class="form-control input-lg" placeholder="<spring:message code="main.searchInto" />" type="text">
               <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">${search}</button></span>
             </div>
           </form>
+          <div class="col-md-3"></div>
         <div class="clearfix"></div>
     </div>
 </div>

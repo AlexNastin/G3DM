@@ -239,7 +239,7 @@ a:focus {
   position: relative;
   top: 50%;
   display: inline-block;
-  margin-top: -20px;
+  margin-top: -30%;
 }
 .portfolio-item:hover .overlay {
   opacity: 1;

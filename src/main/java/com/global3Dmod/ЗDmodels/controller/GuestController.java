@@ -33,12 +33,6 @@ public class GuestController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public ModelAndView test(Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("test");
-		return modelAndView;
-	}
-
 	@RequestMapping(value = "/go/signin", method = RequestMethod.GET)
 	public ModelAndView signIn(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
@@ -59,6 +53,18 @@ public class GuestController {
 	public ModelAndView cartoonCharacters(Locale locale, Model model)
 			throws Exception {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public ModelAndView about(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("about_us");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public ModelAndView contact(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("contact");
 		return modelAndView;
 	}
 

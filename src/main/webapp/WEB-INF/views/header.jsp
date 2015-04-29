@@ -17,11 +17,11 @@
                 <!-- put some links here -->
                 </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><spring:message code="main.about" /></a></li>
+                <li><a href="<c:url value="/about"/>"><spring:message code="main.about" /></a></li>
                 <li><a href="#"><spring:message code="main.servises" /></a></li>
-                <li><a href="#"><spring:message code="main.works" /></a></li>
+                <li><a href="<c:url value="/addPost"/>"><spring:message code="main.works" /></a></li>
                 <li><a href="#"><spring:message code="main.news" /></a></li>
-                <li><a href="#"><spring:message code="main.contact" /></a></li>
+                <li><a href="<c:url value="/contact"/>"><spring:message code="main.contact" /></a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
                     <li><button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signin" />"'>

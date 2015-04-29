@@ -77,9 +77,9 @@
 			<!-- Codrops top bar -->
 			
 			
-				<div id="mi-slider" class="mi-slider">
+				<div id="mi-slider" class="mi-slider respimg">
 					<ul>
-						<li><a href="#"><img src=<c:url value="/resources/images/categories/toys.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img class="respimg" src=<c:url value="/resources/images/categories/toys.jpg" /> alt=""><h4>Boots</h4></a></li>
 						<li><a href="#"><img src=<c:url value="/resources/images/categories/architecture.jpg" /> alt=""><h4>Boots</h4></a></li>
 						<li><a href="#"><img src=<c:url value="/resources/images/categories/garden.jpg" /> alt=""><h4>Boots</h4></a></li>
 						<li><a href="#"><img src=<c:url value="/resources/images/categories/home.jpg" /> alt=""><h4>Boots</h4></a></li>

@@ -1187,14 +1187,17 @@ navi-top{
 
 @media screen and (max-width: 740px){
 	.mi-slider {
-		height: 300px;
+		height: 280px;
 	}
 	.mi-slider nav {
-		top: 220px;
+		top: 120px;
+	}
+	.respimg {
+		max-width: 250%;
 	}
 }
 
-@media screen and (max-width: 490px){ 
+@media screen and (max-width: 49px){ 
 	.mi-slider {
 		text-align: center;
 		height: auto;

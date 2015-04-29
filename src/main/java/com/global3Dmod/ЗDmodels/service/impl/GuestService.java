@@ -37,15 +37,13 @@ public class GuestService implements IGuestService {
 	private ISubcategoryDAO subcategoryDAO;
 
 	@Override
-	public void addUser(SignupForm signupForm, User user)
-			throws ServiceException {
-
+	public void addUser(SignupForm signupForm) throws ServiceException {
+		User user = new User();
 		DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
-
+		
 		String md5Password = DigestUtils.md5Hex(signupForm.getPassword());
-
 		user.setRole_idRole(signupForm.getRole_idRole());
 		user.setCountry_id—ountry(ParamConstant.ID_—OUNTRY);
 		user.setCity_id—ity(ParamConstant.ID_—ITY);
@@ -56,7 +54,6 @@ public class GuestService implements IGuestService {
 		user.setSurname(ParamConstant.EMPTY);
 		user.setGender(ParamConstant.GENDER);
 		user.setRegistrationDate(registrationDate);
-
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {

@@ -2,12 +2,18 @@ package com.global3Dmod.ÇDmodels.domain;
 
 
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -52,9 +58,6 @@ public class Post implements Essence {
 
 	@Column(name = "instruction")
 	private String instruction;
-
-	@Column(name = "registrationDate")
-	private String registrationDate;
 
 	@Column(name = "isDisplay")
 	private boolean isDisplay;
@@ -154,14 +157,6 @@ public class Post implements Essence {
 		this.instruction = instruction;
 	}
 
-	public String getRegistrationDate() {
-		return registrationDate;
-	}
-
-	public void setRegistrationDate(String registrationDate) {
-		this.registrationDate = registrationDate;
-	}
-
 	public boolean isDisplay() {
 		return isDisplay;
 	}
@@ -196,9 +191,6 @@ public class Post implements Essence {
 		result = prime * result + (isDisplay ? 1231 : 1237);
 		result = prime * result
 				+ ((numberPost == null) ? 0 : numberPost.hashCode());
-		result = prime
-				* result
-				+ ((registrationDate == null) ? 0 : registrationDate.hashCode());
 		result = prime * result + subcategory_idSubcategory;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + user_idUser;
@@ -249,11 +241,6 @@ public class Post implements Essence {
 				return false;
 		} else if (!numberPost.equals(other.numberPost))
 			return false;
-		if (registrationDate == null) {
-			if (other.registrationDate != null)
-				return false;
-		} else if (!registrationDate.equals(other.registrationDate))
-			return false;
 		if (subcategory_idSubcategory != other.subcategory_idSubcategory)
 			return false;
 		if (title == null) {
@@ -275,10 +262,10 @@ public class Post implements Essence {
 				+ disProgram_idDisProgram + ", dateReg=" + dateReg
 				+ ", dateUpdate=" + dateUpdate + ", title=" + title
 				+ ", description=" + description + ", instruction="
-				+ instruction + ", registrationDate=" + registrationDate
-				+ ", isDisplay=" + isDisplay + ", countDownload="
+				+ instruction + ", isDisplay=" + isDisplay + ", countDownload="
 				+ countDownload + "]";
 	}
+
 
 
 	

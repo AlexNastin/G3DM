@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
@@ -43,8 +42,7 @@ public class GuestController {
 	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,
 			Model model) throws Exception {
 
-		User user = new User();
-		guestService.addUser(signupForm, user);
+		guestService.addUser(signupForm);
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/go/signin");
 		return modelAndView2;
 	}

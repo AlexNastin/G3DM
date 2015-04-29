@@ -21,6 +21,18 @@
                 <li><a href="#"><spring:message code="main.servises" /></a></li>
                 <li><a href="<c:url value="/addPost"/>"><spring:message code="main.works" /></a></li>
                 <li><a href="#"><spring:message code="main.news" /></a></li>
+                <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Partners <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">3d-hunters</a></li>
+            <li><a href="#">print-me.org</a></li>
+            <li><a href="#">you-do.info</a></li>
+            <li class="divider"></li>
+            <li><a href="#">hey-designer.me</a></li>
+            <li class="divider"></li>
+            <li><a href="#">One-3d.net</a></li>
+          </ul>
+        </li>
                 <li><a href="<c:url value="/contact"/>"><spring:message code="main.contact" /></a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>

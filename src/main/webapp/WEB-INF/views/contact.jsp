@@ -9,6 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <title>Insert title here</title>
+<link rel="icon" href="<c:url value="resources/images/favicon.png" />" type="image/x-icon">
 </head>
 <body>
 

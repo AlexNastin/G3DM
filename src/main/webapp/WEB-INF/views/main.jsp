@@ -27,7 +27,7 @@
    </head>
 <body>
 <!-- Here some place for ads -->
-<div class="row placeForAds"> </div> 
+
 	<%@include file="/WEB-INF/views/header.jsp" %>   
 
 <div class="banner">

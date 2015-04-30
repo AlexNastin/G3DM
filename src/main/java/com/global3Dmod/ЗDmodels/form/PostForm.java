@@ -11,7 +11,7 @@ public class PostForm implements Essence{
 	private String description;
 	private String instruction;
 	private String filePath;
-	String []printersId;
+	private String []printersId;
 	
 	public int getCategory_idCategory() {
 		return category_idCategory;

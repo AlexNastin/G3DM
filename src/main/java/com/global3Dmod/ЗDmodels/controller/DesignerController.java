@@ -56,5 +56,11 @@ public class DesignerController {
 			ModelAndView modelAndView2 = new ModelAndView("redirect:/index");
 			return modelAndView2;
 		}
+	
+	@RequestMapping(value = "/getStringMVC", method = RequestMethod.GET)
+	public String addPostDB() throws Exception {
+			
+			return "AAAABBBBBCCCCC";
+		}
 
 }

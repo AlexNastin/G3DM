@@ -33,7 +33,7 @@
 	</form:select>
 	<br>
 	<c:forEach items="${listPrinter}" var="printer" >
-		<form:checkbox path="printersId" value="${printer.idPrinter}" />${printer.title}<br>
+		<form:checkbox path="printersId" value="${printer.idPrinter}"/>${printer.title}<br>
 	</c:forEach>
 	<br>
         File to upload: <input type="file" name="file">

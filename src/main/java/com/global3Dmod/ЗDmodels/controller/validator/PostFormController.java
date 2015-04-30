@@ -34,6 +34,7 @@ public class PostFormController {
 		modelAndView.addObject("postForm", postForm);
 		modelAndView.addObject("listDisProgram", designerService.getAllDisPrograms());
 		modelAndView.addObject("listCategory", designerService.getAllCategories());
+		modelAndView.addObject("ASD", "STRING OLL");
 		return modelAndView;
 	}
 

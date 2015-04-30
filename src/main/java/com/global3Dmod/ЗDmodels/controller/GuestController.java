@@ -66,4 +66,15 @@ public class GuestController {
 		return modelAndView;
 	}
 
+	@RequestMapping(value = "/d", method = RequestMethod.GET)
+	public ModelAndView d(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("designer/designer");
+		return modelAndView;
+	}
+	@RequestMapping(value = "/u", method = RequestMethod.GET)
+	public ModelAndView u(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("user/user");
+		return modelAndView;
+	}
+	
 }

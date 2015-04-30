@@ -22,18 +22,19 @@
 	<form:select id="category_idCategory" name="category_idCategory" path="category_idCategory">
 		<c:forEach items="${listCategory}" var="category" >
 		<form:option value="${category.idCategory}">${category.title}</form:option>
-		<c:set value="${category.idCategory}" var="idCategory"></c:set>
 		</c:forEach>
 	</form:select>
 	<form:select id="subcategory_idSubcategory" name="subcategory_idSubcategory" path="subcategory_idSubcategory">
 		<c:forEach items="${listCategory}" var="category" >
 			<c:forEach items="${category.subcategories}" var="subcategory">
-				<c:if test="${subcategory.category_idCategory == 1}">
 					<form:option value="${subcategory.idSubcategory}">${subcategory.title}</form:option>
-				</c:if>
 			</c:forEach>
 		</c:forEach>
 	</form:select>
+	<br>
+	<c:forEach items="${listPrinter}" var="printer" >
+		<form:checkbox path="printersId" value="${printer.idPrinter}" />${printer.title}<br>
+	</c:forEach>
 	<br>
         File to upload: <input type="file" name="file">
 	<input type="submit" value="Add" />

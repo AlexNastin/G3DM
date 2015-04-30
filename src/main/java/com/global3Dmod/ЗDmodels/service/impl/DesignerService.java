@@ -11,9 +11,11 @@ import org.springframework.stereotype.Service;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
+import com.global3Dmod.ÇDmodels.dao.IPrinterDAO;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.DisProgram;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.Printer;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.PostForm;
@@ -30,6 +32,9 @@ public class DesignerService  implements IDesignerService{
 	
 	@Autowired
 	private ICategoryDAO categoryDAO;
+	
+	@Autowired
+	private IPrinterDAO printerDAO;
 	
 	@Autowired
 	private IPostDAO postDAO;
@@ -55,6 +60,28 @@ public class DesignerService  implements IDesignerService{
 		}
 		return categories;
 	}
+	
+	@Override
+	public List<Printer> getAllPrinters() throws ServiceException {
+		List<Printer> printers;
+		try {
+			printers = printerDAO.selectAllPrinters();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return printers;
+	}
+	
+	@Override
+	public List<Printer> getCheckPrintersById(String[] printersId) throws ServiceException {
+		List<Printer> printers;
+		try {
+			printers = printerDAO.selectCheckPrintersById(printersId);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return printers;
+	}
 
 	@Override
 	public void addPost(PostForm postForm) throws ServiceException {
@@ -73,6 +100,7 @@ public class DesignerService  implements IDesignerService{
 		post.setInstruction(postForm.getInstruction());
 		post.setDisplay(true);
 		post.setCountDownload(0);
+		post.setPrinters(getCheckPrintersById(postForm.getPrintersId()));
 		try {
 			postDAO.insertPost(post);
 		} catch (DaoException e) {
@@ -80,5 +108,7 @@ public class DesignerService  implements IDesignerService{
 		}
 		
 	}
+
+
 
 }

@@ -11,6 +11,7 @@ public class PostForm implements Essence{
 	private String description;
 	private String instruction;
 	private String filePath;
+	String []printersId;
 	
 	public int getCategory_idCategory() {
 		return category_idCategory;
@@ -53,6 +54,13 @@ public class PostForm implements Essence{
 	}
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+	public String[] getPrintersId() {
+		return printersId;
+	}
+	public void setPrintersId(String[] printersId) {
+		this.printersId = printersId;
 	}	
+	
 	
 }

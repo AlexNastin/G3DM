@@ -1,6 +1,7 @@
 package com.global3Dmod.ÇDmodels.dao;
 
 import java.util.List;
+import java.util.Set;
 
 import com.global3Dmod.ÇDmodels.domain.Printer;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -12,6 +13,8 @@ public interface IPrinterDAO {
 	public void insertPrinter(Printer printer) throws DaoException;
 
 	public List<Printer> selectAllPrinters() throws DaoException;
+	
+	public List<Printer> selectCheckPrintersById(String [] printersId) throws DaoException;
 
 	public void deletePrinter(Integer id) throws DaoException;
 

@@ -3,6 +3,7 @@ package com.global3Dmod.ÇDmodels.domain;
 
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -12,6 +13,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
@@ -64,6 +66,10 @@ public class Post implements Essence {
 
 	@Column(name = "countDownload")
 	private int countDownload;
+	
+	@ManyToMany
+	@JoinTable(name="POSTS_HAS_PRINTERS", joinColumns={@JoinColumn(name="POST_IDPOST")},inverseJoinColumns={@JoinColumn(name="PRINTER_IDPRINTER")})
+	private List<Printer> printers;
 	
 	public Post() {
 		super();
@@ -171,6 +177,14 @@ public class Post implements Essence {
 
 	public void setCountDownload(int countDownload) {
 		this.countDownload = countDownload;
+	}
+	
+	public List<Printer> getPrinters() {
+		return printers;
+	}
+
+	public void setPrinters(List<Printer> printers) {
+		this.printers = printers;
 	}
 
 	@Override

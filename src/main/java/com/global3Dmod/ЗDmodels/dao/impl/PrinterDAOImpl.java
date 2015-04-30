@@ -1,9 +1,12 @@
 package com.global3Dmod.ÇDmodels.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,6 +45,18 @@ public class PrinterDAOImpl implements IPrinterDAO {
 	@Transactional
 	public List<Printer> selectAllPrinters() throws DaoException {
 		List<Printer> printer = em.createNamedQuery("Printer.findAll").getResultList();
+		return printer;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Printer> selectCheckPrintersById(String []printersId) throws DaoException {
+		List<Integer> listIdPrinter = new ArrayList<Integer>();
+		for (String printerId : printersId) {
+			listIdPrinter.add(Integer.parseInt(printerId));
+		}
+		List<Printer> printer = em.createNamedQuery("Printer.findCheckById").setParameter("idPrinters", listIdPrinter).getResultList();
 		return printer;
 	}
 

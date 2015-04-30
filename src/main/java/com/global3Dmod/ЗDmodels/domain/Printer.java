@@ -1,10 +1,15 @@
 package com.global3Dmod.ÇDmodels.domain;
 
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -12,7 +17,9 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "PRINTERS")
-@NamedQuery(name="Printer.findAll", query="select p from Printer p")
+@NamedQueries({
+	@NamedQuery(name="Printer.findAll", query="select p from Printer p"),
+	@NamedQuery(name="Printer.findCheckById", query="select p from Printer p where p.idPrinter in (:idPrinters)") })
 public class Printer implements Essence {
 
 	@Id
@@ -22,6 +29,9 @@ public class Printer implements Essence {
 	
 	@Column(name = "title")
 	private String title;
+	
+	@ManyToMany(mappedBy="printers")
+	private List<Post> posts;
 	
 	public Printer() {
 		super();
@@ -41,6 +51,14 @@ public class Printer implements Essence {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+	
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override

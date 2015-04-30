@@ -744,7 +744,7 @@ div#carousel ~ span:hover { color: #888; cursor: pointer; }
 }
 
 .footer{
-	background: url(../images/footer.jpg) no-repeat center top;
+	background-color: #F8F8F8;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -1187,17 +1187,14 @@ navi-top{
 
 @media screen and (max-width: 740px){
 	.mi-slider {
-		height: 280px;
+		height: 300px;
 	}
 	.mi-slider nav {
-		top: 120px;
-	}
-	.respimg {
-		max-width: 250%;
+		top: 220px;
 	}
 }
 
-@media screen and (max-width: 49px){ 
+@media screen and (max-width: 490px){ 
 	.mi-slider {
 		text-align: center;
 		height: auto;
@@ -1317,5 +1314,5 @@ input:-moz-placeholder {
   color: #888
 }
 .placeForAds{
-	margin-bottom:4%;
+	margin-bottom:2%;
 }

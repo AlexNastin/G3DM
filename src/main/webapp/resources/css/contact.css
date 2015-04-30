@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+.line-contact {
+	margin-top: 3%;
+	border-bottom: 4px solid #F8F8F8;
+	margin-bottom: 1%
+}
+.font-contact {
+	font: 20pt cursive;
+}
+.contact-background {
+	background-color: #F8F8F8;
+	margin-bottom: 5%;
+}
+.contact-vertical-linen {
+	border-right: 5px solid white;
+}
+.text-contact-title {
+	font: 12pt cursive;
+	
+}

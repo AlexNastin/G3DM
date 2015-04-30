@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+.line-about {
+	border-bottom: 4px solid #F8F8F8;
+}
+.font-about {
+	font: 20pt cursive;
+	
+}
+.image-about {
+   margin-top: 2%;
+   background: url(../images/logosign.jpg) no-repeat center top;
+   width: 100%;
+   padding-bottom:28em;
+   background-size:auto;
+   margin-bottom: 1%;
+}
+ .about-footer-margin {
+ margin-bottom: 3%;
+ }

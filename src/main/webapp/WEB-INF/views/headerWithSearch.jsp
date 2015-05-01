@@ -1,4 +1,4 @@
-<div class="row placeForAds"> </div> 
+<div class="row placeForAds"> 
 <nav class="navbar navbar-default">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile and tablet display -->
@@ -49,3 +49,4 @@
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
 </nav><!-- /.navbar -->    
+</div> 

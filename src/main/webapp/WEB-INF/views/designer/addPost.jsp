@@ -36,7 +36,14 @@
 		<form:checkbox path="printersId" value="${printer.idPrinter}"/>${printer.title}<br>
 	</c:forEach>
 	<br>
-        File to upload: <input type="file" name="file">
+        Model to upload: <input type="file" name="model">
+        <br>
+        Photo model to upload: <input type="file" name="firstPhotoModel">
+        <br>
+        Photo model to upload: <input type="file" name="secondPhotoModel">
+        <br>
+        Photo model to upload: <input type="file" name="thirdPhotoModel">
+        <br>
 	<input type="submit" value="Add" />
 </form:form>
 </body>

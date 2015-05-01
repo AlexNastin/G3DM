@@ -46,10 +46,10 @@
       <div class="list-group">
       <img src="<c:url value="resources/images/auto.jpg" />" class="img-responsive" alt="Responsive image">      
   <a href="#" class="list-group-item active">
-    Add work
+    My works
   </a>
   <a href="#" class="list-group-item">Settings</a>
-  <a href="#" class="list-group-item">Lorem ipsum</a>
+  <a href="#" class="list-group-item">add work</a>
   <a href="#" class="list-group-item">Lorem ipsum</a>
   <a href="#" class="list-group-item">Lorem ipsum</a>
 </div>

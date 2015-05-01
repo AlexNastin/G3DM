@@ -28,23 +28,17 @@
     <link rel="icon" href="<c:url value="resources/images/favicon.png" />" type="image/x-icon">
    </head>
 <body>
-<!-- Here some place for ads -->
+<!-- Here some place for ads. After placing ads you may delete "placeforads" css class in header -->
 
 	<%@include file="/WEB-INF/views/headerWithSearch.jsp" %>  
 	<!-- Designer's page will start here -->
-	
-	      <!--this will be used as a hider for users menu collapse -->
-
-     
-      <!--end users menu collapse-->
-      
-
-      <!--sidebar start-->
+	     
+	      <!--sidebar start-->
      
       <div class="row">
       <div class="col-md-2 nopadding1">
       <div class="list-group">
-      <img src="<c:url value="resources/images/auto.jpg" />" class="img-responsive" alt="Responsive image">      
+      <img src="<c:url value="resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
   <a href="#" class="list-group-item active">
     My works
   </a>
@@ -248,15 +242,13 @@
       </div>
 
   </div>
-  </div>
-  
-  
+  </div> 
   
   <div class="clearfix"> </div>
 	<%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
-    <script src="<c:url value="/resources/js/menu-toggle.js" />"> </script> 
+   
 	  
 
 </body>

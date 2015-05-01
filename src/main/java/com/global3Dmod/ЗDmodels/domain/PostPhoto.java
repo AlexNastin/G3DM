@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -25,6 +27,10 @@ public class PostPhoto implements Essence {
 
 	@Column(name = "photoPath")
 	private String photoPath;
+	
+	@JoinColumn(name = "post_idPost", referencedColumnName = "idPost", insertable=false, updatable=false)
+	@ManyToOne(optional = false)
+	private Post post;
 	
 	public PostPhoto() {
 		super();
@@ -52,6 +58,14 @@ public class PostPhoto implements Essence {
 
 	public void setPhotoPath(String photoPath) {
 		this.photoPath = photoPath;
+	}
+	
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
 	}
 
 	@Override

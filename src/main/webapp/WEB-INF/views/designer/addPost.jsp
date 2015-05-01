@@ -69,17 +69,18 @@
 		</form:select>
 
 
-		<form:select id="category_idCategory" name="category_idCategoryName"
-			path="category_idCategory"
-			onchange="updateSelectOptions('${subCategoriesUrl}', 'category_idCategoryName', 'city')">
-			<c:forEach items="${listCategory}" var="category">
-				<form:option value="${category.idCategory}">${category.title}</form:option>
+		<form:select id="category_idCategory" name="category_idCategory" path="category_idCategory">
+		<c:forEach items="${listCategory}" var="category" >
+		<form:option value="${category.idCategory}">${category.title}</form:option>
+		</c:forEach>
+	</form:select>
+	<form:select id="subcategory_idSubcategory" name="subcategory_idSubcategory" path="subcategory_idSubcategory">
+		<c:forEach items="${listCategory}" var="category" >
+			<c:forEach items="${category.subcategories}" var="subcategory">
+					<form:option value="${subcategory.idSubcategory}">${subcategory.title}</form:option>
 			</c:forEach>
-		</form:select>
-
-		<select id="subcategory_idSubcategory"
-			name="subcategory_idSubcategoryName">
-		</select>
+		</c:forEach>
+	</form:select>
 
 		<br>
 		<c:forEach items="${listPrinter}" var="printer">

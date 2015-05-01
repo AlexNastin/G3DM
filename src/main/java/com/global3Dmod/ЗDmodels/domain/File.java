@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
@@ -25,6 +27,10 @@ public class File implements Essence {
 
 	@Column(name = "filePath")
 	private String filePath;
+	
+//	@JoinColumn(name = "post_idPost", referencedColumnName = "idPost", insertable=false, updatable=false)
+//	@ManyToOne(optional = false)
+//	private Post post;
 	
 	public File() {
 		super();
@@ -53,6 +59,14 @@ public class File implements Essence {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
+	
+//	public Post getPost() {
+//		return post;
+//	}
+//
+//	public void setPost(Post post) {
+//		this.post = post;
+//	}
 
 	@Override
 	public int hashCode() {

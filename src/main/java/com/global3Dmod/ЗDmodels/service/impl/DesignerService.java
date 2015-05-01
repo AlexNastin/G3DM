@@ -20,6 +20,7 @@ import com.global3Dmod.ÇDmodels.dao.IPrinterDAO;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.DisProgram;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.PostPhoto;
 import com.global3Dmod.ÇDmodels.domain.Printer;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -119,6 +120,17 @@ public class DesignerService implements IDesignerService {
 		DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
+		PostPhoto firstPostPhoto = new PostPhoto();
+		firstPostPhoto.setPhotoPath(postForm.getFirstPhotoModelFilePath());
+		System.out.println(postForm.getFirstPhotoModelFilePath()+"    1");
+		PostPhoto secondPostPhoto = new PostPhoto();
+		secondPostPhoto.setPhotoPath(postForm.getSecondPhotoModelFilePath());
+		PostPhoto thirdPostPhoto = new PostPhoto();
+		thirdPostPhoto.setPhotoPath(postForm.getThirdPhotoModelFilePath());
+		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
+		postPhotos.add(firstPostPhoto);
+		postPhotos.add(secondPostPhoto);
+		postPhotos.add(thirdPostPhoto);
 		Post post = new Post();
 		post.setUser_idUser(2);
 		post.setCategory_idCategory(postForm.getCategory_idCategory());
@@ -133,6 +145,7 @@ public class DesignerService implements IDesignerService {
 		post.setDisplay(true);
 		post.setCountDownload(0);
 		post.setPrinters(getCheckPrintersById(postForm.getPrintersId()));
+		post.setPostPhotos(postPhotos);
 		try {
 			postDAO.insertPost(post);
 		} catch (DaoException e) {

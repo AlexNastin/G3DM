@@ -52,6 +52,8 @@ public class DesignerController {
 	
 	@RequestMapping(value = "/addPostDB", method = RequestMethod.POST)
 	public ModelAndView addPostDB(PostForm postForm, Locale locale, Model model) throws Exception {
+			System.out.println(postForm.getFirstPhotoModelFilePath());
+			System.out.println(postForm.getCategory_idCategory());
 			designerService.addPost(postForm);
 			ModelAndView modelAndView2 = new ModelAndView("redirect:/index");
 			return modelAndView2;

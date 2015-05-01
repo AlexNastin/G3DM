@@ -36,7 +36,6 @@ public class PostFormValidator implements Validator{
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description",
 				"addPost.valid.description.empty");
 		String description = postForm.getDescription();
-		System.out.println(description);
 		// Не более 200 символов
 		if ((description.length()) > 200) {
 			errors.rejectValue("description", "addPost.valid.description.tooLong");

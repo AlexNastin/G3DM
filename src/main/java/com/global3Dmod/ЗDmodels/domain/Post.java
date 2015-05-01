@@ -17,6 +17,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
@@ -70,6 +71,12 @@ public class Post implements Essence {
 	@ManyToMany
 	@JoinTable(name="POSTS_HAS_PRINTERS", joinColumns={@JoinColumn(name="POST_IDPOST")},inverseJoinColumns={@JoinColumn(name="PRINTER_IDPRINTER")})
 	private List<Printer> printers;
+	
+//	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//	private List<File> files;
+	
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private List<PostPhoto> postPhotos;
 	
 	public Post() {
 		super();
@@ -186,6 +193,22 @@ public class Post implements Essence {
 	public void setPrinters(List<Printer> printers) {
 		this.printers = printers;
 	}
+	
+//	public List<File> getFiles() {
+//		return files;
+//	}
+//
+//	public void setFiles(List<File> files) {
+//		this.files = files;
+//	}
+	
+	public List<PostPhoto> getPostPhotos() {
+		return postPhotos;
+	}
+
+	public void setPostPhotos(List<PostPhoto> postPhotos) {
+		this.postPhotos = postPhotos;
+	}	
 
 	@Override
 	public int hashCode() {

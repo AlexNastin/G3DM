@@ -35,13 +35,16 @@ public class PostFormController {
 		modelAndView.addObject("listDisProgram", designerService.getAllDisPrograms());
 		modelAndView.addObject("listCategory", designerService.getAllCategories());
 		modelAndView.addObject("listPrinter", designerService.getAllPrinters());
-		modelAndView.addObject("ASD", "STRING OLL");
 		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView postValid(PostForm postForm, BindingResult result, @RequestParam("file") MultipartFile file)
+	public ModelAndView postValid(PostForm postForm, BindingResult result, @RequestParam("model") MultipartFile model, 
+			@RequestParam("firstPhotoModel") MultipartFile firstPhotoModel, @RequestParam("secondPhotoModel") MultipartFile secondPhotoModel,
+			@RequestParam("thirdPhotoModel") MultipartFile thirdPhotoModel)
 			throws Exception {
+		
+		String orgName = model.getOriginalFilename();
 
 		postValidator.validate(postForm, result);
 
@@ -49,19 +52,15 @@ public class PostFormController {
 			ModelAndView modelAndView = new ModelAndView("designer/addPost");
 			return modelAndView;
 		}
-		System.out.println("File uploaded.");
 
-		String orgName = file.getOriginalFilename();
 
-		final String PREFIX = this.getClass().getResource("/").getPath();
+//		final String PREFIX = this.getClass().getResource("/").getPath();
 //		C:\Java\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\G3DM\resources\files
-		System.out.println(PREFIX);
-		// Как задать путь не жестко???
-		String filePlaceToUpload = "C:/Users/User/git/G3DM/src/main/webapp/resources/files/";
-		String filePath = filePlaceToUpload + orgName;
-		File dest = new File(filePath);
-		file.transferTo(dest);
-		postForm.setFilePath(filePath);
+//		System.out.println(PREFIX);
+		postForm.setModelFilePath(designerService.modelFileUpload(model));
+		postForm.setFirstPhotoModelFilePath(designerService.photoModelFileUpload(firstPhotoModel));
+		postForm.setSecondPhotoModelFilePath(designerService.photoModelFileUpload(secondPhotoModel));
+		postForm.setThirdPhotoModelFilePath(designerService.photoModelFileUpload(thirdPhotoModel));
 		ModelAndView modelAndView = new ModelAndView("forward:/addPostDB");
 		modelAndView.addObject("postForm", postForm);
 		return modelAndView;

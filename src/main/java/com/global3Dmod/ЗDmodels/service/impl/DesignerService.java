@@ -1,5 +1,7 @@
 package com.global3Dmod.ÇDmodels.service.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,6 +9,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
@@ -108,6 +111,61 @@ public class DesignerService  implements IDesignerService{
 		}
 		
 	}
+
+	@Override
+	public String modelFileUpload(MultipartFile file) throws ServiceException {
+		String filePlaceToUpload = "C:/Users/User/git/G3DM/src/main/webapp/resources/files/models/";
+		String orgName = file.getOriginalFilename();
+		String filePath = filePlaceToUpload + orgName;
+		File dest = new File(filePath);
+		try {
+			file.transferTo(dest);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return filePath;
+		
+	}
+
+	@Override
+	public String photoModelFileUpload(MultipartFile file) throws ServiceException {
+		String filePlaceToUpload = "C:/Users/User/git/G3DM/src/main/webapp/resources/files/photosModel/";
+		String orgName = file.getOriginalFilename();
+		String filePath = filePlaceToUpload + orgName;
+		File dest = new File(filePath);
+		try {
+			file.transferTo(dest);
+			System.out.println(orgName);
+			System.out.println(file.getContentType());
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return filePath;
+		
+	}
+
+	@Override
+	public String avatarFileUpload(MultipartFile file) throws ServiceException {
+		String filePlaceToUpload = "C:/Users/User/git/G3DM/src/main/webapp/resources/files/avatars/";
+		String orgName = file.getOriginalFilename();
+		String filePath = filePlaceToUpload + orgName;
+		File dest = new File(filePath);
+		try {
+			file.transferTo(dest);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return filePath;
+		
+	}
+	
+	
 
 
 

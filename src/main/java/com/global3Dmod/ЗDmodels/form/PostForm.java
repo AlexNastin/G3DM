@@ -10,7 +10,10 @@ public class PostForm implements Essence{
 	private String title;
 	private String description;
 	private String instruction;
-	private String filePath;
+	private String modelFilePath;
+	private String firstPhotoModelFilePath;
+	private String secondPhotoModelFilePath;
+	private String thirdPhotoModelFilePath;
 	private String []printersId;
 	
 	public int getCategory_idCategory() {
@@ -49,11 +52,29 @@ public class PostForm implements Essence{
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
 	}
-	public String getFilePath() {
-		return filePath;
+	public String getModelFilePath() {
+		return modelFilePath;
 	}
-	public void setFilePath(String filePath) {
-		this.filePath = filePath;
+	public void setModelFilePath(String modelFilePath) {
+		this.modelFilePath = modelFilePath;
+	}
+	public String getFirstPhotoModelFilePath() {
+		return firstPhotoModelFilePath;
+	}
+	public void setFirstPhotoModelFilePath(String firstPhotoModelFilePath) {
+		this.firstPhotoModelFilePath = firstPhotoModelFilePath;
+	}
+	public String getSecondPhotoModelFilePath() {
+		return secondPhotoModelFilePath;
+	}
+	public void setSecondPhotoModelFilePath(String secondPhotoModelFilePath) {
+		this.secondPhotoModelFilePath = secondPhotoModelFilePath;
+	}
+	public String getThirdPhotoModelFilePath() {
+		return thirdPhotoModelFilePath;
+	}
+	public void setThirdPhotoModelFilePath(String thirdPhotoModelFilePath) {
+		this.thirdPhotoModelFilePath = thirdPhotoModelFilePath;
 	}
 	public String[] getPrintersId() {
 		return printersId;

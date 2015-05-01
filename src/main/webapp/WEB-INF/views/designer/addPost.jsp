@@ -54,10 +54,13 @@
 	<form:form modelAttribute="postForm" method="POST" id="add-post-form"
 		name="add-post-form" enctype="multipart/form-data">
 		<form:input id="title" name="title" path="title" placeholder="title"></form:input>
+		<span class="error"><form:errors path="title" /></span>
 		<form:input id="description" name="description" path="description"
 			placeholder="description"></form:input>
+			<span class="error"><form:errors path="description" /></span>
 		<form:input id="instruction" name="instruction" path="instruction"
 			placeholder="instruction"></form:input>
+			<span class="error"><form:errors path="instruction" /></span>
 		<form:select id="disProgram_idDisProgram"
 			name="disProgram_idDisProgram" path="disProgram_idDisProgram">
 			<c:forEach items="${listDisProgram}" var="disProgram">
@@ -82,16 +85,20 @@
 		<c:forEach items="${listPrinter}" var="printer">
 			<form:checkbox path="printersId" value="${printer.idPrinter}" />${printer.title}<br>
 		</c:forEach>
+		<span class="error"><form:errors path="printersId" /></span>
 		<br>
-        Model to upload: <input type="file" name="file">
-		<br>
+        Model to upload: <input type="file" name="model">
+        <span class="error"><form:errors path="model" /></span>
+        <br>
         Photo model to upload: <input type="file" name="firstPhotoModel">
-		<br>
-        Photo model to upload: <input type="file"
-			name="secondPhotoModel">
-		<br>
+        <span class="error"><form:errors path="firstPhoto" /></span>
+        <br>
+        Photo model to upload: <input type="file" name="secondPhotoModel">
+        <span class="error"><form:errors path="secondPhoto" /></span>
+        <br>
         Photo model to upload: <input type="file" name="thirdPhotoModel">
-		<br>
+        <span class="error"><form:errors path="thirdPhoto" /></span>
+        <br>
 		<input type="submit" value="Add" />
 	</form:form>
 </body>

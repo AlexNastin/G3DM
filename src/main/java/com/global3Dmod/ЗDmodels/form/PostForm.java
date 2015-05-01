@@ -1,5 +1,7 @@
 package com.global3Dmod.ÇDmodels.form;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class PostForm implements Essence{
@@ -10,10 +12,19 @@ public class PostForm implements Essence{
 	private String title;
 	private String description;
 	private String instruction;
+	
+	//path
 	private String modelFilePath;
 	private String firstPhotoModelFilePath;
 	private String secondPhotoModelFilePath;
 	private String thirdPhotoModelFilePath;
+	
+	//file
+	private MultipartFile model;
+	private MultipartFile firstPhoto;
+	private MultipartFile secondPhoto;
+	private MultipartFile thirdPhoto;
+	
 	private String []printersId;
 	
 	public int getCategory_idCategory() {
@@ -75,6 +86,30 @@ public class PostForm implements Essence{
 	}
 	public void setThirdPhotoModelFilePath(String thirdPhotoModelFilePath) {
 		this.thirdPhotoModelFilePath = thirdPhotoModelFilePath;
+	}
+	public MultipartFile getModel() {
+		return model;
+	}
+	public void setModel(MultipartFile model) {
+		this.model = model;
+	}
+	public MultipartFile getFirstPhoto() {
+		return firstPhoto;
+	}
+	public void setFirstPhoto(MultipartFile firstPhoto) {
+		this.firstPhoto = firstPhoto;
+	}
+	public MultipartFile getSecondPhoto() {
+		return secondPhoto;
+	}
+	public void setSecondPhoto(MultipartFile secondPhoto) {
+		this.secondPhoto = secondPhoto;
+	}
+	public MultipartFile getThirdPhoto() {
+		return thirdPhoto;
+	}
+	public void setThirdPhoto(MultipartFile thirdPhoto) {
+		this.thirdPhoto = thirdPhoto;
 	}
 	public String[] getPrintersId() {
 		return printersId;

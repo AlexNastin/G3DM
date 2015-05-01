@@ -167,8 +167,6 @@ public class DesignerService implements IDesignerService {
 		File dest = new File(filePath);
 		try {
 			file.transferTo(dest);
-			System.out.println(orgName);
-			System.out.println(file.getContentType());
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

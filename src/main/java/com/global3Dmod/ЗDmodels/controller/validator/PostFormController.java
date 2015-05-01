@@ -44,15 +44,20 @@ public class PostFormController {
 			@RequestParam("thirdPhotoModel") MultipartFile thirdPhotoModel)
 			throws Exception {
 		
-		String orgName = model.getOriginalFilename();
-
+		postForm.setModel(model);
+		postForm.setFirstPhoto(firstPhotoModel);
+		postForm.setSecondPhoto(secondPhotoModel);
+		postForm.setThirdPhoto(thirdPhotoModel);
+		
 		postValidator.validate(postForm, result);
 
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("designer/addPost");
+			modelAndView.addObject("listDisProgram", designerService.getAllDisPrograms());
+			modelAndView.addObject("listCategory", designerService.getAllCategories());
+			modelAndView.addObject("listPrinter", designerService.getAllPrinters());
 			return modelAndView;
 		}
-
 
 //		final String PREFIX = this.getClass().getResource("/").getPath();
 //		C:\Java\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\G3DM\resources\files

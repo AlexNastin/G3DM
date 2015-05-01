@@ -21,5 +21,6 @@
 		<mapping class="com.global3Dmod.printer.domain.PostPhoto" />
 		<mapping class="com.global3Dmod.printer.domain.Printer" />
 		<mapping class="com.global3Dmod.printer.domain.Rating" />
+		
 	</session-factory>
 </hibernate-configuration>

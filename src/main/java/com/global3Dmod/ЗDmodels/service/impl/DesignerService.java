@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.DisProgram;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Printer;
+import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.PostForm;
@@ -26,22 +29,22 @@ import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 
 @Service
-public class DesignerService  implements IDesignerService{
-	
+public class DesignerService implements IDesignerService {
+
 	private final String FORMAT_DATE = "yyyy-MM-dd";
 
 	@Autowired
 	private IDisProgramDAO disProgramDAO;
-	
+
 	@Autowired
 	private ICategoryDAO categoryDAO;
-	
+
 	@Autowired
 	private IPrinterDAO printerDAO;
-	
+
 	@Autowired
 	private IPostDAO postDAO;
-	
+
 	@Override
 	public List<DisProgram> getAllDisPrograms() throws ServiceException {
 		List<DisProgram> disPrograms;
@@ -52,7 +55,7 @@ public class DesignerService  implements IDesignerService{
 		}
 		return disPrograms;
 	}
-	
+
 	@Override
 	public List<Category> getAllCategories() throws ServiceException {
 		List<Category> categories;
@@ -63,7 +66,31 @@ public class DesignerService  implements IDesignerService{
 		}
 		return categories;
 	}
-	
+
+	@Override
+	public List<Subcategory> getAllSubcategoryWithinCategory(int id)
+			throws ServiceException {
+		List<Subcategory> subcategories = new ArrayList<Subcategory>();
+		List<Category> categories;
+		try {
+			categories = categoryDAO.selectAllCategories();
+			for (Category category : categories) {
+				if (category.getIdCategory() == id) {
+					List<Subcategory> subcategories2 = category
+							.getSubcategories();
+					for (Subcategory subcategory : subcategories2) {
+						subcategory.setCategory(null);
+
+					}
+					subcategories.addAll(subcategories2);
+				}
+			}
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return subcategories;
+	}
+
 	@Override
 	public List<Printer> getAllPrinters() throws ServiceException {
 		List<Printer> printers;
@@ -74,9 +101,10 @@ public class DesignerService  implements IDesignerService{
 		}
 		return printers;
 	}
-	
+
 	@Override
-	public List<Printer> getCheckPrintersById(String[] printersId) throws ServiceException {
+	public List<Printer> getCheckPrintersById(String[] printersId)
+			throws ServiceException {
 		List<Printer> printers;
 		try {
 			printers = printerDAO.selectCheckPrintersById(printersId);
@@ -94,7 +122,8 @@ public class DesignerService  implements IDesignerService{
 		Post post = new Post();
 		post.setUser_idUser(2);
 		post.setCategory_idCategory(postForm.getCategory_idCategory());
-		post.setSubcategory_idSubcategory(postForm.getSubcategory_idSubcategory());
+		post.setSubcategory_idSubcategory(postForm
+				.getSubcategory_idSubcategory());
 		post.setNumberPost("1111");
 		post.setDisProgram_idDisProgram(postForm.getDisProgram_idDisProgram());
 		post.setDateReg(registrationDate);
@@ -109,7 +138,7 @@ public class DesignerService  implements IDesignerService{
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-		
+
 	}
 
 	@Override
@@ -126,11 +155,12 @@ public class DesignerService  implements IDesignerService{
 			e.printStackTrace();
 		}
 		return filePath;
-		
+
 	}
 
 	@Override
-	public String photoModelFileUpload(MultipartFile file) throws ServiceException {
+	public String photoModelFileUpload(MultipartFile file)
+			throws ServiceException {
 		String filePlaceToUpload = "C:/Users/User/git/G3DM/src/main/webapp/resources/files/photosModel/";
 		String orgName = file.getOriginalFilename();
 		String filePath = filePlaceToUpload + orgName;
@@ -145,7 +175,7 @@ public class DesignerService  implements IDesignerService{
 			e.printStackTrace();
 		}
 		return filePath;
-		
+
 	}
 
 	@Override
@@ -162,11 +192,7 @@ public class DesignerService  implements IDesignerService{
 			e.printStackTrace();
 		}
 		return filePath;
-		
+
 	}
-	
-	
-
-
 
 }

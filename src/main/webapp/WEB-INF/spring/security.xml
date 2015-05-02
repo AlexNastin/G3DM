@@ -1,4 +1,3 @@
-
 <beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
@@ -6,5 +5,31 @@ http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
-	
+	<http auto-config="true">
+		<anonymous username="guest" granted-authority="ROLE_GUEST" />
+		<remember-me />
+		<intercept-url pattern="/about*" access="ROLE_USER" />
+		<intercept-url pattern="/**" access="ROLE_GUEST" />
+
+		<form-login login-page="/go/signin" default-target-url="/index"
+			authentication-failure-url="/go/signin?login_error=true"
+			login-processing-url="/static/j_spring_security_check" />
+		<logout logout-url="/logout" />
+
+
+
+	</http>
+	<authentication-manager>
+		<!--<authentication-provider> <user-service> <user name="admin" password="pass" 
+			authorities="ROLE_ADMIN,ROLE_USER" /> <user name="user1" password="1111" 
+			authorities="ROLE_USER" /> <user name="user2" password="2222" disabled="true" 
+			authorities="ROLE_USER" /> </user-service> </authentication-provider> -->
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select login,password, true from users where login=?"
+				authorities-by-username-query="select login, title from users, roles where 
+			role_idRole=idRole and login=?" />
+			<password-encoder hash="md5" />
+		</authentication-provider>
+	</authentication-manager>
 </beans:beans>

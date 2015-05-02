@@ -16,7 +16,7 @@
 <link href="<c:url value="/resources/css/sign.css"  />" rel="stylesheet" />
 <link rel="stylesheet" href="<c:url value="/resources/css/formValidation.css"/>">
 
-
+<spring:url var="authUrl" value="/static/j_spring_security_check" /> 
 <title><spring:message code="signin.signin" /></title>
 </head>
 <body>
@@ -25,25 +25,31 @@
 <div class="col-md-4"></div>
 <div class="col-md-4"></div>
 <div class="container col-md-3 sign-background">
- <form:form id="contact-form" class="form-horizontal">
+ <form id="contact-form" class="form-horizontal" method="post" action="${authUrl}">
+ <c:if test="${not empty param.error}">
+		<font color="red"> LOGIN ERORR
+			: ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message}
+		</font>
+	</c:if>
+   <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
   <div class="form-group sign-feld-margin-top">
     <div class="col-md-12">
-       <input type="text" class="form-control" required pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$" title="example@examle.com" id="inputEmail3" name="inputEmail3" path="inputEmail3" placeholder="Email">
+       <input type="text" class="form-control" required pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$" title="example@examle.com" id="inputEmail3" name="j_username"  placeholder="Email">
       </div>
      </div>
     <div class="form-group">
     <div class="col-md-12">   
     <div class="signin-margin-input">
-      <input type="password" class="form-control" id="inputPassword3" name="inputPassword3" required="" path="inputEmail3" placeholder="<spring:message code="signin.password" />">
+      <input type="password" class="form-control" id="inputPassword3" name="j_password" required="required"  placeholder="<spring:message code="signin.password" />">
     </div>
     </div>
-   
+  
   </div>
      <div class="form-group">
       <div class="col-md-8">
       <div class="checkbox">
         <label class="signin-text-color">
-          <input type="checkbox"><spring:message code="signin.rememberme" />
+          <input type="checkbox" name="_spring_security_remember_me" ><spring:message code="signin.rememberme" />
         </label>
       </div>
     </div>
@@ -56,7 +62,7 @@
       </button>
       </div>    
     </div>
-</form:form>
+</form>
 </div>
 <div class="clearfix"></div>
 </div>

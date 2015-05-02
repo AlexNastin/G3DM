@@ -30,7 +30,7 @@ public class PostPhoto implements Essence {
 //	@Column(name = "idPost")
 //	private int idPost;
 
-//	@Column(name = "photoPath")
+	@Column(name = "photoPath")
 	private String photoPath;
 	
 	@ManyToOne

@@ -165,7 +165,7 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public String modelFileUpload(MultipartFile file) throws ServiceException {
-		String filePlaceToUpload = "MODEL_PATH";
+		String filePlaceToUpload = MODEL_PATH;
 		String orgName = file.getOriginalFilename();
 		String filePath = filePlaceToUpload + orgName;
 		File dest = new File(filePath);
@@ -184,7 +184,7 @@ public class DesignerService implements IDesignerService {
 	@Override
 	public String photoModelFileUpload(MultipartFile file)
 			throws ServiceException {
-		String filePlaceToUpload = "PHOTO_MODEL_PATH";
+		String filePlaceToUpload = PHOTO_MODEL_PATH;
 		String orgName = file.getOriginalFilename();
 		String filePath = filePlaceToUpload + orgName;
 		File dest = new File(filePath);
@@ -201,7 +201,7 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public String avatarFileUpload(MultipartFile file) throws ServiceException {
-		String filePlaceToUpload = "AVATAR_PATH";
+		String filePlaceToUpload = AVATAR_PATH;
 		String orgName = file.getOriginalFilename();
 		String filePath = filePlaceToUpload + orgName;
 		File dest = new File(filePath);

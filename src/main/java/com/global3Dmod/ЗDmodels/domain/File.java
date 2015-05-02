@@ -28,8 +28,8 @@ public class File implements Essence {
 	@Column(name = "filePath")
 	private String filePath;
 	
-//	@JoinColumn(name = "post_idPost", referencedColumnName = "idPost", insertable=false, updatable=false)
-//	@ManyToOne(optional = false)
+//	@ManyToOne
+//	@JoinColumn(name = "idPost")
 //	private Post post;
 	
 	public File() {

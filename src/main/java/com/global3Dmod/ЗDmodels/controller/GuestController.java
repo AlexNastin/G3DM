@@ -77,4 +77,10 @@ public class GuestController {
 		return modelAndView;
 	}
 	
+	@RequestMapping(value = "/a", method = RequestMethod.GET)
+	public ModelAndView a(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("admin/admin");
+		return modelAndView;
+	}
+	
 }

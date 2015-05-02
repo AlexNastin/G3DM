@@ -50,7 +50,7 @@
       </div>
       <!--main content start-->
       
-      <div class="col-md-10 nopadding2">
+      <div class="nopadding2 col-md-10 ">
           <div class="mt">
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">

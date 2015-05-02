@@ -6,12 +6,14 @@ http://www.springframework.org/schema/security
 http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 	<http auto-config="true">
-		<anonymous username="guest" granted-authority="ROLE_GUEST" />
+		<access-denied-handler error-page="/403page" />
+		<anonymous username="GUEST" granted-authority="ROLE_GUEST" />
 		<remember-me />
-		<intercept-url pattern="/about*" access="ROLE_USER" />
-		<intercept-url pattern="/**" access="ROLE_GUEST" />
+		<intercept-url pattern="/user**" access="ROLE_USER" />
+		<intercept-url pattern="/admin**" access="ROLE_ADMIN" />
+		<intercept-url pattern="/**" access="ROLE_GUEST,ROLE_ADMIN,ROLE_USER" />
 
-		<form-login login-page="/go/signin" default-target-url="/index"
+		<form-login login-page="/go/signin"
 			authentication-failure-url="/go/signin?login_error=true"
 			login-processing-url="/static/j_spring_security_check" />
 		<logout logout-url="/logout" />

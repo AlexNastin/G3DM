@@ -1,5 +1,8 @@
 package com.global3Dmod.ÇDmodels.form.validator;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -10,9 +13,8 @@ import com.global3Dmod.ÇDmodels.form.PostForm;
 @Component
 public class PostFormValidator implements Validator{
 	
-	private final String ZIP = "application/x-zip-compressed";
-	private final String JPG = "image/jpeg";
-	private final String STL = "application/vnd.ms-pki.stl";
+	private final String MODEL = ".+\\.(rar|RAR|stl|STL|zip|ZIP)";
+	private final String PHOTO = ".+\\.(jpeg|JPEG|jpg|JPG)";
 
 	@Override
 	public boolean supports(Class<?> arg0) {
@@ -23,7 +25,8 @@ public class PostFormValidator implements Validator{
 	public void validate(Object target, Errors errors) {
 		PostForm postForm = (PostForm) target;
 		
-		
+		 Pattern model = Pattern.compile(MODEL);
+		 Pattern photo = Pattern.compile(PHOTO);
 		
 		
 		//title validation
@@ -57,8 +60,9 @@ public class PostFormValidator implements Validator{
 		
 		//model file validation
 		if (!postForm.getModel().isEmpty()) {
-			String contentType = postForm.getModel().getContentType();
-			if(!contentType.equalsIgnoreCase(STL) && !contentType.equalsIgnoreCase(ZIP)) {
+			String name = postForm.getModel().getOriginalFilename();
+			Matcher matcher = model.matcher(name);
+			if(!matcher.matches()) {
 				errors.rejectValue("model", "addPost.valid.file.format");
 			}
 		}
@@ -68,8 +72,9 @@ public class PostFormValidator implements Validator{
 		
 		//first photo file validation
 		if (!postForm.getFirstPhoto().isEmpty()) {
-			String contentType = postForm.getFirstPhoto().getContentType();
-			if(!contentType.equalsIgnoreCase(JPG)) {
+			String name = postForm.getFirstPhoto().getOriginalFilename();
+			Matcher matcher = photo.matcher(name);
+			if(!matcher.matches()) {
 				errors.rejectValue("firstPhoto", "addPost.valid.file.format");
 			}
 		}
@@ -79,8 +84,9 @@ public class PostFormValidator implements Validator{
 		
 		//second photo file validation
 		if (!postForm.getSecondPhoto().isEmpty()) {
-			String contentType = postForm.getSecondPhoto().getContentType();
-			if(!contentType.equalsIgnoreCase(JPG)) {
+			String name = postForm.getSecondPhoto().getOriginalFilename();
+			Matcher matcher = photo.matcher(name);
+			if(!matcher.matches()) {
 				errors.rejectValue("secondPhoto", "addPost.valid.file.format");
 			}
 		}
@@ -90,8 +96,9 @@ public class PostFormValidator implements Validator{
 		
 		//third photo file validation
 		if (!postForm.getThirdPhoto().isEmpty()) {
-			String contentType = postForm.getThirdPhoto().getContentType();
-			if(!contentType.equalsIgnoreCase(JPG)) {
+			String name = postForm.getThirdPhoto().getOriginalFilename();
+			Matcher matcher = photo.matcher(name);
+			if(!matcher.matches()) {
 				errors.rejectValue("thirdPhoto", "addPost.valid.file.format");
 			}
 		}

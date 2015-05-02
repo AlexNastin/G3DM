@@ -21,16 +21,13 @@ public class File implements Essence {
 	@Column(name = "idFile")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idFile;
-	
-	@Column(name = "post_idPost")
-	private int post_idPost;
 
 	@Column(name = "filePath")
 	private String filePath;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "idPost")
-//	private Post post;
+	@ManyToOne
+	@JoinColumn(name = "idPost")
+	private Post post;
 	
 	public File() {
 		super();
@@ -44,14 +41,6 @@ public class File implements Essence {
 		this.idFile = idFile;
 	}
 
-	public int getPost_idPost() {
-		return post_idPost;
-	}
-
-	public void setPost_idPost(int post_idPost) {
-		this.post_idPost = post_idPost;
-	}
-
 	public String getFilePath() {
 		return filePath;
 	}
@@ -60,13 +49,13 @@ public class File implements Essence {
 		this.filePath = filePath;
 	}
 	
-//	public Post getPost() {
-//		return post;
-//	}
-//
-//	public void setPost(Post post) {
-//		this.post = post;
-//	}
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
 
 	@Override
 	public int hashCode() {
@@ -75,7 +64,6 @@ public class File implements Essence {
 		result = prime * result
 				+ ((filePath == null) ? 0 : filePath.hashCode());
 		result = prime * result + idFile;
-		result = prime * result + post_idPost;
 		return result;
 	}
 
@@ -95,15 +83,12 @@ public class File implements Essence {
 			return false;
 		if (idFile != other.idFile)
 			return false;
-		if (post_idPost != other.post_idPost)
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "File [idFile=" + idFile + ", post_idPost=" + post_idPost
-				+ ", filePath=" + filePath + "]";
+		return "File [idFile=" + idFile + ", filePath=" + filePath + "]";
 	}
 	
 	

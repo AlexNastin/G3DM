@@ -1,18 +1,13 @@
 package com.global3Dmod.ÇDmodels.domain;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
@@ -26,9 +21,6 @@ public class PostPhoto implements Essence {
 	@Column(name = "idPostPhoto")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPostPhoto;
-	
-//	@Column(name = "idPost")
-//	private int idPost;
 
 	@Column(name = "photoPath")
 	private String photoPath;
@@ -48,14 +40,6 @@ public class PostPhoto implements Essence {
 	public void setIdPostPhoto(int idPostPhoto) {
 		this.idPostPhoto = idPostPhoto;
 	}
-
-//	public int getPost_idPost() {
-//		return idPost;
-//	}
-//
-//	public void setPost_idPost(int post_idPost) {
-//		this.idPost = post_idPost;
-//	}
 
 	public String getPhotoPath() {
 		return photoPath;
@@ -80,7 +64,6 @@ public class PostPhoto implements Essence {
 		result = prime * result + idPostPhoto;
 		result = prime * result
 				+ ((photoPath == null) ? 0 : photoPath.hashCode());
-//		result = prime * result + idPost;
 		return result;
 	}
 
@@ -100,8 +83,6 @@ public class PostPhoto implements Essence {
 				return false;
 		} else if (!photoPath.equals(other.photoPath))
 			return false;
-//		if (idPost != other.idPost)
-//			return false;
 		return true;
 	}
 

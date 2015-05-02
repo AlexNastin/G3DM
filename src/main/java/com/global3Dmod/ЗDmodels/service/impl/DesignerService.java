@@ -153,8 +153,12 @@ public class DesignerService implements IDesignerService {
 		postPhotos.add(firstPostPhoto);
 		postPhotos.add(secondPostPhoto);
 		postPhotos.add(thirdPostPhoto);
-		
 		post.setPostPhotos(postPhotos);
+		
+		com.global3Dmod.ÇDmodels.domain.File file = new com.global3Dmod.ÇDmodels.domain.File();
+		file.setFilePath(modelFileUpload(postForm.getModel()));
+		file.setPost(post);
+		post.setFile(file);
 		try {
 			postDAO.insertPost(post);
 		} catch (DaoException e) {

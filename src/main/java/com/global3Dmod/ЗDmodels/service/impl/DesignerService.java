@@ -6,7 +6,6 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +30,10 @@ import com.global3Dmod.ÇDmodels.service.IDesignerService;
 
 @Service
 public class DesignerService implements IDesignerService {
+	
+	private final String MODEL_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/files/models/";
+	private final String PHOTO_MODEL_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/files/photosModel/";
+	private final String AVATAR_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/files/avatars/";
 
 	private final String FORMAT_DATE = "yyyy-MM-dd";
 
@@ -117,20 +120,11 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public void addPost(PostForm postForm) throws ServiceException {
+//		postForm.setModelFilePath(modelFileUpload(postForm.getModel()));
 		DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
-		PostPhoto firstPostPhoto = new PostPhoto();
-		firstPostPhoto.setPhotoPath(postForm.getFirstPhotoModelFilePath());
-		System.out.println(postForm.getFirstPhotoModelFilePath()+"    1");
-		PostPhoto secondPostPhoto = new PostPhoto();
-		secondPostPhoto.setPhotoPath(postForm.getSecondPhotoModelFilePath());
-		PostPhoto thirdPostPhoto = new PostPhoto();
-		thirdPostPhoto.setPhotoPath(postForm.getThirdPhotoModelFilePath());
-		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
-		postPhotos.add(firstPostPhoto);
-		postPhotos.add(secondPostPhoto);
-		postPhotos.add(thirdPostPhoto);
+		
 		Post post = new Post();
 		post.setUser_idUser(2);
 		post.setCategory_idCategory(postForm.getCategory_idCategory());
@@ -145,6 +139,21 @@ public class DesignerService implements IDesignerService {
 		post.setDisplay(true);
 		post.setCountDownload(0);
 		post.setPrinters(getCheckPrintersById(postForm.getPrintersId()));
+		
+		PostPhoto firstPostPhoto = new PostPhoto();
+		firstPostPhoto.setPhotoPath(photoModelFileUpload(postForm.getFirstPhoto()));
+		firstPostPhoto.setPost(post);
+		PostPhoto secondPostPhoto = new PostPhoto();
+		secondPostPhoto.setPhotoPath(photoModelFileUpload(postForm.getSecondPhoto()));
+		secondPostPhoto.setPost(post);
+		PostPhoto thirdPostPhoto = new PostPhoto();
+		thirdPostPhoto.setPhotoPath(photoModelFileUpload(postForm.getThirdPhoto()));
+		thirdPostPhoto.setPost(post);
+		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
+		postPhotos.add(firstPostPhoto);
+		postPhotos.add(secondPostPhoto);
+		postPhotos.add(thirdPostPhoto);
+		
 		post.setPostPhotos(postPhotos);
 		try {
 			postDAO.insertPost(post);
@@ -156,7 +165,7 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public String modelFileUpload(MultipartFile file) throws ServiceException {
-		String filePlaceToUpload = "C:/Users/User/git/G3DM/src/main/webapp/resources/files/models/";
+		String filePlaceToUpload = "MODEL_PATH";
 		String orgName = file.getOriginalFilename();
 		String filePath = filePlaceToUpload + orgName;
 		File dest = new File(filePath);
@@ -168,13 +177,14 @@ public class DesignerService implements IDesignerService {
 			e.printStackTrace();
 		}
 		return filePath;
-
+		
+		
 	}
 
 	@Override
 	public String photoModelFileUpload(MultipartFile file)
 			throws ServiceException {
-		String filePlaceToUpload = "C:/Users/User/git/G3DM/src/main/webapp/resources/files/photosModel/";
+		String filePlaceToUpload = "PHOTO_MODEL_PATH";
 		String orgName = file.getOriginalFilename();
 		String filePath = filePlaceToUpload + orgName;
 		File dest = new File(filePath);
@@ -191,7 +201,7 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public String avatarFileUpload(MultipartFile file) throws ServiceException {
-		String filePlaceToUpload = "C:/Users/User/git/G3DM/src/main/webapp/resources/files/avatars/";
+		String filePlaceToUpload = "AVATAR_PATH";
 		String orgName = file.getOriginalFilename();
 		String filePath = filePlaceToUpload + orgName;
 		File dest = new File(filePath);

@@ -5,6 +5,14 @@
 
 <hibernate-configuration>
 	<session-factory>
+		 <!-- Database connection settings -->
+   		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+	    <property name="connection.url">jdbc:mysql://localhost:3306/db_global3dmod</property>
+	    <property name="connection.username">root</property>
+	    <property name="connection.password">root</property>
+	    <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+	    <property name="show_sql">true</property>
+	
 		<mapping class="com.global3Dmod.printer.domain.User" />
 		<mapping class="com.global3Dmod.printer.domain.Сity" />
 		<mapping class="com.global3Dmod.printer.domain.Сomment" />

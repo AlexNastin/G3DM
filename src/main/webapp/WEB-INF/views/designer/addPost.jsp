@@ -91,13 +91,13 @@
         Model to upload: <input type="file" name="model">
         <span class="error"><form:errors path="model" /></span>
         <br>
-        Photo model to upload: <input type="file" name="firstPhotoModel">
+        Photo model to upload: <input type="file" name="firstPhoto">
         <span class="error"><form:errors path="firstPhoto" /></span>
         <br>
-        Photo model to upload: <input type="file" name="secondPhotoModel">
+        Photo model to upload: <input type="file" name="secondPhoto">
         <span class="error"><form:errors path="secondPhoto" /></span>
         <br>
-        Photo model to upload: <input type="file" name="thirdPhotoModel">
+        Photo model to upload: <input type="file" name="thirdPhoto">
         <span class="error"><form:errors path="thirdPhoto" /></span>
         <br>
 		<input type="submit" value="Add" />

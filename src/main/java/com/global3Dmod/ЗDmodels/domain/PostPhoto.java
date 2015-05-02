@@ -1,13 +1,18 @@
 package com.global3Dmod.ÇDmodels.domain;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
@@ -22,14 +27,14 @@ public class PostPhoto implements Essence {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPostPhoto;
 	
-	@Column(name = "post_idPost")
-	private int post_idPost;
+//	@Column(name = "idPost")
+//	private int idPost;
 
-	@Column(name = "photoPath")
+//	@Column(name = "photoPath")
 	private String photoPath;
 	
-	@JoinColumn(name = "post_idPost", referencedColumnName = "idPost", insertable=false, updatable=false)
-	@ManyToOne(optional = false)
+	@ManyToOne
+	@JoinColumn(name = "idPost")
 	private Post post;
 	
 	public PostPhoto() {
@@ -44,13 +49,13 @@ public class PostPhoto implements Essence {
 		this.idPostPhoto = idPostPhoto;
 	}
 
-	public int getPost_idPost() {
-		return post_idPost;
-	}
-
-	public void setPost_idPost(int post_idPost) {
-		this.post_idPost = post_idPost;
-	}
+//	public int getPost_idPost() {
+//		return idPost;
+//	}
+//
+//	public void setPost_idPost(int post_idPost) {
+//		this.idPost = post_idPost;
+//	}
 
 	public String getPhotoPath() {
 		return photoPath;
@@ -75,7 +80,7 @@ public class PostPhoto implements Essence {
 		result = prime * result + idPostPhoto;
 		result = prime * result
 				+ ((photoPath == null) ? 0 : photoPath.hashCode());
-		result = prime * result + post_idPost;
+//		result = prime * result + idPost;
 		return result;
 	}
 
@@ -95,15 +100,14 @@ public class PostPhoto implements Essence {
 				return false;
 		} else if (!photoPath.equals(other.photoPath))
 			return false;
-		if (post_idPost != other.post_idPost)
-			return false;
+//		if (idPost != other.idPost)
+//			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "PostPhoto [idPostPhoto=" + idPostPhoto + ", post_idPost="
-				+ post_idPost + ", photoPath=" + photoPath + "]";
+		return "PostPhoto [idPostPhoto=" + idPostPhoto + ", photoPath=" + photoPath + "]";
 	}
 
 	

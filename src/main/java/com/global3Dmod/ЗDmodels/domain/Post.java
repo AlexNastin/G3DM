@@ -32,40 +32,40 @@ public class Post implements Essence {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPost;
 
-	@Column(name = "user_idUser")
+//	@Column(name = "user_idUser")
 	private int user_idUser;
 
-	@Column(name = "category_idCategory")
+//	@Column(name = "category_idCategory")
 	private int category_idCategory;
 
-	@Column(name = "subcategory_idSubcategory")
+//	@Column(name = "subcategory_idSubcategory")
 	private int subcategory_idSubcategory;
 	
-	@Column(name = "numberPost")
+//	@Column(name = "numberPost")
 	private String numberPost;
 	
-	@Column(name = "disProgram_idDisProgram")
+//	@Column(name = "disProgram_idDisProgram")
 	private int disProgram_idDisProgram;
 
-	@Column(name = "dateReg")
+//	@Column(name = "dateReg")
 	private String dateReg;
 	
-	@Column(name = "dateUpdate")
+//	@Column(name = "dateUpdate")
 	private String dateUpdate;
 
-	@Column(name = "title")
+//	@Column(name = "title")
 	private String title;
 
-	@Column(name = "description")
+//	@Column(name = "description")
 	private String description;
 
-	@Column(name = "instruction")
+//	@Column(name = "instruction")
 	private String instruction;
 
-	@Column(name = "isDisplay")
+//	@Column(name = "isDisplay")
 	private boolean isDisplay;
 
-	@Column(name = "countDownload")
+//	@Column(name = "countDownload")
 	private int countDownload;
 	
 	@ManyToMany
@@ -75,7 +75,7 @@ public class Post implements Essence {
 //	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //	private List<File> files;
 	
-	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
 	private List<PostPhoto> postPhotos;
 	
 	public Post() {

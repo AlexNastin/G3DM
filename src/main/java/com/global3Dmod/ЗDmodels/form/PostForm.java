@@ -13,12 +13,6 @@ public class PostForm implements Essence{
 	private String description;
 	private String instruction;
 	
-	//path
-	private String modelFilePath;
-	private String firstPhotoModelFilePath;
-	private String secondPhotoModelFilePath;
-	private String thirdPhotoModelFilePath;
-	
 	//file
 	private MultipartFile model;
 	private MultipartFile firstPhoto;
@@ -62,30 +56,6 @@ public class PostForm implements Essence{
 	}
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
-	}
-	public String getModelFilePath() {
-		return modelFilePath;
-	}
-	public void setModelFilePath(String modelFilePath) {
-		this.modelFilePath = modelFilePath;
-	}
-	public String getFirstPhotoModelFilePath() {
-		return firstPhotoModelFilePath;
-	}
-	public void setFirstPhotoModelFilePath(String firstPhotoModelFilePath) {
-		this.firstPhotoModelFilePath = firstPhotoModelFilePath;
-	}
-	public String getSecondPhotoModelFilePath() {
-		return secondPhotoModelFilePath;
-	}
-	public void setSecondPhotoModelFilePath(String secondPhotoModelFilePath) {
-		this.secondPhotoModelFilePath = secondPhotoModelFilePath;
-	}
-	public String getThirdPhotoModelFilePath() {
-		return thirdPhotoModelFilePath;
-	}
-	public void setThirdPhotoModelFilePath(String thirdPhotoModelFilePath) {
-		this.thirdPhotoModelFilePath = thirdPhotoModelFilePath;
 	}
 	public MultipartFile getModel() {
 		return model;

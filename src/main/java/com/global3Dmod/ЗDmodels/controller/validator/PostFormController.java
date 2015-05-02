@@ -40,14 +40,14 @@ public class PostFormController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView postValid(PostForm postForm, BindingResult result, @RequestParam("model") MultipartFile model, 
-			@RequestParam("firstPhotoModel") MultipartFile firstPhotoModel, @RequestParam("secondPhotoModel") MultipartFile secondPhotoModel,
-			@RequestParam("thirdPhotoModel") MultipartFile thirdPhotoModel)
+			@RequestParam("firstPhoto") MultipartFile firstPhoto, @RequestParam("secondPhoto") MultipartFile secondPhoto,
+			@RequestParam("thirdPhoto") MultipartFile thirdPhoto)
 			throws Exception {
 		
 		postForm.setModel(model);
-		postForm.setFirstPhoto(firstPhotoModel);
-		postForm.setSecondPhoto(secondPhotoModel);
-		postForm.setThirdPhoto(thirdPhotoModel);
+		postForm.setFirstPhoto(firstPhoto);
+		postForm.setSecondPhoto(secondPhoto);
+		postForm.setThirdPhoto(thirdPhoto);
 		
 		postValidator.validate(postForm, result);
 
@@ -62,10 +62,6 @@ public class PostFormController {
 //		final String PREFIX = this.getClass().getResource("/").getPath();
 //		C:\Java\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\G3DM\resources\files
 //		System.out.println(PREFIX);
-		postForm.setModelFilePath(designerService.modelFileUpload(model));
-		postForm.setFirstPhotoModelFilePath(designerService.photoModelFileUpload(firstPhotoModel));
-		postForm.setSecondPhotoModelFilePath(designerService.photoModelFileUpload(secondPhotoModel));
-		postForm.setThirdPhotoModelFilePath(designerService.photoModelFileUpload(thirdPhotoModel));
 		ModelAndView modelAndView = new ModelAndView("forward:/addPostDB");
 		modelAndView.addObject("postForm", postForm);
 		return modelAndView;

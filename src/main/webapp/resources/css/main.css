@@ -1317,3 +1317,18 @@ input:-moz-placeholder {
 	margin-bottom:3%;
 	backgroung-color: white;
 }
+.categorytxt{
+	color:black;
+	
+}
+.categorytxt:hover{
+	color:red;
+	
+}
+.mainbutton{
+	background-color:#3508D8;
+}
+.mainbutton:hover{
+	background-color:#240690;
+}
+

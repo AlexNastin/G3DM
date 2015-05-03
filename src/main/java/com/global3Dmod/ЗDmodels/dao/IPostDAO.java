@@ -12,6 +12,8 @@ public interface IPostDAO {
 	public void insertPost(Post post) throws DaoException;
 
 	public List<Post> selectAllPosts() throws DaoException;
+	
+	public List<Post> selectPostsByDesigner(Integer id) throws DaoException;
 
 	public void deletePost(Integer id) throws DaoException;
 

@@ -759,6 +759,13 @@ div#carousel ~ span:hover { color: #888; cursor: pointer; }
 	font-weight: 500;
 	margin-bottom:2em;
 }
+.footer h4{
+	color: black;
+	font-size: 1.5em;
+	font-weight: 500;
+	margin-bottom:2em;
+}
+
 .footer span {
 	background: rgba(111, 111, 111, 0.17);
 	border: 1px solid #5b5953;
@@ -823,7 +830,7 @@ ul.list1 li a{
 	padding-bottom:4em;
 }
 .footer-grid h4 {
-	color: #fff;
+	color: black;
 	font-size: 1.1em;
 	font-weight: 500;
 	margin-bottom: 1em;

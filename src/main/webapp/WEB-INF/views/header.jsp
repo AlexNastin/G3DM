@@ -16,7 +16,10 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
             <ul class="nav navbar-nav navbar-left">
                 <!-- put some links here -->
-                </ul>
+                <li><a class="fa fa-facebook-official fa-2x"></a></li>
+                <li><a class="fa fa-twitter fa-2x"></a></li>
+                
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<c:url value="/about"/>"><spring:message code="main.about" /></a></li>
                 <li><a href="<c:url value="/d"/>"><spring:message code="main.servises" /></a></li>

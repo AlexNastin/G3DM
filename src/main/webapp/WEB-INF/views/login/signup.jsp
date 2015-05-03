@@ -32,8 +32,8 @@
 	<form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="signupForm" method="POST">
 	    <div class="form-group sign-feld-margin-top">
 	    <div class="col-md-12">
-		<form:radiobutton path="role_idRole" value="2"  /><spring:message code="signup.designer" />
-		<form:radiobutton path="role_idRole" value="3"  /><spring:message code="signup.user" />
+		<form:radiobutton path="role_idRole" value="3"  /><spring:message code="signup.designer" />
+		<form:radiobutton path="role_idRole" value="2"  /><spring:message code="signup.user" />
 		<span class="error"><form:errors path="role_idRole" /></span>
 		</div>
 		</div>

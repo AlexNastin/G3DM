@@ -32,7 +32,7 @@ uri="http://www.springframework.org/security/tags" %>
 <body>
 <!-- Here some place for ads -->
 
-	<%@include file="/WEB-INF/views/header.jsp" %>   
+	<%@include file="/WEB-INF/views/header/header.jsp" %>   
 
 <div class="banner">
     <div class="container_wrap">

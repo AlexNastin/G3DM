@@ -20,7 +20,7 @@
 <title><spring:message code="signin.signin" /></title>
 </head>
 <body>
-<%@include file="/WEB-INF/views/header.jsp" %>  
+<%@include file="/WEB-INF/views/header/header.jsp" %>  
 <div class="signup-background">
 <div class="col-md-4"></div>
 <div class="col-md-4"></div>

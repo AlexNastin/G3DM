@@ -18,7 +18,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%@include file="/WEB-INF/views/header.jsp" %>
+<%@include file="/WEB-INF/views/header/header.jsp" %>
 <div class="container">
 <div class="row">
 <div class="font-contact line-contact col-md-8">

@@ -30,7 +30,7 @@
 <body>
 <!-- Here some place for ads. After placing ads you may delete "placeforads" css class in header -->
 
-	<%@include file="/WEB-INF/views/headerWithSearch.jsp" %>  
+	<%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>  
 	<!-- Designer's page will start here -->
 	     
 	      <!--sidebar start-->

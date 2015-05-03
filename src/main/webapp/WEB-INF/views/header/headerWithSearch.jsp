@@ -1,6 +1,22 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<security:authorize access="hasRole('ROLE_USER')" var="userBool"/>
+<security:authorize access="hasRole('ROLE_DESIGNER')" var="designerBool"/>
+<security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool"/>
+<security:authorize access="hasRole('ROLE_MAINADMIN')" var="mainAdminBool"/>
 
+<c:if test="${userBool}">
+<c:set value="/user/profile" var="profileURL" />
+</c:if>
+<c:if test="${designerBool}">
+<c:set value="/designer/profile" var="profileURL" />
+</c:if>
+<c:if test="${adminBool}">
+<c:set value="/admin/profile" var="profileURL" />
+</c:if>
+<c:if test="${mainAdminBool}">
+<c:set value="/main_admin/profile" var="profileURL" />
+</c:if>
 <div class="row placeForAds"> 
 <nav class="navbar navbar-default">
     <div class="container">
@@ -46,8 +62,8 @@
       				</button>
       				</security:authorize>
       				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_ADMIN', 'ROLE_MAINADMIN')">
-                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/logout" />"'>
-      				Logout
+                    <button type="button" class="btn btn-default btn-outline btn-circle"  onClick='location.href="<c:url value="${profileURL}" />"'>
+      				Profile
       				</button>
       				</security:authorize>
                 </li>

@@ -22,9 +22,6 @@
       </form>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<c:url value="/about"/>"><spring:message code="main.about" /></a></li>
-                <li><a href="<c:url value="/designer"/>"><spring:message code="main.servises" /></a></li>
-                <li><a href="<c:url value="/addPost"/>"><spring:message code="main.works" /></a></li>
-                <li><a href="#"><spring:message code="main.news" /></a></li>
                 <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Partners <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">

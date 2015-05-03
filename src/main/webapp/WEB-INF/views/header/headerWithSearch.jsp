@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <div class="row placeForAds"> 
 <nav class="navbar navbar-default">
     <div class="container">
@@ -37,9 +39,16 @@
                 <li><a href="<c:url value="/contact"/>"><spring:message code="main.contact" /></a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
-                    <li><button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signin" />"'>
-      <spring:message code="main.signin" />
-      </button>
+                    <li><security:authorize access="isAnonymous()">
+                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signin" />"'>
+      				<spring:message code="main.signin" />
+      				</button>
+      				</security:authorize>
+      				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_ADMIN', 'ROLE_MAINADMIN')">
+                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/logout" />"'>
+      				Logout
+      				</button>
+      				</security:authorize>
                 </li>
             </ul>
 

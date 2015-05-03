@@ -20,7 +20,7 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 		<form-login login-page="/go/signin"
 			authentication-failure-url="/go/signin?login_error=true"
 			login-processing-url="/static/j_spring_security_check" />
-		<logout logout-url="/logout" />
+		<logout logout-url="/logout" logout-success-url="/index" />
 
 
 

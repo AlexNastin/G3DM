@@ -48,7 +48,7 @@
       				</button>
       				</security:authorize>
       				<security:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_MAINADMIN')">
-                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signup" />"'>
+                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/logout" />"'>
       				Logout
       				</button>
       				</security:authorize>

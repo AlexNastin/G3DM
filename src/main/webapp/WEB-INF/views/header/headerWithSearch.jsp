@@ -1,5 +1,6 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+
 <div class="row placeForAds"> 
 <nav class="navbar navbar-default">
     <div class="container">

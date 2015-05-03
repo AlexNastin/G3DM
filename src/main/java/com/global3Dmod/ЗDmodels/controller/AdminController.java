@@ -15,6 +15,12 @@ public class AdminController {
 		ModelAndView modelAndView = new ModelAndView("admin/userstable");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/admin/profile", method = RequestMethod.GET)
+	public ModelAndView a(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("admin/admin");
+		return modelAndView;
+	}
 
 }
 

@@ -74,42 +74,6 @@ public class GuestController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/d", method = RequestMethod.GET)
-	public ModelAndView d(Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("designer/designer");
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/u", method = RequestMethod.GET)
-	public ModelAndView u(Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("user/user");
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/a", method = RequestMethod.GET)
-	public ModelAndView a(Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("admin/admin");
-		return modelAndView;
-	}
-
-	@RequestMapping("user")
-	public ModelAndView geUserPage() {
-		ModelAndView modelAndView = new ModelAndView("user/user");
-		return modelAndView;
-	}
-
-	@RequestMapping("admin")
-	public ModelAndView geAdminPage() {
-		ModelAndView modelAndView = new ModelAndView("admin/admin");
-		return modelAndView;
-	}
-
-	@RequestMapping("designer")
-	public ModelAndView geDesignerPage() {
-		ModelAndView modelAndView = new ModelAndView("designer/designer");
-		return modelAndView;
-	}
-
 	@RequestMapping("403page")
 	public ModelAndView ge403denied() {
 		ModelAndView modelAndView = new ModelAndView("error/403page");

@@ -50,6 +50,12 @@ public class DesignerController {
 //		}
 //	}
 	
+	@RequestMapping(value = "/designer/profile", method = RequestMethod.GET)
+	public ModelAndView d(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("designer/designer");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value = "/addPostDB", method = RequestMethod.POST)
 	public ModelAndView addPostDB(PostForm postForm, Locale locale, Model model) throws Exception {
 			designerService.addPost(postForm);

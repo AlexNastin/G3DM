@@ -42,14 +42,31 @@
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
                     <li>
-                    <security:authorize access="isAnonymous()">
+                   <security:authorize access="isAnonymous()">
                     <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signin" />"'>
       				<spring:message code="main.signin" />
       				</button>
       				</security:authorize>
-      				<security:authorize access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_MAINADMIN')">
+      				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_ADMIN', 'ROLE_MAINADMIN')">
                     <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/logout" />"'>
       				Logout
+      				</button>
+      				</security:authorize>
+                </li>
+                  <li>
+      				<security:authorize access="hasAnyRole('ROLE_DESIGNER')">
+                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/designer/profile" />"'>
+      				Profile
+      				</button>
+      				</security:authorize>
+      				<security:authorize access="hasAnyRole('ROLE_USER')">
+                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/user/profile" />"'>
+      				Profile
+      				</button>
+      				</security:authorize>
+      				<security:authorize access="hasAnyRole('ROLE_ADMIN', 'ROLE_MAINADMIN')">
+                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/admin/profile" />"'>
+      				Profile
       				</button>
       				</security:authorize>
                 </li>

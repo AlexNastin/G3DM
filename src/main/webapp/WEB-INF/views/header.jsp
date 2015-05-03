@@ -18,6 +18,8 @@
                 <!-- put some links here -->
                 <li><a class="fa fa-facebook-official fa-2x"></a></li>
                 <li><a class="fa fa-twitter fa-2x"></a></li>
+                <li><a class="fa fa-vk fa-2x"></a></li>
+                
                 
             </ul>
             <ul class="nav navbar-nav navbar-right">

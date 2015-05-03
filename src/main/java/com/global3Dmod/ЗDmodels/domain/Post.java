@@ -16,16 +16,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.persistence.Table;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "POSTS")
-@NamedQuery(name="Post.findAll", query="select p from Post p")
+@NamedQueries({
+	@NamedQuery(name="Post.findAll", query="select p from Post p"),
+	@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p where p.user_idUser = :idUser")})
 public class Post implements Essence {
 
 	@Id

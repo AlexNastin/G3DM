@@ -2,6 +2,7 @@ package com.global3Dmod.ÇDmodels.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
@@ -68,5 +70,16 @@ public class DesignerController {
 			
 			return "AAAABBBBBCCCCC";
 		}
+	
+	@RequestMapping(value = "/test", method = RequestMethod.GET)
+	public ModelAndView test(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("designer/postsByDesigner");
+		List<Post> posts = designerService.getPostsByDesigner(3);
+		for (Post post : posts) {
+			System.out.println(post.getTitle());
+		}
+		modelAndView.addObject("listPostsByDesigner", posts);
+		return modelAndView;
+	}
 
 }

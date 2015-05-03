@@ -79,5 +79,4 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("error/403page");
 		return modelAndView;
 	}
-
 }

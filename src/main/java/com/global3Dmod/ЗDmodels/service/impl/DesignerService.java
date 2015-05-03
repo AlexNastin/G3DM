@@ -220,4 +220,15 @@ public class DesignerService implements IDesignerService {
 
 	}
 
+	@Override
+	public List<Post> getPostsByDesigner(Integer id) throws ServiceException {
+		List<Post> posts;
+		try {
+			posts = postDAO.selectPostsByDesigner(id);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return posts;
+	}
+
 }

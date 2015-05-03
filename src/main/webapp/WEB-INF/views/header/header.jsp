@@ -44,6 +44,7 @@
                 
             </ul>
             <ul class="nav navbar-nav navbar-right">
+           		<li><a href="<c:url value="/test"/>">TEST</a></li>
                 <li><a href="<c:url value="/about"/>"><spring:message code="main.about" /></a></li>
                 <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Partners <span class="caret"></span></a>

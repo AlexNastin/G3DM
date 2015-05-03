@@ -69,4 +69,12 @@ public class PostDAOImpl implements IPostDAO {
 		
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Post> selectPostsByDesigner(Integer id) throws DaoException {
+		List<Post> post = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", id).getResultList();
+		return post;
+	}
+
 }

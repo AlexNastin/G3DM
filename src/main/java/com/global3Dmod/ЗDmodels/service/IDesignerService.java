@@ -6,6 +6,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.DisProgram;
+import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Printer;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
@@ -31,7 +32,8 @@ public interface IDesignerService {
 
 	public String avatarFileUpload(MultipartFile file) throws ServiceException;
 
-	public List<Subcategory> getAllSubcategoryWithinCategory(int id)
-			throws ServiceException;
+	public List<Subcategory> getAllSubcategoryWithinCategory(int id) throws ServiceException;
+	
+	public List<Post> getPostsByDesigner(Integer id) throws ServiceException;
 
 }

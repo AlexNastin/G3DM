@@ -21,7 +21,7 @@
 <script src="<c:url value="/resources/js/bootstrap.min.js" />">
 	
 </script>
-<spring:url value="/get/subCategories" var="subCategoriesUrl" />
+<c:set value="/get/subCategories" var="subCategoriesUrl" />
 <script type="text/javascript">
 	function updateSelectOptions(lookupUrl, parentSelectElementId,
 			childSelectElementId) {

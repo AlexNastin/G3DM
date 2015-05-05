@@ -84,7 +84,7 @@
 </div>
 <div class="row nomargin">
 <div class="col-md-2"><h3 class="nothingelsematters">die</h3></div>
- <div class="carousel-container contanier col-md-9">
+ <div class="carousel-container contanier col-md-8">
   
 			<!-- Codrops top bar -->
 			

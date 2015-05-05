@@ -82,6 +82,7 @@
     <div class="item text">Our tops</div>
     <div class="item line"></div>
 </div>
+<div class="clearfix"></div>
 <div class="row nomargin">
 <div class="col-md-2"><h3 class="nothingelsematters">die</h3></div>
  <div class="carousel-container contanier col-md-8">
@@ -114,7 +115,7 @@
 		</div><!-- /container -->
 		
 		
-		 <div class="col-md-2"> <hr></div>
+		 <div class="col-md-2"></div>
 		 </div>
     <div class="clearfix"></div>
     <br>

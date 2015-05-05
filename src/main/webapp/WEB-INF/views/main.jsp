@@ -46,9 +46,15 @@
         <div class="clearfix"></div>
     </div>
 </div>
-    <section id="portfolio">
-        <div class="container">
-<center><h1><spring:message code="main.categories" /></h1></center>					
+    
+       
+        <div class="group container">
+    <div class="item line"></div>
+    <div class="item text"><spring:message code="main.categories" /></div>
+    <div class="item line"></div>
+</div>
+ <div class="container">
+			<section id="portfolio">
             <div class="row portfolio-items"> 
             <!--1st element-->
              <c:forEach items="${listCategory}" var="category" >
@@ -71,7 +77,11 @@
                     </div>
             </c:forEach>
 </section>
-
+ <div class="group container">
+    <div class="item line"></div>
+    <div class="item text">Our tops</div>
+    <div class="item line"></div>
+</div>
 <div class="row nomargin">
 <div class="col-md-2"><h3 class="nothingelsematters">die</h3></div>
  <div class="carousel-container contanier col-md-9">
@@ -104,7 +114,7 @@
 		</div><!-- /container -->
 		
 		
-		 <div class="col-md-2"></div>
+		 <div class="col-md-2"> <hr></div>
 		 </div>
     <div class="clearfix"></div>
     <br>

@@ -25,7 +25,7 @@
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-    <link rel="icon" href="<c:url value="resources/images/favicon.png" />" type="image/x-icon">
+    <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
    </head>
 <body>
 <!-- Here some place for ads. After placing ads you may delete "placeforads" css class in header -->
@@ -38,7 +38,7 @@
       <div class="row">
       <div class="col-md-2 nopadding1">
       <div class="list-group">
-      <img src="<c:url value="resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
+      <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
   <a href="#" class="list-group-item active">
     Posts board
   </a>

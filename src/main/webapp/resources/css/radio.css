@@ -1,0 +1,79 @@
+@CHARSET "UTF-8";
+.css-checkbox {
+							position:absolute; z-index:-1000; left:-1000px; overflow: hidden; clip: rect(0 0 0 0); height:1px; width:1px; margin:-1px; padding:0; border:0;
+						}
+
+						.css-checkbox + .css-label {
+							padding-left:27px;
+							height:22px; 
+							display:inline-block;
+							line-height:22px;
+							background-repeat:no-repeat;
+							background-position: 0 0;
+							font-size:20px;
+							vertical-align:middle;
+							cursor:pointer;
+
+						}
+
+						.css-checkbox:checked + .css-label {
+							background-position: 0 -22px;
+						}
+						.css-label {
+				background-image:url(../images/radio.png);
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+				-khtml-user-select: none;
+				-moz-user-select: none;
+				-ms-user-select: none;
+				user-select: none;
+			}
+			
+			
+			
+$DarkBrown: #292321;
+
+$Orange: #CC3300;
+
+.rad {
+  margin:0 0 0.75em 0;
+}
+.radiob {
+    display:none;
+}
+.radiob + .slabel {
+    color: $DarkBrown;
+    font-family:Arial, sans-serif;
+    font-size:14px;
+}
+.radiob + .slabel .sspan {
+    display:inline-block;
+    width:19px;
+    height:19px;
+    margin:-1px 4px 0 0;
+    vertical-align:middle;
+    cursor:pointer;
+    -moz-border-radius:  50%;
+    border-radius:  50%;
+}
+
+.radiob + .slabel .sspan {
+     background-color:#292321;
+}
+
+.radiob:checked + .slabel .sspan{
+     background-color:#CC3300;
+}
+
+.radiob + .slabel .sspan,
+.radiob:checked + .slabel .sspan, {
+  -webkit-transition:background-color 0.4s linear;
+  -o-transition:background-color 0.4s linear;
+  -moz-transition:background-color 0.4s linear;
+  transition:background-color 0.4s linear;
+}
+
+
+
+
+

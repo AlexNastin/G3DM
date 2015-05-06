@@ -15,7 +15,7 @@
 <link href="<c:url value="/resources/css/feature-carousel.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/sign.css"  />" rel="stylesheet" />
 <link rel="stylesheet" href="<c:url value="/resources/css/formValidation.css"/>">
-
+<link href="<c:url value="/resources/css/radio.css"  />" rel="stylesheet" />
 <title><spring:message code="signup.signup" /></title>
 <spring:message code="signup.login" var="login"/>
 <spring:message code="signup.password" var="password"/>
@@ -30,11 +30,17 @@
 <div class="col-md-4"></div>
 <div class="container col-md-3 sign-background">
 	<form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="signupForm" method="POST">
-	    <div class="form-group sign-feld-margin-top">
-	    <div class="col-md-12">
-		<form:radiobutton path="role_idRole" value="3"  /><spring:message code="signup.designer" />
-		<form:radiobutton path="role_idRole" value="2"  /><spring:message code="signup.user" />
-		<span class="error"><form:errors path="role_idRole" /></span>
+	   <div class="form-group sign-feld-margin-top">
+	   <div class="col-md-12">
+	   <div class="row">
+	   <div class="col-md-5">
+	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio1" value="3"  /><label for="radio1" class="css-label"><spring:message code="signup.designer" /></label>
+	   </div>
+	   <div class="col-md-4">
+	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label for="radio2" class="css-label"><spring:message code="signup.user" /></label>
+	   </div>
+	   </div>
+	   <span class="error"><form:errors path="role_idRole" /></span>
 		</div>
 		</div>
 		<div class="form-group">

@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="global3dmod team">
-    <link href="<c:url value="/resources/css/bootstrap.css"  />" rel="stylesheet" />
+   
     <link href="<c:url value="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
      <link href="<c:url value="resources/css/fontawesome430/css/font-awesome.min.css"  />" rel="stylesheet" />

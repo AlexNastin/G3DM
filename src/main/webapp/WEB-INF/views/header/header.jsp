@@ -61,9 +61,10 @@
                 <li><a href="<c:url value="/contact"/>"><spring:message code="header.header.contact" /></a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
-                    <li>
+                   
+                    <li class="buttons-right">
                    <security:authorize access="isAnonymous()">
-                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signin" />"'>
+                    <button type="button" class="btn btn-default btn-outline btn-circle navi" onClick='location.href="<c:url value="/go/signin" />"'>
       				<spring:message code="header.header.signin" />
       				</button>
       				</security:authorize>
@@ -81,6 +82,7 @@
       				</security:authorize>
       		
                 </li>
+                
             </ul>
 
         </div><!-- /.navbar-collapse -->

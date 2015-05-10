@@ -925,7 +925,7 @@ navi-top{
 
 .mi-slider ul.mi-current {
 	pointer-events: auto;
-	  margin-left: -4%;
+	  background-color:ghostwhite;
 }
 
 .mi-slider ul li {
@@ -1369,4 +1369,13 @@ input:-moz-placeholder {
 @media (min-width:768px){.navbar>.container .navbar-brand,.navbar>.container-fluid .navbar-brand{margin-left:-50%}}
 .sliderup{
 	margin-top:-9%;
+}
+.buttons-right{
+	padding-left:3%
+	
+}
+.mi-slider ul:first-child li:first-child {
+  -webkit-animation-delay: 90ms;
+  animation-delay: 90ms;
+  margin-left: -5%;
 }

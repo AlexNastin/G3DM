@@ -9,7 +9,7 @@
 <head>
 <title>Global3Dmod</title>
 <!-- Init search variable -->
-<spring:message code="main.search" var="search"/>
+<spring:message code="main.search.search" var="search"/>
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,14 +18,14 @@
    
     <link href="<c:url value="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
-     <link href="<c:url value="resources/css/fontawesome430/css/font-awesome.min.css"  />" rel="stylesheet" />
+     <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.min.css"  />" rel="stylesheet" />
      
     
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
     <script src="js/respond.min.js"></script>
     <![endif]-->
-    <link rel="icon" href="<c:url value="resources/images/favicon.png" />" type="image/x-icon">
+    <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
    </head>
 <body>
 <!-- Here some place for ads -->
@@ -34,11 +34,11 @@
 
 <div class="banner">
     <div class="container_wrap">
-        <h1><spring:message code="main.searchUp" /></h1>
+        <h1><spring:message code="main.search.searchUp" /></h1>
         <div class="col-md-4"></div>
             <form class="col-md-4">
             <div class="input-group" style="width:100%; text-align:center;margin:0 auto;">
-            <input class="form-control input-lg" placeholder="<spring:message code="main.searchInto" />" type="text">
+            <input class="form-control input-lg" placeholder="<spring:message code="main.search.searchInto" />" type="text">
               <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">${search}</button></span>
             </div>
           </form>
@@ -50,7 +50,7 @@
        
         <div class="group container">
     <div class="item line"></div>
-    <div class="item text"><spring:message code="main.categories" /></div>
+    <div class="item text"><spring:message code="main.categories.categories" /></div>
     <div class="item line"></div>
 </div>
  <div class="container">
@@ -98,16 +98,16 @@
 						<li><a href="#"><img src=<c:url value="/resources/images/categories/home.jpg" /> alt=""><h4>Boots</h4></a></li>
 					</ul>
 					<ul>
-						<li><a href="#"><img src=<c:url value="resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
 					</ul>
 					
 					
 					<nav>
-						<a href="#"><spring:message code="main.topModels" /></a>
-						<a href="#"><spring:message code="main.topDesigners" /></a>
+						<a href="#"><spring:message code="main.top.topModels" /></a>
+						<a href="#"><spring:message code="main.top.topDesigners" /></a>
 						
 					</nav>
 				</div>

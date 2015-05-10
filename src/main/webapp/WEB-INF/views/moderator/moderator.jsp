@@ -7,7 +7,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Designer's page | Global3dmod</title>
+<title>Admin's page | Global3dmod</title>
 <!-- Init search variable -->
 <spring:message code="headerWithSearch.header.search" var="search"/>
 
@@ -40,9 +40,9 @@
       <div class="list-group">
       <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
   <a href="#" class="list-group-item active">
-    My works
+    Posts board
   </a>
-  <a href="#" class="list-group-item">Settings</a>
+  <a href="<c:url value="/moderator/userstable" />" class="list-group-item">Users board</a>
   <a href="#" class="list-group-item">add work</a>
   <a href="#" class="list-group-item">Lorem ipsum</a>
   <a href="#" class="list-group-item">Lorem ipsum</a>
@@ -55,13 +55,31 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <div> <h2><i class="fa fa-angle-right"></i> My works</h2>
+                             <h2><i class="fa fa-angle-right"></i> Posts</h2>
                               <hr>
+                              <!-- Some sorts for table -->
+                              <div class="row">  
+											  <div class="col-md-3">
+											    <div class="input-group">
+											      <input type="text" class="form-control" aria-label="..." placeholder="Sort posts...">
+											      <div class="input-group-btn">
+											        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Sort by: <span class="caret"></span></button>
+											        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+											          <li><a href="#">By date</a></li>
+											          <li><a href="#">By rating</a></li>
+											          <li><a href="#">By downloads</a></li>											          
+											          <li><a href="#">By name</a></li>
+											        </ul>
+											      </div><!-- /btn-group -->
+											    </div><!-- /input-group -->
+											  </div><!-- /.col-lg-6 -->
+											</div><!-- /.row -->
                               <thead>
                               <tr>
                                   <th><i class="fa fa-bullhorn"></i> Project</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
                                   <th>Number</th>
+                                  <th> Date </th>
                                   <th><i class="fa fa-bookmark"></i> Downloads</th>
                                   <th><i class=" fa fa-edit"></i> Status</th>
                                   <th><i class="fa fa-pencil"></i>Edit</th>
@@ -72,6 +90,7 @@
                                   <td><a href="basic_table.html#">Draw</a></td>
                                   <td class="hidden-phone">Lorem Ipsum dolor</td>
                                   <td>1</td>
+                                  <td>25-01.2015</td>
                                   <td>12000 </td>
                                   <td><span class="label label-success label-mini">published</span></td>
                                   <td>
@@ -88,6 +107,7 @@
                                   </td>
                                   <td>Lorem Ipsum dolor</td>
                                   <td>74</td>
+                                  <td>25-01.2015</td>
                                   <td>17900 </td>
                                   <td><span class="label label-warning label-mini">moderating</span></td>
                                   <td>
@@ -104,6 +124,7 @@
                                   </td>
                                   <td>Lorem Ipsum dolor</td>
                                   <td>752</td>
+                                  <td>25-01.2015</td>
                                   <td>14400 </td>
                                   <td><span class="label label-success label-mini">Published</span></td>
                                   <td>
@@ -120,6 +141,7 @@
                                   </td>
                                   <td>Lorem Ipsum dolor</td>
                                   <td>78</td>
+                                  <td>25-01.2015</td>
                                   <td>22000</td>
                                   <td><span class="label label-success label-mini">Published</span></td>
                                   <td>
@@ -132,6 +154,7 @@
                                   <td><a href="basic_table.html#">Total Ltd</a></td>
                                   <td>Lorem Ipsum dolor</td>
                                   <td>555</td>
+                                  <td>25-01.2015</td>
                                   <td>12120</td>
                                   <td><span class="label label-warning label-mini">moderating</span></td>
                                   <td>
@@ -145,105 +168,11 @@
                       </div>
                   </div>
               </div>
-              <div class="mt">
-                  <div class="col-md-12 nopadding2">
-                      <div class="content-panel">
-                          <table class="table table-striped table-advance table-hover">
-                             <div> <h2><i class="fa fa-angle-right"></i> some another table</h2>
-                              <hr>
-                              <thead>
-                              <tr>
-                                  <th><i class="fa fa-bullhorn"></i> Project</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-                                  <th>Number</th>
-                                  <th><i class="fa fa-bookmark"></i> Downloads</th>
-                                  <th><i class=" fa fa-edit"></i> Status</th>
-                                  <th><i class="fa fa-pencil"></i>Edit</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <tr>
-                                  <td><a href="basic_table.html#">Draw</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>1</td>
-                                  <td>12000 </td>
-                                  <td><span class="label label-success label-mini">published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Cup of tea
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>74</td>
-                                  <td>17900 </td>
-                                  <td><span class="label label-warning label-mini">moderating</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Another Cup
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>752</td>
-                                  <td>14400 </td>
-                                  <td><span class="label label-success label-mini">Published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Bottle for dragons
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>78</td>
-                                  <td>22000</td>
-                                  <td><span class="label label-success label-mini">Published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="basic_table.html#">Total Ltd</a></td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>555</td>
-                                  <td>12120</td>
-                                  <td><span class="label label-warning label-mini">moderating</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-             		
+              
       </div>
+</div>
 
-  </div>
-  </div> 
-  
+    
   <div class="clearfix"> </div>
 	<%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>

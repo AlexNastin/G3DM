@@ -2,8 +2,8 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <security:authorize access="hasRole('ROLE_USER')" var="userBool"/>
 <security:authorize access="hasRole('ROLE_DESIGNER')" var="designerBool"/>
+<security:authorize access="hasRole('ROLE_MODERATOR')" var="moderatorBool"/>
 <security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool"/>
-<security:authorize access="hasRole('ROLE_MAINADMIN')" var="mainAdminBool"/>
 
 <c:if test="${userBool}">
 <c:set value="/user/profile" var="profileURL" />
@@ -11,11 +11,11 @@
 <c:if test="${designerBool}">
 <c:set value="/designer/profile" var="profileURL" />
 </c:if>
+<c:if test="${moderatorBool}">
+<c:set value="/moderator/profile" var="profileURL" />
+</c:if>
 <c:if test="${adminBool}">
 <c:set value="/admin/profile" var="profileURL" />
-</c:if>
-<c:if test="${mainAdminBool}">
-<c:set value="/main_admin/profile" var="profileURL" />
 </c:if>
 <div class="row placeForAds"> 
 <nav class="navbar navbar-default">
@@ -37,10 +37,10 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">${search}</button>
+        <button type="submit" class="btn btn-default">${search }</button>
       </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="<c:url value="/about"/>"><spring:message code="main.about" /></a></li>
+                <li><a href="<c:url value="/about"/>"><spring:message code="header.header.about" /></a></li>
                 <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Partners <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -53,15 +53,20 @@
             <li><a href="#">One-3d.net</a></li>
           </ul>
         </li>
-                <li><a href="<c:url value="/contact"/>"><spring:message code="main.contact" /></a></li>
+                <li><a href="<c:url value="/contact"/>"><spring:message code="header.header.contact" /></a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
                     <li><security:authorize access="isAnonymous()">
                     <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signin" />"'>
-      				<spring:message code="main.signin" />
+      				<spring:message code="headerWithSearch.header.signin" />
       				</button>
       				</security:authorize>
-      				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_ADMIN', 'ROLE_MAINADMIN')">
+      					<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/logout" />"'>
+      				Logout
+      				</button>
+      				</security:authorize>
+      				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
                     <button type="button" class="btn btn-default btn-outline btn-circle"  onClick='location.href="<c:url value="${profileURL}" />"'>
       				Profile
       				</button>

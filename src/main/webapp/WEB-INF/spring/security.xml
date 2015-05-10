@@ -11,9 +11,9 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 		<remember-me />
 		<intercept-url pattern="/user**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/designer**" access="hasRole('ROLE_DESIGNER')" />
-		<intercept-url pattern="/admin**" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/moderator**" access="hasRole('ROLE_MODERATOR')" />
 		<intercept-url pattern="/**"
-			access="hasAnyRole('ROLE_GUEST', 'ROLE_USER', 'ROLE_ADMIN', 'ROLE_MAINADMIN','ROLE_DESIGNER')" />
+			access="hasAnyRole('ROLE_GUEST', 'ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN','ROLE_DESIGNER')" />
 
 		<form-login login-page="/go/signin"
 			authentication-failure-url="/go/signin?login_error=true"

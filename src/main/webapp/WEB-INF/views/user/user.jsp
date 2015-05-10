@@ -10,7 +10,7 @@
 <head>
 <title>Users | Global3dmod</title>
 <!-- Init search variable -->
-<spring:message code="main.search" var="search"/>
+<spring:message code="headerWithSearch.header.search" var="search"/>
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

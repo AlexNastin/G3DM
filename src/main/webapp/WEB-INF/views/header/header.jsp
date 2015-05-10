@@ -62,7 +62,7 @@
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
                    
-                    <li class="buttons-right">
+                    <li>
                    <security:authorize access="isAnonymous()">
                     <button type="button" class="btn btn-default btn-outline btn-circle navi" onClick='location.href="<c:url value="/go/signin" />"'>
       				<spring:message code="header.header.signin" />

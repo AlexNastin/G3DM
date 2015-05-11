@@ -4,7 +4,7 @@
 <security:authorize access="hasRole('ROLE_DESIGNER')" var="designerBool"/>
 <security:authorize access="hasRole('ROLE_MODERATOR')" var="moderatorBool"/>
 <security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool"/>
-
+<spring:message code="headerWithSearch.header.account" var="account" />
 <c:if test="${userBool}">
 <c:set value="/user/profile" var="profileURL" />
 </c:if>
@@ -17,7 +17,7 @@
 <c:if test="${adminBool}">
 <c:set value="/admin/profile" var="profileURL" />
 </c:if>
-<div class="row placeForAds"> 
+
 <nav class="navbar navbar-default">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile and tablet display -->
@@ -56,25 +56,29 @@
                 <li><a href="<c:url value="/contact"/>"><spring:message code="header.header.contact" /></a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
-                    <li><security:authorize access="isAnonymous()">
-                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/go/signin" />"'>
-      				<spring:message code="headerWithSearch.header.signin" />
-      				</button>
-      				</security:authorize>
-      					<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-                    <button type="button" class="btn btn-default btn-outline btn-circle" onClick='location.href="<c:url value="/logout" />"'>
-      				Logout
-      				</button>
+                    <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${account}<i class="fa fa-user"></i></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><security:authorize access="isAnonymous()">
+                    <a href="<c:url value="/go/signin" />"'>
+      				<spring:message code="header.header.signin" /> <i class="fa fa-user-plus"></i>
+      				</a>
       				</security:authorize>
       				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-                    <button type="button" class="btn btn-default btn-outline btn-circle"  onClick='location.href="<c:url value="${profileURL}" />"'>
-      				Profile
-      				</button>
-      				</security:authorize>
-                </li>
+                    <a href="<c:url value="/logout" />"'>
+      				Logout <i class="fa fa-user-times"></i>
+      				</a>
+      				</security:authorize></li>
+            <li><security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+                    <a href="<c:url value="${profileURL}" />"'>
+      				Profile <i class="fa fa-suitcase"></i>
+      				</a>
+      				</security:authorize></li>            
+          </ul>                            
+                       				
+      		         </li>
             </ul>
 
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
 </nav><!-- /.navbar -->    
-</div> 

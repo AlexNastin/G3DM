@@ -24,7 +24,7 @@
 <div class="signup-background">
 <div class="col-md-4"></div>
 <div class="col-md-4"></div>
-<div class="container col-md-3 sign-background">
+<div class="container col-md-3 sign-in-background">
  <form id="contact-form" class="form-horizontal" method="post" action="${authUrl}">
  <c:if test="${not empty param.error}">
 		<font color="red"> LOGIN ERORR

@@ -28,7 +28,7 @@
 <div class="signup-background">
 <div class="col-md-4"></div>
 <div class="col-md-4"></div>
-<div class="container col-md-3 sign-background">
+<div class="container col-md-3 sign-up-background">
 	<form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="signupForm" method="POST">
 	   <div class="form-group sign-feld-margin-top">
 	   <div class="col-md-12">

@@ -809,7 +809,7 @@ label.btn1.btn2.btn-2.btn-2g {
 .footer-grid {
 	float: left;
 	width: 17.7%;
-	margin-right: 23%;
+	margin-right: 7%;
 }
 .last_grid {
 	margin-right: 0;
@@ -1322,7 +1322,6 @@ input:-moz-placeholder {
   color: #888
 }
 .placeForAds{
-	margin-bottom:3%;
 	backgroung-color: white;
 }
 .categorytxt{
@@ -1378,4 +1377,8 @@ input:-moz-placeholder {
   -webkit-animation-delay: 90ms;
   animation-delay: 90ms;
   margin-left: -5%;
+}
+.footer-margin-right:
+{
+	margin-right: 10%;
 }

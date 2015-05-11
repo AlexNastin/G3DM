@@ -31,9 +31,9 @@ import com.global3Dmod.ÇDmodels.service.IDesignerService;
 @Service
 public class DesignerService implements IDesignerService {
 	
-	private final String MODEL_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/files/models/";
-	private final String PHOTO_MODEL_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/files/photosModel/";
-	private final String AVATAR_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/files/avatars/";
+	private final String MODEL_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/models/";
+	private final String PHOTO_MODEL_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/photosModel/";
+	private final String AVATAR_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/avatars/";
 
 	private final String FORMAT_DATE = "yyyy-MM-dd";
 

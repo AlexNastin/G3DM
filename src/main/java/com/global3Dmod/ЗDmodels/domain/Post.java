@@ -24,6 +24,9 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
@@ -74,13 +77,14 @@ public class Post implements Essence {
 	@Column(name = "countDownload")
 	private int countDownload;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name="POSTS_HAS_PRINTERS", joinColumns={@JoinColumn(name="POST_IDPOST")},inverseJoinColumns={@JoinColumn(name="PRINTER_IDPRINTER")})
 	private List<Printer> printers;
 	
 	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private File file;
 	
+	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
 	private List<PostPhoto> postPhotos;
 	

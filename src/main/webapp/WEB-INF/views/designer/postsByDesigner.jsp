@@ -25,8 +25,15 @@
 	<c:forEach items="${listPostsByDesigner}" var="post" >
 	<span>${post.title}</span><br>
 	<span>${post.file.filePath}</span><br>
-	
+		<c:forEach items="${post.postPhotos}" var="postPhoto" >
+		<span>${postPhoto.photoPath}</span><br>
+		</c:forEach>
+		<c:forEach items="${post.printers}" var="printer" >
+		<span>${printer.title}</span><br>
+		</c:forEach>
 	<span>=========================</span><br>
 	</c:forEach>
+	
+	<a href="<c:url value="/addPost"/>">Add post</a>
 </body>
 </html>

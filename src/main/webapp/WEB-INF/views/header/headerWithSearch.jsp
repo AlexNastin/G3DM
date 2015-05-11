@@ -57,7 +57,7 @@
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
                     <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${account}<i class="fa fa-user"></i></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${account} <i class="fa fa-user"></i></a>
           <ul class="dropdown-menu" role="menu">
             <li><security:authorize access="isAnonymous()">
                     <a href="<c:url value="/go/signin" />"'>

@@ -30,7 +30,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="<c:url value="/"  />"><img class="navbar-brand" src="<c:url value="/resources/images/logo1.png" />" href="<c:url value="/"  />"></img></a>
+            <a href="<c:url value="/"  />"><img class="navbar-brand" src="<c:url value="/resources/images/logo.png" />" href="<c:url value="/"  />"></img></a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->

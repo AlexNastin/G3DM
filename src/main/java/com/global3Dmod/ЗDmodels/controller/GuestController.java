@@ -45,6 +45,18 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/result", method = RequestMethod.GET)
+	public ModelAndView result(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("result");
+		return modelAndView;
+	}
+	@RequestMapping(value = "/model", method = RequestMethod.GET)
+	public ModelAndView model(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("model");
+		return modelAndView;
+	}
+
 
 	@RequestMapping(value = "/signupAddUser", method = RequestMethod.POST)
 	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,

@@ -21,33 +21,75 @@
 <script src="<c:url value="/resources/js/bootstrap.min.js" />">
 	
 </script>
-<c:set value="/get/subCategories" var="subCategoriesUrl" />
+<c:url value="/get/subcategories" var="getSubcategories" />
+<c:url value="/get/categories" var="getCategories" />
+
+
 <script type="text/javascript">
-	function updateSelectOptions(lookupUrl, parentSelectElementId,
-			childSelectElementId) {
-		var parentSelectRef = $('#' + parentSelectElementId);
-		var childSelectRef = $('#' + childSelectElementId);
-		var el = document.getElementById('names');
-		alert(parentSelectRef)
-		alert(childSelectRef)
-		$.getJSON(lookupUrl, {
-			searchId : 1
-		}, function(data) {
-			alert(data)
-			var html = '<option value=""></option>';
-			var len = data.length;
-			for (var i = 0; i < len; i++) {
-				alert(data[i].idSubcategory)
-				html += '<option value="' + data[i].idSubcategory + '">'
-						+ data[i].title + '</option>';
-				alert(data[i].title)
-			}
-			alert(1123)
-			childSelectRef.html(html);
-			alert(2)
-		});
+	$(document)
+			.ready(
+					function() {
+						$('#idCategory')
+								.change(
+										function() {
+											$
+													.getJSON(
+															'${getSubcategories}',
+															{
+																idCategory : $(
+																		this)
+																		.val(),
+																ajax : 'true'
+															},
+															function(data) {
+																var html = '<option value="0">Subcategory</option>';
+																var len = data.length;
+																for (var i = 0; i < len; i++) {
+																	html += '<option value="' + data[i].idSubcategory + '">'
+																			+ data[i].title
+																			+ '</option>';
+																}
+																html += '</option>';
+																$(
+																		'#idSubcategory')
+																		.html(
+																				html);
+															});
+										});
+					});
+</script>
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				$.getJSON('${getCategories}', {
+					ajax : 'true'
+				}, function(data) {
+					var html = '<option value="">Category</option>';
+					var len = data.length;
+					for (var i = 0; i < len; i++) {
+						html += '<option value="' + data[i].idCategory + '">'
+								+ data[i].title + '</option>';
+					}
+					html += '</option>';
+					$('#idCategory').html(html);
+				});
+			});
+</script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#idSubcategory").change(onSelectChange);
+	});
+	function onSelectChange() {
+		var selected = $("#idSubcategory option:selected");
+		var output = "";
+		if (selected.val() != 0) {
+			output = "You selected City " + selected.text();
+		}
+		$("#output").html(output);
 	}
 </script>
+
 <body>
 
 
@@ -57,10 +99,10 @@
 		<span class="error"><form:errors path="title" /></span>
 		<form:input id="description" name="description" path="description"
 			placeholder="description"></form:input>
-			<span class="error"><form:errors path="description" /></span>
+		<span class="error"><form:errors path="description" /></span>
 		<form:input id="instruction" name="instruction" path="instruction"
 			placeholder="instruction"></form:input>
-			<span class="error"><form:errors path="instruction" /></span>
+		<span class="error"><form:errors path="instruction" /></span>
 		<form:select id="disProgram_idDisProgram"
 			name="disProgram_idDisProgram" path="disProgram_idDisProgram">
 			<c:forEach items="${listDisProgram}" var="disProgram">
@@ -68,19 +110,20 @@
 			</c:forEach>
 		</form:select>
 
+		<fieldset>
+			<div>
 
-		<form:select id="category_idCategory" name="category_idCategory" path="category_idCategory">
-		<c:forEach items="${listCategory}" var="category" >
-		<form:option value="${category.idCategory}">${category.title}</form:option>
-		</c:forEach>
-	</form:select>
-	<form:select id="subcategory_idSubcategory" name="subcategory_idSubcategory" path="subcategory_idSubcategory">
-		<c:forEach items="${listCategory}" var="category" >
-			<c:forEach items="${category.subcategories}" var="subcategory">
-					<form:option value="${subcategory.idSubcategory}">${subcategory.title}</form:option>
-			</c:forEach>
-		</c:forEach>
-	</form:select>
+				<form:select id="idCategory" path="category_idCategory">
+				</form:select>
+
+				<form:select id="idSubcategory" path="subcategory_idSubcategory">
+					<form:option value="0">Subcategory</form:option>
+				</form:select>
+
+			</div>
+		</fieldset>
+
+		<div id="output"></div>
 
 		<br>
 		<c:forEach items="${listPrinter}" var="printer">
@@ -89,17 +132,17 @@
 		<span class="error"><form:errors path="printersId" /></span>
 		<br>
         Model to upload: <input type="file" name="model">
-        <span class="error"><form:errors path="model" /></span>
-        <br>
+		<span class="error"><form:errors path="model" /></span>
+		<br>
         Photo model to upload: <input type="file" name="firstPhoto">
-        <span class="error"><form:errors path="firstPhoto" /></span>
-        <br>
+		<span class="error"><form:errors path="firstPhoto" /></span>
+		<br>
         Photo model to upload: <input type="file" name="secondPhoto">
-        <span class="error"><form:errors path="secondPhoto" /></span>
-        <br>
+		<span class="error"><form:errors path="secondPhoto" /></span>
+		<br>
         Photo model to upload: <input type="file" name="thirdPhoto">
-        <span class="error"><form:errors path="thirdPhoto" /></span>
-        <br>
+		<span class="error"><form:errors path="thirdPhoto" /></span>
+		<br>
 		<input type="submit" value="Add" />
 	</form:form>
 </body>

@@ -30,10 +30,10 @@ import com.global3Dmod.ÇDmodels.service.IDesignerService;
 
 @Service
 public class DesignerService implements IDesignerService {
-	
-	private final String MODEL_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/models/";
-	private final String PHOTO_MODEL_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/photosModel/";
-	private final String AVATAR_PATH ="C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/avatars/";
+
+	private final String MODEL_PATH = "C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/models/";
+	private final String PHOTO_MODEL_PATH = "C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/photosModel/";
+	private final String AVATAR_PATH = "C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/avatars/";
 
 	private final String FORMAT_DATE = "yyyy-MM-dd";
 
@@ -65,6 +65,9 @@ public class DesignerService implements IDesignerService {
 		List<Category> categories;
 		try {
 			categories = categoryDAO.selectAllCategories();
+			for (int i = 0; i < categories.size(); i++) {
+				categories.get(i).setSubcategories(null);
+			}
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -120,11 +123,11 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public void addPost(PostForm postForm) throws ServiceException {
-//		postForm.setModelFilePath(modelFileUpload(postForm.getModel()));
+		// postForm.setModelFilePath(modelFileUpload(postForm.getModel()));
 		DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
-		
+
 		Post post = new Post();
 		post.setUser_idUser(2);
 		post.setCategory_idCategory(postForm.getCategory_idCategory());
@@ -139,22 +142,25 @@ public class DesignerService implements IDesignerService {
 		post.setDisplay(true);
 		post.setCountDownload(0);
 		post.setPrinters(getCheckPrintersById(postForm.getPrintersId()));
-		
+
 		PostPhoto firstPostPhoto = new PostPhoto();
-		firstPostPhoto.setPhotoPath(photoModelFileUpload(postForm.getFirstPhoto()));
+		firstPostPhoto.setPhotoPath(photoModelFileUpload(postForm
+				.getFirstPhoto()));
 		firstPostPhoto.setPost(post);
 		PostPhoto secondPostPhoto = new PostPhoto();
-		secondPostPhoto.setPhotoPath(photoModelFileUpload(postForm.getSecondPhoto()));
+		secondPostPhoto.setPhotoPath(photoModelFileUpload(postForm
+				.getSecondPhoto()));
 		secondPostPhoto.setPost(post);
 		PostPhoto thirdPostPhoto = new PostPhoto();
-		thirdPostPhoto.setPhotoPath(photoModelFileUpload(postForm.getThirdPhoto()));
+		thirdPostPhoto.setPhotoPath(photoModelFileUpload(postForm
+				.getThirdPhoto()));
 		thirdPostPhoto.setPost(post);
 		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 		postPhotos.add(firstPostPhoto);
 		postPhotos.add(secondPostPhoto);
 		postPhotos.add(thirdPostPhoto);
 		post.setPostPhotos(postPhotos);
-		
+
 		com.global3Dmod.ÇDmodels.domain.File file = new com.global3Dmod.ÇDmodels.domain.File();
 		file.setFilePath(modelFileUpload(postForm.getModel()));
 		file.setPost(post);
@@ -181,8 +187,7 @@ public class DesignerService implements IDesignerService {
 			e.printStackTrace();
 		}
 		return filePath;
-		
-		
+
 	}
 
 	@Override

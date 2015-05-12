@@ -30,7 +30,7 @@
 	<import resource="data.xml" />
 
 	<!-- Файл с настройками безопасности -->
-	<import resource="security.xml" />
+	<import resource="security.xml" /> 
 
 	<!-- Файл с настройками AOP -->
 	<import resource="aop-bean.xml" />

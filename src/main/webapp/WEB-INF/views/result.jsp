@@ -91,7 +91,7 @@
       Downloads
     </label> 
     
- 
+  </div>
 </div>
 
 </fieldset>

@@ -10,6 +10,11 @@
 <title>Admin's page | Global3dmod</title>
 <!-- Init search variable -->
 <spring:message code="headerWithSearch.header.search" var="search"/>
+<spring:message code="moderator.menu.postsunpublished" var="unpblsd"/>
+<spring:message code="moderator.menu.postspublished" var="publics"/>
+<spring:message code="moderator.menu.users" var="users"/>
+<spring:message code="moderator.menu.designer" var="designers"/>
+
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,12 +45,12 @@
       <div class="list-group">
       <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
   <a href="#" class="list-group-item active">
-    Posts board
+    <i class="fa fa-exclamation-triangle"></i> ${unpblsd}
   </a>
-  <a href="<c:url value="/moderator/userstable" />" class="list-group-item">Users board</a>
-  <a href="#" class="list-group-item">add work</a>
-  <a href="#" class="list-group-item">Lorem ipsum</a>
-  <a href="#" class="list-group-item">Lorem ipsum</a>
+  <a href="<c:url value="/moderator/userstable" />" class="list-group-item"> <i class="fa fa-check-circle"></i> ${publics}</a>
+  <a href="#" class="list-group-item"> <i class="fa fa-users"></i> ${users}</a>
+  <a href="#" class="list-group-item"><i class="fa fa-pencil-square"></i> ${designers}</a>
+  
 </div>
       </div>
       <!--main content start-->

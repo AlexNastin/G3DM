@@ -95,7 +95,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
 
             </div>
-            <span class="clearfix border"></span>
+            <span class="clearfix borda"></span>
         </article>
          <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
@@ -114,7 +114,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
 
             </div>
-            <span class="clearfix border"></span>
+            <span class="clearfix borda"></span>
         </article>
          <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
@@ -133,7 +133,7 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
 
             </div>
-            <span class="clearfix border"></span>
+            <span class="clearfix borda"></span>
         </article>
          <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
@@ -152,11 +152,31 @@
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
 
             </div>
-            <span class="clearfix border"></span>
+            <span class="clearfix borda"></span>
         </article>
+        
 
     </section>
 </div>
+<nav style="text-align:center">
+  <ul class="pagination">
+    <li>
+      <a href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    <li class="active"><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
 <%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 

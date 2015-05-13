@@ -9,16 +9,20 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 		<access-denied-handler error-page="/403page" />
 		<anonymous username="GUEST" granted-authority="ROLE_GUEST" />
 		<remember-me />
-		<intercept-url pattern="/user**" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/designer**" access="hasRole('ROLE_DESIGNER')" />
-		<intercept-url pattern="/moderator**" access="hasRole('ROLE_MODERATOR')" />
-		<intercept-url pattern="/**"
-			access="hasAnyRole('ROLE_GUEST', 'ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN','ROLE_DESIGNER')" />
+
+
 
 		<form-login login-page="/go/signin"
 			authentication-failure-url="/go/signin?login_error=true"
 			login-processing-url="/static/j_spring_security_check" />
 		<logout logout-url="/logout" logout-success-url="/index" />
+
+		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
+		<intercept-url pattern="/designer/**" access="hasRole('ROLE_DESIGNER')" />
+		<intercept-url pattern="/moderator/**" access="hasRole('ROLE_MODERATOR')" />
+
+		<intercept-url pattern="/**"
+			access="hasAnyRole('ROLE_GUEST', 'ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN','ROLE_DESIGNER')" />
 
 
 

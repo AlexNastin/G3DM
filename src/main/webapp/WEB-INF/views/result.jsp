@@ -67,9 +67,36 @@
             </div>
         </div>
 	</div>
+
+<div class="col-md-12">
+<form class="form-horizontal" style="text-align:center">
+<fieldset>
+
+<!-- Form Name -->
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group" >
+ 
+  
+    <label class="radio-inline" for="radios-0">
+      <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
+      Date
+    </label> 
+    <label class="radio-inline" for="radios-1">
+      <input type="radio" name="radios" id="radios-1" value="2">
+      Rating
+    </label> 
+    <label class="radio-inline" for="radios-2">
+      <input type="radio" name="radios" id="radios-2" value="3">
+      Downloads
+    </label> 
+    
+ 
 </div>
 
-
+</fieldset>
+</form>
+</div>
 <div class="container meow">
 
     <hgroup class="mb20">

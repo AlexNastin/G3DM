@@ -10,6 +10,11 @@
 <title>Designer's page | Global3dmod</title>
 <!-- Init search variable -->
 <spring:message code="headerWithSearch.header.search" var="search"/>
+<spring:message code="designer.menu.works" var="works"/>
+<spring:message code="designer.menu.data" var="data"/>
+<spring:message code="designer.menu.add" var="add"/>
+
+
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,12 +45,12 @@
       <div class="list-group">
       <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
   <a href="#" class="list-group-item active">
-    My works
+    <i class="fa fa-briefcase"></i> ${works} 
   </a>
-  <a href="#" class="list-group-item">Settings</a>
-  <a href="#" class="list-group-item">add work</a>
-  <a href="#" class="list-group-item">Lorem ipsum</a>
-  <a href="#" class="list-group-item">Lorem ipsum</a>
+  
+  <a href="#" class="list-group-item"><i class="fa fa-info-circle"></i> ${data}  </a>
+  <a href="#" class="list-group-item"><i class="fa fa-plus-square"></i> ${add}  </a>
+  
 </div>
       </div>
       <!--main content start-->

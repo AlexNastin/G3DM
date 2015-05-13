@@ -50,8 +50,25 @@
       </div>
       <!--main content start-->
       
-      <div class="nopadding2 col-md-10 ">
-          <div class="mt">
+          <div class="row">
+		<div class="col-md-10 nopadding2">
+			
+			<div class="tabbable-panel">
+				<div class="tabbable-line">
+					<ul class="nav nav-tabs ">
+						<li class="active">
+							<a href="#tab_default_1" data-toggle="tab">
+							List view <i class="fa fa-list"></i> </a>
+						</li>
+						<li>
+							<a href="#tab_default_2" data-toggle="tab">
+							Metro style <i class="fa fa-table"></i> </a>
+						</li>
+						
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="tab_default_1">
+							<div class="mt">
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
@@ -145,103 +162,211 @@
                       </div>
                   </div>
               </div>
-              <div class="mt">
-                  <div class="col-md-12 nopadding2">
-                      <div class="content-panel">
-                          <table class="table table-striped table-advance table-hover">
-                             <div> <h2><i class="fa fa-angle-right"></i> some another table</h2>
-                              <hr>
-                              <thead>
-                              <tr>
-                                  <th><i class="fa fa-bullhorn"></i> Project</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
-                                  <th>Number</th>
-                                  <th><i class="fa fa-bookmark"></i> Downloads</th>
-                                  <th><i class=" fa fa-edit"></i> Status</th>
-                                  <th><i class="fa fa-pencil"></i>Edit</th>
-                              </tr>
-                              </thead>
-                              <tbody>
-                              <tr>
-                                  <td><a href="basic_table.html#">Draw</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>1</td>
-                                  <td>12000 </td>
-                                  <td><span class="label label-success label-mini">published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Cup of tea
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>74</td>
-                                  <td>17900 </td>
-                                  <td><span class="label label-warning label-mini">moderating</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Another Cup
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>752</td>
-                                  <td>14400 </td>
-                                  <td><span class="label label-success label-mini">Published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Bottle for dragons
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>78</td>
-                                  <td>22000</td>
-                                  <td><span class="label label-success label-mini">Published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="basic_table.html#">Total Ltd</a></td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>555</td>
-                                  <td>12120</td>
-                                  <td><span class="label label-warning label-mini">moderating</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              </tbody>
-                          </table>
-                      </div>
-                  </div>
-             		
-      </div>
+              
+						</div>
+						<div class="tab-pane" id="tab_default_2">
+							 <section id="portfolio">
+        <div class="container">
+            <div class="row portfolio-items"> <!--1st element-->
+                <div class="portfolio-item apps  col-md-3">
+                        <div class="item-inner">
+                            <div class="portfolio-image">
+                                <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                                <div class="overlay container">
+                                    <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <h5>Lorem ipsum dolor sit amet</h5>
+                        </div>
+                    </div>
+                    <!--/.portfolio-item 2 -->
+                <div class="portfolio-item apps  col-md-3">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                            <div class="overlay container">
+                                <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </div>
+                     <!--/.portfolio-item 3 -->
+                <div class="portfolio-item apps  col-md-3">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                            <div class="overlay container">
+                                <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </div>
+                 <!--/.portfolio-item 4 -->
+                         <div class="portfolio-item apps col-md-3">
+                     <div class="item-inner">
+                         <div class="portfolio-image">
+                             <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                             <div class="overlay container">
+                                 <div class="menuis">
+                                     <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobile</a>
+                                     <p><a href="dsfds">mexico</a></p>
+                                 </div>
+                             </div>
+                         </div>
 
-  </div>
+                         <h5>Lorem ipsum dolor sit amet</h5>
+                     </div>
+                             </div>
+                         </div>
+            <div class="row portfolio-items">
+                <!--1st element-->
+                <div class="portfolio-item apps  col-md-3">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                            <div class="overlay container">
+                                <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </div>
+                <!--/.portfolio-item 2 -->
+                <div class="portfolio-item apps  col-md-3">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                            <div class="overlay container">
+                                <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </div>
+                <!--/.portfolio-item 3 -->
+                <div class="portfolio-item apps  col-md-3">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                            <div class="overlay container">
+                                <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </div>
+                <!--/.portfolio-item 4 -->
+                <div class="portfolio-item apps col-md-3">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                            <div class="overlay container">
+                                <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobile</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </div>
+            </div>
+            <!--3rd line-->
+            <div class="row portfolio-items">
+                <!--1st element-->
+                <div class="portfolio-item apps  col-md-3">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                            <div class="overlay container">
+                                <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </div>
+                <!--/.portfolio-item 2 -->
+                <div class="portfolio-item apps  col-md-3">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                            <div class="overlay container">
+                                <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </div>
+                <!--/.portfolio-item 3 -->
+                <div class="portfolio-item apps  col-md-3">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                            <div class="overlay container">
+                                <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobilpppe</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </div>
+                <!--/.portfolio-item 4 -->
+                <div class="portfolio-item apps col-md-3">
+                    <div class="item-inner">
+                        <div class="portfolio-image">
+                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
+                            <div class="overlay container">
+                                <div class="menuis">
+                                    <a class="preview btn btn-primary" title="Lorem ipsum dolor sit amet">Avtomobile</a>
+                                    <p><a href="dsfds">mexico</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h5>Lorem ipsum dolor sit amet</h5>
+                    </div>
+                </div>
+            </div>
+                         </div>
+
+
+    </section><!--/#portfolio-->
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			</div>
+			
   </div> 
   
   <div class="clearfix"> </div>

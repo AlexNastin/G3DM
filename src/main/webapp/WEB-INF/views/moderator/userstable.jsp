@@ -9,7 +9,7 @@
 <head>
 <title>User's control page | Global3dmod</title>
 <!-- Init search variable -->
-<spring:message code="main.search" var="search"/>
+
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -38,7 +38,7 @@
       <div class="row">
       <div class="col-md-2 nopadding1">
       <div class="list-group">
-      <img src="<c:url value="resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
+      <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
   <a href="#" class="list-group-item">
    Posts board
   </a>

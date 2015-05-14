@@ -119,7 +119,10 @@
 		 </div>
     <div class="clearfix"></div>
     <br>
-          
+<div class="row nomargin"><%@include file="/WEB-INF/views/adslider.jsp" %> 
+
+</div>   
+<div class="clearfix"></div>        
 <%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 

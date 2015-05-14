@@ -49,7 +49,7 @@
   </a>
   <a href="<c:url value="/moderator/userstable" />" class="list-group-item"> <i class="fa fa-check-circle"></i> ${publics}</a>
   <a href="#" class="list-group-item"> <i class="fa fa-users"></i> ${users}</a>
-  <a href="#" class="list-group-item"><i class="fa fa-pencil-square"></i> ${designers}</a>
+  <a href="#" class="list-group-item"><i class="fa fa-paint-brush"></i> ${designers}</a>
   
 </div>
       </div>

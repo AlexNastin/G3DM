@@ -1382,3 +1382,6 @@ input:-moz-placeholder {
 {
 	margin-right: 10%;
 }
+.carsize{
+	max-height:150px;
+}

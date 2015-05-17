@@ -27,7 +27,7 @@
 <spring:message code="footer.footer.fileconversions" var="fileconversions"/>
 <spring:message code="footer.footer.privacypolicy" var="privacypolicy"/>
 
-</head>
+
 
 
    </head>

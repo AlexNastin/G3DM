@@ -26,6 +26,7 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
     <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
+    
    </head>
 <body>
 <!-- Here some place for ads -->

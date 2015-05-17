@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Subcategories")
 @NamedQueries({
-	@NamedQuery(name = "Subcategory.findTop3", query = "select s from Subcategory s where s.category_idCategory = :idCategory order by s.idSubcategory"),
+	@NamedQuery(name = "Subcategory.findTop3", query = "select s from Subcategory s where s.category_idCategory = :idCategory and s.top=1"),
 	@NamedQuery(name="Subcategory.findAll", query="select s from Subcategory s")})
 public class Subcategory implements Essence {
 
@@ -33,6 +33,9 @@ public class Subcategory implements Essence {
 
 	@Column(name = "title")
 	private String title;
+	
+	@Column(name = "top")
+	private boolean top;
 	
 	@JoinColumn(name = "category_idCategory", referencedColumnName = "idCategory", insertable=false, updatable=false)
 	@ManyToOne(optional = false)
@@ -61,6 +64,14 @@ public class Subcategory implements Essence {
 	public String getTitle() {
 		return title;
 	}
+	
+	public boolean isTop() {
+		return top;
+	}
+
+	public void setTop(boolean top) {
+		this.top = top;
+	}
 
 	public void setTitle(String title) {
 		this.title = title;
@@ -78,9 +89,12 @@ public class Subcategory implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((category == null) ? 0 : category.hashCode());
 		result = prime * result + category_idCategory;
 		result = prime * result + idSubcategory;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		result = prime * result + (top ? 1231 : 1237);
 		return result;
 	}
 
@@ -93,6 +107,11 @@ public class Subcategory implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		Subcategory other = (Subcategory) obj;
+		if (category == null) {
+			if (other.category != null)
+				return false;
+		} else if (!category.equals(other.category))
+			return false;
 		if (category_idCategory != other.category_idCategory)
 			return false;
 		if (idSubcategory != other.idSubcategory)
@@ -102,6 +121,8 @@ public class Subcategory implements Essence {
 				return false;
 		} else if (!title.equals(other.title))
 			return false;
+		if (top != other.top)
+			return false;
 		return true;
 	}
 
@@ -109,8 +130,7 @@ public class Subcategory implements Essence {
 	public String toString() {
 		return "Subcategory [idSubcategory=" + idSubcategory
 				+ ", category_idCategory=" + category_idCategory + ", title="
-				+ title + "]";
+				+ title + ", top=" + top + ", category=" + category + "]";
 	}
-
 	
 }

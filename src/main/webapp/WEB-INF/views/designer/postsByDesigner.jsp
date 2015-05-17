@@ -24,6 +24,8 @@
 <body>
 	<c:forEach items="${listPostsByDesigner}" var="post" >
 	<span>${post.title}</span><br>
+	<span>${post.isDisplay}</span><br>
+	<span>${post.category.title}</span><br>
 	<span>${post.file.filePath}</span><br>
 		<c:forEach items="${post.postPhotos}" var="postPhoto" >
 		<span>${postPhoto.photoPath}</span><br>

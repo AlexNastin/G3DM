@@ -122,24 +122,25 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public void addPost(PostForm postForm) throws ServiceException {
+	public void addPost(PostForm postForm, int id) throws ServiceException {
 		// postForm.setModelFilePath(modelFileUpload(postForm.getModel()));
 		DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
 
 		Post post = new Post();
-		post.setUser_idUser(2);
+		post.setUser_idUser(id);
 		post.setCategory_idCategory(postForm.getCategory_idCategory());
 		post.setSubcategory_idSubcategory(postForm
 				.getSubcategory_idSubcategory());
 		post.setNumberPost("1111");
 		post.setDisProgram_idDisProgram(postForm.getDisProgram_idDisProgram());
 		post.setDateReg(registrationDate);
+		post.setDateUpdate(registrationDate);
 		post.setTitle(postForm.getTitle());
 		post.setDescription(postForm.getDescription());
 		post.setInstruction(postForm.getInstruction());
-		post.setDisplay(true);
+		post.setIsDisplay(true);
 		post.setCountDownload(0);
 		post.setPrinters(getCheckPrintersById(postForm.getPrintersId()));
 

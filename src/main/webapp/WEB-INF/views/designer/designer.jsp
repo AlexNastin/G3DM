@@ -82,7 +82,9 @@
                               <thead>
                               <tr>
                                   <th><i class="fa fa-bullhorn"></i> Project</th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Descrition</th>
+                                  <th>Category</th>
+                                  <th>Subcategory</th>
+                                  <th>Date</th>
                                   <th>Number</th>
                                   <th><i class="fa fa-bookmark"></i> Downloads</th>
                                   <th><i class=" fa fa-edit"></i> Status</th>
@@ -90,78 +92,27 @@
                               </tr>
                               </thead>
                               <tbody>
+                              <c:forEach items="${listPostsByDesigner}" var="post" >
                               <tr>
-                                  <td><a href="basic_table.html#">Draw</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>1</td>
-                                  <td>12000 </td>
-                                  <td><span class="label label-success label-mini">published</span></td>
+                                  <td><a href="basic_table.html#">${post.title}</a></td>
+                                  <td class="hidden-phone">${post.category.title}</td>
+                                  <td>${post.subcategory.title}</td>
+                                  <td>${post.dateUpdate}</td>
+                                  <td>${post.numberPost}</td>
+                                  <td>${post.countDownload}</td>
+                                  <c:if test="${post.isDisplay}">
+                                  	<td><span class="label label-success label-mini">published</span></td>
+                                  </c:if>
+                                  <c:if test="${!post.isDisplay}">
+                                  	<td><span class="label label-warning label-mini">moderating</span></td>
+                                  </c:if>
                                   <td>
                                       <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                       <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
                                       <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
                                   </td>
                               </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Cup of tea
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>74</td>
-                                  <td>17900 </td>
-                                  <td><span class="label label-warning label-mini">moderating</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Another Cup
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>752</td>
-                                  <td>14400 </td>
-                                  <td><span class="label label-success label-mini">Published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Bottle for dragons
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>78</td>
-                                  <td>22000</td>
-                                  <td><span class="label label-success label-mini">Published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="basic_table.html#">Total Ltd</a></td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>555</td>
-                                  <td>12120</td>
-                                  <td><span class="label label-warning label-mini">moderating</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
-                                  </td>
-                              </tr>
+                              </c:forEach>
                               </tbody>
                           </table>
                       </div>

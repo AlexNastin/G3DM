@@ -22,10 +22,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceContextType;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.annotations.LazyToOne;
+import org.hibernate.annotations.LazyToOneOption;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
@@ -83,6 +86,14 @@ public class Post implements Essence {
 	
 	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private File file;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="category_idCategory", insertable=false, updatable=false)
+	private Category category;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="subcategory_idSubcategory", insertable=false, updatable=false)
+	private Subcategory subcategory;
 	
 	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
@@ -180,11 +191,11 @@ public class Post implements Essence {
 		this.instruction = instruction;
 	}
 
-	public boolean isDisplay() {
+	public boolean getIsDisplay() {
 		return isDisplay;
 	}
 
-	public void setDisplay(boolean isDisplay) {
+	public void setIsDisplay(boolean isDisplay) {
 		this.isDisplay = isDisplay;
 	}
 
@@ -220,6 +231,22 @@ public class Post implements Essence {
 		this.postPhotos = postPhotos;
 	}	
 
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+
+	public Subcategory getSubcategory() {
+		return subcategory;
+	}
+
+	public void setSubcategory(Subcategory subcategory) {
+		this.subcategory = subcategory;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -235,7 +262,7 @@ public class Post implements Essence {
 		result = prime * result + idPost;
 		result = prime * result
 				+ ((instruction == null) ? 0 : instruction.hashCode());
-		result = prime * result + (isDisplay ? 1231 : 1237);
+//		result = prime * result + (isDisplay ? 1231 : 1237);
 		result = prime * result
 				+ ((numberPost == null) ? 0 : numberPost.hashCode());
 		result = prime * result + subcategory_idSubcategory;

@@ -12,6 +12,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
@@ -39,6 +40,9 @@ public class Category implements Essence {
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Subcategory> subcategories = new ArrayList<Subcategory>();
+	
+	@OneToOne(mappedBy = "category")
+	private Post post;
 	
 	public Category() {
 		super();

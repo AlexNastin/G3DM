@@ -9,6 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -40,6 +41,9 @@ public class Subcategory implements Essence {
 	@JoinColumn(name = "category_idCategory", referencedColumnName = "idCategory", insertable=false, updatable=false)
 	@ManyToOne(optional = false)
 	private Category category;
+	
+	@OneToOne(mappedBy = "subcategory")
+	private Post post;
 
 	public Subcategory() {
 		super();

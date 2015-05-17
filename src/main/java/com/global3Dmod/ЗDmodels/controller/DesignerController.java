@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
 import javax.swing.Spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.domain.Category;
+import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
@@ -62,15 +64,19 @@ public class DesignerController {
 	// }
 
 	@RequestMapping(value = "/designer/profile", method = RequestMethod.GET)
-	public ModelAndView d(Locale locale, Model model) throws Exception {
+	public ModelAndView d(Locale locale, Model model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
+		List<Post> posts = designerService.getPostsByDesigner(person.getIdPerson());
+		modelAndView.addObject("listPostsByDesigner", posts);
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/addPostDB", method = RequestMethod.POST)
-	public ModelAndView addPostDB(PostForm postForm, Locale locale, Model model)
+	public ModelAndView addPostDB(PostForm postForm, Locale locale, Model model, HttpSession httpSession)
 			throws Exception {
-		designerService.addPost(postForm);
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		designerService.addPost(postForm, person.getIdPerson());
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/index");
 		return modelAndView2;
 	}
@@ -85,9 +91,6 @@ public class DesignerController {
 	public ModelAndView test(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("designer/postsByDesigner");
 		List<Post> posts = designerService.getPostsByDesigner(3);
-		for (Post post : posts) {
-			System.out.println(post.getTitle());
-		}
 		modelAndView.addObject("listPostsByDesigner", posts);
 		return modelAndView;
 	}

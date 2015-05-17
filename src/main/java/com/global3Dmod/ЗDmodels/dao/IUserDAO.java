@@ -8,6 +8,8 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 public interface IUserDAO {
 	
 	public void updateUser(User user) throws DaoException;
+	
+	public User getUser(String login) throws DaoException;
 
 	public void insertUser(User user) throws DaoException;
 

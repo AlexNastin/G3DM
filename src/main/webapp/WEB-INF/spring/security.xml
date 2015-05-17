@@ -14,7 +14,8 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 		<form-login login-page="/go/signin"
 			authentication-failure-url="/go/signin?login_error=true"
-			login-processing-url="/static/j_spring_security_check" />
+			login-processing-url="/static/j_spring_security_check" default-target-url="/putperson"/>
+			
 		<logout logout-url="/logout" logout-success-url="/index" />
 
 		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />

@@ -1,6 +1,6 @@
 package com.global3Dmod.ÇDmodels.service;
 
-public final class ParamConstant {
+public final class ServiceParamConstant {
 	
 	
 	public static final int ID_ÑOUNTRY = 1;

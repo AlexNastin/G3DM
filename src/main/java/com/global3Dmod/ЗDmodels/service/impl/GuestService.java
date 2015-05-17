@@ -14,13 +14,14 @@ import com.global3Dmod.«Dmodels.dao.ICategoryDAO;
 import com.global3Dmod.«Dmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.«Dmodels.dao.IUserDAO;
 import com.global3Dmod.«Dmodels.domain.Category;
+import com.global3Dmod.«Dmodels.domain.Person;
 import com.global3Dmod.«Dmodels.domain.Subcategory;
 import com.global3Dmod.«Dmodels.domain.User;
 import com.global3Dmod.«Dmodels.exception.DaoException;
 import com.global3Dmod.«Dmodels.exception.ServiceException;
 import com.global3Dmod.«Dmodels.form.SignupForm;
 import com.global3Dmod.«Dmodels.service.IGuestService;
-import com.global3Dmod.«Dmodels.service.ParamConstant;
+import com.global3Dmod.«Dmodels.service.ServiceParamConstant;
 
 @Service
 public class GuestService implements IGuestService {
@@ -42,17 +43,17 @@ public class GuestService implements IGuestService {
 		DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
-		
+
 		String md5Password = DigestUtils.md5Hex(signupForm.getPassword());
 		user.setRole_idRole(signupForm.getRole_idRole());
-		user.setCountry_id—ountry(ParamConstant.ID_—OUNTRY);
-		user.setCity_id—ity(ParamConstant.ID_—ITY);
+		user.setCountry_id—ountry(ServiceParamConstant.ID_—OUNTRY);
+		user.setCity_id—ity(ServiceParamConstant.ID_—ITY);
 		user.setNickName(signupForm.getNickName());
 		user.setLogin(signupForm.getLogin());
 		user.setPassword(md5Password);
-		user.setName(ParamConstant.EMPTY);
-		user.setSurname(ParamConstant.EMPTY);
-		user.setGender(ParamConstant.GENDER);
+		user.setName(ServiceParamConstant.EMPTY);
+		user.setSurname(ServiceParamConstant.EMPTY);
+		user.setGender(ServiceParamConstant.GENDER);
 		user.setRegistrationDate(registrationDate);
 		try {
 			userDAO.insertUser(user);
@@ -127,6 +128,22 @@ public class GuestService implements IGuestService {
 					.getIdCategory()));
 		}
 		return categories;
+	}
+
+	@Override
+	public Person getPerson(String login) throws ServiceException {
+		Person person = new Person();
+		try {
+			User user = userDAO.getUser(login);
+			person.setIdPerson(user.getIdUser());
+			person.setLogin(user.getLogin());
+			person.setNickName(user.getNickName());
+			person.setName(user.getName());
+			person.setSurName(user.getSurname());
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return person;
 	}
 
 }

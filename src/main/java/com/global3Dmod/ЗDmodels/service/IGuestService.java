@@ -3,6 +3,7 @@ package com.global3Dmod.ÇDmodels.service;
 import java.util.List;
 
 import com.global3Dmod.ÇDmodels.domain.Category;
+import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
@@ -11,6 +12,8 @@ import com.global3Dmod.ÇDmodels.form.SignupForm;
 public interface IGuestService {
 	
 	public void addUser(SignupForm signupForm) throws ServiceException;
+	
+	public Person getPerson(String login) throws ServiceException;
 	
 	public List<String> getAllEmail() throws ServiceException;
 

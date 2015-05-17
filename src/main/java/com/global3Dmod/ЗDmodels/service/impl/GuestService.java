@@ -46,7 +46,7 @@ public class GuestService implements IGuestService {
 
 		String md5Password = DigestUtils.md5Hex(signupForm.getPassword());
 		user.setRole_idRole(signupForm.getRole_idRole());
-		user.setCountry_id—ountry(ServiceParamConstant.ID_—OUNTRY);
+		user.setCountry_id—ountry(ServiceParamConstant.ID_COUNTRY);
 		user.setCity_id—ity(ServiceParamConstant.ID_—ITY);
 		user.setNickName(signupForm.getNickName());
 		user.setLogin(signupForm.getLogin());

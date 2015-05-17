@@ -10,6 +10,7 @@
 <title>Global3Dmod</title>
 <!-- Init search variable -->
 <spring:message code="main.search.search" var="search"/>
+<spring:message code="main.search.searchInto" var="searchmain"/>
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -39,7 +40,7 @@
         <div class="col-md-4"></div>
             <form class="col-md-4">
             <div class="input-group" style="width:100%; text-align:center;margin:0 auto;">
-            <input class="form-control input-lg" placeholder="<spring:message code="main.search.searchInto" />" type="text">
+            <input class="form-control input-lg" placeholder="${searchmain}" type="text">
               <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">${search}</button></span>
             </div>
           </form>

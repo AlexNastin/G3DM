@@ -10,6 +10,20 @@
 <title>Global3Dmod | Model</title>
 
 <spring:message code="main.search.search" var="search"/>
+ <spring:message code="model.info.tab1" var="info"/>
+    <spring:message code="model.info.tab2" var="instruct"/>
+    <spring:message code="model.info.author" var="author"/>
+    <spring:message code="model.info.category" var="category"/>
+    <spring:message code="model.info.idpost" var="id"/>
+    <spring:message code="model.info.soft" var="soft"/>
+    <spring:message code="model.info.desrciption" var="desc"/>
+    <spring:message code="model.body.photo" var="photo"/>
+    <spring:message code="model.body.comments" var="comms"/>
+    <spring:message code="model.body.comcol" var="colcom"/>
+    <spring:message code="model.body.download" var="down"/>
+    <spring:message code="model.body.rating" var="like"/>
+    <spring:message code="model.body.issue" var="issue"/>
+    
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,20 +41,7 @@
     <script src="js/respond.min.js"></script>
     <![endif]-->
     <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
-    <spring:message code="model.info.tab1" var="info"/>
-    <spring:message code="model.info.tab2" var="instruct"/>
-    <spring:message code="model.info.author" var="author"/>
-    <spring:message code="model.info.category" var="category"/>
-    <spring:message code="model.info.idpost" var="id"/>
-    <spring:message code="model.info.soft" var="soft"/>
-    <spring:message code="model.info.desrciption" var="desc"/>
-    <spring:message code="model.body.photo" var="photo"/>
-    <spring:message code="model.body.comments" var="comms"/>
-    <spring:message code="model.body.comcol" var="colcom"/>
-    <spring:message code="model.body.download" var="down"/>
-    <spring:message code="model.body.rating" var="like"/>
-    <spring:message code="model.body.issue" var="issue"/>
-    
+   
 
 
    </head>

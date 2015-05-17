@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -73,8 +74,12 @@ public class PostDAOImpl implements IPostDAO {
 	@Override
 	@Transactional
 	public List<Post> selectPostsByDesigner(Integer id) throws DaoException {
-		List<Post> post = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", id).getResultList();
-		return post;
+		List<Post> posts = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", id).getResultList();
+		for  ( Post post : posts )  { 
+		    Hibernate.initialize(post.getCategory()); 
+		    Hibernate.initialize(post.getSubcategory()); 
+		}
+		return posts;
 	}
 
 }

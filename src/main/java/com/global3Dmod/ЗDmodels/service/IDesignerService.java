@@ -2,6 +2,8 @@ package com.global3Dmod.ÇDmodels.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.global3Dmod.ÇDmodels.domain.Category;
@@ -23,7 +25,7 @@ public interface IDesignerService {
 	public List<Printer> getCheckPrintersById(String[] printersId)
 			throws ServiceException;
 
-	public void addPost(PostForm postForm) throws ServiceException;
+	public void addPost(PostForm postForm, int id) throws ServiceException;
 
 	public String modelFileUpload(MultipartFile file) throws ServiceException;
 

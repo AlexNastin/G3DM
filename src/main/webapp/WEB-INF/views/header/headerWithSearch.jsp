@@ -65,16 +65,18 @@
       				</a>
       				</security:authorize>
       				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
-                    <a href="<c:url value="/logout" />"'>
-      				Logout <i class="fa fa-user-times"></i>
-      				</a>
-      				</security:authorize></li>
-            <li><security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
                     <a href="<c:url value="${profileURL}" />"'>
       				Profile <i class="fa fa-suitcase"></i>
       				</a>
+      				</security:authorize>
+      				</li>
+            <li>
+      				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+                    <a href="<c:url value="/logout" />"'>
+      				Logout <i class="fa fa-user-times"></i>
+      				</a>
       				</security:authorize></li>            
-          </ul>                            
+          </ul>                                    
                        				
       		         </li>
             </ul>

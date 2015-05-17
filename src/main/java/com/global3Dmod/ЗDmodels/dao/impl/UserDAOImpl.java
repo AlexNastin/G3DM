@@ -106,4 +106,10 @@ public class UserDAOImpl implements IUserDAO {
 		return nickNames;
 	}
 
+	@Override
+	public User getUser(String login) throws DaoException {
+	User user = (User) em.createNamedQuery("User.findUserByLogin").setParameter("login", login).getSingleResult();
+		return user;
+	}
+
 }

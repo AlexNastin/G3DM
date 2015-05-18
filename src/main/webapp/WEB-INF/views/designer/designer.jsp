@@ -135,7 +135,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h5>Lorem ipsum dolor sit amet</h5>
+                            <h5>1</h5>
                         </div>
                     </div>
                     <!--/.portfolio-item 2 -->
@@ -150,7 +150,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
+                        <h5>2</h5>
                     </div>
                 </div>
                      <!--/.portfolio-item 3 -->
@@ -165,7 +165,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
+                        <h5>3</h5>
                     </div>
                 </div>
                  <!--/.portfolio-item 4 -->
@@ -181,7 +181,7 @@
                              </div>
                          </div>
 
-                         <h5>Lorem ipsum dolor sit amet</h5>
+                         <h5>4</h5>
                      </div>
                              </div>
                          </div>
@@ -198,7 +198,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
+                        <h5>5</h5>
                     </div>
                 </div>
                 <!--/.portfolio-item 2 -->
@@ -213,7 +213,7 @@
                                 </div>
                             </div>
                         </div>
-                        <h5>Lorem ipsum dolor sit amet</h5>
+                        <h5>6</h5>
                     </div>
                 </div>
                 <!--/.portfolio-item 3 -->

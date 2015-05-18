@@ -7,7 +7,6 @@ public final class ServiceParamConstant {
 	public static final int ID_ÑITY = 1;
 	public static final String GENDER = "NONE";
 	public static final String EMPTY = "";
-	public static final int ID_COUNTRY = 0;
 	
 
 }

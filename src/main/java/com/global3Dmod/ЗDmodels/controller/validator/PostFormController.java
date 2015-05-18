@@ -18,7 +18,7 @@ import com.global3Dmod.ÇDmodels.form.validator.PostFormValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 
 @Controller
-@RequestMapping("/addPost")
+@RequestMapping("/designer/addPost")
 public class PostFormController {
 
 	@Autowired
@@ -62,7 +62,7 @@ public class PostFormController {
 //		final String PREFIX = this.getClass().getResource("/").getPath();
 //		C:\Java\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\G3DM\resources\files
 //		System.out.println(PREFIX);
-		ModelAndView modelAndView = new ModelAndView("forward:/addPostDB");
+		ModelAndView modelAndView = new ModelAndView("forward:/designer/addPostDB");
 		modelAndView.addObject("postForm", postForm);
 		return modelAndView;
 	}

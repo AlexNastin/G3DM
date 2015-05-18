@@ -72,7 +72,7 @@ public class DesignerController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/addPostDB", method = RequestMethod.POST)
+	@RequestMapping(value = "/designer/addPostDB", method = RequestMethod.POST)
 	public ModelAndView addPostDB(PostForm postForm, Locale locale, Model model, HttpSession httpSession)
 			throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);

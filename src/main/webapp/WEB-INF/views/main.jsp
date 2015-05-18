@@ -50,7 +50,7 @@
 </div>
     
        
-        <div class="group container">
+        <div class="group container categories">
     <div class="item line"></div>
     <div class="item text"><spring:message code="main.categories.categories" /></div>
     <div class="item line"></div>

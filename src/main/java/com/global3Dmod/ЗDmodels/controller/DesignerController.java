@@ -76,7 +76,7 @@ public class DesignerController {
 	public ModelAndView addPostDB(PostForm postForm, Locale locale, Model model, HttpSession httpSession)
 			throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		designerService.addPost(postForm, person.getIdPerson());
+		designerService.addPost(postForm, person.getIdPerson(), person.getNickName());
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/index");
 		return modelAndView2;
 	}

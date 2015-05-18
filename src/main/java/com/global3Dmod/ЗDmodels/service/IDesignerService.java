@@ -25,7 +25,7 @@ public interface IDesignerService {
 	public List<Printer> getCheckPrintersById(String[] printersId)
 			throws ServiceException;
 
-	public void addPost(PostForm postForm, int id) throws ServiceException;
+	public void addPost(PostForm postForm, int idUser, String nickName) throws ServiceException;
 
 	public String modelFileUpload(MultipartFile file) throws ServiceException;
 
@@ -34,8 +34,8 @@ public interface IDesignerService {
 
 	public String avatarFileUpload(MultipartFile file) throws ServiceException;
 
-	public List<Subcategory> getAllSubcategoryWithinCategory(int id) throws ServiceException;
+	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory) throws ServiceException;
 	
-	public List<Post> getPostsByDesigner(Integer id) throws ServiceException;
+	public List<Post> getPostsByDesigner(Integer idUser) throws ServiceException;
 
 }

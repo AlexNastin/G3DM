@@ -26,8 +26,6 @@ import com.global3Dmod.«Dmodels.service.ServiceParamConstant;
 @Service
 public class GuestService implements IGuestService {
 
-	private final String FORMAT_DATE = "yyyy-MM-dd";
-
 	@Autowired
 	private IUserDAO userDAO;
 
@@ -40,10 +38,9 @@ public class GuestService implements IGuestService {
 	@Override
 	public void addUser(SignupForm signupForm) throws ServiceException {
 		User user = new User();
-		DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
+		DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
-
 		String md5Password = DigestUtils.md5Hex(signupForm.getPassword());
 		user.setRole_idRole(signupForm.getRole_idRole());
 		user.setCountry_id—ountry(ServiceParamConstant.ID_—OUNTRY);

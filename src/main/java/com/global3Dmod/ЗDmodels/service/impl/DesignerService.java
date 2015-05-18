@@ -25,17 +25,16 @@ import com.global3Dmod.«Dmodels.domain.Subcategory;
 import com.global3Dmod.«Dmodels.exception.DaoException;
 import com.global3Dmod.«Dmodels.exception.ServiceException;
 import com.global3Dmod.«Dmodels.form.PostForm;
-import com.global3Dmod.«Dmodels.form.SignupForm;
 import com.global3Dmod.«Dmodels.service.IDesignerService;
+import com.global3Dmod.«Dmodels.service.ServiceParamConstant;
+import com.global3Dmod.«Dmodels.service.helper.ServiceHelper;
 
 @Service
 public class DesignerService implements IDesignerService {
 
-	private final String MODEL_PATH = "C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/models/";
-	private final String PHOTO_MODEL_PATH = "C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/photosModel/";
-	private final String AVATAR_PATH = "C:/Users/User/git/G3DM/src/main/webapp/resources/images/files/avatars/";
-
-	private final String FORMAT_DATE = "yyyy-MM-dd";
+	private final String MODEL_PATH = "C:/";
+	private final String PHOTO_MODEL_PATH = "C:/";
+	private final String AVATAR_PATH = "C:/";
 
 	@Autowired
 	private IDisProgramDAO disProgramDAO;
@@ -75,14 +74,14 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public List<Subcategory> getAllSubcategoryWithinCategory(int id)
+	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory)
 			throws ServiceException {
 		List<Subcategory> subcategories = new ArrayList<Subcategory>();
 		List<Category> categories;
 		try {
 			categories = categoryDAO.selectAllCategories();
 			for (Category category : categories) {
-				if (category.getIdCategory() == id) {
+				if (category.getIdCategory() == idCategory) {
 					List<Subcategory> subcategories2 = category
 							.getSubcategories();
 					for (Subcategory subcategory : subcategories2) {
@@ -122,18 +121,18 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public void addPost(PostForm postForm, int id) throws ServiceException {
-		// postForm.setModelFilePath(modelFileUpload(postForm.getModel()));
-		DateFormat dateFormat = new SimpleDateFormat(FORMAT_DATE);
+	public void addPost(PostForm postForm, int idUser, String nickName) throws ServiceException {
+		// postForm.setModelFilePath(modelFileUpload(postForm.getModel())); // ÕËÍËÚ‡  ˝ÚÓÚ ÚÂ·Â Ì‡‰Ó? ÂÒÎË ÌÂÚ ÚÓ ‰ÂÎÂÚÂ‰.
+		DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
 		Date date = new Date();
+		
 		String registrationDate = dateFormat.format(date);
-
 		Post post = new Post();
-		post.setUser_idUser(id);
+		post.setUser_idUser(idUser);
 		post.setCategory_idCategory(postForm.getCategory_idCategory());
 		post.setSubcategory_idSubcategory(postForm
 				.getSubcategory_idSubcategory());
-		post.setNumberPost("1111");
+		post.setNumberPost(ServiceHelper.generationNumberPost(date, nickName));
 		post.setDisProgram_idDisProgram(postForm.getDisProgram_idDisProgram());
 		post.setDateReg(registrationDate);
 		post.setDateUpdate(registrationDate);
@@ -143,7 +142,6 @@ public class DesignerService implements IDesignerService {
 		post.setIsDisplay(true);
 		post.setCountDownload(0);
 		post.setPrinters(getCheckPrintersById(postForm.getPrintersId()));
-
 		PostPhoto firstPostPhoto = new PostPhoto();
 		firstPostPhoto.setPhotoPath(photoModelFileUpload(postForm
 				.getFirstPhoto()));
@@ -227,10 +225,10 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public List<Post> getPostsByDesigner(Integer id) throws ServiceException {
+	public List<Post> getPostsByDesigner(Integer idUser) throws ServiceException {
 		List<Post> posts;
 		try {
-			posts = postDAO.selectPostsByDesigner(id);
+			posts = postDAO.selectPostsByDesigner(idUser);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

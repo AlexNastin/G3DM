@@ -5,6 +5,9 @@
 <security:authorize access="hasRole('ROLE_MODERATOR')" var="moderatorBool"/>
 <security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool"/>
 <spring:message code="headerWithSearch.header.account" var="account" />
+<spring:message code="headerWithSearch.header.about" var="about" />
+<spring:message code="headerWithSearch.header.contact" var="contact"/>
+
 <c:if test="${userBool}">
 <c:set value="/user/profile" var="profileURL" />
 </c:if>
@@ -37,10 +40,10 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
-        <button type="submit" class="btn btn-default">${search }</button>
+        <button type="submit" class="btn btn-default">${search}</button>
       </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="<c:url value="/about"/>"><spring:message code="header.header.about" /></a></li>
+                <li><a href="<c:url value="/about"/>">${about}</a></li>
                 <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Partners <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -53,7 +56,7 @@
             <li><a href="#">One-3d.net</a></li>
           </ul>
         </li>
-                <li><a href="<c:url value="/contact"/>"><spring:message code="header.header.contact" /></a></li>
+                <li><a href="<c:url value="/contact"/>">${contact}</a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
                     <li class="dropdown">

@@ -5,6 +5,8 @@
 <security:authorize access="hasRole('ROLE_MODERATOR')" var="moderatorBool"/>
 <security:authorize access="hasRole('ROLE_ADMIN')" var="adminBool"/>
 <spring:message code="header.header.account" var="account" />
+<spring:message code="header.header.about" var="about" />
+<spring:message code="header.header.contact" var="contact"/>
 
 <c:if test="${userBool}">
 <c:set value="/user/profile" var="profileURL" />
@@ -45,7 +47,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
            		<li><a href="<c:url value="/test"/>">TEST</a></li>
-                <li><a href="<c:url value="/about"/>"><spring:message code="header.header.about" /></a></li>
+                <li><a href="<c:url value="/about"/>">${about}</a></li>
                 <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Partners <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -58,7 +60,7 @@
             <li><a href="#">One-3d.net</a></li>
           </ul>
         </li>
-                <li><a href="<c:url value="/contact"/>"><spring:message code="header.header.contact" /></a></li>
+                <li><a href="<c:url value="/contact"/>">${contact}</a></li>
                 <li><a class="supernav" href="?locale=en">EN |</a>
                 <li><a href="?locale=ru">RU</a></li>
                    

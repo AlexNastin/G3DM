@@ -56,7 +56,7 @@
 <div>
 <button class="btn btn-primary fa fa-download"> ${down} </button>
 <button class="btn btn-success fa fa-thumbs-o-up"> ${like} </button>
-<button type="button" class="btn btn-danger fa fa-exclamation-circle">${issue}</button>
+<button type="button" class="btn btn-danger fa fa-exclamation-circle"> ${issue}</button>
 </div>
 
 </div>

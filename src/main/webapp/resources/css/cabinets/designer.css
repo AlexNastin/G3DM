@@ -2664,6 +2664,7 @@ label {
 }
 .nopadding2{
 	padding:0px;
+	padding-left: 0.8em;
 	}
 .row{
 	margin:0px;

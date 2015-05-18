@@ -101,7 +101,7 @@
                                   <td>
                                       <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                       <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
                                   </td>
                               </tr>
                               <tr>
@@ -118,7 +118,7 @@
                                   <td>
                                       <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                       <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
                                   </td>
                               </tr>
                               <tr>
@@ -135,7 +135,7 @@
                                   <td>
                                       <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                       <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
                                   </td>
                               </tr>
                               <tr>
@@ -152,7 +152,7 @@
                                   <td>
                                       <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                       <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
                                   </td>
                               </tr>
                               <tr>
@@ -165,7 +165,7 @@
                                   <td>
                                       <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
                                       <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
                                   </td>
                               </tr>
                               </tbody>

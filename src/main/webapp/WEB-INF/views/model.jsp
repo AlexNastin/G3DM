@@ -51,7 +51,8 @@
 <div class="row">
 <div class="col-md-4">
 <h3>Model name</h3>
-<img src="<c:url value="/resources/images/logosign.jpg" />" class="img-responsive margination" alt="Responsive image"> 
+<a href="#" data-toggle="modal" data-target="#lightbox"><img src="<c:url value="/resources/images/logosign.jpg" />" class="img-responsive margination" alt="Responsive image"> 
+</a>
 <div>
 <button class="btn btn-primary fa fa-download"> ${down} </button>
 <button class="btn btn-success fa fa-thumbs-o-up"> ${like} </button>

@@ -77,13 +77,12 @@ public class DesignerController {
 			throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		designerService.addPost(postForm, person.getIdPerson(), person.getNickName());
-		ModelAndView modelAndView2 = new ModelAndView("redirect:/index");
+		ModelAndView modelAndView2 = new ModelAndView("/designer/profile");
 		return modelAndView2;
 	}
 
 	@RequestMapping(value = "/getStringMVC", method = RequestMethod.GET)
 	public String addPostDB() throws Exception {
-
 		return "AAAABBBBBCCCCC";
 	}
 

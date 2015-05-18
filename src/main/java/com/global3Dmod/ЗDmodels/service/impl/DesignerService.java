@@ -139,21 +139,25 @@ public class DesignerService implements IDesignerService {
 		post.setTitle(postForm.getTitle());
 		post.setDescription(postForm.getDescription());
 		post.setInstruction(postForm.getInstruction());
-		post.setIsDisplay(true);
-		post.setCountDownload(0);
+		post.setIsDisplay(ServiceParamConstant.DEFAULT_IS_DISPLAY);
+		post.setCountDownload(ServiceParamConstant.DEFAULT_COUNT);
 		post.setPrinters(getCheckPrintersById(postForm.getPrintersId()));
+		
 		PostPhoto firstPostPhoto = new PostPhoto();
 		firstPostPhoto.setPhotoPath(photoModelFileUpload(postForm
 				.getFirstPhoto()));
 		firstPostPhoto.setPost(post);
+		
 		PostPhoto secondPostPhoto = new PostPhoto();
 		secondPostPhoto.setPhotoPath(photoModelFileUpload(postForm
 				.getSecondPhoto()));
 		secondPostPhoto.setPost(post);
+		
 		PostPhoto thirdPostPhoto = new PostPhoto();
 		thirdPostPhoto.setPhotoPath(photoModelFileUpload(postForm
 				.getThirdPhoto()));
 		thirdPostPhoto.setPost(post);
+		
 		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 		postPhotos.add(firstPostPhoto);
 		postPhotos.add(secondPostPhoto);
@@ -164,6 +168,7 @@ public class DesignerService implements IDesignerService {
 		file.setFilePath(modelFileUpload(postForm.getModel()));
 		file.setPost(post);
 		post.setFile(file);
+		
 		try {
 			postDAO.insertPost(post);
 		} catch (DaoException e) {

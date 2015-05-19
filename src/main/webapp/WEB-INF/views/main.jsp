@@ -86,8 +86,7 @@
 </div>
 <div class="clearfix"></div>
 <div class="row nomargin">
-<div class="col-md-2"><h3 class="nothingelsematters">die</h3></div>
- <div class="carousel-container contanier col-md-8 sliderup">
+ <div class="carousel-container contanier col-md-12 sliderup">
   
 			<!-- Codrops top bar -->
 			
@@ -117,7 +116,7 @@
 		</div><!-- /container -->
 		
 		
-		 <div class="col-md-2"></div>
+		 
 		 </div>
     <div class="clearfix"></div>
     <br>

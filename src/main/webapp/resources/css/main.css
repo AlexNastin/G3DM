@@ -902,7 +902,7 @@ navi-top{
 .mi-slider {
 	position: relative;
 	height: 490px;
-	margin-top: -5em;
+	margin-top: 2em;
 }
 
 .mi-slider ul {
@@ -926,7 +926,7 @@ navi-top{
 
 .mi-slider ul.mi-current {
 	pointer-events: auto;
-	  background-color:ghostwhite;
+	
 }
 
 .mi-slider ul li {

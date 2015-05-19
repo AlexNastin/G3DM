@@ -87,7 +87,8 @@
 </div>
 <div class="clearfix"></div>
 
-<div class="container backgroundslider">
+<div class="backgroundslider">
+<div class="container">
 <div class="row nomargin">
  <div class="carousel-container contanier col-md-12 sliderup">
   
@@ -118,7 +119,7 @@
 			</div>
 		</div><!-- /container -->
 		</div>
-		
+		</div>
 		 
 		 </div>
     <div class="clearfix"></div>

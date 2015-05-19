@@ -34,6 +34,7 @@ public class DesignerController {
 	@Autowired
 	private IDesignerService designerService;
 
+	// Õ» »“¿ “≈¡≈ ›“Œ Õ”∆ÕÓ?????
 	// @RequestMapping(value = "/upload", method = RequestMethod.POST)
 	// public String handleUpload(@RequestParam("description") String
 	// description,
@@ -79,11 +80,6 @@ public class DesignerController {
 		designerService.addPost(postForm, person.getIdPerson(), person.getNickName());
 		ModelAndView modelAndView2 = new ModelAndView("/designer/profile");
 		return modelAndView2;
-	}
-
-	@RequestMapping(value = "/getStringMVC", method = RequestMethod.GET)
-	public String addPostDB() throws Exception {
-		return "AAAABBBBBCCCCC";
 	}
 
 	@RequestMapping(value = "/test", method = RequestMethod.GET)

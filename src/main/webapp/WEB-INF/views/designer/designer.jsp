@@ -81,13 +81,13 @@
                               <hr>
                               <thead>
                               <tr>
-                                  <th><i class="fa fa-bullhorn"></i> Project</th>
-                                  <th>Category</th>
-                                  <th>Subcategory</th>
-                                  <th>Date</th>
+                                  <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/designer/profile?sort=title" />">Project</a></th>
+                                  <th><a href="<c:url value="/designer/profile?sort=category" />">Category</a></th>
+                                  <th><a href="<c:url value="/designer/profile?sort=subcategory" />">Subcategory</a></th>
+                                  <th><a href="<c:url value="/designer/profile?sort=date" />">Date</a></th>
                                   <th>Number</th>
-                                  <th><i class="fa fa-bookmark"></i> Downloads</th>
-                                  <th><i class=" fa fa-edit"></i> Status</th>
+                                  <th><i class="fa fa-bookmark"></i><a href="<c:url value="/designer/profile?sort=downloads" />">Downloads</a></th>
+                                  <th><i class=" fa fa-edit"></i><a href="<c:url value="/designer/profile?sort=status" />">Status</a></th>
                                   <th><i class="fa fa-pencil"></i>Edit</th>
                               </tr>
                               </thead>

@@ -15,22 +15,16 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.domain.User;
 
 @Controller
-@SessionAttributes("personObj")
 public class ModeratorController {
 	
 	@RequestMapping(value = "/moderator/userstable", method = RequestMethod.GET)
 	public ModelAndView index(Locale locale, Model model, HttpSession httpSession) throws Exception {
-		
 		ModelAndView modelAndView = new ModelAndView("moderator/userstable");
-
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/moderator/profile", method = RequestMethod.GET)
-	public ModelAndView a(Locale locale, Model model, @ModelAttribute User user, HttpSession httpSession) throws Exception {
-		User user2 = (User) httpSession.getAttribute("personObj");
-		System.out.println(user2);
-		System.out.println("XXXXXXXXXXXXXX "+ user);
+	public ModelAndView goProfile(Locale locale, Model model, @ModelAttribute User user, HttpSession httpSession) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("moderator/moderator");
 		return modelAndView;
 	}

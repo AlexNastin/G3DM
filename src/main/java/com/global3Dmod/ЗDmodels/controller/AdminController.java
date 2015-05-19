@@ -16,7 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 public class AdminController {
 
 	@RequestMapping(value = "/admin/profile", method = RequestMethod.GET)
-	public ModelAndView d(Locale locale, Model model, HttpSession httpSession) throws Exception {
+	public ModelAndView goProfile(Locale locale, Model model, HttpSession httpSession) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("admin/admin");
 		return modelAndView;
 	}

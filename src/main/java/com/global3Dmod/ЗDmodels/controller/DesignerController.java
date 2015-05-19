@@ -65,11 +65,15 @@ public class DesignerController {
 	// }
 
 	@RequestMapping(value = "/designer/profile", method = RequestMethod.GET)
-	public ModelAndView d(Locale locale, Model model, HttpSession httpSession) throws Exception {
+	public ModelAndView goProfile(Locale locale, Model model, HttpSession httpSession) throws Exception {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		if (person==null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
 		List<Post> posts = designerService.getPostsByDesigner(person.getIdPerson());
-		modelAndView.addObject("listPostsByDesigner", posts);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER, posts);
 		return modelAndView;
 	}
 
@@ -86,7 +90,7 @@ public class DesignerController {
 	public ModelAndView test(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("designer/postsByDesigner");
 		List<Post> posts = designerService.getPostsByDesigner(3);
-		modelAndView.addObject("listPostsByDesigner", posts);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER, posts);
 		return modelAndView;
 	}
 

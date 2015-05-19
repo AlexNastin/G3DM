@@ -85,7 +85,7 @@ public class DesignerController {
 		ModelAndView modelAndView2 = new ModelAndView("/designer/profile");
 		return modelAndView2;
 	}
-
+	// Test
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public ModelAndView test(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("designer/postsByDesigner");

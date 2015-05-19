@@ -20,7 +20,6 @@ import com.global3Dmod.ÇDmodels.service.IGuestService;
 @Controller
 public class GuestController {
 
-
 	@Autowired
 	private IGuestService guestService;
 
@@ -33,7 +32,8 @@ public class GuestController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("main");
-		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY, guestService.getAllCategoriesSubcategoriesTop3());
+		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY,
+				guestService.getAllCategoriesSubcategoriesTop3());
 		return modelAndView;
 	}
 
@@ -44,8 +44,10 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = "/putperson", method = RequestMethod.GET)
-	public ModelAndView putPerson(Locale locale, Model model, HttpSession httpSession) throws Exception {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	public ModelAndView putPerson(Locale locale, Model model,
+			HttpSession httpSession) throws Exception {
+		Authentication auth = SecurityContextHolder.getContext()
+				.getAuthentication();
 		String login = auth.getName();
 		Person person = guestService.getPerson(login);
 		httpSession.setAttribute(ControllerParamConstant.PERSON, person);
@@ -53,12 +55,13 @@ public class GuestController {
 		return modelAndView;
 	}
 
+	// Test
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
 	public ModelAndView result(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("result");
 		return modelAndView;
 	}
-
+	// Test
 	@RequestMapping(value = "/model", method = RequestMethod.GET)
 	public ModelAndView model(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("model");
@@ -71,13 +74,6 @@ public class GuestController {
 		guestService.addUser(signupForm);
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/go/signin");
 		return modelAndView2;
-	}
-
-	@RequestMapping(value = "/subcategory/cartoon characters", method = RequestMethod.GET)
-	public ModelAndView cartoonCharacters(Locale locale, Model model)
-			throws Exception {
-		ModelAndView modelAndView = new ModelAndView("login/signin");
-		return modelAndView;
 	}
 
 	@RequestMapping(value = "/about", method = RequestMethod.GET)

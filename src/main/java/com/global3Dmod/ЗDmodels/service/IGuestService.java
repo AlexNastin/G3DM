@@ -2,6 +2,7 @@ package com.global3Dmod.ÇDmodels.service;
 
 import java.util.List;
 
+import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
@@ -26,6 +27,8 @@ public interface IGuestService {
 	public List<Subcategory> getTop3Subcategories(Integer id) throws ServiceException;
 	
 	public List<Category> getAllCategoriesSubcategoriesTop3() throws ServiceException;
+	
+	public List<Advertisement> getAllAdvertisement() throws ServiceException;
 	
 	
 }

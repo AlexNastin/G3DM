@@ -2,6 +2,7 @@ package com.global3Dmod.ÇDmodels.service.impl;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -10,9 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
+import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
+import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
@@ -30,6 +33,9 @@ public class GuestService implements IGuestService {
 	private IUserDAO userDAO;
 
 	@Autowired
+	private IAdvertisementDAO AdvertisementDAO;
+
+	@Autowired
 	private ICategoryDAO categoryDAO;
 
 	@Autowired
@@ -38,7 +44,8 @@ public class GuestService implements IGuestService {
 	@Override
 	public void addUser(SignupForm signupForm) throws ServiceException {
 		User user = new User();
-		DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
+		DateFormat dateFormat = new SimpleDateFormat(
+				ServiceParamConstant.FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
 		String md5Password = DigestUtils.md5Hex(signupForm.getPassword());
@@ -143,4 +150,14 @@ public class GuestService implements IGuestService {
 		return person;
 	}
 
+	@Override
+	public List<Advertisement> getAllAdvertisement() throws ServiceException {
+		List<Advertisement> advertisements = new ArrayList<Advertisement>();
+		try {
+			advertisements = AdvertisementDAO.selectAllAdvertisements();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return advertisements;
+	}
 }

@@ -21,7 +21,9 @@ public class AvatarDAOImpl implements IAvatarDAO {
 
 	/**
 	 * Insert the object of type "Avatar" to the database
-	 * @param avatar object of type "Avatar"
+	 * 
+	 * @param avatar
+	 *            object of type "Avatar"
 	 * @throws DaoException
 	 * */
 	@Override
@@ -33,6 +35,7 @@ public class AvatarDAOImpl implements IAvatarDAO {
 
 	/**
 	 * Receipt of all elements of the table "avatars" from the database
+	 * 
 	 * @return avatar collection of objects of type "Avatar"
 	 * @throws DaoException
 	 * */
@@ -40,13 +43,16 @@ public class AvatarDAOImpl implements IAvatarDAO {
 	@Override
 	@Transactional
 	public List<Avatar> selectAllAvatars() throws DaoException {
-		List<Avatar> avatar = em.createNamedQuery("Avatar.findAll").getResultList();
+		List<Avatar> avatar = em.createNamedQuery("Avatar.findAll")
+				.getResultList();
 		return avatar;
 	}
-	
+
 	/**
 	 * Delete the object of type "Avatar" from the database
-	 * @param id row ID in the database
+	 * 
+	 * @param id
+	 *            row ID in the database
 	 * @throws DaoException
 	 * */
 	@Override
@@ -55,17 +61,19 @@ public class AvatarDAOImpl implements IAvatarDAO {
 		Avatar avatar = em.find(Avatar.class, id);
 		em.remove(avatar);
 	}
-	
+
 	/**
 	 * Update the object of type "Avatar" in the database
-	 * @param avatar object of type "Avatar"
+	 * 
+	 * @param avatar
+	 *            object of type "Avatar"
 	 * @throws DaoException
 	 * */
 	@Override
 	@Transactional
 	public void updateAvatar(Avatar avatar) throws DaoException {
 		em.merge(avatar);
-		
+
 	}
 
 }

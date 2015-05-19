@@ -26,7 +26,6 @@ public class GuestController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(Locale locale, Model model) throws Exception {
-
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
 		return modelAndView;
 	}
@@ -34,7 +33,7 @@ public class GuestController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("main");
-		modelAndView.addObject("listCategory", guestService.getAllCategoriesSubcategoriesTop3());
+		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY, guestService.getAllCategoriesSubcategoriesTop3());
 		return modelAndView;
 	}
 
@@ -45,13 +44,10 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = "/putperson", method = RequestMethod.GET)
-	public ModelAndView putPerson(Locale locale, Model model,
-			HttpSession httpSession) throws Exception {
+	public ModelAndView putPerson(Locale locale, Model model, HttpSession httpSession) throws Exception {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		String login = auth.getName();
-		System.out.println(login);
 		Person person = guestService.getPerson(login);
-		System.out.println(person);
 		httpSession.setAttribute(ControllerParamConstant.PERSON, person);
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
 		return modelAndView;

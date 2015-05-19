@@ -79,12 +79,15 @@
                     </div>
             </c:forEach>
 </section>
+</div>
  <div class="group container">
     <div class="item line"></div>
     <div class="item text">Our tops</div>
     <div class="item line"></div>
 </div>
 <div class="clearfix"></div>
+
+<div class="backgroundslider">
 <div class="row nomargin">
  <div class="carousel-container contanier col-md-12 sliderup">
   
@@ -114,7 +117,7 @@
 				</div>
 			</div>
 		</div><!-- /container -->
-		
+		</div>
 		
 		 
 		 </div>

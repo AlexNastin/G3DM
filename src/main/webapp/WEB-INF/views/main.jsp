@@ -87,7 +87,7 @@
 </div>
 <div class="clearfix"></div>
 
-<div class="backgroundslider">
+<div class="container backgroundslider">
 <div class="row nomargin">
  <div class="carousel-container contanier col-md-12 sliderup">
   
@@ -102,10 +102,10 @@
 						<li><a href="#"><img src=<c:url value="/resources/images/categories/home.jpg" /> alt=""><h4>Boots</h4></a></li>
 					</ul>
 					<ul>
-						<li><a href="#"><img src=<c:url value="/resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="/resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="/resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="/resources/images/slider/3.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img class="respimg" src=<c:url value="/resources/images/categories/toys.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/categories/architecture.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/categories/garden.jpg" /> alt=""><h4>Boots</h4></a></li>
+						<li><a href="#"><img src=<c:url value="/resources/images/categories/home.jpg" /> alt=""><h4>Boots</h4></a></li>
 					</ul>
 					
 					

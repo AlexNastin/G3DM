@@ -33,7 +33,15 @@ $(document).ready(function(){
 	      minlength: 6,
 	      required: true
 	      },
-	      confirmPassword: {
+	      j_username: {
+		        required: true,
+		        email: true
+	      },
+	      password: {
+		      minlength: 6,
+		      required: true
+		  },
+		  j_password: {
 	      minlength: 6,
 	      required: true  
 	      }

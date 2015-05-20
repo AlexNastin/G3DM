@@ -26,7 +26,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %> 
-<div class="signup-background">
+<div class="signup-background height-sign">
 <div class="col-md-4"></div>
 <div class="col-md-4"></div>
 <div class="container col-md-3 sign-up-background">

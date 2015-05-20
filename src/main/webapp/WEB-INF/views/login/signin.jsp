@@ -19,10 +19,11 @@
 
 <spring:url var="authUrl" value="/static/j_spring_security_check" /> 
 <title><spring:message code="signin.signin" /></title>
+
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %>  
-<div class="signup-background">
+<div class="signup-background height-sign">
 <div class="col-md-4"></div>
 <div class="col-md-4"></div>
 <div class="container col-md-3 sign-in-background">
@@ -35,7 +36,7 @@
    <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
   <div class="form-group sign-feld-margin-top">
     <div class="col-md-12">
-       <input type="text" class="form-control" required pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$" title="example@examle.com" id="inputEmail3" name="j_username"  placeholder="Email">
+       <input type="text" class="form-control" required="required" id="inputEmail3" name="j_username"  placeholder="Email">
       </div>
      </div>
     <div class="form-group">

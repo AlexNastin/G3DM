@@ -22,6 +22,10 @@
 <spring:message code="signup.password" var="password"/>
 <spring:message code="signup.confirmpassword" var="confirmpassword"/>
 <spring:message code="signup.nickname" var="nickname"/>
+<spring:message code="signup.designer" var="designer"/>
+<spring:message code="signup.user" var="user" />
+<spring:message code="signup.signup" var="signup" />
+
 
 </head>
 <body>
@@ -35,10 +39,10 @@
 	   <div class="col-md-12">
 	   <div class="row">
 	   <div class="col-md-5">
-	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio1" value="3"  /><label for="radio1" class="css-label"><spring:message code="signup.designer" /></label>
+	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio1" value="3"  /><label for="radio1" class="css-label">${designer}</label>
 	   </div>
 	   <div class="col-md-4">
-	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label for="radio2" class="css-label"><spring:message code="signup.user" /></label>
+	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label for="radio2" class="css-label">${user}</label>
 	   </div>
 	   </div>
 	   <span class="error"><form:errors path="role_idRole" /></span>
@@ -70,7 +74,7 @@
 		</div>
 		<div class="form-group">
 		<div class="col-md-12">
-		<input type="submit" class="btn btn-default btn-outline btn-circle" value="<spring:message code="signup.signup"/>" />
+		<input type="submit" class="btn btn-default btn-outline btn-circle" value="${signup}" />
 		</div>
 		</div>
 	</form:form>

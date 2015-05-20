@@ -19,6 +19,10 @@
 
 <spring:url var="authUrl" value="/static/j_spring_security_check" /> 
 <title><spring:message code="signin.signin" /></title>
+<spring:message code="signin.password" var="password" />
+<spring:message code="signin.rememberme" var="rememberme" />
+<spring:message code="signin.signin" var="signin" />
+<spring:message code="signin.signup" var="signup" />
 
 </head>
 <body>
@@ -42,7 +46,7 @@
     <div class="form-group">
     <div class="col-md-12">   
     <div class="signin-margin-input">
-      <input type="password" class="form-control" id="inputPassword3" name="j_password" required="required"  placeholder="<spring:message code="signin.password" />">
+      <input type="password" class="form-control" id="inputPassword3" name="j_password" required="required"  placeholder="${password}">
     </div>
     </div>
   
@@ -51,16 +55,16 @@
       <div class="col-md-8">
       <div class="checkbox">
         <label class="signin-text-color">
-          <input type="checkbox" name="_spring_security_remember_me" ><spring:message code="signin.rememberme" />
+          <input type="checkbox" name="_spring_security_remember_me" >${rememberme}
         </label>
       </div>
     </div>
   </div>
   <div class="form-group">
      <div class="col-md-8">
-      <button type="submit" class="btn btn-default btn-outline btn-circle"><spring:message code="signin.signin" /></button>
+      <button type="submit" class="btn btn-default btn-outline btn-circle">${signin}</button>
       <button type="button" class="btn btn-default btn-outline btn-circle"  onClick='location.href="<c:url value="/signup"  />"'>
-      <spring:message code="signin.signup" />
+      ${signup}
       </button>
       </div>    
     </div>

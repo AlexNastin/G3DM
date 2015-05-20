@@ -32,9 +32,9 @@ import com.global3Dmod.ÇDmodels.service.helper.ServiceHelper;
 @Service
 public class DesignerService implements IDesignerService {
 
-	private final String MODEL_PATH = "C:/";
-	private final String PHOTO_MODEL_PATH = "C:/";
-	private final String AVATAR_PATH = "C:/";
+	private final String MODEL_PATH = "D:/";
+	private final String PHOTO_MODEL_PATH = "D:/";
+	private final String AVATAR_PATH = "D:/";
 
 	@Autowired
 	private IDisProgramDAO disProgramDAO;
@@ -77,23 +77,35 @@ public class DesignerService implements IDesignerService {
 	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory)
 			throws ServiceException {
 		List<Subcategory> subcategories = new ArrayList<Subcategory>();
-		List<Category> categories;
+//		List<Category> categories;
+		Category category1;
 		try {
-			categories = categoryDAO.selectAllCategories();
-			for (Category category : categories) {
-				if (category.getIdCategory() == idCategory) {
-					List<Subcategory> subcategories2 = category
-							.getSubcategories();
-					for (Subcategory subcategory : subcategories2) {
-						subcategory.setCategory(null);
-
-					}
-					subcategories.addAll(subcategories2);
-				}
+			category1 = categoryDAO.selectCategoryById(idCategory);
+			System.out.println(category1.getSubcategories());
+			subcategories = category1.getSubcategories();
+			for (Subcategory subcategory : subcategories) {
+				subcategory.setCategory(null);
 			}
-		} catch (DaoException e) {
-			throw new ServiceException(e);
+		} catch (DaoException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
+//			try {
+//			categories = categoryDAO.selectAllCategories();
+//			for (Category category : categories) {
+//				if (category.getIdCategory() == idCategory) {
+//					List<Subcategory> subcategories2 = category
+//							.getSubcategories();
+//					for (Subcategory subcategory : subcategories2) {
+//						subcategory.setCategory(null);
+//
+//					}
+//					subcategories.addAll(subcategories2);
+//				}
+//			}
+//		} catch (DaoException e) {
+//			throw new ServiceException(e);
+//		}
 		return subcategories;
 	}
 

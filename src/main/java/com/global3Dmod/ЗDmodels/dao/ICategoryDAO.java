@@ -15,4 +15,5 @@ public interface ICategoryDAO {
 
 	public void deleteCategory(Integer id) throws DaoException;
 
+	public Category selectCategoryById(int idCategory) throws DaoException;
 }

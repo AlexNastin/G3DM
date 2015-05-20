@@ -21,6 +21,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
@@ -74,61 +78,77 @@ public class DesignerController {
 	// }
 
 	@RequestMapping(value = "/designer/profile", method = RequestMethod.GET)
-//	params = {"sort"})
-//	@RequestParam("sort") String typeSort
-	public ModelAndView goProfile(Locale locale, Model model, HttpSession httpSession, HttpServletRequest request) throws Exception {
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		if (person==null) {
+	// params = {"sort"})
+	// @RequestParam("sort") String typeSort
+	public ModelAndView goProfile(Locale locale, Model model,
+			HttpSession httpSession, HttpServletRequest request)
+			throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
-		List<Post> posts = designerService.getPostsByDesigner(person.getIdPerson());
-		if(request.getParameter("sort")!=null) {
-			if(request.getParameter("sort").equals("title")) {
+		List<Post> posts = designerService.getPostsByDesigner(person
+				.getIdPerson());
+		if (request.getParameter("sort") != null) {
+			if (request.getParameter("sort").equals("title")) {
 				Collections.sort(posts, new SortedPostsByTitle());
-			} else if(request.getParameter("sort").equals("category")) {
+			} else if (request.getParameter("sort").equals("category")) {
 				Collections.sort(posts, new SortedPostsByCategory());
-			} else if(request.getParameter("sort").equals("subcategory")) {
+			} else if (request.getParameter("sort").equals("subcategory")) {
 				Collections.sort(posts, new SortedPostsBySubcategory());
-			} else if(request.getParameter("sort").equals("date")) {
+			} else if (request.getParameter("sort").equals("date")) {
 				Collections.sort(posts, new SortedPostsByDate());
-			} else if(request.getParameter("sort").equals("downloads")) {
+			} else if (request.getParameter("sort").equals("downloads")) {
 				Collections.sort(posts, new SortedPostsByDownloads());
-			} else if(request.getParameter("sort").equals("status")) {
+			} else if (request.getParameter("sort").equals("status")) {
 				Collections.sort(posts, new SortedPostsByStatus());
 			}
 		}
-		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER, posts);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER,
+				posts);
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/designer/addPostDB", method = RequestMethod.POST)
-	public ModelAndView addPostDB(PostForm postForm, Locale locale, Model model, HttpSession httpSession)
-			throws Exception {
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
-		designerService.addPost(postForm, person.getIdPerson(), person.getNickName());
+	public ModelAndView addPostDB(PostForm postForm, Locale locale,
+			Model model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		designerService.addPost(postForm, person.getIdPerson(),
+				person.getNickName());
 		ModelAndView modelAndView2 = new ModelAndView("/designer/profile");
 		return modelAndView2;
 	}
+
 	// Test
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
 	public ModelAndView test(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("designer/postsByDesigner");
 		List<Post> posts = designerService.getPostsByDesigner(3);
-		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER, posts);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER,
+				posts);
 		return modelAndView;
 	}
 
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@RequestMapping(value = "/get/subcategories", method = RequestMethod.GET)
 	public @ResponseBody List<Subcategory> getAllSubcategoryWithinCategory(
 			@RequestParam(value = "idCategory", required = true) Integer idCategory)
 			throws ServiceException {
-		return designerService.getAllSubcategoryWithinCategory(idCategory);
+		List<Subcategory> subcategories = designerService.getAllSubcategoryWithinCategory(idCategory);
+		for (Subcategory subcategory : subcategories) {
+			System.out.println("AAAA "+subcategory);
+		}
+		return subcategories;
 	}
 
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@RequestMapping(value = "/get/categories", method = RequestMethod.GET)
-	public @ResponseBody List<Category> getAllCategory() throws ServiceException {
+	public @ResponseBody List<Category> getAllCategory()
+			throws ServiceException {
 		return designerService.getAllCategories();
 	}
 }

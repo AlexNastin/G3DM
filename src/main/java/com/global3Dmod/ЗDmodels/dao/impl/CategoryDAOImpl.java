@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.domain.Category;
+import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
-
 
 @Repository("jpaCategoryDAO")
 @Transactional
@@ -23,7 +23,9 @@ public class CategoryDAOImpl implements ICategoryDAO {
 
 	/**
 	 * Insert the object of type "Category" to the database
-	 * @param category object of type "Category"
+	 * 
+	 * @param category
+	 *            object of type "Category"
 	 * @throws DaoException
 	 * */
 	@Override
@@ -35,6 +37,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 
 	/**
 	 * Receipt of all elements of the table "categories" from the database
+	 * 
 	 * @return category collection of objects of type "Category"
 	 * @throws DaoException
 	 * */
@@ -42,32 +45,46 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	@Override
 	@Transactional
 	public List<Category> selectAllCategories() throws DaoException {
-		List<Category> category = em.createNamedQuery("Category.findAll").getResultList();
+		List<Category> category = em.createNamedQuery("Category.findAll")
+				.getResultList();
 		return category;
 	}
 
 	/**
 	 * Delete the object of type "Category" from the database
-	 * @param id row ID in the database
+	 * 
+	 * @param id
+	 *            row ID in the database
 	 * @throws DaoException
 	 * */
 	@Override
 	@Transactional
-	public void deleteCategory(Integer id) throws DaoException  {
+	public void deleteCategory(Integer id) throws DaoException {
 		Category category = em.find(Category.class, id);
 		em.remove(category);
 	}
 
 	/**
 	 * Update the object of type "Category" in the database
-	 * @param category object of type "Category"
+	 * 
+	 * @param category
+	 *            object of type "Category"
 	 * @throws DaoException
 	 * */
 	@Override
 	@Transactional
 	public void updateCategory(Category category) throws DaoException {
 		em.merge(category);
-		
+
 	}
 
+	@Override
+	@Transactional
+	public Category selectCategoryById(int idCategory) throws DaoException {
+		Category category = (Category) em
+				.createNamedQuery("Category.findCategoryById")
+				.setParameter("idCategory", idCategory).getSingleResult();
+		return category;
+
+	}
 }

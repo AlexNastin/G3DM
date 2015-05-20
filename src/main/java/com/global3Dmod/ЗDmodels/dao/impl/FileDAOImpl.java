@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.annotations.LazyToOne;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -40,6 +41,7 @@ public class FileDAOImpl implements IFileDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
+
 	public List<File> selectAllFiles() throws DaoException {
 		List<File> file = em.createNamedQuery("File.findAll").getResultList();
 		return file;

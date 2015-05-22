@@ -45,8 +45,8 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	@Override
 	@Transactional
 	public List<Category> selectAllCategories() throws DaoException {
-		List<Category> category = em.createNamedQuery("Category.findAll")
-				.getResultList();
+		String dasdsa = "";
+		List<Category> category = em.createNamedQuery("Category.findAll").getResultList();
 		return category;
 	}
 

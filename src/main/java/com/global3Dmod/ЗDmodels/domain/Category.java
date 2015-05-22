@@ -16,15 +16,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "CATEGORIES")
 @NamedQueries({
-	@NamedQuery(name="Category.findAll", query="select c from Category c"),
+	@NamedQuery(name="Category.findAll", query="select c from Category c "),
 	@NamedQuery(name = "Category.findCategoryById", query = "select c from Category c where c.idCategory = :idCategory")})
 public class Category implements Essence {
-
+//join fetch c.subcategories
 	@Id
 	@Column(name = "idCategory")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,11 +39,11 @@ public class Category implements Essence {
 	@Column(name = "imagePath")
 	private String imagePath;
 	
-	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Subcategory> subcategories = new ArrayList<Subcategory>();
-	
-	@OneToOne(mappedBy = "category")
-	private Post post;
+
+	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
+	private List<Post> posts;
 	
 	public Category() {
 		super();

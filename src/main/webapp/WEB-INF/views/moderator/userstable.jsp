@@ -7,9 +7,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>User's control page | Global3dmod</title>
+<title>Posts control page | Global3dmod</title>
 <!-- Init search variable -->
 
+<spring:message code="moderator.menu.postsunpublished" var="unpblsd"/>
+<spring:message code="moderator.menu.postspublished" var="publics"/>
+<spring:message code="moderator.menu.users" var="users"/>
+<spring:message code="moderator.menu.designer" var="designers"/>
+<spring:message code="headerWithSearch.header.search" var="search"/>
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +24,7 @@
     <link href="<c:url value="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/cabinets/designer.css"  />" rel="stylesheet" />
-     <link href="<c:url value="/resources/css/cabinets/font-awesome/css/font-awesome.css"  />" rel="stylesheet" />
+     <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.css"  />" rel="stylesheet" />
     
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -32,20 +37,17 @@
 
 	<%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>  
 	<!-- Designer's page will start here -->
-	     
-	      <!--sidebar start-->
-     
+            
       <div class="row">
       <div class="col-md-2 nopadding1">
       <div class="list-group">
       <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
-  <a href="#" class="list-group-item">
-   Posts board
+  <a href="<c:url value="/moderator/profile" />" class="list-group-item">
+    <i class="fa fa-exclamation-triangle"></i> ${unpblsd}
   </a>
-  <a href="#" class="list-group-item active">Users board</a>
-  <a href="#" class="list-group-item">add work</a>
-  <a href="#" class="list-group-item">Lorem ipsum</a>
-  <a href="#" class="list-group-item">Lorem ipsum</a>
+  <a href="<c:url value="/moderator/userstable" />" class="list-group-item active"> <i class="fa fa-check-circle"></i> ${publics}</a>
+  <a href="#" class="list-group-item"> <i class="fa fa-users"></i> ${users}</a>
+  <a href="#" class="list-group-item"><i class="fa fa-paint-brush"></i> ${designers}</a>
 </div>
       </div>
       <!--main content start-->

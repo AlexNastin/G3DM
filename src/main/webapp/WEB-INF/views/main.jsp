@@ -11,6 +11,8 @@
 <!-- Init search variable -->
 <spring:message code="main.search.search" var="search"/>
 <spring:message code="main.search.searchInto" var="searchmain"/>
+<spring:message code="main.top.topModels" var="topmodel" />
+<spring:message code="main.top.topDesigners" var="topdesigner" />
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,7 +57,9 @@
     <div class="item text"><spring:message code="main.categories.categories" /></div>
     <div class="item line"></div>
 </div>
- <div class="container">
+<div class="col-lg-12">
+
+ 
 			<section id="portfolio">
             <div class="row portfolio-items"> 
             <!--1st element-->
@@ -79,7 +83,8 @@
                     </div>
             </c:forEach>
 </section>
-</div>
+
+ </div>
  <div class="group container">
     <div class="item line"></div>
     <div class="item text">Our tops</div>
@@ -111,8 +116,8 @@
 					
 					
 					<nav>
-						<a href="#"><spring:message code="main.top.topModels" /></a>
-						<a href="#"><spring:message code="main.top.topDesigners" /></a>
+						<a href="#">${topmodel}</a>
+						<a href="#">${topdesigner}</a>
 						
 					</nav>
 				</div>
@@ -120,7 +125,7 @@
 		</div><!-- /container -->
 		</div>
 		</div>
-		 
+		
 		 </div>
     <div class="clearfix"></div>
     <br>

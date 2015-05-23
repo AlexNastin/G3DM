@@ -7,6 +7,8 @@
 <spring:message code="header.header.account" var="account" />
 <spring:message code="header.header.about" var="about" />
 <spring:message code="header.header.contact" var="contact"/>
+<spring:message code="header.header.signup"  var="signup"/>
+<spring:message code="header.header.signin" var="signin" />
 
 <c:if test="${userBool}">
 <c:set value="/user/profile" var="profileURL" />
@@ -69,7 +71,10 @@
           <ul class="dropdown-menu" role="menu">
             <li><security:authorize access="isAnonymous()">
                     <a href="<c:url value="/go/signin" />"'>
-      				<spring:message code="header.header.signin" /> <i class="fa fa-user-plus"></i>
+      				${signin} <i class="fa fa-sign-in"></i>
+      				</a>
+      				<a href="<c:url value="/signup" />"'>
+      				${signup} <i class="fa fa-user-plus"></i>
       				</a>
       				</security:authorize>
       				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">

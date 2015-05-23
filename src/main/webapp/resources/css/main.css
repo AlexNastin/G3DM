@@ -1401,6 +1401,8 @@ input:-moz-placeholder {
    .fa-twitter:before {
    color: #428bca;
    }
-   )
-  
-   
+  .footerpadding{
+  	
+    min-height: 45em;
+  }
+    

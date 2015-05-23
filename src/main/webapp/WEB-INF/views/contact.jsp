@@ -18,7 +18,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %>
-<div class="container">
+<div class="container holycontent">
 <div class="row">
 <div class="font-contact line-contact col-md-8">
 Contact

@@ -40,7 +40,7 @@
 	     
 	      <!--sidebar start-->
      
-      <div class="row">
+      <div class="row footerpadding">
       <div class="col-md-2 nopadding1">
       <div class="list-group">
       <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      

@@ -17,7 +17,7 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %> 
-<div class="container">
+<div class="container holycontent">
 <div class="col-md-10 image-about"></div>
 <div class="col-md-12 line-about font-about">
 Who are we?

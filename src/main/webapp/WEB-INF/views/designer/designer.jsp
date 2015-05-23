@@ -38,11 +38,11 @@
 	<%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>  
 	<!-- Designer's page will start here -->
 	     
-	      <!--sidebar start-->
+	    
      
-      <div class="row">
-      <div class="col-md-2 nopadding1">
-      <div class="list-group">
+ <div class="row footerpadding">
+    <div class="col-md-2 nopadding1">
+     <div class="list-group">
       <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
   <a href="<c:url value="/designer/profile" />" class="list-group-item active">
     <i class="fa fa-briefcase"></i> ${works} 
@@ -51,8 +51,8 @@
   <a href="#" class="list-group-item"><i class="fa fa-info-circle"></i> ${data}  </a>
   <a href="<c:url value="/designer/addPost" />" class="list-group-item"><i class="fa fa-plus-square"></i> ${add}  </a>
   
-</div>
-      </div>
+	 </div>
+    </div>
       <!--main content start-->
       
           <div class="row">
@@ -325,6 +325,7 @@
   </div> 
   
   <div class="clearfix"> </div>
+  </div>
 	<%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 

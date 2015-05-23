@@ -9,8 +9,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
-<link href="<c:url value="/resources/css/font-awesome.min.css"  />" rel="stylesheet" />
-<link href="<c:url value="/resources/css/prettyPhoto.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/sign.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/about.css"  />" rel="stylesheet" />

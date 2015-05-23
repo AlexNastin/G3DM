@@ -57,7 +57,7 @@
     <div class="item text"><spring:message code="main.categories.categories" /></div>
     <div class="item line"></div>
 </div>
-<div class="col-lg-12">
+<div class="container col-lg-12 nomargin"  >
 
  
 			<section id="portfolio">

@@ -171,7 +171,7 @@ a:focus {
   margin: 0;
 }
 .portfolio-items {
-  margin-right: -20px;
+  margin-right: -1.1em;
 }
 .portfolio-filter {
   margin-bottom: 50px;
@@ -1392,3 +1392,15 @@ input:-moz-placeholder {
 .backgroundslider{
 	background-color:rgb(244, 244, 244);
 }
+.fa-facebook-official:before {
+   color: #428bca;
+   }
+   .fa-vk:before {
+   color: #428bca;
+   }
+   .fa-twitter:before {
+   color: #428bca;
+   }
+   )
+  
+   

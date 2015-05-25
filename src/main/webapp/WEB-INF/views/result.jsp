@@ -105,140 +105,45 @@
     </hgroup>
 
     <section class="col-xs-12 col-sm-6 col-md-12">
+    <c:forEach items="${listPostsLimit10}" var="post">
         <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="<c:url value="/resources/images/auto.jpg" />" alt="Lorem ipsum" /></a>
+                <a href="#" title="${post.title}" class="thumbnail"><img src="<c:url value="/resources/images/auto.jpg" />" alt="Lorem ipsum" /></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
                 <ul class="meta-search">
                     <li><i class="fa fa-star"></i><span>${rate} 464</span></li>
-                    <li><i class="fa fa-download"></i> <span>${downloads} 315</span></li>
+                    <li><i class="fa fa-download"></i> <span>${downloads} ${post.countDownload}</span></li>
                     <li><i class="fa fa-comments"></i> <span>${comments} 654</span></li>
                     <li><i class="fa fa-user"></i> <span>${author} jhg  jg</span></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
+                <h3><a href="#" title="">${post.title}</a></h3>
+                <p>${post.description}</p>
 
             </div>
             <span class="clearfix borda"></span>
         </article>
-
-        <article class="search-result row">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="<c:url value="/resources/images/auto.jpg" />" alt="Lorem ipsum" /></a>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-                <ul class="meta-search">
-                    <li><i class="fa fa-star"></i><span>${rate} 464</span></li>
-                    <li><i class="fa fa-download"></i> <span>${downloads} 315</span></li>
-                    <li><i class="fa fa-comments"></i> <span>${comments} 654</span></li>
-                    <li><i class="fa fa-user"></i> <span>${author} jhg  jg</span></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-7">
-                <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
-
-            </div>
-            <span class="clearfix borda"></span>
-        </article>
-
-        <article class="search-result row">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="<c:url value="/resources/images/auto.jpg" />" alt="Lorem ipsum" /></a>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-                <ul class="meta-search">
-                   <li><i class="fa fa-star"></i><span>${rate} 464</span></li>
-                    <li><i class="fa fa-download"></i> <span>${downloads} 315</span></li>
-                    <li><i class="fa fa-comments"></i> <span>${comments} 654</span></li>
-                    <li><i class="fa fa-user"></i> <span>${author} jhg  jg</span></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-7">
-                <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
-
-            </div>
-            <span class="clearfix borda"></span>
-        </article>
-         <article class="search-result row">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="<c:url value="/resources/images/auto.jpg" />" alt="Lorem ipsum" /></a>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-                <ul class="meta-search">
-                    <li><i class="fa fa-star"></i><span>${rate} 464</span></li>
-                    <li><i class="fa fa-download"></i> <span>${downloads} 315</span></li>
-                    <li><i class="fa fa-comments"></i> <span>${comments} 654</span></li>
-                    <li><i class="fa fa-user"></i> <span>${author} jhg  jg</span></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-7">
-                <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
-
-            </div>
-            <span class="clearfix borda"></span>
-        </article>
-         <article class="search-result row">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="<c:url value="/resources/images/auto.jpg" />" alt="Lorem ipsum" /></a>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-                <ul class="meta-search">
-                    <li><i class="fa fa-star"></i><span>${rate} 464</span></li>
-                    <li><i class="fa fa-download"></i> <span>${downloads} 315</span></li>
-                    <li><i class="fa fa-comments"></i> <span>${comments} 654</span></li>
-                    <li><i class="fa fa-user"></i> <span>${author} jhg  jg</span></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-7">
-                <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
-
-            </div>
-            <span class="clearfix borda"></span>
-        </article>
-         <article class="search-result row">
-            <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="Lorem ipsum" class="thumbnail"><img src="<c:url value="/resources/images/auto.jpg" />" alt="Lorem ipsum" /></a>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-                <ul class="meta-search">
-                   <li><i class="fa fa-star"></i><span>${rate} 464</span></li>
-                    <li><i class="fa fa-download"></i> <span>${downloads} 315</span></li>
-                    <li><i class="fa fa-comments"></i> <span>${comments} 654</span></li>
-                    <li><i class="fa fa-user"></i> <span>${author} jhg  jg</span></li>
-                </ul>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-7">
-                <h3><a href="#" title="">Voluptatem, exercitationem, suscipit, distinctio</a></h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, exercitationem, suscipit, distinctio, qui sapiente aspernatur molestiae non corporis magni sit sequi iusto debitis delectus doloremque.</p>
-
-            </div>
-            <span class="clearfix borda"></span>
-        </article>
-        
-
+        </c:forEach>
     </section>
 </div>
 <nav style="text-align:center">
   <ul class="pagination">
+  <c:if test="${thisPage>1}">
     <li>
-      <a href="#" aria-label="Previous">
+      <a href="<c:url value="/result/list?page=${thisPage-1}" />" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
-    <li class="active"><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
+    </c:if>
+    <c:forEach begin="${startPage}" end="${endPage}" var="page">
+    
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/result/list?page=${page}" />">${page}</a></li>
+    </c:forEach>
+    
     <li>
-      <a href="#" aria-label="Next">
+      <a href="<c:url value="/result/list?page=${thisPage+1}" />" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

@@ -13,11 +13,13 @@ import org.springframework.stereotype.Service;
 import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
+import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Person;
+import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -31,9 +33,12 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private IPostDAO postDAO;
 
 	@Autowired
-	private IAdvertisementDAO AdvertisementDAO;
+	private IAdvertisementDAO advertisementDAO;
 
 	@Autowired
 	private ICategoryDAO categoryDAO;
@@ -153,10 +158,21 @@ public class GuestService implements IGuestService {
 	public List<Advertisement> getAllAdvertisement() throws ServiceException {
 		List<Advertisement> advertisements = new ArrayList<Advertisement>();
 		try {
-			advertisements = AdvertisementDAO.selectAllAdvertisements();
+			advertisements = advertisementDAO.selectAllAdvertisements();
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
 		return advertisements;
+	}
+
+	@Override
+	public List<Post> getPostsLimit10(Integer page) throws ServiceException {
+		List<Post> posts = new ArrayList<Post>();
+		try {
+			posts = postDAO.selectPostsLimit10(page);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return posts;
 	}
 }

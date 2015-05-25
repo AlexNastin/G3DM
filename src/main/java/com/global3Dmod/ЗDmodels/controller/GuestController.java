@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.domain.Person;
@@ -61,6 +62,20 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("result");
 		return modelAndView;
 	}
+	
+	// Test
+	@RequestMapping(value = "/result/list", method = RequestMethod.GET)
+	  public ModelAndView getPostsLimit10(@RequestParam(value = "page", required = false) Integer page, Model model) throws Exception {
+		int startPage = page - 5 > 0?page - 5:1;
+	    int endPage = startPage + 9;
+		ModelAndView modelAndView = new ModelAndView("result");
+	    model.addAttribute(ControllerParamConstant.LIST_POSTS_LIMIT_10, guestService.getPostsLimit10(page));
+	    model.addAttribute(ControllerParamConstant.START_PAGE, startPage);
+	    model.addAttribute(ControllerParamConstant.END_PAGE, endPage);
+	    model.addAttribute(ControllerParamConstant.THIS_PAGE, page);
+	    return modelAndView;
+	  }
+	
 	// Test
 	@RequestMapping(value = "/model", method = RequestMethod.GET)
 	public ModelAndView model(Locale locale, Model model) throws Exception {

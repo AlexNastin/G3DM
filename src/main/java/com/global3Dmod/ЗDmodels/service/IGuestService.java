@@ -5,6 +5,7 @@ import java.util.List;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Person;
+import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
@@ -29,6 +30,8 @@ public interface IGuestService {
 	public List<Category> getAllCategoriesSubcategoriesTop3() throws ServiceException;
 	
 	public List<Advertisement> getAllAdvertisement() throws ServiceException;
+	
+	public List<Post> getPostsLimit10(Integer page) throws ServiceException;
 	
 	
 }

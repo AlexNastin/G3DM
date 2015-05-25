@@ -14,6 +14,8 @@ public interface IPostDAO {
 	public List<Post> selectAllPosts() throws DaoException;
 	
 	public List<Post> selectPostsByDesigner(Integer id) throws DaoException;
+	
+	public List<Post> selectPostsLimit10(Integer page) throws DaoException;
 
 	public void deletePost(Integer id) throws DaoException;
 

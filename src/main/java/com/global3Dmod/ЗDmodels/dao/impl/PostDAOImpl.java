@@ -82,4 +82,20 @@ public class PostDAOImpl implements IPostDAO {
 		return posts;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Post> selectPostsLimit10(Integer page) throws DaoException {
+		int limitPostsOnPage = 5;
+		int endPost = page * limitPostsOnPage;
+		int startPost = endPost - limitPostsOnPage;
+		List<Post> posts = em.createNamedQuery("Post.findAll").setFirstResult(startPost).setMaxResults(endPost).getResultList();
+		for (Post post : posts) {
+			Hibernate.initialize(post.getPostPhotos());
+			Hibernate.initialize(post.getPrinters());
+			System.out.println(post.getIdPost());
+		}
+		return posts;
+	}
+
 }

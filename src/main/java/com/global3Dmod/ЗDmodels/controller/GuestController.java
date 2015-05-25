@@ -34,7 +34,6 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("main");
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY, guestService.getAllCategoriesSubcategoriesTop3());
 		modelAndView.addObject("listAdvertisements", guestService.getAllAdvertisement());
-		System.out.println(guestService.getAllAdvertisement().get(0).getPath());
 		return modelAndView;
 	}
 

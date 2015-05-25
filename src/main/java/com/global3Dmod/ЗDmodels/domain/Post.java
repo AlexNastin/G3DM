@@ -37,7 +37,7 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @Table(name = "POSTS")
 @NamedQueries({
 	@NamedQuery(name="Post.findAll", query="select p from Post p"),
-	@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p where p.user_idUser = :idUser")})
+	@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.user_idUser = :idUser")})
 public class Post implements Essence {
 
 	@Id
@@ -81,11 +81,11 @@ public class Post implements Essence {
 	@Column(name = "countDownload")
 	private int countDownload;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="POSTS_HAS_PRINTERS", joinColumns={@JoinColumn(name="POST_IDPOST")},inverseJoinColumns={@JoinColumn(name="PRINTER_IDPRINTER")})
 	private List<Printer> printers;
 	
-	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private File file;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -96,8 +96,7 @@ public class Post implements Essence {
 	@JoinColumn(name="subcategory_idSubcategory", insertable=false, updatable=false)
 	private Subcategory subcategory;
 	
-	@LazyCollection(LazyCollectionOption.FALSE)
-	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<PostPhoto> postPhotos;
 	
 	public Post() {

@@ -81,7 +81,6 @@ public class DesignerService implements IDesignerService {
 		Category category1;
 		try {
 			category1 = categoryDAO.selectCategoryById(idCategory);
-			System.out.println(category1.getSubcategories());
 			subcategories = category1.getSubcategories();
 			for (Subcategory subcategory : subcategories) {
 				subcategory.setCategory(null);

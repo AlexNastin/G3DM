@@ -25,9 +25,8 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @Table(name = "CATEGORIES")
 @NamedQueries({
 	@NamedQuery(name="Category.findAll", query="select c from Category c "),
-	@NamedQuery(name = "Category.findCategoryById", query = "select c from Category c where c.idCategory = :idCategory")})
+	@NamedQuery(name = "Category.findCategoryById", query = "select c from Category c join fetch c.subcategories where c.idCategory = :idCategory")})
 public class Category implements Essence {
-//join fetch c.subcategories
 	@Id
 	@Column(name = "idCategory")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

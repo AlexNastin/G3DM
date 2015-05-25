@@ -140,7 +140,7 @@ public class DesignerController {
 			throws ServiceException {
 		List<Subcategory> subcategories = designerService.getAllSubcategoryWithinCategory(idCategory);
 		for (Subcategory subcategory : subcategories) {
-			System.out.println("AAAA "+subcategory);
+			System.out.println(subcategory.getTitle());
 		}
 		return subcategories;
 	}

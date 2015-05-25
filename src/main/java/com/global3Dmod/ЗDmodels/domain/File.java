@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
@@ -25,7 +26,7 @@ public class File implements Essence {
 	@Column(name = "filePath")
 	private String filePath;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "idPost")
 	private Post post;
 	

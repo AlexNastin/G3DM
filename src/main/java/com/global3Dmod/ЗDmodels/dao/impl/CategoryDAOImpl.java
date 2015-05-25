@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,7 +46,6 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	@Override
 	@Transactional
 	public List<Category> selectAllCategories() throws DaoException {
-		String dasdsa = "";
 		List<Category> category = em.createNamedQuery("Category.findAll").getResultList();
 		return category;
 	}
@@ -81,9 +81,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	@Override
 	@Transactional
 	public Category selectCategoryById(int idCategory) throws DaoException {
-		Category category = (Category) em
-				.createNamedQuery("Category.findCategoryById")
-				.setParameter("idCategory", idCategory).getSingleResult();
+		Category category = (Category) em.createNamedQuery("Category.findCategoryById").setParameter("idCategory", idCategory).getSingleResult();
 		return category;
 
 	}

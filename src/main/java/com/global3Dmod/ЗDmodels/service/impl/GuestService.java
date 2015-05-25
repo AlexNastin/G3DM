@@ -128,8 +128,7 @@ public class GuestService implements IGuestService {
 			throws ServiceException {
 		List<Category> categories = getAllCategories();
 		for (Category category : categories) {
-			category.setSubcategories(getTop3Subcategories(category
-					.getIdCategory()));
+			category.setSubcategories(getTop3Subcategories(category.getIdCategory()));
 		}
 		return categories;
 	}

@@ -103,7 +103,27 @@
         <h1>${result}</h1>
         <h2 class="lead"><strong class="text-danger">3</strong> ${quantity}</h2>
     </hgroup>
-
+<nav style="text-align:center">
+  <ul class="pagination">
+  <c:if test="${thisPage>1}">
+    <li>
+      <a href="<c:url value="/result/list?page=${thisPage-1}" />" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    </c:if>
+    <c:forEach begin="${startPage}" end="${endPage}" var="page">
+    
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/result/list?page=${page}" />">${page}</a></li>
+    </c:forEach>
+    
+    <li>
+      <a href="<c:url value="/result/list?page=${thisPage+1}" />" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
     <section class="col-xs-12 col-sm-6 col-md-12">
     <c:forEach items="${listPostsLimit10}" var="post">
         <article class="search-result row">

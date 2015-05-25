@@ -32,8 +32,8 @@ public class GuestController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("main");
-		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY, guestService.getAllCategoriesSubcategoriesTop3());
-		modelAndView.addObject("listAdvertisements", guestService.getAllAdvertisement());
+		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY, guestService.getTop3Subcategories());
+		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS, guestService.getAllAdvertisement());
 		return modelAndView;
 	}
 

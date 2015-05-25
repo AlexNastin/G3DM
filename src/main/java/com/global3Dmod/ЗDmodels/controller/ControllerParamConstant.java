@@ -7,5 +7,7 @@ public class ControllerParamConstant {
 	public static String LIST_POSTS_BY_DESIGNER = "listPostsByDesigner";
 	
 	public static String LIST_CATEGORY = "listCategory";
+	
+	public static String LIST_ADVERTISEMENTS = "listAdvertisements";
 
 }

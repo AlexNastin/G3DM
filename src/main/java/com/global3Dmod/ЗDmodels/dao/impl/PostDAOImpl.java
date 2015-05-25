@@ -75,6 +75,10 @@ public class PostDAOImpl implements IPostDAO {
 	@Transactional
 	public List<Post> selectPostsByDesigner(Integer id) throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", id).getResultList();
+		for (Post post : posts) {
+			Hibernate.initialize(post.getPostPhotos());
+			Hibernate.initialize(post.getPrinters());
+		}
 		return posts;
 	}
 

@@ -1,3 +1,4 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <div class="row nomargin">
 	<div class="col-md-3"></div>
 	<div id="carousel-example-generic" class="carousel slide col-md-6"
@@ -18,20 +19,14 @@
 					<h3>${listAdvertisements[0].title}</h3>
 				</div>
 			</div>
+			<c:forEach items="${listAdvertisements}" var="advertisements" begin="1">
 			<div class="item">
-				<img src=<c:url value="${listAdvertisements[0].path}" /> alt="...">
+				<img src=<c:url value="${advertisements.path}" /> alt="...">
 				<div class="carousel-caption">
-					<h3>${listAdvertisements[0].title}</h3>
+					<h3>${advertisements.title}</h3>
 				</div>
 			</div>
-			<div class="item">
-				<img src=<c:url value="${listAdvertisements[0].path}" /> alt="...">
-				<div class="carousel-caption">
-					<h3>${listAdvertisements[0].title}</h3>
-					<h3>...</h3>
-					<p>...</p>
-				</div>
-			</div>
+			</c:forEach>
 		</div>
 
 	</div>

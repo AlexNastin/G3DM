@@ -76,7 +76,7 @@ public class Post implements Essence {
 	private String instruction;
 
 	@Column(name = "isDisplay")
-	private boolean isDisplay;
+	private int isDisplay;
 
 	@Column(name = "countDownload")
 	private int countDownload;
@@ -191,11 +191,11 @@ public class Post implements Essence {
 		this.instruction = instruction;
 	}
 
-	public boolean getIsDisplay() {
+	public int getIsDisplay() {
 		return isDisplay;
 	}
 
-	public void setIsDisplay(boolean isDisplay) {
+	public void setIsDisplay(int isDisplay) {
 		this.isDisplay = isDisplay;
 	}
 

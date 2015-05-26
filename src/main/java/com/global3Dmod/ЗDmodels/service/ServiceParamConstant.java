@@ -9,6 +9,6 @@ public final class ServiceParamConstant {
 	public static final String EMPTY = "";
 	public static final String FORMAT_DATE = "yyyy-MM-dd";
 	public static final int DEFAULT_COUNT = 0;
-	public static final boolean DEFAULT_IS_DISPLAY = false;
+	public static final int DEFAULT_IS_DISPLAY = 0;
 
 }

@@ -80,9 +80,10 @@ public class DesignerController {
 	@RequestMapping(value = "/designer/profile", method = RequestMethod.GET)
 	// params = {"sort"})
 	// @RequestParam("sort") String typeSort
-	public ModelAndView goProfile(Locale locale, Model model,
-			HttpSession httpSession, HttpServletRequest request)
+	public ModelAndView goProfile(@RequestParam(value = "page", required = false) Integer page, Locale locale, Model model, HttpSession httpSession, HttpServletRequest request)
 			throws Exception {
+		int startPage = page - 5 > 0?page - 5:1;
+	    int endPage = startPage + 9;
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -107,6 +108,10 @@ public class DesignerController {
 				Collections.sort(posts, new SortedPostsByStatus());
 			}
 		}
+		model.addAttribute(ControllerParamConstant.LIST_POSTS_LIMIT_10, designerService.getPostsLimit10ByDesigner(page, person.getIdPerson()));
+		model.addAttribute(ControllerParamConstant.START_PAGE, startPage);
+		model.addAttribute(ControllerParamConstant.END_PAGE, endPage);
+		model.addAttribute(ControllerParamConstant.THIS_PAGE, page);
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER,
 				posts);
 		return modelAndView;
@@ -119,7 +124,7 @@ public class DesignerController {
 				.getAttribute(ControllerParamConstant.PERSON);
 		designerService.addPost(postForm, person.getIdPerson(),
 				person.getNickName());
-		ModelAndView modelAndView2 = new ModelAndView("/designer/profile");
+		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/profile");
 		return modelAndView2;
 	}
 

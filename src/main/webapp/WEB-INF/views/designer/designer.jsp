@@ -92,7 +92,7 @@
                               </tr>
                               </thead>
                               <tbody>
-                              <c:forEach items="${listPostsByDesigner}" var="post" >
+                              <c:forEach items="${listPostsLimit10}" var="post" >
                               <tr>
                                   <td><a href="basic_table.html#">${post.title}</a></td>
                                   <td class="hidden-phone">${post.category.title}</td>
@@ -100,10 +100,13 @@
                                   <td>${post.dateUpdate}</td>
                                   <td>${post.numberPost}</td>
                                   <td>${post.countDownload}</td>
-                                  <c:if test="${post.isDisplay}">
+                                  <c:if test="${post.isDisplay == 2}">
                                   	<td><span class="label label-success label-mini">published</span></td>
                                   </c:if>
-                                  <c:if test="${!post.isDisplay}">
+                                     <c:if test="${post.isDisplay == 1}">
+                                  	<td><span class="label label-warning label-mini">Not</span></td>
+                                  </c:if>
+                                  <c:if test="${post.isDisplay == 0}">
                                   	<td><span class="label label-warning label-mini">moderating</span></td>
                                   </c:if>
                                   <td>
@@ -115,6 +118,27 @@
                               </tbody>
                           </table>
                       </div>
+                      <nav style="text-align:center">
+  <ul class="pagination">
+  <c:if test="${thisPage>1}">
+    <li>
+      <a href="<c:url value="/designer/profile?sort=date&page=${thisPage-1}" />" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    </c:if>
+    <c:forEach begin="${startPage}" end="${endPage}" var="page">
+    
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/designer/profile?sort=date&page=${page}" />">${page}</a></li>
+    </c:forEach>
+    
+    <li>
+      <a href="<c:url value="/designer/profile?sort=date&page=${thisPage+1}" />" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
                   </div>
               </div>
               

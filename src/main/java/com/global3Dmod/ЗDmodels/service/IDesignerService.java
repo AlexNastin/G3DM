@@ -37,5 +37,7 @@ public interface IDesignerService {
 	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory) throws ServiceException;
 	
 	public List<Post> getPostsByDesigner(Integer idUser) throws ServiceException;
+	
+	public List<Post> getPostsLimit10ByDesigner(Integer page, Integer idDesigner) throws ServiceException;
 
 }

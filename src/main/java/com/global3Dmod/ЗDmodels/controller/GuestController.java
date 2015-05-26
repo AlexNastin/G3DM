@@ -55,24 +55,17 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
 		return modelAndView;
 	}
-
-	// Test
-	@RequestMapping(value = "/result", method = RequestMethod.GET)
-	public ModelAndView result(Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("result");
-		return modelAndView;
-	}
 	
 	// Test
-	@RequestMapping(value = "/result/list", method = RequestMethod.GET)
+	@RequestMapping(value = "/result", method = RequestMethod.GET)
 	  public ModelAndView getPostsLimit10(@RequestParam(value = "page", required = false) Integer page, Model model) throws Exception {
 		int startPage = page - 5 > 0?page - 5:1;
 	    int endPage = startPage + 9;
 		ModelAndView modelAndView = new ModelAndView("result");
-	    model.addAttribute(ControllerParamConstant.LIST_POSTS_LIMIT_10, guestService.getPostsLimit10(page));
-	    model.addAttribute(ControllerParamConstant.START_PAGE, startPage);
-	    model.addAttribute(ControllerParamConstant.END_PAGE, endPage);
-	    model.addAttribute(ControllerParamConstant.THIS_PAGE, page);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10, guestService.getPostsLimit10(page));
+		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
+		modelAndView.addObject(ControllerParamConstant.END_PAGE, endPage);
+		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
 	    return modelAndView;
 	  }
 	

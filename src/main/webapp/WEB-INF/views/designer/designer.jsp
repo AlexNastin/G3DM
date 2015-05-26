@@ -78,8 +78,29 @@
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
                              <div> <h2><i class="fa fa-angle-right"></i> My works</h2>
-                              <hr>
+                             <hr>
                               <thead>
+                              <nav style="text-align:center">
+  <ul class="pagination">
+  <c:if test="${thisPage>1}">
+    <li>
+      <a href="<c:url value="/designer/profile?sort=date&page=${thisPage-1}" />" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    </c:if>
+    <c:forEach begin="${startPage}" end="${endPage}" var="page">
+    
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/designer/profile?sort=date&page=${page}" />">${page}</a></li>
+    </c:forEach>
+    
+    <li>
+      <a href="<c:url value="/designer/profile?sort=date&page=${thisPage+1}" />" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+  </ul>
+</nav>
                               <tr>
                                   <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/designer/profile?sort=title" />">Project</a></th>
                                   <th><a href="<c:url value="/designer/profile?sort=category" />">Category</a></th>

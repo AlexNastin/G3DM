@@ -82,6 +82,9 @@ public class DesignerController {
 	// @RequestParam("sort") String typeSort
 	public ModelAndView goProfile(@RequestParam(value = "page", required = false) Integer page, Locale locale, Model model, HttpSession httpSession, HttpServletRequest request)
 			throws Exception {
+		if (page == null) {
+			page=1;
+		}
 		int startPage = page - 5 > 0?page - 5:1;
 	    int endPage = startPage + 9;
 		Person person = (Person) httpSession
@@ -91,8 +94,7 @@ public class DesignerController {
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
-		List<Post> posts = designerService.getPostsByDesigner(person
-				.getIdPerson());
+		List<Post> posts = designerService.getPostsLimit10ByDesigner(page, person.getIdPerson());
 		if (request.getParameter("sort") != null) {
 			if (request.getParameter("sort").equals("title")) {
 				Collections.sort(posts, new SortedPostsByTitle());
@@ -108,10 +110,10 @@ public class DesignerController {
 				Collections.sort(posts, new SortedPostsByStatus());
 			}
 		}
-		model.addAttribute(ControllerParamConstant.LIST_POSTS_LIMIT_10, designerService.getPostsLimit10ByDesigner(page, person.getIdPerson()));
-		model.addAttribute(ControllerParamConstant.START_PAGE, startPage);
-		model.addAttribute(ControllerParamConstant.END_PAGE, endPage);
-		model.addAttribute(ControllerParamConstant.THIS_PAGE, page);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10, posts);
+		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
+		modelAndView.addObject(ControllerParamConstant.END_PAGE, endPage);
+		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER,
 				posts);
 		return modelAndView;

@@ -38,6 +38,6 @@
 	
 	<a href="<c:url value="/designer/addPost"/>">Add post</a>
 		<a href="<c:url value="/model"/>">model</a>
-			<a href="<c:url value="/result/list?page=1"/>">result</a>
+			<a href="<c:url value="/result?page=1"/>">result</a>
 </body>
 </html>

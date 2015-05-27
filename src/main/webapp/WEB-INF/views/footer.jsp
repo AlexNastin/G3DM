@@ -32,7 +32,7 @@
 
    </head>
 <body>
-<div class="footer">
+<div class="footer position-sign sign-footer-margin">
     <div class="container">
         <div class="footer_grids">
             <div class="footer-grid">

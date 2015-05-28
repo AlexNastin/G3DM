@@ -2748,3 +2748,10 @@ label {
   border-bottom: 1px solid #eee;
   padding-bottom: 15px;
 }
+.leftstr, .rightstr {
+    float: left; /* Обтекание справа */ 
+    width: 45%; /* Ширина текстового блока */ 
+   }
+   .rightstr {
+    text-align: right; /* Выравнивание по правому краю */ 
+   }

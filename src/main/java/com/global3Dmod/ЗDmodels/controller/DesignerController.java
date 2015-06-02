@@ -78,9 +78,7 @@ public class DesignerController {
 	// }
 
 	@RequestMapping(value = "/designer/profile", method = RequestMethod.GET)
-	// params = {"sort"})
-	// @RequestParam("sort") String typeSort
-	public ModelAndView goProfile(@RequestParam(value = "page", required = false) Integer page, Locale locale, Model model, HttpSession httpSession, HttpServletRequest request)
+	public ModelAndView goProfile(@RequestParam(value = "page", required = false) Integer page,@RequestParam(value = "sort", required = false) String sort, @RequestParam(value = "desc", required = false) boolean desc, Locale locale, Model model, HttpSession httpSession)
 			throws Exception {
 		if (page == null) {
 			page=1;
@@ -94,28 +92,60 @@ public class DesignerController {
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
-		List<Post> posts = designerService.getPostsLimit10ByDesigner(page, person.getIdPerson());
-		if (request.getParameter("sort") != null) {
-			if (request.getParameter("sort").equals("title")) {
-				Collections.sort(posts, new SortedPostsByTitle());
-			} else if (request.getParameter("sort").equals("category")) {
-				Collections.sort(posts, new SortedPostsByCategory());
-			} else if (request.getParameter("sort").equals("subcategory")) {
-				Collections.sort(posts, new SortedPostsBySubcategory());
-			} else if (request.getParameter("sort").equals("date")) {
-				Collections.sort(posts, new SortedPostsByDate());
-			} else if (request.getParameter("sort").equals("downloads")) {
-				Collections.sort(posts, new SortedPostsByDownloads());
-			} else if (request.getParameter("sort").equals("status")) {
-				Collections.sort(posts, new SortedPostsByStatus());
-			}
+		List<Post> posts = designerService.getPostsByDesigner(person.getIdPerson());
+		designerService.sortPosts(posts, sort, desc);
+		int allPosts = posts.size();
+		int limitPostsOnPage = 10;
+	    int maxPage = (int) Math.ceil((double)allPosts / limitPostsOnPage);
+		int startPost = page * limitPostsOnPage - limitPostsOnPage;
+		int endPost = startPost + limitPostsOnPage;
+		if(endPost>allPosts) {
+			posts = posts.subList(startPost, allPosts);
+		} else {
+			posts = posts.subList(startPost, endPost);
 		}
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10, posts);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
-		modelAndView.addObject(ControllerParamConstant.END_PAGE, endPage);
+		if(endPage>maxPage) {
+			modelAndView.addObject(ControllerParamConstant.END_PAGE, maxPage);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.END_PAGE, endPage);
+		}
+		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
-		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER,
-				posts);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER, posts);
+		modelAndView.addObject(ControllerParamConstant.SORT_TYPE, sort);
+		
+		if(sort.equalsIgnoreCase("category") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.CATEGORY_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.CATEGORY_DESC, false);
+		}
+		if(sort.equalsIgnoreCase("date") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.DATE_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.DATE_DESC, false);
+		}
+		if(sort.equalsIgnoreCase("downloads") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.DOWNLOADS_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.DOWNLOADS_DESC, false);
+		}
+		if(sort.equalsIgnoreCase("status") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.STATUS_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.STATUS_DESC, false);
+		}
+		if(sort.equalsIgnoreCase("subcategory") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.SUBCATEGORY_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.SUBCATEGORY_DESC, false);
+		}
+		if(sort.equalsIgnoreCase("title") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.TITLE_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.TITLE_DESC, false);
+		}
 		return modelAndView;
 	}
 

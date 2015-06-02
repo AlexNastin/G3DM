@@ -1,0 +1,19 @@
+package com.global3Dmod.ÇDmodels.sort;
+
+import java.util.Comparator;
+
+import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.Subcategory;
+
+public class SortedPostsBySubcategoryDesc implements Comparator<Post>{
+
+	@Override
+	public int compare(Post obj1, Post obj2) {
+		Subcategory subcategory1 = obj1.getSubcategory();
+		Subcategory subcategory2 = obj2.getSubcategory();
+		String title1 = subcategory1.getTitle();
+        String title2 = subcategory2.getTitle();
+        return title2.compareTo(title1);
+	}
+
+}

@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -28,6 +29,18 @@ import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.service.helper.ServiceHelper;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsByCategory;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsByCategoryDesc;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsByDate;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsByDateDesc;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsByDownloads;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsByDownloadsDesc;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsByStatus;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsByStatusDesc;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsBySubcategory;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsBySubcategoryDesc;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsByTitle;
+import com.global3Dmod.ÇDmodels.sort.SortedPostsByTitleDesc;
 
 @Service
 public class DesignerService implements IDesignerService {
@@ -86,7 +99,6 @@ public class DesignerService implements IDesignerService {
 				subcategory.setCategory(null);
 			}
 		} catch (DaoException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 //			try {
@@ -262,5 +274,51 @@ public class DesignerService implements IDesignerService {
 		}
 		return posts;
 	}
+
+	@Override
+	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc)
+			throws ServiceException {
+		if (sort != null) {
+			if (sort.equals("title")) {
+				if(desc){
+					Collections.sort(posts, new SortedPostsByTitleDesc());
+				} else {
+					Collections.sort(posts, new SortedPostsByTitle());
+				}	
+			} else if (sort.equals("category")) {
+				if(desc){
+					Collections.sort(posts, new SortedPostsByCategoryDesc());
+				} else {
+					Collections.sort(posts, new SortedPostsByCategory());
+				}	
+			} else if (sort.equals("subcategory")) {
+				if(desc){
+					Collections.sort(posts, new SortedPostsBySubcategoryDesc());
+				} else {
+					Collections.sort(posts, new SortedPostsBySubcategory());
+				}
+			} else if (sort.equals("date")) {
+				if(desc){
+					Collections.sort(posts, new SortedPostsByDateDesc());
+				} else {
+					Collections.sort(posts, new SortedPostsByDate());
+				}
+			} else if (sort.equals("downloads")) {
+				if(desc){
+					Collections.sort(posts, new SortedPostsByDownloadsDesc());
+				} else {
+					Collections.sort(posts, new SortedPostsByDownloads());
+				}
+			} else if (sort.equals("status")) {
+				if(desc){
+					Collections.sort(posts, new SortedPostsByStatusDesc());
+				} else {
+					Collections.sort(posts, new SortedPostsByStatus());
+				}
+			}
+		}
+		return posts;
+	}
+
 
 }

@@ -42,7 +42,7 @@
                     <li><a href="#">${ourmission}</a></li>
                     <li><a href="#">${team}</a></li>
                     <li><a href="#">${whywe}</a></li>
-                    <li><a href="#">${jobs}</a></li>
+                    <li><a href="<c:url value="/jobs" />">${jobs}</a></li>
                     <li><a href="#">${blog}</a></li>
                  </ul>
             </div>

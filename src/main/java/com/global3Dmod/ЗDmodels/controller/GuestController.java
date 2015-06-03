@@ -43,6 +43,11 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		return modelAndView;
 	}
+	@RequestMapping(value = "/jobs", method = RequestMethod.GET)
+	public ModelAndView jobs(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("jobs");
+		return modelAndView;
+	}
 
 	@RequestMapping(value = "/putperson", method = RequestMethod.GET)
 	public ModelAndView putPerson(Locale locale, Model model,

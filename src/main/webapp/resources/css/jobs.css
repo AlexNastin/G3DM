@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+.line-jobs {
+	margin-top: 3%;
+	border-bottom: 4px solid #F8F8F8;
+	margin-bottom: 1%
+}
+.font-jobs {
+	font: 20pt cursive;
+}
+.jobs-background {
+	background-color: #F8F8F8;
+	margin-bottom: 5%;
+	border-radius: 5px; 
+}
+.jobs-vertical-linen {
+	border-right: 5px solid white;
+}
+.holycontent{
+	  min-height: 25em;
+}
+.text-jobs-title {
+	font: 12pt cursive;
+}
+.img-jobs-margin {
+	margin-bottom: 1%;
+}

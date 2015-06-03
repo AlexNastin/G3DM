@@ -1,4 +1,4 @@
-package com.global3Dmod.ÇDmodels.sort;
+package com.global3Dmod.ÇDmodels.sort.post;
 
 import java.util.Comparator;
 

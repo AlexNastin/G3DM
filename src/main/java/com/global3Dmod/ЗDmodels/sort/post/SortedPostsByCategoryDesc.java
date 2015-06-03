@@ -1,11 +1,11 @@
-package com.global3Dmod.ÇDmodels.sort;
+package com.global3Dmod.ÇDmodels.sort.post;
 
 import java.util.Comparator;
 
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Post;
 
-public class SortedPostsByCategory implements Comparator<Post>{
+public class SortedPostsByCategoryDesc implements Comparator<Post>{
 
 	@Override
 	public int compare(Post obj1, Post obj2) {
@@ -13,7 +13,7 @@ public class SortedPostsByCategory implements Comparator<Post>{
 		Category category2 = obj2.getCategory();
 		String title1 = category1.getTitle();
         String title2 = category2.getTitle();
-        return title1.compareTo(title2);
+        return title2.compareTo(title1);
 	}
 
 }

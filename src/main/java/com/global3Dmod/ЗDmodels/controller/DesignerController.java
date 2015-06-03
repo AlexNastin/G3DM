@@ -34,12 +34,12 @@ import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByCategory;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByDate;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByDownloads;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByStatus;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsBySubcategory;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByTitle;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByCategory;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDate;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDownloads;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByStatus;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsBySubcategory;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByTitle;
 
 @Controller
 public class DesignerController {

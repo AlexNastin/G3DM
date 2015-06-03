@@ -29,18 +29,18 @@ import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.service.helper.ServiceHelper;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByCategory;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByCategoryDesc;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByDate;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByDateDesc;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByDownloads;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByDownloadsDesc;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByStatus;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByStatusDesc;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsBySubcategory;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsBySubcategoryDesc;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByTitle;
-import com.global3Dmod.ÇDmodels.sort.SortedPostsByTitleDesc;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByCategory;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByCategoryDesc;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDate;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDateDesc;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDownloads;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDownloadsDesc;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByStatus;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByStatusDesc;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsBySubcategory;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsBySubcategoryDesc;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByTitle;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByTitleDesc;
 
 @Service
 public class DesignerService implements IDesignerService {

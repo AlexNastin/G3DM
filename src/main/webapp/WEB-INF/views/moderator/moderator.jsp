@@ -60,19 +60,19 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <h2><i class="fa fa-angle-right"></i> Posts</h2>
-                              <hr>
+                             <h2>Posts</h2>
+                              
                               <!-- Some sorts for table -->
                              
                               <thead>
-                              <tr>
+                              <tr class="background-user-string">
                                   <th><i class="fa fa-bullhorn"></i> Project</th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
                                   <th>Number</th>
-                                  <th> Date </th>
-                                  <th><i class="fa fa-bookmark"></i> Downloads</th>
-                                  <th><i class=" fa fa-edit"></i> Status</th>
-                                  <th><i class="fa fa-pencil"></i>Edit</th>
+                                  <th> <i class="fa fa-calendar"></i> Date </th>
+                                  <th><i class="fa fa-th-list"></i> Category</th>
+                                  <th><i class="fa fa-list-alt"></i> Subcategory</th>
+                                  <th><i class="fa fa-user"></i> Author</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -81,77 +81,45 @@
                                   <td class="hidden-phone">Lorem Ipsum dolor</td>
                                   <td>1</td>
                                   <td>25-01.2015</td>
-                                  <td>12000 </td>
-                                  <td><span class="label label-success label-mini">published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
-                                  </td>
+                                  <td>Auto </td>
+                                  <td>Tractors</td>
+                                  <td>Valery Meladze </td>
                               </tr>
                               <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Cup of tea
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>74</td>
+                                   <td><a href="basic_table.html#">Draw</a></td>
+                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
+                                  <td>1</td>
                                   <td>25-01.2015</td>
-                                  <td>17900 </td>
-                                  <td><span class="label label-warning label-mini">moderating</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
-                                  </td>
+                                  <td>Auto </td>
+                                  <td>Tractors</td>
+                                  <td>Valery Meladze </td>
                               </tr>
                               <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Another Cup
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>752</td>
+                                  <td><a href="basic_table.html#">Draw</a></td>
+                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
+                                  <td>1</td>
                                   <td>25-01.2015</td>
-                                  <td>14400 </td>
-                                  <td><span class="label label-success label-mini">Published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
-                                  </td>
+                                  <td>Auto </td>
+                                  <td>Tractors</td>
+                                  <td>Valery Meladze </td>
                               </tr>
                               <tr>
-                                  <td>
-                                      <a href="basic_table.html#">
-                                          Bottle for dragons
-                                      </a>
-                                  </td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>78</td>
+                                   <td><a href="basic_table.html#">Draw</a></td>
+                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
+                                  <td>1</td>
                                   <td>25-01.2015</td>
-                                  <td>22000</td>
-                                  <td><span class="label label-success label-mini">Published</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
-                                  </td>
+                                  <td>Auto </td>
+                                  <td>Tractors</td>
+                                  <td>Valery Meladze </td>
                               </tr>
                               <tr>
-                                  <td><a href="basic_table.html#">Total Ltd</a></td>
-                                  <td>Lorem Ipsum dolor</td>
-                                  <td>555</td>
+                                   <td><a href="basic_table.html#">Draw</a></td>
+                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
+                                  <td>1</td>
                                   <td>25-01.2015</td>
-                                  <td>12120</td>
-                                  <td><span class="label label-warning label-mini">moderating</span></td>
-                                  <td>
-                                      <button class="btn btn-success btn-xs"><i class="fa fa-check"></i></button>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-ban"></i></button>
-                                  </td>
+                                  <td>Auto </td>
+                                  <td>Tractors</td>
+                                  <td>Valery Meladze </td>
                               </tr>
                               </tbody>
                           </table>

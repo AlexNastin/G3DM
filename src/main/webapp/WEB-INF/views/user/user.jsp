@@ -63,21 +63,20 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <div> <h2><i class="fa fa-angle-right"></i> ${mybookmarks}</h2>
-                              <hr>
+                             <div> <h2> ${mybookmarks}</h2>
                               <thead>
-                              <tr>
+                              <tr class="background-user-string">
                                   <th><i class="fa fa-bullhorn"></i> ${project}</th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> ${description}</th>
-                                  <th>${number}</th>
-                                  <th>${rating}</th>
-                                  <th>${miniature}</th>
-                                  <th>${designer}</th>
+                                  <th><i class="fa fa-book"></i> ${number}</th>
+                                  <th><i class="fa fa-star"></i> ${rating}</th>
+                                  <th><i class="fa fa-file-image-o"></i> ${miniature}</th>
+                                  <th><i class="fa fa-user"></i> ${designer}</th>
                               </tr>
                               </thead>
                               <tbody>
                               <tr>
-                                  <td><a href="basic_table.html#">Draw</a></td>
+                                  <td><a href="basic_table.html#" class="font-user-color">Draw</a></td>
                                   <td class="hidden-phone col-md-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit eros sed ante pulvinar molestie. Donec id commodo purus. Sed nec quam velit. Fusce nec lacinia magna, id tempor lorem. Sed quis aliquam ipsum. Cras eu velit a sapien placerat efficitur sit amet eget neque. Mauris vulputate purus auctor</td>
                                   <td>1</td>
                                   <td>12000 </td>
@@ -86,7 +85,7 @@
                               </tr>
                               <tr>
                                   <td>
-                                      <a href="basic_table.html#">
+                                      <a href="basic_table.html#" class="font-user-color">
                                           Cup of tea
                                       </a>
                                   </td>
@@ -98,7 +97,7 @@
                               </tr>
                               <tr>
                                   <td>
-                                      <a href="basic_table.html#">
+                                      <a href="basic_table.html#" class="font-user-color" >
                                           Another Cup
                                       </a>
                                   </td>
@@ -110,7 +109,7 @@
                               </tr>
                               <tr>
                                   <td>
-                                      <a href="basic_table.html#">
+                                      <a href="basic_table.html#" class="font-user-color">
                                           Bottle for dragons
                                       </a>
                                   </td>
@@ -121,7 +120,7 @@
                                   <td>Designer4</td>
                               </tr>
                               <tr>
-                                  <td><a href="basic_table.html#">Total Ltd</a></td>
+                                  <td><a href="basic_table.html#" class="font-user-color">Total Ltd</a></td>
                                   <td class="col-md-3">Lorem Ipsum dolor</td>
                                   <td>555</td>
                                   <td>12120</td>
@@ -129,6 +128,7 @@
                                   <td>Designer5</td>
                               </tr>
                               </tbody>
+                              </div>
                           </table>
                       </div>
                   </div>

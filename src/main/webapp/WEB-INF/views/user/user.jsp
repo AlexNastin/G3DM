@@ -76,7 +76,7 @@
                               </thead>
                               <tbody>
                               <tr>
-                                  <td><a href="basic_table.html#" class="font-user-color">Draw</a></td>
+                                  <td><a href="basic_table.html#">Draw</a></td>
                                   <td class="hidden-phone col-md-3"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed blandit eros sed ante pulvinar molestie. Donec id commodo purus. Sed nec quam velit. Fusce nec lacinia magna, id tempor lorem. Sed quis aliquam ipsum. Cras eu velit a sapien placerat efficitur sit amet eget neque. Mauris vulputate purus auctor</td>
                                   <td>1</td>
                                   <td>12000 </td>
@@ -85,7 +85,7 @@
                               </tr>
                               <tr>
                                   <td>
-                                      <a href="basic_table.html#" class="font-user-color">
+                                      <a href="basic_table.html#">
                                           Cup of tea
                                       </a>
                                   </td>
@@ -97,7 +97,7 @@
                               </tr>
                               <tr>
                                   <td>
-                                      <a href="basic_table.html#" class="font-user-color" >
+                                      <a href="basic_table.html#">
                                           Another Cup
                                       </a>
                                   </td>
@@ -109,7 +109,7 @@
                               </tr>
                               <tr>
                                   <td>
-                                      <a href="basic_table.html#" class="font-user-color">
+                                      <a href="basic_table.html#">
                                           Bottle for dragons
                                       </a>
                                   </td>
@@ -120,7 +120,7 @@
                                   <td>Designer4</td>
                               </tr>
                               <tr>
-                                  <td><a href="basic_table.html#" class="font-user-color">Total Ltd</a></td>
+                                  <td><a href="basic_table.html#">Total Ltd</a></td>
                                   <td class="col-md-3">Lorem Ipsum dolor</td>
                                   <td>555</td>
                                   <td>12120</td>

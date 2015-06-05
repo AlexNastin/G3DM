@@ -57,52 +57,12 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <div> <h2><i class="fa fa-angle-right"></i> Users</h2>
-                              <hr>
-                              
+                             <div> <h2> Users</h2>                                   
                               
                               <div class="row">
-                              <form class="form-horizontal">
-								<fieldset>
-<!-- Select Basic -->
-									<div class="row">
-									<div class="control-group">
-									  <label class="control-label" for="selectbasic">Sort by</label>
-									  <div class="controls">
-									    <select id="selectbasic" name="selectbasic" class="input-xlarge">
-									      <option>ID</option>
-									      <option>Rating</option>
-									    </select>
-									  </div>
-									</div>
-
-<!-- Multiple Checkboxes (inline) -->
-									<div class="control-group">
-									  <label class="control-label" for="checkboxes">Choose type</label>
-									  <div class="controls">
-									    <label class="checkbox-inline" for="checkboxes-0">
-									      <input type="checkbox" name="checkboxes" id="checkboxes-0" value="1">
-									      Not active
-									    </label>
-									    <label class="checkbox-inline" for="checkboxes-1">
-									      <input type="checkbox" name="checkboxes" id="checkboxes-1" value="2">
-									      Blocked
-									    </label>
-									    <label class="checkbox-inline" for="checkboxes-2">
-									      <input type="checkbox" name="checkboxes" id="checkboxes-2" value="3">
-									      Active
-									    </label>
-									    
-									  </div>
-									</div>
-									</div>
-									
-									</fieldset>
-									<input class="btn btn-default" type="submit" value="Submit">
-									</form>
-									                              
+                                      
                               <thead>
-                              <tr>
+                              <tr class="background-user-string">
                                   <th><i class="fa fa-bullhorn"></i> Name</th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> Login</th>
                                   <th><i class="glyphicon glyphicon-user"></i>ID</th>

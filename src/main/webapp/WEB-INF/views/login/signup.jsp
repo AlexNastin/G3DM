@@ -41,7 +41,7 @@
 	   <div class="col-md-5">
 	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio1" value="3"  /><label for="radio1" class="css-label" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">${designer}</label>
 	   </div>
-	   <div class="col-md-4">
+	   <div class="col-md-5">
 	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label for="radio2" class="css-label" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">${user}</label>
 	   </div>
 	   </div>

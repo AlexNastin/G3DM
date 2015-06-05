@@ -39,10 +39,10 @@
 	   <div class="col-md-12">
 	   <div class="row">
 	   <div class="col-md-5">
-	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio1" value="3"  /><label for="radio1" class="css-label">${designer}</label>
+	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio1" value="3"  /><label for="radio1" class="css-label" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">${designer}</label>
 	   </div>
 	   <div class="col-md-4">
-	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label for="radio2" class="css-label">${user}</label>
+	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label for="radio2" class="css-label" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">${user}</label>
 	   </div>
 	   </div>
 	   <span class="error"><form:errors path="role_idRole" /></span>
@@ -73,10 +73,10 @@
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-12">
+		<div class="col-md-5">
 		<input type="submit" class="btn btn-default btn-outline btn-circle" value="${signup}" />
 		</div>
-		</div>
+	    </div>
 	</form:form>
 	</div>
 	<div class="clearfix"></div>
@@ -87,5 +87,6 @@
 <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
 <script src="<c:url value="/resources/js/validation.js" />"> </script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script>
+<script src="<c:url value="/resources/js/tooltip.js" />"></script>
 </body>
 </html>

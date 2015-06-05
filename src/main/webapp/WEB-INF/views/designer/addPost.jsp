@@ -93,7 +93,7 @@
 			</div>
 		</fieldset>
 
-		<div id="output"></div>
+		
       </div>
 		
 		<div class="col-md-4">

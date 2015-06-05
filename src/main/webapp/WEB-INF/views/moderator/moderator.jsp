@@ -63,22 +63,7 @@
                              <h2><i class="fa fa-angle-right"></i> Posts</h2>
                               <hr>
                               <!-- Some sorts for table -->
-                              <div class="row">  
-											  <div class="col-md-3">
-											    <div class="input-group">
-											      <input type="text" class="form-control" aria-label="..." placeholder="Sort posts...">
-											      <div class="input-group-btn">
-											        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Sort by: <span class="caret"></span></button>
-											        <ul class="dropdown-menu dropdown-menu-right" role="menu">
-											          <li><a href="#">By date</a></li>
-											          <li><a href="#">By rating</a></li>
-											          <li><a href="#">By downloads</a></li>											          
-											          <li><a href="#">By name</a></li>
-											        </ul>
-											      </div><!-- /btn-group -->
-											    </div><!-- /input-group -->
-											  </div><!-- /.col-lg-6 -->
-											</div><!-- /.row -->
+                             
                               <thead>
                               <tr>
                                   <th><i class="fa fa-bullhorn"></i> Project</th>

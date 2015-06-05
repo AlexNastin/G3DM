@@ -10,8 +10,8 @@ Premium: http://www.gridgum.com
 @import url(http://fonts.googleapis.com/css?family=Ruda:400,700,900);
 
 /* BASIC THEME CONFIGURATION */
-body {
-    color: #797979;
+body{
+    color: black;
 	background: white;
     
     padding: 0px !important;
@@ -2755,3 +2755,65 @@ label {
    .rightstr {
     text-align: right; /* Выравнивание по правому краю */ 
    }
+   .background-user-string
+{
+	background-color: #E7E7E7;
+}
+
+p {
+    margin-top: 0px;
+}
+
+
+p {
+    margin-top: 0px;
+}
+
+
+.modal-container {
+    position: fixed;
+    background-color: #fff;
+    border: 1px solid #000;
+    width: 70%;
+    max-width: 400px;
+    left: 50%;
+    padding: 20px;
+    border-radius: 5px;
+    
+    
+    -webkit-transform: translate(-50%, -200%);
+    -ms-transform: translate(-50%, -200%);
+    transform: translate(-50%, -200%);
+    
+    
+    /* Step 3 */
+    -webkit-transition: -webkit-transform 200ms ease-out;
+    transition: transform 200ms ease-out;
+}
+
+.modal:before {
+    content: "";
+    position: fixed;
+    display: none;
+    background-color: rgba(0,0,0,.8);
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100% 
+}
+
+/* Step 2 */
+
+.modal:target:before {
+    display: block;
+}
+
+.modal:target .modal-container {
+    top: 20%;
+    
+    -webkit-transform: translate(-50%, 0);
+    -ms-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+}
+
+   

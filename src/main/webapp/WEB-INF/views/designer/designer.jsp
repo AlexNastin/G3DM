@@ -62,8 +62,8 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <div> <h2></i> My works</h2>
-                             <hr>
+                             <div> <h2> My works</h2>
+                             
                               <thead>
                               <nav style="text-align:center">
   <ul class="pagination">
@@ -88,15 +88,15 @@
     </c:if>
   </ul>
 </nav>
-                              <tr>
-                              <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/designer/profile?sort=title&desc=${titleDesc}" />">Project</a></th>
-                              <th><a href="<c:url value="/designer/profile?sort=category&desc=${categoryDesc}" />">Category</a></th>
-                              <th><a href="<c:url value="/designer/profile?sort=subcategory&desc=${subcategoryDesc}" />">Subcategory</a></th>
-                              <th><a href="<c:url value="/designer/profile?sort=date&desc=${dateDesc}" />">Date</a></th>
-                              <th>Number</th>
-                              <th><i class="fa fa-bookmark"></i><a href="<c:url value="/designer/profile?sort=downloads&desc=${downloadsDesc}" />">Downloads</a></th>
-                              <th><i class=" fa fa-edit"></i><a href="<c:url value="/designer/profile?sort=status&desc=${statusDesc}" />">Status</a></th>
-                              <th><i class="fa fa-pencil"></i>Edit</th>
+                              <tr class="background-user-string">
+                              <th><i class="fa fa-folder-open-o"></i><a href="<c:url value="/designer/profile?sort=title&desc=${titleDesc}" />"> Project</a></th>
+                              <th><i class="fa fa-th-list"></i><a href="<c:url value="/designer/profile?sort=category&desc=${categoryDesc}" />"> Category</a></th>
+                              <th><i class="fa fa-list-alt"></i><a href="<c:url value="/designer/profile?sort=subcategory&desc=${subcategoryDesc}" />"> Subcategory</a></th>
+                              <th><i class="fa fa-calendar"></i><a href="<c:url value="/designer/profile?sort=date&desc=${dateDesc}" />"> Date</a></th>
+                              <th><i class="fa fa-book"></i> Number</th>
+                              <th><i class="fa fa-cloud-download"></i><a href="<c:url value="/designer/profile?sort=downloads&desc=${downloadsDesc}" />"> Downloads</a></th>
+                              <th><i class=" fa fa-edit"></i><a href="<c:url value="/designer/profile?sort=status&desc=${statusDesc}" />"> Status</a></th>
+                              <th><i class="fa fa-pencil"></i> Edit</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -112,20 +112,56 @@
                                   	<td><span class="label label-success label-mini">published</span></td>
                                   </c:if>
                                      <c:if test="${post.isDisplay == 1}">
-                                  	<td><span class="label label-warning label-mini">Not</span></td>
+                                  	<td><span class="label label-warning label-danger">Rejected</span></td>
                                   </c:if>
                                   <c:if test="${post.isDisplay == 0}">
                                   	<td><span class="label label-warning label-mini">moderating</span></td>
                                   </c:if>
                                   <td>
-                                      <button class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs"><i class="fa fa-trash-o "></i></button>
+                                      <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i></button>
+                                      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash-o "></i></button>
                                   </td>
                               </tr>
                               </c:forEach>
                               </tbody>
                           </table>
                       </div>
+      <!-- Delete modal -->                
+   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirm?</h4>
+      </div>
+      <div class="modal-body">
+        Are you realy wanna delete this file?
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+        <a type="button" class="btn btn-danger">Delete post</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit modal -->
+<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirm?</h4>
+      </div>
+      <div class="modal-body">
+        After edditing, your post will go to the moderator
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+        <a type="button" class="btn btn-primary">Edit</a>
+      </div>
+    </div>
+  </div>
+</div>
                       <nav style="text-align:center">
   <ul class="pagination">
   <c:if test="${thisPage>1}">
@@ -156,6 +192,7 @@
 			</div>
 			
   </div> 
+  
   
   <div class="clearfix"> </div>
   </div>

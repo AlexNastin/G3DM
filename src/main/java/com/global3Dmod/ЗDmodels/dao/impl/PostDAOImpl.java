@@ -81,6 +81,14 @@ public class PostDAOImpl implements IPostDAO {
 		}
 		return posts;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Post> selectPostsByDesignerForSort(Integer id) throws DaoException {
+		List<Post> posts = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", id).getResultList();
+		return posts;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -89,21 +97,6 @@ public class PostDAOImpl implements IPostDAO {
 		int limitPostsOnPage = 5;
 		int startPost = page * limitPostsOnPage - limitPostsOnPage;
 		List<Post> posts = em.createNamedQuery("Post.findAll").setFirstResult(startPost).setMaxResults(limitPostsOnPage).getResultList();
-		for (Post post : posts) {
-			Hibernate.initialize(post.getPostPhotos());
-			Hibernate.initialize(post.getPrinters());
-			System.out.println(post.getIdPost());
-		}
-		return posts;
-	}
-	
-	@SuppressWarnings("unchecked")
-	@Override
-	@Transactional
-	public List<Post> selectPostsLimit10ByDesigner(Integer page, Integer idDesigner) throws DaoException {
-		int limitPostsOnPage = 10;
-		int startPost = page * limitPostsOnPage - limitPostsOnPage;
-		List<Post> posts = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", idDesigner).setFirstResult(startPost).setMaxResults(limitPostsOnPage).getResultList();
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getPrinters());

@@ -92,7 +92,7 @@ public class DesignerController {
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
-		List<Post> posts = designerService.getPostsByDesigner(person.getIdPerson());
+		List<Post> posts = designerService.getPostsByDesignerForSort(person.getIdPerson());
 		designerService.sortPosts(posts, sort, desc);
 		int allPosts = posts.size();
 	    int maxPage = (int) Math.ceil((double)allPosts / ControllerParamConstant.LIMIT_POSTS_ON_PAGE);

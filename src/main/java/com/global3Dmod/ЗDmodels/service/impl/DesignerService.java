@@ -263,13 +263,12 @@ public class DesignerService implements IDesignerService {
 		}
 		return posts;
 	}
-
+	
 	@Override
-	public List<Post> getPostsLimit10ByDesigner(Integer page, Integer idDesigner)
-			throws ServiceException {
-		List<Post> posts = new ArrayList<Post>();
+	public List<Post> getPostsByDesignerForSort(Integer idUser) throws ServiceException {
+		List<Post> posts;
 		try {
-			posts = postDAO.selectPostsLimit10ByDesigner(page, idDesigner);
+			posts = postDAO.selectPostsByDesignerForSort(idUser);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

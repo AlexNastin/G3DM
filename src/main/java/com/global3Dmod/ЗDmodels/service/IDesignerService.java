@@ -39,7 +39,7 @@ public interface IDesignerService {
 	
 	public List<Post> getPostsByDesigner(Integer idUser) throws ServiceException;
 	
-	public List<Post> getPostsLimit10ByDesigner(Integer page, Integer idDesigner) throws ServiceException;
+	public List<Post> getPostsByDesignerForSort(Integer idUser) throws ServiceException;
 	
 	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc) throws ServiceException;
 	

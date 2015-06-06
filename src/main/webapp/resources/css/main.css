@@ -744,7 +744,7 @@ div#carousel ~ span:hover { color: #888; cursor: pointer; }
 }
 
 .footer{
-	background-color: #F8F8F8;
+	background-color: #DADAD9;
 	background-size: cover;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
@@ -1405,4 +1405,3 @@ input:-moz-placeholder {
   	
     min-height: 45em;
   }
-    

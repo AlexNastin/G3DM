@@ -80,13 +80,6 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("model");
 		return modelAndView;
 	}
-	
-	//Test
-	@RequestMapping(value = "/designerProfile", method = RequestMethod.GET)
-		public ModelAndView designerPrifile(Locale locale, Model model) throws Exception {
-			ModelAndView modelAndView = new ModelAndView("designer/DesignerProfile");
-			return modelAndView;
-		}
 
 	@RequestMapping(value = "/signupAddUser", method = RequestMethod.POST)
 	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,

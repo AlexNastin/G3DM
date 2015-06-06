@@ -133,6 +133,12 @@ public class DesignerController {
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/profile");
 		return modelAndView2;
 	}
+	
+	@RequestMapping(value = "/designer/designerProfile", method = RequestMethod.GET)
+	public ModelAndView designerPrifile(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("designer/designerProfile");
+		return modelAndView;
+	}
 
 	// Test
 	@RequestMapping(value = "/test", method = RequestMethod.GET)

@@ -40,7 +40,7 @@
       <div class="col-md-2 nopadding1">
       <div class="list-group">
       <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
-  <a href="<c:url value="/designer/profile" />" class="list-group-item">
+  <a href="<c:url value="/designer/profile?sort=date&page=1" />" class="list-group-item">
     <i class="fa fa-briefcase"></i> ${works} 
   </a>
   

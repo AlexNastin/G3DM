@@ -69,19 +69,19 @@
   <ul class="pagination">
   <c:if test="${thisPage>1}">
     <li>
-      <a href="<c:url value="/designer/profile?sort=${sortType}&page=${thisPage-1}" />" aria-label="Previous">
+      <a href="<c:url value="/designer/profile?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     </c:if>
     <c:forEach begin="${startPage}" end="${endPage}" var="page">
     
-    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/designer/profile?sort=${sortType}&page=${page}" />">${page}</a></li>
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/designer/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
     </c:forEach>
     
     <c:if test="${thisPage!=maxPage}">
     <li>
-      <a href="<c:url value="/designer/profile?sort=${sortType}&page=${thisPage+1}" />" aria-label="Next">
+      <a href="<c:url value="/designer/profile?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
@@ -166,19 +166,19 @@
   <ul class="pagination">
   <c:if test="${thisPage>1}">
     <li>
-      <a href="<c:url value="/designer/profile?sort=${sortType}&page=${thisPage-1}" />" aria-label="Previous">
+      <a href="<c:url value="/designer/profile?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     </c:if>
     <c:forEach begin="${startPage}" end="${endPage}" var="page">
     
-    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/designer/profile?sort=${sortType}&page=${page}" />">${page}</a></li>
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/designer/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
     </c:forEach>
     
     <c:if test="${thisPage!=maxPage}">
     <li>
-      <a href="<c:url value="/designer/profile?sort=${sortType}&page=${thisPage+1}" />" aria-label="Next">
+      <a href="<c:url value="/designer/profile?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

@@ -12,7 +12,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
@@ -318,6 +320,41 @@ public class DesignerService implements IDesignerService {
 			}
 		}
 		return posts;
+	}
+
+	@Override
+	public ModelAndView setParamsForSort(ModelAndView modelAndView,	String sort, boolean desc) throws ServiceException {
+		if(sort.equalsIgnoreCase("category") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.CATEGORY_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.CATEGORY_DESC, false);
+		}
+		if(sort.equalsIgnoreCase("date") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.DATE_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.DATE_DESC, false);
+		}
+		if(sort.equalsIgnoreCase("downloads") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.DOWNLOADS_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.DOWNLOADS_DESC, false);
+		}
+		if(sort.equalsIgnoreCase("status") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.STATUS_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.STATUS_DESC, false);
+		} 
+		if (sort.equalsIgnoreCase("subcategory") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.SUBCATEGORY_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.SUBCATEGORY_DESC, false);
+		}
+		if(sort.equalsIgnoreCase("title") && !desc) {
+			modelAndView.addObject(ControllerParamConstant.TITLE_DESC, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.TITLE_DESC, false);
+		}
+		return modelAndView;
 	}
 
 

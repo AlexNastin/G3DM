@@ -115,37 +115,12 @@ public class DesignerController {
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER, posts);
 		modelAndView.addObject(ControllerParamConstant.SORT_TYPE, sort);
-		
-		if(sort.equalsIgnoreCase("category") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.CATEGORY_DESC, true);
+		if(desc){
+			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, true);
 		} else {
-			modelAndView.addObject(ControllerParamConstant.CATEGORY_DESC, false);
+			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, false);
 		}
-		if(sort.equalsIgnoreCase("date") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.DATE_DESC, true);
-		} else {
-			modelAndView.addObject(ControllerParamConstant.DATE_DESC, false);
-		}
-		if(sort.equalsIgnoreCase("downloads") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.DOWNLOADS_DESC, true);
-		} else {
-			modelAndView.addObject(ControllerParamConstant.DOWNLOADS_DESC, false);
-		}
-		if(sort.equalsIgnoreCase("status") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.STATUS_DESC, true);
-		} else {
-			modelAndView.addObject(ControllerParamConstant.STATUS_DESC, false);
-		}
-		if(sort.equalsIgnoreCase("subcategory") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.SUBCATEGORY_DESC, true);
-		} else {
-			modelAndView.addObject(ControllerParamConstant.SUBCATEGORY_DESC, false);
-		}
-		if(sort.equalsIgnoreCase("title") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.TITLE_DESC, true);
-		} else {
-			modelAndView.addObject(ControllerParamConstant.TITLE_DESC, false);
-		}
+		modelAndView = designerService.setParamsForSort(modelAndView, sort, desc);
 		return modelAndView;
 	}
 

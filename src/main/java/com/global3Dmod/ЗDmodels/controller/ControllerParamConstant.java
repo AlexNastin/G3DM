@@ -34,4 +34,6 @@ public class ControllerParamConstant {
 	
 	public static String TITLE_DESC = "titleDesc";
 
+	public static String DESC_PAGE = "descPage";
+
 }

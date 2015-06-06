@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.DisProgram;
@@ -41,5 +42,7 @@ public interface IDesignerService {
 	public List<Post> getPostsLimit10ByDesigner(Integer page, Integer idDesigner) throws ServiceException;
 	
 	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc) throws ServiceException;
+	
+	public ModelAndView setParamsForSort(ModelAndView modelAndView, String sort, boolean desc) throws ServiceException;
 
 }

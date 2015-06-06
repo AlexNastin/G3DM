@@ -1,6 +1,8 @@
 package com.global3Dmod.ÇDmodels.controller;
 
 public class ControllerParamConstant {
+	
+	public static int LIMIT_POSTS_ON_PAGE = 10;
 
 	public static String PERSON = "person";
 	

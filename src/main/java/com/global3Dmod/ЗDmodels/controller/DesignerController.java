@@ -95,10 +95,9 @@ public class DesignerController {
 		List<Post> posts = designerService.getPostsByDesigner(person.getIdPerson());
 		designerService.sortPosts(posts, sort, desc);
 		int allPosts = posts.size();
-		int limitPostsOnPage = 10;
-	    int maxPage = (int) Math.ceil((double)allPosts / limitPostsOnPage);
-		int startPost = page * limitPostsOnPage - limitPostsOnPage;
-		int endPost = startPost + limitPostsOnPage;
+	    int maxPage = (int) Math.ceil((double)allPosts / ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
+		int startPost = page * ControllerParamConstant.LIMIT_POSTS_ON_PAGE - ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
+		int endPost = startPost + ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
 		if(endPost>allPosts) {
 			posts = posts.subList(startPost, allPosts);
 		} else {

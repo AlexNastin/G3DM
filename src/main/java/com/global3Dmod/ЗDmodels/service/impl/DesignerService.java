@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
@@ -281,37 +280,37 @@ public class DesignerService implements IDesignerService {
 	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc)
 			throws ServiceException {
 		if (sort != null) {
-			if (sort.equals("title")) {
+			if (ServiceParamConstant.TITLE.equals(sort)) {
 				if(desc){
 					Collections.sort(posts, new SortedPostsByTitleDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByTitle());
 				}	
-			} else if (sort.equals("category")) {
+			} else if (ServiceParamConstant.CATEGORY.equals(sort)) {
 				if(desc){
 					Collections.sort(posts, new SortedPostsByCategoryDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByCategory());
 				}	
-			} else if (sort.equals("subcategory")) {
+			} else if (ServiceParamConstant.SUBCATEGORY.equals(sort)) {
 				if(desc){
 					Collections.sort(posts, new SortedPostsBySubcategoryDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsBySubcategory());
 				}
-			} else if (sort.equals("date")) {
+			} else if (ServiceParamConstant.DATE.equals(sort)) {
 				if(desc){
 					Collections.sort(posts, new SortedPostsByDateDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByDate());
 				}
-			} else if (sort.equals("downloads")) {
+			} else if (ServiceParamConstant.DOWNLOADS.equals(sort)) {
 				if(desc){
 					Collections.sort(posts, new SortedPostsByDownloadsDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByDownloads());
 				}
-			} else if (sort.equals("status")) {
+			} else if (ServiceParamConstant.STATUS.equals(sort)) {
 				if(desc){
 					Collections.sort(posts, new SortedPostsByStatusDesc());
 				} else {
@@ -324,35 +323,35 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public ModelAndView setParamsForSort(ModelAndView modelAndView,	String sort, boolean desc) throws ServiceException {
-		if(sort.equalsIgnoreCase("category") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.CATEGORY_DESC, true);
+		if(ServiceParamConstant.CATEGORY.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.CATEGORY_DESC, true);
 		} else {
-			modelAndView.addObject(ControllerParamConstant.CATEGORY_DESC, false);
+			modelAndView.addObject(ServiceParamConstant.CATEGORY_DESC, false);
 		}
-		if(sort.equalsIgnoreCase("date") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.DATE_DESC, true);
+		if(ServiceParamConstant.DATE.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.DATE_DESC, true);
 		} else {
-			modelAndView.addObject(ControllerParamConstant.DATE_DESC, false);
+			modelAndView.addObject(ServiceParamConstant.DATE_DESC, false);
 		}
-		if(sort.equalsIgnoreCase("downloads") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.DOWNLOADS_DESC, true);
+		if(ServiceParamConstant.DOWNLOADS.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.DOWNLOADS_DESC, true);
 		} else {
-			modelAndView.addObject(ControllerParamConstant.DOWNLOADS_DESC, false);
+			modelAndView.addObject(ServiceParamConstant.DOWNLOADS_DESC, false);
 		}
-		if(sort.equalsIgnoreCase("status") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.STATUS_DESC, true);
+		if(ServiceParamConstant.STATUS.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.STATUS_DESC, true);
 		} else {
-			modelAndView.addObject(ControllerParamConstant.STATUS_DESC, false);
+			modelAndView.addObject(ServiceParamConstant.STATUS_DESC, false);
 		} 
-		if (sort.equalsIgnoreCase("subcategory") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.SUBCATEGORY_DESC, true);
+		if (ServiceParamConstant.SUBCATEGORY.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.SUBCATEGORY_DESC, true);
 		} else {
-			modelAndView.addObject(ControllerParamConstant.SUBCATEGORY_DESC, false);
+			modelAndView.addObject(ServiceParamConstant.SUBCATEGORY_DESC, false);
 		}
-		if(sort.equalsIgnoreCase("title") && !desc) {
-			modelAndView.addObject(ControllerParamConstant.TITLE_DESC, true);
+		if(ServiceParamConstant.TITLE.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, true);
 		} else {
-			modelAndView.addObject(ControllerParamConstant.TITLE_DESC, false);
+			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, false);
 		}
 		return modelAndView;
 	}

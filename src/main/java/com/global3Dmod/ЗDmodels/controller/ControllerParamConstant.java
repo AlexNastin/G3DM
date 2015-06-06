@@ -22,18 +22,6 @@ public class ControllerParamConstant {
 	
 	public static String SORT_TYPE = "sortType";
 
-	public static String CATEGORY_DESC = "categoryDesc";
-	
-	public static String DATE_DESC = "dateDesc";
-	
-	public static String DOWNLOADS_DESC = "downloadsDesc";
-	
-	public static String STATUS_DESC = "statusDesc";
-	
-	public static String SUBCATEGORY_DESC = "subcategoryDesc";
-	
-	public static String TITLE_DESC = "titleDesc";
-
 	public static String DESC_PAGE = "descPage";
 
 }

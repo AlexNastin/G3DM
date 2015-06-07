@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.domain.Person;
+import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
@@ -74,10 +75,11 @@ public class GuestController {
 	    return modelAndView;
 	  }
 	
-	// Test
 	@RequestMapping(value = "/model", method = RequestMethod.GET)
-	public ModelAndView model(Locale locale, Model model) throws Exception {
+	public ModelAndView model(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("model");
+		Post post = guestService.getPost(idPost);
+		modelAndView.addObject(ControllerParamConstant.POST, post);
 		return modelAndView;
 	}
 

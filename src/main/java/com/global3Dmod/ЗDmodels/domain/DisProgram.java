@@ -1,11 +1,16 @@
 package com.global3Dmod.ÇDmodels.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -23,6 +28,9 @@ public class DisProgram implements Essence {
 	
 	@Column(name = "title")
 	private String title;
+	
+	@OneToMany(mappedBy = "disProgram", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Post> posts;
 	
 	public DisProgram() {
 		super();
@@ -42,6 +50,14 @@ public class DisProgram implements Essence {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public List<Post> getPosts() {
+		return posts;
+	}
+
+	public void setPosts(List<Post> posts) {
+		this.posts = posts;
 	}
 
 	@Override

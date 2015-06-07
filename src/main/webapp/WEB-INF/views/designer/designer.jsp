@@ -102,20 +102,20 @@
                               <tbody>
                               <c:forEach items="${listPostsLimit10}" var="post" >
                               <tr>
-                                  <td><a href="basic_table.html#">${post.title}</a></td>
+                                  <td><a href="<c:url value="/model?id=${post.idPost}" />">${post.title}</a></td>
                                   <td class="hidden-phone">${post.category.title}</td>
                                   <td>${post.subcategory.title}</td>
                                   <td>${post.dateUpdate}</td>
                                   <td>${post.numberPost}</td>
                                   <td>${post.countDownload}</td>
                                   <c:if test="${post.isDisplay == 2}">
-                                  	<td><span class="label label-success label-mini">published</span></td>
+                                  	<td><span class="label label-success label-mini">Published</span></td>
                                   </c:if>
                                      <c:if test="${post.isDisplay == 1}">
                                   	<td><span class="label label-warning label-danger">Rejected</span></td>
                                   </c:if>
                                   <c:if test="${post.isDisplay == 0}">
-                                  	<td><span class="label label-warning label-mini">moderating</span></td>
+                                  	<td><span class="label label-warning label-mini">Moderating</span></td>
                                   </c:if>
                                   <td>
                                       <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i></button>

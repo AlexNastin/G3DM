@@ -37,7 +37,8 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @Table(name = "POSTS")
 @NamedQueries({
 	@NamedQuery(name="Post.findAll", query="select p from Post p"),
-	@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.user_idUser = :idUser")})
+	@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.user_idUser = :idUser"),
+	@NamedQuery(name="Post.findOneById", query="select p from Post p where p.idPost = :idPost")})
 public class Post implements Essence {
 
 	@Id
@@ -87,6 +88,14 @@ public class Post implements Essence {
 	
 	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private File file;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_idUser", insertable=false, updatable=false)
+	private User user;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "disProgram_idDisProgram", insertable=false, updatable=false)
+	private DisProgram disProgram;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="category_idCategory", insertable=false, updatable=false)
@@ -245,6 +254,22 @@ public class Post implements Essence {
 
 	public void setSubcategory(Subcategory subcategory) {
 		this.subcategory = subcategory;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public DisProgram getDisProgram() {
+		return disProgram;
+	}
+
+	public void setDisProgram(DisProgram disProgram) {
+		this.disProgram = disProgram;
 	}
 
 	@Override

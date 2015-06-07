@@ -26,4 +26,6 @@ public class ControllerParamConstant {
 
 	public static String DESC_PAGE = "descPage";
 
+	public static String POST = "post";
+
 }

@@ -175,4 +175,15 @@ public class GuestService implements IGuestService {
 		}
 		return posts;
 	}
+
+	@Override
+	public Post getPost(Integer idPost) throws ServiceException {
+		Post post = new Post();
+		try {
+			post = postDAO.selectPost(idPost);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return post;
+	}
 }

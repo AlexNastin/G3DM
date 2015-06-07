@@ -13,12 +13,14 @@ public interface IPostDAO {
 
 	public List<Post> selectAllPosts() throws DaoException;
 	
-	public List<Post> selectPostsByDesigner(Integer id) throws DaoException;
+	public List<Post> selectPostsByDesigner(Integer idDesigner) throws DaoException;
 	
-	public List<Post> selectPostsByDesignerForSort(Integer id) throws DaoException;
+	public List<Post> selectPostsByDesignerForSort(Integer idDesigner) throws DaoException;
 	
 	public List<Post> selectPostsLimit10(Integer page) throws DaoException;
 
-	public void deletePost(Integer id) throws DaoException;
+	public void deletePost(Integer idPost) throws DaoException;
+	
+	public Post selectPost(Integer idPost) throws DaoException;
 
 }

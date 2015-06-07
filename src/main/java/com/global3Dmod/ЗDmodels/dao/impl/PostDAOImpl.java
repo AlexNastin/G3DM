@@ -53,8 +53,8 @@ public class PostDAOImpl implements IPostDAO {
 	 * */
 	@Override
 	@Transactional
-	public void deletePost(Integer id) throws DaoException {
-		Post post = em.find(Post.class, id);
+	public void deletePost(Integer idPost) throws DaoException {
+		Post post = em.find(Post.class, idPost);
 		em.remove(post);
 	}
 
@@ -73,8 +73,8 @@ public class PostDAOImpl implements IPostDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Post> selectPostsByDesigner(Integer id) throws DaoException {
-		List<Post> posts = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", id).getResultList();
+	public List<Post> selectPostsByDesigner(Integer idDesigner) throws DaoException {
+		List<Post> posts = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", idDesigner).getResultList();
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getPrinters());
@@ -85,8 +85,8 @@ public class PostDAOImpl implements IPostDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Post> selectPostsByDesignerForSort(Integer id) throws DaoException {
-		List<Post> posts = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", id).getResultList();
+	public List<Post> selectPostsByDesignerForSort(Integer idDesigner) throws DaoException {
+		List<Post> posts = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", idDesigner).getResultList();
 		return posts;
 	}
 
@@ -100,9 +100,20 @@ public class PostDAOImpl implements IPostDAO {
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getPrinters());
-			System.out.println(post.getIdPost());
 		}
 		return posts;
+	}
+
+	@Override
+	@Transactional
+	public Post selectPost(Integer idPost) throws DaoException {
+		Post post = (Post) em.createNamedQuery("Post.findOneById").setParameter("idPost", idPost).getSingleResult();
+		Hibernate.initialize(post.getPostPhotos());
+		Hibernate.initialize(post.getPrinters());
+		Hibernate.initialize(post.getUser());
+		Hibernate.initialize(post.getCategory());
+		Hibernate.initialize(post.getDisProgram());
+		return post;
 	}
 
 }

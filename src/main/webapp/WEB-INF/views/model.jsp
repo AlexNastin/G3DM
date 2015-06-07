@@ -50,7 +50,7 @@
 <div class="container modelmain">
 <div class="row">
 <div class="col-md-4">
-<h3>Model name</h3>
+<h3>${post.title}</h3>
 <a href="#" data-toggle="modal" data-target="#lightbox"><img src="<c:url value="/resources/images/logosign.jpg" />" class="img-responsive margination" alt="Responsive image"> 
 </a>
 <div>
@@ -77,14 +77,14 @@
 						</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="tab_default_1">
-							<p><i class="fa fa-user"></i> ${author}: <a>Put name here</a></p>
-							<p><i class="fa fa-cubes"></i> ${category}: <a>Put category here</a></p>
-							<p><i class="fa fa-slack"></i> ${id}:46546</p>
-							<p><i class="fa fa-file"></i> ${soft}: <a>Put soft here</a></p>
-							<p><i class="fa fa-align-justify"></i> ${desc}: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+							<p><i class="fa fa-user"></i> ${author}: <a>${post.user.nickName}</a></p>
+							<p><i class="fa fa-cubes"></i> ${category}: <a>${post.category.title}</a></p>
+							<p><i class="fa fa-slack"></i> ${id}: ${post.numberPost}</p>
+							<p><i class="fa fa-file"></i> ${soft}: <a>${post.disProgram.title}</a></p>
+							<p><i class="fa fa-align-justify"></i> ${desc}: ${post.description}</p>
 						</div>
 						<div class="tab-pane" id="tab_default_2">
-							
+							<p>${post.instruction}</p>
 						</div>
 						
 					</div>

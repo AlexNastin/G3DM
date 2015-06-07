@@ -149,6 +149,12 @@ public class DesignerController {
 				posts);
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/designer/personalData", method = RequestMethod.GET)
+	public ModelAndView personalData(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalData");
+		return modelAndView;
+	}
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@RequestMapping(value = "/get/subcategories", method = RequestMethod.GET)

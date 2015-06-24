@@ -11,16 +11,16 @@ import javax.persistence.Table;
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
-@Table(name = "RATINGS")
+@Table(name = "ratings")
 @NamedQuery(name="Rating.findAll", query="select r from Rating r")
 public class Rating implements Essence {
 
 	@Id
-	@Column(name = "idRating")
+	@Column(name = "id_rating")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idRating;
 	
-	@Column(name = "post_idPost")
+	@Column(name = "post_id_post")
 	private int post_idPost;
 
 	@Column(name = "rating")

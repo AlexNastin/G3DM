@@ -13,29 +13,26 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
-@Table(name = "CATEGORIES")
+@Table(name = "categories")
 @NamedQueries({
 	@NamedQuery(name="Category.findAll", query="select c from Category c "),
 	@NamedQuery(name = "Category.findCategoryById", query = "select c from Category c join fetch c.subcategories where c.idCategory = :idCategory")})
 public class Category implements Essence {
 	@Id
-	@Column(name = "idCategory")
+	@Column(name = "id_category")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCategory;
 	
 	@Column(name = "title")
 	private String title;
 	
-	@Column(name = "imagePath")
+	@Column(name = "image_path")
 	private String imagePath;
 	
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

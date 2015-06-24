@@ -9,22 +9,22 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Votechecks")
+@Table(name = "votechecks")
 @NamedQuery(name="Votecheck.findAll", query="select v from Votecheck v")
 public class Votecheck implements Essence {
 
 	@Id
-	@Column(name = "idVotecheck")
+	@Column(name = "id_votecheck")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idVotecheck;
 
-	@Column(name = "post_idPost")
+	@Column(name = "post_id_post")
 	private int post_idPost;
 
-	@Column(name = "user_idUser")
+	@Column(name = "user_id_user")
 	private int user_idUser;
 
-	@Column(name = "isCheck")
+	@Column(name = "is_check")
 	private boolean isCheck;
 
 	public Votecheck() {

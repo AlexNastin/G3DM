@@ -14,20 +14,20 @@ import javax.persistence.Table;
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
-@Table(name = "FILES")
+@Table(name = "files")
 @NamedQuery(name="File.findAll", query="select f from File f")
 public class File implements Essence {
 	
 	@Id
-	@Column(name = "idFile")
+	@Column(name = "id_file")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idFile;
 
-	@Column(name = "filePath")
+	@Column(name = "file_path")
 	private String filePath;
 	
 	@OneToOne
-	@JoinColumn(name = "idPost")
+	@JoinColumn(name = "post_id_post")
 	private Post post;
 	
 	public File() {

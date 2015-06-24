@@ -9,16 +9,16 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "—ities")
+@Table(name = "cities")
 @NamedQuery(name="—ity.findAll", query="select c from City c")
 public class City implements Essence {
 
 	@Id
-	@Column(name = "id—ity")
+	@Column(name = "id_city")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id—ity;
 
-	@Column(name = "country_id—ountry")
+	@Column(name = "country_id_country")
 	private int country_id—ountry;
 
 	@Column(name = "title")

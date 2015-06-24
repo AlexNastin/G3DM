@@ -44,10 +44,10 @@
 
 	<bean id="jpaVendorAdapter"
 		class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-		<property name="database" value="MYSQL" />
+		<property name="database" value="POSTGRESQL" />
 		<property name="showSql" value="true" />
 		<property name="generateDdl" value="false" />
-		<property name="databasePlatform" value="org.hibernate.dialect.MySQLDialect" />
+		<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />
 	</bean>
 	<!--<bean 
 		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />-->

@@ -5,8 +5,10 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -149,7 +151,8 @@ public class DesignerService implements IDesignerService {
 		// postForm.setModelFilePath(modelFileUpload(postForm.getModel())); // Ќикита  этот тебе надо? если нет то делетед.
 		DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
 		Date date = new Date();
-		
+		GregorianCalendar gregorianCalendar = new GregorianCalendar();
+		System.out.println(gregorianCalendar.getTime());
 		String registrationDate = dateFormat.format(date);
 		Post post = new Post();
 		post.setUser_idUser(idUser);

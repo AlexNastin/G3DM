@@ -11,22 +11,22 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "—omments")
+@Table(name = "comments")
 @NamedQuery(name="—omment.findAll", query="select c from Comment c")
 public class Comment implements Essence {
 
 	@Id
-	@Column(name = "id—omment")
+	@Column(name = "id_comment")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id—omment;
 
-	@Column(name = "user_idUser")
+	@Column(name = "user_id_user")
 	private int user_idUser;
 	
-	@Column(name = "post_idPost")
+	@Column(name = "post_id_post")
 	private int post_idPost;
 	
-	@Column(name = "dateTime")
+	@Column(name = "date_time")
 	private Date dateTime;
 	
 	@Column(name = "text")

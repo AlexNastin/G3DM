@@ -9,12 +9,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Roles")
+@Table(name = "roles")
 @NamedQuery(name="Role.findAll", query="select r from Role r")
 public class Role implements Essence {
 
 	@Id
-	@Column(name = "idRole")
+	@Column(name = "id_role")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idRole;
 

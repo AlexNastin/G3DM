@@ -34,7 +34,7 @@ import org.hibernate.annotations.LazyToOneOption;
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
-@Table(name = "POSTS")
+@Table(name = "posts")
 @NamedQueries({
 	@NamedQuery(name="Post.findAll", query="select p from Post p"),
 	@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.user_idUser = :idUser"),
@@ -42,29 +42,29 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 public class Post implements Essence {
 
 	@Id
-	@Column(name = "idPost")
+	@Column(name = "id_post")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPost;
 
-	@Column(name = "user_idUser")
+	@Column(name = "user_id_user")
 	private int user_idUser;
 
-	@Column(name = "category_idCategory")
+	@Column(name = "category_id_category")
 	private int category_idCategory;
 
-	@Column(name = "subcategory_idSubcategory")
+	@Column(name = "subcategory_id_subcategory")
 	private int subcategory_idSubcategory;
 	
-	@Column(name = "numberPost")
+	@Column(name = "number_post")
 	private String numberPost;
 	
-	@Column(name = "disProgram_idDisProgram")
+	@Column(name = "disprogram_id_disprogram")
 	private int disProgram_idDisProgram;
 
-	@Column(name = "dateReg")
+	@Column(name = "date_reg")
 	private String dateReg;
 	
-	@Column(name = "dateUpdate")
+	@Column(name = "date_update")
 	private String dateUpdate;
 
 	@Column(name = "title")
@@ -76,33 +76,33 @@ public class Post implements Essence {
 	@Column(name = "instruction")
 	private String instruction;
 
-	@Column(name = "isDisplay")
+	@Column(name = "is_display")
 	private int isDisplay;
 
-	@Column(name = "countDownload")
+	@Column(name = "count_download")
 	private int countDownload;
 	
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name="POSTS_HAS_PRINTERS", joinColumns={@JoinColumn(name="POST_IDPOST")},inverseJoinColumns={@JoinColumn(name="PRINTER_IDPRINTER")})
+	@JoinTable(name="posts_has_printers", joinColumns={@JoinColumn(name="post_id_post")},inverseJoinColumns={@JoinColumn(name="printer_id_printer")})
 	private List<Printer> printers;
 	
 	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private File file;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_idUser", insertable=false, updatable=false)
+	@JoinColumn(name = "user_id_user", insertable=false, updatable=false)
 	private User user;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "disProgram_idDisProgram", insertable=false, updatable=false)
+	@JoinColumn(name = "disprogram_id_disprogram", insertable=false, updatable=false)
 	private DisProgram disProgram;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="category_idCategory", insertable=false, updatable=false)
+	@JoinColumn(name="category_id_category", insertable=false, updatable=false)
 	private Category category;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="subcategory_idSubcategory", insertable=false, updatable=false)
+	@JoinColumn(name="subcategory_id_subcategory", insertable=false, updatable=false)
 	private Subcategory subcategory;
 	
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)

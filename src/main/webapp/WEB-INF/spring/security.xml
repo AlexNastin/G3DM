@@ -14,14 +14,14 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 
 		<form-login login-page="/go/signin"
 			authentication-failure-url="/go/signin?login_error=true"
-			login-processing-url="/static/j_spring_security_check" default-target-url="/putperson"/>
-			
+			login-processing-url="/static/j_spring_security_check"
+			default-target-url="/putperson" />
+
 		<logout logout-url="/logout" logout-success-url="/index" />
 
 		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/designer/**" access="hasRole('ROLE_DESIGNER')" />
 		<intercept-url pattern="/moderator/**" access="hasRole('ROLE_MODERATOR')" />
-
 		<intercept-url pattern="/**"
 			access="hasAnyRole('ROLE_GUEST', 'ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN','ROLE_DESIGNER')" />
 
@@ -35,9 +35,9 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 			authorities="ROLE_USER" /> </user-service> </authentication-provider> -->
 		<authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select login,password, true from users where login=?"
+				users-by-username-query="select login, password, 1 as enabled from users where login=?"
 				authorities-by-username-query="select login, title from users, roles where 
-			role_idRole=idRole and login=?" />
+			role_id_role=id_role and login=?" />
 			<password-encoder hash="md5" />
 		</authentication-provider>
 	</authentication-manager>

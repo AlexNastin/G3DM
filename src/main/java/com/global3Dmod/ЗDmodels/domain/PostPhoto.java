@@ -16,20 +16,20 @@ import javax.persistence.Table;
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
-@Table(name = "POSTPHOTOS")
+@Table(name = "postphotos")
 @NamedQuery(name="PostPhoto.findAll", query="select p from PostPhoto p")
 public class PostPhoto implements Essence {
 
 	@Id
-	@Column(name = "idPostPhoto")
+	@Column(name = "id_postphoto")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPostPhoto;
 
-	@Column(name = "photoPath")
+	@Column(name = "photo_path")
 	private String photoPath;
 	
 	@ManyToOne
-	@JoinColumn(name = "idPost")
+	@JoinColumn(name = "post_id_post")
 	private Post post;
 	
 	public PostPhoto() {

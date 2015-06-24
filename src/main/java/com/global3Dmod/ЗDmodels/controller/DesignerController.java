@@ -47,50 +47,20 @@ public class DesignerController {
 	@Autowired
 	private IDesignerService designerService;
 
-	// ÍÈÊÈÒÀ ÒÅÁÅ ÝÒÎ ÍÓÆÍî?????
-	// @RequestMapping(value = "/upload", method = RequestMethod.POST)
-	// public String handleUpload(@RequestParam("description") String
-	// description,
-	// @RequestParam("file") MultipartFile file) throws Exception{
-	// if (!file.isEmpty()) {
-	// System.out.println("File uploaded.");
-	// System.out.println("Description: " + description);
-	//
-	// String orgName = file.getOriginalFilename();
-	//
-	// final String PREFIX = this.getClass().getResource("/").getPath();
-	// //
-	// C:\Java\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\G3DM\resources\files
-	// System.out.println(PREFIX);
-	// // Êàê çàäàòü ïóòü íå æåñòêî???
-	// String filePlaceToUpload =
-	// "C:/Java/workspasdasdasdasdasdasdace/G3DM/src/main/webapp/resources/files/";
-	// String filePath = filePlaceToUpload + orgName;
-	// File dest = new File(filePath);
-	//
-	//
-	// file.transferTo(dest);
-	//
-	// return "main";
-	// } else {
-	// return "test";
-	// }
-	// }
-
 	@RequestMapping(value = "/designer/profile", method = RequestMethod.GET)
 	public ModelAndView goProfile(@RequestParam(value = "page", required = false) Integer page,@RequestParam(value = "sort", required = false) String sort, @RequestParam(value = "desc", required = false) boolean desc, Locale locale, Model model, HttpSession httpSession)
 			throws Exception {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
 		if (page == null) {
 			page=1;
 		}
 		int startPage = page - 5 > 0?page - 5:1;
 	    int endPage = startPage + 9;
-		Person person = (Person) httpSession
-				.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
+	
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
 		List<Post> posts = designerService.getPostsByDesignerForSort(person.getIdPerson());
 		designerService.sortPosts(posts, sort, desc);
@@ -128,6 +98,10 @@ public class DesignerController {
 			Model model, HttpSession httpSession) throws Exception {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
 		designerService.addPost(postForm, person.getIdPerson(),
 				person.getNickName());
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/profile");

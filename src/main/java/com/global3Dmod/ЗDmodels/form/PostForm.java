@@ -1,5 +1,7 @@
 package com.global3Dmod.ÇDmodels.form;
 
+import java.util.Arrays;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
@@ -86,7 +88,96 @@ public class PostForm implements Essence{
 	}
 	public void setPrintersId(String[] printersId) {
 		this.printersId = printersId;
+	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + category_idCategory;
+		result = prime * result
+				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result + disProgram_idDisProgram;
+		result = prime * result
+				+ ((firstPhoto == null) ? 0 : firstPhoto.hashCode());
+		result = prime * result
+				+ ((instruction == null) ? 0 : instruction.hashCode());
+		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		result = prime * result + Arrays.hashCode(printersId);
+		result = prime * result
+				+ ((secondPhoto == null) ? 0 : secondPhoto.hashCode());
+		result = prime * result + subcategory_idSubcategory;
+		result = prime * result
+				+ ((thirdPhoto == null) ? 0 : thirdPhoto.hashCode());
+		result = prime * result + ((title == null) ? 0 : title.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		PostForm other = (PostForm) obj;
+		if (category_idCategory != other.category_idCategory)
+			return false;
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
+			return false;
+		if (disProgram_idDisProgram != other.disProgram_idDisProgram)
+			return false;
+		if (firstPhoto == null) {
+			if (other.firstPhoto != null)
+				return false;
+		} else if (!firstPhoto.equals(other.firstPhoto))
+			return false;
+		if (instruction == null) {
+			if (other.instruction != null)
+				return false;
+		} else if (!instruction.equals(other.instruction))
+			return false;
+		if (model == null) {
+			if (other.model != null)
+				return false;
+		} else if (!model.equals(other.model))
+			return false;
+		if (!Arrays.equals(printersId, other.printersId))
+			return false;
+		if (secondPhoto == null) {
+			if (other.secondPhoto != null)
+				return false;
+		} else if (!secondPhoto.equals(other.secondPhoto))
+			return false;
+		if (subcategory_idSubcategory != other.subcategory_idSubcategory)
+			return false;
+		if (thirdPhoto == null) {
+			if (other.thirdPhoto != null)
+				return false;
+		} else if (!thirdPhoto.equals(other.thirdPhoto))
+			return false;
+		if (title == null) {
+			if (other.title != null)
+				return false;
+		} else if (!title.equals(other.title))
+			return false;
+		return true;
+	}
+	@Override
+	public String toString() {
+		return "PostForm [category_idCategory=" + category_idCategory
+				+ ", subcategory_idSubcategory=" + subcategory_idSubcategory
+				+ ", disProgram_idDisProgram=" + disProgram_idDisProgram
+				+ ", title=" + title + ", description=" + description
+				+ ", instruction=" + instruction + ", model=" + model.getName()
+				+ ", firstPhoto=" + firstPhoto.getName() + ", secondPhoto=" + secondPhoto.getName()
+				+ ", thirdPhoto=" + thirdPhoto.getName() + ", printersId="
+				+ Arrays.toString(printersId) + "]";
 	}	
+	
+	
 	
 	
 }

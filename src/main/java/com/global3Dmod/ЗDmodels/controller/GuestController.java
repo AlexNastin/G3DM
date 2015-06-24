@@ -56,7 +56,9 @@ public class GuestController {
 		Authentication auth = SecurityContextHolder.getContext()
 				.getAuthentication();
 		String login = auth.getName();
+		System.out.println(login);
 		Person person = guestService.getPerson(login);
+		System.out.println(person);
 		httpSession.setAttribute(ControllerParamConstant.PERSON, person);
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
 		return modelAndView;

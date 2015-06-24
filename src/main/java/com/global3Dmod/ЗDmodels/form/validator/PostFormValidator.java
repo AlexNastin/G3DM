@@ -15,6 +15,9 @@ public class PostFormValidator implements Validator{
 	
 	private final String MODEL = ".+\\.(rar|RAR|stl|STL|zip|ZIP)";
 	private final String PHOTO = ".+\\.(jpeg|JPEG|jpg|JPG)";
+	
+//	private final String MODEL = "\\W\\S";
+//	private final String PHOTO = "\\W\\S";
 
 	@Override
 	public boolean supports(Class<?> arg0) {

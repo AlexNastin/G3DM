@@ -48,7 +48,7 @@ public class PostFormController {
 		postForm.setFirstPhoto(firstPhoto);
 		postForm.setSecondPhoto(secondPhoto);
 		postForm.setThirdPhoto(thirdPhoto);
-		
+		System.out.println(postForm);
 		postValidator.validate(postForm, result);
 
 		if (result.hasErrors()) {

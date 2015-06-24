@@ -17,14 +17,14 @@ import javax.persistence.Table;
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
-@Table(name = "PRINTERS")
+@Table(name = "printers")
 @NamedQueries({
 	@NamedQuery(name="Printer.findAll", query="select p from Printer p"),
 	@NamedQuery(name="Printer.findCheckById", query="select p from Printer p where p.idPrinter in (:idPrinters)") })
 public class Printer implements Essence {
 
 	@Id
-	@Column(name = "idPrinter")
+	@Column(name = "id_printer")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idPrinter;
 	

@@ -9,19 +9,19 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Avatars")
+@Table(name = "avatars")
 @NamedQuery(name="Avatar.findAll", query="select a from Avatar a")
 public class Avatar implements Essence {
 
 	@Id
-	@Column(name = "idAvatar")
+	@Column(name = "id_avatar")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idAvatar;
 
-	@Column(name = "user_idUser")
+	@Column(name = "user_id_user")
 	private int user_idUser;
 
-	@Column(name = "avatarPath")
+	@Column(name = "avatar_path")
 	private String avatarPath;
 
 	public Avatar() {

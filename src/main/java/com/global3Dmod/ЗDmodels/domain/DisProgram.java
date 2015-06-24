@@ -17,12 +17,12 @@ import javax.validation.constraints.NotNull;
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
-@Table(name = "DISPROGRAMS")
+@Table(name = "disprograms")
 @NamedQuery(name="DisProgram.findAll", query="select d from DisProgram d")
 public class DisProgram implements Essence {
 
 	@Id
-	@Column(name = "idDisProgram")
+	@Column(name = "id_disprogram")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDisProgram;
 	

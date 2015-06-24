@@ -16,18 +16,18 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Subcategories")
+@Table(name = "subcategories")
 @NamedQueries({
-	@NamedQuery(name = "Subcategory.findTop3", query = "select s from Subcategory s where s.category_idCategory = :idCategory and s.top=1"),
+	@NamedQuery(name = "Subcategory.findTop3", query = "select s from Subcategory s where s.category_idCategory = :idCategory and s.top=true"),
 	@NamedQuery(name="Subcategory.findAll", query="select s from Subcategory s")})
 public class Subcategory implements Essence {
 
 	@Id
-	@Column(name = "idSubcategory")
+	@Column(name = "id_subcategory")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idSubcategory;
 
-	@Column(name = "category_idCategory")
+	@Column(name = "category_id_category")
 	private int category_idCategory;
 
 	@Column(name = "title")
@@ -36,7 +36,7 @@ public class Subcategory implements Essence {
 	@Column(name = "top")
 	private boolean top;
 	
-	@JoinColumn(name = "category_idCategory", referencedColumnName = "idCategory", insertable=false, updatable=false)
+	@JoinColumn(name = "category_id_category", referencedColumnName = "id_category", insertable=false, updatable=false)
 	@ManyToOne(optional = false)
 	private Category category;
 	

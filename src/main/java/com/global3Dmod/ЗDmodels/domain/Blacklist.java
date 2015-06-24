@@ -11,25 +11,25 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Blacklists")
+@Table(name = "blacklists")
 @NamedQuery(name="Blacklist.findAll", query="select b from Blacklist b")
 public class Blacklist implements Essence {
 
 	@Id
-	@Column(name = "idBlacklist")
+	@Column(name = "id_blacklist")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idBlacklist;
 
-	@Column(name = "user_idUser")
+	@Column(name = "user_id_user")
 	private int user_idUser;
 
 	@Column(name = "reason")
 	private String reason;
 
-	@Column(name = "dateTime")
+	@Column(name = "date_time")
 	private String dateTime;
 
-	@Column(name = "isBanned")
+	@Column(name = "is_banned")
 	private boolean isBanned;
 
 	public Blacklist() {

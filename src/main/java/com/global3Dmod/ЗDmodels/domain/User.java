@@ -1,5 +1,6 @@
 package com.global3Dmod.ÇDmodels.domain;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -16,10 +17,13 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
-@Table(name = "USERS")
+@Table(name = "users")
 @NamedQueries({
 		@NamedQuery(name = "User.findTop3", query = "select u from User u order by u.rating desc"),
 		@NamedQuery(name = "User.findAll", query = "select u from User u"),
@@ -29,20 +33,20 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 public class User implements Essence {
 
 	@Id
-	@Column(name = "idUser")
+	@Column(name = "id_user")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idUser;
 
-	@Column(name = "role_idRole")
+	@Column(name = "role_id_role")
 	private int role_idRole;
 
-	@Column(name = "country_idÑountry")
+	@Column(name = "country_id_country")
 	private int country_idÑountry;
 
-	@Column(name = "city_idÑity")
+	@Column(name = "city_id_city")
 	private int city_idÑity;
 
-	@Column(name = "nickName")
+	@Column(name = "nick_name")
 	private String nickName;
 
 	@Column(name = "login")
@@ -58,13 +62,13 @@ public class User implements Essence {
 	private String surname;
 
 	@Column(name = "gender")
-	private String gender;
+	private int gender;
 
-	@Column(name = "registrationDate")
-	private String registrationDate;
+	@Column(name = "registration_date")
+	private Date registrationDate;
 
-	@Column(name = "dateBirth")
-	private String dateBirth;
+	@Column(name = "date_birth")
+	private Date dateBirth;
 
 	@Column(name = "rating")
 	private double rating;
@@ -144,11 +148,11 @@ public class User implements Essence {
 		return surname;
 	}
 
-	public String getGender() {
+	public int getGender() {
 		return gender;
 	}
 
-	public void setGender(String gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
 
@@ -156,19 +160,19 @@ public class User implements Essence {
 		this.surname = surname;
 	}
 
-	public String getRegistrationDate() {
+	public Date getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(String registrationDate) {
+	public void setRegistrationDate(Date registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
-	public String getDateBirth() {
+	public Date getDateBirth() {
 		return dateBirth;
 	}
 
-	public void setDateBirth(String dateBirth) {
+	public void setDateBirth(Date dateBirth) {
 		this.dateBirth = dateBirth;
 	}
 
@@ -196,7 +200,7 @@ public class User implements Essence {
 		result = prime * result + country_idÑountry;
 		result = prime * result
 				+ ((dateBirth == null) ? 0 : dateBirth.hashCode());
-		result = prime * result + ((gender == null) ? 0 : gender.hashCode());
+		result = prime * result + gender;
 		result = prime * result + idUser;
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -204,6 +208,7 @@ public class User implements Essence {
 				+ ((nickName == null) ? 0 : nickName.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
+		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(rating);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -233,10 +238,7 @@ public class User implements Essence {
 				return false;
 		} else if (!dateBirth.equals(other.dateBirth))
 			return false;
-		if (gender == null) {
-			if (other.gender != null)
-				return false;
-		} else if (!gender.equals(other.gender))
+		if (gender != other.gender)
 			return false;
 		if (idUser != other.idUser)
 			return false;
@@ -259,6 +261,11 @@ public class User implements Essence {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
+			return false;
+		if (posts == null) {
+			if (other.posts != null)
+				return false;
+		} else if (!posts.equals(other.posts))
 			return false;
 		if (Double.doubleToLongBits(rating) != Double
 				.doubleToLongBits(other.rating))

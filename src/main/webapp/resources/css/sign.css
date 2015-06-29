@@ -36,3 +36,11 @@ padding-bottom:10em;
   .sign-footer-margin {
   margin-top: 0%;
   }
+  .height-input-string-signin
+  {
+  height:3em;
+  }
+  .height-input-string-signup
+  {
+  height:2.9em;
+  }

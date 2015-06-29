@@ -39,13 +39,13 @@
 	</c:if>
    <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
   <div class="form-group sign-feld-margin-top">
-    <div class="col-md-12">
+    <div class="col-md-12 height-input-string-signin">
        <input type="text" class="form-control" required="required" id="inputEmail3" name="j_username"  placeholder="Email">
       </div>
      </div>
     <div class="form-group">
-    <div class="col-md-12">   
-    <div class="signin-margin-input">
+    <div class="col-md-12 ">   
+    <div class="signin-margin-input height-input-string-signin">
       <input type="password" class="form-control" id="inputPassword3" name="j_password" required="required"  placeholder="${password}">
     </div>
     </div>

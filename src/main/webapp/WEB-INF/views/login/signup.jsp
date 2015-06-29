@@ -49,25 +49,25 @@
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-12">
+		<div class="col-md-12 height-input-string-signup">
 		<form:input id="login" name="login" class="form-control input-md" path="login" placeholder="${login}"></form:input>
 		<span class="error"><form:errors path="login" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-12">
+		<div class="col-md-12 height-input-string-signup">
 		<form:password id="password" name="password" class="form-control input-md" path="password" placeholder="${password}"></form:password>
 		<span class="error"><form:errors path="password" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-12">
+		<div class="col-md-12 height-input-string-signup">
 		<form:password id="confirmPassword" name="confirmPassword" class="form-control input-md" path="confirmPassword" placeholder="${confirmpassword}"></form:password>
 		<span class="error"><form:errors path="confirmPassword" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-12">
+		<div class="col-md-12 height-input-string-signup">
 		<form:input id="nickName" name="nickName" class="form-control input-md" path="nickName" placeholder="${nickname}"></form:input>
 		<span class="error"><form:errors path="nickName" /></span>
 		</div>

@@ -2,6 +2,12 @@ package com.global3Dmod.ÇDmodels.controller;
 
 public class ControllerParamConstant {
 	
+	public static String SIZE_POSTS = "sizePosts";
+
+	public static String ID_CATEGORY = "idCategory";
+	
+	public static String ID_SUBCATEGORY = "idSubcategory";
+
 	public static int LIMIT_POSTS_ON_PAGE = 10;
 
 	public static String PERSON = "person";

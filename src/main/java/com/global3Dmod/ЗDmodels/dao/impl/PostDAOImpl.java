@@ -17,6 +17,8 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 @Repository("jpaPostDAO")
 @Transactional
 public class PostDAOImpl implements IPostDAO {
+	
+	int limitPostsOnPage = 5;
 
 	@PersistenceContext
 	private EntityManager em;
@@ -94,9 +96,34 @@ public class PostDAOImpl implements IPostDAO {
 	@Override
 	@Transactional
 	public List<Post> selectPostsLimit10(Integer page) throws DaoException {
-		int limitPostsOnPage = 5;
 		int startPost = page * limitPostsOnPage - limitPostsOnPage;
 		List<Post> posts = em.createNamedQuery("Post.findAll").setFirstResult(startPost).setMaxResults(limitPostsOnPage).getResultList();
+		for (Post post : posts) {
+			Hibernate.initialize(post.getPostPhotos());
+			Hibernate.initialize(post.getPrinters());
+		}
+		return posts;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Post> selectPostsLimit10ByCategory(Integer page, Integer idCategory) throws DaoException {
+		int startPost = page * limitPostsOnPage - limitPostsOnPage;
+		List<Post> posts = em.createNamedQuery("Post.findByCategory").setParameter("category_idCategory", idCategory).setFirstResult(startPost).setMaxResults(limitPostsOnPage).getResultList();
+		for (Post post : posts) {
+			Hibernate.initialize(post.getPostPhotos());
+			Hibernate.initialize(post.getPrinters());
+		}
+		return posts;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Post> selectPostsLimit10BySubcategory(Integer page, Integer idCategory, Integer idSubcategory) throws DaoException {
+		int startPost = page * limitPostsOnPage - limitPostsOnPage;
+		List<Post> posts = em.createNamedQuery("Post.findBySubcategory").setParameter("category_idCategory", idCategory).setParameter("subcategory_idSubcategory", idSubcategory).setFirstResult(startPost).setMaxResults(limitPostsOnPage).getResultList();
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getPrinters());

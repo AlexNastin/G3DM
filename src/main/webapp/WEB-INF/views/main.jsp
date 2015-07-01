@@ -70,9 +70,9 @@
                                 <img src=<c:url value="${category.imagePath}" /> alt="">
                                 <div class="overlay container">
                                     <div class="menuis">
-                                    <a href="<c:url value="/category/${category.title}" />" class="preview btn btn-primary mainbutton" title="${category.title}">${category.title}</a>
+                                    <a href="<c:url value="/result?idCategory=${category.idCategory}" />" class="preview btn btn-primary mainbutton" title="${category.title}">${category.title}</a>
                                     	<c:forEach items="${category.subcategories}" var="subcategory">
-                                    		<p><a class="categorytxt" href="<c:url value="/subcategory/${subcategory.title}" />">${subcategory.title }</a></p>
+                                    		<p><a class="categorytxt" href="<c:url value="/result?idCategory=${category.idCategory}&idSubcategory=${subcategory.idSubcategory}" />">${subcategory.title }</a></p>
                                     		
 										</c:forEach>
                                     </div>

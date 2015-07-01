@@ -18,6 +18,10 @@ public interface IPostDAO {
 	public List<Post> selectPostsByDesignerForSort(Integer idDesigner) throws DaoException;
 	
 	public List<Post> selectPostsLimit10(Integer page) throws DaoException;
+	
+	public List<Post> selectPostsLimit10ByCategory(Integer page, Integer idCategory) throws DaoException;
+	
+	public List<Post> selectPostsLimit10BySubcategory(Integer page, Integer idCategory, Integer idSubcategory) throws DaoException;
 
 	public void deletePost(Integer idPost) throws DaoException;
 	

@@ -172,6 +172,28 @@ public class GuestService implements IGuestService {
 		}
 		return posts;
 	}
+	
+	@Override
+	public List<Post> getPostsLimit10ByCategory(Integer page, Integer idCategory) throws ServiceException {
+		List<Post> posts = new ArrayList<Post>();
+		try {
+			posts = postDAO.selectPostsLimit10ByCategory(page, idCategory);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return posts;
+	}
+	
+	@Override
+	public List<Post> getPostsLimit10BySubcategory(Integer page, Integer idCategory, Integer idSubcategory) throws ServiceException {
+		List<Post> posts = new ArrayList<Post>();
+		try {
+			posts = postDAO.selectPostsLimit10BySubcategory(page, idCategory, idSubcategory);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return posts;
+	}
 
 	@Override
 	public Post getPost(Integer idPost) throws ServiceException {

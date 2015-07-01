@@ -33,6 +33,10 @@ public interface IGuestService {
 	
 	public List<Post> getPostsLimit10(Integer page) throws ServiceException;
 	
+	public List<Post> getPostsLimit10ByCategory(Integer page, Integer idCategory) throws ServiceException;
+	
+	public List<Post> getPostsLimit10BySubcategory(Integer page, Integer idCategory, Integer idSubcategory) throws ServiceException;
+	
 	public Post getPost(Integer idPost) throws ServiceException;
 	
 	

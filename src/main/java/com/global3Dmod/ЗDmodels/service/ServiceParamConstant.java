@@ -17,6 +17,10 @@ public final class ServiceParamConstant {
 	
 	public static String DOWNLOADS_DESC = "downloadsDesc";
 	
+	public static String DESIGNER_DESC = "designerDesc";
+	
+	public static String RATING_DESC = "ratingDesc";
+	
 	public static String STATUS_DESC = "statusDesc";
 	
 	public static String SUBCATEGORY_DESC = "subcategoryDesc";
@@ -28,6 +32,10 @@ public final class ServiceParamConstant {
 	public static String DATE = "date";
 	
 	public static String DOWNLOADS = "downloads";
+	
+	public static String RATING = "rating";
+	
+	public static String DESIGNER = "designer";
 	
 	public static String STATUS = "status";
 	

@@ -44,11 +44,11 @@
     <div class="col-md-2 nopadding1">
      <div class="list-group">
       <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
-  <a href="<c:url value="/designer/profile?sort=date&page=1" />" class="list-group-item active">
+  <a href="<c:url value="/designer/profile?sort=date&page=1" />" class="list-group-item">
     <i class="fa fa-briefcase"></i> ${works} 
   </a>
   
-  <a href="<c:url value="/designer/personalData" />" class="list-group-item"><i class="fa fa-cogs"></i> ${data}  </a>
+  <a href="<c:url value="/designer/personalData" />" class="list-group-item active"><i class="fa fa-cogs"></i> ${data}  </a>
   <a href="<c:url value="/designer/addPost" />" class="list-group-item"><i class="fa fa-plus-square"></i> ${add}  </a>
   
 	 </div>

@@ -130,7 +130,7 @@
     <c:forEach items="${listPostsLimit10}" var="post">
         <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
-                <a href="#" title="${post.title}" class="thumbnail"><img src="<c:url value="/resources/images/auto.jpg" />" alt="Lorem ipsum" /></a>
+                <a href="<c:url value="/model?id=${post.idPost}" />" title="${post.title}" class="thumbnail"><img src="<c:url value="/resources/images/auto.jpg" />" alt="Lorem ipsum" /></a>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
                 <ul class="meta-search">
@@ -141,7 +141,7 @@
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 excerpet">
-                <h3><a href="#" title="">${post.title}</a></h3>
+                <h3><a href="<c:url value="/model?id=${post.idPost}" />" title="">${post.title}</a></h3>
                 <p>${post.description}</p>
 
             </div>

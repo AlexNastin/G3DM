@@ -12,6 +12,7 @@ import com.global3Dmod.ÇDmodels.domain.DisProgram;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Printer;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
+import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 
@@ -44,5 +45,7 @@ public interface IDesignerService {
 	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc) throws ServiceException;
 	
 	public ModelAndView setParamsForSort(ModelAndView modelAndView, String sort, boolean desc) throws ServiceException;
+	
+	public User getUser(String login) throws ServiceException;
 
 }

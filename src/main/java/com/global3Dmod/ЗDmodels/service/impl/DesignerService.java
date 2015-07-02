@@ -19,12 +19,14 @@ import com.global3Dmod.«Dmodels.dao.ICategoryDAO;
 import com.global3Dmod.«Dmodels.dao.IDisProgramDAO;
 import com.global3Dmod.«Dmodels.dao.IPostDAO;
 import com.global3Dmod.«Dmodels.dao.IPrinterDAO;
+import com.global3Dmod.«Dmodels.dao.IUserDAO;
 import com.global3Dmod.«Dmodels.domain.Category;
 import com.global3Dmod.«Dmodels.domain.DisProgram;
 import com.global3Dmod.«Dmodels.domain.Post;
 import com.global3Dmod.«Dmodels.domain.PostPhoto;
 import com.global3Dmod.«Dmodels.domain.Printer;
 import com.global3Dmod.«Dmodels.domain.Subcategory;
+import com.global3Dmod.«Dmodels.domain.User;
 import com.global3Dmod.«Dmodels.exception.DaoException;
 import com.global3Dmod.«Dmodels.exception.ServiceException;
 import com.global3Dmod.«Dmodels.form.PostForm;
@@ -62,6 +64,9 @@ public class DesignerService implements IDesignerService {
 
 	@Autowired
 	private IPostDAO postDAO;
+	
+	@Autowired
+	private IUserDAO userDAO;
 
 	@Override
 	public List<DisProgram> getAllDisPrograms() throws ServiceException {
@@ -147,11 +152,8 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public void addPost(PostForm postForm, int idUser, String nickName) throws ServiceException {
-		// postForm.setModelFilePath(modelFileUpload(postForm.getModel())); // ÕËÍËÚ‡  ˝ÚÓÚ ÚÂ·Â Ì‡‰Ó? ÂÒÎË ÌÂÚ ÚÓ ‰ÂÎÂÚÂ‰.
 		DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
 		Date date = new Date();
-		GregorianCalendar gregorianCalendar = new GregorianCalendar();
-		System.out.println(gregorianCalendar.getTime());
 		String registrationDate = dateFormat.format(date);
 		Post post = new Post();
 		post.setUser_idUser(idUser);
@@ -355,6 +357,17 @@ public class DesignerService implements IDesignerService {
 			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, false);
 		}
 		return modelAndView;
+	}
+
+	@Override
+	public User getUser(String login) throws ServiceException {
+		User user;
+		try {
+			user = userDAO.selectUser(login);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return user;
 	}
 
 

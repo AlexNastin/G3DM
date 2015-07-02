@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -107,8 +108,10 @@ public class UserDAOImpl implements IUserDAO {
 	}
 
 	@Override
-	public User getUser(String login) throws DaoException {
+	public User selectUser(String login) throws DaoException {
 	User user = (User) em.createNamedQuery("User.findUserByLogin").setParameter("login", login).getSingleResult();
+	Hibernate.initialize(user.getCity());
+	Hibernate.initialize(user.getCountry());
 		return user;
 	}
 

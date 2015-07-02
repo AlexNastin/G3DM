@@ -125,8 +125,16 @@ public class DesignerController {
 	}
 	
 	@RequestMapping(value = "/designer/personalData", method = RequestMethod.GET)
-	public ModelAndView personalData(Locale locale, Model model) throws Exception {
+	public ModelAndView personalData(Locale locale, Model model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
 		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalData");
+		User user = designerService.getUser(person.getLogin());
+		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
 

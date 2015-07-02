@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -65,16 +66,24 @@ public class User implements Essence {
 	private int gender;
 
 	@Column(name = "registration_date")
-	private Date registrationDate;
+	private String registrationDate;
 
 	@Column(name = "date_birth")
-	private Date dateBirth;
+	private String dateBirth;
 
 	@Column(name = "rating")
 	private double rating;
 	
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Post> posts;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "country_id_country", insertable=false, updatable=false)
+	private Country country;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "city_id_city", insertable=false, updatable=false)
+	private City city;
 
 	public User() {
 		super();
@@ -160,19 +169,19 @@ public class User implements Essence {
 		this.surname = surname;
 	}
 
-	public Date getRegistrationDate() {
+	public String getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(Date registrationDate) {
+	public void setRegistrationDate(String registrationDate) {
 		this.registrationDate = registrationDate;
 	}
 
-	public Date getDateBirth() {
+	public String getDateBirth() {
 		return dateBirth;
 	}
 
-	public void setDateBirth(Date dateBirth) {
+	public void setDateBirth(String dateBirth) {
 		this.dateBirth = dateBirth;
 	}
 
@@ -190,6 +199,22 @@ public class User implements Essence {
 
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
 	}
 
 	@Override

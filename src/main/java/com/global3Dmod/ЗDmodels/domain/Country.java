@@ -1,11 +1,16 @@
 package com.global3Dmod.ÇDmodels.domain;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -20,6 +25,9 @@ public class Country implements Essence {
 
 	@Column(name = "title")
 	private String title;
+	
+	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<User> users;
 
 	public Country() {
 		super();
@@ -39,6 +47,14 @@ public class Country implements Essence {
 
 	public void setTitle(String title) {
 		this.title = title;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override

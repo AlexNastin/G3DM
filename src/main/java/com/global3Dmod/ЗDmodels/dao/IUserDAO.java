@@ -9,7 +9,7 @@ public interface IUserDAO {
 	
 	public void updateUser(User user) throws DaoException;
 	
-	public User getUser(String login) throws DaoException;
+	public User selectUser(String login) throws DaoException;
 
 	public void insertUser(User user) throws DaoException;
 

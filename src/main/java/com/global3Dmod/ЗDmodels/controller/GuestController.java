@@ -57,29 +57,11 @@ public class GuestController {
 		Authentication auth = SecurityContextHolder.getContext()
 				.getAuthentication();
 		String login = auth.getName();
-		System.out.println(login);
 		Person person = guestService.getPerson(login);
-		System.out.println(person);
 		httpSession.setAttribute(ControllerParamConstant.PERSON, person);
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
 		return modelAndView;
 	}
-	
-//	@RequestMapping(value = "/result/category", method = RequestMethod.GET)
-//	  public ModelAndView getPostsLimit10(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "idCategory", required = false) Integer idCategory, Model model) throws Exception {
-//		if (page == null) {
-//			page=1;
-//		}
-//		List<Post> posts = guestService.getPostsLimit10ByCategory(page, idCategory);
-//		int startPage = page - 5 > 0?page - 5:1;
-//	    int endPage = startPage + 9;
-//		ModelAndView modelAndView = new ModelAndView("result");
-//		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10, posts);
-//		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
-//		modelAndView.addObject(ControllerParamConstant.END_PAGE, endPage);
-//		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
-//	    return modelAndView;
-//	  }
 	
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
 	  public ModelAndView getPostsLimit10BySubcategory(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "idCategory", required = false) Integer idCategory, @RequestParam(value = "idSubcategory", required = false) Integer idSubcategory, Model model) throws Exception {

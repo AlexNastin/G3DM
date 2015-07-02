@@ -54,6 +54,23 @@
 	 </div>
     </div>
       <!--main content start-->
+      ${user.nickName}<br>
+      ${user.city.title}<br>
+      ${user.country.title}<br>
+      ${user.login}<br>
+      ${user.name}<br>
+      ${user.surname}<br>
+      ${user.dateBirth}<br>
+      ${user.rating}<br>
+		<c:if test="${user.gender == 2}">
+			Male
+		</c:if>
+		<c:if test="${user.gender == 1}">
+			Female
+		</c:if>
+		<c:if test="${user.gender == 0}">
+			None
+		</c:if>
       
           
   

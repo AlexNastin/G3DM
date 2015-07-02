@@ -45,31 +45,31 @@
 	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label for="radio2" class="css-label" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">${user}</label>
 	   </div>
 	   </div>
-	   <span class="error"><form:errors path="role_idRole" /></span>
+	   <span class="error color-style-validation"><form:errors path="role_idRole" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-signup">
 		<form:input id="login" name="login" class="form-control input-md" path="login" placeholder="${login}"></form:input>
-		<span class="error"><form:errors path="login" /></span>
+		<span class="error color-style-validation"><form:errors path="login" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-signup">
 		<form:password id="password" name="password" class="form-control input-md" path="password" placeholder="${password}"></form:password>
-		<span class="error"><form:errors path="password" /></span>
+		<span class="error color-style-validation"><form:errors path="password" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-signup">
 		<form:password id="confirmPassword" name="confirmPassword" class="form-control input-md" path="confirmPassword" placeholder="${confirmpassword}"></form:password>
-		<span class="error"><form:errors path="confirmPassword" /></span>
+		<span class="error color-style-validation"><form:errors path="confirmPassword" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-signup">
 		<form:input id="nickName" name="nickName" class="form-control input-md" path="nickName" placeholder="${nickname}"></form:input>
-		<span class="error"><form:errors path="nickName" /></span>
+		<span class="error color-style-validation"><form:errors path="nickName" /></span>
 		</div>
 		</div>
 		<div class="form-group">

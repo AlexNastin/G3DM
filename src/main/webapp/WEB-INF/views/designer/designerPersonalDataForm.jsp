@@ -56,16 +56,64 @@
 	 </div>
     </div>
       <!--main content start-->
-      
-      ${user.nickName}<br>
-      ${user.city.title}<br>
-      ${user.country.title}<br>
-      ${user.login}<br>
-      ${user.name}<br>
-      ${user.surname}<br>
-      ${user.dateBirth}<br>
-      ${user.rating}<br>
-		<c:if test="${user.gender == 2}">
+     <div class="nopadding2 col-md-10 ">
+          <div class="mt">
+                  <div class="col-md-12 nopadding2">
+                  <div class="row">
+                      <div class="col-md-4" style="padding-left:0px;">
+                      <div class="content-pael">                      
+                      <h2>Personal data</h2>
+                      
+                          <table class="table table-striped table-advance table-hover">
+                                                                                      
+                              <tbody>
+                              <tr>
+                                  <td>Name</td>
+                                  <td class="hidden-phone">${user.nickName}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>City</td>
+                                  	<td class="hidden-phone">${user.city.title}</td>
+                                  
+                              </tr>
+                              <tr>
+                                  <td>Country</td>
+                                  <td class="hidden-phone">${user.country.title}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Login</td>
+                                  <td class="hidden-phone">${user.login}</td>
+                              </tr>
+                              <tr>
+                                   <td>Name</td>
+                                  <td class="hidden-phone">${user.name}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Surname</td>
+                                  <td class="hidden-phone">${user.surname}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Date birth</td>
+                                  <td class="hidden-phone">${user.dateBirth}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Name</td>
+                                  <td class="hidden-phone">${user.name}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Rating</td>
+                                  <td class="hidden-phone">${user.rating}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Gender</td>
+                                  <td class="hidden-phone"><c:if test="${user.gender == 2}">
 			Male
 		</c:if>
 		<c:if test="${user.gender == 1}">
@@ -73,9 +121,17 @@
 		</c:if>
 		<c:if test="${user.gender == 0}">
 			None
-		</c:if>
-		<br>
-       <form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="personalDataForm" method="POST">
+		</c:if></td>
+                                  
+                              </tr>
+                                  </tbody>
+                          </table>
+                      </div>
+                                          
+                  </div>
+                  <div class="col-md-8">
+                  <h2>Update data</h2>
+                   <form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="personalDataForm" method="POST">
 	   <div class="form-group sign-feld-margin-top">
 		</div>
 		<div class="form-group">
@@ -103,39 +159,52 @@
 		</div>
 		</div>
 		
-		<fieldset>
+		
 			<div>
-				<div class="form-group">
+				
 				<form:select class="form-control" id="idCountry" path="country_idCountry">
 				</form:select>
-				</div>
-				<div class="form-group">
+				
+				<br>
 				<form:select class="form-control" id="idCity" path="city_idCity">
 					<form:option value="0">City</form:option>
 				</form:select>
-				</div>
+				<br>
 			</div>
-		</fieldset>
-		<p>ДР: <form:input type="date" name="calendar" path="dateBirth" id="dateBirth"/>
+		
+		ДР: <form:input type="date" name="calendar" path="dateBirth" id="dateBirth"/> <br><br>
 		<form:select class="form-control" id="gender"
 			name="gender" path="gender">
 			<form:option value="0">None</form:option>
 			<form:option value="1">Female</form:option>
 			<form:option value="2">Male</form:option>
 		</form:select>
-		
+		<br>
 		<div class="form-group">
 		<div class="col-md-5">
-		<input type="submit" class="btn btn-default btn-outline btn-circle" value="Update" />
+		<input type="submit" class="btn btn-primary" value="Save" />
 		</div>
 	    </div>
 	</form:form>
+                  
+                  
+                  </div>
+                  </div>
+                  </div>
+              </div>
+              
+      </div>
+      
+		
+     </div> 
+		
+      
       
           
   
   
   <div class="clearfix"> </div>
-  </div>
+
 	<%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 

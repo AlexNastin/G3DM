@@ -7,7 +7,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Designer's page | Global3dmod</title>
+<title>Personal data | Global3dmod</title>
 <!-- Init search variable -->
 <spring:message code="headerWithSearch.header.search" var="search"/>
 <spring:message code="designer.menu.works" var="works"/>
@@ -54,15 +54,63 @@
 	 </div>
     </div>
       <!--main content start-->
-      ${user.nickName}<br>
-      ${user.city.title}<br>
-      ${user.country.title}<br>
-      ${user.login}<br>
-      ${user.name}<br>
-      ${user.surname}<br>
-      ${user.dateBirth}<br>
-      ${user.rating}<br>
-		<c:if test="${user.gender == 2}">
+      <div class="nopadding2 col-md-10 ">
+          <div class="mt">
+                  <div class="col-md-12 nopadding2">
+                      <div class="col-md-4" style="padding-left:0px;">
+                      <div class="content-pael">                      
+                      <h2>Personal data</h2>
+                      
+                          <table class="table table-striped table-advance table-hover">
+                                                                                      
+                              <tbody>
+                              <tr>
+                                  <td>Name</td>
+                                  <td class="hidden-phone">${user.nickName}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>City</td>
+                                  	<td class="hidden-phone">${user.city.title}</td>
+                                  
+                              </tr>
+                              <tr>
+                                  <td>Country</td>
+                                  <td class="hidden-phone">${user.country.title}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Login</td>
+                                  <td class="hidden-phone">${user.login}</td>
+                              </tr>
+                              <tr>
+                                   <td>Name</td>
+                                  <td class="hidden-phone">${user.name}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Surname</td>
+                                  <td class="hidden-phone">${user.surname}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Date birth</td>
+                                  <td class="hidden-phone">${user.dateBirth}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Name</td>
+                                  <td class="hidden-phone">${user.name}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Rating</td>
+                                  <td class="hidden-phone">${user.rating}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Gender</td>
+                                  <td class="hidden-phone"><c:if test="${user.gender == 2}">
 			Male
 		</c:if>
 		<c:if test="${user.gender == 1}">
@@ -70,17 +118,27 @@
 		</c:if>
 		<c:if test="${user.gender == 0}">
 			None
-		</c:if>
-		<br>
-		<button type="button" class="btn btn-default btn-outline btn-circle"  onClick='location.href="<c:url value="/designer/personalData/updateForm"  />"'>
+		</c:if></td>
+                                  
+                              </tr>
+                                  </tbody>
+                          </table>
+                      </div>
+                      <center><button type="button" style="text-align: center;" class="btn btn-primary"  onClick='location.href="<c:url value="/designer/personalData/updateForm"  />"'>
       Update
-      </button>
+      </button> </center>
+                      
+                  </div>
+              </div>
+              
+      </div>
       
+		
+     </div> 
           
   
-  
   <div class="clearfix"> </div>
-  </div>
+ 
 	<%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 

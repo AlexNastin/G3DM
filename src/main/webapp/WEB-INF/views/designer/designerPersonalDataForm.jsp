@@ -7,7 +7,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Designer's page | Global3dmod</title>
+<title>Edit data | Global3dmod</title>
 <!-- Init search variable -->
 <spring:message code="headerWithSearch.header.search" var="search"/>
 <spring:message code="designer.menu.works" var="works"/>
@@ -56,6 +56,7 @@
 	 </div>
     </div>
       <!--main content start-->
+      
       ${user.nickName}<br>
       ${user.city.title}<br>
       ${user.country.title}<br>

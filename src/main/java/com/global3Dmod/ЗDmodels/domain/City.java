@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -21,35 +23,43 @@ public class City implements Essence {
 	@Id
 	@Column(name = "id_city")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id—ity;
+	private int idCity;
 
 	@Column(name = "country_id_country")
-	private int country_id—ountry;
+	private int country_idCountry;
 
 	@Column(name = "title")
 	private String title;
 	
 	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<User> users;
+	
+	@JoinColumn(name = "country_id_country", referencedColumnName = "id_country", insertable=false, updatable=false)
+	@ManyToOne(optional = false)
+	private Country country;
 
 	public City() {
 		super();
 	}
 
-	public int getId—ity() {
-		return id—ity;
+	public int getIdCity() {
+		return idCity;
 	}
 
-	public void setId—ity(int id—ity) {
-		this.id—ity = id—ity;
+
+
+	public void setIdCity(int idCity) {
+		this.idCity = idCity;
 	}
 
-	public int getCountry_id—ountry() {
-		return country_id—ountry;
+
+
+	public int getCountry_idCountry() {
+		return country_idCountry;
 	}
 
-	public void setCountry_id—ountry(int country_id—ountry) {
-		this.country_id—ountry = country_id—ountry;
+	public void setCountry_idCountry(int country_idCountry) {
+		this.country_idCountry = country_idCountry;
 	}
 
 	public String getTitle() {
@@ -68,12 +78,20 @@ public class City implements Essence {
 		this.users = users;
 	}
 
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + country_id—ountry;
-		result = prime * result + id—ity;
+		result = prime * result + country_idCountry;
+		result = prime * result + idCity;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -87,9 +105,9 @@ public class City implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		City other = (City) obj;
-		if (country_id—ountry != other.country_id—ountry)
+		if (country_idCountry != other.country_idCountry)
 			return false;
-		if (id—ity != other.id—ity)
+		if (idCity != other.idCity)
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -101,8 +119,11 @@ public class City implements Essence {
 
 	@Override
 	public String toString() {
-		return "—ity [id—ity=" + id—ity + ", country_id—ountry="
-				+ country_id—ountry + ", title=" + title + "]";
+		return "City [id—ity=" + idCity + ", country_idCountry="
+				+ country_idCountry + ", title=" + title + ", users=" + users
+				+ ", country=" + country + "]";
 	}
+
+
 
 }

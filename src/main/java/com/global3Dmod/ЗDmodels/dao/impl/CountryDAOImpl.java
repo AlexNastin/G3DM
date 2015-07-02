@@ -5,10 +5,12 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.ICountryDAO;
+import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Country;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
@@ -67,6 +69,12 @@ public class CountryDAOImpl implements ICountryDAO {
 	public void updateCountry(Country country) throws DaoException {
 		em.merge(country);
 		
+	}
+
+	@Override
+	public Country selectCountryById(int idCountry) throws DaoException {
+		Country country = (Country) em.createNamedQuery("Country.findCountryById").setParameter("idCountry", idCountry).getSingleResult();
+		return country;
 	}
 
 }

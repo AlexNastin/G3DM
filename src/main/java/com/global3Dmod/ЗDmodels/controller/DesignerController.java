@@ -26,11 +26,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.global3Dmod.ÇDmodels.domain.Category;
+import com.global3Dmod.ÇDmodels.domain.City;
+import com.global3Dmod.ÇDmodels.domain.Country;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
+import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
@@ -108,6 +111,20 @@ public class DesignerController {
 		return modelAndView2;
 	}
 	
+	@RequestMapping(value = "/designer/personalData/updateFormAdd", method = RequestMethod.POST)
+	public ModelAndView updateFormAdd(PersonalDataForm personalDataForm, Locale locale,
+			Model model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		designerService.updateUser(personalDataForm, person.getLogin());
+		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/personalData/updateForm");
+		return modelAndView2;
+	}
+	
 	@RequestMapping(value = "/designer/designerProfile", method = RequestMethod.GET)
 	public ModelAndView designerPrifile(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("designer/designerProfile");
@@ -144,10 +161,24 @@ public class DesignerController {
 			@RequestParam(value = "idCategory", required = true) Integer idCategory)
 			throws ServiceException {
 		List<Subcategory> subcategories = designerService.getAllSubcategoryWithinCategory(idCategory);
-		for (Subcategory subcategory : subcategories) {
-			System.out.println(subcategory.getTitle());
-		}
 		return subcategories;
+	}
+
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@RequestMapping(value = "/get/countries", method = RequestMethod.GET)
+	public @ResponseBody List<Country> getAllCountry()
+			throws ServiceException {
+		List<Country> countries = designerService.getAllCountries();
+		return countries;
+	}
+	
+	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
+	@RequestMapping(value = "/get/cities", method = RequestMethod.GET)
+	public @ResponseBody List<City> getAllCityWithinCountry(
+			@RequestParam(value = "idCountry", required = true) Integer idCountry)
+			throws ServiceException {
+		List<City> cities = designerService.getAllCityWithinCountry(idCountry);
+		return cities;
 	}
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })

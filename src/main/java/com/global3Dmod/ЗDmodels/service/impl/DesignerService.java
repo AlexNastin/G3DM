@@ -16,11 +16,14 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.«Dmodels.dao.ICategoryDAO;
+import com.global3Dmod.«Dmodels.dao.ICountryDAO;
 import com.global3Dmod.«Dmodels.dao.IDisProgramDAO;
 import com.global3Dmod.«Dmodels.dao.IPostDAO;
 import com.global3Dmod.«Dmodels.dao.IPrinterDAO;
 import com.global3Dmod.«Dmodels.dao.IUserDAO;
 import com.global3Dmod.«Dmodels.domain.Category;
+import com.global3Dmod.«Dmodels.domain.City;
+import com.global3Dmod.«Dmodels.domain.Country;
 import com.global3Dmod.«Dmodels.domain.DisProgram;
 import com.global3Dmod.«Dmodels.domain.Post;
 import com.global3Dmod.«Dmodels.domain.PostPhoto;
@@ -29,6 +32,7 @@ import com.global3Dmod.«Dmodels.domain.Subcategory;
 import com.global3Dmod.«Dmodels.domain.User;
 import com.global3Dmod.«Dmodels.exception.DaoException;
 import com.global3Dmod.«Dmodels.exception.ServiceException;
+import com.global3Dmod.«Dmodels.form.PersonalDataForm;
 import com.global3Dmod.«Dmodels.form.PostForm;
 import com.global3Dmod.«Dmodels.service.IDesignerService;
 import com.global3Dmod.«Dmodels.service.ServiceParamConstant;
@@ -58,6 +62,9 @@ public class DesignerService implements IDesignerService {
 
 	@Autowired
 	private ICategoryDAO categoryDAO;
+	
+	@Autowired
+	private ICountryDAO countryDAO;
 
 	@Autowired
 	private IPrinterDAO printerDAO;
@@ -92,12 +99,26 @@ public class DesignerService implements IDesignerService {
 		}
 		return categories;
 	}
+	
+	@Override
+	public List<Country> getAllCountries() throws ServiceException {
+		List<Country> countries;
+		try {
+			countries = countryDAO.selectAllCountries();
+			for (int i = 0; i < countries.size(); i++) {
+				countries.get(i).setCities(null);
+				countries.get(i).setUsers(null);
+			}
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return countries;
+	}
 
 	@Override
 	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory)
 			throws ServiceException {
 		List<Subcategory> subcategories = new ArrayList<Subcategory>();
-//		List<Category> categories;
 		Category category1;
 		try {
 			category1 = categoryDAO.selectCategoryById(idCategory);
@@ -108,23 +129,25 @@ public class DesignerService implements IDesignerService {
 		} catch (DaoException e1) {
 			e1.printStackTrace();
 		}
-//			try {
-//			categories = categoryDAO.selectAllCategories();
-//			for (Category category : categories) {
-//				if (category.getIdCategory() == idCategory) {
-//					List<Subcategory> subcategories2 = category
-//							.getSubcategories();
-//					for (Subcategory subcategory : subcategories2) {
-//						subcategory.setCategory(null);
-//
-//					}
-//					subcategories.addAll(subcategories2);
-//				}
-//			}
-//		} catch (DaoException e) {
-//			throw new ServiceException(e);
-//		}
 		return subcategories;
+	}
+	
+	@Override
+	public List<City> getAllCityWithinCountry(int idCountry)
+			throws ServiceException {
+		List<City> cities = new ArrayList<City>();
+		Country country1;
+		try {
+			country1 = countryDAO.selectCountryById(idCountry);
+			cities = country1.getCities();
+			for (City city : cities) {
+				city.setCountry(null);
+				city.setUsers(null);
+			}
+		} catch (DaoException e1) {
+			e1.printStackTrace();
+		}
+		return cities;
 	}
 
 	@Override
@@ -368,6 +391,27 @@ public class DesignerService implements IDesignerService {
 			throw new ServiceException(e);
 		}
 		return user;
+	}
+
+	@Override
+	public void updateUser(PersonalDataForm personalDataForm, String login) throws ServiceException {
+		try {
+			User user = userDAO.selectUser(login);
+			user.setCountry_idCountry(personalDataForm.getCountry_idCountry());
+			user.setCity_id—ity(personalDataForm.getCity_idCity());
+			String password = personalDataForm.getPassword();
+			if(password!=null) {
+				user.setPassword(password);
+			}
+			user.setName(personalDataForm.getName());
+			user.setSurname(personalDataForm.getSurname());
+			user.setGender(personalDataForm.getGender());
+			user.setDateBirth(personalDataForm.getDateBirth());
+			userDAO.updateUser(user);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
 	}
 
 

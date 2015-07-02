@@ -42,7 +42,7 @@ public class User implements Essence {
 	private int role_idRole;
 
 	@Column(name = "country_id_country")
-	private int country_id—ountry;
+	private int country_idCountry;
 
 	@Column(name = "city_id_city")
 	private int city_id—ity;
@@ -105,12 +105,12 @@ public class User implements Essence {
 		this.role_idRole = role_idRole;
 	}
 
-	public int getCountry_id—ountry() {
-		return country_id—ountry;
+	public int getCountry_idCountry() {
+		return country_idCountry;
 	}
 
-	public void setCountry_id—ountry(int country_id—ountry) {
-		this.country_id—ountry = country_id—ountry;
+	public void setCountry_idCountry(int country_idCountry) {
+		this.country_idCountry = country_idCountry;
 	}
 
 	public int getCity_id—ity() {
@@ -222,7 +222,7 @@ public class User implements Essence {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + city_id—ity;
-		result = prime * result + country_id—ountry;
+		result = prime * result + country_idCountry;
 		result = prime * result
 				+ ((dateBirth == null) ? 0 : dateBirth.hashCode());
 		result = prime * result + gender;
@@ -256,7 +256,7 @@ public class User implements Essence {
 		User other = (User) obj;
 		if (city_id—ity != other.city_id—ity)
 			return false;
-		if (country_id—ountry != other.country_id—ountry)
+		if (country_idCountry != other.country_idCountry)
 			return false;
 		if (dateBirth == null) {
 			if (other.dateBirth != null)
@@ -313,7 +313,7 @@ public class User implements Essence {
 	@Override
 	public String toString() {
 		return "User [idUser=" + idUser + ", role_idRole=" + role_idRole
-				+ ", country_id—ountry=" + country_id—ountry + ", city_id—ity="
+				+ ", country_id—ountry=" + country_idCountry + ", city_id—ity="
 				+ city_id—ity + ", nickName=" + nickName + ", login=" + login
 				+ ", password=" + password + ", name=" + name + ", surname="
 				+ surname + ", gender=" + gender + ", registrationDate="

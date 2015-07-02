@@ -71,6 +71,10 @@
 		<c:if test="${user.gender == 0}">
 			None
 		</c:if>
+		<br>
+		<button type="button" class="btn btn-default btn-outline btn-circle"  onClick='location.href="<c:url value="/designer/personalData/updateForm"  />"'>
+      Update
+      </button>
       
           
   

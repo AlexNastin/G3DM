@@ -25,6 +25,8 @@
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/cabinets/designer.css"  />" rel="stylesheet" />
      <link href="<c:url value="/resources/css//fontawesome430/css/font-awesome.css"  />" rel="stylesheet" />
+      <link href="<c:url value="/resources/css/calendar.css"  />" rel="stylesheet" />
+     
     
     <!--[if lt IE 9]>
     <script src="js/html5shiv.js"></script>
@@ -172,14 +174,16 @@
 				<br>
 			</div>
 		
-		ДР: <form:input type="date" name="calendar" path="dateBirth" id="dateBirth"/> <br><br>
-		<form:select class="form-control" id="gender"
+		ДР: <form:input type="text" id="dateBirth" name="calendar" path="dateBirth" /> 
+		<br><br>
+				<form:select class="form-control" id="gender"
 			name="gender" path="gender">
 			<form:option value="0">None</form:option>
 			<form:option value="1">Female</form:option>
 			<form:option value="2">Male</form:option>
 		</form:select>
 		<br>
+		
 		<div class="form-group">
 		<div class="col-md-5">
 		<input type="submit" class="btn btn-primary" value="Save" />
@@ -274,5 +278,23 @@
 		$("#output").html(output);
 	}
 </script>
+
+
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
+  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+  
+  <script>
+
+  $(function() {
+
+    $( "#dateBirth" ).datepicker();
+
+  });
+
+  </script>
+
+
 </body>
 </html> 

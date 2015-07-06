@@ -287,9 +287,11 @@
   
   <script>
 
+ 
   $(function() {
 
-    $( "#dateBirth" ).datepicker();
+    $( "#dateBirth" ).datepicker({dateFormat:'yy-mm-dd'});
+    
 
   });
 

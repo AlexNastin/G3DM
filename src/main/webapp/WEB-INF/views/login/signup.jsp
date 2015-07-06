@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="<c:url value="/resources/css/formValidation.css"/>">
 <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.min.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/radio.css"  />" rel="stylesheet" />
+<link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
 <title><spring:message code="signup.signup" /></title>
 <spring:message code="signup.login" var="login"/>
 <spring:message code="signup.password" var="password"/>

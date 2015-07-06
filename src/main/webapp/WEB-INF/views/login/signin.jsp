@@ -16,6 +16,7 @@
 <link href="<c:url value="/resources/css/sign.css"  />" rel="stylesheet" />
 <link rel="stylesheet" href="<c:url value="/resources/css/formValidation.css"/>">
 <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.min.css"  />" rel="stylesheet" />
+<link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
 
 <spring:url var="authUrl" value="/static/j_spring_security_check" /> 
 <title><spring:message code="signin.signin" /></title>

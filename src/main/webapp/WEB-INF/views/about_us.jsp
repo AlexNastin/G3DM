@@ -12,7 +12,7 @@
 <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/about.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
-
+<link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
 <spring:message code="aboutus.title" var="title" />
 <title>${title}</title>
 </head>

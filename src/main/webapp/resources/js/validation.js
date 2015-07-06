@@ -37,16 +37,13 @@ $(document).ready(function(){
 		        required: true,
 		        email: true
 	      },
-	      password: {
-		      minlength: 6,
-		      required: true
-		  },
-		  j_password: {
+	      j_password: {
 	      minlength: 6,
 	      required: true  
 	      },
 	      confirmPassword: {
-	      equalTo: "#password"  
+	      equalTo: "#password",
+	      required: true 	  
 	      }		  
 },
 messages:  {
@@ -54,7 +51,6 @@ messages:  {
 	equalTo: 'The passwords do not match.'
 		}
 	},	
-
 
 			highlight: function(element) {
 				$(element).closest('.control-group').removeClass('success').addClass('error');

@@ -14,7 +14,7 @@
 <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
 <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
 <spring:message code="aboutus.title" var="title" />
-<title>${title}</title>
+<title>${title} | Global3dMod.com</title>
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %> 

@@ -44,9 +44,18 @@ $(document).ready(function(){
 		  j_password: {
 	      minlength: 6,
 	      required: true  
-	      }
-	    	  
-	    },
+	      },
+	      confirmPassword: {
+	      equalTo: "#password"  
+	      }		  
+},
+messages:  {
+	confirmPassword: {
+	equalTo: 'The passwords do not match.'
+		}
+	},	
+
+
 			highlight: function(element) {
 				$(element).closest('.control-group').removeClass('success').addClass('error');
 			},

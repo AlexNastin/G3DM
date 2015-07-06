@@ -26,6 +26,7 @@
 <spring:message code="signup.designer" var="designer"/>
 <spring:message code="signup.user" var="user" />
 <spring:message code="signup.signup" var="signup" />
+<spring:message code="javascript.validation" var="validation" />
 
 
 </head>
@@ -86,8 +87,9 @@
 	<script src="<c:url value="/resources/js/jquery.min.js" />"> </script>
 <script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>
 <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
-<script src="<c:url value="/resources/js/validation.js" />"> </script>
+<script src="<c:url value="/resources/js/${validation}.js" />"> </script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script>
 <script src="<c:url value="/resources/js/tooltip.js" />"></script>
+
 </body>
 </html>

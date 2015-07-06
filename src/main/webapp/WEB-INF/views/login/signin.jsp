@@ -24,7 +24,7 @@
 <spring:message code="signin.rememberme" var="rememberme" />
 <spring:message code="signin.signin" var="signin" />
 <spring:message code="signin.signup" var="signup" />
-
+<spring:message code="javascript.validation" var="validation" />
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %>  
@@ -79,6 +79,6 @@
 <script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>
 <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script>
-<script src="<c:url value="/resources/js/validation.js" />"> </script>
+<script src="<c:url value="/resources/js/${validation}.js" />"> </script>
 </body>
 </html>

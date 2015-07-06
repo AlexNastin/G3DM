@@ -10,10 +10,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="<c:url value="/resources/css/bootstrap.css" />" rel="stylesheet">
 <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.css"  />" rel="stylesheet" />
-<link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
-<link href="<c:url value="/resources/css/sign.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/about.css"  />" rel="stylesheet" />
-<title>Insert title here</title>
+<link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
+
+<spring:message code="aboutus.title" var="title" />
+<title>${title}</title>
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %> 

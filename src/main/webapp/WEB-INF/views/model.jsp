@@ -23,7 +23,7 @@
     <spring:message code="model.body.download" var="down"/>
     <spring:message code="model.body.rating" var="like"/>
     <spring:message code="model.body.issue" var="issue"/>
-    
+    <spring:message code="javascript.validation" var="validation" />
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -157,8 +157,10 @@
                           <div class="form-group sign-feld-margin-top">
 		</div>
 		<div class="form-group">
-		<div class="col-md-6 height-input-string-signup">
+		<div class="col-md-6">
+		<div class="height-input-comments">
 		<form:textarea id="text" name="text" style="resize:none" class="form-control input-md" path="text"  placeholder="Type your comment here" rows="5" cols="30"></form:textarea>
+		</div>
 		<form:input type="hidden" id="idPost" name="idPost" path="idPost" value="${post.idPost }"></form:input>
 		<span class="error"><form:errors path="text" /></span>
 		<br>
@@ -199,7 +201,10 @@
                 </div>
                 </div>
 <%@include file="/WEB-INF/views/footer.jsp" %>  
+    <script src="<c:url value="/resources/js/jquery.min.js" />"> </script>
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/${validation}.js" />"> </script>    
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
     <script src="<c:url value="/resources/js/model.js" />"> </script> 
     

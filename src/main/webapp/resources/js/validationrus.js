@@ -10,7 +10,7 @@ $(document).ready(function(){
 	// http://docs.jquery.com/Plugins/Validation/
 	// http://docs.jquery.com/Plugins/Validation/validate#toptions
 
-		$('#contact-form').validate({
+		$('#contact-form, #comment-form').validate({
 	    rules: {
 	    	nickName: {
 	        minlength: 3,
@@ -41,6 +41,10 @@ $(document).ready(function(){
 	      minlength: 6,
 	      required: true  
 	      },
+	      text: {
+		  required: true,
+		  maxlength: 512
+		  },
 	      confirmPassword: {
 	      equalTo: "#password",
 	      required: true 	  
@@ -52,7 +56,8 @@ messages:  {
 	login: {required: 'Поле пустое', email: 'Некорректный email'},
 	password: {minlength: 'Не менее 6 символов', required: 'Поле пустое'},
 	j_username: {required: 'Поле пустое', email: 'Некорректный email'},
-	j_password: {minlength:'Не менее 6 символов', required: 'Поле пустое'}
+	j_password: {minlength:'Не менее 6 символов', required: 'Поле пустое'},
+	text: {required: 'Поле пустое', maxlength:'Не более 512 символов'}
 },	
 
 			highlight: function(element) {

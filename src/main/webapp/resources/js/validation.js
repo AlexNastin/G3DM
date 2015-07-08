@@ -10,7 +10,7 @@ $(document).ready(function(){
 	// http://docs.jquery.com/Plugins/Validation/
 	// http://docs.jquery.com/Plugins/Validation/validate#toptions
 
-		$('#contact-form').validate({
+		$('#contact-form, #comment-form').validate({
 	    rules: {
 	    	nickName: {
 	        minlength: 3,
@@ -40,6 +40,10 @@ $(document).ready(function(){
 	      j_password: {
 	      minlength: 6,
 	      required: true  
+	      },
+	      text: {
+	      required: true,
+	      maxlength: 512
 	      },
 	      confirmPassword: {
 	      equalTo: "#password",

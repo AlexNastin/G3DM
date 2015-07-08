@@ -157,10 +157,11 @@
                           <div class="form-group sign-feld-margin-top">
 		</div>
 		<div class="form-group">
-		<div class="col-md-12 height-input-string-signup">
-		<form:input id="text" name="text" class="form-control input-md" path="text" placeholder="Text"></form:input>
+		<div class="col-md-6 height-input-string-signup">
+		<form:textarea id="text" name="text" style="resize:none" class="form-control input-md" path="text"  placeholder="Type your comment here" rows="5" cols="30"></form:textarea>
 		<form:input type="hidden" id="idPost" name="idPost" path="idPost" value="${post.idPost }"></form:input>
 		<span class="error"><form:errors path="text" /></span>
+		<br>
 		<input type="submit" class="btn btn-primary" value="Write" />
 		</div>
 		</div>

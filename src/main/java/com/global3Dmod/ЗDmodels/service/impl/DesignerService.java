@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -401,7 +402,8 @@ public class DesignerService implements IDesignerService {
 			user.setCity_id—ity(personalDataForm.getCity_idCity());
 			String password = personalDataForm.getPassword();
 			if(password!=null) {
-				user.setPassword(password);
+				String md5Password = DigestUtils.md5Hex(password);
+				user.setPassword(md5Password);
 			}
 			user.setName(personalDataForm.getName());
 			user.setSurname(personalDataForm.getSurname());

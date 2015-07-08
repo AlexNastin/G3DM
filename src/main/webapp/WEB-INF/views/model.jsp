@@ -135,10 +135,10 @@
                   </div> 
                    <div class="comments-list">
                    <c:forEach items="${listCommentsLimit10}" var="comment">
-                       <div class="media">
+                       <div style="padding-bottom: 1em;" class="media">
                            <p class="pull-right"><small> ${comment.dateTime }</small></p>
                             <a class="media-left" href="#">
-                              <img src="<c:url value="${comment.user.avatar.avatarPath }"/>">
+                              <img style="float: left; margin-right: 1em; width:6em;" src="<c:url value="${comment.user.avatar.avatarPath }"/>">
                             </a>
                             <div class="media-body">
                                 

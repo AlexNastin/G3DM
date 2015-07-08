@@ -290,7 +290,9 @@
  
   $(function() {
 
-    $( "#dateBirth" ).datepicker({dateFormat:'yy-mm-dd'});
+    $( "#dateBirth" ).datepicker({dateFormat:'yy-mm-dd', maxDate: "+0",changeMonth: true,
+		changeYear: true,
+		yearRange: "-100:+0"});
     
 
   });

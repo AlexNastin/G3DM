@@ -5,7 +5,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,6 +25,10 @@ public class Avatar implements Essence {
 
 	@Column(name = "avatar_path")
 	private String avatarPath;
+	
+	@OneToOne
+	@JoinColumn(name = "user_id_user", insertable=false, updatable=false)
+	private User user;
 
 	public Avatar() {
 		super();
@@ -52,6 +58,14 @@ public class Avatar implements Essence {
 		this.avatarPath = avatarPath;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -59,6 +73,7 @@ public class Avatar implements Essence {
 		result = prime * result
 				+ ((avatarPath == null) ? 0 : avatarPath.hashCode());
 		result = prime * result + idAvatar;
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		result = prime * result + user_idUser;
 		return result;
 	}
@@ -79,6 +94,11 @@ public class Avatar implements Essence {
 			return false;
 		if (idAvatar != other.idAvatar)
 			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
 		if (user_idUser != other.user_idUser)
 			return false;
 		return true;
@@ -87,7 +107,9 @@ public class Avatar implements Essence {
 	@Override
 	public String toString() {
 		return "Avatar [idAvatar=" + idAvatar + ", user_idUser=" + user_idUser
-				+ ", avatarPath=" + avatarPath + "]";
+				+ ", avatarPath=" + avatarPath + ", user=" + user + "]";
 	}
+
+	
 
 }

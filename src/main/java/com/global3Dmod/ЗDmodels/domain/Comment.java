@@ -4,15 +4,21 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "comments")
-@NamedQuery(name="—omment.findAll", query="select c from Comment c")
+@NamedQueries({
+	@NamedQuery(name="—omment.findAll", query="select c from Comment c"),
+	@NamedQuery(name="Comment.findByPost", query="select c from Comment c where c.post_idPost = :post_idPost")})
 public class Comment implements Essence {
 
 	@Id
@@ -31,6 +37,14 @@ public class Comment implements Essence {
 	
 	@Column(name = "text")
 	private String text;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id_user", insertable=false, updatable=false)
+	private User user;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "post_id_post", insertable=false, updatable=false)
+	private Post post;
 
 	public Comment() {
 		super();
@@ -76,6 +90,22 @@ public class Comment implements Essence {
 		this.text = text;
 	}
 
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Post getPost() {
+		return post;
+	}
+
+	public void setPost(Post post) {
+		this.post = post;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -83,8 +113,10 @@ public class Comment implements Essence {
 		result = prime * result
 				+ ((dateTime == null) ? 0 : dateTime.hashCode());
 		result = prime * result + id—omment;
+		result = prime * result + ((post == null) ? 0 : post.hashCode());
 		result = prime * result + post_idPost;
 		result = prime * result + ((text == null) ? 0 : text.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		result = prime * result + user_idUser;
 		return result;
 	}
@@ -105,12 +137,22 @@ public class Comment implements Essence {
 			return false;
 		if (id—omment != other.id—omment)
 			return false;
+		if (post == null) {
+			if (other.post != null)
+				return false;
+		} else if (!post.equals(other.post))
+			return false;
 		if (post_idPost != other.post_idPost)
 			return false;
 		if (text == null) {
 			if (other.text != null)
 				return false;
 		} else if (!text.equals(other.text))
+			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
 			return false;
 		if (user_idUser != other.user_idUser)
 			return false;
@@ -119,9 +161,12 @@ public class Comment implements Essence {
 
 	@Override
 	public String toString() {
-		return "—omment [id—omment=" + id—omment + ", user_idUser="
+		return "Comment [id—omment=" + id—omment + ", user_idUser="
 				+ user_idUser + ", post_idPost=" + post_idPost + ", dateTime="
-				+ dateTime + ", text=" + text + "]";
+				+ dateTime + ", text=" + text + ", user=" + user + ", post="
+				+ post + "]";
 	}
+
+	
 
 }

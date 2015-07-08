@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.form.validator.SignupValidator;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
@@ -25,7 +26,7 @@ public class SignupController {
 	public ModelAndView signup(Locale locale, ModelMap model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("login/signup");
 		SignupForm signupForm = new SignupForm();
-		modelAndView.addObject("signupForm", signupForm);
+		modelAndView.addObject(ControllerParamConstant.SIGNUP_FORM, signupForm);
 		return modelAndView;
 	}
 

@@ -131,61 +131,65 @@
             <div class="row">
                 <div class="col-md-12">
                   <div class="page-header">
-                    <h3><small class="pull-right">45 comments</small> Comments </h3>
+                    <h3><small class="pull-right">${sizeComments} comments</small> Comments </h3>
                   </div> 
                    <div class="comments-list">
+                   <c:forEach items="${listCommentsLimit10}" var="comment">
                        <div class="media">
-                           <p class="pull-right"><small>5 days ago</small></p>
+                           <p class="pull-right"><small> ${comment.dateTime }</small></p>
                             <a class="media-left" href="#">
-                              <img src="http://lorempixel.com/40/40/people/1/">
+                              <img src="<c:url value="${comment.user.avatar.avatarPath }"/>">
                             </a>
                             <div class="media-body">
                                 
-                              <h4 class="media-heading user_name">Baltej Singh</h4>
-                              Wow! this is really great.
+                              <h4 class="media-heading user_name">${comment.user.nickName }</h4>
+                              ${comment.text }
                               
                               <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
                             </div>
                           </div>
-                       <div class="media">
-                           <p class="pull-right"><small>5 days ago</small></p>
-                            <a class="media-left" href="#">
-                              <img src="http://lorempixel.com/40/40/people/2/">
-                            </a>
-                            <div class="media-body">
-                                
-                              <h4 class="media-heading user_name">Baltej Singh</h4>
-                              Wow! this is really great.
-                              
-                              <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                            </div>
-                          </div>
-                       <div class="media">
-                           <p class="pull-right"><small>5 days ago</small></p>
-                            <a class="media-left" href="#">
-                              <img src="http://lorempixel.com/40/40/people/3/">
-                            </a>
-                            <div class="media-body">
-                                
-                              <h4 class="media-heading user_name">Baltej Singh</h4>
-                              Wow! this is really great.
-                              
-                              <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                            </div>
-                          </div>
-                       <div class="media">
-                           <p class="pull-right"><small>5 days ago</small></p>
-                            <a class="media-left" href="#">
-                              <img src="http://lorempixel.com/40/40/people/4/">
-                            </a>
-                            <div class="media-body">
-                                
-                              <h4 class="media-heading user_name">Baltej Singh</h4>
-                              Wow! this is really great.
-                              
-                              <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                            </div>
-                          </div>
+                          </c:forEach>
+                          <c:if test="${person == null }">
+                          <p><a href="<c:url value="/go/signin"/>">Войдите</a> или <a href="<c:url value="/signup"/>">зарегистрируйтесь</a> для отправления комментариев</p>
+                          </c:if>
+                          <c:if test="${person != null }">
+                          <form:form id="comment-form" name="comment-form" class="form-horizontal" modelAttribute="commentForm" method="POST">
+                          <div class="form-group sign-feld-margin-top">
+		</div>
+		<div class="form-group">
+		<div class="col-md-12 height-input-string-signup">
+		<form:input id="text" name="text" class="form-control input-md" path="text" placeholder="Text"></form:input>
+		<form:input type="hidden" id="idPost" name="idPost" path="idPost" value="${post.idPost }"></form:input>
+		<span class="error"><form:errors path="text" /></span>
+		<input type="submit" class="btn btn-primary" value="Write" />
+		</div>
+		</div>
+		</form:form>
+		</c:if>
+                       
+                          <nav style="text-align:center">
+  <ul class="pagination">
+  <c:if test="${thisPage>1}">
+    <li>
+      <a href="<c:url value="/model?page=${thisPage-1}&id=${post.idPost}" />" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    </c:if>
+    <c:forEach begin="${startPage}" end="${endPage}" var="page">
+    
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/model?page=${page}&id=${post.idPost}" />">${page}</a></li>
+    </c:forEach>
+    
+    <c:if test="${thisPage!=maxPage}">
+    <li>
+      <a href="<c:url value="/model?page=${thisPage+1}&id=${post.idPost}" />" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    </c:if>
+  </ul>
+</nav>
                    </div>
                     
                     

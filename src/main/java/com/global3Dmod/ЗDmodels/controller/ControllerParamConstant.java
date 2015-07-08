@@ -3,6 +3,8 @@ package com.global3Dmod.ÇDmodels.controller;
 public class ControllerParamConstant {
 	
 	public static String SIZE_POSTS = "sizePosts";
+	
+	public static String SIZE_COMMENTS = "sizeComments";
 
 	public static String ID_CATEGORY = "idCategory";
 	
@@ -15,6 +17,8 @@ public class ControllerParamConstant {
 	public static String LIST_POSTS_BY_DESIGNER = "listPostsByDesigner";
 	
 	public static String LIST_POSTS_LIMIT_10 = "listPostsLimit10";
+	
+	public static String LIST_COMMENTS_LIMIT_10 = "listCommentsLimit10";
 	
 	public static String LIST_CATEGORY = "listCategory";
 	
@@ -35,5 +39,13 @@ public class ControllerParamConstant {
 	public static String POST = "post";
 	
 	public static String USER = "user";
+	
+	public static String COMMENT_FORM = "commentForm";
+	
+	public static String PERSONAL_DATA_FORM = "personalDataForm";
+	
+	public static String POST_FORM = "postForm";
+	
+	public static String SIGNUP_FORM = "signupForm";
 
 }

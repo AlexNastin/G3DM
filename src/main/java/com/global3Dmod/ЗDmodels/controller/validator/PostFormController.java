@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.validator.PostFormValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
@@ -31,7 +32,7 @@ public class PostFormController {
 	public ModelAndView post(Locale locale, ModelMap model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("designer/addPost");
 		PostForm postForm = new PostForm();
-		modelAndView.addObject("postForm", postForm);
+		modelAndView.addObject(ControllerParamConstant.POST_FORM, postForm);
 		modelAndView.addObject("listDisProgram", designerService.getAllDisPrograms());
 		modelAndView.addObject("listCategory", designerService.getAllCategories());
 		modelAndView.addObject("listPrinter", designerService.getAllPrinters());

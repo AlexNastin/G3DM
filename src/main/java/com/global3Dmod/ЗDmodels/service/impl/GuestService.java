@@ -3,30 +3,39 @@ package com.global3Dmod.ÇDmodels.service.impl;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
+import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
+import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
+import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
+import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
+import com.global3Dmod.ÇDmodels.sort.comment.SortedCommentsByDate;
 
 @Service
 public class GuestService implements IGuestService {
@@ -45,6 +54,9 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private ISubcategoryDAO subcategoryDAO;
+	
+	@Autowired
+	private ICommentDAO commentDAO;
 
 	@Override
 	public void addUser(SignupForm signupForm) throws ServiceException {
@@ -65,6 +77,21 @@ public class GuestService implements IGuestService {
 		user.setRegistrationDate(registrationDate);
 		try {
 			userDAO.insertUser(user);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+	}
+	
+	@Override
+	public void addComment(CommentForm commentForm, Person person) throws ServiceException {
+		Comment comment = new Comment();
+		Date date = new Date();
+		comment.setDateTime(date);
+		comment.setPost_idPost(commentForm.getIdPost());
+		comment.setUser_idUser(person.getIdPerson());
+		comment.setText(commentForm.getText());
+		try {
+			commentDAO.insertComment(comment);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -206,5 +233,24 @@ public class GuestService implements IGuestService {
 			throw new ServiceException(e);
 		}
 		return post;
+	}
+
+	@Override
+	public List<Comment> getCommentsByPost(Integer idPost)
+			throws ServiceException {
+		List<Comment> comments = new ArrayList<Comment>();
+		try {
+			comments = commentDAO.selectCommentsByPost(idPost);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return comments;
+	}
+
+	@Override
+	public List<Comment> sortCommentsByDate(List<Comment> comments)
+			throws ServiceException {
+		Collections.sort(comments, new SortedCommentsByDate());
+		return comments;
 	}
 }

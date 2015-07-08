@@ -27,6 +27,7 @@ public class UserService implements IUserService {
 	@Autowired
 	private IUserDAO userDAO;
 
+	@Override
 	public List<User> getAllUsers() throws ServiceException {
 		List<User> users = null;
 
@@ -40,13 +41,12 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public List<User> getTop3Users() {
+	public List<User> getTop3Users() throws ServiceException {
 		List<User> users = null;
 		try {
-			userDAO.selectTop3Users();
+			users = userDAO.selectTop3Users();
 		} catch (DaoException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ServiceException(e);
 		}
 		return users;
 	}

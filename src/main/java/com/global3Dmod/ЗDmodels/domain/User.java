@@ -84,6 +84,12 @@ public class User implements Essence {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "city_id_city", insertable=false, updatable=false)
 	private City city;
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Comment> comments;
+	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private Avatar avatar;
 
 	public User() {
 		super();
@@ -217,11 +223,32 @@ public class User implements Essence {
 		this.city = city;
 	}
 
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public Avatar getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(Avatar avatar) {
+		this.avatar = avatar;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((avatar == null) ? 0 : avatar.hashCode());
+		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + city_id—ity;
+		result = prime * result
+				+ ((comments == null) ? 0 : comments.hashCode());
+		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + country_idCountry;
 		result = prime * result
 				+ ((dateBirth == null) ? 0 : dateBirth.hashCode());
@@ -254,7 +281,27 @@ public class User implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
+		if (avatar == null) {
+			if (other.avatar != null)
+				return false;
+		} else if (!avatar.equals(other.avatar))
+			return false;
+		if (city == null) {
+			if (other.city != null)
+				return false;
+		} else if (!city.equals(other.city))
+			return false;
 		if (city_id—ity != other.city_id—ity)
+			return false;
+		if (comments == null) {
+			if (other.comments != null)
+				return false;
+		} else if (!comments.equals(other.comments))
+			return false;
+		if (country == null) {
+			if (other.country != null)
+				return false;
+		} else if (!country.equals(other.country))
 			return false;
 		if (country_idCountry != other.country_idCountry)
 			return false;
@@ -313,12 +360,15 @@ public class User implements Essence {
 	@Override
 	public String toString() {
 		return "User [idUser=" + idUser + ", role_idRole=" + role_idRole
-				+ ", country_id—ountry=" + country_idCountry + ", city_id—ity="
+				+ ", country_idCountry=" + country_idCountry + ", city_id—ity="
 				+ city_id—ity + ", nickName=" + nickName + ", login=" + login
 				+ ", password=" + password + ", name=" + name + ", surname="
 				+ surname + ", gender=" + gender + ", registrationDate="
 				+ registrationDate + ", dateBirth=" + dateBirth + ", rating="
-				+ rating + "]";
+				+ rating + ", posts=" + posts + ", country=" + country
+				+ ", city=" + city + ", comments=" + comments + ", avatar="
+				+ avatar + "]";
 	}
 
+	
 }

@@ -113,6 +113,9 @@ public class Post implements Essence {
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<PostPhoto> postPhotos;
 	
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Comment> comments;
+	
 	public Post() {
 		super();
 	}
@@ -285,6 +288,14 @@ public class Post implements Essence {
 		this.disProgram = disProgram;
 	}
 
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -292,6 +303,8 @@ public class Post implements Essence {
 		result = prime * result
 				+ ((category == null) ? 0 : category.hashCode());
 		result = prime * result + category_idCategory;
+		result = prime * result
+				+ ((comments == null) ? 0 : comments.hashCode());
 		result = prime * result + countDownload;
 		result = prime * result + ((dateReg == null) ? 0 : dateReg.hashCode());
 		result = prime * result
@@ -337,6 +350,11 @@ public class Post implements Essence {
 		} else if (!category.equals(other.category))
 			return false;
 		if (category_idCategory != other.category_idCategory)
+			return false;
+		if (comments == null) {
+			if (other.comments != null)
+				return false;
+		} else if (!comments.equals(other.comments))
 			return false;
 		if (countDownload != other.countDownload)
 			return false;
@@ -429,11 +447,8 @@ public class Post implements Essence {
 				+ printers + ", file=" + file + ", user=" + user
 				+ ", disProgram=" + disProgram + ", category=" + category
 				+ ", subcategory=" + subcategory + ", postPhotos=" + postPhotos
-				+ "]";
+				+ ", comments=" + comments + "]";
 	}
 
-
-
-	
 
 }

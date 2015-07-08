@@ -30,7 +30,7 @@ public class PersonalDataController {
 	private IDesignerService designerService;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView signup(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
+	public ModelAndView personalData(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -39,7 +39,7 @@ public class PersonalDataController {
 		}
 		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalDataForm");
 		PersonalDataForm personalDataForm = new PersonalDataForm();
-		modelAndView.addObject("personalDataForm", personalDataForm);
+		modelAndView.addObject(ControllerParamConstant.PERSONAL_DATA_FORM, personalDataForm);
 		modelAndView.addObject("listCountry", designerService.getAllCountries());
 		User user = designerService.getUser(person.getLogin());
 		modelAndView.addObject(ControllerParamConstant.USER, user);
@@ -47,7 +47,7 @@ public class PersonalDataController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView processSignup(PersonalDataForm personalDataForm,
+	public ModelAndView personalDataValid(PersonalDataForm personalDataForm,
 			BindingResult result) throws Exception {
 		personalDataValidator.validate(personalDataForm, result);
 

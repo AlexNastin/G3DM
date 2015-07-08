@@ -15,8 +15,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
@@ -100,14 +102,6 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, allPosts);
 	    return modelAndView;
 	  }
-	
-	@RequestMapping(value = "/model", method = RequestMethod.GET)
-	public ModelAndView model(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("model");
-		Post post = guestService.getPost(idPost);
-		modelAndView.addObject(ControllerParamConstant.POST, post);
-		return modelAndView;
-	}
 
 	@RequestMapping(value = "/signupAddUser", method = RequestMethod.POST)
 	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,
@@ -140,5 +134,18 @@ public class GuestController {
 	public ModelAndView categoryMenu(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("categoryMenu");
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/guest/addComment", method = RequestMethod.POST)
+	public ModelAndView addComment(CommentForm commentForm, Locale locale,
+			Model model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		guestService.addComment(commentForm, person);
+		ModelAndView modelAndView2 = new ModelAndView("redirect:/model?id="+commentForm.getIdPost());
+		return modelAndView2;
 	}
 }

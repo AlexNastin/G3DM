@@ -1,0 +1,91 @@
+package com.global3Dmod.ÇDmodels.controller.validator;
+
+import java.util.List;
+import java.util.Locale;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
+import com.global3Dmod.ÇDmodels.domain.Comment;
+import com.global3Dmod.ÇDmodels.domain.Person;
+import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.User;
+import com.global3Dmod.ÇDmodels.form.CommentForm;
+import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.validator.CommentValidator;
+import com.global3Dmod.ÇDmodels.form.validator.PersonalDataValidator;
+import com.global3Dmod.ÇDmodels.service.IDesignerService;
+import com.global3Dmod.ÇDmodels.service.IGuestService;
+
+@Controller
+@RequestMapping("/model")
+public class CommentController {
+	
+	@Autowired
+	private CommentValidator commentValidator;
+	
+	@Autowired
+	private IGuestService guestService;
+
+	@RequestMapping(method = RequestMethod.GET)
+	public ModelAndView comment(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "id", required = false) Integer idPost,Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("model");
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		CommentForm commentForm = new CommentForm();
+		if (page == null) {
+			page=1;
+		}
+		int startPage = page - 5 > 0?page - 5:1;
+	    int endPage = startPage + 9;
+		Post post = guestService.getPost(idPost);
+		List<Comment> comments = guestService.getCommentsByPost(idPost);
+		guestService.sortCommentsByDate(comments);
+	    int allComments = comments.size();
+	    int maxPage = (int) Math.ceil((double)allComments / ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
+		int startPost = page * ControllerParamConstant.LIMIT_POSTS_ON_PAGE - ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
+		int endPost = startPost + ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
+		if(endPost>allComments) {
+			comments = comments.subList(startPost, allComments);
+		} else {
+			comments = comments.subList(startPost, endPost);
+		}
+		modelAndView.addObject(ControllerParamConstant.POST, post);
+		modelAndView.addObject(ControllerParamConstant.LIST_COMMENTS_LIMIT_10, comments);
+		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
+		if(endPage>maxPage) {
+			modelAndView.addObject(ControllerParamConstant.END_PAGE, maxPage);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.END_PAGE, endPage);
+		}
+		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
+		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
+		modelAndView.addObject(ControllerParamConstant.SIZE_COMMENTS, allComments);
+		modelAndView.addObject(ControllerParamConstant.COMMENT_FORM, commentForm);
+		modelAndView.addObject(ControllerParamConstant.PERSON, person);
+		return modelAndView;
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public ModelAndView commetnValid(CommentForm commentForm,
+			BindingResult result) throws Exception {
+		commentValidator.validate(commentForm, result);
+
+		if (result.hasErrors()) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/model");
+			return modelAndView;
+		}
+		ModelAndView modelAndView = new ModelAndView("forward:/guest/addComment");
+		modelAndView.addObject("commentForm", commentForm);
+		return modelAndView;
+	}
+
+}

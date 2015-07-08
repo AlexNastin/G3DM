@@ -2,18 +2,24 @@ package com.global3Dmod.ÇDmodels.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
+import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
+import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 
 public interface IGuestService {
 	
 	public void addUser(SignupForm signupForm) throws ServiceException;
+	
+	public void addComment(CommentForm commentForm, Person person) throws ServiceException;
 	
 	public Person getPerson(String login) throws ServiceException;
 	
@@ -38,6 +44,10 @@ public interface IGuestService {
 	public List<Post> getPostsLimit10BySubcategory(Integer page, Integer idCategory, Integer idSubcategory) throws ServiceException;
 	
 	public Post getPost(Integer idPost) throws ServiceException;
+	
+	public List<Comment> getCommentsByPost(Integer idPost) throws ServiceException;
+	
+	public List<Comment> sortCommentsByDate(List<Comment> comments) throws ServiceException;
 	
 	
 }

@@ -45,6 +45,8 @@ public interface IGuestService {
 	
 	public Post getPost(Integer idPost) throws ServiceException;
 	
+	public User getUser(Integer idUser) throws ServiceException;
+	
 	public List<Comment> getCommentsByPost(Integer idPost) throws ServiceException;
 	
 	public List<Comment> sortCommentsByDate(List<Comment> comments) throws ServiceException;

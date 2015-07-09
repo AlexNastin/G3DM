@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
@@ -147,5 +148,14 @@ public class GuestController {
 		guestService.addComment(commentForm, person);
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/model?id="+commentForm.getIdPost());
 		return modelAndView2;
+	}
+	
+	@RequestMapping(value = "/guest/designerProfile", method = RequestMethod.GET)
+	public ModelAndView designerPrifile(@RequestParam(value = "id", required = false) Integer idUser, Locale locale, Model model) throws Exception {
+		User user = guestService.getUser(idUser);
+		ModelAndView modelAndView = new ModelAndView("designer/designerProfile");
+		modelAndView.addObject(ControllerParamConstant.USER, user);
+		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, user.getPosts().size());
+		return modelAndView;
 	}
 }

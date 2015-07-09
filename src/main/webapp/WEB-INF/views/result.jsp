@@ -127,7 +127,7 @@
   </ul>
 </nav>
     <section class="col-xs-12 col-sm-6 col-md-12">
-    <c:forEach items="${listPostsLimit10}" var="post">
+    <c:forEach items="${listPostsLimit10}" var="post" varStatus="i">
         <article class="search-result row">
             <div class="col-xs-12 col-sm-12 col-md-3">
                 <a href="<c:url value="/model?id=${post.idPost}" />" title="${post.title}" class="thumbnail"><img src="<c:url value="/resources/images/auto.jpg" />" alt="Lorem ipsum" /></a>
@@ -136,8 +136,7 @@
                 <ul class="meta-search">
                     <li><i class="fa fa-star"></i><span>${rate} 464</span></li>
                     <li><i class="fa fa-download"></i> <span>${downloads} ${post.countDownload}</span></li>
-                    <li><i class="fa fa-comments"></i> <span>${comments} 654</span></li>
-                    <li><i class="fa fa-user"></i> <span>${author} jhg  jg</span></li>
+                    <li><i class="fa fa-user"></i> <span>${author} <a href="<c:url value="/guest/designerProfile?id=${post.user.idUser }"  />">${post.user.nickName}</a></span></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-7 excerpet">

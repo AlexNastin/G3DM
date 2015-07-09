@@ -10,6 +10,8 @@ public interface IUserDAO {
 	public void updateUser(User user) throws DaoException;
 	
 	public User selectUser(String login) throws DaoException;
+	
+	public User selectUserById(Integer id) throws DaoException;
 
 	public void insertUser(User user) throws DaoException;
 

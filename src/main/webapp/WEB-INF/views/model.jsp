@@ -77,10 +77,10 @@
 						</ul>
 					<div class="tab-content">
 						<div class="tab-pane active" id="tab_default_1">
-							<p><i class="fa fa-user"></i> ${author}: <a>${post.user.nickName}</a></p>
-							<p><i class="fa fa-cubes"></i> ${category}: <a>${post.category.title}</a></p>
+							<p><i class="fa fa-user"></i> ${author}: <a href="<c:url value="/guest/designerProfile?id=${post.user.idUser }"  />">${post.user.nickName}</a></p>
+							<p><i class="fa fa-cubes"></i> ${category}: <a href="<c:url value="/result?idCategory=${post.category.idCategory}" />">${post.category.title}</a></p>
 							<p><i class="fa fa-slack"></i> ${id}: ${post.numberPost}</p>
-							<p><i class="fa fa-file"></i> ${soft}: <a>${post.disProgram.title}</a></p>
+							<p><i class="fa fa-file"></i> ${soft}: ${post.disProgram.title}</p>
 							<p><i class="fa fa-align-justify"></i> ${desc}: ${post.description}</p>
 						</div>
 						<div class="tab-pane" id="tab_default_2">

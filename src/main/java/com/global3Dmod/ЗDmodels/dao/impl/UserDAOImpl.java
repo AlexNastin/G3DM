@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
+import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
@@ -109,9 +110,23 @@ public class UserDAOImpl implements IUserDAO {
 
 	@Override
 	public User selectUser(String login) throws DaoException {
-	User user = (User) em.createNamedQuery("User.findUserByLogin").setParameter("login", login).getSingleResult();
-	Hibernate.initialize(user.getCity());
-	Hibernate.initialize(user.getCountry());
+		User user = (User) em.createNamedQuery("User.findUserByLogin").setParameter("login", login).getSingleResult();
+		Hibernate.initialize(user.getCity());
+		Hibernate.initialize(user.getCountry());
+		return user;
+	}
+
+	@Override
+	public User selectUserById(Integer id) throws DaoException {
+		User user = (User) em.createNamedQuery("User.findUserById").setParameter("idUser", id).getSingleResult();
+		Hibernate.initialize(user.getCity());
+		Hibernate.initialize(user.getCountry());
+		Hibernate.initialize(user.getPosts());
+		List<Post> posts = user.getPosts();
+		for (Post post : posts) {
+			Hibernate.initialize(post.getPostPhotos());
+		}
+		
 		return user;
 	}
 

@@ -45,9 +45,9 @@
       <div class="list-group">
             <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
   <a class="list-group-item">
-    <i class="fa fa-archive"></i> Have posts:   </a>
+    <i class="fa fa-archive"></i> Have posts: ${sizePosts}</a>
   <a  class="list-group-item"> <i class="fa fa-thumbs-o-up"></i> Rating:</a>
-  <a class="list-group-item"> <i class="fa fa-globe"></i> Country:</a>
+  <a class="list-group-item"> <i class="fa fa-globe"></i> Country: ${user.country.title}</a>
   
   
 </div>
@@ -55,74 +55,28 @@
       <!--main content start-->
       
       <div class="nopadding2 col-md-10 ">
-      <h2>Valery Tompkins's works</h2>
+      <h2>${user.name} ${user.surname}'s (${user.nickName}) works</h2>
           <div class="mt">
                   <div class="col-md-12 nopadding2">                 
               <section id="portfolio">
                 <div class="row portfolio-items"> <!--1st element-->
+                <c:forEach items="${user.posts}" var="post">
                 <div class="portfolio-item apps  col-md-3">
                         <div class="item-inner">
                             <div class="portfolio-image">
                                 <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
                                 <div class="overlay container">
                                     <div class="menuis">
-                                    <a href="">Awesome name</a>
+                                    <a href="<c:url value="/model?id=${post.idPost}" />">${post.title}</a>
                                     
                                     <p style="padding-top:0.5em"><i class="fa fa-thumbs-o-up leftstr"> 8 </i><i class="fa fa-download rightstr">15</i><div style="clear: left"></div></p>
                                     </div>
                                 </div>
                             </div>
-                            <h5>1</h5>
+                            <h5>${post.title}</h5>
                         </div>
                     </div>
-                    <!--/.portfolio-item 2 -->
-                <div class="portfolio-item apps  col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
-                            <div class="overlay container">
-                                 <div class="menuis">
-                                    <a href="">Awesome name</a>
-                                    
-                                    <p style="padding-top:0.5em"><i class="fa fa-thumbs-o-up leftstr"> 8 </i><i class="fa fa-download rightstr">15</i><div style="clear: left"></div></p>
-                                    </div>
-                            </div>
-                        </div>
-                        <h5>2</h5>
-                    </div>
-                </div>
-                     <!--/.portfolio-item 3 -->
-                <div class="portfolio-item apps  col-md-3">
-                    <div class="item-inner">
-                        <div class="portfolio-image">
-                            <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
-                            <div class="overlay container">
-                                 <div class="menuis">
-                                    <a href="">Awesome name</a>
-                                    
-                                    <p style="padding-top:0.5em"><i class="fa fa-thumbs-o-up leftstr"> 8 </i><i class="fa fa-download rightstr">15</i><div style="clear: left"></div></p>
-                                    </div>
-                            </div>
-                        </div>
-                        <h5>3</h5>
-                    </div>
-                </div>
-                 <!--/.portfolio-item 4 -->
-                   <div class="portfolio-item apps col-md-3">
-                     <div class="item-inner">
-                         <div class="portfolio-image">
-                             <img src="<c:url value="/resources/images/auto.jpg" />" alt="">
-                             <div class="overlay container">
-                                  <div class="menuis">
-                                    <a href="">Awesome name</a>
-                                    
-                                    <p style="padding-top:0.5em"><i class="fa fa-thumbs-o-up leftstr"> 8 </i><i class="fa fa-download rightstr">15</i><div style="clear: left"></div></p>
-                                    </div>
-                             </div>
-                         </div>
-                         <h5>4</h5>
-                     </div>
-                   </div> 
+                    </c:forEach>
                    </div>                                       
    			 </section>
                   </div>

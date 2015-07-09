@@ -253,4 +253,15 @@ public class GuestService implements IGuestService {
 		Collections.sort(comments, new SortedCommentsByDate());
 		return comments;
 	}
+
+	@Override
+	public User getUser(Integer idUser) throws ServiceException {
+		User user = new User();
+		try {
+			user = userDAO.selectUserById(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return user;
+	}
 }

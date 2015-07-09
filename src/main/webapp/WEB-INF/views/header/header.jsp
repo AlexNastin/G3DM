@@ -63,8 +63,8 @@
           </ul>
         </li>
                 <li><a href="<c:url value="/contact"/>">${contact}</a></li>
-                <li><a class="supernav" href="?locale=en">EN |</a>
-                <li><a href="?locale=ru">RU</a></li>
+                <li><a class="supernav" href="index?locale=en">EN |</a>
+                <li><a href="index?locale=ru">RU</a></li>
                    
                     <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${account} <i class="fa fa-user"></i></a>

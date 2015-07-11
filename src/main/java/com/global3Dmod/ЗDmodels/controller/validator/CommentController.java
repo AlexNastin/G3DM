@@ -18,12 +18,8 @@ import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
-import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.CommentForm;
-import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.validator.CommentValidator;
-import com.global3Dmod.ÇDmodels.form.validator.PersonalDataValidator;
-import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Controller
@@ -71,6 +67,7 @@ public class CommentController {
 		modelAndView.addObject(ControllerParamConstant.SIZE_COMMENTS, allComments);
 		modelAndView.addObject(ControllerParamConstant.COMMENT_FORM, commentForm);
 		modelAndView.addObject(ControllerParamConstant.PERSON, person);
+		modelAndView.addObject(ControllerParamConstant.ID_POST, idPost);
 		return modelAndView;
 	}
 
@@ -78,7 +75,6 @@ public class CommentController {
 	public ModelAndView commetnValid(CommentForm commentForm,
 			BindingResult result) throws Exception {
 		commentValidator.validate(commentForm, result);
-
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/model");
 			return modelAndView;

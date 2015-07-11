@@ -2,6 +2,8 @@ package com.global3Dmod.ÇDmodels.controller;
 
 public class ControllerParamConstant {
 	
+	public static String ID_POST = "idPost";
+
 	public static String SIZE_POSTS = "sizePosts";
 	
 	public static String SIZE_COMMENTS = "sizeComments";

@@ -40,62 +40,10 @@
     
    </head>
 <body>
-<%@include file="/WEB-INF/views/header/header.jsp" %>  
+<%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>  
+<%@include file="/WEB-INF/views/categoryMenu.jsp" %> 
 
-<div class="container searchbar">
-    <div class="row">    
-        <div class="col-xs-8 col-xs-offset-2">
-		    <div class="input-group">
-                <div class="input-group-btn search-panel">
-                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                    	<span id="search_concept">${category}</span> <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#contains">Beaty</a></li>
-                      <li><a href="#its_equal">Auto</a></li>
-                      <li><a href="#greather_than">Home</a></li>
-                      <li><a href="#less_than">Arts </a></li>
-                      <li class="divider"></li>
-                      <li><a href="#all">Any</a></li>
-                    </ul>
-                </div>
-                <input type="hidden" name="search_param" value="all" id="search_param">         
-                <input type="text" class="form-control" name="x" placeholder="${search}">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><span class="fa fa-search"></span></button>
-                </span>
-            </div>
-        </div>
-	</div>
 
-<div class="col-md-12">
-<form class="form-horizontal" style="text-align:center">
-<fieldset>
-
-<!-- Form Name -->
-
-<!-- Multiple Radios (inline) -->
-<div class="form-group" >
- 
-  
-    <label class="radio-inline" for="radios-0">
-      <input type="radio" name="radios" id="radios-0" value="1" checked="checked">
-      Date
-    </label> 
-    <label class="radio-inline" for="radios-1">
-      <input type="radio" name="radios" id="radios-1" value="2">
-      Rating
-    </label> 
-    <label class="radio-inline" for="radios-2">
-      <input type="radio" name="radios" id="radios-2" value="3">
-      Downloads
-    </label> 
-    
-  </div>
-</div>
-
-</fieldset>
-</form>
 </div>
 <div class="container meow">
 

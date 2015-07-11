@@ -9,6 +9,7 @@ import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.Rating;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
@@ -51,5 +52,6 @@ public interface IGuestService {
 	
 	public List<Comment> sortCommentsByDate(List<Comment> comments) throws ServiceException;
 	
-	
+	public void vote(Integer idUser, Integer idPost) throws ServiceException;
+
 }

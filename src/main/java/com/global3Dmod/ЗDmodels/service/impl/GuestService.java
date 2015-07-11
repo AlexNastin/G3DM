@@ -19,14 +19,18 @@ import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
+import com.global3Dmod.ÇDmodels.dao.ILikeDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
+import com.global3Dmod.ÇDmodels.dao.IRatingDAO;
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Comment;
+import com.global3Dmod.ÇDmodels.domain.Like;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.Rating;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -42,7 +46,7 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private IUserDAO userDAO;
-	
+
 	@Autowired
 	private IPostDAO postDAO;
 
@@ -54,14 +58,21 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private ISubcategoryDAO subcategoryDAO;
-	
+
 	@Autowired
 	private ICommentDAO commentDAO;
+
+	@Autowired
+	private IRatingDAO ratingDAO;
+
+	@Autowired
+	private ILikeDAO likeDAO;
 
 	@Override
 	public void addUser(SignupForm signupForm) throws ServiceException {
 		User user = new User();
-		DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
+		DateFormat dateFormat = new SimpleDateFormat(
+				ServiceParamConstant.FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
 		String md5Password = DigestUtils.md5Hex(signupForm.getPassword());
@@ -81,9 +92,10 @@ public class GuestService implements IGuestService {
 			throw new ServiceException(e);
 		}
 	}
-	
+
 	@Override
-	public void addComment(CommentForm commentForm, Person person) throws ServiceException {
+	public void addComment(CommentForm commentForm, Person person)
+			throws ServiceException {
 		Comment comment = new Comment();
 		Date date = new Date();
 		comment.setDateTime(date);
@@ -107,6 +119,24 @@ public class GuestService implements IGuestService {
 			throw new ServiceException(e);
 		}
 		return emails;
+	}
+
+	@Override
+	public void vote(Integer idUser, Integer idPost) throws ServiceException {
+		try {
+			List<Like> likes = likeDAO.selectLikeNotExists(idUser, idPost);
+			if (likes.isEmpty()) {
+				Like likeUser = new Like();
+				likeUser.setUsers_idUser(idUser);
+				likeUser.setPosts_idPost(idPost);
+				likeDAO.insertLike(likeUser);
+			} else {
+				likeDAO.deleteLike(likes.get(0).getIdLike());
+			}
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+
 	}
 
 	@Override
@@ -159,7 +189,8 @@ public class GuestService implements IGuestService {
 			throws ServiceException {
 		List<Category> categories = getAllCategories();
 		for (Category category : categories) {
-			category.setSubcategories(getTop3Subcategories(category.getIdCategory()));
+			category.setSubcategories(getTop3Subcategories(category
+					.getIdCategory()));
 		}
 		return categories;
 	}
@@ -201,9 +232,10 @@ public class GuestService implements IGuestService {
 		}
 		return posts;
 	}
-	
+
 	@Override
-	public List<Post> getPostsLimit10ByCategory(Integer page, Integer idCategory) throws ServiceException {
+	public List<Post> getPostsLimit10ByCategory(Integer page, Integer idCategory)
+			throws ServiceException {
 		List<Post> posts = new ArrayList<Post>();
 		try {
 			posts = postDAO.selectPostsLimit10ByCategory(page, idCategory);
@@ -212,12 +244,14 @@ public class GuestService implements IGuestService {
 		}
 		return posts;
 	}
-	
+
 	@Override
-	public List<Post> getPostsLimit10BySubcategory(Integer page, Integer idCategory, Integer idSubcategory) throws ServiceException {
+	public List<Post> getPostsLimit10BySubcategory(Integer page,
+			Integer idCategory, Integer idSubcategory) throws ServiceException {
 		List<Post> posts = new ArrayList<Post>();
 		try {
-			posts = postDAO.selectPostsLimit10BySubcategory(page, idCategory, idSubcategory);
+			posts = postDAO.selectPostsLimit10BySubcategory(page, idCategory,
+					idSubcategory);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

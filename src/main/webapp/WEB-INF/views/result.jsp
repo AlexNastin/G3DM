@@ -51,6 +51,7 @@
         <h1>${result}</h1>
         <h2 class="lead"><strong class="text-danger">${sizePosts}</strong> ${quantity}</h2>
     </hgroup>
+    <c:if test="${sizePosts != 0}">
  <nav style="text-align:center">
   <ul class="pagination">
   <c:if test="${thisPage>1}">
@@ -74,6 +75,7 @@
     </c:if>
   </ul>
 </nav>
+</c:if>
     <section class="col-xs-12 col-sm-6 col-md-12">
     <c:forEach items="${listPostsLimit10}" var="post" varStatus="i">
         <article class="search-result row">
@@ -97,6 +99,7 @@
         </c:forEach>
     </section>
 </div>
+<c:if test="${sizePosts != 0}">
  <nav style="text-align:center">
   <ul class="pagination">
   <c:if test="${thisPage>1}">
@@ -120,6 +123,7 @@
     </c:if>
   </ul>
 </nav>
+</c:if>
 <%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 

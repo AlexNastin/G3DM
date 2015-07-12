@@ -85,6 +85,7 @@ public class DesignerController {
 		}
 		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
+		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, allPosts);
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER, posts);
 		modelAndView.addObject(ControllerParamConstant.SORT_TYPE, sort);
 		if(desc){

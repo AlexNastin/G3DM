@@ -216,6 +216,7 @@
 						</form:form>
 					</c:if>
 
+				<c:if test="${sizeComments != 0}">
 					<nav style="text-align: center">
 						<ul class="pagination">
 							<c:if test="${thisPage>1}">
@@ -238,6 +239,7 @@
 							</c:if>
 						</ul>
 					</nav>
+					</c:if>
 				</div>
 
 

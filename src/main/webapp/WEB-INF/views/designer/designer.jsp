@@ -65,6 +65,7 @@
                              <div> <h2> My works</h2>
                              
                               <thead>
+                              <c:if test="${sizePosts != 0}">
                               <nav style="text-align:center">
   <ul class="pagination">
   <c:if test="${thisPage>1}">
@@ -88,6 +89,7 @@
     </c:if>
   </ul>
 </nav>
+</c:if>
                               <tr class="background-user-string">
                               <th><i class="fa fa-folder-open-o"></i><a href="<c:url value="/designer/profile?sort=title&desc=${titleDesc}" />"> Project</a></th>
                               <th><i class="fa fa-th-list"></i><a href="<c:url value="/designer/profile?sort=category&desc=${categoryDesc}" />"> Category</a></th>
@@ -162,6 +164,7 @@
     </div>
   </div>
 </div>
+<c:if test="${sizePosts != 0}">
                       <nav style="text-align:center">
   <ul class="pagination">
   <c:if test="${thisPage>1}">
@@ -185,6 +188,7 @@
     </c:if>
   </ul>
 </nav>
+</c:if>
                   </div>
               </div>
               

@@ -65,6 +65,7 @@
                           <table class="table table-striped table-advance table-hover">
                              <div> <h2> ${mybookmarks}</h2>
                               <thead>
+                              <c:if test="${sizePosts != 0}">
                                <nav style="text-align:center">
   <ul class="pagination">
   <c:if test="${thisPage>1}">
@@ -88,6 +89,7 @@
     </c:if>
   </ul>
 </nav>
+</c:if>
                               <tr class="background-user-string">
                                   <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/user/profile?sort=title&desc=${titleDesc}" />">${project}</a></th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> ${description}</th>
@@ -112,6 +114,7 @@
                               </div>
                           </table>
                       </div>
+                      <c:if test="${sizePosts != 0}">
                       <nav style="text-align:center">
   <ul class="pagination">
   <c:if test="${thisPage>1}">
@@ -135,6 +138,7 @@
     </c:if>
   </ul>
 </nav>
+</c:if>
                   </div>
               </div>
         </div>

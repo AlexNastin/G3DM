@@ -63,9 +63,10 @@
 				<div>
 					<button class="btn btn-primary fa fa-download">${down}</button>
 					<a href="<c:url value="/like?id=${post.idPost}" />"> <i
-						class="btn btn-success fa fa-thumbs-o-up">${like}</i>
-					</a>${countLike}
-
+						class="btn btn-success fa fa-thumbs-o-up">${like} <span class="badge">${countLike}
+						</span></i>
+						
+					</a>
 					<button type="button"
 						class="btn btn-danger fa fa-exclamation-circle">${issue}</button>
 				</div>

@@ -24,13 +24,15 @@ import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Controller
 @RequestMapping("/model")
-public class CommentController {
+public class ModelController {
 	
 	@Autowired
 	private CommentValidator commentValidator;
 	
 	@Autowired
 	private IGuestService guestService;
+	
+	
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView comment(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "id", required = false) Integer idPost,Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -62,6 +64,7 @@ public class CommentController {
 		} else {
 			modelAndView.addObject(ControllerParamConstant.END_PAGE, endPage);
 		}
+		modelAndView.addObject(ControllerParamConstant.COUNT_LIKE, guestService.getCountLikeByPost(idPost));
 		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
 		modelAndView.addObject(ControllerParamConstant.SIZE_COMMENTS, allComments);

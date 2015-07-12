@@ -53,5 +53,7 @@ public interface IGuestService {
 	public List<Comment> sortCommentsByDate(List<Comment> comments) throws ServiceException;
 	
 	public void vote(Integer idUser, Integer idPost) throws ServiceException;
+	
+	public int getCountLikeByPost(Integer idPost) throws ServiceException;
 
 }

@@ -12,11 +12,10 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "likes")
 @NamedQueries({
-	@NamedQuery(name="Like.findAll", query="select l from Like l"),
-	@NamedQuery(name="Like.findLikeByUser", query="select l from Like l where l.user_idUser = :user_idUser and l.post_idPost = :post_idPost")})
-
+		@NamedQuery(name = "Like.findAll", query = "select l from Like l"),
+		@NamedQuery(name = "Like.findLikeByUser", query = "select l from Like l where l.user_idUser = :user_idUser and l.post_idPost = :post_idPost"),
+		@NamedQuery(name = "Like.colLikeByPost", query = "SELECT COUNT(l.post_idPost) from Like l where l. post_idPost= :post_idPost") })
 public class Like {
-	
 
 	@Id
 	@Column(name = "id_like")
@@ -86,8 +85,5 @@ public class Like {
 		return "Like [idLike=" + idLike + ", posts_idPost=" + post_idPost
 				+ ", users_idUser=" + user_idUser + "]";
 	}
-	
-
-	
 
 }

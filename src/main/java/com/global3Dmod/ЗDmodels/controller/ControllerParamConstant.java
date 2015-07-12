@@ -3,6 +3,8 @@ package com.global3Dmod.ÇDmodels.controller;
 public class ControllerParamConstant {
 	
 	public static String ID_POST = "idPost";
+	
+	public static String COUNT_LIKE = "countLike";
 
 	public static String SIZE_POSTS = "sizePosts";
 	

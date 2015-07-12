@@ -17,4 +17,6 @@ public interface ILikeDAO {
 
 	public List<Like> selectLikeNotExists(Integer idUser, Integer idPost)
 			throws DaoException;
+
+	public int selectCountLikeByPost(Integer idPost) throws DaoException;
 }

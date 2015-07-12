@@ -298,4 +298,15 @@ public class GuestService implements IGuestService {
 		}
 		return user;
 	}
+
+	@Override
+	public int getCountLikeByPost(Integer idPost) throws ServiceException {
+		int count;
+		try {
+			count = likeDAO.selectCountLikeByPost(idPost);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return count;
+	}
 }

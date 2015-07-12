@@ -60,5 +60,12 @@ public class LikeDAOImpl implements ILikeDAO {
 
 	}
 
+	@Override
+	@Transactional
+	public int selectCountLikeByPost(Integer idPost) throws DaoException {
+		long resut = (long) em.createNamedQuery("Like.colLikeByPost").setParameter("post_idPost", idPost).getSingleResult();
+		int count = (int) resut;
+		return count;
+	}
 
 }

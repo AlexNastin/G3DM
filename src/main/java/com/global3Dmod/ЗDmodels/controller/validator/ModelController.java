@@ -69,7 +69,6 @@ public class ModelController {
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
 		modelAndView.addObject(ControllerParamConstant.SIZE_COMMENTS, allComments);
 		modelAndView.addObject(ControllerParamConstant.COMMENT_FORM, commentForm);
-		modelAndView.addObject(ControllerParamConstant.PERSON, person);
 		modelAndView.addObject(ControllerParamConstant.ID_POST, idPost);
 		return modelAndView;
 	}

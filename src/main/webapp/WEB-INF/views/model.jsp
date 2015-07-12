@@ -3,6 +3,7 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
 <!DOCTYPE HTML>
@@ -188,14 +189,14 @@
 							</div>
 						</div>
 					</c:forEach>
-					<c:if test="${person == null }">
+					<security:authorize access="isAnonymous()">
 						<p>
 							<a href="<c:url value="/go/signin"/>">Войдите</a> или <a
 								href="<c:url value="/signup"/>">зарегистрируйтесь</a> для
 							отправления комментариев
 						</p>
-					</c:if>
-					<c:if test="${person != null }">
+					</security:authorize>
+					<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
 						<form:form id="comment-form" name="comment-form"
 							class="form-horizontal" modelAttribute="commentForm"
 							method="POST">
@@ -214,7 +215,7 @@
 								</div>
 							</div>
 						</form:form>
-					</c:if>
+					</security:authorize>
 
 				<c:if test="${sizeComments != 0}">
 					<nav style="text-align: center">

@@ -3,7 +3,8 @@
 <%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="security"%>
 <%@ taglib uri="http://www.springframework.org/security/tags"
 	prefix="security"%>
 <!DOCTYPE HTML>
@@ -63,11 +64,22 @@
 					class="img-responsive margination" alt="Responsive image"> </a>
 				<div>
 					<button class="btn btn-primary fa fa-download">${down}</button>
-					<a href="<c:url value="/like?id=${post.idPost}" />"> <i
-						class="btn btn-success fa fa-thumbs-o-up">${like} <span class="badge">${countLike}
-						</span></i>
-						
-					</a>
+					<security:authorize
+						access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+						<a href="<c:url value="/like?id=${post.idPost}" />"> <i
+							class="btn btn-success fa fa-thumbs-o-up">${like} <span
+								class="badge">${countLike} </span></i>
+
+						</a>
+					</security:authorize>
+					<security:authorize access="isAnonymous()">
+						<a href="<c:url value="/go/signin" />"> <i
+							class="btn btn-success fa fa-thumbs-o-up">${like} <span
+								class="badge">${countLike} </span></i>
+
+						</a>
+					</security:authorize>
+
 					<button type="button"
 						class="btn btn-danger fa fa-exclamation-circle">${issue}</button>
 				</div>
@@ -196,7 +208,8 @@
 							отправления комментариев
 						</p>
 					</security:authorize>
-					<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+					<security:authorize
+						access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
 						<form:form id="comment-form" name="comment-form"
 							class="form-horizontal" modelAttribute="commentForm"
 							method="POST">
@@ -217,29 +230,29 @@
 						</form:form>
 					</security:authorize>
 
-				<c:if test="${sizeComments != 0}">
-					<nav style="text-align: center">
-						<ul class="pagination">
-							<c:if test="${thisPage>1}">
-								<li><a
-									href="<c:url value="/model?page=${thisPage-1}&id=${post.idPost}" />"
-									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-								</a></li>
-							</c:if>
-							<c:forEach begin="${startPage}" end="${endPage}" var="page">
+					<c:if test="${sizeComments != 0}">
+						<nav style="text-align: center">
+							<ul class="pagination">
+								<c:if test="${thisPage>1}">
+									<li><a
+										href="<c:url value="/model?page=${thisPage-1}&id=${post.idPost}" />"
+										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+									</a></li>
+								</c:if>
+								<c:forEach begin="${startPage}" end="${endPage}" var="page">
 
-								<li <c:if test="${page==thisPage}">class="active"</c:if>><a
-									href="<c:url value="/model?page=${page}&id=${post.idPost}" />">${page}</a></li>
-							</c:forEach>
+									<li <c:if test="${page==thisPage}">class="active"</c:if>><a
+										href="<c:url value="/model?page=${page}&id=${post.idPost}" />">${page}</a></li>
+								</c:forEach>
 
-							<c:if test="${thisPage!=maxPage}">
-								<li><a
-									href="<c:url value="/model?page=${thisPage+1}&id=${post.idPost}" />"
-									aria-label="Next"> <span aria-hidden="true">&raquo;</span>
-								</a></li>
-							</c:if>
-						</ul>
-					</nav>
+								<c:if test="${thisPage!=maxPage}">
+									<li><a
+										href="<c:url value="/model?page=${thisPage+1}&id=${post.idPost}" />"
+										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
+									</a></li>
+								</c:if>
+							</ul>
+						</nav>
 					</c:if>
 				</div>
 

@@ -91,6 +91,18 @@ public class PostDAOImpl implements IPostDAO {
 		List<Post> posts = em.createNamedQuery("Post.findByDesigner").setParameter("idUser", idDesigner).getResultList();
 		return posts;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Post> selectPostsByUserForSort(Integer idUser) throws DaoException {
+		List<Post> posts = em.createNamedQuery("Post.findByUser").setParameter("user_idUser", idUser).getResultList();
+		for (Post post : posts) {
+			Hibernate.initialize(post.getUser());
+			Hibernate.initialize(post.getPostPhotos());
+		}
+		return posts;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Override

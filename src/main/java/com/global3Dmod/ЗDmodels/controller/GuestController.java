@@ -87,6 +87,7 @@ public class GuestController {
 			posts = guestService.getPostsLimit10BySubcategory(page, idCategory,
 					idSubcategory);
 		}
+		guestService.setRatingInPosts(posts);
 		int allPosts = posts.size();
 		int maxPage = (int) Math.ceil((double) allPosts
 				/ ControllerParamConstant.LIMIT_POSTS_ON_PAGE);

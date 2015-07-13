@@ -84,7 +84,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
                 <ul class="meta-search">
-                    <li><i class="fa fa-star"></i><span>${rate} 464</span></li>
+                    <li><i class="fa fa-star"></i><span>${rate} ${post.rating}</span></li>
                     <li><i class="fa fa-download"></i> <span>${downloads} ${post.countDownload}</span></li>
                     <li><i class="fa fa-user"></i> <span>${author} <a href="<c:url value="/guest/designerProfile?id=${post.user.idUser }"  />">${post.user.nickName}</a></span></li>
                 </ul>

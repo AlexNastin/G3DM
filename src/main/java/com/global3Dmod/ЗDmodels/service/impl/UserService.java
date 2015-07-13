@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
@@ -26,6 +27,9 @@ public class UserService implements IUserService {
 
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private IPostDAO postDAO;
 
 	@Override
 	public List<User> getAllUsers() throws ServiceException {
@@ -96,6 +100,18 @@ public class UserService implements IUserService {
 			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, false);
 		}
 		return modelAndView;
+	}
+
+	@Override
+	public List<Post> getPostsByUserForSort(Integer idUser)
+			throws ServiceException {
+		List<Post> posts;
+		try {
+			posts = postDAO.selectPostsByUserForSort(idUser);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return posts;
 	}
 
 }

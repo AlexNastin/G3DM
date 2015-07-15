@@ -30,10 +30,14 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.LazyToOne;
 import org.hibernate.annotations.LazyToOneOption;
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
+@Indexed
 @Table(name = "posts")
 @NamedQueries({
 	@NamedQuery(name="Post.findAll", query="select p from Post p"),
@@ -59,6 +63,7 @@ public class Post implements Essence {
 	private int subcategory_idSubcategory;
 	
 	@Column(name = "number_post")
+	@Field(store = Store.NO)
 	private String numberPost;
 	
 	@Column(name = "disprogram_id_disprogram")
@@ -71,6 +76,7 @@ public class Post implements Essence {
 	private String dateUpdate;
 
 	@Column(name = "title")
+	@Field(store = Store.NO)
 	private String title;
 
 	@Column(name = "description")
@@ -447,12 +453,10 @@ public class Post implements Essence {
 				+ ", dateUpdate=" + dateUpdate + ", title=" + title
 				+ ", description=" + description + ", instruction="
 				+ instruction + ", isDisplay=" + isDisplay + ", countDownload="
-				+ countDownload + ", rating=" + rating + ", printers="
-				+ printers + ", file=" + file + ", user=" + user
-				+ ", disProgram=" + disProgram + ", category=" + category
-				+ ", subcategory=" + subcategory + ", postPhotos=" + postPhotos
-				+ ", comments=" + comments + "]";
+				+ countDownload + ", rating=" + rating + "]";
 	}
+
+
 
 
 }

@@ -15,32 +15,35 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+import org.hibernate.search.annotations.Store;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "categories")
 @NamedQueries({
-	@NamedQuery(name="Category.findAll", query="select c from Category c "),
-	@NamedQuery(name = "Category.findCategoryById", query = "select c from Category c join fetch c.subcategories where c.idCategory = :idCategory")})
+		@NamedQuery(name = "Category.findAll", query = "select c from Category c "),
+		@NamedQuery(name = "Category.findCategoryById", query = "select c from Category c join fetch c.subcategories where c.idCategory = :idCategory") })
 public class Category implements Essence {
 	@Id
 	@Column(name = "id_category")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idCategory;
-	
+
 	@Column(name = "title")
 	private String title;
-	
+
 	@Column(name = "image_path")
 	private String imagePath;
-	
+
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Subcategory> subcategories = new ArrayList<Subcategory>();
 
 	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
 	private List<Post> posts;
-	
+
 	public Category() {
 		super();
 	}
@@ -68,7 +71,7 @@ public class Category implements Essence {
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
 	}
-	
+
 	public List<Subcategory> getSubcategories() {
 		return subcategories;
 	}
@@ -118,7 +121,4 @@ public class Category implements Essence {
 				+ ", imagePath=" + imagePath + "]";
 	}
 
-	
-
-	
 }

@@ -366,10 +366,11 @@ public class User implements Essence {
 				+ ", password=" + password + ", name=" + name + ", surname="
 				+ surname + ", gender=" + gender + ", registrationDate="
 				+ registrationDate + ", dateBirth=" + dateBirth + ", rating="
-				+ rating + ", posts=" + posts + ", country=" + country
-				+ ", city=" + city + ", comments=" + comments + ", avatar="
-				+ avatar + "]";
+				+ rating + "]";
 	}
 
+	
+
+	
 	
 }

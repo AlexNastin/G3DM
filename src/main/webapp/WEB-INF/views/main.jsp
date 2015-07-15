@@ -46,6 +46,7 @@
               <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">${search}</button></span>
             </div>
           </form>
+          
           <div class="col-md-4"></div>
         <div class="clearfix"></div>
     </div>

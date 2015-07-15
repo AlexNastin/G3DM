@@ -22,23 +22,31 @@
 	
 </script>
 <body>
-	<c:forEach items="${listPostsByDesigner}" var="post" >
-	<span>${post.title}</span><br>
-	<span>${post.isDisplay}</span><br>
-	<span>${post.category.title}</span><br>
-	<span>${post.file.filePath}</span><br>
-		<c:forEach items="${post.postPhotos}" var="postPhoto" >
-		<span>${postPhoto.photoPath}</span><br>
+	<c:forEach items="${listPostsByDesigner}" var="post">
+		<span>${post.title}</span>
+		<br>
+		<span>${post.isDisplay}</span>
+		<br>
+		<span>${post.category.title}</span>
+		<br>
+		<span>${post.file.filePath}</span>
+		<br>
+		<c:forEach items="${post.postPhotos}" var="postPhoto">
+			<span>${postPhoto.photoPath}</span>
+			<br>
 		</c:forEach>
-		<c:forEach items="${post.printers}" var="printer" >
-		<span>${printer.title}</span><br>
+		<c:forEach items="${post.printers}" var="printer">
+			<span>${printer.title}</span>
+			<br>
 		</c:forEach>
-	<span>=========================</span><br>
+		<span>=========================</span>
+		<br>
 	</c:forEach>
-	
+
 	<a href="<c:url value="/designer/addPost"/>">Add post</a>
-		<a href="<c:url value="/model"/>">model</a>
-			<a href="<c:url value="/designer/designerProfile"/>">designerProfile</a>
-			<a href="<c:url value="/categoryMenu"/>">categoryMenu</a>
+	<a href="<c:url value="/model"/>">model</a>
+	<a href="<c:url value="/designer/designerProfile"/>">designerProfile</a>
+	<a href="<c:url value="/categoryMenu"/>">categoryMenu</a>
+	<a href="<c:url value="/search?text=java castle" />">AAAAAAAA</a>
 </body>
 </html>

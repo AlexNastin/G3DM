@@ -27,7 +27,7 @@
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.aop" />
 
 	<!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
-	<import resource="data.xml" />
+	<import resource="data2.xml" />
 
 	<!-- Файл с настройками безопасности -->
 	<import resource="security.xml" /> 

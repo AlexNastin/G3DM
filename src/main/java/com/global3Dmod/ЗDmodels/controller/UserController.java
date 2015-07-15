@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ЗDmodels.domain.Person;
 import com.global3Dmod.ЗDmodels.domain.Post;
 import com.global3Dmod.ЗDmodels.service.IDesignerService;
+import com.global3Dmod.ЗDmodels.service.IGuestService;
 import com.global3Dmod.ЗDmodels.service.IUserService;
 
 
@@ -26,12 +27,14 @@ import com.global3Dmod.ЗDmodels.service.IUserService;
 @Controller
 public class UserController {
 	
-	//пока не реализована система лайков на страницу юзера выводятся посты так, если бы он был дизайнером
 	@Autowired
 	private IDesignerService designerService;
 	
 	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+	private IGuestService guestService;
 	
 	@RequestMapping(value = "/user/profile", method = RequestMethod.GET)
 	public ModelAndView goProfile(@RequestParam(value = "page", required = false) Integer page,@RequestParam(value = "sort", required = false) String sort, @RequestParam(value = "desc", required = false) boolean desc, Locale locale, Model model, HttpSession httpSession)
@@ -48,7 +51,8 @@ public class UserController {
 	    int endPage = startPage + 9;
 	
 		ModelAndView modelAndView = new ModelAndView("user/user");
-		List<Post> posts = designerService.getPostsByDesignerForSort(person.getIdPerson());
+		List<Post> posts = userService.getPostsByUserForSort(person.getIdPerson());
+		guestService.setRatingInPosts(posts);
 		userService.sortPosts(posts, sort, desc);
 		int allPosts = posts.size();
 	    int maxPage = (int) Math.ceil((double)allPosts / ControllerParamConstant.LIMIT_POSTS_ON_PAGE);

@@ -106,8 +106,8 @@
                                   <td class="hidden-phone">${post.description}</td>
                                   <td>${post.numberPost}</td>
                                   <td>${post.rating}</td>
-                                  <td>Нет системы лайков</td>
-                                  <td>Нет системы лайков</td>
+                                  <td>Разобраться с путями</td>
+                                  <td>${post.user.nickName}</td>
                               </tr>
                               </c:forEach>
                               </tbody>

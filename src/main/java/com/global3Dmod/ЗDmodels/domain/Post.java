@@ -38,6 +38,7 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @NamedQueries({
 	@NamedQuery(name="Post.findAll", query="select p from Post p"),
 	@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.user_idUser = :idUser"),
+	@NamedQuery(name = "Post.findByUser", query = "select p from Post p where p.idPost in ((select l.post_idPost from Like l where user_idUser = :user_idUser))"),
 	@NamedQuery(name="Post.findOneById", query="select p from Post p where p.idPost = :idPost"),
 	@NamedQuery(name="Post.findByCategory", query="select p from Post p where p.category_idCategory = :category_idCategory"),
 	@NamedQuery(name="Post.findBySubcategory", query="select p from Post p where p.category_idCategory = :category_idCategory and p.subcategory_idSubcategory = :subcategory_idSubcategory")})
@@ -115,6 +116,9 @@ public class Post implements Essence {
 	
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Comment> comments;
+	
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Like> likes;
 	
 	public Post() {
 		super();

@@ -309,4 +309,11 @@ public class GuestService implements IGuestService {
 		}
 		return count;
 	}
+
+	@Override
+	public void setRatingInPosts(List<Post> posts) throws ServiceException {
+		for (Post post : posts) {
+			post.setRating(getCountLikeByPost(post.getIdPost()));
+		}
+	}
 }

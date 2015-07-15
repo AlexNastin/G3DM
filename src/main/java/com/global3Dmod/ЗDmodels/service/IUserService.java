@@ -17,4 +17,7 @@ public interface IUserService {
 	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc) throws ServiceException;
 	
 	public ModelAndView setParamsForSort(ModelAndView modelAndView, String sort, boolean desc) throws ServiceException;
+
+	public List<Post> getPostsByUserForSort(Integer idUser) throws ServiceException;
+
 }

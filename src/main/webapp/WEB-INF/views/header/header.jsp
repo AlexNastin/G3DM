@@ -11,7 +11,7 @@
 <spring:message code="header.header.signin" var="signin" />
 
 <c:if test="${userBool}">
-<c:set value="/user/profile" var="profileURL" />
+<c:set value="/user/profile?sort=rating&page=1" var="profileURL" />
 </c:if>
 <c:if test="${designerBool}">
 <c:set value="/designer/profile?sort=date&page=1" var="profileURL" />

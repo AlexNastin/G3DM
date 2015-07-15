@@ -2,9 +2,12 @@ package com.global3Dmod.ÇDmodels.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -27,6 +30,10 @@ public class Like {
 
 	@Column(name = "users_id_user")
 	private int user_idUser;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "posts_id_post", insertable=false, updatable=false)
+	private Post post;
 
 	public int getIdLike() {
 		return idLike;

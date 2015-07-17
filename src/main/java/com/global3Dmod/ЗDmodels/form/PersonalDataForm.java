@@ -6,8 +6,6 @@ public class PersonalDataForm implements Essence {
 	
 	private int country_idCountry;
 	private int city_idCity;
-	private String password;
-	private String confirmPassword;
 	private String name;
 	private String surname;
 	private int gender;
@@ -27,22 +25,6 @@ public class PersonalDataForm implements Essence {
 
 	public void setCity_idCity(int city_idCity) {
 		this.city_idCity = city_idCity;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-	
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	
-	public String getConfirmPassword() {
-		return confirmPassword;
-	}
-	
-	public void setConfirmPassword(String confirmPassword) {
-		this.confirmPassword = confirmPassword;
 	}
 	
 	public String getName() {
@@ -82,15 +64,11 @@ public class PersonalDataForm implements Essence {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + city_idCity;
-		result = prime * result
-				+ ((confirmPassword == null) ? 0 : confirmPassword.hashCode());
 		result = prime * result + country_idCountry;
 		result = prime * result
 				+ ((dateBirth == null) ? 0 : dateBirth.hashCode());
 		result = prime * result + gender;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((password == null) ? 0 : password.hashCode());
 		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
 		return result;
 	}
@@ -106,11 +84,6 @@ public class PersonalDataForm implements Essence {
 		PersonalDataForm other = (PersonalDataForm) obj;
 		if (city_idCity != other.city_idCity)
 			return false;
-		if (confirmPassword == null) {
-			if (other.confirmPassword != null)
-				return false;
-		} else if (!confirmPassword.equals(other.confirmPassword))
-			return false;
 		if (country_idCountry != other.country_idCountry)
 			return false;
 		if (dateBirth == null) {
@@ -125,11 +98,6 @@ public class PersonalDataForm implements Essence {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (password == null) {
-			if (other.password != null)
-				return false;
-		} else if (!password.equals(other.password))
-			return false;
 		if (surname == null) {
 			if (other.surname != null)
 				return false;
@@ -141,14 +109,10 @@ public class PersonalDataForm implements Essence {
 	@Override
 	public String toString() {
 		return "PersonalDataForm [country_idCountry=" + country_idCountry
-				+ ", city_idCity=" + city_idCity + ", password=" + password
-				+ ", confirmPassword=" + confirmPassword + ", name=" + name
+				+ ", city_idCity=" + city_idCity + ", name=" + name
 				+ ", surname=" + surname + ", gender=" + gender
 				+ ", dateBirth=" + dateBirth + "]";
 	}
 
-	
-
-
-	
+		
 }

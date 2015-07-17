@@ -400,11 +400,11 @@ public class DesignerService implements IDesignerService {
 			User user = userDAO.selectUser(login);
 			user.setCountry_idCountry(personalDataForm.getCountry_idCountry());
 			user.setCity_id—ity(personalDataForm.getCity_idCity());
-			String password = personalDataForm.getPassword();
-			if(password!=null) {
-				String md5Password = DigestUtils.md5Hex(password);
-				user.setPassword(md5Password);
-			}
+//			String password = personalDataForm.getPassword();
+//			if(password!=null) {
+//				String md5Password = DigestUtils.md5Hex(password);
+//				user.setPassword(md5Password);
+//			}
 			user.setName(personalDataForm.getName());
 			user.setSurname(personalDataForm.getSurname());
 			user.setGender(personalDataForm.getGender());

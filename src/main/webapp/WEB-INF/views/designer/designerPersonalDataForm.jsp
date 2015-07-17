@@ -148,18 +148,6 @@
 		<span class="error"><form:errors path="surname" /></span>
 		</div>
 		</div>
-		<div class="form-group">
-		<div class="col-md-12 height-input-string-signup">
-		<form:password id="password" name="password" class="form-control input-md" path="password" placeholder="Password"></form:password>
-		<span class="error"><form:errors path="password" /></span>
-		</div>
-		</div>
-		<div class="form-group">
-		<div class="col-md-12 height-input-string-signup">
-		<form:password id="confirmPassword" name="confirmPassword" class="form-control input-md" path="confirmPassword" placeholder="Confirm password"></form:password>
-		<span class="error"><form:errors path="confirmPassword" /></span>
-		</div>
-		</div>
 		
 		
 			<div>

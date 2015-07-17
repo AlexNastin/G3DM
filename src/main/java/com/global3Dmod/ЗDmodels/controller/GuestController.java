@@ -144,6 +144,12 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("error/403page");
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/404", method = RequestMethod.GET)
+	public ModelAndView page404(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("error/404");
+		return modelAndView;
+	}
 
 	// test
 	@RequestMapping(value = "/categoryMenu", method = RequestMethod.GET)

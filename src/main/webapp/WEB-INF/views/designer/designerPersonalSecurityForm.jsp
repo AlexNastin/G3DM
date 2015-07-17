@@ -63,7 +63,7 @@
                   <div class="col-md-12 nopadding2">
                   <div class="row">
                   
-                  <div class="col-md-8">
+                  <div class="col-md-5">
                   <h2>Update password</h2>
                    <form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="personalSecurityForm" method="POST">
 	   <div class="form-group sign-feld-margin-top">
@@ -83,10 +83,10 @@
 		
 		<br>
 		
-		<div class="form-group">
-		<div class="col-md-5">
+		<div class="form-group" style="text-align:center;">
+		
 		<input type="submit" class="btn btn-primary" value="Save" />
-		</div>
+		
 	    </div>
 	</form:form>
                   

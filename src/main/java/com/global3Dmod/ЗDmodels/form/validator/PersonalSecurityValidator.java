@@ -25,7 +25,7 @@ public class PersonalSecurityValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> arg0) {
-		return SignupForm.class.isAssignableFrom(arg0);
+		return PersonalSecurityForm.class.isAssignableFrom(arg0);
 	}
 
 	@Override

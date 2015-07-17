@@ -24,7 +24,7 @@ public class PersonalDataValidator implements Validator {
 
 	@Override
 	public boolean supports(Class<?> arg0) {
-		return SignupForm.class.isAssignableFrom(arg0);
+		return PersonalDataForm.class.isAssignableFrom(arg0);
 	}
 
 	@Override

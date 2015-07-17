@@ -155,7 +155,15 @@ public class PostDAOImpl implements IPostDAO {
 		Hibernate.initialize(post.getPrinters());
 		Hibernate.initialize(post.getUser());
 		Hibernate.initialize(post.getCategory());
+		Hibernate.initialize(post.getSubcategory());
 		Hibernate.initialize(post.getDisProgram());
+		return post;
+	}
+	
+	@Override
+	@Transactional
+	public Post selectPostForDelete(Integer idPost) throws DaoException {
+		Post post = (Post) em.createNamedQuery("Post.findOneById").setParameter("idPost", idPost).getSingleResult();
 		return post;
 	}
 

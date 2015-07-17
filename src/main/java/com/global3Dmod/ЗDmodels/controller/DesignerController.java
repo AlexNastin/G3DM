@@ -37,6 +37,7 @@ import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.PersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
+import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByCategory;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDate;
@@ -138,6 +139,20 @@ public class DesignerController {
 		}
 		designerService.updateUser(personalDataForm, person.getLogin());
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/personalData/updateForm");
+		return modelAndView2;
+	}
+	
+	@RequestMapping(value = "/designer/updatePost/updateFormAdd", method = RequestMethod.POST)
+	public ModelAndView updatePostFormAdd(UpdatePostForm updatePostForm, Locale locale,
+			Model model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		designerService.updatePost(updatePostForm, updatePostForm.getIdPost());
+		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/updatePost?id=" + updatePostForm.getIdPost());
 		return modelAndView2;
 	}
 	

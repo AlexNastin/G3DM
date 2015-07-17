@@ -36,6 +36,7 @@ import com.global3Dmod.«Dmodels.exception.ServiceException;
 import com.global3Dmod.«Dmodels.form.PersonalDataForm;
 import com.global3Dmod.«Dmodels.form.PersonalSecurityForm;
 import com.global3Dmod.«Dmodels.form.PostForm;
+import com.global3Dmod.«Dmodels.form.UpdatePostForm;
 import com.global3Dmod.«Dmodels.service.IDesignerService;
 import com.global3Dmod.«Dmodels.service.ServiceParamConstant;
 import com.global3Dmod.«Dmodels.service.helper.ServiceHelper;
@@ -401,11 +402,6 @@ public class DesignerService implements IDesignerService {
 			User user = userDAO.selectUser(login);
 			user.setCountry_idCountry(personalDataForm.getCountry_idCountry());
 			user.setCity_id—ity(personalDataForm.getCity_idCity());
-//			String password = personalDataForm.getPassword();
-//			if(password!=null) {
-//				String md5Password = DigestUtils.md5Hex(password);
-//				user.setPassword(md5Password);
-//			}
 			user.setName(personalDataForm.getName());
 			user.setSurname(personalDataForm.getSurname());
 			user.setGender(personalDataForm.getGender());
@@ -433,17 +429,52 @@ public class DesignerService implements IDesignerService {
 		}
 		
 	}
+	
+	@Override
+	public void updatePost(UpdatePostForm updatePostForm, Integer idPost) throws ServiceException {
+		try {
+			Post post = postDAO.selectPost(idPost);
+			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
+			Date date = new Date();
+			String dateUpdate = dateFormat.format(date);
+			post.setCategory_idCategory(updatePostForm.getCategory_idCategory());
+			post.setSubcategory_idSubcategory(updatePostForm
+					.getSubcategory_idSubcategory());
+			post.setDisProgram_idDisProgram(updatePostForm.getDisProgram_idDisProgram());
+			post.setDateUpdate(dateUpdate);
+			post.setTitle(updatePostForm.getTitle());
+			post.setDescription(updatePostForm.getDescription());
+			post.setInstruction(updatePostForm.getInstruction());
+			post.setIsDisplay(2);
+			post.setPrinters(getCheckPrintersById(updatePostForm.getPrintersId()));
+			postDAO.updatePost(post);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
+	}
 
 	@Override
 	public void deletePost(Integer idPost) throws ServiceException {
 		try {
-			Post post = postDAO.selectPost(idPost);
+			Post post = postDAO.selectPostForDelete(idPost);
 			post.setIsDisplay(0);
 			postDAO.updatePost(post);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
 		
+	}
+
+	@Override
+	public Post getPost(Integer idPost) throws ServiceException {
+		Post post = null;
+		try {
+			post = postDAO.selectPost(idPost);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return post;
 	}
 
 

@@ -19,6 +19,7 @@ import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.PersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
+import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
 
 public interface IDesignerService {
 
@@ -60,6 +61,10 @@ public interface IDesignerService {
 	
 	public void updatePassword(PersonalSecurityForm personalSecurityForm, String login) throws ServiceException;
 	
+	public void updatePost(UpdatePostForm updatePostForm, Integer idPost) throws ServiceException;
+	
 	public void deletePost(Integer idPost) throws ServiceException;
+	
+	public Post getPost(Integer idPost) throws ServiceException;
 
 }

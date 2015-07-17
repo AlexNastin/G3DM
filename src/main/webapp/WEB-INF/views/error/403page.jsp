@@ -42,7 +42,7 @@
                 </div>
                 <div class="error-actions">
                     <a href="<c:url value="/index"/>" class="btn btn-primary btn-lg"><span class="fa fa-home"></span>
-                        ${home} </a><a href="<c:url value="/index"/>" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> ${contactss} </a>
+                        ${home} </a><a href="<c:url value="/index"/>" class="btn btn-default btn-lg"><span class="fa fa-envelope-o"></span> ${contactss} </a>
                 </div>
             </div>
         </div>

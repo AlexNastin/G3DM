@@ -44,7 +44,8 @@
     <i class="fa fa-briefcase"></i> ${works} 
   </a>
   
-  <a href="<c:url value="/designer/personalData" />" class="list-group-item"><i class="fa fa-info-circle"></i> ${data}  </a>
+  <a href="<c:url value="/designer/personalData" />" class="list-group-item"><i class="fa fa-cogs"></i> ${data}  </a>
+  <a href="<c:url value="/designer/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> Personal Security  </a>
   <a href="<c:url value="/designer/addPost" />" class="list-group-item active"><i class="fa fa-plus-square"></i> ${add}  </a>
   
 </div>

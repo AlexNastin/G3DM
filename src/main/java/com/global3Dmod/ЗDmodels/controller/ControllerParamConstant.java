@@ -50,6 +50,8 @@ public class ControllerParamConstant {
 	
 	public static String PERSONAL_DATA_FORM = "personalDataForm";
 	
+	public static String PERSONAL_SECURITY_FORM = "personalSecurityForm";
+	
 	public static String POST_FORM = "postForm";
 	
 	public static String SIGNUP_FORM = "signupForm";

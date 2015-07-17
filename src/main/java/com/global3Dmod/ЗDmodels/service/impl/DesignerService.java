@@ -34,6 +34,7 @@ import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.PersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
@@ -409,6 +410,23 @@ public class DesignerService implements IDesignerService {
 			user.setSurname(personalDataForm.getSurname());
 			user.setGender(personalDataForm.getGender());
 			user.setDateBirth(personalDataForm.getDateBirth());
+			userDAO.updateUser(user);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
+	}
+
+	@Override
+	public void updatePassword(PersonalSecurityForm personalSecurityForm,
+			String login) throws ServiceException {
+		try {
+			User user = userDAO.selectUser(login);
+			String password = personalSecurityForm.getPassword();
+			if(password!=null) {
+				String md5Password = DigestUtils.md5Hex(password);
+				user.setPassword(md5Password);
+			}
 			userDAO.updateUser(user);
 		} catch (DaoException e) {
 			throw new ServiceException(e);

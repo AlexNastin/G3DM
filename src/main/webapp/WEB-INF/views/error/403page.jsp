@@ -25,7 +25,7 @@
 <spring:message code="403page.error.access" var="access" />
 <spring:message code="403page.error.sorry" var="sorry" />
 <spring:message code="403page.error.home" var="home" />
-<spring:message code="403page.error.contact" var="contact" />
+<spring:message code="403page.error.contactss" var="contactss" />
 
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %>   
@@ -42,7 +42,7 @@
                 </div>
                 <div class="error-actions">
                     <a href="<c:url value="/index"/>" class="btn btn-primary btn-lg"><span class="fa fa-home"></span>
-                        ${home} </a><a href="<c:url value="/index"/>" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> ${contact} </a>
+                        ${home} </a><a href="<c:url value="/index"/>" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> ${contactss} </a>
                 </div>
             </div>
         </div>

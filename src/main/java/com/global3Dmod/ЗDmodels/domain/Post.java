@@ -1,10 +1,7 @@
 package com.global3Dmod.ÇDmodels.domain;
 
 
-import java.util.Date;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -21,15 +18,8 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
-import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
-import org.hibernate.annotations.LazyToOne;
-import org.hibernate.annotations.LazyToOneOption;
 import org.hibernate.search.annotations.Field;
 import org.hibernate.search.annotations.Indexed;
 import org.hibernate.search.annotations.Store;
@@ -41,14 +31,12 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @Table(name = "posts")
 @NamedQueries({
 	@NamedQuery(name="Post.findAll", query="select p from Post p"),
-	@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.user_idUser = :idUser"),
-	@NamedQuery(name = "Post.findByUser", query = "select p from Post p where p.idPost in ((select l.post_idPost from Like l where user_idUser = :user_idUser))"),
+	@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.user_idUser = :idUser and p.isDisplay in (1,2,3)"),
+	@NamedQuery(name = "Post.findByUser", query = "select p from Post p where p.isDisplay = 3 and p.idPost in ((select l.post_idPost from Like l where user_idUser = :user_idUser))"),
 	@NamedQuery(name="Post.findOneById", query="select p from Post p where p.idPost = :idPost"),
-	@NamedQuery(name="Post.findByCategory", query="select p from Post p where p.category_idCategory = :category_idCategory"),
-	@NamedQuery(name="Post.findBySubcategory", query="select p from Post p where p.category_idCategory = :category_idCategory and p.subcategory_idSubcategory = :subcategory_idSubcategory"),
-	@NamedQuery(name="Post.colPostByUser", query="select count(p.user_idUser) from Post p where p.user_idUser = :user_idUser")})
-
-//select count(user_id_user) from posts where user_id_user=4
+	@NamedQuery(name="Post.findByCategory", query="select p from Post p where p.category_idCategory = :category_idCategory and p.isDisplay = 3"),
+	@NamedQuery(name="Post.findBySubcategory", query="select p from Post p where p.category_idCategory = :category_idCategory and p.subcategory_idSubcategory = :subcategory_idSubcategory and p.isDisplay = 3"),
+	@NamedQuery(name="Post.colPostByUser", query="select count(p.user_idUser) from Post p where p.user_idUser = :user_idUser and p.isDisplay in (1,2,3)")})
 
 public class Post implements Essence {
 

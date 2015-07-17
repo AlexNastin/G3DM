@@ -110,14 +110,14 @@
                                   <td>${post.dateUpdate}</td>
                                   <td>${post.numberPost}</td>
                                   <td>${post.countDownload}</td>
-                                  <c:if test="${post.isDisplay == 2}">
+                                  <c:if test="${post.isDisplay == 3}">
                                   	<td><span class="label label-success label-mini">Published</span></td>
+                                  </c:if>
+                                  <c:if test="${post.isDisplay == 2}">
+                                  	<td><span class="label label-warning label-mini">Moderating</span></td>
                                   </c:if>
                                      <c:if test="${post.isDisplay == 1}">
                                   	<td><span class="label label-warning label-danger">Rejected</span></td>
-                                  </c:if>
-                                  <c:if test="${post.isDisplay == 0}">
-                                  	<td><span class="label label-warning label-mini">Moderating</span></td>
                                   </c:if>
                                   <td>
                                       <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i></button>

@@ -44,6 +44,8 @@ public class ControllerParamConstant {
 	
 	public static String USER = "user";
 	
+	public static String RATING_DESIGNER = "ratingDesigner";
+	
 	public static String COMMENT_FORM = "commentForm";
 	
 	public static String PERSONAL_DATA_FORM = "personalDataForm";

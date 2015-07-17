@@ -19,4 +19,6 @@ public interface ILikeDAO {
 			throws DaoException;
 
 	public int selectCountLikeByPost(Integer idPost) throws DaoException;
+	
+	public int selectCountLikeByAllPosts(Integer idUser) throws DaoException;
 }

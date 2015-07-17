@@ -159,4 +159,11 @@ public class PostDAOImpl implements IPostDAO {
 		return post;
 	}
 
+	@Override
+	public int countPostByDesigner(Integer idUser) throws DaoException {
+		long resut = (long) em.createNamedQuery("Post.colPostByUser").setParameter("user_idUser", idUser).getSingleResult();
+		int count = (int) resut;
+		return count;
+	}
+
 }

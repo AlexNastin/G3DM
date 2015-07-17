@@ -46,7 +46,7 @@
             <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
   <a class="list-group-item">
     <i class="fa fa-archive"></i> Have posts: ${sizePosts}</a>
-  <a  class="list-group-item"> <i class="fa fa-thumbs-o-up"></i> Rating:</a>
+  <a  class="list-group-item"> <i class="fa fa-thumbs-o-up"></i> Rating: ${ratingDesigner}</a>
   <a class="list-group-item"> <i class="fa fa-globe"></i> Country: ${user.country.title}</a>
   
   

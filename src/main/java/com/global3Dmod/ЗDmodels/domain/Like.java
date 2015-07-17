@@ -17,7 +17,11 @@ import javax.persistence.Table;
 @NamedQueries({
 		@NamedQuery(name = "Like.findAll", query = "select l from Like l"),
 		@NamedQuery(name = "Like.findLikeByUser", query = "select l from Like l where l.user_idUser = :user_idUser and l.post_idPost = :post_idPost"),
-		@NamedQuery(name = "Like.colLikeByPost", query = "SELECT COUNT(l.post_idPost) from Like l where l. post_idPost= :post_idPost") })
+		@NamedQuery(name = "Like.colLikeByPost", query = "SELECT COUNT(l.post_idPost) from Like l where l.post_idPost= :post_idPost"),
+		@NamedQuery(name = "Like.colLikeByAllPosts", query = "SELECT COUNT(l.post_idPost) from Like l where l.post_idPost in (select p.idPost from Post p where p.user_idUser = :user_idUser)")})
+
+//select count(posts_id_post) from likes where posts_id_post in (select id_post from posts where user_id_user=4)
+
 public class Like {
 
 	@Id

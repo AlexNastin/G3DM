@@ -177,6 +177,7 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, user
 				.getPosts().size());
+		modelAndView.addObject(ControllerParamConstant.RATING_DESIGNER, guestService.getRatingByDesigner(idUser));
 		return modelAndView;
 	}
 }

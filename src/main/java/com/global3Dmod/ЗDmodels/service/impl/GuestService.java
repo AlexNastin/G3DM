@@ -1,5 +1,7 @@
 package com.global3Dmod.ÇDmodels.service.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -315,5 +317,18 @@ public class GuestService implements IGuestService {
 		for (Post post : posts) {
 			post.setRating(getCountLikeByPost(post.getIdPost()));
 		}
+	}
+
+	@Override
+	public double getRatingByDesigner(Integer idUser) throws ServiceException {
+		double rating = 0;
+		try {
+			int allPosts = postDAO.countPostByDesigner(idUser);
+			int allLikes = likeDAO.selectCountLikeByAllPosts(idUser);
+			rating = new BigDecimal((double)allLikes/allPosts).setScale(1, RoundingMode.UP).doubleValue();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return rating;
 	}
 }

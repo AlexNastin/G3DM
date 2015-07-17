@@ -28,5 +28,7 @@ public interface IPostDAO {
 	public void deletePost(Integer idPost) throws DaoException;
 	
 	public Post selectPost(Integer idPost) throws DaoException;
+	
+	public int countPostByDesigner(Integer idUser) throws DaoException;
 
 }

@@ -45,7 +45,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 	@NamedQuery(name = "Post.findByUser", query = "select p from Post p where p.idPost in ((select l.post_idPost from Like l where user_idUser = :user_idUser))"),
 	@NamedQuery(name="Post.findOneById", query="select p from Post p where p.idPost = :idPost"),
 	@NamedQuery(name="Post.findByCategory", query="select p from Post p where p.category_idCategory = :category_idCategory"),
-	@NamedQuery(name="Post.findBySubcategory", query="select p from Post p where p.category_idCategory = :category_idCategory and p.subcategory_idSubcategory = :subcategory_idSubcategory")})
+	@NamedQuery(name="Post.findBySubcategory", query="select p from Post p where p.category_idCategory = :category_idCategory and p.subcategory_idSubcategory = :subcategory_idSubcategory"),
+	@NamedQuery(name="Post.colPostByUser", query="select count(p.user_idUser) from Post p where p.user_idUser = :user_idUser")})
+
+//select count(user_id_user) from posts where user_id_user=4
+
 public class Post implements Essence {
 
 	@Id

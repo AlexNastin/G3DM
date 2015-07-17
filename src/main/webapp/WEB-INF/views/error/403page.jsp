@@ -7,7 +7,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>403|Global 3d Mod</title>
+<title>403 | Global3DMod</title>
 <!-- Init search variable -->
 
  <meta charset="utf-8">

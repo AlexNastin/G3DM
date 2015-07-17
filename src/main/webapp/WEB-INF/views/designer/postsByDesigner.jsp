@@ -48,5 +48,6 @@
 	<a href="<c:url value="/designer/designerProfile"/>">designerProfile</a>
 	<a href="<c:url value="/categoryMenu"/>">categoryMenu</a>
 	<a href="<c:url value="/search?text=java castle" />">AAAAAAAA</a>
+	<a href="<c:url value="/designer/deletePost?id=6" />">delete post 6</a>
 </body>
 </html>

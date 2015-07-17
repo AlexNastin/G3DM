@@ -113,6 +113,20 @@ public class DesignerController {
 		return modelAndView2;
 	}
 	
+	@RequestMapping(value = "/designer/deletePost", method = RequestMethod.GET)
+	public ModelAndView deletePost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale,
+			Model model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		designerService.deletePost(idPost);
+		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/profile");
+		return modelAndView2;
+	}
+	
 	@RequestMapping(value = "/designer/personalData/updateFormAdd", method = RequestMethod.POST)
 	public ModelAndView updateFormAdd(PersonalDataForm personalDataForm, Locale locale,
 			Model model, HttpSession httpSession) throws Exception {

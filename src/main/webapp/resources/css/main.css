@@ -1392,6 +1392,9 @@ input:-moz-placeholder {
 .backgroundslider{
 	background-color:rgb(244, 244, 244);
 }
+
+
+/*Social icons */
 .fa-facebook-official:before {
    color: #428bca;
    }
@@ -1401,6 +1404,12 @@ input:-moz-placeholder {
    .fa-twitter:before {
    color: #428bca;
    }
+   
+   .fa-instagram:before {
+   color: #428bca;
+   }
+   
+   /*Footer */
   .footerpadding{
   	
     min-height: 45em;

@@ -19,6 +19,14 @@
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/404.css"  />" rel="stylesheet" />
      <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.min.css"  />" rel="stylesheet" />
+     <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
+     
+<spring:message code="403page.error.oops" var="oops" />
+<spring:message code="403page.error.access" var="access" />
+<spring:message code="403page.error.sorry" var="sorry" />
+<spring:message code="403page.error.home" var="home" />
+<spring:message code="403page.error.contact" var="contact" />
+
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %>   
 <div class="container">
@@ -26,15 +34,15 @@
         <div class="col-md-12">
             <div class="error-template" style="min-height:45em;">
                 <h1>
-                    Oops!</h1>
+                    ${oops}</h1>
                 <h2><i class="fa fa-lock fa-2x"></i>
-                    <p>403 Access denied</p></h2>
+                    <p>${access}</p></h2>
                 <div class="error-details">
-                    Sorry, an error has occured, Requested page is forbidden to you!
+                    ${sorry}
                 </div>
                 <div class="error-actions">
                     <a href="<c:url value="/index"/>" class="btn btn-primary btn-lg"><span class="fa fa-home"></span>
-                        Take Me Home </a><a href="<c:url value="/index"/>" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> Contact Support </a>
+                        ${home} </a><a href="<c:url value="/index"/>" class="btn btn-default btn-lg"><span class="glyphicon glyphicon-envelope"></span> ${contact} </a>
                 </div>
             </div>
         </div>

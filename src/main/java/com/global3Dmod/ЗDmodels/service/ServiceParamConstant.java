@@ -9,7 +9,7 @@ public final class ServiceParamConstant {
 	public static final String EMPTY = "";
 	public static final String FORMAT_DATE = "yyyy-MM-dd";
 	public static final int DEFAULT_COUNT = 0;
-	public static final int DEFAULT_IS_DISPLAY = 0;
+	public static final int DEFAULT_IS_DISPLAY = 2;
 	
 	public static String CATEGORY_DESC = "categoryDesc";
 	

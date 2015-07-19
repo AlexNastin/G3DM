@@ -38,6 +38,8 @@ import com.global3Dmod.ÇDmodels.form.PersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByCategory;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDate;
@@ -52,35 +54,47 @@ public class DesignerController {
 	@Autowired
 	private IDesignerService designerService;
 
+	@Autowired
+	private PropertyManagerG3DM propertyManager;
+
 	@RequestMapping(value = "/designer/profile", method = RequestMethod.GET)
-	public ModelAndView goProfile(@RequestParam(value = "page", required = false) Integer page,@RequestParam(value = "sort", required = false) String sort, @RequestParam(value = "desc", required = false) boolean desc, Locale locale, Model model, HttpSession httpSession)
+	public ModelAndView goProfile(
+			@RequestParam(value = "page", required = false) Integer page,
+			@RequestParam(value = "sort", required = false) String sort,
+			@RequestParam(value = "desc", required = false) boolean desc,
+			Locale locale, Model model, HttpSession httpSession)
 			throws Exception {
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
 		if (page == null) {
-			page=1;
+			page = 1;
 		}
-		int startPage = page - 5 > 0?page - 5:1;
-	    int endPage = startPage + 9;
-	
+		int startPage = page - 5 > 0 ? page - 5 : 1;
+		int endPage = startPage + 9;
+
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
-		List<Post> posts = designerService.getPostsByDesignerForSort(person.getIdPerson());
+		List<Post> posts = designerService.getPostsByDesignerForSort(person
+				.getIdPerson());
 		designerService.sortPosts(posts, sort, desc);
 		int allPosts = posts.size();
-	    int maxPage = (int) Math.ceil((double)allPosts / ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
-		int startPost = page * ControllerParamConstant.LIMIT_POSTS_ON_PAGE - ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
+		int maxPage = (int) Math.ceil((double) allPosts
+				/ ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
+		int startPost = page * ControllerParamConstant.LIMIT_POSTS_ON_PAGE
+				- ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
 		int endPost = startPost + ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
-		if(endPost>allPosts) {
+		if (endPost > allPosts) {
 			posts = posts.subList(startPost, allPosts);
 		} else {
 			posts = posts.subList(startPost, endPost);
 		}
-		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10, posts);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10,
+				posts);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
-		if(endPage>maxPage) {
+		if (endPage > maxPage) {
 			modelAndView.addObject(ControllerParamConstant.END_PAGE, maxPage);
 		} else {
 			modelAndView.addObject(ControllerParamConstant.END_PAGE, endPage);
@@ -88,14 +102,16 @@ public class DesignerController {
 		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
 		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, allPosts);
-		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER, posts);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER,
+				posts);
 		modelAndView.addObject(ControllerParamConstant.SORT_TYPE, sort);
-		if(desc){
+		if (desc) {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, true);
 		} else {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, false);
 		}
-		modelAndView = designerService.setParamsForSort(modelAndView, sort, desc);
+		modelAndView = designerService.setParamsForSort(modelAndView, sort,
+				desc);
 		return modelAndView;
 	}
 
@@ -109,14 +125,18 @@ public class DesignerController {
 			return modelAndView;
 		}
 		designerService.addPost(postForm, person.getIdPerson(),
-				person.getNickName());
-		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/profile");
+				person.getNickName(),
+				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
+		ModelAndView modelAndView2 = new ModelAndView(
+				"redirect:/designer/profile");
 		return modelAndView2;
 	}
-	
+
 	@RequestMapping(value = "/designer/deletePost", method = RequestMethod.GET)
-	public ModelAndView deletePost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale,
-			Model model, HttpSession httpSession) throws Exception {
+	public ModelAndView deletePost(
+			@RequestParam(value = "id", required = false) Integer idPost,
+			Locale locale, Model model, HttpSession httpSession)
+			throws Exception {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -124,13 +144,15 @@ public class DesignerController {
 			return modelAndView;
 		}
 		designerService.deletePost(idPost);
-		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/profile");
+		ModelAndView modelAndView2 = new ModelAndView(
+				"redirect:/designer/profile");
 		return modelAndView2;
 	}
-	
+
 	@RequestMapping(value = "/designer/personalData/updateFormAdd", method = RequestMethod.POST)
-	public ModelAndView updateFormAdd(PersonalDataForm personalDataForm, Locale locale,
-			Model model, HttpSession httpSession) throws Exception {
+	public ModelAndView updateFormAdd(PersonalDataForm personalDataForm,
+			Locale locale, Model model, HttpSession httpSession)
+			throws Exception {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -138,13 +160,15 @@ public class DesignerController {
 			return modelAndView;
 		}
 		designerService.updateUser(personalDataForm, person.getLogin());
-		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/personalData/updateForm");
+		ModelAndView modelAndView2 = new ModelAndView(
+				"redirect:/designer/personalData/updateForm");
 		return modelAndView2;
 	}
-	
+
 	@RequestMapping(value = "/designer/updatePost/updateFormAdd", method = RequestMethod.POST)
-	public ModelAndView updatePostFormAdd(UpdatePostForm updatePostForm, Locale locale,
-			Model model, HttpSession httpSession) throws Exception {
+	public ModelAndView updatePostFormAdd(UpdatePostForm updatePostForm,
+			Locale locale, Model model, HttpSession httpSession)
+			throws Exception {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -152,12 +176,15 @@ public class DesignerController {
 			return modelAndView;
 		}
 		designerService.updatePost(updatePostForm, updatePostForm.getIdPost());
-		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/updatePost?id=" + updatePostForm.getIdPost());
+		ModelAndView modelAndView2 = new ModelAndView(
+				"redirect:/designer/updatePost?id="
+						+ updatePostForm.getIdPost());
 		return modelAndView2;
 	}
-	
+
 	@RequestMapping(value = "/designer/personalSecurity/updatePasswordFormAdd", method = RequestMethod.POST)
-	public ModelAndView updatePasswordFormAdd(PersonalSecurityForm personalSecurityForm, Locale locale,
+	public ModelAndView updatePasswordFormAdd(
+			PersonalSecurityForm personalSecurityForm, Locale locale,
 			Model model, HttpSession httpSession) throws Exception {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
@@ -166,7 +193,8 @@ public class DesignerController {
 			return modelAndView;
 		}
 		designerService.updatePassword(personalSecurityForm, person.getLogin());
-		ModelAndView modelAndView2 = new ModelAndView("redirect:/designer/personalSecurity");
+		ModelAndView modelAndView2 = new ModelAndView(
+				"redirect:/designer/personalSecurity");
 		return modelAndView2;
 	}
 
@@ -179,16 +207,18 @@ public class DesignerController {
 				posts);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/designer/personalData", method = RequestMethod.GET)
-	public ModelAndView personalData(Locale locale, Model model, HttpSession httpSession) throws Exception {
+	public ModelAndView personalData(Locale locale, Model model,
+			HttpSession httpSession) throws Exception {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalData");
+		ModelAndView modelAndView = new ModelAndView(
+				"designer/designerPersonalData");
 		User user = designerService.getUser(person.getLogin());
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
@@ -199,18 +229,18 @@ public class DesignerController {
 	public @ResponseBody List<Subcategory> getAllSubcategoryWithinCategory(
 			@RequestParam(value = "idCategory", required = true) Integer idCategory)
 			throws ServiceException {
-		List<Subcategory> subcategories = designerService.getAllSubcategoryWithinCategory(idCategory);
+		List<Subcategory> subcategories = designerService
+				.getAllSubcategoryWithinCategory(idCategory);
 		return subcategories;
 	}
 
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@RequestMapping(value = "/get/countries", method = RequestMethod.GET)
-	public @ResponseBody List<Country> getAllCountry()
-			throws ServiceException {
+	public @ResponseBody List<Country> getAllCountry() throws ServiceException {
 		List<Country> countries = designerService.getAllCountries();
 		return countries;
 	}
-	
+
 	@JsonIgnoreProperties({ "hibernateLazyInitializer", "handler" })
 	@RequestMapping(value = "/get/cities", method = RequestMethod.GET)
 	public @ResponseBody List<City> getAllCityWithinCountry(

@@ -7,7 +7,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -37,6 +36,8 @@ import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.PersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.service.helper.ServiceHelper;
@@ -56,16 +57,12 @@ import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByTitleDesc;
 @Service
 public class DesignerService implements IDesignerService {
 
-	private final String MODEL_PATH = "D:/";
-	private final String PHOTO_MODEL_PATH = "D:/";
-	private final String AVATAR_PATH = "D:/";
-
 	@Autowired
 	private IDisProgramDAO disProgramDAO;
 
 	@Autowired
 	private ICategoryDAO categoryDAO;
-	
+
 	@Autowired
 	private ICountryDAO countryDAO;
 
@@ -74,7 +71,7 @@ public class DesignerService implements IDesignerService {
 
 	@Autowired
 	private IPostDAO postDAO;
-	
+
 	@Autowired
 	private IUserDAO userDAO;
 
@@ -102,7 +99,7 @@ public class DesignerService implements IDesignerService {
 		}
 		return categories;
 	}
-	
+
 	@Override
 	public List<Country> getAllCountries() throws ServiceException {
 		List<Country> countries;
@@ -134,7 +131,7 @@ public class DesignerService implements IDesignerService {
 		}
 		return subcategories;
 	}
-	
+
 	@Override
 	public List<City> getAllCityWithinCountry(int idCountry)
 			throws ServiceException {
@@ -177,8 +174,10 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public void addPost(PostForm postForm, int idUser, String nickName) throws ServiceException {
-		DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
+	public void addPost(PostForm postForm, int idUser, String nickName,
+			String serverPath) throws ServiceException {
+		DateFormat dateFormat = new SimpleDateFormat(
+				ServiceParamConstant.FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
 		Post post = new Post();
@@ -196,33 +195,23 @@ public class DesignerService implements IDesignerService {
 		post.setIsDisplay(ServiceParamConstant.DEFAULT_IS_DISPLAY);
 		post.setCountDownload(ServiceParamConstant.DEFAULT_COUNT);
 		post.setPrinters(getCheckPrintersById(postForm.getPrintersId()));
-		
+		String pathModel = createPostPath(serverPath, idUser, date.getTime());
+		String pathModelPhoto = createPostPath(serverPath, idUser,
+				date.getTime());
+
 		PostPhoto firstPostPhoto = new PostPhoto();
-		firstPostPhoto.setPhotoPath(photoModelFileUpload(postForm
-				.getFirstPhoto()));
+		firstPostPhoto.setPhotoPath(photoModelFileUpload(
+				postForm.getFirstPhoto(), pathModelPhoto));
 		firstPostPhoto.setPost(post);
-		
-		PostPhoto secondPostPhoto = new PostPhoto();
-		secondPostPhoto.setPhotoPath(photoModelFileUpload(postForm
-				.getSecondPhoto()));
-		secondPostPhoto.setPost(post);
-		
-		PostPhoto thirdPostPhoto = new PostPhoto();
-		thirdPostPhoto.setPhotoPath(photoModelFileUpload(postForm
-				.getThirdPhoto()));
-		thirdPostPhoto.setPost(post);
-		
 		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 		postPhotos.add(firstPostPhoto);
-		postPhotos.add(secondPostPhoto);
-		postPhotos.add(thirdPostPhoto);
 		post.setPostPhotos(postPhotos);
 
 		com.global3Dmod.ÇDmodels.domain.File file = new com.global3Dmod.ÇDmodels.domain.File();
-		file.setFilePath(modelFileUpload(postForm.getModel()));
+		file.setFilePath(modelFileUpload(postForm.getModel(), pathModel));
 		file.setPost(post);
 		post.setFile(file);
-		
+
 		try {
 			postDAO.insertPost(post);
 		} catch (DaoException e) {
@@ -232,28 +221,12 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public String modelFileUpload(MultipartFile file) throws ServiceException {
-		String filePlaceToUpload = MODEL_PATH;
-		String orgName = file.getOriginalFilename();
-		String filePath = filePlaceToUpload + orgName;
-		File dest = new File(filePath);
-		try {
-			file.transferTo(dest);
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return filePath;
-
-	}
-
-	@Override
-	public String photoModelFileUpload(MultipartFile file)
+	public String modelFileUpload(MultipartFile file, String path)
 			throws ServiceException {
-		String filePlaceToUpload = PHOTO_MODEL_PATH;
 		String orgName = file.getOriginalFilename();
-		String filePath = filePlaceToUpload + orgName;
+		String newName = createNewNameFile(orgName);
+		String filePath = path + newName;
+		new File(path).mkdirs();
 		File dest = new File(filePath);
 		try {
 			file.transferTo(dest);
@@ -263,14 +236,15 @@ public class DesignerService implements IDesignerService {
 			e.printStackTrace();
 		}
 		return filePath;
-
 	}
 
 	@Override
-	public String avatarFileUpload(MultipartFile file) throws ServiceException {
-		String filePlaceToUpload = AVATAR_PATH;
+	public String photoModelFileUpload(MultipartFile file, String path)
+			throws ServiceException {
 		String orgName = file.getOriginalFilename();
-		String filePath = filePlaceToUpload + orgName;
+		String newName = createNewNameFile(orgName);
+		String filePath = path + newName;
+		new File(path).mkdirs();
 		File dest = new File(filePath);
 		try {
 			file.transferTo(dest);
@@ -280,11 +254,29 @@ public class DesignerService implements IDesignerService {
 			e.printStackTrace();
 		}
 		return filePath;
-
 	}
 
 	@Override
-	public List<Post> getPostsByDesigner(Integer idUser) throws ServiceException {
+	public String avatarFileUpload(MultipartFile file, String path)
+			throws ServiceException {
+		String orgName = file.getOriginalFilename();
+		String newName = createNewNameFile(orgName);
+		String filePath = path + newName;
+		new File(path).mkdirs();
+		File dest = new File(filePath);
+		try {
+			file.transferTo(dest);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return filePath;
+	}
+
+	@Override
+	public List<Post> getPostsByDesigner(Integer idUser)
+			throws ServiceException {
 		List<Post> posts;
 		try {
 			posts = postDAO.selectPostsByDesigner(idUser);
@@ -293,9 +285,10 @@ public class DesignerService implements IDesignerService {
 		}
 		return posts;
 	}
-	
+
 	@Override
-	public List<Post> getPostsByDesignerForSort(Integer idUser) throws ServiceException {
+	public List<Post> getPostsByDesignerForSort(Integer idUser)
+			throws ServiceException {
 		List<Post> posts;
 		try {
 			posts = postDAO.selectPostsByDesignerForSort(idUser);
@@ -310,37 +303,37 @@ public class DesignerService implements IDesignerService {
 			throws ServiceException {
 		if (sort != null) {
 			if (ServiceParamConstant.TITLE.equals(sort)) {
-				if(desc){
+				if (desc) {
 					Collections.sort(posts, new SortedPostsByTitleDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByTitle());
-				}	
+				}
 			} else if (ServiceParamConstant.CATEGORY.equals(sort)) {
-				if(desc){
+				if (desc) {
 					Collections.sort(posts, new SortedPostsByCategoryDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByCategory());
-				}	
+				}
 			} else if (ServiceParamConstant.SUBCATEGORY.equals(sort)) {
-				if(desc){
+				if (desc) {
 					Collections.sort(posts, new SortedPostsBySubcategoryDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsBySubcategory());
 				}
 			} else if (ServiceParamConstant.DATE.equals(sort)) {
-				if(desc){
+				if (desc) {
 					Collections.sort(posts, new SortedPostsByDateDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByDate());
 				}
 			} else if (ServiceParamConstant.DOWNLOADS.equals(sort)) {
-				if(desc){
+				if (desc) {
 					Collections.sort(posts, new SortedPostsByDownloadsDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByDownloads());
 				}
 			} else if (ServiceParamConstant.STATUS.equals(sort)) {
-				if(desc){
+				if (desc) {
 					Collections.sort(posts, new SortedPostsByStatusDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByStatus());
@@ -351,33 +344,35 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public ModelAndView setParamsForSort(ModelAndView modelAndView,	String sort, boolean desc) throws ServiceException {
-		if(ServiceParamConstant.CATEGORY.equalsIgnoreCase(sort) && !desc) {
+	public ModelAndView setParamsForSort(ModelAndView modelAndView,
+			String sort, boolean desc) throws ServiceException {
+		if (ServiceParamConstant.CATEGORY.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.CATEGORY_DESC, true);
 		} else {
 			modelAndView.addObject(ServiceParamConstant.CATEGORY_DESC, false);
 		}
-		if(ServiceParamConstant.DATE.equalsIgnoreCase(sort) && !desc) {
+		if (ServiceParamConstant.DATE.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.DATE_DESC, true);
 		} else {
 			modelAndView.addObject(ServiceParamConstant.DATE_DESC, false);
 		}
-		if(ServiceParamConstant.DOWNLOADS.equalsIgnoreCase(sort) && !desc) {
+		if (ServiceParamConstant.DOWNLOADS.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.DOWNLOADS_DESC, true);
 		} else {
 			modelAndView.addObject(ServiceParamConstant.DOWNLOADS_DESC, false);
 		}
-		if(ServiceParamConstant.STATUS.equalsIgnoreCase(sort) && !desc) {
+		if (ServiceParamConstant.STATUS.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.STATUS_DESC, true);
 		} else {
 			modelAndView.addObject(ServiceParamConstant.STATUS_DESC, false);
-		} 
+		}
 		if (ServiceParamConstant.SUBCATEGORY.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.SUBCATEGORY_DESC, true);
 		} else {
-			modelAndView.addObject(ServiceParamConstant.SUBCATEGORY_DESC, false);
+			modelAndView
+					.addObject(ServiceParamConstant.SUBCATEGORY_DESC, false);
 		}
-		if(ServiceParamConstant.TITLE.equalsIgnoreCase(sort) && !desc) {
+		if (ServiceParamConstant.TITLE.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, true);
 		} else {
 			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, false);
@@ -397,7 +392,8 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public void updateUser(PersonalDataForm personalDataForm, String login) throws ServiceException {
+	public void updateUser(PersonalDataForm personalDataForm, String login)
+			throws ServiceException {
 		try {
 			User user = userDAO.selectUser(login);
 			user.setCountry_idCountry(personalDataForm.getCountry_idCountry());
@@ -410,7 +406,7 @@ public class DesignerService implements IDesignerService {
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-		
+
 	}
 
 	@Override
@@ -419,7 +415,7 @@ public class DesignerService implements IDesignerService {
 		try {
 			User user = userDAO.selectUser(login);
 			String password = personalSecurityForm.getPassword();
-			if(password!=null) {
+			if (password != null) {
 				String md5Password = DigestUtils.md5Hex(password);
 				user.setPassword(md5Password);
 			}
@@ -427,31 +423,35 @@ public class DesignerService implements IDesignerService {
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-		
+
 	}
-	
+
 	@Override
-	public void updatePost(UpdatePostForm updatePostForm, Integer idPost) throws ServiceException {
+	public void updatePost(UpdatePostForm updatePostForm, Integer idPost)
+			throws ServiceException {
 		try {
 			Post post = postDAO.selectPost(idPost);
-			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
+			DateFormat dateFormat = new SimpleDateFormat(
+					ServiceParamConstant.FORMAT_DATE);
 			Date date = new Date();
 			String dateUpdate = dateFormat.format(date);
 			post.setCategory_idCategory(updatePostForm.getCategory_idCategory());
 			post.setSubcategory_idSubcategory(updatePostForm
 					.getSubcategory_idSubcategory());
-			post.setDisProgram_idDisProgram(updatePostForm.getDisProgram_idDisProgram());
+			post.setDisProgram_idDisProgram(updatePostForm
+					.getDisProgram_idDisProgram());
 			post.setDateUpdate(dateUpdate);
 			post.setTitle(updatePostForm.getTitle());
 			post.setDescription(updatePostForm.getDescription());
 			post.setInstruction(updatePostForm.getInstruction());
 			post.setIsDisplay(2);
-			post.setPrinters(getCheckPrintersById(updatePostForm.getPrintersId()));
+			post.setPrinters(getCheckPrintersById(updatePostForm
+					.getPrintersId()));
 			postDAO.updatePost(post);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-		
+
 	}
 
 	@Override
@@ -463,7 +463,7 @@ public class DesignerService implements IDesignerService {
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-		
+
 	}
 
 	@Override
@@ -477,5 +477,39 @@ public class DesignerService implements IDesignerService {
 		return post;
 	}
 
+	private String createPostPath(String serverPath, int idUser, long time) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(serverPath);
+		stringBuilder.append(idUser);
+		stringBuilder.append("/posts/");
+		stringBuilder.append(time);
+		stringBuilder.append("/");
+		String path = stringBuilder.toString();
+		return path;
+	}
+
+	private String createAvatarPath(String serverPath, int idUser) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append(serverPath);
+		stringBuilder.append(idUser);
+		stringBuilder.append("/avatar/");
+		String path = stringBuilder.toString();
+		return path;
+	}
+
+	private String createNewNameFile(String name) {
+		System.out.println(name);
+		int sizeFile = name.length();
+		String ext = name.substring(sizeFile - 4, sizeFile);
+		int hashCode = name.hashCode();
+		if (hashCode < 0) {
+			hashCode = hashCode * (-1);
+		}
+		if (hashCode == 0) {
+			++hashCode;
+		}
+		String newName = String.valueOf(hashCode) + ext;
+		return newName;
+	}
 
 }

@@ -1,6 +1,6 @@
 package com.global3Dmod.ÇDmodels.controller;
 
-public class ControllerParamConstant {
+public  final class ControllerParamConstant {
 	
 	public static String ID_POST = "idPost";
 	

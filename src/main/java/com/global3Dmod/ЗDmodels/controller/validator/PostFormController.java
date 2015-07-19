@@ -41,15 +41,11 @@ public class PostFormController {
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView postValid(PostForm postForm, BindingResult result, @RequestParam("model") MultipartFile model, 
-			@RequestParam("firstPhoto") MultipartFile firstPhoto, @RequestParam("secondPhoto") MultipartFile secondPhoto,
-			@RequestParam("thirdPhoto") MultipartFile thirdPhoto)
+			@RequestParam("firstPhoto") MultipartFile firstPhoto)
 			throws Exception {
 		
 		postForm.setModel(model);
 		postForm.setFirstPhoto(firstPhoto);
-		postForm.setSecondPhoto(secondPhoto);
-		postForm.setThirdPhoto(thirdPhoto);
-		System.out.println(postForm);
 		postValidator.validate(postForm, result);
 
 		if (result.hasErrors()) {
@@ -59,10 +55,6 @@ public class PostFormController {
 			modelAndView.addObject("listPrinter", designerService.getAllPrinters());
 			return modelAndView;
 		}
-
-//		final String PREFIX = this.getClass().getResource("/").getPath();
-//		C:\Java\workspace\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\G3DM\resources\files
-//		System.out.println(PREFIX);
 		ModelAndView modelAndView = new ModelAndView("forward:/designer/addPostDB");
 		modelAndView.addObject("postForm", postForm);
 		return modelAndView;

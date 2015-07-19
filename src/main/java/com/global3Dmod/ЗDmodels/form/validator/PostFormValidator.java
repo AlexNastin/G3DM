@@ -84,34 +84,6 @@ public class PostFormValidator implements Validator{
 		else {
 			errors.rejectValue("firstPhoto", "addPost.valid.photoModelFile.empty");
 		}
-		
-		//second photo file validation
-		if (!postForm.getSecondPhoto().isEmpty()) {
-			String name = postForm.getSecondPhoto().getOriginalFilename();
-			Matcher matcher = photo.matcher(name);
-			if(!matcher.matches()) {
-				errors.rejectValue("secondPhoto", "addPost.valid.file.format");
-			}
-		}
-		else {
-			errors.rejectValue("secondPhoto", "addPost.valid.photoModelFile.empty");
-		}
-		
-		//third photo file validation
-		if (!postForm.getThirdPhoto().isEmpty()) {
-			String name = postForm.getThirdPhoto().getOriginalFilename();
-			Matcher matcher = photo.matcher(name);
-			if(!matcher.matches()) {
-				errors.rejectValue("thirdPhoto", "addPost.valid.file.format");
-			}
-		}
-		else {
-			errors.rejectValue("thirdPhoto", "addPost.valid.photoModelFile.empty");
-		}
-		
-
-		
-		
 	}
 
 }

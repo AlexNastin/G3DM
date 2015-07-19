@@ -20,6 +20,8 @@ import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Controller
@@ -27,8 +29,7 @@ public class GuestController {
 
 	@Autowired
 	private IGuestService guestService;
-
-
+	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
@@ -38,7 +39,7 @@ public class GuestController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
 
-
+		
 		ModelAndView modelAndView = new ModelAndView("main");
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY,
 				guestService.getAllCategoriesSubcategoriesTop3());
@@ -144,7 +145,7 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("error/403page");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/404", method = RequestMethod.GET)
 	public ModelAndView page404(Locale locale, Model model) throws Exception {
 		ModelAndView modelAndView = new ModelAndView("error/404");
@@ -183,7 +184,8 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, user
 				.getPosts().size());
-		modelAndView.addObject(ControllerParamConstant.RATING_DESIGNER, guestService.getRatingByDesigner(idUser));
+		modelAndView.addObject(ControllerParamConstant.RATING_DESIGNER,
+				guestService.getRatingByDesigner(idUser));
 		return modelAndView;
 	}
 }

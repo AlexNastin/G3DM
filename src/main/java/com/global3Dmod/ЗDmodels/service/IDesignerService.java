@@ -26,7 +26,7 @@ public interface IDesignerService {
 	public List<DisProgram> getAllDisPrograms() throws ServiceException;
 
 	public List<Category> getAllCategories() throws ServiceException;
-	
+
 	public List<Country> getAllCountries() throws ServiceException;
 
 	public List<Printer> getAllPrinters() throws ServiceException;
@@ -34,37 +34,49 @@ public interface IDesignerService {
 	public List<Printer> getCheckPrintersById(String[] printersId)
 			throws ServiceException;
 
-	public void addPost(PostForm postForm, int idUser, String nickName) throws ServiceException;
-
-	public String modelFileUpload(MultipartFile file) throws ServiceException;
-
-	public String photoModelFileUpload(MultipartFile file)
+	public void addPost(PostForm postForm, int idUser, String nickName, String serverPath)
 			throws ServiceException;
 
-	public String avatarFileUpload(MultipartFile file) throws ServiceException;
+	public String modelFileUpload(MultipartFile file, String path)
+			throws ServiceException;
 
-	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory) throws ServiceException;
-	
-	public List<City> getAllCityWithinCountry(int idCountry) throws ServiceException;
-	
-	public List<Post> getPostsByDesigner(Integer idUser) throws ServiceException;
-	
-	public List<Post> getPostsByDesignerForSort(Integer idUser) throws ServiceException;
-	
-	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc) throws ServiceException;
-	
-	public ModelAndView setParamsForSort(ModelAndView modelAndView, String sort, boolean desc) throws ServiceException;
-	
+	public String photoModelFileUpload(MultipartFile file, String path)
+			throws ServiceException;
+
+	public String avatarFileUpload(MultipartFile file, String path)
+			throws ServiceException;
+
+	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory)
+			throws ServiceException;
+
+	public List<City> getAllCityWithinCountry(int idCountry)
+			throws ServiceException;
+
+	public List<Post> getPostsByDesigner(Integer idUser)
+			throws ServiceException;
+
+	public List<Post> getPostsByDesignerForSort(Integer idUser)
+			throws ServiceException;
+
+	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc)
+			throws ServiceException;
+
+	public ModelAndView setParamsForSort(ModelAndView modelAndView,
+			String sort, boolean desc) throws ServiceException;
+
 	public User getUser(String login) throws ServiceException;
-	
-	public void updateUser(PersonalDataForm personalDataForm, String login) throws ServiceException;
-	
-	public void updatePassword(PersonalSecurityForm personalSecurityForm, String login) throws ServiceException;
-	
-	public void updatePost(UpdatePostForm updatePostForm, Integer idPost) throws ServiceException;
-	
+
+	public void updateUser(PersonalDataForm personalDataForm, String login)
+			throws ServiceException;
+
+	public void updatePassword(PersonalSecurityForm personalSecurityForm,
+			String login) throws ServiceException;
+
+	public void updatePost(UpdatePostForm updatePostForm, Integer idPost)
+			throws ServiceException;
+
 	public void deletePost(Integer idPost) throws ServiceException;
-	
+
 	public Post getPost(Integer idPost) throws ServiceException;
 
 }

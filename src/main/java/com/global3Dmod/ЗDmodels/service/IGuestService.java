@@ -54,6 +54,8 @@ public interface IGuestService {
 	
 	public void vote(Integer idUser, Integer idPost) throws ServiceException;
 	
+	public void complain(Integer idUser, Integer idPost) throws ServiceException;
+	
 	public int getCountLikeByPost(Integer idPost) throws ServiceException;
 	
 	public void setRatingInPosts(List<Post> posts) throws ServiceException;

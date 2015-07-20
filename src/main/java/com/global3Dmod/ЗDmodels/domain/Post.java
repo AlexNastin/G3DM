@@ -118,6 +118,9 @@ public class Post implements Essence {
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Like> likes;
 	
+	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<Complain> complains;
+	
 	public Post() {
 		super();
 	}
@@ -296,6 +299,22 @@ public class Post implements Essence {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public List<Like> getLikes() {
+		return likes;
+	}
+
+	public void setLikes(List<Like> likes) {
+		this.likes = likes;
+	}
+
+	public List<Complain> getComplains() {
+		return complains;
+	}
+
+	public void setComplains(List<Complain> complains) {
+		this.complains = complains;
 	}
 
 	@Override

@@ -63,25 +63,28 @@
 					src="<c:url value="/resources/images/logosign.jpg" />"
 					class="img-responsive margination" alt="Responsive image"> </a>
 				<div>
-					<button class="btn btn-primary fa fa-download">${down}</button>
+					<button class="btn btn-primary fa fa-download"> ${down}</button>
 					<security:authorize
 						access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
 						<a href="<c:url value="/like?id=${post.idPost}" />"> <i
-							class="btn btn-success fa fa-thumbs-o-up">${like} <span
+							class="btn btn-success fa fa-thumbs-o-up"> ${like} <span
 								class="badge">${countLike} </span></i>
-
+						</a>
+						<a href="<c:url value="/complain?id=${post.idPost}" />"
+						class="btn btn-danger fa fa-exclamation-circle"> ${issue}
 						</a>
 					</security:authorize>
 					<security:authorize access="isAnonymous()">
 						<a href="<c:url value="/go/signin" />"> <i
-							class="btn btn-success fa fa-thumbs-o-up">${like} <span
+							class="btn btn-success fa fa-thumbs-o-up"> ${like} <span
 								class="badge">${countLike} </span></i>
-
+						</a>
+						<a href="<c:url value="/go/signin" />"
+						class="btn btn-danger fa fa-exclamation-circle"> ${issue}
 						</a>
 					</security:authorize>
 
-					<button type="button"
-						class="btn btn-danger fa fa-exclamation-circle">${issue}</button>
+					
 				</div>
 
 			</div>

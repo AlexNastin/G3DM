@@ -21,6 +21,7 @@ import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
+import com.global3Dmod.ÇDmodels.dao.IComplainDAO;
 import com.global3Dmod.ÇDmodels.dao.ILikeDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.IRatingDAO;
@@ -29,6 +30,7 @@ import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Comment;
+import com.global3Dmod.ÇDmodels.domain.Complain;
 import com.global3Dmod.ÇDmodels.domain.Like;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
@@ -69,6 +71,9 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private ILikeDAO likeDAO;
+	
+	@Autowired
+	private IComplainDAO complainDAO;
 
 	@Override
 	public void addUser(SignupForm signupForm) throws ServiceException {
@@ -139,6 +144,22 @@ public class GuestService implements IGuestService {
 			throw new ServiceException(e);
 		}
 
+	}
+	
+	@Override
+	public void complain(Integer idUser, Integer idPost)
+			throws ServiceException {
+		try {
+			List<Complain> complains = complainDAO.selectComplainNotExists(idUser, idPost);
+			if (complains.isEmpty()) {
+				Complain complainUser = new Complain();
+				complainUser.setUser_idUser(idUser);
+				complainUser.setPost_idPost(idPost);
+				complainDAO.insertComplain(complainUser);
+			}
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
 	}
 
 	@Override

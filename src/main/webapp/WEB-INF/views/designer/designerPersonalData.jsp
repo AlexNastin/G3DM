@@ -100,11 +100,6 @@
                                   
                               </tr>
                               <tr>
-                                   <td>Name</td>
-                                  <td class="hidden-phone">${user.name}</td>
-                                  
-                              </tr>
-                              <tr>
                                    <td>Rating</td>
                                   <td class="hidden-phone">${user.rating}</td>
                                   
@@ -125,10 +120,12 @@
                                   </tbody>
                           </table>
                       </div>
-                      <center><button type="button" style="text-align: center;" class="btn btn-primary"  onClick='location.href="<c:url value="/designer/personalData/updateForm"  />"'>
+                      <div class="col-md-12">
+                      <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/designer/personalData/updateForm"  />"'>
       Update
-      </button> </center>
-                      
+      </button>
+      </div>                
+                     
                   </div>
               </div>
               

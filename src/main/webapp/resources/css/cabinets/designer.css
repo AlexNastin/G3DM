@@ -2816,4 +2816,7 @@ p {
     transform: translate(-50%, 0);
 }
 
-   
+.left-designer
+{
+float: right;	
+}

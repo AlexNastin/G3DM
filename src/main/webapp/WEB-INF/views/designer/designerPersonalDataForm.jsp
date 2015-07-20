@@ -105,11 +105,6 @@
                                   
                               </tr>
                               <tr>
-                                   <td>Name</td>
-                                  <td class="hidden-phone">${user.name}</td>
-                                  
-                              </tr>
-                              <tr>
                                    <td>Rating</td>
                                   <td class="hidden-phone">${user.rating}</td>
                                   
@@ -163,8 +158,8 @@
 				<br>
 			</div>
 		
-		ДР: <form:input type="text" id="dateBirth" name="calendar" path="dateBirth" /> 
-		<br><br>
+		<form:input type="text" class="form-control" id="dateBirth" name="calendar" path="dateBirth" placeholder="Please select a date of birth"/> 
+		<br>
 				<form:select class="form-control" id="gender"
 			name="gender" path="gender">
 			<form:option value="0">None</form:option>
@@ -174,8 +169,8 @@
 		<br>
 		
 		<div class="form-group">
-		<div class="col-md-5">
-		<input type="submit" class="btn btn-primary" value="Save" />
+		<div class="col-md-12">
+		<input type="submit" class="btn btn-primary left-designer" value="Save" />
 		</div>
 	    </div>
 	</form:form>

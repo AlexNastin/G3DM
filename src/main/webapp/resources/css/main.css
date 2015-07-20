@@ -1411,5 +1411,8 @@ input:-moz-placeholder {
    /*Footer */
   .footerpadding{
   	
-    min-height: 45em;
+    min-height: 33.93em;
+  }
+  .width-personal-data{
+  height: 30em;
   }

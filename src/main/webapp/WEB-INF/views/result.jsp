@@ -45,7 +45,7 @@
 
 
 </div>
-<div class="container meow">
+<div class="container meow min-height-search-result">
 
     <hgroup class="mb20">
         <h1>${result}</h1>

@@ -820,7 +820,7 @@ ul.list1{
 	list-style:none;
 }
 ul.list1 li a{
-	color: #ADADAD;
+	color: #808080;
 	font-size: 0.85em;
 	font-weight: 100;
 	line-height: 1.8em;
@@ -831,12 +831,11 @@ ul.list1 li a{
 	padding-bottom:4em;
 }
 .footer-grid h4 {
-	color: black;
-	font-size: 1.1em;
-	font-weight: 500;
+	color: #696969;
+	font-size: 1.3em;
+	font-weight: 600;
 	margin-bottom: 1em;
-	border-bottom: 1px solid #5b5953;
-	width: 50%;
+	width: 70%;
 }
 ul.footer_social{
 	padding:0;

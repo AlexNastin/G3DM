@@ -85,9 +85,9 @@
                                   
                               </tr>
                               <tr>
-                                   <td>Printers</td>
-                                   <c:forEach items="${post.printers}" var="printer">
-                                  <td class="hidden-phone">${printer.title}</td>
+                                   <td>Technologies</td>
+                                   <c:forEach items="${post.technologies}" var="technology">
+                                  <td class="hidden-phone">${technology.title}</td>
                                   </c:forEach>
                               </tr>
                               <tr>
@@ -140,11 +140,11 @@
 		</div>
 		
 		<div class="col-md-4">
-		<h3 style="margin-top:0px">Select printers</h3>
-		<c:forEach items="${listPrinter}" var="printer">
-			<form:checkbox path="printersId" value="${printer.idPrinter}" />${printer.title}<br>
+		<h3 style="margin-top:0px">Select technologies</h3>
+		<c:forEach items="${listTechnologies}" var="technology">
+			<form:checkbox path="technologiesId" value="${technology.idTechnology}" />${technology.title}<br>
 		</c:forEach>
-		<span class="error"><form:errors path="printersId" /></span>
+		<span class="error"><form:errors path="technologiesId" /></span>
 		</div>
 		
 		<div class="form-group">

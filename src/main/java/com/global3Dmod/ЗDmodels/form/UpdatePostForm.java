@@ -14,7 +14,7 @@ public class UpdatePostForm implements Essence {
 	private String description;
 	private String instruction;
 	
-	private String []printersId;
+	private String []technologiesId;
 	
 	public int getIdPost() {
 		return idPost;
@@ -71,13 +71,13 @@ public class UpdatePostForm implements Essence {
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
 	}
-	
-	public String[] getPrintersId() {
-		return printersId;
+
+	public String[] getTechnologiesId() {
+		return technologiesId;
 	}
-	
-	public void setPrintersId(String[] printersId) {
-		this.printersId = printersId;
+
+	public void setTechnologiesId(String[] technologiesId) {
+		this.technologiesId = technologiesId;
 	}
 
 	@Override
@@ -91,8 +91,8 @@ public class UpdatePostForm implements Essence {
 		result = prime * result + idPost;
 		result = prime * result
 				+ ((instruction == null) ? 0 : instruction.hashCode());
-		result = prime * result + Arrays.hashCode(printersId);
 		result = prime * result + subcategory_idSubcategory;
+		result = prime * result + Arrays.hashCode(technologiesId);
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -122,9 +122,9 @@ public class UpdatePostForm implements Essence {
 				return false;
 		} else if (!instruction.equals(other.instruction))
 			return false;
-		if (!Arrays.equals(printersId, other.printersId))
-			return false;
 		if (subcategory_idSubcategory != other.subcategory_idSubcategory)
+			return false;
+		if (!Arrays.equals(technologiesId, other.technologiesId))
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -141,10 +141,7 @@ public class UpdatePostForm implements Essence {
 				+ subcategory_idSubcategory + ", disProgram_idDisProgram="
 				+ disProgram_idDisProgram + ", title=" + title
 				+ ", description=" + description + ", instruction="
-				+ instruction + ", printersId=" + Arrays.toString(printersId)
-				+ "]";
+				+ instruction + ", technologiesId="
+				+ Arrays.toString(technologiesId) + "]";
 	}
-	
-	
-		
 }

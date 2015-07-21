@@ -20,8 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="global3dmod team">
-    <link href="<c:url value="/resources/css/bootstrap.css"  />" rel="stylesheet" />
-    <link href="<c:url value="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"  />" rel="stylesheet" />
+        <link href="<c:url value="/resources/css/bootstrap.min.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/cabinets/designer.css"  />" rel="stylesheet" />
      <link href="<c:url value="/resources/css//fontawesome430/css/font-awesome.css"  />" rel="stylesheet" />
@@ -121,16 +120,12 @@
                                   	<td><span class="label label-warning label-danger">Rejected</span></td>
                                   </c:if>
                                   <td>
-                                      <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit"><i class="fa fa-pencil"></i></button>
-                                      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal"><i class="fa fa-trash-o "></i></button>
+                                      <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit${post.idPost}"><i class="fa fa-pencil"></i></button>
+                                      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal${post.idPost}"><i class="fa fa-trash-o "></i></button>
                                   </td>
                               </tr>
-                              </c:forEach>
-                              </tbody>
-                          </table>
-                      </div>
-      <!-- Delete modal -->                
-   <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                              <!-- Delete modal -->                
+   <div class="modal fade" id="myModal${post.idPost}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -142,13 +137,13 @@
       </div>
       <div class="modal-footer">
         <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
-        <a type="button" class="btn btn-danger">Delete post</a>
+        <a href="<c:url value="/designer/deletePost?id=${post.idPost}" />" type="button" class="btn btn-danger">Delete post</a>
       </div>
     </div>
   </div>
 </div>
 <!-- Edit modal -->
-<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit${post.idPost}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -160,11 +155,16 @@
       </div>
       <div class="modal-footer">
         <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
-        <a type="button" class="btn btn-primary">Edit</a>
+        <a href="<c:url value="/designer/updatePost?id=${post.idPost}" />" type="button" class="btn btn-primary">Edit</a>
       </div>
     </div>
   </div>
 </div>
+                              </c:forEach>
+                              </tbody>
+                          </table>
+                      </div>
+      
 <c:if test="${sizePosts != 0}">
                       <nav style="text-align:center">
   <ul class="pagination">

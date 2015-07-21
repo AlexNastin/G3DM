@@ -19,7 +19,7 @@ import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICountryDAO;
 import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
-import com.global3Dmod.ÇDmodels.dao.IPrinterDAO;
+import com.global3Dmod.ÇDmodels.dao.ITechnologyDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.City;
@@ -27,7 +27,7 @@ import com.global3Dmod.ÇDmodels.domain.Country;
 import com.global3Dmod.ÇDmodels.domain.DisProgram;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.PostPhoto;
-import com.global3Dmod.ÇDmodels.domain.Printer;
+import com.global3Dmod.ÇDmodels.domain.Technology;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -67,7 +67,7 @@ public class DesignerService implements IDesignerService {
 	private ICountryDAO countryDAO;
 
 	@Autowired
-	private IPrinterDAO printerDAO;
+	private ITechnologyDAO printerDAO;
 
 	@Autowired
 	private IPostDAO postDAO;
@@ -151,10 +151,10 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public List<Printer> getAllPrinters() throws ServiceException {
-		List<Printer> printers;
+	public List<Technology> getAllTechnologies() throws ServiceException {
+		List<Technology> printers;
 		try {
-			printers = printerDAO.selectAllPrinters();
+			printers = printerDAO.selectAllTechnologies();
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -162,11 +162,11 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public List<Printer> getCheckPrintersById(String[] printersId)
+	public List<Technology> getCheckPrintersById(String[] printersId)
 			throws ServiceException {
-		List<Printer> printers;
+		List<Technology> printers;
 		try {
-			printers = printerDAO.selectCheckPrintersById(printersId);
+			printers = printerDAO.selectCheckTechnologiesById(printersId);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -194,7 +194,7 @@ public class DesignerService implements IDesignerService {
 		post.setInstruction(postForm.getInstruction());
 		post.setIsDisplay(ServiceParamConstant.DEFAULT_IS_DISPLAY);
 		post.setCountDownload(ServiceParamConstant.DEFAULT_COUNT);
-		post.setPrinters(getCheckPrintersById(postForm.getPrintersId()));
+		post.setTechnologies(getCheckPrintersById(postForm.getTechnologiesId()));
 		String pathModel = createPostPath(serverPath, idUser, date.getTime());
 		String pathModelPhoto = createPostPath(serverPath, idUser,
 				date.getTime());
@@ -445,7 +445,7 @@ public class DesignerService implements IDesignerService {
 			post.setDescription(updatePostForm.getDescription());
 			post.setInstruction(updatePostForm.getInstruction());
 			post.setIsDisplay(2);
-			post.setPrinters(getCheckPrintersById(updatePostForm
+			post.setTechnologies(getCheckPrintersById(updatePostForm
 					.getPrintersId()));
 			postDAO.updatePost(post);
 		} catch (DaoException e) {

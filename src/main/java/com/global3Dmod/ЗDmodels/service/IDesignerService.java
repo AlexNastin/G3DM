@@ -12,7 +12,7 @@ import com.global3Dmod.ÇDmodels.domain.City;
 import com.global3Dmod.ÇDmodels.domain.Country;
 import com.global3Dmod.ÇDmodels.domain.DisProgram;
 import com.global3Dmod.ÇDmodels.domain.Post;
-import com.global3Dmod.ÇDmodels.domain.Printer;
+import com.global3Dmod.ÇDmodels.domain.Technology;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
@@ -29,9 +29,9 @@ public interface IDesignerService {
 
 	public List<Country> getAllCountries() throws ServiceException;
 
-	public List<Printer> getAllPrinters() throws ServiceException;
+	public List<Technology> getAllTechnologies() throws ServiceException;
 
-	public List<Printer> getCheckPrintersById(String[] printersId)
+	public List<Technology> getCheckPrintersById(String[] printersId)
 			throws ServiceException;
 
 	public void addPost(PostForm postForm, int idUser, String nickName, String serverPath)

@@ -11,75 +11,75 @@ import javax.persistence.Query;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.dao.IPrinterDAO;
-import com.global3Dmod.ÇDmodels.domain.Printer;
+import com.global3Dmod.ÇDmodels.dao.ITechnologyDAO;
+import com.global3Dmod.ÇDmodels.domain.Technology;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
-@Repository("jpaPrinterDAO")
+@Repository("jpaTechnologyDAO")
 @Transactional
-public class PrinterDAOImpl implements IPrinterDAO {
-
+public class TechnologyDAOImpl implements ITechnologyDAO {
+//aaaaa
 	@PersistenceContext
 	private EntityManager em;
 
 	/**
-	 * Insert the object of type "Printer" to the database
-	 * @param printer object of type "Printer"
+	 * Insert the object of type "Technology" to the database
+	 * @param printer object of type "Technology"
 	 * @throws DaoException
 	 * */
 	@Override
 	@Transactional
-	public void insertPrinter(Printer printer) throws DaoException {
-		em.persist(printer);
+	public void insertTechnology(Technology technology) throws DaoException {
+		em.persist(technology);
 
 	}
 
 	/**
-	 * Receipt of all elements of the table "printers" from the database
-	 * @return printer collection of objects of type "Printer"
+	 * Receipt of all elements of the table "technologies" from the database
+	 * @return printer collection of objects of type "Technology"
 	 * @throws DaoException
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Printer> selectAllPrinters() throws DaoException {
-		List<Printer> printer = em.createNamedQuery("Printer.findAll").getResultList();
+	public List<Technology> selectAllTechnologies() throws DaoException {
+		List<Technology> printer = em.createNamedQuery("Technology.findAll").getResultList();
 		return printer;
 	}
 	
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Printer> selectCheckPrintersById(String []printersId) throws DaoException {
-		List<Integer> listIdPrinter = new ArrayList<Integer>();
-		for (String printerId : printersId) {
-			listIdPrinter.add(Integer.parseInt(printerId));
+	public List<Technology> selectCheckTechnologiesById(String [] technologiesId) throws DaoException {
+		List<Integer> listIdTechnology = new ArrayList<Integer>();
+		for (String technologyId : technologiesId) {
+			listIdTechnology.add(Integer.parseInt(technologyId));
 		}
-		List<Printer> printer = em.createNamedQuery("Printer.findCheckById").setParameter("idPrinters", listIdPrinter).getResultList();
+		List<Technology> printer = em.createNamedQuery("Technology.findCheckById").setParameter("idTechnology", listIdTechnology).getResultList();
 		return printer;
 	}
 
 	/**
-	 * Delete the object of type "Printer" from the database
+	 * Delete the object of type "Technology" from the database
 	 * @param id row ID in the database
 	 * @throws DaoException
 	 * */
 	@Override
 	@Transactional
-	public void deletePrinter(Integer id) throws DaoException {
-		Printer printer = em.find(Printer.class, id);
+	public void deleteTechnology(Integer id) throws DaoException {
+		Technology printer = em.find(Technology.class, id);
 		em.remove(printer);
 	}
 
 	/**
-	 * Update the object of type "Printer" in the database
-	 * @param printer object of type "Printer"
+	 * Update the object of type "Technology" in the database
+	 * @param printer object of type "Technology"
 	 * @throws DaoException
 	 * */
 	@Override
 	@Transactional
-	public void updatePrinter(Printer printer) throws DaoException {
+	public void updateTechnolog(Technology printer) throws DaoException {
 		em.merge(printer);
 		
 	}

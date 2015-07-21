@@ -58,8 +58,8 @@ public class PostFormValidator implements Validator{
 		if ((instruction.length()) > 200) {
 			errors.rejectValue("instruction", "addPost.valid.instruction.tooLong");
 		}
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "printersId",
-				"addPost.valid.printersId.empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "technologiesId",
+				"addPost.valid.technologiesId.empty");
 		
 		//model file validation
 		if (!postForm.getModel().isEmpty()) {

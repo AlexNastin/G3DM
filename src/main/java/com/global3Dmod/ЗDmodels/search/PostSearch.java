@@ -44,7 +44,7 @@ public class PostSearch {
 
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
-			Hibernate.initialize(post.getPrinters());
+			Hibernate.initialize(post.getTechnologies());
 		}
 		return posts;
 	}

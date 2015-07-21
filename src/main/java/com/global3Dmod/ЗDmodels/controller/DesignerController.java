@@ -193,8 +193,9 @@ public class DesignerController {
 			return modelAndView;
 		}
 		designerService.updatePassword(personalSecurityForm, person.getLogin());
-		ModelAndView modelAndView2 = new ModelAndView(
-				"redirect:/designer/personalSecurity");
+		
+		ModelAndView modelAndView2 = new ModelAndView("/designer/personalSecurity");
+		modelAndView2.addObject("updatePasswordSuccessfully", "successfully");
 		return modelAndView2;
 	}
 

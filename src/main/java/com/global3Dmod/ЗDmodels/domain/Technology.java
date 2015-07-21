@@ -1,11 +1,9 @@
 package com.global3Dmod.ÇDmodels.domain;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -17,33 +15,35 @@ import javax.persistence.Table;
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
-@Table(name = "printers")
+@Table(name = "technology")
 @NamedQueries({
-	@NamedQuery(name="Printer.findAll", query="select p from Printer p"),
-	@NamedQuery(name="Printer.findCheckById", query="select p from Printer p where p.idPrinter in (:idPrinters)") })
-public class Printer implements Essence {
-
+	@NamedQuery(name="Technology.findAll", query="select t from Technology t"),
+	@NamedQuery(name="Technology.findCheckById", query="select t from Technology t where t.idTechnology in (:idTechnology)") })
+public class Technology implements Essence {
+//aaaaa
 	@Id
-	@Column(name = "id_printer")
+	@Column(name = "id_technology")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idPrinter;
+	private int idTechnology;
 	
 	@Column(name = "title")
 	private String title;
 	
-	@ManyToMany(mappedBy="printers")
+	@ManyToMany(mappedBy="technologies")
 	private List<Post> posts;
 	
-	public Printer() {
+	public Technology() {
 		super();
 	}
 
-	public int getIdPrinter() {
-		return idPrinter;
+	public int getIdTechnology() {
+		return idTechnology;
 	}
 
-	public void setIdPrinter(int idPrinter) {
-		this.idPrinter = idPrinter;
+
+
+	public void setIdTechnology(int idTechnology) {
+		this.idTechnology = idTechnology;
 	}
 
 	public String getTitle() {
@@ -66,7 +66,7 @@ public class Printer implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + idPrinter;
+		result = prime * result + idTechnology;
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -79,8 +79,8 @@ public class Printer implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Printer other = (Printer) obj;
-		if (idPrinter != other.idPrinter)
+		Technology other = (Technology) obj;
+		if (idTechnology != other.idTechnology)
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -92,7 +92,7 @@ public class Printer implements Essence {
 
 	@Override
 	public String toString() {
-		return "Printer [idPrinter=" + idPrinter + ", title=" + title + "]";
+		return "Printer [idPrinter=" + idTechnology + ", title=" + title + "]";
 	}
 	
 	

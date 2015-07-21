@@ -19,7 +19,7 @@ public class PostForm implements Essence {
 	private MultipartFile model;
 	private MultipartFile firstPhoto;
 
-	private String[] printersId;
+	private String[] technologiesId;
 
 	public int getCategory_idCategory() {
 		return category_idCategory;
@@ -85,12 +85,12 @@ public class PostForm implements Essence {
 		this.firstPhoto = firstPhoto;
 	}
 
-	public String[] getPrintersId() {
-		return printersId;
+	public String[] getTechnologiesId() {
+		return technologiesId;
 	}
 
-	public void setPrintersId(String[] printersId) {
-		this.printersId = printersId;
+	public void setTechnologiesId(String[] technologiesId) {
+		this.technologiesId = technologiesId;
 	}
 
 	@Override
@@ -106,8 +106,8 @@ public class PostForm implements Essence {
 		result = prime * result
 				+ ((instruction == null) ? 0 : instruction.hashCode());
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
-		result = prime * result + Arrays.hashCode(printersId);
 		result = prime * result + subcategory_idSubcategory;
+		result = prime * result + Arrays.hashCode(technologiesId);
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -145,9 +145,9 @@ public class PostForm implements Essence {
 				return false;
 		} else if (!model.equals(other.model))
 			return false;
-		if (!Arrays.equals(printersId, other.printersId))
-			return false;
 		if (subcategory_idSubcategory != other.subcategory_idSubcategory)
+			return false;
+		if (!Arrays.equals(technologiesId, other.technologiesId))
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -164,8 +164,8 @@ public class PostForm implements Essence {
 				+ ", disProgram_idDisProgram=" + disProgram_idDisProgram
 				+ ", title=" + title + ", description=" + description
 				+ ", instruction=" + instruction + ", model=" + model
-				+ ", firstPhoto=" + firstPhoto + ", printersId="
-				+ Arrays.toString(printersId) + "]";
+				+ ", firstPhoto=" + firstPhoto + ", technologiesId="
+				+ Arrays.toString(technologiesId) + "]";
 	}
 
 }

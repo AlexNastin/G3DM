@@ -42,7 +42,7 @@ public class UpdatePostController {
 		modelAndView.addObject(ControllerParamConstant.UPDATE_POST_FORM, updatePostForm);
 		modelAndView.addObject("listCategory", designerService.getAllCategories());
 		modelAndView.addObject("listDisProgram", designerService.getAllDisPrograms());
-		modelAndView.addObject("listPrinter", designerService.getAllPrinters());
+		modelAndView.addObject("listPrinter", designerService.getAllTechnologies());
 		Post post = designerService.getPost(idPost);
 		modelAndView.addObject(ControllerParamConstant.POST, post);
 		return modelAndView;

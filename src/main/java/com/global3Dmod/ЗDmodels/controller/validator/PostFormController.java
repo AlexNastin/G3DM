@@ -35,7 +35,7 @@ public class PostFormController {
 		modelAndView.addObject(ControllerParamConstant.POST_FORM, postForm);
 		modelAndView.addObject("listDisProgram", designerService.getAllDisPrograms());
 		modelAndView.addObject("listCategory", designerService.getAllCategories());
-		modelAndView.addObject("listPrinter", designerService.getAllPrinters());
+		modelAndView.addObject("listTechnologies", designerService.getAllTechnologies());
 		return modelAndView;
 	}
 
@@ -52,7 +52,7 @@ public class PostFormController {
 			ModelAndView modelAndView = new ModelAndView("designer/addPost");
 			modelAndView.addObject("listDisProgram", designerService.getAllDisPrograms());
 			modelAndView.addObject("listCategory", designerService.getAllCategories());
-			modelAndView.addObject("listPrinter", designerService.getAllPrinters());
+			modelAndView.addObject("listTechnologies", designerService.getAllTechnologies());
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("forward:/designer/addPostDB");

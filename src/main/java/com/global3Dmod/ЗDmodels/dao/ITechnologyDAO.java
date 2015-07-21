@@ -3,19 +3,19 @@ package com.global3Dmod.ÇDmodels.dao;
 import java.util.List;
 import java.util.Set;
 
-import com.global3Dmod.ÇDmodels.domain.Printer;
+import com.global3Dmod.ÇDmodels.domain.Technology;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
-public interface IPrinterDAO {
+public interface ITechnologyDAO {
+	//aaaa
+	public void updateTechnolog(Technology technology) throws DaoException;
+
+	public void insertTechnology(Technology technology) throws DaoException;
+
+	public List<Technology> selectAllTechnologies() throws DaoException;
 	
-	public void updatePrinter(Printer printer) throws DaoException;
+	public List<Technology> selectCheckTechnologiesById(String [] printersId) throws DaoException;
 
-	public void insertPrinter(Printer printer) throws DaoException;
-
-	public List<Printer> selectAllPrinters() throws DaoException;
-	
-	public List<Printer> selectCheckPrintersById(String [] printersId) throws DaoException;
-
-	public void deletePrinter(Integer id) throws DaoException;
+	public void deleteTechnology(Integer idTechnology) throws DaoException;
 
 }

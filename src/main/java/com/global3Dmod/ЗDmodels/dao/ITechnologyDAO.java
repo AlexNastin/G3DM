@@ -7,7 +7,7 @@ import com.global3Dmod.ÇDmodels.domain.Technology;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface ITechnologyDAO {
-	//aaaa
+
 	public void updateTechnolog(Technology technology) throws DaoException;
 
 	public void insertTechnology(Technology technology) throws DaoException;

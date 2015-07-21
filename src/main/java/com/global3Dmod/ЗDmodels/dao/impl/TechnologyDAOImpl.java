@@ -19,7 +19,7 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 @Repository("jpaTechnologyDAO")
 @Transactional
 public class TechnologyDAOImpl implements ITechnologyDAO {
-//aaaaa
+	
 	@PersistenceContext
 	private EntityManager em;
 

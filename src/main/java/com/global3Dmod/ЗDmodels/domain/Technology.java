@@ -20,7 +20,7 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 	@NamedQuery(name="Technology.findAll", query="select t from Technology t"),
 	@NamedQuery(name="Technology.findCheckById", query="select t from Technology t where t.idTechnology in (:idTechnology)") })
 public class Technology implements Essence {
-//aaaaa
+
 	@Id
 	@Column(name = "id_technology")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

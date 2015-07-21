@@ -185,7 +185,8 @@ public class DesignerService implements IDesignerService {
 		post.setCategory_idCategory(postForm.getCategory_idCategory());
 		post.setSubcategory_idSubcategory(postForm
 				.getSubcategory_idSubcategory());
-		post.setNumberPost(ServiceHelper.generationNumberPost(date, nickName));
+		post.setNumberPost(ServiceHelper.generationNumberPost(date, nickName,postForm.getCategory_idCategory(), postForm
+				.getSubcategory_idSubcategory()));
 		post.setDisProgram_idDisProgram(postForm.getDisProgram_idDisProgram());
 		post.setDateReg(registrationDate);
 		post.setDateUpdate(registrationDate);

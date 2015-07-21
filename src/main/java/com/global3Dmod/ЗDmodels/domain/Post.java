@@ -1,6 +1,5 @@
 package com.global3Dmod.ÇDmodels.domain;
 
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -30,14 +29,13 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @Indexed
 @Table(name = "posts")
 @NamedQueries({
-	@NamedQuery(name="Post.findAll", query="select p from Post p"),
-	@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.user_idUser = :idUser and p.isDisplay in (1,2,3)"),
-	@NamedQuery(name = "Post.findByUser", query = "select p from Post p where p.isDisplay = 3 and p.idPost in ((select l.post_idPost from Like l where user_idUser = :user_idUser))"),
-	@NamedQuery(name="Post.findOneById", query="select p from Post p where p.idPost = :idPost"),
-	@NamedQuery(name="Post.findByCategory", query="select p from Post p where p.category_idCategory = :category_idCategory and p.isDisplay = 3"),
-	@NamedQuery(name="Post.findBySubcategory", query="select p from Post p where p.category_idCategory = :category_idCategory and p.subcategory_idSubcategory = :subcategory_idSubcategory and p.isDisplay = 3"),
-	@NamedQuery(name="Post.colPostByUser", query="select count(p.user_idUser) from Post p where p.user_idUser = :user_idUser and p.isDisplay in (1,2,3)")})
-
+		@NamedQuery(name = "Post.findAll", query = "select p from Post p"),
+		@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.user_idUser = :idUser and p.isDisplay in (1,2,3)"),
+		@NamedQuery(name = "Post.findByUser", query = "select p from Post p where p.isDisplay = 3 and p.idPost in ((select l.post_idPost from Like l where user_idUser = :user_idUser))"),
+		@NamedQuery(name = "Post.findOneById", query = "select p from Post p where p.idPost = :idPost"),
+		@NamedQuery(name = "Post.findByCategory", query = "select p from Post p where p.category_idCategory = :category_idCategory and p.isDisplay = 3"),
+		@NamedQuery(name = "Post.findBySubcategory", query = "select p from Post p where p.category_idCategory = :category_idCategory and p.subcategory_idSubcategory = :subcategory_idSubcategory and p.isDisplay = 3"),
+		@NamedQuery(name = "Post.colPostByUser", query = "select count(p.user_idUser) from Post p where p.user_idUser = :user_idUser and p.isDisplay in (1,2,3)") })
 public class Post implements Essence {
 
 	@Id
@@ -53,17 +51,17 @@ public class Post implements Essence {
 
 	@Column(name = "subcategory_id_subcategory")
 	private int subcategory_idSubcategory;
-	
+
 	@Column(name = "number_post")
 	@Field(store = Store.NO)
 	private String numberPost;
-	
+
 	@Column(name = "disprogram_id_disprogram")
 	private int disProgram_idDisProgram;
 
 	@Column(name = "date_reg")
 	private String dateReg;
-	
+
 	@Column(name = "date_update")
 	private String dateUpdate;
 
@@ -82,45 +80,45 @@ public class Post implements Essence {
 
 	@Column(name = "count_download")
 	private int countDownload;
-	
+
 	@Column(name = "rating")
 	private int rating;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name="posts_has_printers", joinColumns={@JoinColumn(name="post_id_post")},inverseJoinColumns={@JoinColumn(name="printer_id_printer")})
-	private List<Printer> printers;
-	
+	@JoinTable(name = "posts_has_technology", joinColumns = { @JoinColumn(name = "post_id_post") }, inverseJoinColumns = { @JoinColumn(name = "technology_id_technology") })
+	private List<Technology> technologies;
+
 	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private File file;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "user_id_user", insertable=false, updatable=false)
+	@JoinColumn(name = "user_id_user", insertable = false, updatable = false)
 	private User user;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "disprogram_id_disprogram", insertable=false, updatable=false)
+	@JoinColumn(name = "disprogram_id_disprogram", insertable = false, updatable = false)
 	private DisProgram disProgram;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="category_id_category", insertable=false, updatable=false)
+	@JoinColumn(name = "category_id_category", insertable = false, updatable = false)
 	private Category category;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="subcategory_id_subcategory", insertable=false, updatable=false)
+	@JoinColumn(name = "subcategory_id_subcategory", insertable = false, updatable = false)
 	private Subcategory subcategory;
-	
+
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<PostPhoto> postPhotos;
-	
+
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Comment> comments;
-	
+
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Like> likes;
-	
+
 	@OneToMany(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Complain> complains;
-	
+
 	public Post() {
 		super();
 	}
@@ -228,7 +226,7 @@ public class Post implements Essence {
 	public void setCountDownload(int countDownload) {
 		this.countDownload = countDownload;
 	}
-	
+
 	public int getRating() {
 		return rating;
 	}
@@ -237,14 +235,14 @@ public class Post implements Essence {
 		this.rating = rating;
 	}
 
-	public List<Printer> getPrinters() {
-		return printers;
+	public List<Technology> getTechnologies() {
+		return technologies;
 	}
 
-	public void setPrinters(List<Printer> printers) {
-		this.printers = printers;
+	public void setTechnologies(List<Technology> technologies) {
+		this.technologies = technologies;
 	}
-	
+
 	public File getFile() {
 		return file;
 	}
@@ -259,7 +257,7 @@ public class Post implements Essence {
 
 	public void setPostPhotos(List<PostPhoto> postPhotos) {
 		this.postPhotos = postPhotos;
-	}	
+	}
 
 	public Category getCategory() {
 		return category;
@@ -345,7 +343,7 @@ public class Post implements Essence {
 		result = prime * result
 				+ ((postPhotos == null) ? 0 : postPhotos.hashCode());
 		result = prime * result
-				+ ((printers == null) ? 0 : printers.hashCode());
+				+ ((technologies == null) ? 0 : technologies.hashCode());
 		result = prime * result + rating;
 		result = prime * result
 				+ ((subcategory == null) ? 0 : subcategory.hashCode());
@@ -425,10 +423,10 @@ public class Post implements Essence {
 				return false;
 		} else if (!postPhotos.equals(other.postPhotos))
 			return false;
-		if (printers == null) {
-			if (other.printers != null)
+		if (technologies == null) {
+			if (other.technologies != null)
 				return false;
-		} else if (!printers.equals(other.printers))
+		} else if (!technologies.equals(other.technologies))
 			return false;
 		if (rating != other.rating)
 			return false;
@@ -466,8 +464,5 @@ public class Post implements Essence {
 				+ instruction + ", isDisplay=" + isDisplay + ", countDownload="
 				+ countDownload + ", rating=" + rating + "]";
 	}
-
-
-
 
 }

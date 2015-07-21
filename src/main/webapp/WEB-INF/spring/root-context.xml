@@ -37,5 +37,8 @@
 
 	<!-- Файл с настройками AOP -->
 	<import resource="aop-bean.xml" />
+	
+	<!-- Файл с настройками Mail -->
+	<import resource="spring-mail.xml" />
 
 </beans>

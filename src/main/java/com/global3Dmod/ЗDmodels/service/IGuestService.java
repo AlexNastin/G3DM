@@ -61,7 +61,5 @@ public interface IGuestService {
 	public void setRatingInPosts(List<Post> posts) throws ServiceException;
 	
 	public double getRatingByDesigner(Integer idUser) throws ServiceException;
-	
-	
 
 }

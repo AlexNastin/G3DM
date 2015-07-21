@@ -48,5 +48,6 @@
 	<a href="<c:url value="/designer/deletePost?id=6" />">delete post 6</a>
 	<a href="<c:url value="/designer/updatePost?id=6" />">update post 6</a>
 	<a href="<c:url value="/404" />">404</a>
+	<a href="<c:url value="/token" />">token</a>
 </body>
 </html>

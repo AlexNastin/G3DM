@@ -91,6 +91,9 @@ public class User implements Essence {
 	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Avatar avatar;
+	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private PasswordResetToken token;
 
 	public User() {
 		super();

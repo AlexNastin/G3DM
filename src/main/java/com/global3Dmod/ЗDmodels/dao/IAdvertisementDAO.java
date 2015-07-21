@@ -8,14 +8,14 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 public interface IAdvertisementDAO {
 
 	public void updateAdvertisement(Advertisement advertisement)
-			throws DaoException; // modifyAdvertisement
+			throws DaoException;
 
 	public void insertAdvertisement(Advertisement advertisement)
-			throws DaoException; // addAdvertisement
+			throws DaoException;
 
-	public List<Advertisement> selectAllAdvertisements() throws DaoException; // getAllAdvertisements
+	public List<Advertisement> selectAllAdvertisements() throws DaoException;
 
 	public void deleteAdvertisement(Integer idAdvertisement)
-			throws DaoException; // removeAdvertisement
+			throws DaoException;
 
 }

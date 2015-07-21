@@ -447,7 +447,7 @@ public class DesignerService implements IDesignerService {
 			post.setInstruction(updatePostForm.getInstruction());
 			post.setIsDisplay(2);
 			post.setTechnologies(getCheckPrintersById(updatePostForm
-					.getPrintersId()));
+					.getTechnologiesId()));
 			postDAO.updatePost(post);
 		} catch (DaoException e) {
 			throw new ServiceException(e);

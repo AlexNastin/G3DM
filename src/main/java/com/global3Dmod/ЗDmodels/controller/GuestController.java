@@ -2,6 +2,7 @@ package com.global3Dmod.ÇDmodels.controller;
 
 import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
@@ -155,10 +156,16 @@ public class GuestController {
 	@RequestMapping(value = "/categoryMenu", method = RequestMethod.GET)
 	public ModelAndView categoryMenu(Locale locale, Model model)
 			throws Exception {
+		
 		ModelAndView modelAndView = new ModelAndView("categoryMenu");
 		return modelAndView;
 	}
-
+	@RequestMapping(value = "/token", method = RequestMethod.GET)
+	public ModelAndView token(Locale locale, Model model) throws Exception {
+		ModelAndView modelAndView = new ModelAndView("testMy");
+		return modelAndView;
+	}
+	
 	@RequestMapping(value = "/guest/addComment", method = RequestMethod.POST)
 	public ModelAndView addComment(CommentForm commentForm, Locale locale,
 			Model model, HttpSession httpSession) throws Exception {

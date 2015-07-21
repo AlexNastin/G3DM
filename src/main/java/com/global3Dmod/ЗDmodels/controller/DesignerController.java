@@ -58,7 +58,7 @@ public class DesignerController {
 	private PropertyManagerG3DM propertyManager;
 
 	@RequestMapping(value = "/designer/profile", method = RequestMethod.GET)
-	public ModelAndView goProfile(
+	public ModelAndView goProfile(HttpServletRequest request,
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "desc", required = false) boolean desc,
@@ -75,7 +75,9 @@ public class DesignerController {
 		}
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
-
+		String appUrl = "http://" + request.getServerName() + ":"
+				+ request.getServerPort() + request.getContextPath();
+		System.out.println(appUrl);
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
 		List<Post> posts = designerService.getPostsByDesignerForSort(person
 				.getIdPerson());

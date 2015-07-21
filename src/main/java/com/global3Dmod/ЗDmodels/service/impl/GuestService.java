@@ -71,7 +71,7 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private ILikeDAO likeDAO;
-	
+
 	@Autowired
 	private IComplainDAO complainDAO;
 
@@ -145,12 +145,13 @@ public class GuestService implements IGuestService {
 		}
 
 	}
-	
+
 	@Override
 	public void complain(Integer idUser, Integer idPost)
 			throws ServiceException {
 		try {
-			List<Complain> complains = complainDAO.selectComplainNotExists(idUser, idPost);
+			List<Complain> complains = complainDAO.selectComplainNotExists(
+					idUser, idPost);
 			if (complains.isEmpty()) {
 				Complain complainUser = new Complain();
 				complainUser.setUser_idUser(idUser);
@@ -346,10 +347,12 @@ public class GuestService implements IGuestService {
 		try {
 			int allPosts = postDAO.countPostByDesigner(idUser);
 			int allLikes = likeDAO.selectCountLikeByAllPosts(idUser);
-			rating = new BigDecimal((double)allLikes/allPosts).setScale(1, RoundingMode.UP).doubleValue();
+			rating = new BigDecimal((double) allLikes / allPosts).setScale(1,
+					RoundingMode.UP).doubleValue();
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
 		return rating;
 	}
+
 }

@@ -7,12 +7,12 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface IAvatarDAO {
 	
-	public void updateAvatar(Avatar avatar) throws DaoException; //modifyAvatar
+	public void updateAvatar(Avatar avatar) throws DaoException; 
 
-	public void insertAvatar(Avatar avatar) throws DaoException; //addAvatar
+	public void insertAvatar(Avatar avatar) throws DaoException; 
 
-	public List<Avatar> selectAllAvatars() throws DaoException; //getAllAvatars
+	public List<Avatar> selectAllAvatars() throws DaoException; 
 
-	public void deleteAvatar(Integer id) throws DaoException; //removeAvatar
+	public void deleteAvatar(Integer id) throws DaoException; 
 
 }

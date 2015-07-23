@@ -41,15 +41,15 @@
 <!-- Here some place for ads. After placing ads you may delete "placeforads" css class in header -->
 
 	<%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>  
-	<!-- Designer's page will start here -->
+	<!-- User's page will start here -->
 	     
 	      <!--sidebar start-->
      
-      <div class="row">
+      <div class="row footerpadding">
       <div class="col-md-2 nopadding1">
       <div class="list-group">
       
-      <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
+      <img src="<c:url value="/resources/images/avatar.png" />" class="img-responsive img-thumbnail" alt="Responsive image">      
   <a href="#" class="list-group-item active ">
     <i class="fa fa-briefcase"></i> ${mybookmarks}</a>
   <a href="#" class="list-group-item">
@@ -91,12 +91,12 @@
 </nav>
 </c:if>
                               <tr class="background-user-string">
-                                  <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/user/profile?sort=title&desc=${titleDesc}" />">${project}</a></th>
+                                  <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/user/profile?sort=title&desc=${titleDesc}" />"> ${project}</a></th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> ${description}</th>
                                   <th><i class="fa fa-book"></i> ${number}</th>
-                                  <th><i class="fa fa-star"></i><a href="<c:url value="/user/profile?sort=rating&desc=${ratingDesc}" />">${rating}</a></th>
+                                  <th><i class="fa fa-star"></i><a href="<c:url value="/user/profile?sort=rating&desc=${ratingDesc}" />"> ${rating}</a></th>
                                   <th><i class="fa fa-file-image-o"></i> ${miniature}</th>
-                                  <th><i class="fa fa-user"></i><a href="<c:url value="/user/profile?sort=designer&desc=${designerDesc}" />">${designer}</a></th>
+                                  <th><i class="fa fa-user"></i><a href="<c:url value="/user/profile?sort=designer&desc=${designerDesc}" />"> ${designer}</a></th>
                               </tr>
                               </thead>
                               <tbody>

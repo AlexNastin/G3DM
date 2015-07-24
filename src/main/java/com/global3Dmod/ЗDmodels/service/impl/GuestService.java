@@ -5,24 +5,23 @@ import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import org.apache.commons.codec.digest.DigestUtils;
+import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
-import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
 import com.global3Dmod.ÇDmodels.dao.IComplainDAO;
 import com.global3Dmod.ÇDmodels.dao.ILikeDAO;
+import com.global3Dmod.ÇDmodels.dao.IPasswordResetTokenDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.IRatingDAO;
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
@@ -32,9 +31,9 @@ import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.domain.Complain;
 import com.global3Dmod.ÇDmodels.domain.Like;
+import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
-import com.global3Dmod.ÇDmodels.domain.Rating;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -74,6 +73,9 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private IComplainDAO complainDAO;
+
+	@Autowired
+	private IPasswordResetTokenDAO resetTokenDAO;
 
 	@Override
 	public void addUser(SignupForm signupForm) throws ServiceException {
@@ -353,6 +355,42 @@ public class GuestService implements IGuestService {
 			throw new ServiceException(e);
 		}
 		return rating;
+	}
+
+	@Override
+	public boolean createPasswordResetTokenForUser(User user, String token)
+			throws ServiceException {
+		boolean isCreate = false;
+		Date date = new Date();
+		try {
+			PasswordResetToken passwordResetTokenOld = resetTokenDAO.selectTokenByUser(user.getIdUser());
+			if (passwordResetTokenOld == null) {
+				PasswordResetToken passwordResetTokenNew = new PasswordResetToken();
+				passwordResetTokenNew.setExpiryDate(new Date(date.getTime() + 86400000l));
+				passwordResetTokenNew.setUser_idUser(user.getIdUser());
+				passwordResetTokenNew.setToken(token);
+				resetTokenDAO.insertPasswordResetToken(passwordResetTokenNew);
+				isCreate = true;
+			} else {
+				Calendar calendar = Calendar.getInstance();
+				if (passwordResetTokenOld.getExpiryDate().getTime() - calendar.getTime().getTime() <= 0) {
+					passwordResetTokenOld.setExpiryDate(new Date(date.getTime() + 86400000l));
+					passwordResetTokenOld.setToken(token);
+					resetTokenDAO.updatePasswordResetToken(passwordResetTokenOld);
+					isCreate = true;
+				}
+			}
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return isCreate;
+	}
+
+	@Override
+	public PasswordResetToken getPasswordResetToken(String token)
+			throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

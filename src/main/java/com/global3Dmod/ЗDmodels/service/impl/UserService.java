@@ -118,11 +118,6 @@ public class UserService implements IUserService {
 		}
 		return posts;
 	}
-
-	@Override
-	public void createPasswordResetTokenForUser(User user, String token)
-			throws ServiceException {
-	}
 	
 	@Override
 	public void updateUser(UserPersonalDataForm personalDataForm, String login)

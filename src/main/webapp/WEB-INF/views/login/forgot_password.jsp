@@ -21,7 +21,6 @@
 					type="email" value="" />
 				<button type="submit" onclick="resetPass()">resetPassword</button>
 			</div>
- <a href="<c:url value="/user/resetPassword?email=alexnastin1992@gmail.com" />">link</a>
 		</div>
 	</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
@@ -29,20 +28,21 @@
 		function resetPass() {
 			var email = $("#email").val();
 			$.post("<c:url value="/resetPassword"></c:url>",{email : email},
-							function(data) {
-								window.location.href = "<c:url value="/login2.html"></c:url>"
-										+ "?message=aasasda"})
-					.fail(function(data) {
-								if (data.responseJSON.error
-										.indexOf("MailError") > -1) {
-									window.location.href = "<c:url value="/emailError.html"></c:url>";
-								} else {
-									window.location.href = "<c:url value="/login.html"></c:url>"
-											+ "?message="
-											+ data.responseJSON.message;
-								}
-							});
-		}
+					function(data){
+	            window.location.href = 
+	              "<c:url value="/go/signin"></c:url>" + "?message=" + data.message;
+	    })
+	    .fail(function(data) {
+	        if(data.responseJSON.error.indexOf("MailError") > -1) {
+	            window.location.href = 
+	              "<c:url value="/emailError.html"></c:url>";
+	        }
+	        else {
+	            window.location.href = 
+	              "<c:url value="/login.html"></c:url>" + "?message=" + data.responseJSON.message;
+	        }
+	    });
+	}
 	</script>
 </body>
 

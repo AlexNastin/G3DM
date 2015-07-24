@@ -8,13 +8,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "password_reset_token")
-@NamedQuery(name="PasswordResetToken.findAll", query="select p from PasswordResetToken p")
+
+@NamedQueries({
+	@NamedQuery(name="PasswordResetToken.findAll", query="select p from PasswordResetToken p"),
+	@NamedQuery(name = "PasswordResetToken.findTokenByUser", query = "select p from PasswordResetToken p where p.user_idUser = :user_idUser")})
 public class PasswordResetToken {
 
 	private static final int EXPIRATION = 60 * 24;
@@ -25,6 +29,9 @@ public class PasswordResetToken {
 	private int idToken;
 
 	@Column(name = "user_id_user")
+	private int user_idUser;
+	
+	@Column(name = "token")
 	private String token;
 
 	@OneToOne
@@ -42,20 +49,20 @@ public class PasswordResetToken {
 		this.idToken = idToken;
 	}
 
+	public int getUser_idUser() {
+		return user_idUser;
+	}
+
+	public void setUser_idUser(int user_idUser) {
+		this.user_idUser = user_idUser;
+	}
+
 	public String getToken() {
 		return token;
 	}
 
 	public void setToken(String token) {
 		this.token = token;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	public Date getExpiryDate() {
@@ -74,7 +81,7 @@ public class PasswordResetToken {
 				+ ((expiryDate == null) ? 0 : expiryDate.hashCode());
 		result = prime * result + idToken;
 		result = prime * result + ((token == null) ? 0 : token.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + user_idUser;
 		return result;
 	}
 
@@ -99,18 +106,26 @@ public class PasswordResetToken {
 				return false;
 		} else if (!token.equals(other.token))
 			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
+		if (user_idUser != other.user_idUser)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "PasswordResetToken [idToken=" + idToken + ", token=" + token
-				+ ", user=" + user + ", expiryDate=" + expiryDate + "]";
+		return "PasswordResetToken [idToken=" + idToken + ", user_idUser="
+				+ user_idUser + ", token=" + token + ", expiryDate="
+				+ expiryDate + "]";
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+
 
 }

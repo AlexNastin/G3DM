@@ -67,7 +67,7 @@
       <button type="button" class="btn btn-default btn-outline btn-circle"  onClick='location.href="<c:url value="/signup"  />"'>
       ${signup}
       </button>
-      <a href="<c:url value="/go/forgotPassword" />">Forgot Password</a>
+      <a href="<c:url value="/forgotPassword.html" />">Forgot Password</a>
       </div>    
     </div>
 </form>

@@ -23,6 +23,8 @@
 		<class>com.global3Dmod.printer.domain.Printer</class>
 		<class>com.global3Dmod.printer.domain.Rating</class>
 		<class>com.global3Dmod.printer.domain.Like</class>
+		<class>com.global3Dmod.printer.domain.Complain</class>
+		<class>com.global3Dmod.printer.domain.PasswordResetToken</class>
 		<properties>
 			<property name="hibernate.search.default.directory_provider"
 				value="filesystem" />

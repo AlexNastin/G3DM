@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.domain.Person;
+import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 /**
@@ -25,7 +26,7 @@ public class ComplainController {
 	@RequestMapping(value = "/complain", method = RequestMethod.GET)
 	public ModelAndView complain(Model model,
 			@RequestParam(value = "id", required = false) Integer idPost,
-			HttpSession httpSession) throws Exception {
+			HttpSession httpSession) throws ServiceException {
 
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);

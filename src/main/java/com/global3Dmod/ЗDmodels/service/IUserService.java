@@ -27,8 +27,6 @@ public interface IUserService {
 	public List<Post> getPostsByUserForSort(Integer idUser)
 			throws ServiceException;
 
-	public void createPasswordResetTokenForUser(User user, String token)
-			throws ServiceException;
 	
 	public void updateUser(UserPersonalDataForm personalDataForm, String login)
 			throws ServiceException;

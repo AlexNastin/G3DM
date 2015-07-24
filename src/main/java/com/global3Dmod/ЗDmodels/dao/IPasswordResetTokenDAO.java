@@ -17,5 +17,7 @@ public interface IPasswordResetTokenDAO {
 			throws DaoException;
 
 	public void deletePasswordResetToken(Integer idToken) throws DaoException;
+	
+	public PasswordResetToken selectTokenByUser(Integer idUser) throws DaoException;
 
 }

@@ -12,25 +12,25 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
-import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Component
-public class PersonalDataValidator implements Validator {
+public class DesignerPersonalDataValidator implements Validator {
 
 	@Autowired
 	private IGuestService guestService;
 
 	@Override
 	public boolean supports(Class<?> arg0) {
-		return PersonalDataForm.class.isAssignableFrom(arg0);
+		return DesignerPersonalDataForm.class.isAssignableFrom(arg0);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
 
-		PersonalDataForm personalDataForm = (PersonalDataForm) target;
+		DesignerPersonalDataForm personalDataForm = (DesignerPersonalDataForm) target;
 
 //		List<String> emails = null;
 //		List<String> nickNames = null;

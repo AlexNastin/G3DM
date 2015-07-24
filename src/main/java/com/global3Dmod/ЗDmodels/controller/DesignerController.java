@@ -33,8 +33,8 @@ import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
-import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
-import com.global3Dmod.ÇDmodels.form.PersonalSecurityForm;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
@@ -152,7 +152,7 @@ public class DesignerController {
 	}
 
 	@RequestMapping(value = "/designer/personalData/updateFormAdd", method = RequestMethod.POST)
-	public ModelAndView updateFormAdd(PersonalDataForm personalDataForm,
+	public ModelAndView updateFormAdd(DesignerPersonalDataForm personalDataForm,
 			Locale locale, Model model, HttpSession httpSession)
 			throws Exception {
 		Person person = (Person) httpSession
@@ -186,7 +186,7 @@ public class DesignerController {
 
 	@RequestMapping(value = "/designer/personalSecurity/updatePasswordFormAdd", method = RequestMethod.POST)
 	public ModelAndView updatePasswordFormAdd(
-			PersonalSecurityForm personalSecurityForm, Locale locale,
+			DesignerPersonalSecurityForm personalSecurityForm, Locale locale,
 			Model model, HttpSession httpSession) throws Exception {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);

@@ -15,16 +15,18 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.User;
-import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
-import com.global3Dmod.ÇDmodels.form.validator.PersonalDataValidator;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.UserPersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.validator.DesignerPersonalDataValidator;
+import com.global3Dmod.ÇDmodels.form.validator.UserPersonalDataValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 
 @Controller
-@RequestMapping("/designer/personalData/updateForm")
-public class PersonalDataController {
+@RequestMapping("/user/personalData/updateForm")
+public class UserPersonalDataController {
 	
 	@Autowired
-	private PersonalDataValidator personalDataValidator;
+	private UserPersonalDataValidator personalDataValidator;
 	
 	@Autowired
 	private IDesignerService designerService;
@@ -37,8 +39,8 @@ public class PersonalDataController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalDataForm");
-		PersonalDataForm personalDataForm = new PersonalDataForm();
+		ModelAndView modelAndView = new ModelAndView("user/userPersonalDataForm");
+		UserPersonalDataForm personalDataForm = new UserPersonalDataForm();
 		modelAndView.addObject(ControllerParamConstant.PERSONAL_DATA_FORM, personalDataForm);
 		modelAndView.addObject("listCountry", designerService.getAllCountries());
 		User user = designerService.getUser(person.getLogin());
@@ -47,15 +49,15 @@ public class PersonalDataController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView personalDataValid(PersonalDataForm personalDataForm,
+	public ModelAndView personalDataValid(UserPersonalDataForm personalDataForm,
 			BindingResult result) throws Exception {
 		personalDataValidator.validate(personalDataForm, result);
 
 		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("designer/designerPersonalDataForm");
+			ModelAndView modelAndView = new ModelAndView("user/userPersonalDataForm");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("forward:/designer/personalData/updateFormAdd");
+		ModelAndView modelAndView = new ModelAndView("forward:/user/personalData/updateFormAdd");
 		modelAndView.addObject("personalDataForm", personalDataForm);
 		return modelAndView;
 	}

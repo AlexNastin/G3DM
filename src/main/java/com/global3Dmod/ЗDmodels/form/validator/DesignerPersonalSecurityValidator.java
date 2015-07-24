@@ -12,26 +12,26 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.global3Dmod.ЗDmodels.exception.ServiceException;
-import com.global3Dmod.ЗDmodels.form.PersonalDataForm;
-import com.global3Dmod.ЗDmodels.form.PersonalSecurityForm;
+import com.global3Dmod.ЗDmodels.form.DesignerPersonalDataForm;
+import com.global3Dmod.ЗDmodels.form.DesignerPersonalSecurityForm;
 import com.global3Dmod.ЗDmodels.form.SignupForm;
 import com.global3Dmod.ЗDmodels.service.IGuestService;
 
 @Component
-public class PersonalSecurityValidator implements Validator {
+public class DesignerPersonalSecurityValidator implements Validator {
 
 	@Autowired
 	private IGuestService guestService;
 
 	@Override
 	public boolean supports(Class<?> arg0) {
-		return PersonalSecurityForm.class.isAssignableFrom(arg0);
+		return DesignerPersonalSecurityForm.class.isAssignableFrom(arg0);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
 
-		PersonalSecurityForm personalSecurityForm = (PersonalSecurityForm) target;
+		DesignerPersonalSecurityForm personalSecurityForm = (DesignerPersonalSecurityForm) target;
 
 		// Валидация пароля и совпадение основного пароля и подтверждённого
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",

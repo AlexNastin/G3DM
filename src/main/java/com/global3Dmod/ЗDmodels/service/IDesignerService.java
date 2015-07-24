@@ -16,8 +16,8 @@ import com.global3Dmod.ÇDmodels.domain.Technology;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
-import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
-import com.global3Dmod.ÇDmodels.form.PersonalSecurityForm;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
 
@@ -66,10 +66,10 @@ public interface IDesignerService {
 
 	public User getUser(String login) throws ServiceException;
 
-	public void updateUser(PersonalDataForm personalDataForm, String login)
+	public void updateUser(DesignerPersonalDataForm personalDataForm, String login)
 			throws ServiceException;
 
-	public void updatePassword(PersonalSecurityForm personalSecurityForm,
+	public void updatePassword(DesignerPersonalSecurityForm personalSecurityForm,
 			String login) throws ServiceException;
 
 	public void updatePost(UpdatePostForm updatePostForm, Integer idPost)

@@ -3,6 +3,7 @@ package com.global3Dmod.«Dmodels.service.impl;
 import java.util.Collections;
 import java.util.List;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
@@ -13,6 +14,10 @@ import com.global3Dmod.«Dmodels.domain.Post;
 import com.global3Dmod.«Dmodels.domain.User;
 import com.global3Dmod.«Dmodels.exception.DaoException;
 import com.global3Dmod.«Dmodels.exception.ServiceException;
+import com.global3Dmod.«Dmodels.form.DesignerPersonalDataForm;
+import com.global3Dmod.«Dmodels.form.DesignerPersonalSecurityForm;
+import com.global3Dmod.«Dmodels.form.UserPersonalDataForm;
+import com.global3Dmod.«Dmodels.form.UserPersonalSecurityForm;
 import com.global3Dmod.«Dmodels.service.IUserService;
 import com.global3Dmod.«Dmodels.service.ServiceParamConstant;
 import com.global3Dmod.«Dmodels.sort.post.SortedPostsByDesigner;
@@ -117,8 +122,41 @@ public class UserService implements IUserService {
 	@Override
 	public void createPasswordResetTokenForUser(User user, String token)
 			throws ServiceException {
+	}
 	
-		
+	@Override
+	public void updateUser(UserPersonalDataForm personalDataForm, String login)
+			throws ServiceException {
+		try {
+			User user = userDAO.selectUser(login);
+			user.setCountry_idCountry(personalDataForm.getCountry_idCountry());
+			user.setCity_id—ity(personalDataForm.getCity_idCity());
+			user.setName(personalDataForm.getName());
+			user.setSurname(personalDataForm.getSurname());
+			user.setGender(personalDataForm.getGender());
+			user.setDateBirth(personalDataForm.getDateBirth());
+			userDAO.updateUser(user);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+
+	}
+
+	@Override
+	public void updatePassword(UserPersonalSecurityForm personalSecurityForm,
+			String login) throws ServiceException {
+		try {
+			User user = userDAO.selectUser(login);
+			String password = personalSecurityForm.getPassword();
+			if (password != null) {
+				String md5Password = DigestUtils.md5Hex(password);
+				user.setPassword(md5Password);
+			}
+			userDAO.updateUser(user);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+
 	}
 
 }

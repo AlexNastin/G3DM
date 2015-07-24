@@ -19,9 +19,9 @@ import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
-import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
-import com.global3Dmod.ÇDmodels.form.validator.PersonalDataValidator;
+import com.global3Dmod.ÇDmodels.form.validator.DesignerPersonalDataValidator;
 import com.global3Dmod.ÇDmodels.form.validator.UpdatePostValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 

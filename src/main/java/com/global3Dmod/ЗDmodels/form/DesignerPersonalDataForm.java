@@ -2,7 +2,7 @@ package com.global3Dmod.ÇDmodels.form;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
-public class PersonalDataForm implements Essence {
+public class DesignerPersonalDataForm implements Essence {
 	
 	private int country_idCountry;
 	private int city_idCity;
@@ -81,7 +81,7 @@ public class PersonalDataForm implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PersonalDataForm other = (PersonalDataForm) obj;
+		DesignerPersonalDataForm other = (DesignerPersonalDataForm) obj;
 		if (city_idCity != other.city_idCity)
 			return false;
 		if (country_idCountry != other.country_idCountry)

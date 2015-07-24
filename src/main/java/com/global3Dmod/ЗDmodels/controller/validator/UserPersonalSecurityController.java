@@ -15,21 +15,21 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.User;
-import com.global3Dmod.ÇDmodels.form.PersonalDataForm;
-import com.global3Dmod.ÇDmodels.form.PersonalSecurityForm;
-import com.global3Dmod.ÇDmodels.form.validator.PersonalDataValidator;
-import com.global3Dmod.ÇDmodels.form.validator.PersonalSecurityValidator;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalSecurityForm;
+import com.global3Dmod.ÇDmodels.form.UserPersonalSecurityForm;
+import com.global3Dmod.ÇDmodels.form.validator.DesignerPersonalDataValidator;
+import com.global3Dmod.ÇDmodels.form.validator.DesignerPersonalSecurityValidator;
+import com.global3Dmod.ÇDmodels.form.validator.UserPersonalSecurityValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
+import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
-@RequestMapping("/designer/personalSecurity")
-public class PersonalSecurityController {
+@RequestMapping("/user/personalSecurity")
+public class UserPersonalSecurityController {
 	
 	@Autowired
-	private PersonalSecurityValidator personalSecurityValidator;
-	
-	@Autowired
-	private IDesignerService designerService;
+	private UserPersonalSecurityValidator personalSecurityValidator;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView personalSecurity(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -39,22 +39,22 @@ public class PersonalSecurityController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalSecurityForm");
-		PersonalSecurityForm personalSecurityForm = new PersonalSecurityForm();
+		ModelAndView modelAndView = new ModelAndView("user/userPersonalSecurityForm");
+		UserPersonalSecurityForm personalSecurityForm = new UserPersonalSecurityForm();
 		modelAndView.addObject(ControllerParamConstant.PERSONAL_SECURITY_FORM, personalSecurityForm);
 		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView personalDataValid(PersonalSecurityForm personalSecurityForm,
+	public ModelAndView personalDataValid(UserPersonalSecurityForm personalSecurityForm,
 			BindingResult result) throws Exception {
 		personalSecurityValidator.validate(personalSecurityForm, result);
 
 		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("designer/designerPersonalSecurityForm");
+			ModelAndView modelAndView = new ModelAndView("user/userPersonalSecurityForm");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("forward:/designer/personalSecurity/updatePasswordFormAdd");
+		ModelAndView modelAndView = new ModelAndView("forward:/user/personalSecurity/updatePasswordFormAdd");
 		modelAndView.addObject("personalSecurityForm", personalSecurityForm);
 		return modelAndView;
 	}

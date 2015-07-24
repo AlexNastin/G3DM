@@ -16,6 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.User;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.DesignerPersonalSecurityForm;
+import com.global3Dmod.ÇDmodels.form.UserPersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.UserPersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
@@ -82,6 +87,56 @@ public class UserController {
 		}
 		modelAndView = userService.setParamsForSort(modelAndView, sort, desc);
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/user/personalData", method = RequestMethod.GET)
+	public ModelAndView personalData(Locale locale, Model model,
+			HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		ModelAndView modelAndView = new ModelAndView(
+				"user/userPersonalData");
+		User user = designerService.getUser(person.getLogin());
+		modelAndView.addObject(ControllerParamConstant.USER, user);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/user/personalData/updateFormAdd", method = RequestMethod.POST)
+	public ModelAndView updateFormAdd(UserPersonalDataForm personalDataForm,
+			Locale locale, Model model, HttpSession httpSession)
+			throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		userService.updateUser(personalDataForm, person.getLogin());
+		ModelAndView modelAndView2 = new ModelAndView(
+				"redirect:/user/personalData/updateForm");
+		return modelAndView2;
+	}
+	
+	@RequestMapping(value = "/user/personalSecurity/updatePasswordFormAdd", method = RequestMethod.POST)
+	public ModelAndView updatePasswordFormAdd(
+			UserPersonalSecurityForm personalSecurityForm, Locale locale,
+			Model model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		userService.updatePassword(personalSecurityForm, person.getLogin());
+
+		ModelAndView modelAndView2 = new ModelAndView(
+				"/user/personalSecurity");
+		modelAndView2.addObject("updatePasswordSuccessfully", "successfully");
+		return modelAndView2;
 	}
 
 }

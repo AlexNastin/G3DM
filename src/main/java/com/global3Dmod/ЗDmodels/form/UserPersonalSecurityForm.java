@@ -2,7 +2,7 @@ package com.global3Dmod.ÇDmodels.form;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
-public class PersonalSecurityForm implements Essence {
+public class UserPersonalSecurityForm implements Essence {
 	
 	private String password;
 	private String confirmPassword;
@@ -36,7 +36,7 @@ public class PersonalSecurityForm implements Essence {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PersonalSecurityForm other = (PersonalSecurityForm) obj;
+		UserPersonalSecurityForm other = (UserPersonalSecurityForm) obj;
 		if (confirmPassword == null) {
 			if (other.confirmPassword != null)
 				return false;

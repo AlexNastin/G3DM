@@ -200,4 +200,15 @@ public class PostDAOImpl implements IPostDAO {
 		return count;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Post> selectPostsByModeratingForSort() throws DaoException {
+		List<Post> posts = em.createNamedQuery("Post.findByModerating").getResultList();
+		for (Post post : posts) {
+			Hibernate.initialize(post.getUser());
+		}
+		return posts;
+	}
+
 }

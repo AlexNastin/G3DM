@@ -32,5 +32,7 @@ public interface IPostDAO {
 	public Post selectPostForDelete(Integer idPost) throws DaoException;
 	
 	public int countPostByDesigner(Integer idUser) throws DaoException;
+	
+	public List<Post> selectPostsByModeratingForSort() throws DaoException;
 
 }

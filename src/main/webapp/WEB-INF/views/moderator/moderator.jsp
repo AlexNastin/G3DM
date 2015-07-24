@@ -65,65 +65,87 @@
                               <!-- Some sorts for table -->
                              
                               <thead>
+                              
+                              <c:if test="${sizePosts != 0}">
+                              <nav style="text-align:center">
+  <ul class="pagination">
+  <c:if test="${thisPage>1}">
+    <li>
+      <a href="<c:url value="/moderator/profile?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    </c:if>
+    <c:forEach begin="${startPage}" end="${endPage}" var="page">
+    
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/moderator/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
+    </c:forEach>
+    
+    <c:if test="${thisPage!=maxPage}">
+    <li>
+      <a href="<c:url value="/moderator/profile?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    </c:if>
+  </ul>
+</nav>
+</c:if>
+                              
                               <tr class="background-user-string">
-                                  <th><i class="fa fa-bullhorn"></i> Project</th>
+                                  <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/moderator/profile?sort=title&desc=${titleDesc}" />"> Project</a></th>
                                   <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
                                   <th>Number</th>
-                                  <th> <i class="fa fa-calendar"></i> Date </th>
-                                  <th><i class="fa fa-th-list"></i> Category</th>
-                                  <th><i class="fa fa-list-alt"></i> Subcategory</th>
-                                  <th><i class="fa fa-user"></i> Author</th>
+                                  <th> <i class="fa fa-calendar"></i><a href="<c:url value="/moderator/profile?sort=date&desc=${dateDesc}" />"> Date</a> </th>
+                                  <th><i class="fa fa-th-list"></i><a href="<c:url value="/moderator/profile?sort=category&desc=${categoryDesc}" />"> Category</a> </th>
+                                  <th><i class="fa fa-list-alt"></i> <a href="<c:url value="/moderator/profile?sort=subcategory&desc=${subcategoryDesc}" />"> Subcategory</a></th>
+                                  <th><i class="fa fa-user"></i><a href="<c:url value="/moderator/profile?sort=designer&desc=${designerDesc}" />"> Author</a> </th>
+                             	  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Check</th>
                               </tr>
                               </thead>
                               <tbody>
-                              <tr>
-                                  <td><a href="basic_table.html#">Draw</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>1</td>
-                                  <td>25-01.2015</td>
-                                  <td>Auto </td>
-                                  <td>Tractors</td>
-                                  <td>Valery Meladze </td>
+                              <c:forEach items="${listPostsLimit10}" var="post" >
+                             <tr>
+                                  <td><a href="<c:url value="/model?id=${post.idPost}" />">${post.title}</a></td>
+                                  <td class="hidden-phone">${post.description}</td>
+                                  <td>${post.numberPost}</td>
+                                  <td>${post.dateUpdate}</td>
+                                  <td>${post.category.title}</td>
+                                  <td>${post.subcategory.title}</td>
+                                  <td>${post.user.nickName}</td>
+                                  <td>
+                                  <a href="<c:url value="/moderator/moderationPost?id=${post.idPost}" />" type="button" class="btn btn-danger">Check</a>
+                              	  </td>
                               </tr>
-                              <tr>
-                                   <td><a href="basic_table.html#">Draw</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>1</td>
-                                  <td>25-01.2015</td>
-                                  <td>Auto </td>
-                                  <td>Tractors</td>
-                                  <td>Valery Meladze </td>
-                              </tr>
-                              <tr>
-                                  <td><a href="basic_table.html#">Draw</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>1</td>
-                                  <td>25-01.2015</td>
-                                  <td>Auto </td>
-                                  <td>Tractors</td>
-                                  <td>Valery Meladze </td>
-                              </tr>
-                              <tr>
-                                   <td><a href="basic_table.html#">Draw</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>1</td>
-                                  <td>25-01.2015</td>
-                                  <td>Auto </td>
-                                  <td>Tractors</td>
-                                  <td>Valery Meladze </td>
-                              </tr>
-                              <tr>
-                                   <td><a href="basic_table.html#">Draw</a></td>
-                                  <td class="hidden-phone">Lorem Ipsum dolor</td>
-                                  <td>1</td>
-                                  <td>25-01.2015</td>
-                                  <td>Auto </td>
-                                  <td>Tractors</td>
-                                  <td>Valery Meladze </td>
-                              </tr>
+                              </c:forEach>
                               </tbody>
                           </table>
                       </div>
+                      <c:if test="${sizePosts != 0}">
+                              <nav style="text-align:center">
+  <ul class="pagination">
+  <c:if test="${thisPage>1}">
+    <li>
+      <a href="<c:url value="/moderator/profile?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    </c:if>
+    <c:forEach begin="${startPage}" end="${endPage}" var="page">
+    
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/moderator/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
+    </c:forEach>
+    
+    <c:if test="${thisPage!=maxPage}">
+    <li>
+      <a href="<c:url value="/moderator/profile?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    </c:if>
+  </ul>
+</nav>
+</c:if>
                   </div>
               </div>
               

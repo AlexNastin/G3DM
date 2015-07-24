@@ -17,7 +17,7 @@
 <c:set value="/designer/profile?sort=date&page=1" var="profileURL" />
 </c:if>
 <c:if test="${moderatorBool}">
-<c:set value="/moderator/profile" var="profileURL" />
+<c:set value="/moderator/profile?sort=date&page=1" var="profileURL" />
 </c:if>
 <c:if test="${adminBool}">
 <c:set value="/admin/profile" var="profileURL" />

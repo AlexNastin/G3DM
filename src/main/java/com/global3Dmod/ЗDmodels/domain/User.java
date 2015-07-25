@@ -89,6 +89,9 @@ public class User implements Essence {
 	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Comment> comments;
 	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private List<RejectMessage> rejectMessages;
+	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Avatar avatar;
 	
@@ -233,6 +236,22 @@ public class User implements Essence {
 
 	public void setComments(List<Comment> comments) {
 		this.comments = comments;
+	}
+
+	public List<RejectMessage> getRejectMessages() {
+		return rejectMessages;
+	}
+
+	public void setRejectMessages(List<RejectMessage> rejectMessages) {
+		this.rejectMessages = rejectMessages;
+	}
+
+	public PasswordResetToken getToken() {
+		return token;
+	}
+
+	public void setToken(PasswordResetToken token) {
+		this.token = token;
 	}
 
 	public Avatar getAvatar() {

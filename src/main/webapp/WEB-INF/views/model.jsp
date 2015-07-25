@@ -70,9 +70,7 @@
 							class="btn btn-success fa fa-thumbs-o-up"> ${like} <span
 								class="badge">${countLike} </span></i>
 						</a>
-						<a href="<c:url value="/complain?id=${post.idPost}" />"
-						class="btn btn-danger fa fa-exclamation-circle"> ${issue}
-						</a>
+												<button type="button" class="btn btn-danger fa fa-exclamation-circle" data-toggle="modal" data-target="#myModal"> ${issue}</button>
 					</security:authorize>
 					<security:authorize access="isAnonymous()">
 						<a href="<c:url value="/go/signin" />"> <i
@@ -80,7 +78,7 @@
 								class="badge">${countLike} </span></i>
 						</a>
 						<a href="<c:url value="/go/signin" />"
-						class="btn btn-danger fa fa-exclamation-circle"> ${issue}
+						class="btn btn-danger fa fa-exclamation-circle" > ${issue}
 						</a>
 					</security:authorize>
 
@@ -88,6 +86,31 @@
 				</div>
 
 			</div>
+			
+			
+			
+			<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirm</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you really wanna to complain this post?</p>
+      </div>
+      <div class="modal-footer">
+      <a href="<c:url value="/complain?id=${post.idPost}" />"
+						class="btn btn-danger"> ${issue}
+						</a>
+        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div> 
 			<div class="col-md-8">
 				<h3>${info}</h3>
 
@@ -232,13 +255,12 @@
 			</div>
 		</div>
 	</div>
+	<!-- Modal -->
+
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<script src="<c:url value="/resources/js/jquery.min.js" />">
-		
 	</script>
-	<script src="<c:url value="/resources/js/jquery-1.7.min.js" />">
-		
-	</script>
+	
 	<script src="<c:url value="/resources/js/jquery.validate.min.js" />">
 		
 	</script>

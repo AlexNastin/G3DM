@@ -105,7 +105,7 @@
                                   <td class="hidden-phone">${post.description}</td>
                                   <td>${post.numberPost}</td>
                                   <td>${post.rating}</td>
-                                  <td>Разобраться с путями</td>
+                                  <td><img alt="" src="<c:url value="${post.postPhotos[0].photoPath}" />"></td>
                                   <td>${post.user.nickName}</td>
                               </tr>
                               </c:forEach>

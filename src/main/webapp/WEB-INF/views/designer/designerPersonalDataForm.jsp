@@ -71,7 +71,7 @@
                                                                                       
                               <tbody>
                               <tr>
-                                  <td>Name</td>
+                                  <td>NickName</td>
                                   <td class="hidden-phone">${user.nickName}</td>
                                   
                               </tr>

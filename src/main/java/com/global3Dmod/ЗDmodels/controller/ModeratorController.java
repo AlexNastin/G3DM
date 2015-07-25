@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
+import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IModeratorService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 
@@ -29,6 +30,9 @@ public class ModeratorController {
 	
 	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+	private IDesignerService designerService;
 	
 	@RequestMapping(value = "/moderator/rejectingPosts", method = RequestMethod.GET)
 	public ModelAndView rejectingPosts(@RequestParam(value = "page", required = false) Integer page,@RequestParam(value = "sort", required = false) String sort, @RequestParam(value = "desc", required = false) boolean desc, Locale locale, Model model, HttpSession httpSession)
@@ -121,6 +125,22 @@ public class ModeratorController {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, false);
 		}
 		modelAndView = moderatorService.setParamsForSort(modelAndView, sort, desc);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/moderator/moderationPost", method = RequestMethod.GET)
+	public ModelAndView personalData(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model,
+			HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		ModelAndView modelAndView = new ModelAndView(
+				"moderator/moderatorModerationPost");
+		Post post = designerService.getPost(idPost);
+		modelAndView.addObject(ControllerParamConstant.POST, post);
 		return modelAndView;
 	}
 

@@ -13,6 +13,7 @@
 <spring:message code="designer.menu.works" var="works"/>
 <spring:message code="designer.menu.data" var="data"/>
 <spring:message code="designer.menu.add" var="add"/>
+<spring:message code="moderator.menu.postsunpublished" var="unpblsd"/>
 
 
 
@@ -44,13 +45,12 @@
     <div class="col-md-2 nopadding1">
      <div class="list-group">
       <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
-  <a href="<c:url value="/designer/profile?sort=date&page=1" />" class="list-group-item">
-    <i class="fa fa-briefcase"></i> ${works} 
-  </a>
   
-  <a href="<c:url value="/designer/personalData" />" class="list-group-item active"><i class="fa fa-cogs"></i> ${data}  </a>
-  <a href="<c:url value="/designer/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> Personal Security  </a>
-  <a href="<c:url value="/designer/addPost" />" class="list-group-item"><i class="fa fa-plus-square"></i> ${add}  </a>
+ <a href="<c:url value="/moderator/profile" />" class="list-group-item active">
+    <i class="fa fa-exclamation-triangle"></i> ${unpblsd}
+  </a>
+  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-check-circle"></i> Rejecring Posts</a>
+
   
 	 </div>
     </div>
@@ -60,70 +60,76 @@
                   <div class="col-md-12 nopadding2">
                       <div class="col-md-4" style="padding-left:0px;">
                       <div class="content-pael">                      
-                      <h2>Personal data</h2>
+                      <h2>Post</h2>
                       
                           <table class="table table-striped table-advance table-hover">
                                                                                       
                               <tbody>
                               <tr>
-                                  <td>NickName</td>
-                                  <td class="hidden-phone">${user.nickName}</td>
+                                  <td>Designer</td>
+                                  <td class="hidden-phone">${post.user.nickName}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>City</td>
-                                  	<td class="hidden-phone">${user.city.title}</td>
+                                   <td>Category</td>
+                                  	<td class="hidden-phone">${post.category.title}</td>
                                   
                               </tr>
                               <tr>
-                                  <td>Country</td>
-                                  <td class="hidden-phone">${user.country.title}</td>
+                                  <td>Subcategory</td>
+                                  <td class="hidden-phone">${post.subcategory.title}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Login</td>
-                                  <td class="hidden-phone">${user.login}</td>
+                                   <td>Designer program</td>
+                                  <td class="hidden-phone">${post.disProgram.title}</td>
                               </tr>
                               <tr>
-                                   <td>Name</td>
-                                  <td class="hidden-phone">${user.name}</td>
+                                   <td>Number</td>
+                                  <td class="hidden-phone">${post.numberPost}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Surname</td>
-                                  <td class="hidden-phone">${user.surname}</td>
+                                   <td>Title</td>
+                                  <td class="hidden-phone">${post.title}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Date birth</td>
-                                  <td class="hidden-phone">${user.dateBirth}</td>
+                                   <td>Description</td>
+                                  <td class="hidden-phone">${post.description}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Rating</td>
-                                  <td class="hidden-phone">${user.rating}</td>
+                                   <td>Instruction</td>
+                                  <td class="hidden-phone">${post.instruction}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Gender</td>
-                                  <td class="hidden-phone"><c:if test="${user.gender == 2}">
-			Male
-		</c:if>
-		<c:if test="${user.gender == 1}">
-			Female
-		</c:if>
-		<c:if test="${user.gender == 0}">
-			None
-		</c:if></td>
+                                   <td>Upload date</td>
+                                  <td class="hidden-phone">${post.dateReg}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Change date</td>
+                                  <td class="hidden-phone">${post.dateUpdate}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>File</td>
+                                  <td class="hidden-phone">${post.file.filePath}</td>
+                                  
+                              </tr>
+                              <tr>
+                                   <td>Photo</td>
+                                  <td class="hidden-phone"><img alt="" src="<c:url value="${post.postPhotos[0].photoPath}" />"></td>
                                   
                               </tr>
                                   </tbody>
                           </table>
                       </div>
                       <div class="col-md-12">
-                      <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/designer/personalData/updateForm"  />"'>
-      Update
-      </button>
+                      <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/moderator/publishPost"  />"'>Publish</button>
+      				  <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/moderator/rejectPost"  />"'>Reject</button>
       </div>                
                      
                   </div>

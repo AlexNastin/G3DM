@@ -64,7 +64,7 @@
                                                                                       
                               <tbody>
                               <tr>
-                                  <td>Name</td>
+                                  <td>NickName</td>
                                   <td class="hidden-phone">${user.nickName}</td>
                                   
                               </tr>
@@ -95,11 +95,6 @@
                               <tr>
                                    <td>Date birth</td>
                                   <td class="hidden-phone">${user.dateBirth}</td>
-                                  
-                              </tr>
-                              <tr>
-                                   <td>Rating</td>
-                                  <td class="hidden-phone">${user.rating}</td>
                                   
                               </tr>
                               <tr>

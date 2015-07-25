@@ -1743,7 +1743,7 @@ background: #fffbcc !important;
 }
 
 label {
-	font-weight: 400;
+	font-weight: bold;
 }
 
 .form-horizontal.style-form .form-group {
@@ -2819,4 +2819,8 @@ p {
 .left-designer
 {
 float: right;	
+}
+
+.height-input-string-security{
+height:2.9em;
 }

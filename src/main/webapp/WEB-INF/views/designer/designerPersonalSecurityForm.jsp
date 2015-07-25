@@ -13,7 +13,7 @@
 <spring:message code="designer.menu.works" var="works" />
 <spring:message code="designer.menu.data" var="data" />
 <spring:message code="designer.menu.add" var="add" />
-
+<spring:message code="javascript.validation" var="validation" />
 
 
 <meta charset="utf-8">
@@ -25,9 +25,10 @@
 <link
 	href="<c:url value="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"  />"
 	rel="stylesheet" />
-<link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
+
 <link href="<c:url value="/resources/css/cabinets/designer.css"  />"
 	rel="stylesheet" />
+<link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
 <link
 	href="<c:url value="/resources/css//fontawesome430/css/font-awesome.css"  />"
 	rel="stylesheet" />
@@ -83,7 +84,7 @@
 								method="POST">
 								<div class="form-group sign-feld-margin-top"></div>
 								<div class="form-group">
-									<div class="col-md-12 height-input-string-signup">
+									<div class="col-md-12 height-input-string-security">
 										<form:password id="password" name="password"
 											class="form-control input-md" path="password"
 											placeholder="Password"></form:password>
@@ -91,7 +92,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-md-12 height-input-string-signup">
+									<div class="col-md-12 height-input-string-security">
 										<form:password id="confirmPassword" name="confirmPassword"
 											class="form-control input-md" path="confirmPassword"
 											placeholder="Confirm password"></form:password>
@@ -162,6 +163,7 @@
 		});
 	</script>
 
-
+<script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
+<script src="<c:url value="/resources/js/${validation}.js" />"> </script>
 </body>
 </html>

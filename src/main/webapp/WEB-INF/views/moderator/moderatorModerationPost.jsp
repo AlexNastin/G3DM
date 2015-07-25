@@ -128,8 +128,8 @@
                           </table>
                       </div>
                       <div class="col-md-12">
-                      <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/moderator/publishPost"  />"'>Publish</button>
-      				  <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/moderator/rejectPost"  />"'>Reject</button>
+                      <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/moderator/publishPost?id=${post.idPost}"  />"'>Publish</button>
+      				  <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/moderator/rejectPost?id=${post.idPost}"  />"'>Reject</button>
       </div>                
                      
                   </div>

@@ -186,7 +186,7 @@ public class PostDAOImpl implements IPostDAO {
 
 	@Override
 	@Transactional
-	public Post selectPostForDelete(Integer idPost) throws DaoException {
+	public Post selectPostWithoutAll(Integer idPost) throws DaoException {
 		Post post = (Post) em.createNamedQuery("Post.findOneById")
 				.setParameter("idPost", idPost).getSingleResult();
 		return post;

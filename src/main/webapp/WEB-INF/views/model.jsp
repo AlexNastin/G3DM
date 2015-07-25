@@ -168,9 +168,7 @@
 								<h4 class="media-heading user_name">${comment.user.nickName }</h4>
 								${comment.text }
 
-								<p>
-									<small><a href="">Like</a> - <a href="">Share</a></small>
-								</p>
+								
 							</div>
 						</div>
 					</c:forEach>

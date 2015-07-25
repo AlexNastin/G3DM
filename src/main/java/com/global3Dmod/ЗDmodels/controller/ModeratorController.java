@@ -148,10 +148,18 @@ public class ModeratorController {
 	}
 	
 	@RequestMapping(value = "/moderator/publishPost", method = RequestMethod.GET)
-	public ModelAndView publishPost(@RequestParam(value = "id", required = false) Integer idPost,@RequestParam(value = "sort", required = false) String sort, @RequestParam(value = "desc", required = false) boolean desc, Locale locale, Model model, HttpSession httpSession)
+	public ModelAndView publishPost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model)
 			throws Exception {
 		moderatorService.publishPost(idPost);
 		ModelAndView modelAndView = new ModelAndView("redirect:/moderator/profile");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/moderator/rejectPost", method = RequestMethod.GET)
+	public ModelAndView rejectPost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model)
+			throws Exception {
+		ModelAndView modelAndView = new ModelAndView("moderator/moderatorRejectMessage");
+		modelAndView.addObject(ControllerParamConstant.ID_POST, idPost);
 		return modelAndView;
 	}
 

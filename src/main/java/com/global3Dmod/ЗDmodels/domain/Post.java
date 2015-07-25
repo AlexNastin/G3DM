@@ -93,6 +93,9 @@ public class Post implements Essence {
 
 	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private File file;
+	
+	@OneToOne(mappedBy = "post", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	private RejectMessage rejectMessage;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "user_id_user", insertable = false, updatable = false)
@@ -252,6 +255,14 @@ public class Post implements Essence {
 
 	public void setFile(File file) {
 		this.file = file;
+	}
+
+	public RejectMessage getRejectMessage() {
+		return rejectMessage;
+	}
+
+	public void setRejectMessage(RejectMessage rejectMessage) {
+		this.rejectMessage = rejectMessage;
 	}
 
 	public List<PostPhoto> getPostPhotos() {

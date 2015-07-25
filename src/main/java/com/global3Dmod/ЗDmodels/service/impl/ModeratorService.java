@@ -47,6 +47,17 @@ public class ModeratorService implements IModeratorService{
 	}
 	
 	@Override
+	public List<Post> getPostsByRejectingForSort() throws ServiceException {
+		List<Post> posts;
+		try {
+			posts = postDAO.selectPostsByRejectingForSort();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return posts;
+	}
+	
+	@Override
 	public ModelAndView setParamsForSort(ModelAndView modelAndView,
 			String sort, boolean desc) throws ServiceException {
 		if (ServiceParamConstant.CATEGORY.equalsIgnoreCase(sort) && !desc) {

@@ -11,6 +11,8 @@ public interface IModeratorService {
 	
 	public List<Post> getPostsByModeratingForSort() throws ServiceException;
 	
+	public List<Post> getPostsByRejectingForSort() throws ServiceException;
+	
 	public ModelAndView setParamsForSort(ModelAndView modelAndView,
 			String sort, boolean desc) throws ServiceException;
 	

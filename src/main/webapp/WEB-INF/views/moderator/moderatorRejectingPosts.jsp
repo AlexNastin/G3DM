@@ -98,7 +98,7 @@
                                   <th><i class="fa fa-th-list"></i><a href="<c:url value="/moderator/profile?sort=category&desc=${categoryDesc}" />"> Category</a> </th>
                                   <th><i class="fa fa-list-alt"></i> <a href="<c:url value="/moderator/profile?sort=subcategory&desc=${subcategoryDesc}" />"> Subcategory</a></th>
                                   <th><i class="fa fa-user"></i><a href="<c:url value="/moderator/profile?sort=designer&desc=${designerDesc}" />"> Author</a> </th>
-                             	  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Check</th>
+                             	  <th>Message</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -111,9 +111,7 @@
                                   <td>${post.category.title}</td>
                                   <td>${post.subcategory.title}</td>
                                   <td>${post.user.nickName}</td>
-                                  <td>
-                                  <a href="<c:url value="/moderator/moderationPost?id=${post.idPost}" />" type="button" class="btn btn-danger">Check</a>
-                              	  </td>
+                                  <td>Message</td>
                               </tr>
                               </c:forEach>
                               </tbody>

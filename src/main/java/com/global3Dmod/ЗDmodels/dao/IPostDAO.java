@@ -34,5 +34,7 @@ public interface IPostDAO {
 	public int countPostByDesigner(Integer idUser) throws DaoException;
 	
 	public List<Post> selectPostsByModeratingForSort() throws DaoException;
+	
+	public List<Post> selectPostsByRejectingForSort() throws DaoException;
 
 }

@@ -128,4 +128,17 @@ public class ModeratorService implements IModeratorService{
 		return posts;
 	}
 
+	@Override
+	public void publishPost(Integer idPost) throws ServiceException {
+		Post post = null;
+		try {
+			post = postDAO.selectPostWithoutAll(idPost);
+			post.setIsDisplay(3);
+			postDAO.updatePost(post);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
+	}
+
 }

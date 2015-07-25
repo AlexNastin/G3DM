@@ -18,5 +18,7 @@ public interface IModeratorService {
 	
 	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc)
 			throws ServiceException;
+	
+	public void publishPost(Integer idPost) throws ServiceException;
 
 }

@@ -458,7 +458,7 @@ public class DesignerService implements IDesignerService {
 	@Override
 	public void deletePost(Integer idPost) throws ServiceException {
 		try {
-			Post post = postDAO.selectPostForDelete(idPost);
+			Post post = postDAO.selectPostWithoutAll(idPost);
 			post.setIsDisplay(0);
 			postDAO.updatePost(post);
 		} catch (DaoException e) {

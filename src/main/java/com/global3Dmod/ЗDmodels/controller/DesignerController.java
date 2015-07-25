@@ -73,6 +73,9 @@ public class DesignerController {
 		if (page == null) {
 			page = 1;
 		}
+		if (sort==null) {
+			sort="date";
+		}
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
 		String appUrl = "http://" + request.getServerName() + ":"

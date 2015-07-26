@@ -38,18 +38,16 @@
 
 	<%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>  
 	<!-- Designer's page will start here -->
-	     
-	    
-     
+	<!-- Menu -->     
  <div class="row footerpadding">
     <div class="col-md-2 nopadding1">
      <div class="list-group">
-      <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
+      <img src="<c:url value="/resources/images/avatar.png" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">           
   
  <a href="<c:url value="/moderator/profile" />" class="list-group-item active">
     <i class="fa fa-exclamation-triangle"></i> ${unpblsd}
   </a>
-  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-check-circle"></i> Rejecting Posts</a>
+  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> Rejecting Posts</a>
 
   
 	 </div>
@@ -128,19 +126,59 @@
                           </table>
                       </div>
                       <div class="col-md-12">
-                      <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/moderator/publishPost?id=${post.idPost}"  />"'>Publish</button>
-      				  <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/moderator/rejectPost?id=${post.idPost}"  />"'>Reject</button>
-      </div>                
-                     
-                  </div>
-              </div>
-              
+                      <button type="button"  data-toggle="modal" data-target="#publish" class="btn btn-success left-designer btn-lg" >Publish</button>
+      				  <button type="button"  style="margin-right: 4em;" data-toggle="modal" data-target="#reject" class="btn btn-danger left-designer btn-lg"  >Reject</button>
+        				  </div>                 
+     </div>
+    </div>
+   </div> 		
+  </div>           	
+ </div> 
+  <!-- Publish -->
+<div id="publish" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirm publishing </h4>
       </div>
-      
-		
-     </div> 
-          
-  
+      <div class="modal-body">
+        <p>Are you really wanna to publish this post?</p>
+      </div>
+      <div class="modal-footer">
+       <a href="<c:url value="/moderator/publishPost?id=${post.idPost}"  />" class="btn btn-success"> Publish </a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Reject -->
+<div id="reject" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirm rejection</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you really wanna to reject this post?</p>
+      </div>
+      <div class="modal-footer">
+      <a href="<c:url value="/moderator/rejectPost?id=${post.idPost}"  />" class="btn btn-danger"> Reject </a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
   <div class="clearfix"> </div>
  
 	<%@include file="/WEB-INF/views/footer.jsp" %>  

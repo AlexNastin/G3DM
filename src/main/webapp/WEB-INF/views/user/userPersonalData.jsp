@@ -40,14 +40,14 @@
 	<!-- Designer's page will start here -->
 	     
 	    
-     
+ <!-- Menu -->     
  <div class="row footerpadding">
     <div class="col-md-2 nopadding1">
      <div class="list-group">
-      <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
+      <img src="<c:url value="/resources/images/avatar.png" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">      
   
-  <a href="<c:url value="/user/profile" />" class="list-group-item active "><i class="fa fa-briefcase"></i> ${mybookmarks}</a>
- <a href="<c:url value="/user/personalData" />" class="list-group-item"><i class="fa fa-cogs"></i> Personal Data  </a>
+  <a href="<c:url value="/user/profile" />" class="list-group-item  "><i class="fa fa-briefcase"></i> ${mybookmarks}</a>
+ <a href="<c:url value="/user/personalData" />" class="list-group-item active"><i class="fa fa-cogs"></i> Personal Data  </a>
   <a href="<c:url value="/user/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> Personal Security  </a>
   
 	 </div>
@@ -127,7 +127,7 @@
 		
      </div> 
           
-  
+  </div> 
   <div class="clearfix"> </div>
  
 	<%@include file="/WEB-INF/views/footer.jsp" %>  

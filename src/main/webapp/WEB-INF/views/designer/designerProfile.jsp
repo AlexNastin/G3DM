@@ -39,11 +39,11 @@
 	<!-- Designer's page will start here -->
 	     
 	      <!--sidebar start-->
-     
-      <div class="row footerpadding">      
-      <div class="col-md-2 nopadding1">      
-      <div class="list-group">
-            <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
+     <!-- Menu -->     
+ <div class="row footerpadding">
+    <div class="col-md-2 nopadding1">
+     <div class="list-group">
+      <img src="<c:url value="/resources/images/avatar.png" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar"> 
   <a class="list-group-item">
     <i class="fa fa-archive"></i> Have posts: ${sizePosts}</a>
   <a  class="list-group-item"> <i class="fa fa-thumbs-o-up"></i> Rating: ${ratingDesigner}</a>

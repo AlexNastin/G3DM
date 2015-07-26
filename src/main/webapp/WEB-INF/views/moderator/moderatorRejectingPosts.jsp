@@ -39,15 +39,15 @@
 	<!-- Designer's page will start here -->
 	     
 	      <!--sidebar start-->
-     
-      <div class="row footerpadding">
-      <div class="col-md-2 nopadding1">
-      <div class="list-group">
-      <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
-  <a href="<c:url value="/moderator/profile" />" class="list-group-item active">
+      <!-- Menu -->     
+ <div class="row footerpadding">
+    <div class="col-md-2 nopadding1">
+     <div class="list-group">
+      <img src="<c:url value="/resources/images/avatar.png" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">      
+  <a href="<c:url value="/moderator/profile" />" class="list-group-item ">
     <i class="fa fa-exclamation-triangle"></i> ${unpblsd}
   </a>
-  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-check-circle"></i> Rejecting Posts</a>
+  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item active"> <i class="fa fa-ban"></i> Rejected Posts</a>
   
 </div>
       </div>

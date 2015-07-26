@@ -40,14 +40,15 @@
 	     
 	      <!--sidebar start-->
      
-      <div class="row footerpadding">
-      <div class="col-md-2 nopadding1">
-      <div class="list-group">
-      <img src="<c:url value="/resources/images/auto.jpg" />" class="img-responsive img-thumbnail" alt="Responsive image">      
+     <!-- Menu -->     
+ <div class="row footerpadding">
+    <div class="col-md-2 nopadding1">
+     <div class="list-group">
+      <img src="<c:url value="/resources/images/avatar.png" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">       
   <a href="<c:url value="/moderator/profile" />" class="list-group-item active">
     <i class="fa fa-exclamation-triangle"></i> ${unpblsd}
   </a>
-  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-check-circle"></i> Rejecting Posts</a>
+  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> Rejecting Posts</a>
   
 </div>
       </div>
@@ -112,7 +113,7 @@
                                   <td>${post.subcategory.title}</td>
                                   <td>${post.user.nickName}</td>
                                   <td>
-                                  <a href="<c:url value="/moderator/moderationPost?id=${post.idPost}" />" type="button" class="btn btn-danger">Check</a>
+                                  <a href="<c:url value="/moderator/moderationPost?id=${post.idPost}" />" type="button" class="btn btn-success btn-xs">Check</a>
                               	  </td>
                               </tr>
                               </c:forEach>

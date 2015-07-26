@@ -70,4 +70,18 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 		return passwordResetToken;
 
 	}
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public PasswordResetToken selectTokenByToken(String token) throws DaoException {
+		PasswordResetToken passwordResetToken = null;
+		List<PasswordResetToken> passwordResetTokens = em
+				.createNamedQuery("PasswordResetToken.findTokenByToken")
+				.setParameter("token", token).getResultList();
+		if (!passwordResetTokens.isEmpty()) {
+			passwordResetToken = passwordResetTokens.get(0);
+		}
+		return passwordResetToken;
+
+	}
 }

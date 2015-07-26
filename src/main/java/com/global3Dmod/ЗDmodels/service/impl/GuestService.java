@@ -363,20 +363,25 @@ public class GuestService implements IGuestService {
 		boolean isCreate = false;
 		Date date = new Date();
 		try {
-			PasswordResetToken passwordResetTokenOld = resetTokenDAO.selectTokenByUser(user.getIdUser());
+			PasswordResetToken passwordResetTokenOld = resetTokenDAO
+					.selectTokenByUser(user.getIdUser());
 			if (passwordResetTokenOld == null) {
 				PasswordResetToken passwordResetTokenNew = new PasswordResetToken();
-				passwordResetTokenNew.setExpiryDate(new Date(date.getTime() + 86400000l));
+				passwordResetTokenNew.setExpiryDate(new Date(
+						date.getTime() + 86400000l));
 				passwordResetTokenNew.setUser_idUser(user.getIdUser());
 				passwordResetTokenNew.setToken(token);
 				resetTokenDAO.insertPasswordResetToken(passwordResetTokenNew);
 				isCreate = true;
 			} else {
 				Calendar calendar = Calendar.getInstance();
-				if (passwordResetTokenOld.getExpiryDate().getTime() - calendar.getTime().getTime() <= 0) {
-					passwordResetTokenOld.setExpiryDate(new Date(date.getTime() + 86400000l));
+				if (passwordResetTokenOld.getExpiryDate().getTime()
+						- calendar.getTime().getTime() <= 0) {
+					passwordResetTokenOld.setExpiryDate(new Date(
+							date.getTime() + 86400000l));
 					passwordResetTokenOld.setToken(token);
-					resetTokenDAO.updatePasswordResetToken(passwordResetTokenOld);
+					resetTokenDAO
+							.updatePasswordResetToken(passwordResetTokenOld);
 					isCreate = true;
 				}
 			}
@@ -389,8 +394,14 @@ public class GuestService implements IGuestService {
 	@Override
 	public PasswordResetToken getPasswordResetToken(String token)
 			throws ServiceException {
-		// TODO Auto-generated method stub
-		return null;
+		PasswordResetToken passwordResetToken = null;
+		try {
+			passwordResetToken = resetTokenDAO.selectTokenByToken(token);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+
+		return passwordResetToken;
 	}
 
 }

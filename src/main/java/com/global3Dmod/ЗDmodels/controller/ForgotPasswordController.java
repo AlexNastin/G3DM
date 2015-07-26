@@ -3,8 +3,9 @@ package com.global3Dmod.ÇDmodels.controller;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.UUID;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import javax.mail.Message;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.global3Dmod.ÇDmodels.domain.GenericResponse;
 import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
@@ -28,6 +27,8 @@ import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Controller
 public class ForgotPasswordController {
+
+	private final String REGEX_VALID_EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 	@Autowired
 	private IDesignerService designerService;
@@ -42,34 +43,60 @@ public class ForgotPasswordController {
 	private MessageSource messages;
 
 	@RequestMapping(value = "/forgotPassword.html", method = RequestMethod.GET)
-	public ModelAndView forgotPassword(Locale locale, Model model) throws Exception {
+	public ModelAndView forgotPassword(Locale locale, Model model)
+			throws Exception {
 		ModelAndView modelAndView = new ModelAndView("login/forgot_password");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/resetPassword", method = RequestMethod.POST)
-	public GenericResponse resetPassword(HttpServletRequest request,
-			@RequestParam("email") String userEmail) throws ServiceException {
-		User user = designerService.getUser(userEmail);
-		if (user == null) {
-			return new GenericResponse(messages.getMessage("email.message.resetPasswordNotUser", null, request.getLocale()));
+	public ModelAndView resetPassword(HttpServletRequest request,
+			@RequestParam("email") String userEmail, Locale locale)
+			throws ServiceException {
+		ModelAndView modelAndView = new ModelAndView("redirect:/go/signin");
+		Pattern pattern = Pattern.compile(REGEX_VALID_EMAIL);
+		Matcher matcher = pattern.matcher(userEmail);
+		boolean isValid = matcher.matches();
+		if (isValid) {
+			User user = designerService.getUser(userEmail);
+			if (user == null) {
+				String message = messages.getMessage(
+						"email.message.resetPasswordNotUser", null, locale);
+				modelAndView.addObject("message", message);
+				modelAndView.setViewName("redirect:/go/signin");
+				return modelAndView;
+			}
+			String token = UUID.randomUUID().toString();
+			boolean isChange = guestService.createPasswordResetTokenForUser(
+					user, token);
+			if (isChange) {
+				StringBuilder appUrl = new StringBuilder();
+				appUrl.append("http://");
+				appUrl.append(request.getServerName());
+				appUrl.append(":");
+				appUrl.append(request.getServerPort());
+				appUrl.append(request.getContextPath());
+				SimpleMailMessage email = constructResetTokenEmail(
+						appUrl.toString(), request.getLocale(), token, user);
+				mailSender.send(email);
+				String message = messages.getMessage(
+						"email.message.resetPasswordEmailSend", null, locale);
+				modelAndView.addObject("message", message);
+				modelAndView.setViewName("redirect:/go/signin");
+				return modelAndView;
+			}
+			String message = messages.getMessage(
+					"email.message.resetPasswordEmail", null, locale);
+			modelAndView.addObject("message", message);
+			modelAndView.setViewName("redirect:/go/signin");
+			return modelAndView;
+		} else {
+			String message = messages.getMessage(
+					"email.message.resetPasswordNotUser", null, locale);
+			modelAndView.addObject("message", message);
+			modelAndView.setViewName("redirect:/go/signin");
+			return modelAndView;
 		}
-		String token = UUID.randomUUID().toString();
-		boolean isChange = guestService.createPasswordResetTokenForUser(user,
-				token);
-		if (isChange) {
-			StringBuilder appUrl = new StringBuilder();
-			appUrl.append("http://");
-			appUrl.append(request.getServerName());
-			appUrl.append(":");
-			appUrl.append(request.getServerPort());
-			appUrl.append(request.getContextPath());
-			SimpleMailMessage email = constructResetTokenEmail(
-					appUrl.toString(), request.getLocale(), token, user);
-			mailSender.send(email);
-			return new GenericResponse(messages.getMessage("email.message.resetPasswordEmailSend", null, request.getLocale()));
-		}
-		return new GenericResponse(messages.getMessage("email.message.resetPasswordEmail", null, request.getLocale()));
 	}
 
 	private SimpleMailMessage constructResetTokenEmail(String contextPath,
@@ -94,29 +121,43 @@ public class ForgotPasswordController {
 		email.setText(text.toString());
 		return email;
 	}
-	
+
 	@RequestMapping(value = "/changePassword", method = RequestMethod.GET)
-	public String showChangePasswordPage(
-	  Locale locale, Model model, @RequestParam("id") long id, @RequestParam("token") String token) throws ServiceException {
-	     System.out.println("PASSWORD CHANGE");
-//	    PasswordResetToken passToken = guestService.getPasswordResetToken(token);
-//	    User user = passToken.getUser();
-//	    if (passToken == null || user.getIdUser() != id) {
-//	        String message = messages.getMessage("auth.message.invalidToken", null, locale);
-//	        model.addAttribute("message", message);
-//	        return "redirect:/login.html?lang=" + locale.getLanguage();
-//	    }
-//	 
-//	    Calendar cal = Calendar.getInstance();
-//	    if ((passToken.getExpiryDate().getTime() - cal.getTime().getTime()) <= 0) {
-//	        model.addAttribute("message", messages.getMessage("auth.message.expired", null, locale));
-//	        return "redirect:/login.html?lang=" + locale.getLanguage();
-//	    }
-	 
-//	    Authentication auth = new UsernamePasswordAuthenticationToken(
-//	      user, null, userDetailsService.loadUserByUsername(user.getEmail()).getAuthorities());
-//	    SecurityContextHolder.getContext().setAuthentication(auth);
-	 
-	    return "redirect:/updatePassword.html?lang=" + locale.getLanguage();
+	public ModelAndView showChangePasswordPage(Locale locale, Model model,
+			@RequestParam("id") int id, @RequestParam("token") String token)
+			throws ServiceException {
+
+		PasswordResetToken passwordResetToken = guestService
+				.getPasswordResetToken(token);
+		ModelAndView modelAndView = new ModelAndView("redirect:/updatePassword?id="+id);
+		if (passwordResetToken == null
+				|| passwordResetToken.getUser_idUser() != id) {
+			String message = messages.getMessage("email.message.invalidToken",
+					null, locale);
+			modelAndView.addObject("message", message);
+			modelAndView.setViewName("redirect:/go/signin");
+			return modelAndView;
+		}
+
+		Calendar cal = Calendar.getInstance();
+		if ((passwordResetToken.getExpiryDate().getTime() - cal.getTime()
+				.getTime()) <= 0) {
+			String message = messages.getMessage("email.message.expired", null,
+					locale);
+			modelAndView.addObject("message", message);
+			modelAndView.setViewName("redirect:/go/signin");
+			return modelAndView;
+		}
+		return modelAndView;
 	}
+
+	@RequestMapping(value = "/savePassword", method = RequestMethod.POST)
+	public ModelAndView saveNewPassword(Locale locale, Model model,
+			@RequestParam("password") String password, @RequestParam("id") int id ) throws ServiceException {
+		System.out.println("AAAAA OLOLo");
+		System.out.println(password);
+		ModelAndView modelAndView = new ModelAndView("redirect:/go/signin");
+		return modelAndView;
+	}
+
 }

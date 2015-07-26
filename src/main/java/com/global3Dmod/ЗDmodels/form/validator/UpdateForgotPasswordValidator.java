@@ -5,29 +5,26 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-
-import com.global3Dmod.ЗDmodels.form.UserPersonalSecurityForm;
+import com.global3Dmod.ЗDmodels.form.UpdateForgotPasswordForm;
 
 @Component
-public class UserPersonalSecurityValidator implements Validator {
-
+public class UpdateForgotPasswordValidator implements Validator {
 	@Override
 	public boolean supports(Class<?> arg0) {
-		return UserPersonalSecurityForm.class.isAssignableFrom(arg0);
+		return UpdateForgotPasswordForm.class.isAssignableFrom(arg0);
 	}
 
 	@Override
 	public void validate(Object target, Errors errors) {
 
-		UserPersonalSecurityForm personalSecurityForm = (UserPersonalSecurityForm) target;
+		UpdateForgotPasswordForm updateForgotPasswordForm = (UpdateForgotPasswordForm) target;
 
 		// Валидация пароля и совпадение основного пароля и подтверждённого
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "singup.valid.password.empty");
-		if (!(personalSecurityForm.getPassword()).equals(personalSecurityForm.getConfirmPassword())) {
+		if (!(updateForgotPasswordForm.getPassword()).equals(updateForgotPasswordForm.getConfirmPassword())) {
 			errors.rejectValue("confirmPassword", "singup.valid.confirmPassword.passwordDontMatch");
-			
+
 		}
 
 	}
-
 }

@@ -20,4 +20,6 @@ public interface IPasswordResetTokenDAO {
 	
 	public PasswordResetToken selectTokenByUser(Integer idUser) throws DaoException;
 
+	public PasswordResetToken selectTokenByToken(String token) throws DaoException;
+
 }

@@ -9,8 +9,17 @@ $(document).ready(function(){
 	// http://bassistance.de/jquery-plugins/jquery-plugin-validation/
 	// http://docs.jquery.com/Plugins/Validation/
 	// http://docs.jquery.com/Plugins/Validation/validate#toptions
-
+	$.validator.addMethod(
+	        "regexp",
+	        function(value, element, regexp) {
+	            var re = new RegExp(regexp);
+	            return this.optional(element) || re.test(value);
+	        },
+	        "Please check your input."
+	);
+		
 		$('#contact-form, #comment-form').validate({
+			
 	    rules: {
 	    	nickName: {
 	        minlength: 3,
@@ -48,7 +57,14 @@ $(document).ready(function(){
 	      confirmPassword: {
 	      equalTo: "#password",
 	      required: true 	  
-	      }		  
+	      },
+	      name: {
+	    	 regexp: '^[а-яА-ЯёЁa-zA-Z0-9]+$'
+	      },
+	      surname: {
+	    	  regexp: '^[а-яА-ЯёЁa-zA-Z0-9]+$'
+	      },
+	      
 },
 messages:  {
 	confirmPassword: {

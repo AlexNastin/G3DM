@@ -13,7 +13,7 @@
 <spring:message code="designer.menu.works" var="works"/>
 <spring:message code="designer.menu.data" var="data"/>
 <spring:message code="designer.menu.add" var="add"/>
-
+<spring:message code="javascript.validation" var="validation" />
 
 
  <meta charset="utf-8">
@@ -133,13 +133,13 @@
 	   <div class="form-group sign-feld-margin-top">
 		</div>
 		<div class="form-group">
-		<div class="col-md-12 height-input-string-signup">
+		<div class="col-md-12 height-input-string-personal">
 		<form:input id="name" name="name" class="form-control input-md" path="name" placeholder="Name" value="${user.name}"></form:input>
 		<span class="error"><form:errors path="name" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-12 height-input-string-signup">
+		<div class="col-md-12 height-input-string-personal">
 		<form:input id="surname" name="surname" class="form-control input-md" path="surname" placeholder="Surname" value="${user.surname}"></form:input>
 		<span class="error"><form:errors path="surname" /></span>
 		</div>
@@ -282,7 +282,7 @@
   });
 
   </script>
-
-
+<script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
+<script src="<c:url value="/resources/js/${validation}.js" />"> </script>
 </body>
 </html> 

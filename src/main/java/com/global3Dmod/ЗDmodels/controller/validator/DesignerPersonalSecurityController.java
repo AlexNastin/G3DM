@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -43,7 +44,7 @@ public class DesignerPersonalSecurityController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView personalDataValid(DesignerPersonalSecurityForm personalSecurityForm,
+	public ModelAndView personalDataValid(@ModelAttribute("personalSecurityForm") DesignerPersonalSecurityForm personalSecurityForm,
 			BindingResult result) throws Exception {
 		personalSecurityValidator.validate(personalSecurityForm, result);
 

@@ -69,7 +69,7 @@
                                     <div class="menuis">
                                     <a href="<c:url value="/model?id=${post.idPost}" />">${post.title}</a>
                                     
-                                    <p style="padding-top:0.5em"><i class="fa fa-thumbs-o-up leftstr"> 8 </i><i class="fa fa-download rightstr">15</i><div style="clear: left"></div></p>
+                                    <p style="padding-top:0.5em"><i class="fa fa-thumbs-o-up leftstr"> ${post.rating} </i><i class="fa fa-download rightstr">15</i><div style="clear: left"></div></p>
                                     </div>
                                 </div>
                             </div>

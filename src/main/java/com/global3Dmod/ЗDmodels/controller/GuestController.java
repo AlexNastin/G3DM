@@ -190,6 +190,7 @@ public class GuestController {
 			@RequestParam(value = "id", required = false) Integer idUser,
 			Locale locale, Model model) throws Exception {
 		User user = guestService.getUser(idUser);
+		guestService.setRatingInPosts(user.getPosts());
 		ModelAndView modelAndView = new ModelAndView("designer/designerProfile");
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, user

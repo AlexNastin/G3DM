@@ -44,8 +44,9 @@
     <div class="col-md-2 nopadding1">
      <div class="list-group">
       <img src="<c:url value="/resources/images/avatar.png" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar"> 
+  <a class="list-group-item font-weight-name-designer">${user.name} ${user.surname}</a>
   <a class="list-group-item">
-    <i class="fa fa-archive"></i> Have posts: ${sizePosts}</a>
+  <i class="fa fa-archive"></i> Have posts: ${sizePosts}</a>
   <a  class="list-group-item"> <i class="fa fa-thumbs-o-up"></i> Rating: ${ratingDesigner}</a>
   <a class="list-group-item"> <i class="fa fa-globe"></i> Country: ${user.country.title}</a>
   
@@ -55,7 +56,7 @@
       <!--main content start-->
       
       <div class="nopadding2 col-md-10 ">
-      <h2>${user.name} ${user.surname}'s (${user.nickName}) works</h2>
+      <h2>${user.nickName}'s works</h2>
           <div class="mt">
                   <div class="col-md-12 nopadding2">                 
               <section id="portfolio">

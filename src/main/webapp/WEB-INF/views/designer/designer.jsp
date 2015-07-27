@@ -116,7 +116,7 @@
                                   	<td><span class="label label-warning label-mini">Moderating</span></td>
                                   </c:if>
                                      <c:if test="${post.isDisplay == 1}">
-                                  	<td><span class="label label-warning label-danger">Rejected</span> <i class="fa fa-question-circle" style="color:#428bca;" data-toggle="tooltip" data-placement="top" title="${post.rejectMessage.message}"></i> </td>
+                                  	<td><span class="label label-warning label-danger">Rejected</span> <i class="fa fa-question-circle" style="color:#357ebd;" data-toggle="tooltip" data-placement="top" title="${post.rejectMessage.message}"></i> </td>
                                   </c:if>
                                   
                                   <td>

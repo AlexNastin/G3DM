@@ -105,7 +105,7 @@
                               <tbody>
                               <c:forEach items="${listPostsLimit10}" var="post" >
                              <tr>
-                                  <td><a href="<c:url value="/model?id=${post.idPost}" />">${post.title}</a></td>
+                                  <td>${post.title}</td>
                                   <td class="hidden-phone">${post.description}</td>
                                   <td>${post.numberPost}</td>
                                   <td>${post.dateUpdate}</td>

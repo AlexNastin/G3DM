@@ -37,8 +37,9 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name = "Post.findBySubcategory", query = "select p from Post p where p.category_idCategory = :category_idCategory and p.subcategory_idSubcategory = :subcategory_idSubcategory and p.isDisplay = 3"),
 		@NamedQuery(name = "Post.colPostByUser", query = "select count(p.user_idUser) from Post p where p.user_idUser = :user_idUser and p.isDisplay in (1,2,3)"),
 		@NamedQuery(name = "Post.findByModerating", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.isDisplay = 2"),
-		@NamedQuery(name = "Post.findByRejecting", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.isDisplay = 1")})
-
+		@NamedQuery(name = "Post.findByRejecting", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.isDisplay = 1"),
+		@NamedQuery(name = "Post.findTop4ByLike", query = "select p from Post p where p.idPost in (SELECT l.post_idPost from Like l group by l.post_idPost order by count(l.post_idPost) desc)")})
+														
 public class Post implements Essence {
 
 	@Id

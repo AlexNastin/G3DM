@@ -77,4 +77,6 @@ public interface IGuestService {
 	public PasswordResetToken getPasswordResetToken(String token) throws ServiceException;
 	
 	public void updateForgotPassword(User user, String password) throws ServiceException;
+	
+	public List<Post> getTop4PostsByLike() throws ServiceException;
 }

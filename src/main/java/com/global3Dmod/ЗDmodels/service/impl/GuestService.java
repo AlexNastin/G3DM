@@ -420,4 +420,16 @@ public class GuestService implements IGuestService {
 		}
 	}
 
+	@Override
+	@Transactional
+	public List<Post> getTop4PostsByLike() throws ServiceException {
+		List<Post> posts;
+		try {
+			posts = postDAO.selectTop4ByLike();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return posts;
+	}
+
 }

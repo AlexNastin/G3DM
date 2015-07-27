@@ -28,6 +28,8 @@ public  final class ControllerParamConstant {
 	
 	public static String LIST_ADVERTISEMENTS = "listAdvertisements";
 	
+	public static String LIST_TOP4_POSTS = "listTop4Posts";
+	
 	public static String START_PAGE = "startPage";
 	
 	public static String END_PAGE = "endPage";

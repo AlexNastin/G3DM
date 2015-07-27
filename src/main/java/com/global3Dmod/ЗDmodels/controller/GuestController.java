@@ -23,12 +23,16 @@ import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
+import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
 public class GuestController {
 
 	@Autowired
 	private IGuestService guestService;
+	
+	@Autowired
+	private IUserService userService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index(Locale locale, Model model) throws Exception {
@@ -38,17 +42,15 @@ public class GuestController {
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
-
-	Authentication authentication =	SecurityContextHolder.getContext().getAuthentication();
-	System.out.println(authentication.toString());
-	System.out.println(authentication.getDetails());
-	System.out.println(authentication.getName());
-	System.out.println(authentication.getPrincipal());
 		ModelAndView modelAndView = new ModelAndView("main");
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY,
 				guestService.getAllCategoriesSubcategoriesTop3());
 		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS,
 				guestService.getAllAdvertisement());
+		List<Post> posts = guestService.getTop4PostsByLike();
+		guestService.setRatingInPosts(posts);
+		userService.sortPosts(posts, "rating", false);
+		modelAndView.addObject(ControllerParamConstant.LIST_TOP4_POSTS, posts);
 		return modelAndView;
 	}
 

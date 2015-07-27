@@ -103,10 +103,9 @@
 			
 				<div id="mi-slider" class="mi-slider respimg">
 					<ul>
-						<li><a href="#"><img class="respimg" src=<c:url value="/resources/images/categories/toys.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="/resources/images/categories/architecture.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="/resources/images/categories/garden.jpg" /> alt=""><h4>Boots</h4></a></li>
-						<li><a href="#"><img src=<c:url value="/resources/images/categories/home.jpg" /> alt=""><h4>Boots</h4></a></li>
+					<c:forEach items="${listTop4Posts}" var="post">
+						<li><a href="<c:url value="/model?id=${post.idPost}"/>"><img class="respimg" src=<c:url value="${post.postPhotos[0].photoPath}" /> alt=""><h4>${post.title}</h4></a></li>
+					</c:forEach>
 					</ul>
 					<ul>
 						<li><a href="#"><img class="respimg" src=<c:url value="/resources/images/categories/toys.jpg" /> alt=""><h4>Boots</h4></a></li>

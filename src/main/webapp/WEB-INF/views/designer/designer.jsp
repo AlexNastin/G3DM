@@ -97,8 +97,7 @@
                               <th><i class="fa fa-book"></i> Number</th>
                               <th><i class="fa fa-cloud-download"></i><a href="<c:url value="/designer/profile?sort=downloads&desc=${downloadsDesc}" />"> Downloads</a></th>
                               <th><i class=" fa fa-edit"></i><a href="<c:url value="/designer/profile?sort=status&desc=${statusDesc}" />"> Status</a></th>
-                              <th><i class=" fa fa-edit"></i> Message</th>
-                              <th><i class="fa fa-pencil"></i> Edit</th>
+                                                            <th><i class="fa fa-pencil"></i> Edit</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -117,9 +116,9 @@
                                   	<td><span class="label label-warning label-mini">Moderating</span></td>
                                   </c:if>
                                      <c:if test="${post.isDisplay == 1}">
-                                  	<td><span class="label label-warning label-danger">Rejected</span></td>
+                                  	<td><span class="label label-warning label-danger">Rejected</span> <i class="fa fa-question-circle" style="color: #3276b1"></i> </td>
                                   </c:if>
-                                  <td>${post.rejectMessage.message}</td>
+                                  
                                   <td>
                                       <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit${post.idPost}"><i class="fa fa-pencil"></i></button>
                                       <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal${post.idPost}"><i class="fa fa-trash-o "></i></button>
@@ -162,7 +161,7 @@
   </div>
 </div>
                               </c:forEach>
-                              </tbody>
+                              
                           </table>
                       </div>
       

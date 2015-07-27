@@ -116,7 +116,7 @@
                                   	<td><span class="label label-warning label-mini">Moderating</span></td>
                                   </c:if>
                                      <c:if test="${post.isDisplay == 1}">
-                                  	<td><span class="label label-warning label-danger">Rejected</span> <i class="fa fa-question-circle" style="color: #3276b1"></i> </td>
+                                  	<td><span class="label label-warning label-danger">Rejected</span> <i class="fa fa-question-circle" style="color:#428bca;" data-toggle="tooltip" data-placement="top" title="${post.rejectMessage.message}"></i> </td>
                                   </c:if>
                                   
                                   <td>
@@ -204,6 +204,7 @@
 	<%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
+    <script src="<c:url value="/resources/js/tooltip.js" />"></script>
    
 	  
 

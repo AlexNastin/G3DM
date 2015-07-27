@@ -245,6 +245,7 @@ public class DesignerController {
 	@RequestMapping(value = "/get/countries", method = RequestMethod.GET)
 	public @ResponseBody List<Country> getAllCountry() throws ServiceException {
 		List<Country> countries = designerService.getAllCountries();
+		designerService.sortCountries(countries);
 		return countries;
 	}
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -47,12 +48,20 @@ public class DesignerPersonalDataController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView personalDataValid(DesignerPersonalDataForm personalDataForm,
-			BindingResult result) throws Exception {
+	public ModelAndView personalDataValid(@ModelAttribute("personalDataForm") DesignerPersonalDataForm personalDataForm,
+			BindingResult result, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
 		personalDataValidator.validate(personalDataForm, result);
-
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("designer/designerPersonalDataForm");
+			modelAndView.addObject("listCountry", designerService.getAllCountries());
+			User user = designerService.getUser(person.getLogin());
+			modelAndView.addObject(ControllerParamConstant.USER, user);
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("forward:/designer/personalData/updateFormAdd");

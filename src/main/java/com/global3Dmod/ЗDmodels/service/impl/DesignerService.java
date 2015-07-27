@@ -41,6 +41,7 @@ import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.service.helper.ServiceHelper;
+import com.global3Dmod.ÇDmodels.sort.country.SortedCountriesById;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByCategory;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByCategoryDesc;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDate;
@@ -342,6 +343,13 @@ public class DesignerService implements IDesignerService {
 			}
 		}
 		return posts;
+	}
+	
+	@Override
+	public List<Country> sortCountries(List<Country> countries)
+			throws ServiceException {
+		Collections.sort(countries, new SortedCountriesById());
+		return countries;
 	}
 
 	@Override

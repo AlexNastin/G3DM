@@ -153,7 +153,7 @@
 				
 				<br>
 				<form:select class="form-control" id="idCity" path="city_idCity">
-					<form:option value="0">City</form:option>
+					<form:option value="0">None</form:option>
 				</form:select>
 				<br>
 			</div>
@@ -215,7 +215,7 @@
 																ajax : 'true'
 															},
 															function(data) {
-																var html = '<option value="0">City</option>';
+																var html;
 																var len = data.length;
 																for (var i = 0; i < len; i++) {
 																	html += '<option value="' + data[i].idCity + '">'
@@ -237,7 +237,7 @@
 				$.getJSON('${getCountries}', {
 					ajax : 'true'
 				}, function(data) {
-					var html = '<option value="0">Country</option>';
+					var html;
 					var len = data.length;
 					for (var i = 0; i < len; i++) {
 						html += '<option value="' + data[i].idCountry + '">'

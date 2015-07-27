@@ -60,6 +60,9 @@ public interface IDesignerService {
 
 	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc)
 			throws ServiceException;
+	
+	public List<Country> sortCountries(List<Country> countries)
+			throws ServiceException;
 
 	public ModelAndView setParamsForSort(ModelAndView modelAndView,
 			String sort, boolean desc) throws ServiceException;

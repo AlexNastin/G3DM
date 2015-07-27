@@ -36,15 +36,21 @@ public class ModelController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView comment(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "id", required = false) Integer idPost,Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("model");
-		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		ModelAndView modelAndView = new ModelAndView("model/model");
+		Post post = guestService.getPost(idPost);
+		if(post.getIsDisplay() == 2 || post.getIsDisplay() == 1) {
+			modelAndView = new ModelAndView("model/modelOnModeration");
+			return modelAndView;
+		} else if(post.getIsDisplay() == 0) {
+			modelAndView = new ModelAndView("model/modelDeleted");
+			return modelAndView;
+		}
 		CommentForm commentForm = new CommentForm();
 		if (page == null) {
 			page=1;
 		}
 		int startPage = page - 5 > 0?page - 5:1;
 	    int endPage = startPage + 9;
-		Post post = guestService.getPost(idPost);
 		List<Comment> comments = guestService.getCommentsByPost(idPost);
 		guestService.sortCommentsByDate(comments);
 	    int allComments = comments.size();

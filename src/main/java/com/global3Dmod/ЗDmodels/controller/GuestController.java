@@ -39,7 +39,11 @@ public class GuestController {
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public ModelAndView main(Locale locale, Model model) throws Exception {
 
-		
+	Authentication authentication =	SecurityContextHolder.getContext().getAuthentication();
+	System.out.println(authentication.toString());
+	System.out.println(authentication.getDetails());
+	System.out.println(authentication.getName());
+	System.out.println(authentication.getPrincipal());
 		ModelAndView modelAndView = new ModelAndView("main");
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY,
 				guestService.getAllCategoriesSubcategoriesTop3());

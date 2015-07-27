@@ -21,6 +21,7 @@
 
 	<!-- Определяем папки, в которых будем автоматически искать бины-компоненты 
 		(@Component, @Service) -->
+	<context:component-scan base-package="com.global3Dmod.ЗDmodels.security" />
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.property" />
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.dao" />
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.service" />
@@ -37,7 +38,7 @@
 
 	<!-- Файл с настройками AOP -->
 	<import resource="aop-bean.xml" />
-	
+
 	<!-- Файл с настройками Mail -->
 	<import resource="spring-mail.xml" />
 

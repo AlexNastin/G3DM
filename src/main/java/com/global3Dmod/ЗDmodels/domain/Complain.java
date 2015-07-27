@@ -20,7 +20,7 @@ import javax.persistence.Table;
 		@NamedQuery(name = "Complain.colComplainByPost", query = "SELECT COUNT(c.post_idPost) from Complain c where c.post_idPost= :post_idPost"),
 		@NamedQuery(name = "Complain.colComplainByAllPosts", query = "SELECT COUNT(c.post_idPost) from Complain c where c.post_idPost in (select p.idPost from Post p where p.user_idUser = :user_idUser)")})
 
-public class Complain {
+public class Complain implements Essence{
 
 	@Id
 	@Column(name = "id_complain")

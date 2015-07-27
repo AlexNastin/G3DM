@@ -75,4 +75,6 @@ public interface IGuestService {
 			throws ServiceException;
 
 	public PasswordResetToken getPasswordResetToken(String token) throws ServiceException;
+	
+	public void updateForgotPassword(User user, String password) throws ServiceException;
 }

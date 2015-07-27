@@ -54,7 +54,7 @@ public  final class ControllerParamConstant {
 	
 	public static String PERSONAL_SECURITY_FORM = "personalSecurityForm";
 	
-	public static String UPDATE_FORGOT_PASSWORD = "updateForgotPassword";
+	public static String UPDATE_FORGOT_PASSWORD_FORM = "updateForgotPasswordForm";
 	
 	public static String UPDATE_POST_FORM = "updatePostForm";
 	

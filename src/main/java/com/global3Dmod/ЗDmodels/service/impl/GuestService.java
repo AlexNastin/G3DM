@@ -14,6 +14,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
@@ -402,6 +403,21 @@ public class GuestService implements IGuestService {
 		}
 
 		return passwordResetToken;
+	}
+
+	@Override
+	@Transactional
+	public void updateForgotPassword(User user, String password)
+			throws ServiceException {
+		String md5Password = DigestUtils.md5Hex(password);
+		user.setPassword(md5Password);
+		try {
+			PasswordResetToken passwordResetToken = resetTokenDAO.selectTokenByUser(user.getIdUser());
+			userDAO.updateUser(user);
+			resetTokenDAO.deletePasswordResetToken(passwordResetToken.getIdToken());
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
 	}
 
 }

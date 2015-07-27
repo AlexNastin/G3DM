@@ -20,7 +20,7 @@ import javax.persistence.Table;
 		@NamedQuery(name = "Like.colLikeByPost", query = "SELECT COUNT(l.post_idPost) from Like l where l.post_idPost= :post_idPost"),
 		@NamedQuery(name = "Like.colLikeByAllPosts", query = "SELECT COUNT(l.post_idPost) from Like l where l.post_idPost in (select p.idPost from Post p where p.user_idUser = :user_idUser)")})
 
-public class Like {
+public class Like implements Essence {
 
 	@Id
 	@Column(name = "id_like")

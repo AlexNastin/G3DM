@@ -27,7 +27,7 @@
 		</div>
 	</div>
 <form:form id="contact-form" name="contact-form"
-								class="form-horizontal" modelAttribute="updateForgotPassword"
+								class="form-horizontal" modelAttribute="updateForgotPasswordForm"
 								method="POST">
 								<div class="form-group sign-feld-margin-top"></div>
 								<div class="form-group">

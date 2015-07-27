@@ -1,6 +1,8 @@
 package com.global3Dmod.ÇDmodels.controller;
 
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 import java.util.regex.Matcher;
@@ -12,6 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.mail.MailSender;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -63,7 +70,7 @@ public class ForgotPasswordController {
 				String message = messages.getMessage(
 						"email.message.resetPasswordNotUser", null, locale);
 				modelAndView.addObject("message", message);
-				modelAndView.setViewName("redirect:/go/signin");
+				modelAndView.setViewName("login/signin");
 				return modelAndView;
 			}
 			String token = UUID.randomUUID().toString();
@@ -82,19 +89,19 @@ public class ForgotPasswordController {
 				String message = messages.getMessage(
 						"email.message.resetPasswordEmailSend", null, locale);
 				modelAndView.addObject("message", message);
-				modelAndView.setViewName("redirect:/go/signin");
+				modelAndView.setViewName("login/signin");
 				return modelAndView;
 			}
 			String message = messages.getMessage(
 					"email.message.resetPasswordEmail", null, locale);
 			modelAndView.addObject("message", message);
-			modelAndView.setViewName("redirect:/go/signin");
+			modelAndView.setViewName("login/signin");
 			return modelAndView;
 		} else {
 			String message = messages.getMessage(
 					"email.message.resetPasswordNotUser", null, locale);
 			modelAndView.addObject("message", message);
-			modelAndView.setViewName("redirect:/go/signin");
+			modelAndView.setViewName("login/signin");
 			return modelAndView;
 		}
 	}
@@ -126,16 +133,16 @@ public class ForgotPasswordController {
 	public ModelAndView showChangePasswordPage(Locale locale, Model model,
 			@RequestParam("id") int id, @RequestParam("token") String token)
 			throws ServiceException {
-
 		PasswordResetToken passwordResetToken = guestService
 				.getPasswordResetToken(token);
-		ModelAndView modelAndView = new ModelAndView("redirect:/updatePassword?id="+id);
+		ModelAndView modelAndView = new ModelAndView("redirect:/updatePassword");
+
 		if (passwordResetToken == null
 				|| passwordResetToken.getUser_idUser() != id) {
 			String message = messages.getMessage("email.message.invalidToken",
 					null, locale);
 			modelAndView.addObject("message", message);
-			modelAndView.setViewName("redirect:/go/signin");
+			modelAndView.setViewName("login/signin");
 			return modelAndView;
 		}
 
@@ -145,18 +152,27 @@ public class ForgotPasswordController {
 			String message = messages.getMessage("email.message.expired", null,
 					locale);
 			modelAndView.addObject("message", message);
-			modelAndView.setViewName("redirect:/go/signin");
+			modelAndView.setViewName("login/signin");
 			return modelAndView;
 		}
+		List<GrantedAuthority> grantedAuths = new ArrayList<>();
+		grantedAuths.add(new SimpleGrantedAuthority("ROLE_GUEST"));
+		User user = guestService.getUser(passwordResetToken.getUser_idUser());
+		Authentication authentication = new UsernamePasswordAuthenticationToken(
+				user, null, grantedAuths);
+		SecurityContextHolder.getContext().setAuthentication(authentication);
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/savePassword", method = RequestMethod.POST)
 	public ModelAndView saveNewPassword(Locale locale, Model model,
-			@RequestParam("password") String password, @RequestParam("id") int id ) throws ServiceException {
-		System.out.println("AAAAA OLOLo");
+			@RequestParam("password") String password) throws ServiceException {
 		System.out.println(password);
-		ModelAndView modelAndView = new ModelAndView("redirect:/go/signin");
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		guestService.updateForgotPassword(user, password);
+		ModelAndView modelAndView = new ModelAndView("login/signin");
+		String message = messages.getMessage("email.message.resetpaswordsuccessful", null, locale);
+		modelAndView.addObject("message", message);
 		return modelAndView;
 	}
 

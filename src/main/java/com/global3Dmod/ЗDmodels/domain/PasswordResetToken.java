@@ -20,7 +20,7 @@ import javax.persistence.Table;
 	@NamedQuery(name="PasswordResetToken.findAll", query="select p from PasswordResetToken p"),
 	@NamedQuery(name = "PasswordResetToken.findTokenByUser", query = "select p from PasswordResetToken p where p.user_idUser = :user_idUser"),
 	@NamedQuery(name = "PasswordResetToken.findTokenByToken", query = "select p from PasswordResetToken p where p.token = :token")})
-public class PasswordResetToken {
+public class PasswordResetToken implements Essence {
 
 	private static final int EXPIRATION = 60 * 24;
 

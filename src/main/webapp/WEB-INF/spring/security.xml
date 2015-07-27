@@ -32,13 +32,15 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 		<!--<authentication-provider> <user-service> <user name="admin" password="pass" 
 			authorities="ROLE_ADMIN,ROLE_USER" /> <user name="user1" password="1111" 
 			authorities="ROLE_USER" /> <user name="user2" password="2222" disabled="true" 
-			authorities="ROLE_USER" /> </user-service> </authentication-provider> -->
-		<authentication-provider>
+			authorities="ROLE_USER" /> </user-service> </authentication-provider><authentication-provider>
 			<jdbc-user-service data-source-ref="dataSource"
 				users-by-username-query="select login, password, 1 as enabled from users where login=?"
 				authorities-by-username-query="select login, title from users, roles where 
 			role_id_role=id_role and login=?" />
 			<password-encoder hash="md5" />
-		</authentication-provider>
+		</authentication-provider> -->
+		   <authentication-provider user-service-ref="customUserDetailsService">
+	        		<password-encoder hash="md5"/>
+	        </authentication-provider>
 	</authentication-manager>
 </beans:beans>

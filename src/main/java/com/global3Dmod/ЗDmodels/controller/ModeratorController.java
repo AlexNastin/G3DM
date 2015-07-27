@@ -18,6 +18,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
+import com.global3Dmod.ÇDmodels.form.CommentForm;
+import com.global3Dmod.ÇDmodels.form.RejectMessageForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IModeratorService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
@@ -155,12 +157,18 @@ public class ModeratorController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/moderator/rejectPost", method = RequestMethod.GET)
-	public ModelAndView rejectPost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model)
-			throws Exception {
-		ModelAndView modelAndView = new ModelAndView("moderator/moderatorRejectMessage");
-		modelAndView.addObject(ControllerParamConstant.ID_POST, idPost);
-		return modelAndView;
+	@RequestMapping(value = "/moderator/addRejectMessage", method = RequestMethod.POST)
+	public ModelAndView addRejectMessage(RejectMessageForm rejectMessageForm, Locale locale,
+			Model model, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		moderatorService.addRejectMessage(rejectMessageForm, person);
+		ModelAndView modelAndView2 = new ModelAndView("redirect:/moderator/profile");
+		return modelAndView2;
 	}
 
 }

@@ -126,7 +126,12 @@ public class UserDAOImpl implements IUserDAO {
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 		}
-		
+		return user;
+	}
+	
+	@Override
+	public User selectUserByIdWithoutAll(Integer id) throws DaoException {
+		User user = (User) em.createNamedQuery("User.findUserById").setParameter("idUser", id).getSingleResult();
 		return user;
 	}
 

@@ -50,6 +50,8 @@ public  final class ControllerParamConstant {
 	
 	public static String PERSONAL_DATA_FORM = "personalDataForm";
 	
+	public static String REJECT_MESSAGE_FORM = "rejectMessageForm";
+	
 	public static String PERSONAL_SECURITY_FORM = "personalSecurityForm";
 	
 	public static String UPDATE_FORGOT_PASSWORD = "updateForgotPassword";

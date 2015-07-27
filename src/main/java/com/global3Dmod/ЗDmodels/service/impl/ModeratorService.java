@@ -1,6 +1,7 @@
 package com.global3Dmod.ÇDmodels.service.impl;
 
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
+import com.global3Dmod.ÇDmodels.dao.IRejectMessageDAO;
+import com.global3Dmod.ÇDmodels.dao.IUserDAO;
+import com.global3Dmod.ÇDmodels.domain.Comment;
+import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.RejectMessage;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
+import com.global3Dmod.ÇDmodels.form.CommentForm;
+import com.global3Dmod.ÇDmodels.form.RejectMessageForm;
 import com.global3Dmod.ÇDmodels.service.IAdminService;
 import com.global3Dmod.ÇDmodels.service.IModeratorService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
@@ -34,6 +42,9 @@ public class ModeratorService implements IModeratorService{
 	
 	@Autowired
 	private IPostDAO postDAO;
+	
+	@Autowired
+	private IRejectMessageDAO rejectMessageDAO;
 
 	@Override
 	public List<Post> getPostsByModeratingForSort() throws ServiceException {
@@ -134,6 +145,32 @@ public class ModeratorService implements IModeratorService{
 		try {
 			post = postDAO.selectPostWithoutAll(idPost);
 			post.setIsDisplay(3);
+			postDAO.updatePost(post);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
+	}
+
+	@Override
+	public void addRejectMessage(RejectMessageForm rejectMessageForm,
+			Person person) throws ServiceException {
+		RejectMessage rejectMessage;
+		try {
+			rejectMessage = rejectMessageDAO.selectRejectMessageByPost(rejectMessageForm.getIdPost());
+			if(rejectMessage==null) {
+				rejectMessage = new RejectMessage();
+				rejectMessage.setPost(postDAO.selectPostWithoutAll(rejectMessageForm.getIdPost()));
+				rejectMessage.setUser_idUser(person.getIdPerson());
+				rejectMessage.setMessage(rejectMessageForm.getText());
+				rejectMessageDAO.insertRejectMessage(rejectMessage);
+			} else {
+				rejectMessage.setUser_idUser(person.getIdPerson());
+				rejectMessage.setMessage(rejectMessageForm.getText());
+				rejectMessageDAO.updateRejectMessage(rejectMessage);
+			}
+			Post post = postDAO.selectPostWithoutAll(rejectMessageForm.getIdPost());
+			post.setIsDisplay(1);
 			postDAO.updatePost(post);
 		} catch (DaoException e) {
 			throw new ServiceException(e);

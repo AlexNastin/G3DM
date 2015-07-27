@@ -24,4 +24,6 @@ public interface IUserDAO {
 	public List<String> selectAllEmail() throws DaoException;
 	
 	public List<String> selectAllNickName() throws DaoException;
+	
+	public User selectUserByIdWithoutAll(Integer id) throws DaoException;
 }

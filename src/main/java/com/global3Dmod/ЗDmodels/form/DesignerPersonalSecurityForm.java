@@ -6,6 +6,7 @@ public class DesignerPersonalSecurityForm implements Essence {
 	
 	private String password;
 	private String confirmPassword;
+	
 	public String getPassword() {
 		return password;
 	}

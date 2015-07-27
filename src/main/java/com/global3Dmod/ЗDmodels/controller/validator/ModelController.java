@@ -74,7 +74,7 @@ public class ModelController {
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
-	public ModelAndView commetnValid(CommentForm commentForm,
+	public ModelAndView commentValid(CommentForm commentForm,
 			BindingResult result) throws Exception {
 		commentValidator.validate(commentForm, result);
 		if (result.hasErrors()) {

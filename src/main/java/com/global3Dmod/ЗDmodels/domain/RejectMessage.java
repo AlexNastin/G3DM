@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -15,7 +16,9 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "reject_message")
-@NamedQuery(name="RejectMessage.findAll", query="select m from RejectMessage m")
+@NamedQueries({
+		@NamedQuery(name="RejectMessage.findAll", query="select m from RejectMessage m"),
+		@NamedQuery(name="RejectMessage.findByPost", query="select m from RejectMessage m where m.post.idPost = :post_idPost")})
 public class RejectMessage implements Essence {
 	
 	@Id
@@ -25,6 +28,9 @@ public class RejectMessage implements Essence {
 
 	@Column(name = "message")
 	private String message;
+	
+	@Column(name = "user_id_user")
+	private int user_idUser;
 	
 	@OneToOne
 	@JoinColumn(name = "post_id_post")
@@ -70,6 +76,14 @@ public class RejectMessage implements Essence {
 		this.user = user;
 	}
 
+	public int getUser_idUser() {
+		return user_idUser;
+	}
+
+	public void setUser_idUser(int user_idUser) {
+		this.user_idUser = user_idUser;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -78,6 +92,7 @@ public class RejectMessage implements Essence {
 		result = prime * result + ((message == null) ? 0 : message.hashCode());
 		result = prime * result + ((post == null) ? 0 : post.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + user_idUser;
 		return result;
 	}
 
@@ -107,13 +122,15 @@ public class RejectMessage implements Essence {
 				return false;
 		} else if (!user.equals(other.user))
 			return false;
+		if (user_idUser != other.user_idUser)
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
 		return "RejectMessage [idMessage=" + idMessage + ", message=" + message
-				+ "]";
+				+ ", user_idUser=" + user_idUser + "]";
 	}
 
 	

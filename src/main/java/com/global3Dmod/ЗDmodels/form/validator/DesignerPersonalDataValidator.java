@@ -24,9 +24,6 @@ public class DesignerPersonalDataValidator implements Validator {
 	private final String NAME = "^[à-ÿÀ-ß¸¨a-zA-Z0-9]+$";
 	private final String SURNAME = "^[à-ÿÀ-ß¸¨a-zA-Z0-9]+$";
 
-	@Autowired
-	private IGuestService guestService;
-
 	@Override
 	public boolean supports(Class<?> arg0) {
 		return DesignerPersonalDataForm.class.isAssignableFrom(arg0);

@@ -67,9 +67,9 @@
 			<div class="mt">
 				<div class="col-md-12 nopadding2">
 					<div class="row">
-
-						<div class="col-md-5">
-							<h2>Update password</h2>
+                      <div class="col-md-4"></div>
+						<div class="col-md-4">
+							<h2 style="text-align:center;padding-top: 1em;"><i class="fa fa-lock"></i> Update password <i class="fa fa-lock"></i></h2>
 							<form:form id="contact-form" name="contact-form"
 								class="form-horizontal" modelAttribute="personalSecurityForm"
 								method="POST">

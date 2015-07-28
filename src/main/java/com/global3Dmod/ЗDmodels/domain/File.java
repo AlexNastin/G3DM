@@ -27,6 +27,12 @@ public class File implements Essence {
 
 	@Column(name = "file_path")
 	private String filePath;
+	
+	@Column(name = "folder")
+	private long folder;
+	
+	@Column(name = "file_name")
+	private String fileName;
 
 	@OneToOne
 	@JoinColumn(name = "post_id_post")
@@ -52,6 +58,22 @@ public class File implements Essence {
 		this.filePath = filePath;
 	}
 
+	public long getFolder() {
+		return folder;
+	}
+
+	public void setFolder(long folder) {
+		this.folder = folder;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public Post getPost() {
 		return post;
 	}
@@ -65,8 +87,12 @@ public class File implements Essence {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result
+				+ ((fileName == null) ? 0 : fileName.hashCode());
+		result = prime * result
 				+ ((filePath == null) ? 0 : filePath.hashCode());
+		result = prime * result + (int) (folder ^ (folder >>> 32));
 		result = prime * result + idFile;
+		result = prime * result + ((post == null) ? 0 : post.hashCode());
 		return result;
 	}
 
@@ -79,19 +105,33 @@ public class File implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		File other = (File) obj;
+		if (fileName == null) {
+			if (other.fileName != null)
+				return false;
+		} else if (!fileName.equals(other.fileName))
+			return false;
 		if (filePath == null) {
 			if (other.filePath != null)
 				return false;
 		} else if (!filePath.equals(other.filePath))
 			return false;
+		if (folder != other.folder)
+			return false;
 		if (idFile != other.idFile)
+			return false;
+		if (post == null) {
+			if (other.post != null)
+				return false;
+		} else if (!post.equals(other.post))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "File [idFile=" + idFile + ", filePath=" + filePath + "]";
+		return "File [idFile=" + idFile + ", filePath=" + filePath
+				+ ", folder=" + folder + ", fileName=" + fileName + "]";
 	}
 
+	
 }

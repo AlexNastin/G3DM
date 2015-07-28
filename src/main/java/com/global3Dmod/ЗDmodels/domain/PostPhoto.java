@@ -8,7 +8,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-
 import javax.persistence.Table;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
@@ -25,6 +24,12 @@ public class PostPhoto implements Essence {
 
 	@Column(name = "photo_path")
 	private String photoPath;
+	
+	@Column(name = "folder")
+	private long folder;
+	
+	@Column(name = "file_name")
+	private String fileName;
 	
 	@ManyToOne
 	@JoinColumn(name = "post_id_post")
@@ -50,6 +55,22 @@ public class PostPhoto implements Essence {
 		this.photoPath = photoPath;
 	}
 	
+	public long getFolder() {
+		return folder;
+	}
+
+	public void setFolder(long folder) {
+		this.folder = folder;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
 	public Post getPost() {
 		return post;
 	}
@@ -62,9 +83,13 @@ public class PostPhoto implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result
+				+ ((fileName == null) ? 0 : fileName.hashCode());
+		result = prime * result + (int) (folder ^ (folder >>> 32));
 		result = prime * result + idPostPhoto;
 		result = prime * result
 				+ ((photoPath == null) ? 0 : photoPath.hashCode());
+		result = prime * result + ((post == null) ? 0 : post.hashCode());
 		return result;
 	}
 
@@ -77,6 +102,13 @@ public class PostPhoto implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		PostPhoto other = (PostPhoto) obj;
+		if (fileName == null) {
+			if (other.fileName != null)
+				return false;
+		} else if (!fileName.equals(other.fileName))
+			return false;
+		if (folder != other.folder)
+			return false;
 		if (idPostPhoto != other.idPostPhoto)
 			return false;
 		if (photoPath == null) {
@@ -84,12 +116,19 @@ public class PostPhoto implements Essence {
 				return false;
 		} else if (!photoPath.equals(other.photoPath))
 			return false;
+		if (post == null) {
+			if (other.post != null)
+				return false;
+		} else if (!post.equals(other.post))
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "PostPhoto [idPostPhoto=" + idPostPhoto + ", photoPath=" + photoPath + "]";
+		return "PostPhoto [idPostPhoto=" + idPostPhoto + ", photoPath="
+				+ photoPath + ", folder=" + folder + ", fileName=" + fileName
+				+ "]";
 	}
 
 	

@@ -87,9 +87,6 @@ public class Post implements Essence {
 
 	@Column(name = "rating")
 	private int rating;
-	
-	@Column(name = "folder")
-	private long folder;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "posts_has_technology", joinColumns = { @JoinColumn(name = "post_id_post") }, inverseJoinColumns = { @JoinColumn(name = "technology_id_technology") })
@@ -245,14 +242,6 @@ public class Post implements Essence {
 		this.rating = rating;
 	}
 
-	public long getFolder() {
-		return folder;
-	}
-
-	public void setFolder(long folder) {
-		this.folder = folder;
-	}
-
 	public List<Technology> getTechnologies() {
 		return technologies;
 	}
@@ -362,7 +351,6 @@ public class Post implements Essence {
 				+ ((disProgram == null) ? 0 : disProgram.hashCode());
 		result = prime * result + disProgram_idDisProgram;
 		result = prime * result + ((file == null) ? 0 : file.hashCode());
-		result = prime * result + (int) (folder ^ (folder >>> 32));
 		result = prime * result + idPost;
 		result = prime * result
 				+ ((instruction == null) ? 0 : instruction.hashCode());
@@ -441,8 +429,6 @@ public class Post implements Essence {
 				return false;
 		} else if (!file.equals(other.file))
 			return false;
-		if (folder != other.folder)
-			return false;
 		if (idPost != other.idPost)
 			return false;
 		if (instruction == null) {
@@ -511,8 +497,7 @@ public class Post implements Essence {
 				+ ", dateUpdate=" + dateUpdate + ", title=" + title
 				+ ", description=" + description + ", instruction="
 				+ instruction + ", isDisplay=" + isDisplay + ", countDownload="
-				+ countDownload + ", rating=" + rating + ", folder=" + folder
-				+ ", technologies=" + technologies + ", file=" + file + "]";
+				+ countDownload + ", rating=" + rating + ", technologies=" + technologies + ", file=" + file + "]";
 	}
 
 	

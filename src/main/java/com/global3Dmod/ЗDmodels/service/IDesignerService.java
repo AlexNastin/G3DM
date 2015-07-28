@@ -39,11 +39,20 @@ public interface IDesignerService {
 
 	public String modelFileUpload(MultipartFile file, String path)
 			throws ServiceException;
+	
+	public String modelFileUpload(MultipartFile file, String path, String oldFileName)
+			throws ServiceException;
 
 	public String photoModelFileUpload(MultipartFile file, String path)
 			throws ServiceException;
+	
+	public String photoModelFileUpload(MultipartFile file, String path, String oldFileName)
+			throws ServiceException;
 
 	public String avatarFileUpload(MultipartFile file, String path)
+			throws ServiceException;
+	
+	public String avatarFileUpload(MultipartFile file, String path, String oldFileName)
 			throws ServiceException;
 
 	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory)

@@ -204,22 +204,21 @@ public class DesignerService implements IDesignerService {
 		String fullPathModel = serverPath.concat(pathModel);
 		String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
 
-		post.setFolder(time);
 		PostPhoto firstPostPhoto = new PostPhoto();
-
-		firstPostPhoto.setPhotoPath(pathModelPhoto
-				+ photoModelFileUpload(postForm.getFirstPhoto(),
-						fullPathModelPhoto));
-
+		firstPostPhoto.setFolder(time);
+		String newName = photoModelFileUpload(postForm.getFirstPhoto(),	fullPathModelPhoto);
+		firstPostPhoto.setFileName(newName);
+		firstPostPhoto.setPhotoPath(pathModelPhoto + newName);
 		firstPostPhoto.setPost(post);
 		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 		postPhotos.add(firstPostPhoto);
 		post.setPostPhotos(postPhotos);
 
 		com.global3Dmod.ÇDmodels.domain.File file = new com.global3Dmod.ÇDmodels.domain.File();
-
-		file.setFilePath(pathModel
-				+ modelFileUpload(postForm.getModel(), fullPathModel));
+		file.setFolder(time);
+		newName = modelFileUpload(postForm.getModel(), fullPathModel);
+		file.setFileName(newName);
+		file.setFilePath(pathModel + newName);
 		file.setPost(post);
 		post.setFile(file);
 
@@ -248,6 +247,22 @@ public class DesignerService implements IDesignerService {
 		}
 		return newName;
 	}
+	
+	@Override
+	public String modelFileUpload(MultipartFile file, String path, String oldFileName)
+			throws ServiceException {
+		String filePath = path + oldFileName;
+		new File(path).mkdirs();
+		File dest = new File(filePath);
+		try {
+			file.transferTo(dest);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return oldFileName;
+	}
 
 	@Override
 	public String photoModelFileUpload(MultipartFile file, String path)
@@ -266,6 +281,22 @@ public class DesignerService implements IDesignerService {
 		}
 		return newName;
 	}
+	
+	@Override
+	public String photoModelFileUpload(MultipartFile file, String path, String oldFileName)
+			throws ServiceException {
+		String filePath = path + oldFileName;
+		new File(path).mkdirs();
+		File dest = new File(filePath);
+		try {
+			file.transferTo(dest);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return oldFileName;
+	}
 
 	@Override
 	public String avatarFileUpload(MultipartFile file, String path)
@@ -283,6 +314,22 @@ public class DesignerService implements IDesignerService {
 			e.printStackTrace();
 		}
 		return newName;
+	}
+	
+	@Override
+	public String avatarFileUpload(MultipartFile file, String path, String oldFileName)
+			throws ServiceException {
+		String filePath = path + oldFileName;
+		new File(path).mkdirs();
+		File dest = new File(filePath);
+		try {
+			file.transferTo(dest);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return oldFileName;
 	}
 
 	@Override
@@ -468,17 +515,15 @@ public class DesignerService implements IDesignerService {
 					.getTechnologiesId()));
 
 			String pathModel = createPostPath(post.getUser_idUser(),
-					post.getFolder());
+					post.getFile().getFolder());
 			String pathModelPhoto = createPostPath(post.getUser_idUser(),
-					post.getFolder());
+					post.getPostPhotos().get(0).getFolder());
 			
 			String fullPathModel = serverPath.concat(pathModel);
 			String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
 
 			PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
-			firstPostPhoto.setPhotoPath(pathModelPhoto
-					+ photoModelFileUpload(updatePostForm.getFirstPhoto(),
-							fullPathModelPhoto));
+			firstPostPhoto.setPhotoPath(pathModelPhoto + photoModelFileUpload(updatePostForm.getFirstPhoto(), fullPathModelPhoto, firstPostPhoto.getFileName()));
 
 			List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 			postPhotos.add(firstPostPhoto);
@@ -486,7 +531,7 @@ public class DesignerService implements IDesignerService {
 
 			com.global3Dmod.ÇDmodels.domain.File file = post.getFile();
 			file.setFilePath(pathModel
-					+ modelFileUpload(updatePostForm.getModel(), fullPathModel));
+					+ modelFileUpload(updatePostForm.getModel(), fullPathModel, file.getFileName()));
 
 			post.setFile(file);
 
@@ -495,63 +540,6 @@ public class DesignerService implements IDesignerService {
 			throw new ServiceException(e);
 		}
 	}
-	
-//	@Override
-//	public void addPost(PostForm postForm, int idUser, String nickName,
-//			String serverPath) throws ServiceException {
-//		DateFormat dateFormat = new SimpleDateFormat(
-//				ServiceParamConstant.FORMAT_DATE);
-//		Date date = new Date();
-//		String registrationDate = dateFormat.format(date);
-//		Post post = new Post();
-//		post.setUser_idUser(idUser);
-//		post.setCategory_idCategory(postForm.getCategory_idCategory());
-//		post.setSubcategory_idSubcategory(postForm
-//				.getSubcategory_idSubcategory());
-//		post.setNumberPost(ServiceHelper.generationNumberPost(date, nickName,
-//				postForm.getCategory_idCategory(),
-//				postForm.getSubcategory_idSubcategory()));
-//		post.setDisProgram_idDisProgram(postForm.getDisProgram_idDisProgram());
-//		post.setDateReg(registrationDate);
-//		post.setDateUpdate(registrationDate);
-//		post.setTitle(postForm.getTitle());
-//		post.setDescription(postForm.getDescription());
-//		post.setInstruction(postForm.getInstruction());
-//		post.setIsDisplay(ServiceParamConstant.DEFAULT_IS_DISPLAY);
-//		post.setCountDownload(ServiceParamConstant.DEFAULT_COUNT);
-//		post.setTechnologies(getCheckPrintersById(postForm.getTechnologiesId()));
-//		long time = date.getTime();
-//
-//		String pathModel = createPostPath(idUser, time);
-//		String pathModelPhoto = createPostPath(idUser, time);
-//
-//		String fullPathModel = serverPath.concat(pathModel);
-//		String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
-//
-//		post.setFolder(time);
-//		PostPhoto firstPostPhoto = new PostPhoto();
-//
-//		firstPostPhoto.setPhotoPath(pathModelPhoto
-//				+ photoModelFileUpload(postForm.getFirstPhoto(),
-//						fullPathModelPhoto));
-//
-//		firstPostPhoto.setPost(post);
-//		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
-//		postPhotos.add(firstPostPhoto);
-//		post.setPostPhotos(postPhotos);
-//
-//		com.global3Dmod.ÇDmodels.domain.File file = new com.global3Dmod.ÇDmodels.domain.File();
-//
-//		file.setFilePath(pathModel
-//				+ modelFileUpload(postForm.getModel(), fullPathModel));
-//		file.setPost(post);
-//		post.setFile(file);
-//
-//		try {
-//			postDAO.insertPost(post);
-//		} catch (DaoException e) {
-//			throw new ServiceException(e);
-//		}
 
 	@Override
 	public void deletePost(Integer idPost) throws ServiceException {
@@ -595,7 +583,6 @@ public class DesignerService implements IDesignerService {
 	}
 
 	private String createNewNameFile(String name) {
-		System.out.println(name);
 		int sizeFile = name.length();
 		String ext = name.substring(sizeFile - 4, sizeFile);
 		int hashCode = name.hashCode();

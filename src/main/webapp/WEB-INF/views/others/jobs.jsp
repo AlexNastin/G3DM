@@ -12,7 +12,7 @@
 <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/about.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
-<link href="<c:url value="/resources/css/jobs.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/otherpage.css"  />" rel="stylesheet" />
 <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
 <spring:message code="jobs.title" var="title" />
 <title>${title} | Global3dMod.com</title>
@@ -27,7 +27,7 @@ Jobs
 </div>
 </div>
 <div class="row">
-<div class="col-md-6 img-jobs-margin">
+<div class="col-md-6 img-jobs-margin img-responsive">
 <img src="<c:url value="/resources/images/jobs.jpg" />" class="img-responsive img-thumbnail miniature-image" alt="jobs">
 </div>
 

@@ -12,7 +12,7 @@
 <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/sign.css"  />" rel="stylesheet" />
-<link href="<c:url value="/resources/css/contact.css"  />" rel="stylesheet" />
+<link href="<c:url value="/resources/css/otherpage.css"  />" rel="stylesheet" />
 <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <title>Contact us | Global3dMod.com</title>

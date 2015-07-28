@@ -1,0 +1,77 @@
+@CHARSET "UTF-8";
+.line-contact {
+	margin-top: 3%;
+	border-bottom: 4px solid #F8F8F8;
+	margin-bottom: 1%
+}
+.font-contact {
+	font: 20pt cursive;
+}
+.contact-background {
+	background-color: #F8F8F8;
+	margin-bottom: 5%;
+}
+.contact-vertical-linen {
+	border-right: 5px solid white;
+}
+.text-contact-title {
+	font: 12pt cursive;
+	
+}
+.holycontent{
+	  min-height: 45em;
+}
+.line-about {
+	border-bottom: 4px solid #F8F8F8;
+}
+.font-about {
+	font: 20pt cursive;
+	
+}
+.image-about {
+   margin-top: 2%;
+   background: url(../images/logosign.jpg) no-repeat center top;
+   width: 100%;
+   padding-bottom:28em;
+   background-size:auto;
+   margin-bottom: 1%;
+}
+ .about-footer-margin {
+ margin-bottom: 3%;
+ }
+ .line-jobs {
+	margin-top: 3%;
+	border-bottom: 4px solid #F8F8F8;
+	margin-bottom: 1%
+}
+.font-jobs {
+	font: 20pt cursive;
+}
+.jobs-background {
+	background-color: #F8F8F8;
+	margin-bottom: 5%;
+	border-radius: 5px; 
+}
+.jobs-vertical-linen {
+	border-right: 5px solid white;
+}
+.holycontent{
+	  min-height: 25em;
+}
+.text-jobs-title {
+	font: 12pt cursive;
+}
+.img-jobs-margin {
+	margin-bottom: 1%;
+}
+.image-width-height {
+	width: 50%;
+	height: 50%;
+}
+p {
+    text-indent: 1em; /* Отступ первой строки в пикселах */
+}
+.font-size-ourmission {
+	font-size: 14pt;
+}
+  

@@ -42,7 +42,7 @@
 								method="POST">
 								<div class="form-group sign-feld-margin-top"></div>
 								<div class="form-group">
-									<div class="col-md-12 height-input-string-security">
+									<div class="col-md-12 height-input-string-update-password">
 										<form:password id="password" name="password"
 											class="form-control input-md" path="password"
 											placeholder="Password"></form:password>
@@ -50,7 +50,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-md-12 height-input-string-security">
+									<div class="col-md-12 height-input-string-update-password">
 										<form:password id="confirmPassword" name="confirmPassword"
 											class="form-control input-md" path="confirmPassword"
 											placeholder="Confirm password"></form:password>

@@ -1413,6 +1413,9 @@ input:-moz-placeholder {
   	
     min-height: 33.93em;
   }
-  .width-personal-data{
+  .width-personal-data {
   height: 30em;
+  }
+  .height-input-string-update-password {
+  height: 2.9em;
   }

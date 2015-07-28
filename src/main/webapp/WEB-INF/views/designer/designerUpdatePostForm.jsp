@@ -69,6 +69,10 @@
                                                                                       
                               <tbody>
                               <tr>
+                              		<td>Image</td>
+                              		<td><img alt="" src="<c:url value="${post.postPhotos[0].photoPath}" />"></td>
+                              </tr>
+                              <tr>
                                   <td>Category</td>
                                   <td class="hidden-phone">${post.category.title}</td>
                                   
@@ -103,6 +107,14 @@
                                    <td>Instruction</td>
                                   <td class="hidden-phone">${post.instruction}</td>
                                   
+                              </tr>
+                              <tr>
+                              		<td>File</td>
+                              		<td>
+                              		<a href="<c:url value="/download?id=${post.file.idFile}" />"> <i
+							class="btn btn-primary fa fa-download"> ${down}</i>
+						</a>
+						</td>
                               </tr>
                                   </tbody>
                           </table>

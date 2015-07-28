@@ -3,6 +3,7 @@ package com.global3Dmod.ÇDmodels.controller.validator;
 import java.util.Locale;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,7 @@ import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.form.RejectMessageForm;
 import com.global3Dmod.ÇDmodels.form.validator.RejectMessageValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
+import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
 @RequestMapping("/moderator/rejectPost")
@@ -28,11 +30,15 @@ public class RejectMessageController {
 	@Autowired
 	private IDesignerService designerService;
 	
+	@Autowired
+	private IUserService userService;
+	
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView rejectPost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model)
 			throws Exception {
 		ModelAndView modelAndView = new ModelAndView("moderator/moderatorRejectMessage");
 		Post post = designerService.getPost(idPost);
+		userService.setPathToPostPhotos(post);
 		RejectMessageForm rejectMessageForm = new RejectMessageForm();
 		modelAndView.addObject(ControllerParamConstant.REJECT_MESSAGE_FORM, rejectMessageForm);
 		modelAndView.addObject(ControllerParamConstant.POST, post);

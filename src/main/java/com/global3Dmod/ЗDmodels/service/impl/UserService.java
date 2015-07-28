@@ -18,6 +18,8 @@ import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.DesignerPersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.UserPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.UserPersonalSecurityForm;
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDesigner;
@@ -35,6 +37,9 @@ public class UserService implements IUserService {
 	
 	@Autowired
 	private IPostDAO postDAO;
+	
+	@Autowired
+	private PropertyManagerG3DM propertyManagerG3DM;
 
 	@Override
 	public List<User> getAllUsers() throws ServiceException {
@@ -152,6 +157,24 @@ public class UserService implements IUserService {
 			throw new ServiceException(e);
 		}
 
+	}
+
+	@Override
+	public void setPathToPostPhotos(List<Post> posts) throws ServiceException {
+		for (Post post : posts) {
+			String oldPath = post.getPostPhotos().get(0).getPhotoPath();
+			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+			fullPath.append(oldPath);
+			post.getPostPhotos().get(0).setPhotoPath(fullPath.toString());
+		}
+	}
+
+	@Override
+	public void setPathToPostPhotos(Post post) throws ServiceException {
+		String oldPath = post.getPostPhotos().get(0).getPhotoPath();
+		StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+		fullPath.append(oldPath);
+		post.getPostPhotos().get(0).setPhotoPath(fullPath.toString());
 	}
 
 }

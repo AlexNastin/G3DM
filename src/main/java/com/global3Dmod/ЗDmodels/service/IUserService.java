@@ -33,5 +33,9 @@ public interface IUserService {
 
 	public void updatePassword(UserPersonalSecurityForm personalSecurityForm,
 			String login) throws ServiceException;
+	
+	public void setPathToPostPhotos(List<Post> posts) throws ServiceException;
+	
+	public void setPathToPostPhotos(Post post) throws ServiceException;
 
 }

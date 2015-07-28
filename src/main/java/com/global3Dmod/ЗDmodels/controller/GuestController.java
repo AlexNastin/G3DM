@@ -87,6 +87,7 @@ public class GuestController {
 			posts = guestService.getPostsLimit10BySubcategory(page, idCategory,
 					idSubcategory);
 		}
+		userService.setPathToPostPhotos(posts);
 		guestService.setRatingInPosts(posts);
 		int allPosts = posts.size();
 		int maxPage = (int) Math.ceil((double) allPosts
@@ -175,11 +176,12 @@ public class GuestController {
 			@RequestParam(value = "id", required = false) Integer idUser,
 			Locale locale, Model model) throws ServiceException {
 		User user = guestService.getUser(idUser);
-		guestService.setRatingInPosts(user.getPosts());
+		List<Post> posts = user.getPosts();
+		guestService.setRatingInPosts(posts);
+		userService.setPathToPostPhotos(posts);
 		ModelAndView modelAndView = new ModelAndView("designer/designerProfile");
 		modelAndView.addObject(ControllerParamConstant.USER, user);
-		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, user
-				.getPosts().size());
+		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, posts.size());
 		modelAndView.addObject(ControllerParamConstant.RATING_DESIGNER,
 				guestService.getRatingByDesigner(idUser));
 		return modelAndView;

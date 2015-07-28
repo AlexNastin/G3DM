@@ -79,7 +79,7 @@
 			<div class="col-md-4">
 				<h3>${post.title}</h3>
 				<a href="#" data-toggle="modal" data-target="#lightbox"><img
-					src="<c:url value="/resources/images/logosign.jpg" />"
+					src="<c:url value="${post.postPhotos[0].photoPath}" />"
 					class="img-responsive margination" alt="Responsive image"> </a>
 				<div>
 				<a href="<c:url value="/download?id=${post.file.idFile}" />"> <i

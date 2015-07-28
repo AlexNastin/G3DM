@@ -16,6 +16,7 @@ import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
 import com.global3Dmod.ÇDmodels.form.validator.UpdatePostValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
+import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
 @RequestMapping("/designer/updatePost")
@@ -26,6 +27,9 @@ public class UpdatePostController {
 	
 	@Autowired
 	private IDesignerService designerService;
+	
+	@Autowired
+	private IUserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView updatePost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, ModelMap model) throws Exception {
@@ -36,6 +40,7 @@ public class UpdatePostController {
 		modelAndView.addObject("listDisProgram", designerService.getAllDisPrograms());
 		modelAndView.addObject("listTechnologies", designerService.getAllTechnologies());
 		Post post = designerService.getPost(idPost);
+		userService.setPathToPostPhotos(post);
 		modelAndView.addObject(ControllerParamConstant.POST, post);
 		return modelAndView;
 	}

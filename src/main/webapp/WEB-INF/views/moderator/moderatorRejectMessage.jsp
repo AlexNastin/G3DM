@@ -64,6 +64,10 @@
                                                                                       
                               <tbody>
                               <tr>
+                              		<td>Image</td>
+                              		<td><img alt="" src="<c:url value="${post.postPhotos[0].photoPath}" />"></td>
+                              </tr>
+                              <tr>
                                   <td>Designer</td>
                                   <td class="hidden-phone">${post.user.nickName}</td>
                                   
@@ -112,16 +116,12 @@
                                   <td class="hidden-phone">${post.dateUpdate}</td>
                                   
                               </tr>
-                              <tr>
-                                   <td>File</td>
-                                  <td class="hidden-phone">${post.file.filePath}</td>
-                                  
-                              </tr>
-                              <tr>
-                                   <td>Photo</td>
-                                  <td class="hidden-phone"><img alt="" src="<c:url value="${post.postPhotos[0].photoPath}" />"></td>
-                                  
-                              </tr>
+                              <td>File</td>
+                              		<td>
+                              		<a href="<c:url value="/download?id=${post.file.idFile}" />"> <i
+							class="btn btn-primary fa fa-download"> ${down}</i>
+						</a>
+						</td>
                                   </tbody>
                           </table>
                       </div>

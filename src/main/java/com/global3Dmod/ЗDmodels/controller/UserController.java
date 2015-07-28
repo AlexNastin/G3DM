@@ -37,9 +37,6 @@ public class UserController {
 	private IDesignerService designerService;
 	
 	@Autowired
-	private PropertyManagerG3DM propertyManagerG3DM;
-	
-	@Autowired
 	private IUserService userService;
 	
 	@Autowired
@@ -72,12 +69,7 @@ public class UserController {
 		} else {
 			posts = posts.subList(startPost, endPost);
 		}
-		for (Post post : posts) {
-			String oldPath = post.getPostPhotos().get(0).getPhotoPath();
-			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
-			fullPath.append(oldPath);
-			post.getPostPhotos().get(0).setPhotoPath(fullPath.toString());
-		}
+		userService.setPathToPostPhotos(posts);
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10, posts);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
 		if(endPage>maxPage) {

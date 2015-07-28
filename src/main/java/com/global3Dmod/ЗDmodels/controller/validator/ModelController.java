@@ -20,6 +20,7 @@ import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.validator.CommentValidator;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
+import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
 @RequestMapping("/model")
@@ -31,7 +32,8 @@ public class ModelController {
 	@Autowired
 	private IGuestService guestService;
 	
-	
+	@Autowired
+	private IUserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView comment(@RequestParam(value = "page", required = false) Integer page, @RequestParam(value = "id", required = false) Integer idPost,Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -44,6 +46,7 @@ public class ModelController {
 			modelAndView = new ModelAndView("model/modelDeleted");
 			return modelAndView;
 		}
+		userService.setPathToPostPhotos(post);
 		CommentForm commentForm = new CommentForm();
 		if (page == null) {
 			page=1;

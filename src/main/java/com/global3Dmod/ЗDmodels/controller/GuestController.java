@@ -60,12 +60,6 @@ public class GuestController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/jobs", method = RequestMethod.GET)
-	public ModelAndView jobs(Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("jobs");
-		return modelAndView;
-	}
-
 	@RequestMapping(value = "/putperson", method = RequestMethod.GET)
 	public ModelAndView putPerson(Locale locale, Model model,
 			HttpSession httpSession) throws Exception {
@@ -134,17 +128,6 @@ public class GuestController {
 		return modelAndView2;
 	}
 
-	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public ModelAndView about(Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("about_us");
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/contact", method = RequestMethod.GET)
-	public ModelAndView contact(Locale locale, Model model) throws Exception {
-		ModelAndView modelAndView = new ModelAndView("contact");
-		return modelAndView;
-	}
 
 	@RequestMapping("403page")
 	public ModelAndView ge403denied() {

@@ -49,5 +49,7 @@
 	<a href="<c:url value="/designer/updatePost?id=6" />">update post 6</a>
 	<a href="<c:url value="/404" />">404</a>
 	<a href="<c:url value="/token" />">token</a>
+	<br>
+	<a href="<c:url value="/download" />">Click here to download file</a>
 </body>
 </html>

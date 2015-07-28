@@ -51,5 +51,7 @@
 	<a href="<c:url value="/token" />">token</a>
 	<br>
 	<a href="<c:url value="/download" />">Click here to download file</a>
+		<br>
+	<a href="<c:url value="/exception" />">Exception</a>
 </body>
 </html>

@@ -47,7 +47,7 @@ public class DesignerController {
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "desc", required = false) boolean desc,
 			Locale locale, Model model, HttpSession httpSession)
-			throws ServiceException {
+			throws ServiceException, Exception {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -64,7 +64,6 @@ public class DesignerController {
 		int endPage = startPage + 9;
 		String appUrl = "http://" + request.getServerName() + ":"
 				+ request.getServerPort() + request.getContextPath();
-		System.out.println(appUrl);
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
 		List<Post> posts = designerService.getPostsByDesignerForSort(person
 				.getIdPerson());

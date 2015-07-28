@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-НЕПРЕДВИДЕННАЯ ОШИБКА
+ОШИБКА В СЕРВИСЕ
 </body>
 </html>

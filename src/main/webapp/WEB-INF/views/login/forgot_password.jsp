@@ -1,27 +1,41 @@
-<!DOCTYPE html>
-<%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
-<%@ taglib prefix="sec"
-	uri="http://www.springframework.org/security/tags"%>
-<%@ page session="false"%>
+<%@ page language="java" contentType="text/html; charset=utf8"
+	pageEncoding="utf8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+<!DOCTYPE HTML>
 <html>
 <head>
-<link href="<c:url value="/resources/bootstrap.css" />" rel="stylesheet">
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title></title>
-</head>
+<title>Forgot password | Global3DMod</title>
+<!-- Init search variable -->
+
+ <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="global3dmod team">
+   
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+    <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
+    <link href="<c:url value="/resources/css/404.css"  />" rel="stylesheet" />
+     <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.min.css"  />" rel="stylesheet" />
+     <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
+   
 <body>
-	<div class="container">
-		<div class="span12">
-			<h1></h1>
-			<div>
-				<br> <label>resetPasswor</label> <input id="email" name="email"
-					type="email" value="" />
-				<button type="submit" onclick="resetPass()">resetPassword</button>
+<%@include file="/WEB-INF/views/header/header.jsp" %>   
+<div class="container">
+    <div class="row">
+        <div class="col-md-12" style="padding-top: 3em;" >
+    <h1 style="text-align:center"><i class="fa fa-envelope-o"></i> Please, enter your Email <i class="fa fa-envelope-o"></i></h1>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+            <div class="error-template" style="min-height:45em;">
+               <div>
+				<input class="form-control" id="email" name="email"	type="email" value="" placeholder="Email" />
+				<button style="margin-top: 10px;" type="submit"  class="btn btn-primary"onclick="resetPass()">Reset!</button>
 			</div>
 		</div>
+	</div>
 	</div>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -44,6 +58,14 @@
 	    });
 	}
 	</script>
-</body>
+            </div>
+        </div>
+   
 
+<%@include file="/WEB-INF/views/footer.jsp" %>  
+    <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
+    <script src="<c:url value="/resources/js/slider/modernizr.custom.63321.js" />"> </script> 
+    <script src="<c:url value="/resources/js/slider/jquery.catslider.js" />"> </script> 
+</body>
 </html>

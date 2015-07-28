@@ -74,4 +74,39 @@ p {
 .font-size-ourmission {
 	font-size: 14pt;
 }
-  
+.margin-bottom-team {
+	margin-bottom: 2em;
+	
+}
+.font-family-team {
+font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+text-transform: none;
+font-weight: 700;
+text-align: center;
+font-size: 18px;
+margin-top: 1em;
+color: black;
+}
+.font-family-team-small{
+font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+text-transform: none;	
+color: #777;
+text-align: center;
+font-size: 15px;
+font-weight: 700;
+}
+.fafa-icon-team {
+text-align: center;
+color: black;
+margin-top: 0.5em;
+}
+.background-color-team {
+margin-top: 3em;
+margin-bottom: 3em;
+font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+text-transform: none;	
+color: #777;
+text-align: center;
+font-size: 18px;
+font-weight: 600;
+}

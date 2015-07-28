@@ -26,7 +26,7 @@
 <spring:message code="404.error.sorry" var="sorry2" />
 <spring:message code="403page.error.home" var="home" />
 <spring:message code="403page.error.contactss" var="contactss" />
-
+<spring:message code="javascript.validation" var="validation" />
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %>   
 <div class="container">
@@ -109,6 +109,7 @@
 <%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
-    
+    <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/${validation}.js" />"> </script>
 </body>
 </html>

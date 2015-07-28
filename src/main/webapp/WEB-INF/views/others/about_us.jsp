@@ -18,12 +18,12 @@
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %> 
-<div class="container holycontent">
-<div class="col-md-10 image-about" style="  min-height: 40em;"></div>
-<div class="col-md-12 line-about font-about">
+<div class="holycontent">
+<div class="col-md-12" style=" min-height: 40em; padding:0px"><img src="<c:url value="/resources/images/11111.png" />" class="img-responsive" alt="jobs"></div>
+<div class="col-md-12 line-about font-about ">
 Who are we?
 </div>
-<div class="col-md-12 about-footer-margin ">
+<div class="col-md-12 about-footer-margin сontainer">
 Morbi varius mauris id neque ornare, et pretium ex pellentesque. 
 Fusce volutpat, quam laoreet ultrices tincidunt, tellus elit sodales risus, vitae blandit orci neque at est. 
 Integer ultrices, odio nec placerat laoreet, lectus arcu laoreet purus, eget gravida metus nibh id augue. 
@@ -31,6 +31,7 @@ Nulla convallis condimentum eros. Phasellus rhoncus ante nec tellus scelerisque,
 Curabitur sit amet magna gravida, ullamcorper nisi vitae, efficitur dolor. Cras quis tempus mi. 
 </div>
 </div>
+<div class="clearfix"> </div>
 <%@include file="/WEB-INF/views/footer.jsp" %>
 <script src="<c:url value="/resources/js/jquery.min.js" />"> </script>
 <script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>

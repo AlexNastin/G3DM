@@ -30,7 +30,7 @@
 }
 .image-about {
    margin-top: 2%;
-   background: url(../images/1111.png) no-repeat center top;
+   background: url(../images/logosign.jpg) no-repeat center top;
    width: 100%;
    padding-bottom:28em;
    background-size:auto;
@@ -109,4 +109,16 @@ color: #777;
 text-align: center;
 font-size: 18px;
 font-weight: 600;
+}
+.background-whywe{
+background-color: #E7E7E7;
+margin-bottom: 3em;
+}
+.font-family-whywe {
+font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+text-transform: none;	
+color: #777;
+font-size: 19px;
+font-weight: 700;
+margin-top: 2em;
 }

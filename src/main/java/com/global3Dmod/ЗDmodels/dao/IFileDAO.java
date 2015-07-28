@@ -14,5 +14,7 @@ public interface IFileDAO {
 	public List<File> selectAllFiles() throws DaoException;
 
 	public void deleteFile(Integer id) throws DaoException;
+	
+	public File selectFileById(Integer idFile) throws DaoException;
 
 }

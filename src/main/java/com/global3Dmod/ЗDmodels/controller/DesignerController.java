@@ -62,8 +62,6 @@ public class DesignerController {
 		}
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
-		String appUrl = "http://" + request.getServerName() + ":"
-				+ request.getServerPort() + request.getContextPath();
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
 		List<Post> posts = designerService.getPostsByDesignerForSort(person
 				.getIdPerson());

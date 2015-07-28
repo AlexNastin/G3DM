@@ -19,6 +19,7 @@ import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
 import com.global3Dmod.ÇDmodels.dao.IComplainDAO;
+import com.global3Dmod.ÇDmodels.dao.IFileDAO;
 import com.global3Dmod.ÇDmodels.dao.ILikeDAO;
 import com.global3Dmod.ÇDmodels.dao.IPasswordResetTokenDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
@@ -29,6 +30,7 @@ import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.domain.Complain;
+import com.global3Dmod.ÇDmodels.domain.File;
 import com.global3Dmod.ÇDmodels.domain.Like;
 import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
 import com.global3Dmod.ÇDmodels.domain.Person;
@@ -39,6 +41,8 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.sort.comment.SortedCommentsByDate;
@@ -75,6 +79,12 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private IPasswordResetTokenDAO resetTokenDAO;
+
+	@Autowired
+	private IFileDAO fileDAO;
+
+	@Autowired
+	private PropertyManagerG3DM propertyManager;
 
 	@Override
 	public void addUser(SignupForm signupForm) throws ServiceException {
@@ -409,9 +419,11 @@ public class GuestService implements IGuestService {
 		String md5Password = DigestUtils.md5Hex(password);
 		user.setPassword(md5Password);
 		try {
-			PasswordResetToken passwordResetToken = resetTokenDAO.selectTokenByUser(user.getIdUser());
+			PasswordResetToken passwordResetToken = resetTokenDAO
+					.selectTokenByUser(user.getIdUser());
 			userDAO.updateUser(user);
-			resetTokenDAO.deletePasswordResetToken(passwordResetToken.getIdToken());
+			resetTokenDAO.deletePasswordResetToken(passwordResetToken
+					.getIdToken());
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -428,4 +440,18 @@ public class GuestService implements IGuestService {
 		return posts;
 	}
 
+	@Override
+	public String getFileFullPath(Integer idFile) throws ServiceException {
+		StringBuilder fullPath = new StringBuilder(
+				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
+		try {
+			File file = fileDAO.selectFileById(idFile);
+			String pathFile = file.getFilePath();
+			fullPath.append(pathFile);
+			System.out.println(fullPath.toString());
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return fullPath.toString();
+	}
 }

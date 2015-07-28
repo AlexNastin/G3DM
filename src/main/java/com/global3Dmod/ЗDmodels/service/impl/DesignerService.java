@@ -18,9 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICountryDAO;
 import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
-import com.global3Dmod.ÇDmodels.dao.IFileDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
-import com.global3Dmod.ÇDmodels.dao.IPostPhotoDAO;
 import com.global3Dmod.ÇDmodels.dao.ITechnologyDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Category;
@@ -38,8 +36,6 @@ import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.DesignerPersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
-import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
-import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.service.helper.ServiceHelper;
@@ -74,12 +70,6 @@ public class DesignerService implements IDesignerService {
 
 	@Autowired
 	private IPostDAO postDAO;
-	
-	@Autowired
-	private IPostPhotoDAO postPhotoDAO;
-	
-	@Autowired
-	private IFileDAO fileDAO;
 
 	@Autowired
 	private IUserDAO userDAO;
@@ -206,9 +196,8 @@ public class DesignerService implements IDesignerService {
 		post.setCountDownload(ServiceParamConstant.DEFAULT_COUNT);
 		post.setTechnologies(getCheckPrintersById(postForm.getTechnologiesId()));
 		long time = date.getTime(); 
-		String pathModel = createPostPath(serverPath, idUser, time);
-		String pathModelPhoto = createPostPath(serverPath, idUser,
-				time);
+		String pathModel = createPostPath(idUser, time);
+		String pathModelPhoto = createPostPath(idUser, time);
 		post.setFolder(time);
 		PostPhoto firstPostPhoto = new PostPhoto();
 		firstPostPhoto.setPhotoPath(photoModelFileUpload(
@@ -466,8 +455,8 @@ public class DesignerService implements IDesignerService {
 			post.setTechnologies(getCheckPrintersById(updatePostForm
 					.getTechnologiesId()));
 			
-			String pathModel = createPostPath(serverPath, post.getUser_idUser(), post.getFolder());
-			String pathModelPhoto = createPostPath(serverPath, post.getUser_idUser(), post.getFolder());
+			String pathModel = createPostPath(post.getUser_idUser(), post.getFolder());
+			String pathModelPhoto = createPostPath(post.getUser_idUser(), post.getFolder());
 
 			PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
 			firstPostPhoto.setPhotoPath(photoModelFileUpload(
@@ -511,9 +500,8 @@ public class DesignerService implements IDesignerService {
 		return post;
 	}
 
-	private String createPostPath(String serverPath, int idUser, long time) {
+	private String createPostPath(int idUser, long time) {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(serverPath);
 		stringBuilder.append(idUser);
 		stringBuilder.append("/posts/");
 		stringBuilder.append(time);
@@ -522,9 +510,8 @@ public class DesignerService implements IDesignerService {
 		return path;
 	}
 
-	private String createAvatarPath(String serverPath, int idUser) {
+	private String createAvatarPath(int idUser) {
 		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append(serverPath);
 		stringBuilder.append(idUser);
 		stringBuilder.append("/avatar/");
 		String path = stringBuilder.toString();

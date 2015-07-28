@@ -5,6 +5,7 @@ import java.util.List;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Comment;
+import com.global3Dmod.ÇDmodels.domain.File;
 import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
@@ -71,9 +72,13 @@ public interface IGuestService {
 	public boolean createPasswordResetTokenForUser(User user, String token)
 			throws ServiceException;
 
-	public PasswordResetToken getPasswordResetToken(String token) throws ServiceException;
-	
-	public void updateForgotPassword(User user, String password) throws ServiceException;
-	
+	public PasswordResetToken getPasswordResetToken(String token)
+			throws ServiceException;
+
+	public void updateForgotPassword(User user, String password)
+			throws ServiceException;
+
 	public List<Post> getTop4PostsByLike() throws ServiceException;
+
+	public String getFileFullPath(Integer idFile) throws ServiceException;
 }

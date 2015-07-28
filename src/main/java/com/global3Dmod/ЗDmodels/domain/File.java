@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -14,9 +15,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "files")
-@NamedQuery(name="File.findAll", query="select f from File f")
+@NamedQueries({
+		@NamedQuery(name = "File.findAll", query = "select f from File f"),
+		@NamedQuery(name = "File.findFileById", query = "select f from File f where f.idFile = :idFile")})
 public class File implements Essence {
-	
+
 	@Id
 	@Column(name = "id_file")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,11 +27,11 @@ public class File implements Essence {
 
 	@Column(name = "file_path")
 	private String filePath;
-	
+
 	@OneToOne
 	@JoinColumn(name = "post_id_post")
 	private Post post;
-	
+
 	public File() {
 		super();
 	}
@@ -48,7 +51,7 @@ public class File implements Essence {
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
 	}
-	
+
 	public Post getPost() {
 		return post;
 	}
@@ -90,7 +93,5 @@ public class File implements Essence {
 	public String toString() {
 		return "File [idFile=" + idFile + ", filePath=" + filePath + "]";
 	}
-	
-	
 
 }

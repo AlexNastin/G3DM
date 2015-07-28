@@ -471,18 +471,22 @@ public class DesignerService implements IDesignerService {
 					post.getFolder());
 			String pathModelPhoto = createPostPath(post.getUser_idUser(),
 					post.getFolder());
+			
+			String fullPathModel = serverPath.concat(pathModel);
+			String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
 
 			PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
-			firstPostPhoto.setPhotoPath(photoModelFileUpload(
-					updatePostForm.getFirstPhoto(), pathModelPhoto));
+			firstPostPhoto.setPhotoPath(pathModelPhoto
+					+ photoModelFileUpload(updatePostForm.getFirstPhoto(),
+							fullPathModelPhoto));
 
 			List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 			postPhotos.add(firstPostPhoto);
 			post.setPostPhotos(postPhotos);
 
 			com.global3Dmod.ÇDmodels.domain.File file = post.getFile();
-			file.setFilePath(modelFileUpload(updatePostForm.getModel(),
-					pathModel));
+			file.setFilePath(pathModel
+					+ modelFileUpload(updatePostForm.getModel(), fullPathModel));
 
 			post.setFile(file);
 
@@ -491,6 +495,63 @@ public class DesignerService implements IDesignerService {
 			throw new ServiceException(e);
 		}
 	}
+	
+//	@Override
+//	public void addPost(PostForm postForm, int idUser, String nickName,
+//			String serverPath) throws ServiceException {
+//		DateFormat dateFormat = new SimpleDateFormat(
+//				ServiceParamConstant.FORMAT_DATE);
+//		Date date = new Date();
+//		String registrationDate = dateFormat.format(date);
+//		Post post = new Post();
+//		post.setUser_idUser(idUser);
+//		post.setCategory_idCategory(postForm.getCategory_idCategory());
+//		post.setSubcategory_idSubcategory(postForm
+//				.getSubcategory_idSubcategory());
+//		post.setNumberPost(ServiceHelper.generationNumberPost(date, nickName,
+//				postForm.getCategory_idCategory(),
+//				postForm.getSubcategory_idSubcategory()));
+//		post.setDisProgram_idDisProgram(postForm.getDisProgram_idDisProgram());
+//		post.setDateReg(registrationDate);
+//		post.setDateUpdate(registrationDate);
+//		post.setTitle(postForm.getTitle());
+//		post.setDescription(postForm.getDescription());
+//		post.setInstruction(postForm.getInstruction());
+//		post.setIsDisplay(ServiceParamConstant.DEFAULT_IS_DISPLAY);
+//		post.setCountDownload(ServiceParamConstant.DEFAULT_COUNT);
+//		post.setTechnologies(getCheckPrintersById(postForm.getTechnologiesId()));
+//		long time = date.getTime();
+//
+//		String pathModel = createPostPath(idUser, time);
+//		String pathModelPhoto = createPostPath(idUser, time);
+//
+//		String fullPathModel = serverPath.concat(pathModel);
+//		String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
+//
+//		post.setFolder(time);
+//		PostPhoto firstPostPhoto = new PostPhoto();
+//
+//		firstPostPhoto.setPhotoPath(pathModelPhoto
+//				+ photoModelFileUpload(postForm.getFirstPhoto(),
+//						fullPathModelPhoto));
+//
+//		firstPostPhoto.setPost(post);
+//		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
+//		postPhotos.add(firstPostPhoto);
+//		post.setPostPhotos(postPhotos);
+//
+//		com.global3Dmod.ÇDmodels.domain.File file = new com.global3Dmod.ÇDmodels.domain.File();
+//
+//		file.setFilePath(pathModel
+//				+ modelFileUpload(postForm.getModel(), fullPathModel));
+//		file.setPost(post);
+//		post.setFile(file);
+//
+//		try {
+//			postDAO.insertPost(post);
+//		} catch (DaoException e) {
+//			throw new ServiceException(e);
+//		}
 
 	@Override
 	public void deletePost(Integer idPost) throws ServiceException {

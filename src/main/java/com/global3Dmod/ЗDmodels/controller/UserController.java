@@ -20,6 +20,8 @@ import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.UserPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.UserPersonalSecurityForm;
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
@@ -33,6 +35,9 @@ public class UserController {
 	
 	@Autowired
 	private IDesignerService designerService;
+	
+	@Autowired
+	private PropertyManagerG3DM propertyManagerG3DM;
 	
 	@Autowired
 	private IUserService userService;
@@ -66,6 +71,12 @@ public class UserController {
 			posts = posts.subList(startPost, allPosts);
 		} else {
 			posts = posts.subList(startPost, endPost);
+		}
+		for (Post post : posts) {
+			String oldPath = post.getPostPhotos().get(0).getPhotoPath();
+			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+			fullPath.append(oldPath);
+			post.getPostPhotos().get(0).setPhotoPath(fullPath.toString());
 		}
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10, posts);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);

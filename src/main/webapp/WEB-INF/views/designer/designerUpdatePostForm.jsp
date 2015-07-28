@@ -85,9 +85,9 @@
                               </tr>
                               <tr>
                                    <td>Technologies</td>
-                                   <c:forEach items="${post.technologies}" var="technology">
-                                  <td class="hidden-phone">${technology.title}</td>
-                                  </c:forEach>
+                                   
+                                  <td class="hidden-phone"><c:forEach items="${post.technologies}" var="technology"> ${technology.title} </c:forEach>  </td> 
+                                  
                               </tr>
                               <tr>
                                    <td>Title</td>

@@ -184,8 +184,9 @@ public class DesignerService implements IDesignerService {
 		post.setCategory_idCategory(postForm.getCategory_idCategory());
 		post.setSubcategory_idSubcategory(postForm
 				.getSubcategory_idSubcategory());
-		post.setNumberPost(ServiceHelper.generationNumberPost(date, nickName,postForm.getCategory_idCategory(), postForm
-				.getSubcategory_idSubcategory()));
+		post.setNumberPost(ServiceHelper.generationNumberPost(date, nickName,
+				postForm.getCategory_idCategory(),
+				postForm.getSubcategory_idSubcategory()));
 		post.setDisProgram_idDisProgram(postForm.getDisProgram_idDisProgram());
 		post.setDateReg(registrationDate);
 		post.setDateUpdate(registrationDate);
@@ -195,20 +196,30 @@ public class DesignerService implements IDesignerService {
 		post.setIsDisplay(ServiceParamConstant.DEFAULT_IS_DISPLAY);
 		post.setCountDownload(ServiceParamConstant.DEFAULT_COUNT);
 		post.setTechnologies(getCheckPrintersById(postForm.getTechnologiesId()));
-		long time = date.getTime(); 
+		long time = date.getTime();
+
 		String pathModel = createPostPath(idUser, time);
 		String pathModelPhoto = createPostPath(idUser, time);
+
+		String fullPathModel = serverPath.concat(pathModel);
+		String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
+
 		post.setFolder(time);
 		PostPhoto firstPostPhoto = new PostPhoto();
-		firstPostPhoto.setPhotoPath(photoModelFileUpload(
-				postForm.getFirstPhoto(), pathModelPhoto));
+
+		firstPostPhoto.setPhotoPath(pathModelPhoto
+				+ photoModelFileUpload(postForm.getFirstPhoto(),
+						fullPathModelPhoto));
+
 		firstPostPhoto.setPost(post);
 		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 		postPhotos.add(firstPostPhoto);
 		post.setPostPhotos(postPhotos);
 
 		com.global3Dmod.ÇDmodels.domain.File file = new com.global3Dmod.ÇDmodels.domain.File();
-		file.setFilePath(modelFileUpload(postForm.getModel(), pathModel));
+
+		file.setFilePath(pathModel
+				+ modelFileUpload(postForm.getModel(), fullPathModel));
 		file.setPost(post);
 		post.setFile(file);
 
@@ -235,7 +246,7 @@ public class DesignerService implements IDesignerService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return filePath;
+		return newName;
 	}
 
 	@Override
@@ -253,7 +264,7 @@ public class DesignerService implements IDesignerService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return filePath;
+		return newName;
 	}
 
 	@Override
@@ -271,7 +282,7 @@ public class DesignerService implements IDesignerService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return filePath;
+		return newName;
 	}
 
 	@Override
@@ -342,7 +353,7 @@ public class DesignerService implements IDesignerService {
 		}
 		return posts;
 	}
-	
+
 	@Override
 	public List<Country> sortCountries(List<Country> countries)
 			throws ServiceException {
@@ -399,8 +410,8 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public void updateUser(DesignerPersonalDataForm personalDataForm, String login)
-			throws ServiceException {
+	public void updateUser(DesignerPersonalDataForm personalDataForm,
+			String login) throws ServiceException {
 		try {
 			User user = userDAO.selectUser(login);
 			user.setCountry_idCountry(personalDataForm.getCountry_idCountry());
@@ -417,8 +428,9 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public void updatePassword(DesignerPersonalSecurityForm personalSecurityForm,
-			String login) throws ServiceException {
+	public void updatePassword(
+			DesignerPersonalSecurityForm personalSecurityForm, String login)
+			throws ServiceException {
 		try {
 			User user = userDAO.selectUser(login);
 			String password = personalSecurityForm.getPassword();
@@ -434,8 +446,8 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public void updatePost(UpdatePostForm updatePostForm, Integer idPost, String serverPath)
-			throws ServiceException {
+	public void updatePost(UpdatePostForm updatePostForm, Integer idPost,
+			String serverPath) throws ServiceException {
 		try {
 			Post post = postDAO.selectPost(idPost);
 			DateFormat dateFormat = new SimpleDateFormat(
@@ -454,23 +466,26 @@ public class DesignerService implements IDesignerService {
 			post.setIsDisplay(2);
 			post.setTechnologies(getCheckPrintersById(updatePostForm
 					.getTechnologiesId()));
-			
-			String pathModel = createPostPath(post.getUser_idUser(), post.getFolder());
-			String pathModelPhoto = createPostPath(post.getUser_idUser(), post.getFolder());
+
+			String pathModel = createPostPath(post.getUser_idUser(),
+					post.getFolder());
+			String pathModelPhoto = createPostPath(post.getUser_idUser(),
+					post.getFolder());
 
 			PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
 			firstPostPhoto.setPhotoPath(photoModelFileUpload(
 					updatePostForm.getFirstPhoto(), pathModelPhoto));
-			
+
 			List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 			postPhotos.add(firstPostPhoto);
 			post.setPostPhotos(postPhotos);
 
 			com.global3Dmod.ÇDmodels.domain.File file = post.getFile();
-			file.setFilePath(modelFileUpload(updatePostForm.getModel(), pathModel));
-			
+			file.setFilePath(modelFileUpload(updatePostForm.getModel(),
+					pathModel));
+
 			post.setFile(file);
-			
+
 			postDAO.updatePost(post);
 		} catch (DaoException e) {
 			throw new ServiceException(e);

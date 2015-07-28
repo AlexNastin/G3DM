@@ -13,7 +13,7 @@
 <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/otherpage.css"  />" rel="stylesheet" />
 <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
-<title>Why we?</title>
+<title>Why we? | Global3dMod</title>
 <spring:message code="headerWithSearch.header.search" var="search"/>
 </head>
 <body>

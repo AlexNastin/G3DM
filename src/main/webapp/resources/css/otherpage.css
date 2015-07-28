@@ -122,3 +122,14 @@ font-size: 19px;
 font-weight: 700;
 margin-top: 2em;
 }
+.font-family-howitworks{
+font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+text-transform: none;	
+color: #777;
+font-size: 18px;
+font-weight: 500;
+margin-top: 1em;
+}	
+.background-howitworks {
+background-color: #F8F8F8;
+}

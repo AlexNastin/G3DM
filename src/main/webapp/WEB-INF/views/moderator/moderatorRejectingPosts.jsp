@@ -111,7 +111,7 @@
                                   <td>${post.category.title}</td>
                                   <td>${post.subcategory.title}</td>
                                   <td>${post.user.nickName}</td>
-                                  <td>${post.rejectMessage.message}</td>
+                                  <td style="width: 3em;">${post.rejectMessage.message}</td>
                               </tr>
                               </c:forEach>
                               </tbody>

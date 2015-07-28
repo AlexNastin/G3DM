@@ -3,7 +3,6 @@ package com.global3Dmod.ÇDmodels.dao;
 import java.util.List;
 
 import com.global3Dmod.ÇDmodels.domain.Complain;
-import com.global3Dmod.ÇDmodels.domain.Like;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 public interface IComplainDAO {

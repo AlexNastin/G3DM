@@ -16,9 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.User;
-import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.UserPersonalDataForm;
-import com.global3Dmod.ÇDmodels.form.validator.DesignerPersonalDataValidator;
 import com.global3Dmod.ÇDmodels.form.validator.UserPersonalDataValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 

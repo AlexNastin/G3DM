@@ -1,6 +1,5 @@
 package com.global3Dmod.ÇDmodels.controller.validator;
 
-import java.io.File;
 import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;

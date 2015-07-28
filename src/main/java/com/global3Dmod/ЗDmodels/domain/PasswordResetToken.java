@@ -7,10 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,7 +20,6 @@ import javax.persistence.Table;
 	@NamedQuery(name = "PasswordResetToken.findTokenByToken", query = "select p from PasswordResetToken p where p.token = :token")})
 public class PasswordResetToken implements Essence {
 
-	private static final int EXPIRATION = 60 * 24;
 
 	@Id
 	@Column(name = "id_token")
@@ -34,10 +31,6 @@ public class PasswordResetToken implements Essence {
 	
 	@Column(name = "token")
 	private String token;
-
-	@OneToOne
-	@JoinColumn(name = "user_id_user",insertable=false, updatable=false)
-	private User user;
 
 	@Column(name = "expiry_date")
 	private Date expiryDate;
@@ -118,15 +111,4 @@ public class PasswordResetToken implements Essence {
 				+ user_idUser + ", token=" + token + ", expiryDate="
 				+ expiryDate + "]";
 	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-
-
 }

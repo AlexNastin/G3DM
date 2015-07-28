@@ -1,15 +1,10 @@
 package com.global3Dmod.ÇDmodels.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.swing.Spring;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,13 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.fasterxml.jackson.annotation.JsonAutoDetect;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.City;
 import com.global3Dmod.ÇDmodels.domain.Country;
@@ -36,17 +27,10 @@ import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.DesignerPersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
-import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
-import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByCategory;
-import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDate;
-import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDownloads;
-import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByStatus;
-import com.global3Dmod.ÇDmodels.sort.post.SortedPostsBySubcategory;
-import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByTitle;
 
 @Controller
 public class DesignerController {

@@ -13,6 +13,7 @@ import javax.persistence.Table;
 @NamedQuery(name="Advertisement.findAll", query="select a from Advertisement a")
 public class Advertisement implements Essence {
 
+
 	@Id
 	@Column(name = "id_advertisement")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

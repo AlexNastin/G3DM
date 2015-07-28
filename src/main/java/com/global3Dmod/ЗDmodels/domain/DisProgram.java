@@ -12,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 

@@ -2,15 +2,13 @@ package com.global3Dmod.ÇDmodels.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
-import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
+
 import javax.persistence.Table;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;

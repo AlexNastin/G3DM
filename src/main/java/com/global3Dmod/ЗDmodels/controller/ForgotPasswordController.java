@@ -62,7 +62,7 @@ public class ForgotPasswordController {
 			throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("redirect:/go/signin");
 		Pattern pattern = Pattern.compile(REGEX_VALID_EMAIL);
-		Matcher matcher = pattern.matcher(userEmail);
+		Matcher matcher = pattern.matcher(userEmail.toLowerCase());
 		boolean isValid = matcher.matches();
 		if (isValid) {
 			User user = designerService.getUser(userEmail);
@@ -167,7 +167,6 @@ public class ForgotPasswordController {
 	@RequestMapping(value = "/savePassword", method = RequestMethod.POST)
 	public ModelAndView saveNewPassword(Locale locale, Model model,
 			@RequestParam("password") String password) throws ServiceException {
-		System.out.println(password);
 		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		guestService.updateForgotPassword(user, password);
 		ModelAndView modelAndView = new ModelAndView("login/signin");

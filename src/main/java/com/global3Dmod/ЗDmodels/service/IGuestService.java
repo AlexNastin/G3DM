@@ -2,15 +2,12 @@ package com.global3Dmod.ÇDmodels.service;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
-
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
-import com.global3Dmod.ÇDmodels.domain.Rating;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;

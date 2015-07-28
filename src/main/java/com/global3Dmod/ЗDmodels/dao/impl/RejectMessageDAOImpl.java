@@ -5,14 +5,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
 import com.global3Dmod.ÇDmodels.dao.IRejectMessageDAO;
-import com.global3Dmod.ÇDmodels.domain.Comment;
-import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.RejectMessage;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 

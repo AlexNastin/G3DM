@@ -1,6 +1,5 @@
 package com.global3Dmod.ÇDmodels.domain;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,9 +16,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Type;
-import org.hibernate.annotations.TypeDef;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
@@ -94,9 +90,6 @@ public class User implements Essence {
 	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private Avatar avatar;
-	
-	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private PasswordResetToken token;
 
 	public User() {
 		super();
@@ -244,14 +237,6 @@ public class User implements Essence {
 
 	public void setRejectMessages(List<RejectMessage> rejectMessages) {
 		this.rejectMessages = rejectMessages;
-	}
-
-	public PasswordResetToken getToken() {
-		return token;
-	}
-
-	public void setToken(PasswordResetToken token) {
-		this.token = token;
 	}
 
 	public Avatar getAvatar() {

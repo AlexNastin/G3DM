@@ -11,10 +11,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
-import org.hibernate.loader.custom.Return;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.«Dmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.«Dmodels.dao.IAdvertisementDAO;
@@ -90,7 +88,7 @@ public class GuestService implements IGuestService {
 		user.setCountry_idCountry(ServiceParamConstant.ID_—OUNTRY);
 		user.setCity_id—ity(ServiceParamConstant.ID_—ITY);
 		user.setNickName(signupForm.getNickName());
-		user.setLogin(signupForm.getLogin());
+		user.setLogin(signupForm.getLogin().toLowerCase());
 		user.setPassword(md5Password);
 		user.setName(ServiceParamConstant.EMPTY);
 		user.setSurname(ServiceParamConstant.EMPTY);
@@ -406,7 +404,6 @@ public class GuestService implements IGuestService {
 	}
 
 	@Override
-	@Transactional
 	public void updateForgotPassword(User user, String password)
 			throws ServiceException {
 		String md5Password = DigestUtils.md5Hex(password);
@@ -421,7 +418,6 @@ public class GuestService implements IGuestService {
 	}
 
 	@Override
-	@Transactional
 	public List<Post> getTop4PostsByLike() throws ServiceException {
 		List<Post> posts;
 		try {

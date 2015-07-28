@@ -23,7 +23,9 @@ public class UserDAOImpl implements IUserDAO {
 
 	/**
 	 * Insert the object of type "User" to the database
-	 * @param user object of type "User"
+	 * 
+	 * @param user
+	 *            object of type "User"
 	 * @throws DaoException
 	 * */
 	@Override
@@ -35,6 +37,7 @@ public class UserDAOImpl implements IUserDAO {
 
 	/**
 	 * Receipt of all elements of the table "users" from the database
+	 * 
 	 * @return users collection of objects of type "User"
 	 * @throws DaoException
 	 * */
@@ -48,7 +51,9 @@ public class UserDAOImpl implements IUserDAO {
 
 	/**
 	 * Delete the object of type "User" from the database
-	 * @param id row ID in the database
+	 * 
+	 * @param id
+	 *            row ID in the database
 	 * @throws DaoException
 	 * */
 	@Override
@@ -60,7 +65,9 @@ public class UserDAOImpl implements IUserDAO {
 
 	/**
 	 * Update the object of type "User" in the database
-	 * @param user object of type "User"
+	 * 
+	 * @param user
+	 *            object of type "User"
 	 * @throws DaoException
 	 * */
 	@Override
@@ -72,53 +79,66 @@ public class UserDAOImpl implements IUserDAO {
 
 	/**
 	 * Receipt of 3 elements of the table "users" from the database
+	 * 
 	 * @return usersTop collection of objects of type "User"
 	 * @throws DaoException
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<User> selectTop3Users() throws DaoException{
+	public List<User> selectTop3Users() throws DaoException {
 		List<User> usersTop = em.createNamedQuery("User.findTop3")
 				.setFirstResult(0).setMaxResults(3).getResultList();
 		return usersTop;
 	}
-	
+
 	/**
-	 * Receipt of all user`s email address of the table "users" from the database
+	 * Receipt of all user`s email address of the table "users" from the
+	 * database
+	 * 
 	 * @return emails collection of objects of type "String"
 	 * @throws DaoException
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> selectAllEmail() throws DaoException {
-		List<String> emails = em.createNamedQuery("User.findAllEmail").getResultList();
+		List<String> emails = em.createNamedQuery("User.findAllEmail")
+				.getResultList();
 		return emails;
 	}
-	
+
 	/**
 	 * Receipt of all user`s nickname of the table "users" from the database
+	 * 
 	 * @return nickNames collection of objects of type "String"
 	 * @throws DaoException
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<String> selectAllNickName() throws DaoException {
-		List<String> nickNames = em.createNamedQuery("User.findAllNickName").getResultList();
+		List<String> nickNames = em.createNamedQuery("User.findAllNickName")
+				.getResultList();
 		return nickNames;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public User selectUser(String login) throws DaoException {
-		User user = (User) em.createNamedQuery("User.findUserByLogin").setParameter("login", login).getSingleResult();
-		Hibernate.initialize(user.getCity());
-		Hibernate.initialize(user.getCountry());
+		List<User> users = em.createNamedQuery("User.findUserByLogin").setParameter("login", login).getResultList();
+		User user = null;
+		if (!users.isEmpty()) {
+			user = users.get(0);
+			Hibernate.initialize(user.getCity());
+			Hibernate.initialize(user.getCountry());
+		}
+		
 		return user;
 	}
 
 	@Override
 	public User selectUserById(Integer id) throws DaoException {
-		User user = (User) em.createNamedQuery("User.findUserById").setParameter("idUser", id).getSingleResult();
+		User user = (User) em.createNamedQuery("User.findUserById")
+				.setParameter("idUser", id).getSingleResult();
 		Hibernate.initialize(user.getCity());
 		Hibernate.initialize(user.getCountry());
 		Hibernate.initialize(user.getPosts());
@@ -128,10 +148,11 @@ public class UserDAOImpl implements IUserDAO {
 		}
 		return user;
 	}
-	
+
 	@Override
 	public User selectUserByIdWithoutAll(Integer id) throws DaoException {
-		User user = (User) em.createNamedQuery("User.findUserById").setParameter("idUser", id).getSingleResult();
+		User user = (User) em.createNamedQuery("User.findUserById")
+				.setParameter("idUser", id).getSingleResult();
 		return user;
 	}
 

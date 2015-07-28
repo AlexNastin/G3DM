@@ -1,11 +1,6 @@
 package com.global3Dmod.ÇDmodels.controller;
 
 import java.util.Locale;
-import java.util.Map;
-
-
-import java.util.Map.Entry;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;

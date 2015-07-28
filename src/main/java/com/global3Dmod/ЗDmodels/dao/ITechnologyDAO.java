@@ -1,7 +1,6 @@
 package com.global3Dmod.ÇDmodels.dao;
 
 import java.util.List;
-import java.util.Set;
 
 import com.global3Dmod.ÇDmodels.domain.Technology;
 import com.global3Dmod.ÇDmodels.exception.DaoException;

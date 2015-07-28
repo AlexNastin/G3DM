@@ -4,15 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IComplainDAO;
-import com.global3Dmod.ÇDmodels.dao.ILikeDAO;
 import com.global3Dmod.ÇDmodels.domain.Complain;
-import com.global3Dmod.ÇDmodels.domain.Like;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 @Repository("jpaComplainDAO")

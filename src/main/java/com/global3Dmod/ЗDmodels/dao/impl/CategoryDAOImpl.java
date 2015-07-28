@@ -5,14 +5,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.domain.Category;
-import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 @Repository("jpaCategoryDAO")

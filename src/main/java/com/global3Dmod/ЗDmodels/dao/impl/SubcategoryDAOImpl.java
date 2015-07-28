@@ -8,7 +8,6 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.exception.DaoException;

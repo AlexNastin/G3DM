@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IPasswordResetTokenDAO;
 import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
-import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 @Repository("jpaPasswordResetTokenDAO")
@@ -49,10 +48,8 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 	@Override
 	@Transactional
 	public void deletePasswordResetToken(Integer idToken) throws DaoException {
-		PasswordResetToken passwordResetToken = em.find(
-				PasswordResetToken.class, idToken);
+		PasswordResetToken passwordResetToken = em.find(PasswordResetToken.class, idToken);
 		em.remove(passwordResetToken);
-
 	}
 
 	@SuppressWarnings("unchecked")

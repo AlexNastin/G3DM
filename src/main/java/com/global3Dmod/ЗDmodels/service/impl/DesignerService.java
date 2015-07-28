@@ -472,7 +472,6 @@ public class DesignerService implements IDesignerService {
 			PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
 			firstPostPhoto.setPhotoPath(photoModelFileUpload(
 					updatePostForm.getFirstPhoto(), pathModelPhoto));
-//			firstPostPhoto.setPost(post);
 			
 			List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 			postPhotos.add(firstPostPhoto);
@@ -480,7 +479,6 @@ public class DesignerService implements IDesignerService {
 
 			com.global3Dmod.ÇDmodels.domain.File file = post.getFile();
 			file.setFilePath(modelFileUpload(updatePostForm.getModel(), pathModel));
-//			file.setPost(post);
 			
 			post.setFile(file);
 			

@@ -102,6 +102,7 @@ public class GuestController {
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
 		ModelAndView modelAndView = new ModelAndView("result");
+		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY_WITH_ALL_SUBCATEGORY, guestService.getAllCategories());
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10,
 				posts);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);

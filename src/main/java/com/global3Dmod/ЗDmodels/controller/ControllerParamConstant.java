@@ -26,6 +26,8 @@ public  final class ControllerParamConstant {
 	
 	public static String LIST_CATEGORY = "listCategory";
 	
+	public static String LIST_CATEGORY_WITH_ALL_SUBCATEGORY = "listCategoryWithAllSubcategory";
+	
 	public static String LIST_ADVERTISEMENTS = "listAdvertisements";
 	
 	public static String LIST_TOP4_POSTS = "listTop4Posts";

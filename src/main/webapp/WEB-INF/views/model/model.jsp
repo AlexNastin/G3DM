@@ -55,6 +55,25 @@
 </head>
 <body>
 	<%@include file="/WEB-INF/views/header/headerWithSearch.jsp"%>
+	
+	<div class="container" style="padding-top: 3em;">
+	<div class="btn-group btn-group-sm" role="group" aria-label="...">
+	<c:forEach items="${listCategoryWithAllSubcategory}" var="category">
+  <div class="btn-group btn-group-sm" role="group">
+    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      ${category.title}
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+    <c:forEach items="${category.subcategories}" var="subcategory">
+      <li><a href="#">${subcategory.title}</a></li>
+    </c:forEach>
+    </ul>
+  </div>
+  </c:forEach>
+</div>
+	</div>
+	
 	<div class="container modelmain">
 		<div class="row">
 			<div class="col-md-4">

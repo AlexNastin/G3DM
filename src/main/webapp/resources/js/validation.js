@@ -18,7 +18,7 @@ $(document).ready(function(){
 	        "Please check your input."
 	);
 		
-		$('#contact-form, #comment-form').validate({
+		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm').validate({
 			
 	    rules: {
 	    	nickName: {
@@ -39,7 +39,7 @@ $(document).ready(function(){
 	        digits:true
 	      },
 	      password: {
-	      minlength: 6,
+	      rangelength: [8, 32],
 	      required: true
 	      },
 	      j_username: {
@@ -47,30 +47,51 @@ $(document).ready(function(){
 		        email: true
 	      },
 	      j_password: {
-	      minlength: 6,
+	      rangelength: [8, 32],
 	      required: true  
 	      },
 	      text: {
 	      required: true,
-	      maxlength: 512
+	      regexp: '^[\x00-\x7F]{2,300}$'
 	      },
 	      confirmPassword: {
 	      equalTo: "#password",
 	      required: true 	  
 	      },
 	      name: {
-	    	 regexp: '^[а-яА-ЯёЁa-zA-Z0-9]+$'
+	    	 regexp: '^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,50}$'
 	      },
 	      surname: {
-	    	  regexp: '^[а-яА-ЯёЁa-zA-Z0-9]+$'
+	    	 regexp: '^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,50}$'
 	      },
-	      
+	      nickName: {
+	    	  regexp: '^[a-zA-Z]+$'
+	      },
+	      title: {
+	    	  regexp: '^[a-zA-Z0-9\ \'-]{2,16}$',
+	    	  required: true
+	      },
+	      description: {
+	    	  regexp: '^[\x00-\x7F]{2,300}$',
+	    	  required: true
+	      },
+	      instruction: {
+	    	  regexp: '^[\x00-\x7F]{2,1500}$',
+	    	  required: true  
+	      },
 },
 messages:  {
 	confirmPassword: {
 	equalTo: 'The passwords do not match.'
-		}
-	},	
+		},
+    password: {
+    	rangelength: 'At least 8 characters, but no more than 32.'	
+    },
+    j_password: {
+    	rangelength: 'Please check your input.'	
+    },
+    
+},	
 
 			highlight: function(element) {
 				$(element).closest('.control-group').removeClass('success').addClass('error');

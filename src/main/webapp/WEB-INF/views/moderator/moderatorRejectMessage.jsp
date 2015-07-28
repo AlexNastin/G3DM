@@ -14,7 +14,7 @@
 <spring:message code="designer.menu.data" var="data"/>
 <spring:message code="designer.menu.add" var="add"/>
 <spring:message code="moderator.menu.postsunpublished" var="unpblsd"/>
-
+<spring:message code="javascript.validation" var="validation" />
 
 
  <meta charset="utf-8">
@@ -135,9 +135,11 @@
                    <form:form id="rejectMessageForm" name="rejectMessageForm" class="form-horizontal" modelAttribute="rejectMessageForm" method="POST">
 	   <div class="form-group sign-feld-margin-top">
 		</div>
+		<div class="height-input-string-messages">
 		<form:textarea id="text" name="text" style="resize:none"
 											class="form-control input-md" path="text"
 											placeholder="Type your comment here" rows="5" cols="30"></form:textarea>
+											</div>
 									<form:input type="hidden" id="idPost" name="idPost"
 										path="idPost" value="${post.idPost }"></form:input>
 									<span class="error"><form:errors path="text" /></span> <br>
@@ -179,7 +181,7 @@
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
    
-	  
-
+<script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
+<script src="<c:url value="/resources/js/${validation}.js" />"> </script>	  
 </body>
 </html> 

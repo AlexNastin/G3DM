@@ -13,7 +13,7 @@
 <spring:message code="addPost.menu.works" var="works"/>
 <spring:message code="addPost.menu.data" var="data"/>
 <spring:message code="addPost.menu.add" var="add"/>
-
+<spring:message code="javascript.validation" var="validation" />
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -188,5 +188,7 @@
 		$("#output").html(output);
 	}
 </script>
+<script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
+<script src="<c:url value="/resources/js/${validation}.js" />"> </script>
 </body>
 </html>

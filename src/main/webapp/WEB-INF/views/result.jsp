@@ -53,7 +53,7 @@
     </button>
     <ul class="dropdown-menu">
     <c:forEach items="${category.subcategories}" var="subcategory">
-      <li><a href="#">${subcategory.title}</a></li>
+      <li><a href="<c:url value="/result?idCategory=${category.idCategory}&idSubcategory=${subcategory.idSubcategory}" />">${subcategory.title}</a></li>
     </c:forEach>
     </ul>
   </div>

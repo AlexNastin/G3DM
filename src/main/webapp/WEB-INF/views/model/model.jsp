@@ -66,7 +66,7 @@
     </button>
     <ul class="dropdown-menu">
     <c:forEach items="${category.subcategories}" var="subcategory">
-      <li><a href="#">${subcategory.title}</a></li>
+      <li><a href="<c:url value="/result?idCategory=${category.idCategory}&idSubcategory=${subcategory.idSubcategory}" />">${subcategory.title}</a></li>
     </c:forEach>
     </ul>
   </div>
@@ -82,7 +82,9 @@
 					src="<c:url value="/resources/images/logosign.jpg" />"
 					class="img-responsive margination" alt="Responsive image"> </a>
 				<div>
-					<button class="btn btn-primary fa fa-download"> ${down}</button>
+				<a href="<c:url value="/download?id=${post.file.idFile}" />"> <i
+							class="btn btn-primary fa fa-download"> ${down}</i>
+						</a>
 					<security:authorize
 						access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
 						<a href="<c:url value="/like?id=${post.idPost}" />"> <i

@@ -19,9 +19,38 @@ How does it work for designers? | Global3dMod</title>
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>
-
-
-
+<div class="container holycontent">
+<div class="row">
+<div class="font-contact line-contact col-md-12">
+<i class="fa fa-cog"></i> How does it work for designers?  
+</div>
+</div>
+<div class="col-md-12 background-howitworks">
+<div class="font-family-howitworks">
+<p><i class="fa fa-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Quisque bibendum risus vitae metus pellentesque, a ultrices eros interdum. 
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+<p><i class="fa fa-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Quisque bibendum risus vitae metus pellentesque, a ultrices eros interdum. 
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+<p><i class="fa fa-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Quisque bibendum risus vitae metus pellentesque, a ultrices eros interdum. 
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+<p><i class="fa fa-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Quisque bibendum risus vitae metus pellentesque, a ultrices eros interdum. 
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+<p><i class="fa fa-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Quisque bibendum risus vitae metus pellentesque, a ultrices eros interdum. 
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+<p><i class="fa fa-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Quisque bibendum risus vitae metus pellentesque, a ultrices eros interdum. 
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+<p><i class="fa fa-circle"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Quisque bibendum risus vitae metus pellentesque, a ultrices eros interdum. 
+Interdum et malesuada fames ac ante ipsum primis in faucibus.
+</div>
+</div>
+</div>
 <%@include file="/WEB-INF/views/footer.jsp" %>
 <script src="<c:url value="/resources/js/jquery.min.js" />"> </script>
 <script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>

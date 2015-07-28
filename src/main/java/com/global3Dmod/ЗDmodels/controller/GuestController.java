@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
+import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
@@ -33,13 +34,13 @@ public class GuestController {
 	private IUserService userService;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView index(Locale locale, Model model) throws Exception {
+	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView main(Locale locale, Model model) throws Exception {
+	public ModelAndView main(Locale locale, Model model) throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("main");
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY,
 				guestService.getAllCategoriesSubcategoriesTop3());
@@ -53,14 +54,14 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = "/go/signin", method = RequestMethod.GET)
-	public ModelAndView signIn(Locale locale, Model model) throws Exception {
+	public ModelAndView signIn() {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/putperson", method = RequestMethod.GET)
 	public ModelAndView putPerson(Locale locale, Model model,
-			HttpSession httpSession) throws Exception {
+			HttpSession httpSession) throws ServiceException {
 		Authentication auth = SecurityContextHolder.getContext()
 				.getAuthentication();
 		String login = auth.getName();
@@ -75,7 +76,7 @@ public class GuestController {
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "idCategory", required = false) Integer idCategory,
 			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory,
-			Model model) throws Exception {
+			Model model) throws ServiceException {
 		if (page == null) {
 			page = 1;
 		}
@@ -120,7 +121,7 @@ public class GuestController {
 
 	@RequestMapping(value = "/signupAddUser", method = RequestMethod.POST)
 	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,
-			Model model) throws Exception {
+			Model model) throws ServiceException {
 		guestService.addUser(signupForm);
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/go/signin");
 		return modelAndView2;
@@ -134,7 +135,7 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = "/404", method = RequestMethod.GET)
-	public ModelAndView page404(Locale locale, Model model) throws Exception {
+	public ModelAndView page404() {
 		ModelAndView modelAndView = new ModelAndView("error/404");
 		return modelAndView;
 	}
@@ -142,20 +143,20 @@ public class GuestController {
 	// test
 	@RequestMapping(value = "/categoryMenu", method = RequestMethod.GET)
 	public ModelAndView categoryMenu(Locale locale, Model model)
-			throws Exception {
-		
+			throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("categoryMenu");
 		return modelAndView;
 	}
+	
 	@RequestMapping(value = "/token", method = RequestMethod.GET)
-	public ModelAndView token(Locale locale, Model model) throws Exception {
+	public ModelAndView token() {
 		ModelAndView modelAndView = new ModelAndView("testMy");
 		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/guest/addComment", method = RequestMethod.POST)
 	public ModelAndView addComment(CommentForm commentForm, Locale locale,
-			Model model, HttpSession httpSession) throws Exception {
+			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -171,7 +172,7 @@ public class GuestController {
 	@RequestMapping(value = "/guest/designerProfile", method = RequestMethod.GET)
 	public ModelAndView designerPrifile(
 			@RequestParam(value = "id", required = false) Integer idUser,
-			Locale locale, Model model) throws Exception {
+			Locale locale, Model model) throws ServiceException {
 		User user = guestService.getUser(idUser);
 		guestService.setRatingInPosts(user.getPosts());
 		ModelAndView modelAndView = new ModelAndView("designer/designerProfile");

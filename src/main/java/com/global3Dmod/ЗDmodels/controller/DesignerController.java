@@ -47,7 +47,7 @@ public class DesignerController {
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "desc", required = false) boolean desc,
 			Locale locale, Model model, HttpSession httpSession)
-			throws Exception {
+			throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -106,7 +106,7 @@ public class DesignerController {
 
 	@RequestMapping(value = "/designer/addPostDB", method = RequestMethod.POST)
 	public ModelAndView addPostDB(PostForm postForm, Locale locale,
-			Model model, HttpSession httpSession) throws Exception {
+			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -125,7 +125,7 @@ public class DesignerController {
 	public ModelAndView deletePost(
 			@RequestParam(value = "id", required = false) Integer idPost,
 			Locale locale, Model model, HttpSession httpSession)
-			throws Exception {
+			throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -141,7 +141,7 @@ public class DesignerController {
 	@RequestMapping(value = "/designer/personalData/updateFormAdd", method = RequestMethod.POST)
 	public ModelAndView updateFormAdd(DesignerPersonalDataForm personalDataForm,
 			Locale locale, Model model, HttpSession httpSession)
-			throws Exception {
+			throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -157,7 +157,7 @@ public class DesignerController {
 	@RequestMapping(value = "/designer/updatePost/updateFormAdd", method = RequestMethod.POST)
 	public ModelAndView updatePostFormAdd(UpdatePostForm updatePostForm,
 			Locale locale, Model model, HttpSession httpSession)
-			throws Exception {
+			throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -174,7 +174,7 @@ public class DesignerController {
 	@RequestMapping(value = "/designer/personalSecurity/updatePasswordFormAdd", method = RequestMethod.POST)
 	public ModelAndView updatePasswordFormAdd(
 			DesignerPersonalSecurityForm personalSecurityForm, Locale locale,
-			Model model, HttpSession httpSession) throws Exception {
+			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -191,7 +191,7 @@ public class DesignerController {
 
 	// Test
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public ModelAndView test(Locale locale, Model model) throws Exception {
+	public ModelAndView test(Locale locale, Model model) throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("designer/postsByDesigner");
 		List<Post> posts = designerService.getPostsByDesigner(3);
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER,
@@ -201,7 +201,7 @@ public class DesignerController {
 
 	@RequestMapping(value = "/designer/personalData", method = RequestMethod.GET)
 	public ModelAndView personalData(Locale locale, Model model,
-			HttpSession httpSession) throws Exception {
+			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {

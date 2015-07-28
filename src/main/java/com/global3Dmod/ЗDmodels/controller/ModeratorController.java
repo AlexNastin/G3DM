@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.RejectMessageForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IModeratorService;
@@ -34,7 +35,7 @@ public class ModeratorController {
 	
 	@RequestMapping(value = "/moderator/profile", method = RequestMethod.GET)
 	public ModelAndView goProfile(@RequestParam(value = "page", required = false) Integer page,@RequestParam(value = "sort", required = false) String sort, @RequestParam(value = "desc", required = false) boolean desc, Locale locale, Model model, HttpSession httpSession)
-			throws Exception {
+			throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
@@ -84,7 +85,7 @@ public class ModeratorController {
 	
 	@RequestMapping(value = "/moderator/rejectingPosts", method = RequestMethod.GET)
 	public ModelAndView rejectingPosts(@RequestParam(value = "page", required = false) Integer page,@RequestParam(value = "sort", required = false) String sort, @RequestParam(value = "desc", required = false) boolean desc, Locale locale, Model model, HttpSession httpSession)
-			throws Exception {
+			throws ServiceException {
 		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
@@ -131,7 +132,7 @@ public class ModeratorController {
 	
 	@RequestMapping(value = "/moderator/moderationPost", method = RequestMethod.GET)
 	public ModelAndView personalData(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model,
-			HttpSession httpSession) throws Exception {
+			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -147,7 +148,7 @@ public class ModeratorController {
 	
 	@RequestMapping(value = "/moderator/publishPost", method = RequestMethod.GET)
 	public ModelAndView publishPost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model)
-			throws Exception {
+			throws ServiceException {
 		moderatorService.publishPost(idPost);
 		ModelAndView modelAndView = new ModelAndView("redirect:/moderator/profile");
 		return modelAndView;
@@ -155,7 +156,7 @@ public class ModeratorController {
 	
 	@RequestMapping(value = "/moderator/addRejectMessage", method = RequestMethod.POST)
 	public ModelAndView addRejectMessage(RejectMessageForm rejectMessageForm, Locale locale,
-			Model model, HttpSession httpSession) throws Exception {
+			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {

@@ -51,7 +51,7 @@ public class ForgotPasswordController {
 
 	@RequestMapping(value = "/forgotPassword.html", method = RequestMethod.GET)
 	public ModelAndView forgotPassword(Locale locale, Model model)
-			throws Exception {
+			throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("login/forgot_password");
 		return modelAndView;
 	}

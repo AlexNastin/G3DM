@@ -9,92 +9,92 @@ import org.springframework.web.servlet.ModelAndView;
 public class OthersController {
 
 	@RequestMapping(value = "/jobs", method = RequestMethod.GET)
-	public ModelAndView jobs() throws Exception {
+	public ModelAndView jobs() {
 		ModelAndView modelAndView = new ModelAndView("others/jobs");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/about", method = RequestMethod.GET)
-	public ModelAndView about() throws Exception {
+	public ModelAndView about() {
 		ModelAndView modelAndView = new ModelAndView("others/about_us");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
-	public ModelAndView contact() throws Exception {
+	public ModelAndView contact() {
 		ModelAndView modelAndView = new ModelAndView("others/contact");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/blog", method = RequestMethod.GET)
-	public ModelAndView blog() throws Exception {
+	public ModelAndView blog() {
 		ModelAndView modelAndView = new ModelAndView("others/blog");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/fileConversions", method = RequestMethod.GET)
-	public ModelAndView fileConversions() throws Exception {
+	public ModelAndView fileConversions() {
 		ModelAndView modelAndView = new ModelAndView("others/fileConversions");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/howItWorksDesigner", method = RequestMethod.GET)
-	public ModelAndView howItWorksDesigner() throws Exception {
+	public ModelAndView howItWorksDesigner() {
 		ModelAndView modelAndView = new ModelAndView(
 				"others/howItWorksDesigner");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/howItWorksUser", method = RequestMethod.GET)
-	public ModelAndView howItWorksUser() throws Exception {
+	public ModelAndView howItWorksUser() {
 		ModelAndView modelAndView = new ModelAndView("others/howItWorksUser");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/license", method = RequestMethod.GET)
-	public ModelAndView license() throws Exception {
+	public ModelAndView license() {
 		ModelAndView modelAndView = new ModelAndView("others/license");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/help", method = RequestMethod.GET)
-	public ModelAndView help() throws Exception {
+	public ModelAndView help() {
 		ModelAndView modelAndView = new ModelAndView("others/help");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/mission", method = RequestMethod.GET)
-	public ModelAndView ourMission() throws Exception {
+	public ModelAndView ourMission() {
 		ModelAndView modelAndView = new ModelAndView("others/ourMission");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/safety", method = RequestMethod.GET)
-	public ModelAndView safety() throws Exception {
+	public ModelAndView safety() {
 		ModelAndView modelAndView = new ModelAndView("others/safety");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/team", method = RequestMethod.GET)
-	public ModelAndView team() throws Exception {
+	public ModelAndView team() {
 		ModelAndView modelAndView = new ModelAndView("others/team");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/we", method = RequestMethod.GET)
-	public ModelAndView whyWe() throws Exception {
+	public ModelAndView whyWe() {
 		ModelAndView modelAndView = new ModelAndView("others/whyWe");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/policy", method = RequestMethod.GET)
-	public ModelAndView policy() throws Exception {
+	public ModelAndView policy() {
 		ModelAndView modelAndView = new ModelAndView("others/policy");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/support", method = RequestMethod.GET)
-	public ModelAndView support() throws Exception {
+	public ModelAndView support() {
 		ModelAndView modelAndView = new ModelAndView("others/support");
 		return modelAndView;
 	}

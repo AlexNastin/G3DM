@@ -87,6 +87,9 @@ public class Post implements Essence {
 
 	@Column(name = "rating")
 	private int rating;
+	
+	@Column(name = "folder")
+	private long folder;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "posts_has_technology", joinColumns = { @JoinColumn(name = "post_id_post") }, inverseJoinColumns = { @JoinColumn(name = "technology_id_technology") })
@@ -242,6 +245,14 @@ public class Post implements Essence {
 		this.rating = rating;
 	}
 
+	public long getFolder() {
+		return folder;
+	}
+
+	public void setFolder(long folder) {
+		this.folder = folder;
+	}
+
 	public List<Technology> getTechnologies() {
 		return technologies;
 	}
@@ -339,6 +350,8 @@ public class Post implements Essence {
 		result = prime * result + category_idCategory;
 		result = prime * result
 				+ ((comments == null) ? 0 : comments.hashCode());
+		result = prime * result
+				+ ((complains == null) ? 0 : complains.hashCode());
 		result = prime * result + countDownload;
 		result = prime * result + ((dateReg == null) ? 0 : dateReg.hashCode());
 		result = prime * result
@@ -349,20 +362,24 @@ public class Post implements Essence {
 				+ ((disProgram == null) ? 0 : disProgram.hashCode());
 		result = prime * result + disProgram_idDisProgram;
 		result = prime * result + ((file == null) ? 0 : file.hashCode());
+		result = prime * result + (int) (folder ^ (folder >>> 32));
 		result = prime * result + idPost;
 		result = prime * result
 				+ ((instruction == null) ? 0 : instruction.hashCode());
 		result = prime * result + isDisplay;
+		result = prime * result + ((likes == null) ? 0 : likes.hashCode());
 		result = prime * result
 				+ ((numberPost == null) ? 0 : numberPost.hashCode());
 		result = prime * result
 				+ ((postPhotos == null) ? 0 : postPhotos.hashCode());
-		result = prime * result
-				+ ((technologies == null) ? 0 : technologies.hashCode());
 		result = prime * result + rating;
+		result = prime * result
+				+ ((rejectMessage == null) ? 0 : rejectMessage.hashCode());
 		result = prime * result
 				+ ((subcategory == null) ? 0 : subcategory.hashCode());
 		result = prime * result + subcategory_idSubcategory;
+		result = prime * result
+				+ ((technologies == null) ? 0 : technologies.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		result = prime * result + user_idUser;
@@ -389,6 +406,11 @@ public class Post implements Essence {
 			if (other.comments != null)
 				return false;
 		} else if (!comments.equals(other.comments))
+			return false;
+		if (complains == null) {
+			if (other.complains != null)
+				return false;
+		} else if (!complains.equals(other.complains))
 			return false;
 		if (countDownload != other.countDownload)
 			return false;
@@ -419,6 +441,8 @@ public class Post implements Essence {
 				return false;
 		} else if (!file.equals(other.file))
 			return false;
+		if (folder != other.folder)
+			return false;
 		if (idPost != other.idPost)
 			return false;
 		if (instruction == null) {
@@ -427,6 +451,11 @@ public class Post implements Essence {
 		} else if (!instruction.equals(other.instruction))
 			return false;
 		if (isDisplay != other.isDisplay)
+			return false;
+		if (likes == null) {
+			if (other.likes != null)
+				return false;
+		} else if (!likes.equals(other.likes))
 			return false;
 		if (numberPost == null) {
 			if (other.numberPost != null)
@@ -438,12 +467,12 @@ public class Post implements Essence {
 				return false;
 		} else if (!postPhotos.equals(other.postPhotos))
 			return false;
-		if (technologies == null) {
-			if (other.technologies != null)
-				return false;
-		} else if (!technologies.equals(other.technologies))
-			return false;
 		if (rating != other.rating)
+			return false;
+		if (rejectMessage == null) {
+			if (other.rejectMessage != null)
+				return false;
+		} else if (!rejectMessage.equals(other.rejectMessage))
 			return false;
 		if (subcategory == null) {
 			if (other.subcategory != null)
@@ -451,6 +480,11 @@ public class Post implements Essence {
 		} else if (!subcategory.equals(other.subcategory))
 			return false;
 		if (subcategory_idSubcategory != other.subcategory_idSubcategory)
+			return false;
+		if (technologies == null) {
+			if (other.technologies != null)
+				return false;
+		} else if (!technologies.equals(other.technologies))
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -477,7 +511,9 @@ public class Post implements Essence {
 				+ ", dateUpdate=" + dateUpdate + ", title=" + title
 				+ ", description=" + description + ", instruction="
 				+ instruction + ", isDisplay=" + isDisplay + ", countDownload="
-				+ countDownload + ", rating=" + rating + "]";
+				+ countDownload + ", rating=" + rating + ", folder=" + folder
+				+ ", technologies=" + technologies + ", file=" + file + "]";
 	}
 
+	
 }

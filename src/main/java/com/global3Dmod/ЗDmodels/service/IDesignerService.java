@@ -75,7 +75,7 @@ public interface IDesignerService {
 	public void updatePassword(DesignerPersonalSecurityForm personalSecurityForm,
 			String login) throws ServiceException;
 
-	public void updatePost(UpdatePostForm updatePostForm, Integer idPost)
+	public void updatePost(UpdatePostForm updatePostForm, Integer idPost, String serverPath)
 			throws ServiceException;
 
 	public void deletePost(Integer idPost) throws ServiceException;

@@ -163,7 +163,7 @@ public class DesignerController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		designerService.updatePost(updatePostForm, updatePostForm.getIdPost());
+		designerService.updatePost(updatePostForm, updatePostForm.getIdPost(), propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
 		ModelAndView modelAndView2 = new ModelAndView(
 				"redirect:/designer/updatePost?id="
 						+ updatePostForm.getIdPost());

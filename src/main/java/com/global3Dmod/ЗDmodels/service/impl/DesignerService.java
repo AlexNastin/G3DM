@@ -18,7 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICountryDAO;
 import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
+import com.global3Dmod.ÇDmodels.dao.IFileDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
+import com.global3Dmod.ÇDmodels.dao.IPostPhotoDAO;
 import com.global3Dmod.ÇDmodels.dao.ITechnologyDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Category;
@@ -72,6 +74,12 @@ public class DesignerService implements IDesignerService {
 
 	@Autowired
 	private IPostDAO postDAO;
+	
+	@Autowired
+	private IPostPhotoDAO postPhotoDAO;
+	
+	@Autowired
+	private IFileDAO fileDAO;
 
 	@Autowired
 	private IUserDAO userDAO;
@@ -197,10 +205,11 @@ public class DesignerService implements IDesignerService {
 		post.setIsDisplay(ServiceParamConstant.DEFAULT_IS_DISPLAY);
 		post.setCountDownload(ServiceParamConstant.DEFAULT_COUNT);
 		post.setTechnologies(getCheckPrintersById(postForm.getTechnologiesId()));
-		String pathModel = createPostPath(serverPath, idUser, date.getTime());
+		long time = date.getTime(); 
+		String pathModel = createPostPath(serverPath, idUser, time);
 		String pathModelPhoto = createPostPath(serverPath, idUser,
-				date.getTime());
-
+				time);
+		post.setFolder(time);
 		PostPhoto firstPostPhoto = new PostPhoto();
 		firstPostPhoto.setPhotoPath(photoModelFileUpload(
 				postForm.getFirstPhoto(), pathModelPhoto));
@@ -436,7 +445,7 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public void updatePost(UpdatePostForm updatePostForm, Integer idPost)
+	public void updatePost(UpdatePostForm updatePostForm, Integer idPost, String serverPath)
 			throws ServiceException {
 		try {
 			Post post = postDAO.selectPost(idPost);
@@ -456,11 +465,29 @@ public class DesignerService implements IDesignerService {
 			post.setIsDisplay(2);
 			post.setTechnologies(getCheckPrintersById(updatePostForm
 					.getTechnologiesId()));
+			
+			String pathModel = createPostPath(serverPath, post.getUser_idUser(), post.getFolder());
+			String pathModelPhoto = createPostPath(serverPath, post.getUser_idUser(), post.getFolder());
+
+			PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
+			firstPostPhoto.setPhotoPath(photoModelFileUpload(
+					updatePostForm.getFirstPhoto(), pathModelPhoto));
+//			firstPostPhoto.setPost(post);
+			
+			List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
+			postPhotos.add(firstPostPhoto);
+			post.setPostPhotos(postPhotos);
+
+			com.global3Dmod.ÇDmodels.domain.File file = post.getFile();
+			file.setFilePath(modelFileUpload(updatePostForm.getModel(), pathModel));
+//			file.setPost(post);
+			
+			post.setFile(file);
+			
 			postDAO.updatePost(post);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-
 	}
 
 	@Override

@@ -111,7 +111,7 @@
                   </div>
                   <div class="col-md-8">
                   <h2>Update data</h2>
-                   <form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="updatePostForm" method="POST">
+                   <form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="updatePostForm" method="POST" enctype="multipart/form-data">
 	   <div class="form-group sign-feld-margin-top">
 		</div>
 		
@@ -165,6 +165,13 @@
 		</div>
 		</div>
 		<form:input id="idPost" name="idPost" path="idPost" value="${post.idPost}" type="hidden"></form:input>
+		<br>
+        Model to upload: <input type="file" name="model">
+		<span class="error"><form:errors path="model" /></span>
+		<br>
+        Photo model to upload: <input type="file" name="firstPhoto">
+		<span class="error"><form:errors path="firstPhoto" /></span>
+		<br>
 		
 		<div class="form-group">
 		<div class="col-md-5">

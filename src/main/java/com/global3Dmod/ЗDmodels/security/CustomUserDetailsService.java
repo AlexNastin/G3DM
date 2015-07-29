@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -13,6 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectLogG3DM;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -24,6 +26,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private IUserDAO userDAO;
 
+	private static final Logger LOGGER = Logger.getLogger(CustomUserDetailsService.class);
+
+	
 	@Override
 	public UserDetails loadUserByUsername(String login)
 			throws UsernameNotFoundException {
@@ -34,6 +39,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		boolean accountNonLocked = true;
 		try {
 			userG3DM = userDAO.selectUser(login);
+			LOGGER.info("User: " + userG3DM.getLogin() +" i entered this system");
 		} catch (DaoException e) {
 		}
 		return new org.springframework.security.core.userdetails.User(

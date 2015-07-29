@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	<appender name="consoleAppender" class="org.apache.log4j.ConsoleAppender">
+		<param name="Target" value="System.out" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%-5p: %c - %m%n" />
+		</layout>
+	</appender>
+	
+	<appender name="infoFileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="${catalina.home}/Global3dMOD_Logs/logs.txt" />
+		<param name="MaxFileSize" value="1MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="threshold" value="info" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{DATE} %-5p %c{1} [%t] %X{ctx} ~ %m%n" />
+		</layout>
+
+	</appender>
+	<appender name="errorFileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="${catalina.home}/Global3dMOD_Logs/logsErrors.txt" />
+		<param name="MaxFileSize" value="1MB" />
+		<param name="MaxBackupIndex" value="10" />
+		<param name="threshold" value="error" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{DATE} %-5p %c{1} [%t] %X{ctx} ~ %m%n" />
+		</layout>
+	</appender>
+	<!-- Application Loggers -->
+	<logger name="com.global3Dmod.3Dmodels">
+		<level value="info" />
+	</logger>
+
+	<!-- 3rdparty Loggers -->
+	<logger name="org.springframework.core">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.beans">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.context">
+		<level value="info" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="info" />
+	</logger>
+
+	<!-- Root Logger -->
+	<root>
+		<priority value="warn" />
+		<appender-ref ref="consoleAppender" />
+		<appender-ref ref="infoFileAppender" />
+		<appender-ref ref="errorFileAppender" />
+	</root>
+
+</log4j:configuration>
+

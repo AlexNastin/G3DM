@@ -15,7 +15,7 @@ public class DAOAnnotationAspect {
 	private static final Logger LOGGER = Logger
 			.getLogger(DAOAnnotationAspect.class);
 
-	@Around("@annotation(com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM)")
+	@Around("@annotation(com.global3Dmod.ÇDmodels.aop.annotation.AspectLogG3DM)")
 	public Object proceeding(JoinPoint joinPoint) {
 	
 		Object value = null;
@@ -23,7 +23,7 @@ public class DAOAnnotationAspect {
 		String nameClass = joinPoint.getSignature().getName();
 		String nameMethod = joinPoint.getSourceLocation().getWithinType()
 				.getName();
-	
+System.out.println(joinPoint.getTarget().toString());
 		LOGGER.info("Start execute. " + "method: " + nameMethod + "class: "
 				+ nameClass);
 		System.out.println("Start execute. " + "method: " + nameMethod

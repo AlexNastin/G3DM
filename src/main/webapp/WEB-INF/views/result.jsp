@@ -44,9 +44,9 @@
 
 
 <div style="text-align:center; padding-top: 1em;">
-	<div class="btn-group btn-group-sm" role="group" aria-label="...">
+	<div class="btn-group btn-group" role="group" aria-label="...">
 	<c:forEach items="${listCategoryWithAllSubcategory}" var="category">
-  <div class="btn-group btn-group-sm" role="group">
+  <div class="btn-group btn-group" role="group">
     <button style="background-color: whitesmoke" type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
       ${category.title}
       <span class="caret"></span>

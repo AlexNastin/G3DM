@@ -49,6 +49,18 @@
   <i class="fa fa-archive"></i> Have posts: ${sizePosts}</a>
   <a  class="list-group-item"> <i class="fa fa-thumbs-o-up"></i> Rating: ${ratingDesigner}</a>
   <a class="list-group-item"> <i class="fa fa-globe"></i> Country: ${user.country.title}</a>
+  <a class="list-group-item"> <i class="fa fa-globe"></i> City: ${user.city.title}</a>
+  <a class="list-group-item"> <i class="fa fa-globe"></i> Gender: 
+<c:if test="${user.gender == 2}">
+			Male
+		</c:if>
+		<c:if test="${user.gender == 1}">
+			Female
+		</c:if>
+		<c:if test="${user.gender == 0}">
+			None
+		</c:if>
+</a>
   
   
 </div>

@@ -133,3 +133,19 @@ margin-top: 1em;
 .background-howitworks {
 background-color: #F8F8F8;
 }
+.text-help-page-q {
+	font-weight: bold;
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: none;	
+    color: #777;
+    font-size: 18px;
+}
+.text-help-page-a {
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: none;	
+    color: #999;
+    font-size: 18px;
+}
+.margin-bottom-help {
+	margin-bottom: 3em;
+}

@@ -20,14 +20,14 @@ public class Avatar implements Essence {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idAvatar;
 
-	@Column(name = "user_id_user")
-	private int user_idUser;
-
 	@Column(name = "avatar_path")
 	private String avatarPath;
 	
+	@Column(name = "file_name")
+	private String fileName;
+	
 	@OneToOne
-	@JoinColumn(name = "user_id_user", insertable=false, updatable=false)
+	@JoinColumn(name = "user_id_user")
 	private User user;
 
 	public Avatar() {
@@ -41,21 +41,21 @@ public class Avatar implements Essence {
 	public void setIdAvatar(int idAvatar) {
 		this.idAvatar = idAvatar;
 	}
-
-	public int getUser_idUser() {
-		return user_idUser;
-	}
-
-	public void setUser_idUser(int user_idUser) {
-		this.user_idUser = user_idUser;
-	}
-
+	
 	public String getAvatarPath() {
 		return avatarPath;
 	}
 
 	public void setAvatarPath(String avatarPath) {
 		this.avatarPath = avatarPath;
+	}
+
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public User getUser() {
@@ -72,9 +72,10 @@ public class Avatar implements Essence {
 		int result = 1;
 		result = prime * result
 				+ ((avatarPath == null) ? 0 : avatarPath.hashCode());
+		result = prime * result
+				+ ((fileName == null) ? 0 : fileName.hashCode());
 		result = prime * result + idAvatar;
 		result = prime * result + ((user == null) ? 0 : user.hashCode());
-		result = prime * result + user_idUser;
 		return result;
 	}
 
@@ -92,6 +93,11 @@ public class Avatar implements Essence {
 				return false;
 		} else if (!avatarPath.equals(other.avatarPath))
 			return false;
+		if (fileName == null) {
+			if (other.fileName != null)
+				return false;
+		} else if (!fileName.equals(other.fileName))
+			return false;
 		if (idAvatar != other.idAvatar)
 			return false;
 		if (user == null) {
@@ -99,17 +105,13 @@ public class Avatar implements Essence {
 				return false;
 		} else if (!user.equals(other.user))
 			return false;
-		if (user_idUser != other.user_idUser)
-			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Avatar [idAvatar=" + idAvatar + ", user_idUser=" + user_idUser
-				+ ", avatarPath=" + avatarPath + ", user=" + user + "]";
+		return "Avatar [idAvatar=" + idAvatar + ", avatarPath=" + avatarPath + ", fileName=" + fileName + "]";
 	}
 
 	
-
 }

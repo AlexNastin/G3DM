@@ -21,6 +21,8 @@ import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 
@@ -32,6 +34,9 @@ public class GuestController {
 	
 	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+	private PropertyManagerG3DM propertyManager;
 	
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
@@ -87,7 +92,7 @@ public class GuestController {
 			posts = guestService.getPostsLimit10BySubcategory(page, idCategory,
 					idSubcategory);
 		}
-		userService.setPathToPostPhotos(posts);
+		userService.setPathToPhotos(posts);
 		guestService.setRatingInPosts(posts);
 		int allPosts = posts.size();
 		int maxPage = (int) Math.ceil((double) allPosts
@@ -124,7 +129,7 @@ public class GuestController {
 	@RequestMapping(value = "/signupAddUser", method = RequestMethod.POST)
 	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,
 			Model model) throws ServiceException {
-		guestService.addUser(signupForm);
+		guestService.addUser(signupForm, propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/go/signin");
 		return modelAndView2;
 	}
@@ -178,7 +183,7 @@ public class GuestController {
 		User user = guestService.getUser(idUser);
 		List<Post> posts = user.getPosts();
 		guestService.setRatingInPosts(posts);
-		userService.setPathToPostPhotos(posts);
+		userService.setPathToPhotos(posts);
 		ModelAndView modelAndView = new ModelAndView("designer/designerProfile");
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, posts.size());

@@ -17,7 +17,7 @@ import com.global3Dmod.ÇDmodels.form.SignupForm;
 
 public interface IGuestService {
 
-	public void addUser(SignupForm signupForm) throws ServiceException;
+	public void addUser(SignupForm signupForm, String serverPath) throws ServiceException;
 
 	public void addComment(CommentForm commentForm, Person person)
 			throws ServiceException;

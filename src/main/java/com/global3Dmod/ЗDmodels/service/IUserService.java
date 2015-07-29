@@ -28,14 +28,16 @@ public interface IUserService {
 			throws ServiceException;
 
 	
-	public void updateUser(UserPersonalDataForm personalDataForm, String login)
+	public void updateUser(UserPersonalDataForm personalDataForm, String login, String serverPath)
 			throws ServiceException;
 
 	public void updatePassword(UserPersonalSecurityForm personalSecurityForm,
 			String login) throws ServiceException;
 	
-	public void setPathToPostPhotos(List<Post> posts) throws ServiceException;
+	public void setPathToPhotos(List<Post> posts) throws ServiceException;
 	
-	public void setPathToPostPhotos(Post post) throws ServiceException;
+	public void setPathToPhotos(Post post) throws ServiceException;
+	
+	public void setPathToPhotos(User user) throws ServiceException;
 
 }

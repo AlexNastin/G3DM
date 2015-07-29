@@ -21,6 +21,7 @@ import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.ITechnologyDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
+import com.global3Dmod.ÇDmodels.domain.Avatar;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.City;
 import com.global3Dmod.ÇDmodels.domain.Country;
@@ -458,7 +459,7 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public void updateUser(DesignerPersonalDataForm personalDataForm,
-			String login) throws ServiceException {
+			String login, String serverPath) throws ServiceException {
 		try {
 			User user = userDAO.selectUser(login);
 			user.setCountry_idCountry(personalDataForm.getCountry_idCountry());
@@ -467,6 +468,13 @@ public class DesignerService implements IDesignerService {
 			user.setSurname(personalDataForm.getSurname());
 			user.setGender(personalDataForm.getGender());
 			user.setDateBirth(personalDataForm.getDateBirth());
+			
+			String pathAvatar = createAvatarPath(user.getIdUser());
+			String fullPathAvatar = serverPath.concat(pathAvatar);
+			Avatar avatar = user.getAvatar();
+			avatar.setAvatarPath(pathAvatar + avatarFileUpload(personalDataForm.getAvatar(), fullPathAvatar, avatar.getFileName()));
+			user.setAvatar(avatar);
+			
 			userDAO.updateUser(user);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
@@ -530,8 +538,7 @@ public class DesignerService implements IDesignerService {
 			post.setPostPhotos(postPhotos);
 
 			com.global3Dmod.ÇDmodels.domain.File file = post.getFile();
-			file.setFilePath(pathModel
-					+ modelFileUpload(updatePostForm.getModel(), fullPathModel, file.getFileName()));
+			file.setFilePath(pathModel + modelFileUpload(updatePostForm.getModel(), fullPathModel, file.getFileName()));
 
 			post.setFile(file);
 
@@ -574,7 +581,8 @@ public class DesignerService implements IDesignerService {
 		return path;
 	}
 
-	private String createAvatarPath(int idUser) {
+	@Override
+	public String createAvatarPath(int idUser) {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(idUser);
 		stringBuilder.append("/avatar/");

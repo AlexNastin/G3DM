@@ -78,7 +78,7 @@ public interface IDesignerService {
 
 	public User getUser(String login) throws ServiceException;
 
-	public void updateUser(DesignerPersonalDataForm personalDataForm, String login)
+	public void updateUser(DesignerPersonalDataForm personalDataForm, String login, String serverPath)
 			throws ServiceException;
 
 	public void updatePassword(DesignerPersonalSecurityForm personalSecurityForm,
@@ -90,5 +90,7 @@ public interface IDesignerService {
 	public void deletePost(Integer idPost) throws ServiceException;
 
 	public Post getPost(Integer idPost) throws ServiceException;
+	
+	public String createAvatarPath(int idUser) throws ServiceException;
 
 }

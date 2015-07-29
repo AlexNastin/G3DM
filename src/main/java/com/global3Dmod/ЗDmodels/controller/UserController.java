@@ -34,6 +34,9 @@ import com.global3Dmod.ÇDmodels.service.IUserService;
 public class UserController {
 	
 	@Autowired
+	private PropertyManagerG3DM propertyManager;
+	
+	@Autowired
 	private IDesignerService designerService;
 	
 	@Autowired
@@ -57,6 +60,8 @@ public class UserController {
 	    int endPage = startPage + 9;
 	
 		ModelAndView modelAndView = new ModelAndView("user/user");
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		List<Post> posts = userService.getPostsByUserForSort(person.getIdPerson());
 		guestService.setRatingInPosts(posts);
 		userService.sortPosts(posts, sort, desc);
@@ -69,7 +74,7 @@ public class UserController {
 		} else {
 			posts = posts.subList(startPost, endPost);
 		}
-		userService.setPathToPostPhotos(posts);
+		userService.setPathToPhotos(posts);
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10, posts);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
 		if(endPage>maxPage) {
@@ -88,6 +93,7 @@ public class UserController {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, false);
 		}
 		modelAndView = userService.setParamsForSort(modelAndView, sort, desc);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
 	
@@ -103,6 +109,7 @@ public class UserController {
 		ModelAndView modelAndView = new ModelAndView(
 				"user/userPersonalData");
 		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
@@ -117,7 +124,7 @@ public class UserController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		userService.updateUser(personalDataForm, person.getLogin());
+		userService.updateUser(personalDataForm, person.getLogin(), propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
 		ModelAndView modelAndView2 = new ModelAndView(
 				"redirect:/user/personalData/updateForm");
 		return modelAndView2;

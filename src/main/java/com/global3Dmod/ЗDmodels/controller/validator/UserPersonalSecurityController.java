@@ -15,8 +15,11 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.domain.Person;
+import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.UserPersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.validator.UserPersonalSecurityValidator;
+import com.global3Dmod.ÇDmodels.service.IDesignerService;
+import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
 @RequestMapping("/user/personalSecurity")
@@ -24,6 +27,12 @@ public class UserPersonalSecurityController {
 	
 	@Autowired
 	private UserPersonalSecurityValidator personalSecurityValidator;
+	
+	@Autowired
+	private IDesignerService designerService;
+	
+	@Autowired
+	private IUserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView personalSecurity(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -33,19 +42,30 @@ public class UserPersonalSecurityController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		ModelAndView modelAndView = new ModelAndView("user/userPersonalSecurityForm");
 		UserPersonalSecurityForm personalSecurityForm = new UserPersonalSecurityForm();
 		modelAndView.addObject(ControllerParamConstant.PERSONAL_SECURITY_FORM, personalSecurityForm);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
 
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView personalDataValid(@ModelAttribute("personalSecurityForm") UserPersonalSecurityForm personalSecurityForm,
-			BindingResult result) throws Exception {
+			BindingResult result, HttpSession httpSession) throws Exception {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
 		personalSecurityValidator.validate(personalSecurityForm, result);
-
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("user/userPersonalSecurityForm");
+			User user = designerService.getUser(person.getLogin());
+			userService.setPathToPhotos(user);
+			modelAndView.addObject(ControllerParamConstant.USER, user);
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("forward:/user/personalSecurity/updatePasswordFormAdd");

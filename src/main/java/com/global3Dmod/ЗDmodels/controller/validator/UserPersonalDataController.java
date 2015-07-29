@@ -19,6 +19,7 @@ import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.UserPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.validator.UserPersonalDataValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
+import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
 @RequestMapping("/user/personalData/updateForm")
@@ -29,6 +30,9 @@ public class UserPersonalDataController {
 	
 	@Autowired
 	private IDesignerService designerService;
+	
+	@Autowired
+	private IUserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView personalData(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -38,11 +42,12 @@ public class UserPersonalDataController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		ModelAndView modelAndView = new ModelAndView("user/userPersonalDataForm");
 		UserPersonalDataForm personalDataForm = new UserPersonalDataForm();
 		modelAndView.addObject(ControllerParamConstant.PERSONAL_DATA_FORM, personalDataForm);
 		modelAndView.addObject("listCountry", designerService.getAllCountries());
-		User user = designerService.getUser(person.getLogin());
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
@@ -62,6 +67,7 @@ public class UserPersonalDataController {
 			ModelAndView modelAndView = new ModelAndView("user/userPersonalDataForm");
 			modelAndView.addObject("listCountry", designerService.getAllCountries());
 			User user = designerService.getUser(person.getLogin());
+			userService.setPathToPhotos(user);
 			modelAndView.addObject(ControllerParamConstant.USER, user);
 			return modelAndView;
 		}

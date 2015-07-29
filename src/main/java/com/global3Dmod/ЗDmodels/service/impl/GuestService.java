@@ -27,6 +27,7 @@ import com.global3Dmod.ÇDmodels.dao.IRatingDAO;
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
+import com.global3Dmod.ÇDmodels.domain.Avatar;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Comment;
 import com.global3Dmod.ÇDmodels.domain.Complain;
@@ -43,6 +44,7 @@ import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
+import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.sort.comment.SortedCommentsByDate;
@@ -52,6 +54,9 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private IDesignerService designerService;
 
 	@Autowired
 	private IPostDAO postDAO;
@@ -87,7 +92,7 @@ public class GuestService implements IGuestService {
 	private PropertyManagerG3DM propertyManager;
 
 	@Override
-	public void addUser(SignupForm signupForm) throws ServiceException {
+	public void addUser(SignupForm signupForm, String serverPath) throws ServiceException {
 		User user = new User();
 		DateFormat dateFormat = new SimpleDateFormat(
 				ServiceParamConstant.FORMAT_DATE);
@@ -104,6 +109,15 @@ public class GuestService implements IGuestService {
 		user.setSurname(ServiceParamConstant.EMPTY);
 		user.setGender(0);
 		user.setRegistrationDate(registrationDate);
+		
+		Avatar avatar = new Avatar();
+		String newName = ServiceParamConstant.DEFAULT_NAME_AVATAR;
+		avatar.setFileName(newName);
+		avatar.setAvatarPath(ServiceParamConstant.PATH_TO_DEFAULT_AVATAR + newName);
+		avatar.setUser(user);
+		
+		user.setAvatar(avatar);
+		
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {

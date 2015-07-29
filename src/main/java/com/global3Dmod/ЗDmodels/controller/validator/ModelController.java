@@ -46,7 +46,7 @@ public class ModelController {
 			modelAndView = new ModelAndView("model/modelDeleted");
 			return modelAndView;
 		}
-		userService.setPathToPostPhotos(post);
+		userService.setPathToPhotos(post);
 		CommentForm commentForm = new CommentForm();
 		if (page == null) {
 			page=1;

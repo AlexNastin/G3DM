@@ -1,5 +1,7 @@
 package com.global3Dmod.ÇDmodels.form;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class DesignerPersonalDataForm implements Essence {
@@ -10,6 +12,9 @@ public class DesignerPersonalDataForm implements Essence {
 	private String surname;
 	private int gender;
 	private String dateBirth;
+	
+	// file
+	private MultipartFile avatar;
 
 	public int getCountry_idCountry() {
 		return country_idCountry;
@@ -59,10 +64,19 @@ public class DesignerPersonalDataForm implements Essence {
 		this.dateBirth = dateBirth;
 	}
 
+	public MultipartFile getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(MultipartFile avatar) {
+		this.avatar = avatar;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((avatar == null) ? 0 : avatar.hashCode());
 		result = prime * result + city_idCity;
 		result = prime * result + country_idCountry;
 		result = prime * result
@@ -82,6 +96,11 @@ public class DesignerPersonalDataForm implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		DesignerPersonalDataForm other = (DesignerPersonalDataForm) obj;
+		if (avatar == null) {
+			if (other.avatar != null)
+				return false;
+		} else if (!avatar.equals(other.avatar))
+			return false;
 		if (city_idCity != other.city_idCity)
 			return false;
 		if (country_idCountry != other.country_idCountry)
@@ -108,11 +127,12 @@ public class DesignerPersonalDataForm implements Essence {
 
 	@Override
 	public String toString() {
-		return "PersonalDataForm [country_idCountry=" + country_idCountry
-				+ ", city_idCity=" + city_idCity + ", name=" + name
-				+ ", surname=" + surname + ", gender=" + gender
-				+ ", dateBirth=" + dateBirth + "]";
+		return "DesignerPersonalDataForm [country_idCountry="
+				+ country_idCountry + ", city_idCity=" + city_idCity
+				+ ", name=" + name + ", surname=" + surname + ", gender="
+				+ gender + ", dateBirth=" + dateBirth + ", avatar=" + avatar
+				+ "]";
 	}
 
-		
+	
 }

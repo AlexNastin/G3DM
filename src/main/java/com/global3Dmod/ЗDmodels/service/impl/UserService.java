@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
+import com.global3Dmod.ÇDmodels.domain.Avatar;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -20,6 +21,7 @@ import com.global3Dmod.ÇDmodels.form.UserPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.UserPersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
+import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDesigner;
@@ -40,6 +42,9 @@ public class UserService implements IUserService {
 	
 	@Autowired
 	private PropertyManagerG3DM propertyManagerG3DM;
+	
+	@Autowired
+	private IDesignerService designerService;
 
 	@Override
 	public List<User> getAllUsers() throws ServiceException {
@@ -125,7 +130,7 @@ public class UserService implements IUserService {
 	}
 	
 	@Override
-	public void updateUser(UserPersonalDataForm personalDataForm, String login)
+	public void updateUser(UserPersonalDataForm personalDataForm, String login, String serverPath)
 			throws ServiceException {
 		try {
 			User user = userDAO.selectUser(login);
@@ -135,6 +140,13 @@ public class UserService implements IUserService {
 			user.setSurname(personalDataForm.getSurname());
 			user.setGender(personalDataForm.getGender());
 			user.setDateBirth(personalDataForm.getDateBirth());
+			
+			String pathAvatar = designerService.createAvatarPath(user.getIdUser());
+			String fullPathAvatar = serverPath.concat(pathAvatar);
+			Avatar avatar = user.getAvatar();
+			avatar.setAvatarPath(pathAvatar + designerService.avatarFileUpload(personalDataForm.getAvatar(), fullPathAvatar, avatar.getFileName()));
+			user.setAvatar(avatar);
+			
 			userDAO.updateUser(user);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
@@ -160,7 +172,7 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public void setPathToPostPhotos(List<Post> posts) throws ServiceException {
+	public void setPathToPhotos(List<Post> posts) throws ServiceException {
 		for (Post post : posts) {
 			String oldPath = post.getPostPhotos().get(0).getPhotoPath();
 			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
@@ -170,11 +182,19 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public void setPathToPostPhotos(Post post) throws ServiceException {
+	public void setPathToPhotos(Post post) throws ServiceException {
 		String oldPath = post.getPostPhotos().get(0).getPhotoPath();
 		StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
 		fullPath.append(oldPath);
 		post.getPostPhotos().get(0).setPhotoPath(fullPath.toString());
+	}
+	
+	@Override
+	public void setPathToPhotos(User user) throws ServiceException {
+		String oldPath = user.getAvatar().getAvatarPath();
+		StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+		fullPath.append(oldPath);
+		user.getAvatar().setAvatarPath(fullPath.toString());
 	}
 
 }

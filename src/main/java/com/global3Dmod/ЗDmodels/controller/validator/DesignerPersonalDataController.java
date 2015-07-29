@@ -19,6 +19,7 @@ import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.validator.DesignerPersonalDataValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
+import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
 @RequestMapping("/designer/personalData/updateForm")
@@ -29,6 +30,9 @@ public class DesignerPersonalDataController {
 	
 	@Autowired
 	private IDesignerService designerService;
+	
+	@Autowired
+	private IUserService userService;
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ModelAndView personalData(Locale locale, ModelMap model, HttpSession httpSession) throws Exception {
@@ -43,6 +47,7 @@ public class DesignerPersonalDataController {
 		modelAndView.addObject(ControllerParamConstant.PERSONAL_DATA_FORM, personalDataForm);
 		modelAndView.addObject("listCountry", designerService.getAllCountries());
 		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
@@ -61,6 +66,7 @@ public class DesignerPersonalDataController {
 			ModelAndView modelAndView = new ModelAndView("designer/designerPersonalDataForm");
 			modelAndView.addObject("listCountry", designerService.getAllCountries());
 			User user = designerService.getUser(person.getLogin());
+			userService.setPathToPhotos(user);
 			modelAndView.addObject(ControllerParamConstant.USER, user);
 			return modelAndView;
 		}

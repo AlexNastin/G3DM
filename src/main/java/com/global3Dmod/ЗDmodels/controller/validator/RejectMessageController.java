@@ -38,7 +38,7 @@ public class RejectMessageController {
 			throws Exception {
 		ModelAndView modelAndView = new ModelAndView("moderator/moderatorRejectMessage");
 		Post post = designerService.getPost(idPost);
-		userService.setPathToPostPhotos(post);
+		userService.setPathToPhotos(post);
 		RejectMessageForm rejectMessageForm = new RejectMessageForm();
 		modelAndView.addObject(ControllerParamConstant.REJECT_MESSAGE_FORM, rejectMessageForm);
 		modelAndView.addObject(ControllerParamConstant.POST, post);

@@ -142,7 +142,7 @@ public class ModeratorController {
 		ModelAndView modelAndView = new ModelAndView(
 				"moderator/moderatorModerationPost");
 		Post post = designerService.getPost(idPost);
-		userService.setPathToPostPhotos(post);
+		userService.setPathToPhotos(post);
 		modelAndView.addObject(ControllerParamConstant.POST, post);
 		return modelAndView;
 	}

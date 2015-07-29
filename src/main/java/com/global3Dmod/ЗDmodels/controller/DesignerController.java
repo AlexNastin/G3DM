@@ -31,6 +31,7 @@ import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
+import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
 public class DesignerController {
@@ -40,6 +41,9 @@ public class DesignerController {
 
 	@Autowired
 	private PropertyManagerG3DM propertyManager;
+	
+	@Autowired
+	private IUserService userService;
 
 	@RequestMapping(value = "/designer/profile", method = RequestMethod.GET)
 	public ModelAndView goProfile(HttpServletRequest request,
@@ -60,6 +64,8 @@ public class DesignerController {
 		if (sort==null) {
 			sort="date";
 		}
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
@@ -98,6 +104,7 @@ public class DesignerController {
 		}
 		modelAndView = designerService.setParamsForSort(modelAndView, sort,
 				desc);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
 
@@ -145,7 +152,7 @@ public class DesignerController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		designerService.updateUser(personalDataForm, person.getLogin());
+		designerService.updateUser(personalDataForm, person.getLogin(), propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
 		ModelAndView modelAndView2 = new ModelAndView(
 				"redirect:/designer/personalData/updateForm");
 		return modelAndView2;
@@ -208,6 +215,7 @@ public class DesignerController {
 		ModelAndView modelAndView = new ModelAndView(
 				"designer/designerPersonalData");
 		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}

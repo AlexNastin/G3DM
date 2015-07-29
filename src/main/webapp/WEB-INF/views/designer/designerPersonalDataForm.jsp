@@ -47,7 +47,7 @@
  <div class="row footerpadding">
     <div class="col-md-2 nopadding1">
      <div class="list-group">
-      <img src="<c:url value="/resources/images/avatar.png" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">      
+      <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">      
   <a href="<c:url value="/designer/profile?sort=date&page=1" />" class="list-group-item">
     <i class="fa fa-briefcase"></i> ${works} 
   </a>
@@ -129,7 +129,7 @@
                   </div>
                   <div class="col-md-8">
                   <h2>Update data</h2>
-                   <form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="personalDataForm" method="POST">
+                   <form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="personalDataForm" method="POST" enctype="multipart/form-data">
 	   <div class="form-group sign-feld-margin-top">
 		</div>
 		<div class="form-group">
@@ -166,6 +166,9 @@
 			<form:option value="1">Female</form:option>
 			<form:option value="2">Male</form:option>
 		</form:select>
+		<br>
+		Avatar to upload: <input type="file" name="avatar">
+		<span class="error"><form:errors path="avatar" /></span>
 		<br>
 		
 		<div class="form-group">

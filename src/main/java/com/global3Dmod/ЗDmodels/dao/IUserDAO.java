@@ -26,4 +26,10 @@ public interface IUserDAO {
 	public List<String> selectAllNickName() throws DaoException;
 	
 	public User selectUserByIdWithoutAll(Integer id) throws DaoException;
+	
+	public List<User> selectModeratorsForSort() throws DaoException;
+	
+	public List<User> selectDesignersForSort() throws DaoException;
+	
+	public List<User> selectUsersForSort() throws DaoException;
 }

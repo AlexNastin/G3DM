@@ -44,5 +44,33 @@ public final class ServiceParamConstant {
 	public static String SUBCATEGORY = "subcategory";
 	
 	public static String TITLE = "title";
+	
+	public static String COUNTRY = "country";
+	
+	public static String CITY = "city";
+	
+	public static String NICKNAME = "nickName";
+	
+	public static String LOGIN = "login";
+	
+	public static String NAME = "name";
+	
+	public static String SURNAME = "surname";
+	
+	public static String DATE_REGISTRATION = "dateRegistration";
+	
+	public static String COUNTRY_DESC = "countryDesc";
+	
+	public static String CITY_DESC = "cityDesc";
+	
+	public static String NICKNAME_DESC = "nickNameDesc";
+	
+	public static String LOGIN_DESC = "loginDesc";
+	
+	public static String NAME_DESC = "nameDesc";
+	
+	public static String SURNAME_DESC = "surnameDesc";
+	
+	public static String DATE_REGISTRATION_DESC = "dateRegistrationDesc";
 
 }

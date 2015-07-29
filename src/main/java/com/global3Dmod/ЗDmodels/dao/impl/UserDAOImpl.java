@@ -156,4 +156,40 @@ public class UserDAOImpl implements IUserDAO {
 		return user;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<User> selectModeratorsForSort() throws DaoException {
+		List<User> users = em.createNamedQuery("User.findModerators").getResultList();
+		for (User user : users) {
+			Hibernate.initialize(user.getCountry());
+			Hibernate.initialize(user.getCity());
+		}
+		return users;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<User> selectDesignersForSort() throws DaoException {
+		List<User> users = em.createNamedQuery("User.findDesigners").getResultList();
+		for (User user : users) {
+			Hibernate.initialize(user.getCountry());
+			Hibernate.initialize(user.getCity());
+		}
+		return users;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<User> selectUsersForSort() throws DaoException {
+		List<User> users = em.createNamedQuery("User.findUsers").getResultList();
+		for (User user : users) {
+			Hibernate.initialize(user.getCountry());
+			Hibernate.initialize(user.getCity());
+		}
+		return users;
+	}
+
 }

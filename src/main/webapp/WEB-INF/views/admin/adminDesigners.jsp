@@ -58,7 +58,7 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <h2>Moderators</h2>
+                             <h2>Designers</h2>
                               
                               <!-- Some sorts for table -->
                              

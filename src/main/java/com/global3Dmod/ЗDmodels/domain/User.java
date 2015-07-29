@@ -27,7 +27,10 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name = "User.findAllEmail", query = "select u.login from User u"),
 		@NamedQuery(name = "User.findAllNickName", query = "select u.nickName from User u"),
 		@NamedQuery(name = "User.findUserByLogin", query = "select u from User u where u.login = :login"),
-		@NamedQuery(name = "User.findUserById", query = "select u from User u where u.idUser = :idUser")})
+		@NamedQuery(name = "User.findUserById", query = "select u from User u where u.idUser = :idUser"),
+		@NamedQuery(name = "User.findModerators", query = "select u from User u where u.role_idRole = 4"),
+		@NamedQuery(name = "User.findDesigners", query = "select u from User u where u.role_idRole = 3"),
+		@NamedQuery(name = "User.findUsers", query = "select u from User u where u.role_idRole = 2")})
 public class User implements Essence {
 
 	@Id

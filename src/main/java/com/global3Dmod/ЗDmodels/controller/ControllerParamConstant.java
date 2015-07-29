@@ -15,12 +15,16 @@ public  final class ControllerParamConstant {
 	public static String ID_SUBCATEGORY = "idSubcategory";
 
 	public static int LIMIT_POSTS_ON_PAGE = 10;
+	
+	public static int LIMIT_USERS_ON_PAGE = 20;
 
 	public static String PERSON = "person";
 	
 	public static String LIST_POSTS_BY_DESIGNER = "listPostsByDesigner";
 	
 	public static String LIST_POSTS_LIMIT_10 = "listPostsLimit10";
+	
+	public static String LIST_USERS_LIMIT_20 = "listUsersLimit20";
 	
 	public static String LIST_COMMENTS_LIMIT_10 = "listCommentsLimit10";
 	

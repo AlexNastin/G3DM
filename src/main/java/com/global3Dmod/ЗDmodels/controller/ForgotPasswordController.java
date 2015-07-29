@@ -29,13 +29,13 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
+import com.global3Dmod.ÇDmodels.form.validator.RegExCollection;
+import com.global3Dmod.ÇDmodels.form.validator.RegExName;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Controller
 public class ForgotPasswordController {
-
-	private final String REGEX_VALID_EMAIL = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
 	@Autowired
 	private IDesignerService designerService;
@@ -49,6 +49,9 @@ public class ForgotPasswordController {
 	@Autowired
 	private MessageSource messages;
 
+	@Autowired
+	private RegExCollection collectionRegEx;
+
 	@RequestMapping(value = "/forgotPassword.html", method = RequestMethod.GET)
 	public ModelAndView forgotPassword(Locale locale, Model model)
 			throws ServiceException {
@@ -61,7 +64,7 @@ public class ForgotPasswordController {
 			@RequestParam("email") String userEmail, Locale locale)
 			throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("redirect:/go/signin");
-		Pattern pattern = Pattern.compile(REGEX_VALID_EMAIL);
+		Pattern pattern = collectionRegEx.getRegEx(RegExName.REGEX_EMAIL);
 		Matcher matcher = pattern.matcher(userEmail.toLowerCase());
 		boolean isValid = matcher.matches();
 		if (isValid) {
@@ -133,44 +136,54 @@ public class ForgotPasswordController {
 	public ModelAndView showChangePasswordPage(Locale locale, Model model,
 			@RequestParam("id") int id, @RequestParam("token") String token)
 			throws ServiceException {
-		PasswordResetToken passwordResetToken = guestService
-				.getPasswordResetToken(token);
-		ModelAndView modelAndView = new ModelAndView("redirect:/updatePassword");
+		Pattern pattern = collectionRegEx.getRegEx(RegExName.REGEX_UUID);
+		Matcher matcher = pattern.matcher(token);
+		ModelAndView modelAndView = new ModelAndView("login/signin");
+		boolean isValid = matcher.matches();
+		if (isValid) {
+			PasswordResetToken passwordResetToken = guestService
+					.getPasswordResetToken(token);
+			if (passwordResetToken == null
+					|| passwordResetToken.getUser_idUser() != id) {
+				String message = messages.getMessage(
+						"email.message.invalidToken", null, locale);
+				modelAndView.addObject("message", message);
+				return modelAndView;
+			}
 
-		if (passwordResetToken == null
-				|| passwordResetToken.getUser_idUser() != id) {
-			String message = messages.getMessage("email.message.invalidToken",
-					null, locale);
-			modelAndView.addObject("message", message);
-			modelAndView.setViewName("login/signin");
-			return modelAndView;
+			Calendar cal = Calendar.getInstance();
+			if ((passwordResetToken.getExpiryDate().getTime() - cal.getTime()
+					.getTime()) <= 0) {
+				String message = messages.getMessage("email.message.expired",
+						null, locale);
+				modelAndView.addObject("message", message);
+				return modelAndView;
+			}
+			List<GrantedAuthority> grantedAuths = new ArrayList<>();
+			grantedAuths.add(new SimpleGrantedAuthority("ROLE_GUEST"));
+			User user = guestService.getUser(passwordResetToken
+					.getUser_idUser());
+			Authentication authentication = new UsernamePasswordAuthenticationToken(
+					user, null, grantedAuths);
+			SecurityContextHolder.getContext()
+					.setAuthentication(authentication);
+			modelAndView.setViewName("redirect:/updatePassword");
 		}
-
-		Calendar cal = Calendar.getInstance();
-		if ((passwordResetToken.getExpiryDate().getTime() - cal.getTime()
-				.getTime()) <= 0) {
-			String message = messages.getMessage("email.message.expired", null,
-					locale);
-			modelAndView.addObject("message", message);
-			modelAndView.setViewName("login/signin");
-			return modelAndView;
-		}
-		List<GrantedAuthority> grantedAuths = new ArrayList<>();
-		grantedAuths.add(new SimpleGrantedAuthority("ROLE_GUEST"));
-		User user = guestService.getUser(passwordResetToken.getUser_idUser());
-		Authentication authentication = new UsernamePasswordAuthenticationToken(
-				user, null, grantedAuths);
-		SecurityContextHolder.getContext().setAuthentication(authentication);
+		String message = messages.getMessage("email.message.invalidToken",
+				null, locale);
+		modelAndView.addObject("message", message);
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/savePassword", method = RequestMethod.POST)
 	public ModelAndView saveNewPassword(Locale locale, Model model,
 			@RequestParam("password") String password) throws ServiceException {
-		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = (User) SecurityContextHolder.getContext()
+				.getAuthentication().getPrincipal();
 		guestService.updateForgotPassword(user, password);
 		ModelAndView modelAndView = new ModelAndView("login/signin");
-		String message = messages.getMessage("email.message.resetpaswordsuccessful", null, locale);
+		String message = messages.getMessage(
+				"email.message.resetpaswordsuccessful", null, locale);
 		modelAndView.addObject("message", message);
 		return modelAndView;
 	}

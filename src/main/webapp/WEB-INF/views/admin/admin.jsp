@@ -72,15 +72,14 @@
 				<div class="col-md-12 nopadding2">
 					<div class="content-panel">
 						<table class="table table-striped table-advance table-hover">
-							<h2>Moderators</h2>
+							<h2>Moderators <a style=" margin-left: 53em;" href="<c:url value="/admin/addModerator.html" />" class="btn btn-success"> <i class="fa fa-user-plus"></i>
+									AddModerator
+								</a></h2>
 
 							<!-- Some sorts for table -->
-
+							
 							<thead>
-								<a href="<c:url value="/admin/addModerator.html" />"
-									class="list-group-item"> <i class="fa fa-user-plus"></i>
-									AddModerator
-								</a>
+								
 								<c:if test="${sizeUsers != 0}">
 									<nav style="text-align: center">
 										<ul class="pagination">

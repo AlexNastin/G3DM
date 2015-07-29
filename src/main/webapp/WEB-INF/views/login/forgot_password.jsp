@@ -30,10 +30,11 @@
     <div class="col-md-4"></div>
     <div class="col-md-4">
             <div class="error-template" style="min-height:45em;">
-               <div>
-				<input class="form-control" id="email" name="email"	type="email" value="" placeholder="Email" />
-				<button style="margin-top: 10px;" type="submit"  class="btn btn-primary"onclick="resetPass()">Reset!</button>
-			</div>
+               
+               <form onsubmit="resetPass()">
+				<input class="form-control" required id="email" name="email"	type="email" value="" placeholder="Email" />
+				<input style="margin-top: 10px;" type="submit"  class="btn btn-primary" >
+			   </form>
 		</div>
 	</div>
 	</div>

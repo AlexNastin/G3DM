@@ -182,6 +182,7 @@ public class GuestController {
 			Locale locale, Model model) throws ServiceException {
 		User user = guestService.getUser(idUser);
 		List<Post> posts = user.getPosts();
+		userService.setPathToPhotos(user);
 		guestService.setRatingInPosts(posts);
 		userService.setPathToPhotos(posts);
 		ModelAndView modelAndView = new ModelAndView("designer/designerProfile");

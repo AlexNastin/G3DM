@@ -36,7 +36,7 @@
 6. Укажите имя файла<br>
 7. Сохраните файл.<br>
 </div>
-<div class="text-file-conversions-name">Autodesk 3ds Max (3D Studio Max)<br></div>
+<div class="text-file-conversions-name">Autodesk 3ds Max (3D Studio Max):<br></div>
 <div class="text-file-conversions-text ">
 1. Откройте вкладку File > Export)<br>
 2. Выберите тип файла — StereoLitho *.stl<br>
@@ -45,7 +45,7 @@
 5. Выберите тип Binary<br>
 6. Нажмите OK<br>
 </div>
-<div class="text-file-conversions-name">Autodesk Inventor / Mechanical Desktop<br></div>
+<div class="text-file-conversions-name">Autodesk Inventor / Mechanical Desktop:<br></div>
 <div class="text-file-conversions-text ">
 Важно: вы можете экспортировать, как отдельные детали, так и целые части модели<br>
 1. Откройте вкладки Manage tab > Update panel > Rebuild All<br>
@@ -55,7 +55,7 @@
 5. Установите такие параметры: Формат – бинарный (Format > Binary), единицы измерения – мм или дюймы (Units > mm, inches), разрешение – высокое (Resolution > High)<br>
 6. Сохраните файл
 </div>
-<div class="text-file-conversions-name">Google Sketchup</div>
+<div class="text-file-conversions-name">Google Sketchup:</div>
 <div class="text-file-conversions-text ">
 Если вы используете стандартную версию Sketchup, а не Pro, то для экспорта в STL вам нужно будет установить специальное расширение. 
 Подходящее под вашу версию Sketchup расширение вы можете найти здесь (http://www.guitar-list.com/download-software/convert-sketchup-skp-files-dxf-or-stl).
@@ -68,14 +68,14 @@
 5. Выберите, куда предпочтительнее сохранить экспортируемый файл.<br>
 Внимание: если вы экспортируете круг с помощью этого плагина, то при просмотре в некоторых других программах вы заметите, что при увеличении он состоит из коротких отрезков.<br>
 </div>
-<div class="text-file-conversions-name">Blender<br></div>
+<div class="text-file-conversions-name">Blender:<br></div>
 <div class="text-file-conversions-text ">
 1. Откройте вкладки File > Export > STL<br>
 2. Введите имя файла<br>
 3. Укажите месторасположения файла<br>
 4. Нажмите на кнопку Export STL<br>
 </div>
-<div class="text-file-conversions-name">Pro ENGINEER<br></div>
+<div class="text-file-conversions-name">Pro ENGINEER:<br></div>
 <div class="text-file-conversions-text ">
 1. Откройте вкладки File > Save a Copy<br>
 2. Выберите тип STL и нажмите OK<br>
@@ -85,7 +85,7 @@
 6. Angle Control оставьте по умолчанию<br>
 7. Введите имя файла и нажмите OK<br>
 </div>
-<div class="text-file-conversions-name">Rhino<br></div>
+<div class="text-file-conversions-name">Rhino:<br></div>
 <div class="text-file-conversions-text ">
 1. Откройте вкладки File > Export Selected или File > Save As<br>
 2. Выберите объекты для экспорта<br>
@@ -97,7 +97,7 @@
 8. Снимите галочку с параметра Uncheck Export Open Objects<br>
 9. И снова нажмите OK<br>
 </div>
-<div class="text-file-conversions-name">Solidworks<br></div>
+<div class="text-file-conversions-name">Solidworks:<br></div>
 <div class="text-file-conversions-text ">
 1. Откройте вкладки File > Save As…<br>
 2. Установите тип файла STL(*.stl)<br>
@@ -109,7 +109,7 @@
 8. Введите имя файла<br>
 9. Сохраните<br>
 </div>
-<div class="text-file-conversions-name">SolidWorks Student Design Kit<br></div>
+<div class="text-file-conversions-name">SolidWorks Student Design Kit:<br></div>
 <div class="text-file-conversions-text ">
 1. Откройте вкладки File > Save As…<br>
 2. Установите тип файла eDrawings(*.eprt)<br>

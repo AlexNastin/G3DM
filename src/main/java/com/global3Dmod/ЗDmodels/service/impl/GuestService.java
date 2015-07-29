@@ -39,6 +39,7 @@ import com.global3Dmod.«Dmodels.domain.Subcategory;
 import com.global3Dmod.«Dmodels.domain.User;
 import com.global3Dmod.«Dmodels.exception.DaoException;
 import com.global3Dmod.«Dmodels.exception.ServiceException;
+import com.global3Dmod.«Dmodels.form.AddModeratorForm;
 import com.global3Dmod.«Dmodels.form.CommentForm;
 import com.global3Dmod.«Dmodels.form.SignupForm;
 import com.global3Dmod.«Dmodels.property.PropertyManagerG3DM;
@@ -124,6 +125,38 @@ public class GuestService implements IGuestService {
 		}
 	}
 
+	@Override
+	public void addModerator(AddModeratorForm addModeratorForm) throws ServiceException {
+		User user = new User();
+		DateFormat dateFormat = new SimpleDateFormat(
+				ServiceParamConstant.FORMAT_DATE);
+		Date date = new Date();
+		String registrationDate = dateFormat.format(date);
+		String md5Password = DigestUtils.md5Hex(addModeratorForm.getPassword());
+		user.setRole_idRole(4);
+		user.setCountry_idCountry(ServiceParamConstant.ID_—OUNTRY);
+		user.setCity_id—ity(ServiceParamConstant.ID_—ITY);
+		user.setNickName(addModeratorForm.getNickName());
+		user.setLogin(addModeratorForm.getLogin().toLowerCase());
+		user.setPassword(md5Password);
+		user.setName(addModeratorForm.getName());
+		user.setSurname(addModeratorForm.getSurname());
+		user.setGender(0);
+		user.setRegistrationDate(registrationDate);
+		
+		Avatar avatar = new Avatar();
+		String newName = ServiceParamConstant.DEFAULT_NAME_AVATAR;
+		avatar.setFileName(newName);
+		avatar.setAvatarPath(ServiceParamConstant.PATH_TO_DEFAULT_AVATAR + newName);
+		avatar.setUser(user);
+		user.setAvatar(avatar);
+		
+		try {
+			userDAO.insertUser(user);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+	}
 	@Override
 	public void addComment(CommentForm commentForm, Person person)
 			throws ServiceException {

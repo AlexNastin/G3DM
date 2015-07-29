@@ -5,19 +5,21 @@ import java.util.List;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Comment;
-import com.global3Dmod.ÇDmodels.domain.File;
 import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
+import com.global3Dmod.ÇDmodels.form.AddModeratorForm;
 import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 
 public interface IGuestService {
 
 	public void addUser(SignupForm signupForm, String serverPath) throws ServiceException;
+	
+	public void addModerator(AddModeratorForm addModeratorForm) throws ServiceException;
 
 	public void addComment(CommentForm commentForm, Person person)
 			throws ServiceException;

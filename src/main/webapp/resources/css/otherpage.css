@@ -149,3 +149,17 @@ background-color: #F8F8F8;
 .margin-bottom-help {
 	margin-bottom: 3em;
 }
+.text-file-conversions-name {
+	font-weight: bold;
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: none;	
+    color: #777;
+    font-size: 20px;
+}
+.text-file-conversions-text {
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+    text-transform: none;	
+    color: #999;
+    font-size: 16px;
+    margin-bottom: 1em;
+}

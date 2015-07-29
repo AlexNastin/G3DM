@@ -1,11 +1,13 @@
 package com.global3Dmod.ÇDmodels.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,12 +38,14 @@ import com.global3Dmod.ÇDmodels.service.IUserService;
 @Controller
 public class DesignerController {
 
+	private static Logger LOGGER = Logger.getLogger(DesignerController.class);
+
 	@Autowired
 	private IDesignerService designerService;
 
 	@Autowired
 	private PropertyManagerG3DM propertyManager;
-	
+
 	@Autowired
 	private IUserService userService;
 
@@ -50,8 +54,7 @@ public class DesignerController {
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "desc", required = false) boolean desc,
-			Locale locale, Model model, HttpSession httpSession)
-			throws ServiceException, Exception {
+			Locale locale, Model model, HttpSession httpSession) {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -61,17 +64,26 @@ public class DesignerController {
 		if (page == null) {
 			page = 1;
 		}
-		if (sort==null) {
-			sort="date";
+		if (sort == null) {
+			sort = "date";
 		}
-		User user = designerService.getUser(person.getLogin());
-		userService.setPathToPhotos(user);
+		User user = new User();
+		List<Post> posts = new ArrayList<Post>();
+		try {
+			user = designerService.getUser(person.getLogin());
+			userService.setPathToPhotos(user);
+			posts = designerService.getPostsByDesignerForSort(person
+					.getIdPerson());
+			designerService.sortPosts(posts, sort, desc);
+		} catch (ServiceException e) {
+			LOGGER.info("TROROLO");
+			LOGGER.error("OLO", e);
+		}
+
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
 		ModelAndView modelAndView = new ModelAndView("designer/designer");
-		List<Post> posts = designerService.getPostsByDesignerForSort(person
-				.getIdPerson());
-		designerService.sortPosts(posts, sort, desc);
+
 		int allPosts = posts.size();
 		int maxPage = (int) Math.ceil((double) allPosts
 				/ ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
@@ -102,8 +114,13 @@ public class DesignerController {
 		} else {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, false);
 		}
-		modelAndView = designerService.setParamsForSort(modelAndView, sort,
-				desc);
+		try {
+
+			modelAndView = designerService.setParamsForSort(modelAndView, sort,
+					desc);
+		} catch (ServiceException e) {
+
+		}
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
@@ -143,16 +160,17 @@ public class DesignerController {
 	}
 
 	@RequestMapping(value = "/designer/personalData/updateFormAdd", method = RequestMethod.POST)
-	public ModelAndView updateFormAdd(DesignerPersonalDataForm personalDataForm,
-			Locale locale, Model model, HttpSession httpSession)
-			throws ServiceException {
+	public ModelAndView updateFormAdd(
+			DesignerPersonalDataForm personalDataForm, Locale locale,
+			Model model, HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		designerService.updateUser(personalDataForm, person.getLogin(), propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
+		designerService.updateUser(personalDataForm, person.getLogin(),
+				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
 		ModelAndView modelAndView2 = new ModelAndView(
 				"redirect:/designer/personalData/updateForm");
 		return modelAndView2;
@@ -168,7 +186,8 @@ public class DesignerController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		designerService.updatePost(updatePostForm, updatePostForm.getIdPost(), propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
+		designerService.updatePost(updatePostForm, updatePostForm.getIdPost(),
+				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
 		ModelAndView modelAndView2 = new ModelAndView(
 				"redirect:/designer/updatePost?id="
 						+ updatePostForm.getIdPost());
@@ -195,7 +214,8 @@ public class DesignerController {
 
 	// Test
 	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public ModelAndView test(Locale locale, Model model) throws ServiceException {
+	public ModelAndView test(Locale locale, Model model)
+			throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("designer/postsByDesigner");
 		List<Post> posts = designerService.getPostsByDesigner(3);
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER,

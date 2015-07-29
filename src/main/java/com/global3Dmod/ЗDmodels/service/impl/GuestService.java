@@ -14,7 +14,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.global3Dmod.ÇDmodels.aop.annotation.AspectDaoG3DM;
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
@@ -141,7 +140,6 @@ public class GuestService implements IGuestService {
 		}
 	}
 
-	@AspectDaoG3DM
 	@Override
 	public List<String> getAllEmail() throws ServiceException {
 		List<String> emails;

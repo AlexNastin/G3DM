@@ -163,3 +163,22 @@ background-color: #F8F8F8;
     font-size: 16px;
     margin-bottom: 1em;
 }
+.margin-bottom-input-support {
+	 margin-bottom: 1.5em;
+}
+.right-support {
+	float: right;
+	margin-top: 1.5em;
+	margin-right: 1em;
+	margin-bottom: 1.6em;
+}
+.background-color-support {
+	background-color: #F8F8F8; 
+}
+.margin-top-support {
+	margin-top: 1em;
+	margin-bottom: 5em;
+}
+.margin-top-support-input{
+	margin-top: 2em;
+}

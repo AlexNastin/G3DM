@@ -79,7 +79,7 @@ $(document).ready(function(){
 	    	  regexp: '^[\x00-\x7F]{2,1500}$',
 	    	  required: true  
 	      },
-	      
+	        	  
 },
 messages:  {
 	confirmPassword: {

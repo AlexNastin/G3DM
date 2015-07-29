@@ -59,16 +59,17 @@
 		name="add-post-form" enctype="multipart/form-data">
 		<div class="row">
 		<div class="col-md-4">
-		<div class="form-group">
+		<div class="form-group height-input-string-addpost">
 		<form:input class="form-control" id="title" name="title" path="title" placeholder="title"></form:input>
+		
 		<span class="error"><form:errors path="title" /></span>
 		</div>
-		<div class="form-group">
+		<div class="form-group height-input-string-addpost-description">
 		<form:textarea class="form-control" id="description" name="description" path="description"
 			placeholder="description"  rows="5" cols="30"></form:textarea>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
-		<div class="form-group">
+		<div class="form-group height-input-string-addpost-instruction">
 		<form:textarea class="form-control" id="instruction" name="instruction" path="instruction"
 			placeholder="instruction"></form:textarea>
 		<span class="error"><form:errors path="instruction" /></span>

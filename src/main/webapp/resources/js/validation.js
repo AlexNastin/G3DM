@@ -39,7 +39,7 @@ $(document).ready(function(){
 	        digits:true
 	      },
 	      password: {
-	      rangelength: [8, 32],
+	      regexp: '(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$',
 	      required: true
 	      },
 	      j_username: {
@@ -47,7 +47,7 @@ $(document).ready(function(){
 		        email: true
 	      },
 	      j_password: {
-	      rangelength: [8, 32],
+	      regexp: '(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$',
 	      required: true  
 	      },
 	      text: {
@@ -79,6 +79,7 @@ $(document).ready(function(){
 	    	  regexp: '^[\x00-\x7F]{2,1500}$',
 	    	  required: true  
 	      },
+	      
 },
 messages:  {
 	confirmPassword: {

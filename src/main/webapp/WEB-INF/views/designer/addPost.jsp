@@ -101,7 +101,7 @@
 		<div class="col-md-4">
 		<h3 style="margin-top:0px">Select technologies</h3>
 		<c:forEach items="${listTechnologies}" var="technology">
-			<form:checkbox path="technologiesId" value="${technology.idTechnology}" />${technology.title}<br>
+			<form:checkbox id="technologiesId"  path="technologiesId" value="${technology.idTechnology}" />${technology.title}<br>
 		</c:forEach>
 		<span class="error"><form:errors path="technologiesId" /></span>
 		<br>

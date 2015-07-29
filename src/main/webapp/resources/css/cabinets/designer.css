@@ -2833,3 +2833,12 @@ font-weight: bold;
 .height-input-string-messages {
 height: 10em;
 }
+.height-input-string-addpost {
+height: 2.7em;
+}
+.height-input-string-addpost-description {
+height: 9.7em;	
+}
+.height-input-string-addpost-instruction {
+	height: 5.7em;
+}

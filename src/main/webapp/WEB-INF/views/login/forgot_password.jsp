@@ -31,10 +31,13 @@
     <div class="col-md-4">
             <div class="error-template" style="min-height:45em;">
                
-               <form onsubmit="resetPass()">
+               <form action="<c:url value="/resetPassword"></c:url>" method="POST">
 				<input class="form-control" required id="email" name="email"	type="email" value="" placeholder="Email" />
 				<input style="margin-top: 10px;" type="submit"  class="btn btn-primary" >
 			   </form>
+			   <c:if test="${message != null}">
+			   ${message}
+			   </c:if>
 		</div>
 	</div>
 	</div>

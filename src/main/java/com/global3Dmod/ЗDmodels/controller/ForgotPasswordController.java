@@ -63,17 +63,17 @@ public class ForgotPasswordController {
 	public ModelAndView resetPassword(HttpServletRequest request,
 			@RequestParam("email") String userEmail, Locale locale)
 			throws ServiceException {
-		ModelAndView modelAndView = new ModelAndView("redirect:/go/signin");
-		Pattern pattern = collectionRegEx.getRegExPattern(RegExName.REGEX_EMAIL);
+		ModelAndView modelAndView = new ModelAndView("login/forgot_password");
+
+		Pattern pattern = collectionRegEx
+				.getRegExPattern(RegExName.REGEX_EMAIL);
 		Matcher matcher = pattern.matcher(userEmail.toLowerCase());
-		boolean isValid = matcher.matches();
-		if (isValid) {
+		if (matcher.matches()) {
 			User user = designerService.getUser(userEmail);
 			if (user == null) {
 				String message = messages.getMessage(
 						"email.message.resetPasswordNotUser", null, locale);
 				modelAndView.addObject("message", message);
-				modelAndView.setViewName("login/signin");
 				return modelAndView;
 			}
 			String token = UUID.randomUUID().toString();
@@ -92,19 +92,16 @@ public class ForgotPasswordController {
 				String message = messages.getMessage(
 						"email.message.resetPasswordEmailSend", null, locale);
 				modelAndView.addObject("message", message);
-				modelAndView.setViewName("login/signin");
 				return modelAndView;
 			}
 			String message = messages.getMessage(
 					"email.message.resetPasswordEmail", null, locale);
 			modelAndView.addObject("message", message);
-			modelAndView.setViewName("login/signin");
 			return modelAndView;
 		} else {
 			String message = messages.getMessage(
 					"email.message.resetPasswordNotUser", null, locale);
 			modelAndView.addObject("message", message);
-			modelAndView.setViewName("login/signin");
 			return modelAndView;
 		}
 	}

@@ -1,29 +1,21 @@
 package com.global3Dmod.ЗDmodels.form.validator;
 
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.validation.ValidationException;
-
-import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-import org.springframework.validation.ValidationUtils;
+
 import org.springframework.validation.Validator;
 
-import com.global3Dmod.ЗDmodels.exception.ServiceException;
-import com.global3Dmod.ЗDmodels.form.DesignerPersonalDataForm;
-import com.global3Dmod.ЗDmodels.form.SignupForm;
 import com.global3Dmod.ЗDmodels.form.UserPersonalDataForm;
-import com.global3Dmod.ЗDmodels.service.IGuestService;
 
 @Component
 public class UserPersonalDataValidator implements Validator {
-	
-	private final String NAME = "^[а-яА-ЯёЁa-zA-Z0-9]+$";
-	private final String SURNAME = "^[а-яА-ЯёЁa-zA-Z0-9]+$";
+
+	@Autowired
+	private RegExCollection regExCollection;
 
 	@Override
 	public boolean supports(Class<?> arg0) {
@@ -34,35 +26,44 @@ public class UserPersonalDataValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 
 		UserPersonalDataForm personalDataForm = (UserPersonalDataForm) target;
-		
-		Pattern patternName = Pattern.compile(NAME);
-		Pattern patternSurname = Pattern.compile(SURNAME);
-		//name validation
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name",
-				"addPost.valid.title.empty");
+
+		Matcher matcher = null;
+		Pattern pattern = null;
+
+		// Валидация Name
 		String name = personalDataForm.getName();
-		// Не более 16 символов
-		if ((name.length()) > 16) {
-			errors.rejectValue("name", "singup.valid.nickName.tooLong");
+		if (name.length() != 0) {
+			pattern = regExCollection
+					.getRegExPattern(RegExName.REGEX_FULL_NAME_USER);
+			matcher = pattern.matcher(name);
+			// Количество от 1 символов до 50. Латиница. Нет спецсимволов.
+			// (кроме - _)
+			if (!matcher.matches()) {
+				errors.rejectValue("name", "valid.name.pattern.notempty");
+			}
 		}
-		//кириллица, латиница, цифры
-		Matcher matcher = patternName.matcher(name);
-		if(!matcher.matches()) {
-			errors.rejectValue("name", "addPost.valid.file.format");
-		}
-		
-		//surname validation
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname",
-				"addPost.valid.title.empty");
+
+		// Валидация Surname
 		String surname = personalDataForm.getSurname();
-		// Не более 16 символов
-		if ((surname.length()) > 16) {
-			errors.rejectValue("surname", "singup.valid.nickName.tooLong");
+		// Количество от 1 символов до 50. Латиница. Нет спецсимволов. (кроме -
+		// _)
+		if (surname.length() != 0) {
+			matcher.reset(surname);
+			if (!matcher.matches()) {
+				errors.rejectValue("surname", "valid.surname.pattern.notempty");
+			}
 		}
-		//кириллица, латиница, цифры
-		matcher = patternSurname.matcher(surname);
-		if(!matcher.matches()) {
-			errors.rejectValue("surname", "addPost.valid.file.format");
+		// Валидация Avatar
+		if (!personalDataForm.getAvatar().isEmpty()) {
+			String nameAvatar = personalDataForm.getAvatar()
+					.getOriginalFilename();
+			// Расширение.
+			pattern = regExCollection
+					.getRegExPattern(RegExName.REGEX_PHOTO_POST);
+			matcher = pattern.matcher(nameAvatar);
+			if (!matcher.matches()) {
+				errors.rejectValue("avatar", "valid.avatar.pattern");
+			}
 		}
 	}
 

@@ -20,6 +20,10 @@ public class DesignerPersonalDataForm implements Essence {
 	
 	// file
 	private MultipartFile avatar;
+	
+	public DesignerPersonalDataForm() {
+		super();
+	}
 
 	public int getCountry_idCountry() {
 		return country_idCountry;

@@ -1,13 +1,16 @@
 package com.global3Dmod.ÇDmodels.form;
 
-import java.util.Arrays;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class AddAdvertisementForm implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -125752163140367653L;
+	
 	private String title;
 	private String description;
 	private String client;
@@ -15,6 +18,10 @@ public class AddAdvertisementForm implements Essence {
 
 	// file
 	private MultipartFile advertisementPhoto;
+	
+	public AddAdvertisementForm() {
+		super();
+	}
 
 	public String getTitle() {
 		return title;

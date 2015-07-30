@@ -19,6 +19,7 @@ public final class RegExCollection {
 	private Pattern PATTERN_INSTRUCTION_POST = Pattern.compile("^[\\x00-\\x7F]{2,1500}$");
 	private Pattern PATTERN_MODEL_POST = Pattern.compile(".+\\.(rar|RAR|stl|STL|zip|ZIP)");
 	private Pattern PATTERN_PHOTO_POST = Pattern.compile(".+\\.(jpeg|JPEG|jpg|JPG|PNG|png|BMP|bmp|GIF|gif)");
+	private Pattern PATTERN_MESSAGE_POST = Pattern.compile("^[\\x00-\\x7F]{2,300}$");
 	
 	private Map<String, Pattern> regEx = new HashMap<String, Pattern>();
 
@@ -33,6 +34,7 @@ public final class RegExCollection {
 		regEx.put(RegExName.REGEX_INSTRUCTION_POST, PATTERN_INSTRUCTION_POST);
 		regEx.put(RegExName.REGEX_MODEL_POST, PATTERN_MODEL_POST);
 		regEx.put(RegExName.REGEX_PHOTO_POST, PATTERN_PHOTO_POST);
+		regEx.put(RegExName.REGEX_MESSAGE_POST, PATTERN_MESSAGE_POST);
 	}
 
 	public Pattern getRegExPattern(String key) {

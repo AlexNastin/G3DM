@@ -4,6 +4,10 @@ public class UpdateForgotPasswordForm {
 
 	private String password;
 	private String confirmPassword;
+	
+	public UpdateForgotPasswordForm() {
+		super();
+	}
 
 	public String getPassword() {
 		return password;

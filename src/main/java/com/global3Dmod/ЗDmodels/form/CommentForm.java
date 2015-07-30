@@ -12,6 +12,10 @@ public class CommentForm implements Essence {
 	private String comment;
 	
 	private int idPost;
+	
+	public CommentForm() {
+		super();
+	}
 
 	public String getComment() {
 		return comment;

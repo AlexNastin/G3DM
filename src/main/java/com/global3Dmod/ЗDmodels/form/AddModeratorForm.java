@@ -4,6 +4,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class AddModeratorForm implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9030371630080102347L;
+	
 	private String login;
 	private String password;
 	private String confirmPassword;

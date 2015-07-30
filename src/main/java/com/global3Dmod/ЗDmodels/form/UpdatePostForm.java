@@ -8,6 +8,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class UpdatePostForm implements Essence {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -480818592804137463L;
+	
 	private int idPost;
 	private int category_idCategory;
 	private int subcategory_idSubcategory;

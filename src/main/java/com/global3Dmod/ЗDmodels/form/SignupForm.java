@@ -4,12 +4,20 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class SignupForm implements Essence {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9216190131891521986L;
+	
 	private int role_idRole;
 	private String login;
 	private String password;
 	private String confirmPassword;
 	private String nickName;
 	
+	public SignupForm() {
+		super();
+	}
 	public int getRole_idRole() {
 		return role_idRole;
 	}

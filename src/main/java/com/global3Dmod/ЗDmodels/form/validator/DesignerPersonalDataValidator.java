@@ -30,9 +30,11 @@ public class DesignerPersonalDataValidator implements Validator {
 		// Валидация Name
 		String name = personalDataForm.getName();
 		if (name.length() != 0) {
-			pattern = regExCollection.getRegExPattern(RegExName.REGEX_FULL_NAME_USER);
+			pattern = regExCollection
+					.getRegExPattern(RegExName.REGEX_FULL_NAME_USER);
 			matcher = pattern.matcher(name);
-			// Количество от 1 символов до 50. Латиница. Нет спецсимволов. (кроме - _)
+			// Количество от 1 символов до 50. Латиница. Нет спецсимволов.
+			// (кроме - _)
 			if (!matcher.matches()) {
 				errors.rejectValue("name", "valid.name.pattern.notempty");
 			}
@@ -40,15 +42,26 @@ public class DesignerPersonalDataValidator implements Validator {
 
 		// Валидация Surname
 		String surname = personalDataForm.getSurname();
-		// Количество от 1 символов до 50. Латиница. Нет спецсимволов. (кроме - _)
+		// Количество от 1 символов до 50. Латиница. Нет спецсимволов. (кроме -
+		// _)
 		if (surname.length() != 0) {
 			matcher.reset(surname);
 			if (!matcher.matches()) {
 				errors.rejectValue("surname", "valid.surname.pattern.notempty");
 			}
 		}
-		
-		
+		// Валидация Avatar
+		if (!personalDataForm.getAvatar().isEmpty()) {
+			String nameAvatar = personalDataForm.getAvatar()
+					.getOriginalFilename();
+			// Расширение.
+			pattern = regExCollection
+					.getRegExPattern(RegExName.REGEX_PHOTO_POST);
+			matcher = pattern.matcher(nameAvatar);
+			if (!matcher.matches()) {
+				errors.rejectValue("avatar", "valid.avatar.pattern");
+			}
+		}
 	}
 
 }

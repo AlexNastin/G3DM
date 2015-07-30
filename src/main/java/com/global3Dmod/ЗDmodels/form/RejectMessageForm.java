@@ -4,9 +4,19 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class RejectMessageForm implements Essence {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5181462478030150576L;
+
 	private String text;
 	
 	private int idPost;
+	
+
+	public RejectMessageForm() {
+		super();
+	}
 
 	public String getText() {
 		return text;

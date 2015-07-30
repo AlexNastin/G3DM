@@ -26,6 +26,10 @@ public class PostForm implements Essence {
 
 	// Technologies
 	private String[] technologiesId;
+	
+	public PostForm() {
+		super();
+	}
 
 	public int getCategory_idCategory() {
 		return category_idCategory;

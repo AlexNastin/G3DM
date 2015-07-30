@@ -6,6 +6,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class UserPersonalDataForm implements Essence {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8758516680145772843L;
+	
 	private int country_idCountry;
 	private int city_idCity;
 	private String name;
@@ -15,6 +20,10 @@ public class UserPersonalDataForm implements Essence {
 	
 	// file
 	private MultipartFile avatar;
+	
+	public UserPersonalDataForm() {
+		super();
+	}
 
 	public int getCountry_idCountry() {
 		return country_idCountry;

@@ -4,8 +4,18 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class UserPersonalSecurityForm implements Essence {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3978062434915732620L;
+	
 	private String password;
 	private String confirmPassword;
+	
+	public UserPersonalSecurityForm() {
+		super();
+	}
+	
 	public String getPassword() {
 		return password;
 	}

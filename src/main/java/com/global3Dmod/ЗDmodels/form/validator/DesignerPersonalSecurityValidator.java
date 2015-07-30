@@ -1,27 +1,21 @@
 package com.global3Dmod.ЗDmodels.form.validator;
 
-import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-import javax.validation.ValidationException;
-
-import org.apache.commons.validator.routines.EmailValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-import com.global3Dmod.ЗDmodels.exception.ServiceException;
-import com.global3Dmod.ЗDmodels.form.DesignerPersonalDataForm;
 import com.global3Dmod.ЗDmodels.form.DesignerPersonalSecurityForm;
-import com.global3Dmod.ЗDmodels.form.SignupForm;
-import com.global3Dmod.ЗDmodels.service.IGuestService;
 
 @Component
 public class DesignerPersonalSecurityValidator implements Validator {
 
 	@Autowired
-	private IGuestService guestService;
+	private RegExCollection regExCollection;
 
 	@Override
 	public boolean supports(Class<?> arg0) {
@@ -32,13 +26,22 @@ public class DesignerPersonalSecurityValidator implements Validator {
 	public void validate(Object target, Errors errors) {
 
 		DesignerPersonalSecurityForm personalSecurityForm = (DesignerPersonalSecurityForm) target;
+		Matcher matcher = null;
+		Pattern pattern = null;
 
-		// Валидация пароля и совпадение основного пароля и подтверждённого
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
-				"singup.valid.password.empty");
-		if (!(personalSecurityForm.getPassword()).equals(personalSecurityForm.getConfirmPassword())) {
+		// Валидация Password и ConfirmPassword и их совпадение.
+		// На пустое значение
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "valid.password.empty");
+		pattern = regExCollection.getRegExPattern(RegExName.REGEX_PASSWORD);
+		matcher = pattern.matcher(personalSecurityForm.getPassword());
+		// Строчные и прописные латинские буквы, цифры, спецсимволы. От 8 символов до 32
+		if (!matcher.matches()) {
+			errors.rejectValue("password", "valid.password.pattern");
+		}
+		if (!(personalSecurityForm.getPassword()).equals(personalSecurityForm
+				.getConfirmPassword())) {
 			errors.rejectValue("confirmPassword",
-					"singup.valid.confirmPassword.passwordDontMatch"); //изменить локализацию теста
+					"valid.confirmPassword.passwordDontMatch");
 		}
 
 	}

@@ -83,6 +83,7 @@
 		</div>
 		</div>
 		<form:input type="text" class="form-control" id="expirationDate" name="calendar" path="expirationDate" placeholder="Please select a date of expiration"/> 
+			<span class="error"><form:errors path="expirationDate" /></span>
 		<br>
 		Advertisement photo: <input type="file" name="advertisementPhoto">
 		<span class="error"><form:errors path="advertisementPhoto" /></span>

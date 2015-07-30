@@ -39,7 +39,7 @@ $(document).ready(function(){
 	        digits:true
 	      },
 	      password: {
-	      regexp: '(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$',
+	      regexp: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
 	      required: true
 	      },
 	      j_username: {
@@ -47,7 +47,7 @@ $(document).ready(function(){
 		        email: true
 	      },
 	      j_password: {
-	      regexp: '(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$',
+	      regexp: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
 	      required: true  
 	      },
 	      text: {

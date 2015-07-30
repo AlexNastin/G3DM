@@ -21,6 +21,7 @@ import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.AddAdvertisementForm;
+import com.global3Dmod.ÇDmodels.form.UpdateAdvertisementForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IAdminService;
@@ -276,6 +277,15 @@ public class AdminService implements IAdminService{
 			advertisement.setFilePath(fullPath.toString());
 		}
 	}
+	
+	@Override
+	public void setPathToPhotos(Advertisement advertisement)
+			throws ServiceException {
+		String oldPath = advertisement.getFilePath();
+		StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+		fullPath.append(oldPath);
+		advertisement.setFilePath(fullPath.toString());
+	}
 
 	@Override
 	public void addAdvertisement(AddAdvertisementForm addAdvertisementForm,
@@ -305,15 +315,6 @@ public class AdminService implements IAdminService{
 		
 	}
 	
-	private String createAdvertisementPath(String client) {
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("advertisements/");
-		stringBuilder.append(client);
-		stringBuilder.append("/");
-		String path = stringBuilder.toString();
-		return path;
-	}
-	
 	@Override
 	public String advertisementUpload(MultipartFile file, String path)
 			throws ServiceException {
@@ -325,11 +326,77 @@ public class AdminService implements IAdminService{
 		try {
 			file.transferTo(dest);
 		} catch (IllegalStateException e) {
+			throw new ServiceException(e);
+		} catch (IOException e) {
+			throw new ServiceException(e);
+		}
+		return newName;
+	}
+
+	@Override
+	public Advertisement getAdvertisement(Integer idAdvertisement)
+			throws ServiceException {
+		Advertisement advertisement = null;
+		try {
+			advertisement = advertisementDAO.selectAdvertisement(idAdvertisement);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return advertisement;
+	}
+
+	@Override
+	public void updateAdvertisement(
+			UpdateAdvertisementForm updateAdvertisementForm, String serverPath)
+			throws ServiceException {
+		try {
+			Advertisement advertisement = advertisementDAO.selectAdvertisement(updateAdvertisementForm.getIdAdvertisement());
+			advertisement.setTitle(updateAdvertisementForm.getTitle());
+			advertisement.setDescription(updateAdvertisementForm.getDescription());
+			advertisement.setExpirationDate(updateAdvertisementForm.getExpirationDate());
+			
+			String pathAdvertisement = createAdvertisementPath(advertisement.getClient());
+			String fullPathAdvertisement = serverPath.concat(pathAdvertisement);
+			advertisement.setFilePath(pathAdvertisement + advertisementUpload(updateAdvertisementForm.getAdvertisementPhoto(), fullPathAdvertisement, advertisement.getFileName()));
+			System.out.println(advertisement.getFilePath());
+			advertisementDAO.updateAdvertisement(advertisement);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
+	}
+
+	private String advertisementUpload(MultipartFile file, String path, String oldFileName) {
+		String filePath = path + oldFileName;
+		new File(path).mkdirs();
+		File dest = new File(filePath);
+		try {
+			file.transferTo(dest);
+		} catch (IllegalStateException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return newName;
+		return oldFileName;
+	}
+	
+	private String createAdvertisementPath(String client) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("advertisements/");
+		stringBuilder.append(client);
+		stringBuilder.append("/");
+		String path = stringBuilder.toString();
+		return path;
+	}
+
+	@Override
+	public void deleteAdvertisement(Integer idAdvertisement)
+			throws ServiceException {
+		try {
+			advertisementDAO.deleteAdvertisement(idAdvertisement);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
 	}
 
 }

@@ -20,7 +20,7 @@ public  final class ControllerParamConstant {
 
 	public static int LIMIT_POSTS_ON_PAGE = 10;
 	
-	public static int LIMIT_ADVIRTISEMENTS_ON_PAGE = 10;
+	public static int LIMIT_ADVERTISEMENTS_ON_PAGE = 10;
 	
 	public static int LIMIT_USERS_ON_PAGE = 20;
 
@@ -32,7 +32,7 @@ public  final class ControllerParamConstant {
 	
 	public static String LIST_USERS_LIMIT_20 = "listUsersLimit20";
 	
-	public static String LIST_ADVIRTISEMENTS_LIMIT_10 = "listAdvertisementsLimit10";
+	public static String LIST_ADVERTISEMENTS_LIMIT_10 = "listAdvertisementsLimit10";
 	
 	public static String LIST_COMMENTS_LIMIT_10 = "listCommentsLimit10";
 	
@@ -58,6 +58,8 @@ public  final class ControllerParamConstant {
 
 	public static String POST = "post";
 	
+	public static String ADVERTISEMENT = "advertisement";
+	
 	public static String USER = "user";
 	
 	public static String RATING_DESIGNER = "ratingDesigner";
@@ -77,6 +79,8 @@ public  final class ControllerParamConstant {
 	public static String POST_FORM = "postForm";
 	
 	public static String ADD_ADVERTISEMENT_FORM = "addAdvertisementForm";
+	
+	public static String UPDATE_ADVERTISEMENT_FORM = "updateAdvertisementForm";
 	
 	public static String SIGNUP_FORM = "signupForm";
 	

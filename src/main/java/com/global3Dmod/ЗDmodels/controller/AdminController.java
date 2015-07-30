@@ -21,6 +21,7 @@ import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.AddAdvertisementForm;
 import com.global3Dmod.ÇDmodels.form.AddModeratorForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
+import com.global3Dmod.ÇDmodels.form.UpdateAdvertisementForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IAdminService;
@@ -30,7 +31,7 @@ import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
 public class AdminController {
-
+	
 	@Autowired
 	private IDesignerService designerService;
 
@@ -243,17 +244,17 @@ public class AdminController {
 		adminService.sortAdvertisements(advertisements, sort, desc);
 		int allAdvertisement = advertisements.size();
 		int maxPage = (int) Math.ceil((double) allAdvertisement
-				/ ControllerParamConstant.LIMIT_ADVIRTISEMENTS_ON_PAGE);
-		int startAdvertisement = page * ControllerParamConstant.LIMIT_ADVIRTISEMENTS_ON_PAGE
-				- ControllerParamConstant.LIMIT_ADVIRTISEMENTS_ON_PAGE;
-		int endAdvertisement = startAdvertisement + ControllerParamConstant.LIMIT_ADVIRTISEMENTS_ON_PAGE;
+				/ ControllerParamConstant.LIMIT_ADVERTISEMENTS_ON_PAGE);
+		int startAdvertisement = page * ControllerParamConstant.LIMIT_ADVERTISEMENTS_ON_PAGE
+				- ControllerParamConstant.LIMIT_ADVERTISEMENTS_ON_PAGE;
+		int endAdvertisement = startAdvertisement + ControllerParamConstant.LIMIT_ADVERTISEMENTS_ON_PAGE;
 		if (endAdvertisement > startAdvertisement) {
 			advertisements = advertisements.subList(startAdvertisement, allAdvertisement);
 		} else {
 			advertisements = advertisements.subList(startAdvertisement, allAdvertisement);
 		}
 		adminService.setPathToPhotos(advertisements);
-		modelAndView.addObject(ControllerParamConstant.LIST_ADVIRTISEMENTS_LIMIT_10,
+		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS_LIMIT_10,
 				advertisements);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
 		if (endPage > maxPage) {
@@ -289,6 +290,22 @@ public class AdminController {
 				"redirect:/admin/advertisements");
 		return modelAndView2;
 	}
+	
+	@RequestMapping(value = "/admin/updateAdvertisementAdd", method = RequestMethod.POST)
+	public ModelAndView updateAdvertisementAdd(UpdateAdvertisementForm updateAdvertisementForm, Locale locale,
+			Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		adminService.updateAdvertisement(updateAdvertisementForm, propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
+		ModelAndView modelAndView2 = new ModelAndView(
+				"redirect:/admin/updateAdvertisement.html?id="
+						+ updateAdvertisementForm.getIdAdvertisement());
+		return modelAndView2;
+	}
 
 	// test
 	@RequestMapping(value = "/exception", method = RequestMethod.GET)
@@ -304,6 +321,23 @@ public class AdminController {
 		ModelAndView modelAndView = new ModelAndView("redirect:/admin/profile");
 		return modelAndView;
 
+	}
+	
+	@RequestMapping(value = "/admin/deleteAdvertisement.html", method = RequestMethod.GET)
+	public ModelAndView deletePost(
+			@RequestParam(value = "id", required = false) Integer idAdvertisement,
+			Locale locale, Model model, HttpSession httpSession)
+			throws ServiceException {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		adminService.deleteAdvertisement(idAdvertisement);
+		ModelAndView modelAndView2 = new ModelAndView(
+				"redirect:/admin/advertisements");
+		return modelAndView2;
 	}
 
 }

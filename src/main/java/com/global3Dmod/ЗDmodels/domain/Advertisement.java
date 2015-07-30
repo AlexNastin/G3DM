@@ -5,12 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "advertisement")
-@NamedQuery(name="Advertisement.findAll", query="select a from Advertisement a")
+@NamedQueries({
+		@NamedQuery(name="Advertisement.findAll", query="select a from Advertisement a"),
+		@NamedQuery(name="Advertisement.findOneById", query="select a from Advertisement a where a.idAdvertisement = :idAdvertisement")})
 public class Advertisement implements Essence {
 
 

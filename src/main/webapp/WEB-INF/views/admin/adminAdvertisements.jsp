@@ -119,6 +119,7 @@
 									<th><i class="fa fa-list-alt"></i> <a
 										href="<c:url value="/admin/advertisements?sort=dateExpiration&desc=${dateExpirationDesc}" />">
 											Expiration date</a></th>
+											<th><i class="fa fa-pencil"></i> Edit</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -130,7 +131,47 @@
 										<td>${advertisement.client}</td>
 										<td>${advertisement.registrationDate}</td>
 										<td>${advertisement.expirationDate}</td>
+										<td>
+                                      <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#edit${advertisement.idAdvertisement}"><i class="fa fa-pencil"></i></button>
+                                      <button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal${advertisement.idAdvertisement}"><i class="fa fa-trash-o "></i></button>
+                                  </td>
 									</tr>
+									<!-- Delete modal -->                
+   <div class="modal fade" id="myModal${advertisement.idAdvertisement}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirm?</h4>
+      </div>
+      <div class="modal-body">
+        Are you realy wanna delete this advertisement?
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+        <a href="<c:url value="/admin/deleteAdvertisement.html?id=${advertisement.idAdvertisement}" />" type="button" class="btn btn-danger">Delete advertisement</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Edit modal -->
+<div class="modal fade" id="edit${advertisement.idAdvertisement}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Confirm?</h4>
+      </div>
+      <div class="modal-body">
+        Are you realy wanna edit this advertisement?
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+        <a href="<c:url value="/admin/updateAdvertisement.html?id=${advertisement.idAdvertisement}" />" type="button" class="btn btn-primary">Edit</a>
+      </div>
+    </div>
+  </div>
+</div>
 								</c:forEach>
 							</tbody>
 						</table>

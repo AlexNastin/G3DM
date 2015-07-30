@@ -6,9 +6,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
+import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.AddAdvertisementForm;
+import com.global3Dmod.ÇDmodels.form.UpdateAdvertisementForm;
 
 public interface IAdminService {
 	
@@ -29,9 +31,17 @@ public interface IAdminService {
 	public List<Advertisement> sortAdvertisements(List<Advertisement> advertisements, String sort, boolean desc);
 	
 	public void setPathToPhotos(List<Advertisement> advertisements) throws ServiceException;
+	
+	public void setPathToPhotos(Advertisement advertisement) throws ServiceException;
 
 	public void addAdvertisement(AddAdvertisementForm addAdvertisementForm, String serverPath) throws ServiceException;
 	
 	public String advertisementUpload(MultipartFile file, String path) throws ServiceException;
+	
+	public Advertisement getAdvertisement(Integer idAdvertisement) throws ServiceException;
+
+	public void updateAdvertisement(UpdateAdvertisementForm updateAdvertisementForm, String serverPath) throws ServiceException;
+
+	public void deleteAdvertisement(Integer idAdvertisement) throws ServiceException;
 
 }

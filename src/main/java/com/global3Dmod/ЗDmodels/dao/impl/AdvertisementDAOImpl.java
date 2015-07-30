@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
+import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 @Repository("jpaAdvertisementDAO")
@@ -77,6 +78,15 @@ public class AdvertisementDAOImpl implements IAdvertisementDAO {
 	public void updateAdvertisement(Advertisement advertisement)
 			throws DaoException {
 		em.merge(advertisement);
+	}
+
+	@Override
+	@Transactional
+	public Advertisement selectAdvertisement(Integer idAdvertisement)
+			throws DaoException {
+		Advertisement advertisement = (Advertisement) em.createNamedQuery("Advertisement.findOneById")
+				.setParameter("idAdvertisement", idAdvertisement).getSingleResult();
+		return advertisement;
 	}
 
 }

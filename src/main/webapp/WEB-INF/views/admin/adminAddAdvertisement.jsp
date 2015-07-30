@@ -36,11 +36,8 @@
     <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
    </head>
 <body>
-<!-- Here some place for ads. After placing ads you may delete "placeforads" css class in header -->
-
 	<%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>  
-	<!-- Designer's page will start here -->
-	     
+		     
 	<!-- Menu -->     
  <div class="row footerpadding">
     <div class="col-md-2 nopadding1">
@@ -48,13 +45,12 @@
 				<img src="<c:url value="${user.avatar.avatarPath}" />"
 					class="img-responsive img-thumbnail" alt="Global3Dmod avatar">
 				<a href="<c:url value="/admin/profile" />"
-					class="list-group-item active"> <i
-					class="fa fa-exclamation-triangle"></i> Moderators
+					class="list-group-item "> <i class="fa fa-exclamation-triangle"></i> Moderators
 				</a> <a href="<c:url value="/admin/designers" />"
 					class="list-group-item"> <i class="fa fa-ban"></i> Designers
 				</a> <a href="<c:url value="/admin/users" />" class="list-group-item">
 					<i class="fa fa-user-plus"></i> Users
-				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item">
+				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item active">
 					<i class="fa fa-user-plus"></i> Advertisement
 				</a>
 			</div>
@@ -121,77 +117,7 @@
 	<%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
-   
-	  
-<script type="text/javascript">
-	$(document)
-			.ready(
-					function() {
-						$('#idCountry')
-								.change(
-										function() {
-											$
-													.getJSON(
-															'${getCities}',
-															{
-																idCountry : $(
-																		this)
-																		.val(),
-																ajax : 'true'
-															},
-															function(data) {
-																var html;
-																var len = data.length;
-																for (var i = 0; i < len; i++) {
-																	html += '<option value="' + data[i].idCity + '">'
-																			+ data[i].title
-																			+ '</option>';
-																}
-																html += '</option>';
-																$(
-																		'#idCity')
-																		.html(
-																				html);
-															});
-										});
-					});
-</script>
-<script type="text/javascript">
-	$(document).ready(
-			function() {
-				$.getJSON('${getCountries}', {
-					ajax : 'true'
-				}, function(data) {
-					var html;
-					var len = data.length;
-					for (var i = 0; i < len; i++) {
-						html += '<option value="' + data[i].idCountry + '">'
-								+ data[i].title + '</option>';
-					}
-					html += '</option>';
-					$('#idCountry').html(html);
-				});
-			});
-</script>
-
-<script type="text/javascript">
-	$(document).ready(function() {
-		$("#idCity").change(onSelectChange);
-	});
-	function onSelectChange() {
-		var selected = $("#idCity option:selected");
-		var output = "";
-		if (selected.val() != 0) {
-			output = "You selected City " + selected.text();
-		}
-		$("#output").html(output);
-	}
-</script>
-
-
-  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-
-  <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
    <script>
 

@@ -76,19 +76,19 @@
   <ul class="pagination">
   <c:if test="${thisPage>1}">
     <li>
-      <a href="<c:url value="/admin/profile?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />" aria-label="Previous">
+      <a href="<c:url value="/admin/designers?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     </c:if>
     <c:forEach begin="${startPage}" end="${endPage}" var="page">
     
-    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/user/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/admin/designers?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
     </c:forEach>
     
     <c:if test="${thisPage!=maxPage}">
     <li>
-      <a href="<c:url value="/admin/profile?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />" aria-label="Next">
+      <a href="<c:url value="/admin/designers?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>
@@ -98,11 +98,11 @@
 </c:if>
                               
                               <tr class="background-user-string">
-                                  <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/admin/profile?sort=nickName&desc=${nickNameDesc}" />"> NickName</a></th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i><a href="<c:url value="/admin/profile?sort=login&desc=${loginDesc}" />"> Login</a> </th>
-                                  <th><a href="<c:url value="/admin/profile?sort=name&desc=${nameDesc}" />">Name</a> </th>
-                                  <th> <i class="fa fa-calendar"></i><a href="<c:url value="/admin/profile?sort=surname&desc=${surnameDesc}" />"> Surname</a> </th>
-                                  <th><i class="fa fa-th-list"></i><a href="<c:url value="/admin/profile?sort=dateRegistration&desc=${dateRegistrationDesc}" />"> Date register</a> </th>
+                                  <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/admin/designers?sort=nickName&desc=${nickNameDesc}" />"> NickName</a></th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i><a href="<c:url value="/admin/designers?sort=login&desc=${loginDesc}" />"> Login</a> </th>
+                                  <th><a href="<c:url value="/admin/designers?sort=name&desc=${nameDesc}" />">Name</a> </th>
+                                  <th> <i class="fa fa-calendar"></i><a href="<c:url value="/admin/designers?sort=surname&desc=${surnameDesc}" />"> Surname</a> </th>
+                                  <th><i class="fa fa-th-list"></i><a href="<c:url value="/admin/designers?sort=dateRegistration&desc=${dateRegistrationDesc}" />"> Date register</a> </th>
                               </tr>
                               </thead>
                               <tbody>
@@ -123,19 +123,19 @@
   <ul class="pagination">
   <c:if test="${thisPage>1}">
     <li>
-      <a href="<c:url value="/user/profile?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />" aria-label="Previous">
+      <a href="<c:url value="/admin/designers?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />" aria-label="Previous">
         <span aria-hidden="true">&laquo;</span>
       </a>
     </li>
     </c:if>
     <c:forEach begin="${startPage}" end="${endPage}" var="page">
     
-    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/user/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
+    <li <c:if test="${page==thisPage}">class="active"</c:if>><a href="<c:url value="/admin/designers?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
     </c:forEach>
     
     <c:if test="${thisPage!=maxPage}">
     <li>
-      <a href="<c:url value="/user/profile?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />" aria-label="Next">
+      <a href="<c:url value="/admin/designers?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />" aria-label="Next">
         <span aria-hidden="true">&raquo;</span>
       </a>
     </li>

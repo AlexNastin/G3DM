@@ -148,6 +148,9 @@ public class ModeratorController {
 		}
 		ModelAndView modelAndView = new ModelAndView(
 				"moderator/moderatorModerationPost");
+		RejectMessageForm rejectMessageForm = new RejectMessageForm();
+		modelAndView.addObject(ControllerParamConstant.REJECT_MESSAGE_FORM, rejectMessageForm);
+		
 		Post post = designerService.getPost(idPost);
 		userService.setPathToPhotos(post);
 		User user = designerService.getUser(person.getLogin());

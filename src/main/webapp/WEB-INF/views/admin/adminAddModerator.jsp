@@ -20,10 +20,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="global3dmod team">
-<link href="<c:url value="/resources/css/bootstrap.css"  />"
-	rel="stylesheet" />
-<link
-	href="<c:url value="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"  />"
+<link href="<c:url value="/resources/css/bootstrap.min.css"  />"
 	rel="stylesheet" />
 <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/cabinets/designer.css"  />"
@@ -113,12 +110,8 @@
 
 	<div class="clearfix"></div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
-	<script src="<c:url value="/resources/js/jquery-1.7.min.js" />">
-		
-	</script>
-	<script src="<c:url value="/resources/js/bootstrap.min.js" />">
-		
-	</script>
+	<script src="<c:url value="/resources/js/jquery-1.7.min.js" />"></script>
+	<script src="<c:url value="/resources/js/bootstrap.min.js" />">	</script>
 
 
 

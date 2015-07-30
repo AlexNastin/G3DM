@@ -116,18 +116,19 @@
                                   <td class="hidden-phone">${post.dateUpdate}</td>
                                   
                               </tr>
+                              <tr>
                               <td>File</td>
                               		<td>
                               		<a href="<c:url value="/download?id=${post.file.idFile}" />"> <i
-							class="btn btn-primary fa fa-download"> ${down}</i>
-						</a>
-						</td>
+							class="btn btn-primary fa fa-download"> ${down}</i>	</a>
+									</td>
+						</tr>
                                   </tbody>
                           </table>
                       </div>
                       <div class="col-md-12">
                       <button type="button"  data-toggle="modal" data-target="#publish" class="btn btn-success left-designer btn-lg" >Publish</button>
-      				  <button type="button"  style="margin-right: 4em;" data-toggle="modal" data-target="#reject" class="btn btn-danger left-designer btn-lg"  >Reject</button>
+      				  <button type="button" data-toggle="modal" data-target="#reject"  style="margin-right: 4em;"  class="btn btn-danger left-designer btn-lg"  >Reject</button>
         				  </div>                 
      </div>
     </div>
@@ -145,8 +146,7 @@
         <h4 class="modal-title">Confirm publishing </h4>
       </div>
       <div class="modal-body">
-        <p>Are you really wanna to publish this post?</p>
-      </div>
+        </div>
       <div class="modal-footer">
        <a href="<c:url value="/moderator/publishPost?id=${post.idPost}"  />" class="btn btn-success"> Publish </a>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -158,26 +158,34 @@
 
 <!-- Reject -->
 <div id="reject" class="modal fade" role="dialog">
-  <div class="modal-dialog modal-sm">
+  <div class="modal-dialog">
 
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Confirm rejection</h4>
+        <h4 class="modal-title">Send message to designer </h4>
       </div>
       <div class="modal-body">
-        <p>Are you really wanna to reject this post?</p>
-      </div>
-      <div class="modal-footer">
-      <a href="<c:url value="/moderator/rejectPost?id=${post.idPost}"  />" class="btn btn-danger"> Reject </a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+      <form:form id="rejectMessageForm" name="rejectMessageForm" class="form-horizontal" modelAttribute="rejectMessageForm" method="POST">
+	   <div class="form-group sign-feld-margin-top">
+		</div>
+		<div class="height-input-string-messages">
+		<form:textarea id="text" name="text" style="resize:none"
+											class="form-control input-md" path="text"
+											placeholder="Type your comment here" rows="5" cols="30"></form:textarea>
+											</div>
+									<form:input type="hidden" id="idPost" name="idPost"
+										path="idPost" value="${post.idPost }"></form:input>
+									<span class="error"><form:errors path="text" /></span> <br>
+									<input type="submit" class="btn btn-primary" value="Send message" />
+	</form:form>
+        </div>
+      
     </div>
 
   </div>
 </div>
-
 
   <div class="clearfix"> </div>
  

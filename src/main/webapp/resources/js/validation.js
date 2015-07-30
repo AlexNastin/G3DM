@@ -93,6 +93,10 @@ $(document).ready(function(){
 	      },
 	      firstPhoto: {
 	    	  accept: "jpg,png,jpeg,gif"
+	      },
+	      comment: {
+	    	  required: true,
+	    	  rangelength: [1, 300] 
 	      }
 },
 messages:  {

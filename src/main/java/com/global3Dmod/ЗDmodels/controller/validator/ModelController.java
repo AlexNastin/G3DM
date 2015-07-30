@@ -64,6 +64,9 @@ public class ModelController {
 		} else {
 			comments = comments.subList(startPost, endPost);
 		}
+		for (Comment comment : comments) {
+			userService.setPathToPhotos(comment.getUser());
+		}
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY_WITH_ALL_SUBCATEGORY, guestService.getAllCategories());
 		modelAndView.addObject(ControllerParamConstant.POST, post);
 		modelAndView.addObject(ControllerParamConstant.LIST_COMMENTS_LIMIT_10, comments);

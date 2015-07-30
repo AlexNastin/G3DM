@@ -150,8 +150,12 @@
 										href="<c:url value="/guest/designerProfile?id=${post.user.idUser }"  />">${post.user.nickName}</a>
 								</p>
 								<p>
-									<i class="fa fa-cubes"></i> ${category}: <a
+									<i class="fa fa-cubes"></i> Category: <a
 										href="<c:url value="/result?idCategory=${post.category.idCategory}" />">${post.category.title}</a>
+								</p>
+								<p>
+									<i class="fa fa-cubes"></i> Subcategory: <a
+										href="<c:url value="/result?idCategory=${post.category.idCategory}&idSubcategory=${post.subcategory.idSubcategory}" />">${post.subcategory.title}</a>
 								</p>
 								<p>
 									<i class="fa fa-slack"></i> ${id}: ${post.numberPost}

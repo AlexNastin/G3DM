@@ -16,15 +16,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
-import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.User;
-import com.global3Dmod.ÇDmodels.form.AddAdvertisementForm;
-import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.UpdateAdvertisementForm;
-import com.global3Dmod.ÇDmodels.form.validator.AddAdvertisementValidator;
-import com.global3Dmod.ÇDmodels.form.validator.PostFormValidator;
 import com.global3Dmod.ÇDmodels.form.validator.UpdateAdvertisementValidator;
 import com.global3Dmod.ÇDmodels.service.IAdminService;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;

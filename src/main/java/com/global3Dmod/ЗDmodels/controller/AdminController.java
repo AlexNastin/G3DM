@@ -229,7 +229,7 @@ public class AdminController {
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
 
-		ModelAndView modelAndView = new ModelAndView("admin/adminDesigners");
+		ModelAndView modelAndView = new ModelAndView("admin/adminAdvertisements");
 		User user = designerService.getUser(person.getLogin());
 		userService.setPathToPhotos(user);
 		List<User> users = adminService.getDesignersForSort();

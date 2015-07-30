@@ -61,7 +61,7 @@
 				</a> <a href="<c:url value="/admin/users" />" class="list-group-item">
 					<i class="fa fa-user-plus"></i> Users
 				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item">
-					<i class="fa fa-user-plus"></i> Adwe
+					<i class="fa fa-user-plus"></i> Advertisement
 				</a>
 			</div>
 		</div>
@@ -73,7 +73,7 @@
 					<div class="content-panel">
 						<table class="table table-striped table-advance table-hover">
 							<h2>Moderators <a style=" margin-left: 53em;" href="<c:url value="/admin/addModerator.html" />" class="btn btn-success"> <i class="fa fa-user-plus"></i>
-									AddModerator
+									Add Moderator
 								</a></h2>
 
 							<!-- Some sorts for table -->
@@ -121,12 +121,6 @@
 									<th><i class="fa fa-th-list"></i><a
 										href="<c:url value="/admin/profile?sort=dateRegistration&desc=${dateRegistrationDesc}" />">
 											Date register</a></th>
-									<th><i class="fa fa-list-alt"></i> <a
-										href="<c:url value="/admin/profile?sort=country&desc=${countryDesc}" />">
-											Country</a></th>
-									<th><i class="fa fa-user"></i><a
-										href="<c:url value="/admin/profile?sort=city&desc=${cityDesc}" />">
-											City</a></th>
 								</tr>
 							</thead>
 							<tbody>
@@ -137,8 +131,6 @@
 										<td>${user.name}</td>
 										<td>${user.surname}</td>
 										<td>${user.registrationDate}</td>
-										<td>${user.country.title}</td>
-										<td>${user.city.title}</td>
 									</tr>
 								</c:forEach>
 							</tbody>

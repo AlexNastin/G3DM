@@ -44,12 +44,19 @@
  <div class="row footerpadding">
     <div class="col-md-2 nopadding1">
      <div class="list-group">
-      <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">       
-  		<a href="<c:url value="/admin/profile" />" class="list-group-item active">
-    			<i class="fa fa-exclamation-triangle"></i> Moderators 		</a>
-  		<a href="<c:url value="/admin/designers" />" class="list-group-item"> <i class="fa fa-ban"></i> Designers</a>
-  		<a href="<c:url value="/admin/users" />" class="list-group-item"> <i class="fa fa-user-plus"></i> Users</a>
-	</div>
+				<img src="<c:url value="${user.avatar.avatarPath}" />"
+					class="img-responsive img-thumbnail" alt="Global3Dmod avatar">
+				<a href="<c:url value="/admin/profile" />"
+					class="list-group-item active"> <i
+					class="fa fa-exclamation-triangle"></i> Moderators
+				</a> <a href="<c:url value="/admin/designers" />"
+					class="list-group-item"> <i class="fa fa-ban"></i> Designers
+				</a> <a href="<c:url value="/admin/users" />" class="list-group-item">
+					<i class="fa fa-user-plus"></i> Users
+				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item">
+					<i class="fa fa-user-plus"></i> Advertisement
+				</a>
+			</div>
       </div>
       <!--main content start-->
       
@@ -96,8 +103,6 @@
                                   <th><a href="<c:url value="/admin/profile?sort=name&desc=${nameDesc}" />">Name</a> </th>
                                   <th> <i class="fa fa-calendar"></i><a href="<c:url value="/admin/profile?sort=surname&desc=${surnameDesc}" />"> Surname</a> </th>
                                   <th><i class="fa fa-th-list"></i><a href="<c:url value="/admin/profile?sort=dateRegistration&desc=${dateRegistrationDesc}" />"> Date register</a> </th>
-                                  <th><i class="fa fa-list-alt"></i> <a href="<c:url value="/admin/profile?sort=country&desc=${countryDesc}" />"> Country</a></th>
-                                  <th><i class="fa fa-user"></i><a href="<c:url value="/admin/profile?sort=city&desc=${cityDesc}" />"> City</a> </th>
                               </tr>
                               </thead>
                               <tbody>
@@ -108,8 +113,6 @@
                                   <td>${user.name}</td>
                                   <td>${user.surname}</td>
                                   <td>${user.registrationDate}</td>
-                                  <td>${user.country.title}</td>
-                                  <td>${user.city.title}</td>
                               </tr>
                               </c:forEach>
                               </tbody>

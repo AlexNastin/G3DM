@@ -54,13 +54,13 @@
 				<img src="<c:url value="${user.avatar.avatarPath}" />"
 					class="img-responsive img-thumbnail" alt="Global3Dmod avatar">
 				<a href="<c:url value="/admin/profile" />"
-					class="list-group-item active"> <i
+					class="list-group-item"> <i
 					class="fa fa-exclamation-triangle"></i> Moderators
 				</a> <a href="<c:url value="/admin/designers" />"
 					class="list-group-item"> <i class="fa fa-ban"></i> Designers
 				</a> <a href="<c:url value="/admin/users" />" class="list-group-item">
 					<i class="fa fa-user-plus"></i> Users
-				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item">
+				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item active">
 					<i class="fa fa-user-plus"></i> Advertisement
 				</a>
 			</div>
@@ -72,7 +72,7 @@
 				<div class="col-md-12 nopadding2">
 					<div class="content-panel">
 						<table class="table table-striped table-advance table-hover">
-						<h2>Advertisements <a style=" margin-left: 53em;" href="<c:url value="/admin/addAdvertisement.html" />" class="btn btn-success"> <i class="fa fa-user-plus"></i>
+						<h2>Advertisements <a href="<c:url value="/admin/addAdvertisement.html" />" class="btn btn-success"> <i class="fa fa-user-plus"></i>
 									Add advertisement
 								</a></h2>
 

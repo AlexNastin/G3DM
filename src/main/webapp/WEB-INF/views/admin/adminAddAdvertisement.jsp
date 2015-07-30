@@ -72,12 +72,12 @@
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-personal">
-		<form:input id="description" name="description" class="form-control input-md" path="description" placeholder="Description"></form:input>
+		<form:textarea id="description" name="description" class="form-control input-md" path="description" placeholder="Description"></form:textarea>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-12 height-input-string-personal">
+		<div class="col-md-12 height-input-string-personal" style=" padding-top: 10px;">
 		<form:input id="client" name="client" class="form-control input-md" path="client" placeholder="Client"></form:input>
 		<span class="error"><form:errors path="client" /></span>
 		</div>

@@ -72,7 +72,7 @@
 				<div class="col-md-12 nopadding2">
 					<div class="content-panel">
 						<table class="table table-striped table-advance table-hover">
-							<h2>Moderators <a style=" margin-left: 53em;" href="<c:url value="/admin/addModerator.html" />" class="btn btn-success"> <i class="fa fa-user-plus"></i>
+							<h2>Moderators <a href="<c:url value="/admin/addModerator.html" />" class="btn btn-success"> <i class="fa fa-user-plus"></i>
 									Add Moderator
 								</a></h2>
 

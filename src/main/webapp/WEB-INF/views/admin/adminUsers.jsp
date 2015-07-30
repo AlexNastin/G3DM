@@ -20,8 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="global3dmod team">
-    <link href="<c:url value="/resources/css/bootstrap.css"  />" rel="stylesheet" />
-    <link href="<c:url value="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"  />" rel="stylesheet" />
+    <link href="<c:url value="/resources/css/bootstrap.min.css"  />" rel="stylesheet" />    
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
     <link href="<c:url value="/resources/css/cabinets/designer.css"  />" rel="stylesheet" />
      <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.css"  />" rel="stylesheet" />
@@ -47,11 +46,11 @@
 				<img src="<c:url value="${user.avatar.avatarPath}" />"
 					class="img-responsive img-thumbnail" alt="Global3Dmod avatar">
 				<a href="<c:url value="/admin/profile" />"
-					class="list-group-item active"> <i
+					class="list-group-item"> <i
 					class="fa fa-exclamation-triangle"></i> Moderators
 				</a> <a href="<c:url value="/admin/designers" />"
 					class="list-group-item"> <i class="fa fa-ban"></i> Designers
-				</a> <a href="<c:url value="/admin/users" />" class="list-group-item">
+				</a> <a href="<c:url value="/admin/users" />" class="list-group-item active">
 					<i class="fa fa-user-plus"></i> Users
 				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item">
 					<i class="fa fa-user-plus"></i> Advertisement

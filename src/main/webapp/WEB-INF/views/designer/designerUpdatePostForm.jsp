@@ -13,7 +13,7 @@
 <spring:message code="designer.menu.works" var="works"/>
 <spring:message code="designer.menu.data" var="data"/>
 <spring:message code="designer.menu.add" var="add"/>
-
+<spring:message code="javascript.validation" var="validation" />
 
 
  <meta charset="utf-8">
@@ -130,11 +130,11 @@
 		
 		<fieldset>
 			<div>
-				<div class="form-group">
+				<div class="form-group height-input-string-updatepost-category">
 				<form:select class="form-control" id="idCategory" path="category_idCategory">
 				</form:select>
 				</div>
-				<div class="form-group">
+				<div class="form-group height-input-string-updatepost-category">
 				<form:select class="form-control" id="idSubcategory" path="subcategory_idSubcategory">
 					<form:option value="0">Subcategory</form:option>
 				</form:select>
@@ -151,39 +151,46 @@
 		</form:select>
 		</div>
 		
-		<div class="col-md-4">
+		<div class="col-md-6">
 		<h3 style="margin-top:0px">Select technologies</h3>
+		<div class="height-input-string-updatepost-technologies">
 		<c:forEach items="${listTechnologies}" var="technology">
 			<form:checkbox path="technologiesId" value="${technology.idTechnology}" />${technology.title}<br>
 		</c:forEach>
 		<span class="error"><form:errors path="technologiesId" /></span>
+		<label for="technologiesId" class="error" generated="true"></label>
+		</div>
 		</div>
 		
 		<div class="form-group">
-		<div class="col-md-12 height-input-string-signup">
+		<div class="col-md-12 height-input-string-updatepost-title">
 		<form:input id="title" name="title" class="form-control input-md" path="title" placeholder="Title" value="${post.title}"></form:input>
 		<span class="error"><form:errors path="title" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-12 height-input-string-signup">
+		<div class="col-md-12 height-input-string-updatepost-description">
 		<form:input id="description" name="description" class="form-control input-md" path="description" placeholder="Description" value="${post.description}"></form:input>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-12 height-input-string-signup">
+		<div class="col-md-12 height-input-string-updatepost-instruction">
 		<form:input id="instruction" name="instruction" class="form-control input-md" path="instruction" placeholder="Instruction" value="${post.instruction}"></form:input>
 		<span class="error"><form:errors path="instruction" /></span>
 		</div>
 		</div>
 		<form:input id="idPost" name="idPost" path="idPost" value="${post.idPost}" type="hidden"></form:input>
 		<br>
+		<div class="height-input-string-updatepost-stl">
         Model to upload: <input type="file" name="model">
 		<span class="error"><form:errors path="model" /></span>
+		</div>
 		<br>
+		<div class="height-input-string-updatepost-stl">
         Photo model to upload: <input type="file" name="firstPhoto">
 		<span class="error"><form:errors path="firstPhoto" /></span>
+		</div>
 		<br>
 		
 		<div class="form-group">
@@ -301,7 +308,7 @@
   });
 
   </script>
-
-
+<script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
+<script src="<c:url value="/resources/js/${validation}.js" />"> </script>
 </body>
 </html> 

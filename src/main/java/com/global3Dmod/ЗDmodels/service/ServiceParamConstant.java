@@ -72,5 +72,13 @@ public final class ServiceParamConstant {
 	public static String SURNAME_DESC = "surnameDesc";
 	
 	public static String DATE_REGISTRATION_DESC = "dateRegistrationDesc";
+	
+	public static String CLIENT = "client";
+	
+	public static String CLIENT_DESC = "clientDesc";
+	
+	public static String DATE_EXPIRATION_DESC = "dateExpirationDesc";
+	
+	public static String DATE_EXPIRATION = "dateExpiration";
 
 }

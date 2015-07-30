@@ -7,13 +7,25 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
+import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IAdminService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
+import com.global3Dmod.ÇDmodels.sort.advertisement.SortedAdvertisementsByClient;
+import com.global3Dmod.ÇDmodels.sort.advertisement.SortedAdvertisementsByClientDesc;
+import com.global3Dmod.ÇDmodels.sort.advertisement.SortedAdvertisementsByExpirationDate;
+import com.global3Dmod.ÇDmodels.sort.advertisement.SortedAdvertisementsByExpirationDateDesc;
+import com.global3Dmod.ÇDmodels.sort.advertisement.SortedAdvertisementsByRegistrationDate;
+import com.global3Dmod.ÇDmodels.sort.advertisement.SortedAdvertisementsByRegistrationDateDesc;
+import com.global3Dmod.ÇDmodels.sort.advertisement.SortedAdvertisementsByTitle;
+import com.global3Dmod.ÇDmodels.sort.advertisement.SortedAdvertisementsByTitleDesc;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDesigner;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDesignerDesc;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByRating;
@@ -40,6 +52,12 @@ public class AdminService implements IAdminService{
 	
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private IAdvertisementDAO advertisementDAO;
+	
+	@Autowired
+	private PropertyManagerG3DM propertyManagerG3DM;
 
 	@Override
 	public List<User> getModeratorsForSort() throws ServiceException {
@@ -72,6 +90,18 @@ public class AdminService implements IAdminService{
 			throw new ServiceException(e);
 		}
 		return users;
+	}
+	
+	@Override
+	public List<Advertisement> getAdvertisementsForSort()
+			throws ServiceException {
+		List<Advertisement> advertisements = null;
+		try {
+			advertisements = advertisementDAO.selectAllAdvertisements();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return advertisements;
 	}
 	
 	@Override
@@ -110,6 +140,33 @@ public class AdminService implements IAdminService{
 			modelAndView.addObject(ServiceParamConstant.CITY_DESC, true);
 		} else {
 			modelAndView.addObject(ServiceParamConstant.CITY_DESC, false);
+		}
+		return modelAndView;
+	}
+	
+	@Override
+	public ModelAndView setParamsAdvertisementForSort(
+			ModelAndView modelAndView, String sort, boolean desc)
+			throws ServiceException {
+		if(ServiceParamConstant.TITLE.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, true);
+		} else {
+			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, false);
+		}
+		if(ServiceParamConstant.CLIENT.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.CLIENT_DESC, true);
+		} else {
+			modelAndView.addObject(ServiceParamConstant.CLIENT_DESC, false);
+		}
+		if(ServiceParamConstant.DATE_EXPIRATION.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.DATE_EXPIRATION_DESC, true);
+		} else {
+			modelAndView.addObject(ServiceParamConstant.DATE_EXPIRATION_DESC, false);
+		}
+		if(ServiceParamConstant.DATE_REGISTRATION.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.DATE_REGISTRATION_DESC, true);
+		} else {
+			modelAndView.addObject(ServiceParamConstant.DATE_REGISTRATION_DESC, false);
 		}
 		return modelAndView;
 	}
@@ -163,6 +220,50 @@ public class AdminService implements IAdminService{
 			} 
 		}
 		return users;
+	}
+
+	@Override
+	public List<Advertisement> sortAdvertisements(
+			List<Advertisement> advertisements, String sort, boolean desc) {
+		if (sort != null) {
+			if (ServiceParamConstant.TITLE.equals(sort)) {
+				if(desc){
+					Collections.sort(advertisements, new SortedAdvertisementsByTitleDesc());
+				} else {
+					Collections.sort(advertisements, new SortedAdvertisementsByTitle());
+				}	
+			} else if (ServiceParamConstant.CLIENT.equals(sort)) {
+				if(desc){
+					Collections.sort(advertisements, new SortedAdvertisementsByClientDesc());
+				} else {
+					Collections.sort(advertisements, new SortedAdvertisementsByClient());
+				}
+			} else if (ServiceParamConstant.DATE_EXPIRATION.equals(sort)) {
+				if(desc){
+					Collections.sort(advertisements, new SortedAdvertisementsByExpirationDateDesc());
+				} else {
+					Collections.sort(advertisements, new SortedAdvertisementsByExpirationDate());
+				}
+			} else if (ServiceParamConstant.DATE_REGISTRATION.equals(sort)) {
+				if(desc){
+					Collections.sort(advertisements, new SortedAdvertisementsByRegistrationDateDesc());
+				} else {
+					Collections.sort(advertisements, new SortedAdvertisementsByRegistrationDate());
+				}
+			}
+		}
+		return advertisements;
+	}
+
+	@Override
+	public void setPathToPhotos(List<Advertisement> advertisements)
+			throws ServiceException {
+		for (Advertisement advertisement : advertisements) {
+			String oldPath = advertisement.getPath();
+			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+			fullPath.append(oldPath);
+			advertisement.setPath(fullPath.toString());
+		}
 	}
 
 }

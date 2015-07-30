@@ -79,24 +79,24 @@
 							<!-- Some sorts for table -->
 
 							<thead>
-								<c:if test="${sizeUsers != 0}">
+								<c:if test="${sizeAdvertisements != 0}">
 									<nav style="text-align: center">
 										<ul class="pagination">
 											<c:if test="${thisPage>1}">
 												<li><a
-													href="<c:url value="/admin/profile?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />"
+													href="<c:url value="/admin/advertisements?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />"
 													aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 												</a></li>
 											</c:if>
 											<c:forEach begin="${startPage}" end="${endPage}" var="page">
 
 												<li <c:if test="${page==thisPage}">class="active"</c:if>><a
-													href="<c:url value="/user/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
+													href="<c:url value="/admin/advertisements?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
 											</c:forEach>
 
 											<c:if test="${thisPage!=maxPage}">
 												<li><a
-													href="<c:url value="/admin/profile?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />"
+													href="<c:url value="/admin/advertisements?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />"
 													aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 												</a></li>
 											</c:if>
@@ -106,61 +106,53 @@
 
 								<tr class="background-user-string">
 									<th><i class="fa fa-bullhorn"></i><a
-										href="<c:url value="/admin/profile?sort=nickName&desc=${nickNameDesc}" />">
-											NickName</a></th>
-									<th class="hidden-phone"><i class="fa fa-question-circle"></i><a
-										href="<c:url value="/admin/profile?sort=login&desc=${loginDesc}" />">
-											Login</a></th>
-									<th><a
-										href="<c:url value="/admin/profile?sort=name&desc=${nameDesc}" />">Name</a>
-									</th>
+										href="<c:url value="/admin/advertisements?sort=title&desc=${titleDesc}" />">
+											Title</a></th>
+									<th class="hidden-phone"><i class="fa fa-question-circle"></i>Miniature</th>
+									<th>Description</th>
 									<th><i class="fa fa-calendar"></i><a
-										href="<c:url value="/admin/profile?sort=surname&desc=${surnameDesc}" />">
-											Surname</a></th>
+										href="<c:url value="/admin/advertisements?sort=client&desc=${clientDesc}" />">
+											Client</a></th>
 									<th><i class="fa fa-th-list"></i><a
-										href="<c:url value="/admin/profile?sort=dateRegistration&desc=${dateRegistrationDesc}" />">
+										href="<c:url value="/admin/advertisements?sort=dateRegistration&desc=${dateRegistrationDesc}" />">
 											Date register</a></th>
 									<th><i class="fa fa-list-alt"></i> <a
-										href="<c:url value="/admin/profile?sort=country&desc=${countryDesc}" />">
-											Country</a></th>
-									<th><i class="fa fa-user"></i><a
-										href="<c:url value="/admin/profile?sort=city&desc=${cityDesc}" />">
-											City</a></th>
+										href="<c:url value="/admin/advertisements?sort=dateExpiration&desc=${dateExpirationDesc}" />">
+											Expiration date</a></th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach items="${listUsersLimit20}" var="user">
+								<c:forEach items="${listAdvertisementsLimit10}" var="advertisement">
 									<tr>
-										<td>${user.nickName}</td>
-										<td class="hidden-phone">${user.login}</td>
-										<td>${user.name}</td>
-										<td>${user.surname}</td>
-										<td>${user.registrationDate}</td>
-										<td>${user.country.title}</td>
-										<td>${user.city.title}</td>
+										<td>${advertisement.title}</td>
+										<td><img alt="" src="<c:url value="${advertisement.path}" />"></td>
+										<td>${advertisement.description}</td>
+										<td>${advertisement.client}</td>
+										<td>${advertisement.registrationDate}</td>
+										<td>${advertisement.expirationDate}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
 						</table>
 					</div>
-					<c:if test="${sizeUsers != 0}">
+					<c:if test="${sizeAdvertisements != 0}">
 						<nav style="text-align: center">
 							<ul class="pagination">
 								<c:if test="${thisPage>1}">
 									<li><a
-										href="<c:url value="/user/profile?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />"
+										href="<c:url value="/admin/advertisements?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />"
 										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 									</a></li>
 								</c:if>
 								<c:forEach begin="${startPage}" end="${endPage}" var="page">
 
 									<li <c:if test="${page==thisPage}">class="active"</c:if>><a
-										href="<c:url value="/user/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
+										href="<c:url value="/admin/advertisements?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
 								</c:forEach>
 
 								<c:if test="${thisPage!=maxPage}">
 									<li><a
-										href="<c:url value="/user/profile?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />"
+										href="<c:url value="/admin/advertisements?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />"
 										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 									</a></li>
 								</c:if>

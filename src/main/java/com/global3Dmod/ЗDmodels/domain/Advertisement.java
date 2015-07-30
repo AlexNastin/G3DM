@@ -27,6 +27,15 @@ public class Advertisement implements Essence {
 
 	@Column(name = "description")
 	private String description;
+	
+	@Column(name = "client")
+	private String client;
+	
+	@Column(name = "registration_date")
+	private String registrationDate;
+	
+	@Column(name = "expiration_date")
+	private String expirationDate;
 
 	public Advertisement() {
 	}
@@ -63,14 +72,44 @@ public class Advertisement implements Essence {
 		this.description = description;
 	}
 
+	public String getClient() {
+		return client;
+	}
+
+	public void setClient(String client) {
+		this.client = client;
+	}
+
+	public String getRegistrationDate() {
+		return registrationDate;
+	}
+
+	public void setRegistrationDate(String registrationDate) {
+		this.registrationDate = registrationDate;
+	}
+
+	public String getExpirationDate() {
+		return expirationDate;
+	}
+
+	public void setExpirationDate(String expirationDate) {
+		this.expirationDate = expirationDate;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((client == null) ? 0 : client.hashCode());
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
+		result = prime * result
+				+ ((expirationDate == null) ? 0 : expirationDate.hashCode());
 		result = prime * result + idAdvertisement;
 		result = prime * result + ((path == null) ? 0 : path.hashCode());
+		result = prime
+				* result
+				+ ((registrationDate == null) ? 0 : registrationDate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -84,10 +123,20 @@ public class Advertisement implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		Advertisement other = (Advertisement) obj;
+		if (client == null) {
+			if (other.client != null)
+				return false;
+		} else if (!client.equals(other.client))
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
+			return false;
+		if (expirationDate == null) {
+			if (other.expirationDate != null)
+				return false;
+		} else if (!expirationDate.equals(other.expirationDate))
 			return false;
 		if (idAdvertisement != other.idAdvertisement)
 			return false;
@@ -95,6 +144,11 @@ public class Advertisement implements Essence {
 			if (other.path != null)
 				return false;
 		} else if (!path.equals(other.path))
+			return false;
+		if (registrationDate == null) {
+			if (other.registrationDate != null)
+				return false;
+		} else if (!registrationDate.equals(other.registrationDate))
 			return false;
 		if (title == null) {
 			if (other.title != null)
@@ -108,7 +162,10 @@ public class Advertisement implements Essence {
 	public String toString() {
 		return "Advertisement [idAdvertisement=" + idAdvertisement + ", title="
 				+ title + ", path=" + path + ", description=" + description
-				+ "]";
+				+ ", client=" + client + ", registrationDate="
+				+ registrationDate + ", expirationDate=" + expirationDate + "]";
 	}
+
+	
 
 }

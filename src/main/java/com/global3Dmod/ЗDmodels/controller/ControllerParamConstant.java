@@ -8,6 +8,10 @@ public  final class ControllerParamConstant {
 
 	public static String SIZE_POSTS = "sizePosts";
 	
+	public static String SIZE_USERS = "sizeUsers";
+	
+	public static String SIZE_ADVIRTISEMENTS = "sizeAdvertisements";
+	
 	public static String SIZE_COMMENTS = "sizeComments";
 
 	public static String ID_CATEGORY = "idCategory";
@@ -15,6 +19,8 @@ public  final class ControllerParamConstant {
 	public static String ID_SUBCATEGORY = "idSubcategory";
 
 	public static int LIMIT_POSTS_ON_PAGE = 10;
+	
+	public static int LIMIT_ADVIRTISEMENTS_ON_PAGE = 10;
 	
 	public static int LIMIT_USERS_ON_PAGE = 20;
 
@@ -25,6 +31,8 @@ public  final class ControllerParamConstant {
 	public static String LIST_POSTS_LIMIT_10 = "listPostsLimit10";
 	
 	public static String LIST_USERS_LIMIT_20 = "listUsersLimit20";
+	
+	public static String LIST_ADVIRTISEMENTS_LIMIT_10 = "listAdvertisementsLimit10";
 	
 	public static String LIST_COMMENTS_LIMIT_10 = "listCommentsLimit10";
 	

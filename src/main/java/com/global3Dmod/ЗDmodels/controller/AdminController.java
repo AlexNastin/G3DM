@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
@@ -84,7 +85,7 @@ public class AdminController {
 		}
 		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
-		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, allUsers);
+		modelAndView.addObject(ControllerParamConstant.SIZE_USERS, allUsers);
 		modelAndView.addObject(ControllerParamConstant.SORT_TYPE, sort);
 		if (desc) {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, true);
@@ -141,7 +142,7 @@ public class AdminController {
 		}
 		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
-		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, allUsers);
+		modelAndView.addObject(ControllerParamConstant.SIZE_USERS, allUsers);
 		modelAndView.addObject(ControllerParamConstant.SORT_TYPE, sort);
 		if (desc) {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, true);
@@ -198,7 +199,7 @@ public class AdminController {
 		}
 		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
-		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, allUsers);
+		modelAndView.addObject(ControllerParamConstant.SIZE_USERS, allUsers);
 		modelAndView.addObject(ControllerParamConstant.SORT_TYPE, sort);
 		if (desc) {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, true);
@@ -232,21 +233,22 @@ public class AdminController {
 		ModelAndView modelAndView = new ModelAndView("admin/adminAdvertisements");
 		User user = designerService.getUser(person.getLogin());
 		userService.setPathToPhotos(user);
-		List<User> users = adminService.getDesignersForSort();
-		adminService.sortUsers(users, sort, desc);
-		int allUsers = users.size();
-		int maxPage = (int) Math.ceil((double) allUsers
-				/ ControllerParamConstant.LIMIT_USERS_ON_PAGE);
-		int startUser = page * ControllerParamConstant.LIMIT_USERS_ON_PAGE
-				- ControllerParamConstant.LIMIT_USERS_ON_PAGE;
-		int endUser = startUser + ControllerParamConstant.LIMIT_USERS_ON_PAGE;
-		if (endUser > startUser) {
-			users = users.subList(startUser, allUsers);
+		List<Advertisement> advertisements = adminService.getAdvertisementsForSort();
+		adminService.sortAdvertisements(advertisements, sort, desc);
+		int allAdvertisement = advertisements.size();
+		int maxPage = (int) Math.ceil((double) allAdvertisement
+				/ ControllerParamConstant.LIMIT_ADVIRTISEMENTS_ON_PAGE);
+		int startAdvertisement = page * ControllerParamConstant.LIMIT_ADVIRTISEMENTS_ON_PAGE
+				- ControllerParamConstant.LIMIT_ADVIRTISEMENTS_ON_PAGE;
+		int endAdvertisement = startAdvertisement + ControllerParamConstant.LIMIT_ADVIRTISEMENTS_ON_PAGE;
+		if (endAdvertisement > startAdvertisement) {
+			advertisements = advertisements.subList(startAdvertisement, allAdvertisement);
 		} else {
-			users = users.subList(startUser, allUsers);
+			advertisements = advertisements.subList(startAdvertisement, allAdvertisement);
 		}
-		modelAndView.addObject(ControllerParamConstant.LIST_USERS_LIMIT_20,
-				users);
+		adminService.setPathToPhotos(advertisements);
+		modelAndView.addObject(ControllerParamConstant.LIST_ADVIRTISEMENTS_LIMIT_10,
+				advertisements);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
 		if (endPage > maxPage) {
 			modelAndView.addObject(ControllerParamConstant.END_PAGE, maxPage);
@@ -255,14 +257,14 @@ public class AdminController {
 		}
 		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
-		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, allUsers);
+		modelAndView.addObject(ControllerParamConstant.SIZE_ADVIRTISEMENTS, allAdvertisement);
 		modelAndView.addObject(ControllerParamConstant.SORT_TYPE, sort);
 		if (desc) {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, true);
 		} else {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, false);
 		}
-		modelAndView = adminService.setParamsForSort(modelAndView, sort, desc);
+		modelAndView = adminService.setParamsAdvertisementForSort(modelAndView, sort, desc);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}

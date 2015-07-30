@@ -17,7 +17,7 @@ $(document).ready(function(){
 	        },
 	        "Please check your input."
 	);
-		
+	
 		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm').validate({
 			
 	    rules: {
@@ -79,7 +79,21 @@ $(document).ready(function(){
 	    	  regexp: '^[\x00-\x7F]{2,1500}$',
 	    	  required: true  
 	      },
-	        	  
+	      category_idCategory: {
+	    	  required: true
+	      },
+	      subcategory_idSubcategory: {
+	    	  required: true 	    	 
+	      },
+	      technologiesId:{
+	    	  required: true
+	      },
+	      model: {
+	    	  accept: "stl"
+	      },
+	      firstPhoto: {
+	    	  accept: "jpg,png,jpeg,gif"
+	      }
 },
 messages:  {
 	confirmPassword: {
@@ -90,6 +104,15 @@ messages:  {
     },
     j_password: {
     	rangelength: 'Please check your input.'	
+    },
+    technologiesId: {
+    	required: 'Please select technology.'
+    },
+    category_idCategory: {
+    	required: 'Please select cetegory.'
+    },
+    subcategory_idSubcategory: {
+    	required: 'Please select subcategory.'
     },
     
 },	

@@ -84,11 +84,11 @@
 		</div>
 		<fieldset>
 			<div>
-				<div class="form-group">
+				<div class="form-group height-input-string-addpost-category">
 				<form:select class="form-control" id="idCategory" path="category_idCategory">
 				</form:select>
 				</div>
-				<div class="form-group">
+				<div class="form-group height-input-string-addpost-subcategory">
 				<form:select class="form-control" id="idSubcategory" path="subcategory_idSubcategory">
 					<form:option value="0">Subcategory</form:option>
 				</form:select>
@@ -100,17 +100,25 @@
       </div>
 		
 		<div class="col-md-4">
+		<div class="height-input-string-addpost-technologies">
 		<h3 style="margin-top:0px">Select technologies</h3>
+		
 		<c:forEach items="${listTechnologies}" var="technology">
 			<form:checkbox id="technologiesId"  path="technologiesId" value="${technology.idTechnology}" />${technology.title}<br>
 		</c:forEach>
 		<span class="error"><form:errors path="technologiesId" /></span>
+		<label for="technologiesId" class="error" generated="true"></label>
+		</div>
 		<br>
-        Model to upload: <input type="file" name="model">
+		<div class="height-input-string-addpost-stl">
+		Model to upload: <input type="file" name="model">
 		<span class="error"><form:errors path="model" /></span>
+		</div>
 		<br>
+		<div class="height-input-string-addpost-stl">
         Photo model to upload: <input type="file" name="firstPhoto">
 		<span class="error"><form:errors path="firstPhoto" /></span>
+		</div>
 		<br>
 		<input class="btn btn-primary" type="submit" value="Add" />
 		</div>

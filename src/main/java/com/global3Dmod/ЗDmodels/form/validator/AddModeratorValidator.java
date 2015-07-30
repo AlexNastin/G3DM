@@ -5,6 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.validator.routines.EmailValidator;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
@@ -19,11 +20,14 @@ import com.global3Dmod.ЗDmodels.service.IGuestService;
 @Component
 public class AddModeratorValidator implements Validator {
 
-	private final String NAME = "^[а-яА-ЯёЁa-zA-Z0-9]+$";
-	private final String SURNAME = "^[а-яА-ЯёЁa-zA-Z0-9]+$";
+	private static Logger LOGGER = Logger
+			.getLogger(AddModeratorValidator.class);
 
 	@Autowired
 	private IGuestService guestService;
+
+	@Autowired
+	private RegExCollection regExCollection;
 
 	@Override
 	public boolean supports(Class<?> arg0) {
@@ -32,78 +36,81 @@ public class AddModeratorValidator implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-
-		Pattern patternName = Pattern.compile(NAME);
-		Pattern patternSurname = Pattern.compile(SURNAME);
 		AddModeratorForm addModeratorForm = (AddModeratorForm) target;
-
+		Matcher matcher = null;
+		Pattern pattern = null;
 		List<String> emails = null;
 		List<String> nickNames = null;
 		try {
 			emails = guestService.getAllEmail();
 			nickNames = guestService.getAllNickName();
 		} catch (ServiceException e) {
-			// ОБРАБОТАТЬ!!!
+			LOGGER.error("Problems with getting a name and/or nickname.", e);
 		}
 
-		// Валидация никнейма и проверка существует ли такой уже в базе
-		// singup.valid.nickName.exists
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName",
-				"singup.valid.nickName.empty");
+		// Валидация NickName
+		// На пустое значение
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName","valid.nickName.empty");
 		String userNickName = addModeratorForm.getNickName();
-		// Не более 16 символов
-		if ((userNickName.length()) > 16) {
-			errors.rejectValue("nickName", "singup.valid.nickName.tooLong");
+		pattern = regExCollection.getRegEx(RegExName.REGEX_NICKNAME_USER);
+		matcher = pattern.matcher(userNickName);
+		// На пустую строку. Количество от 3 символов до 16. Латиница. Нет
+		// спецсимволов.
+		if (!matcher.matches()) {
+			errors.rejectValue("nickName", "valid.nickName.pattern");
 		}
+		// Содержиться ли такой NickName в БД
 		if (nickNames.contains(userNickName)) {
-			errors.rejectValue("nickName", "singup.valid.nickName.exists");
+			errors.rejectValue("nickName", "valid.nickName.exists");
 		}
 
-		// Валидация пароля и совпадение основного пароля и подтверждённого
+		// Валидация Password и ConfirmPassword и их совпадение.
+		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
-				"singup.valid.password.empty");
-		if (!(addModeratorForm.getPassword()).equals(addModeratorForm
-				.getConfirmPassword())) {
-			errors.rejectValue("confirmPassword",
-					"singup.valid.confirmPassword.passwordDontMatch");
+				"valid.password.empty");
+		pattern = regExCollection.getRegEx(RegExName.REGEX_PASSWORD);
+		matcher = pattern.matcher(addModeratorForm.getPassword());
+		// Строчные и прописные латинские буквы, цифры, спецсимволы. От 8
+		// символов до 32
+		if (!matcher.matches()) {
+			errors.rejectValue("password", "valid.password.pattern");
 		}
-		// Валидация логина (email) и проверка существует ли такой уже в базе
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login",
-				"singup.valid.login.empty");
+		if (!(addModeratorForm.getPassword()).equals(addModeratorForm.getConfirmPassword())) {
+			errors.rejectValue("confirmPassword", "valid.confirmPassword.passwordDontMatch");
+		}
+
+		// Валидация Login (email)
+		// На пустое значение
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "valid.login.empty");
+		// На сам тип email
 		if (!EmailValidator.getInstance().isValid(addModeratorForm.getLogin())) {
-			errors.rejectValue("login", "singup.valid.login.notValid");
+			errors.rejectValue("login", "valid.login.pattern");
 		}
+		// Содержиться ли такой Email в БД
 		if (emails.contains(addModeratorForm.getLogin())) {
-			errors.rejectValue("login", "singup.valid.login.exists");
+			errors.rejectValue("login", "valid.login.exists");
 		}
-		// name validation
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name",
-				"addPost.valid.title.empty");
+		
+		// Валидация Name
+		// На пустое значение
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "valid.name.empty");
 		String name = addModeratorForm.getName();
-		// Не более 16 символов
-		if ((name.length()) > 16) {
-			errors.rejectValue("name", "singup.valid.nickName.tooLong");
-		}
-		// кириллица, латиница, цифры
-		Matcher matcher = patternName.matcher(name);
+		pattern = regExCollection.getRegEx(RegExName.REGEX_FULL_NAME_USER);
+		matcher = pattern.matcher(name);
+		// Количество от 1 символов до 50. Латиница. Нет спецсимволов. (кроме  - _)
 		if (!matcher.matches()) {
-			errors.rejectValue("name", "addPost.valid.file.format");
+			errors.rejectValue("name", "valid.name.pattern");
 		}
 
-		// surname validation
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname",
-				"addPost.valid.title.empty");
+		// Валидация Surname
+		// На пустое значение
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "vaild.surname.empty");
 		String surname = addModeratorForm.getSurname();
-		// Не более 16 символов
-		if ((surname.length()) > 16) {
-			errors.rejectValue("surname", "singup.valid.nickName.tooLong");
-		}
-		// кириллица, латиница, цифры
-		matcher = patternSurname.matcher(surname);
+		// Количество от 1 символов до 50. Латиница. Нет спецсимволов. (кроме  - _)
+		matcher.reset(surname);
 		if (!matcher.matches()) {
-			errors.rejectValue("surname", "addPost.valid.file.format");
+			errors.rejectValue("surname", "valid.surname.pattern");
 		}
-
 	}
 
 }

@@ -48,41 +48,46 @@ public class SignupValidator implements Validator {
 
 		// Валидация Role
 		if ((signupForm.getRole_idRole() == 0)) {
-			errors.rejectValue("role_idRole", "singup.valid.role.empty");
+			errors.rejectValue("role_idRole", "valid.role.empty");
 		}
 		pattern = regExCollection.getRegEx(RegExName.REGEX_NICKNAME_USER);
 		// Валидация NickName
 		// На пустое значение
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName",
-				"singup.valid.nickName.empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName", "valid.nickName.empty");
 		String userNickName = signupForm.getNickName();
 		matcher = pattern.matcher(userNickName);
 		// На пустую строку. Количество от 3 символов до 16. Латиница. Нет спецсимволов.
 		if (!matcher.matches()) {
-			errors.rejectValue("nickName", "singup.valid.nickName.tooLong");
+			errors.rejectValue("nickName", "valid.nickName.pattern");
 		}
 		// Содержиться ли такой NickName в БД
 		if (nickNames.contains(userNickName)) {
-			errors.rejectValue("nickName", "singup.valid.nickName.exists");
+			errors.rejectValue("nickName", "valid.nickName.exists");
 		}
 
-		// Валидация пароля и совпадение основного пароля и подтверждённого
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
-				"singup.valid.password.empty");
+		// Валидация Password и ConfirmPassword и их совпадение.
+		// На пустое значение
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "valid.password.empty");
+		pattern = regExCollection.getRegEx(RegExName.REGEX_PASSWORD);
+		matcher = pattern.matcher(signupForm.getPassword());
+		// Строчные и прописные латинские буквы, цифры, спецсимволы. От 8 символов до 32
+		if (!matcher.matches()) {
+			errors.rejectValue("password", "valid.password.pattern");
+		}
 		if (!(signupForm.getPassword()).equals(signupForm.getConfirmPassword())) {
-			errors.rejectValue("confirmPassword",
-					"singup.valid.confirmPassword.passwordDontMatch");
+			errors.rejectValue("confirmPassword", "valid.confirmPassword.passwordDontMatch");
 		}
-		// Валидация логина (email) и проверка существует ли такой уже в базе
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login",
-				"singup.valid.login.empty");
+		
+		// Валидация Login (email)
+		// На пустое значение
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "valid.login.empty");
+		// На сам тип email
 		if (!EmailValidator.getInstance().isValid(signupForm.getLogin())) {
-			errors.rejectValue("login", "singup.valid.login.notValid");
+			errors.rejectValue("login", "valid.login.pattern");
 		}
+		// Содержиться ли такой Email в БД
 		if (emails.contains(signupForm.getLogin())) {
-			errors.rejectValue("login", "singup.valid.login.exists");
+			errors.rejectValue("login", "valid.login.exists");
 		}
-
 	}
-
 }

@@ -14,14 +14,14 @@
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<img src=<c:url value="${listAdvertisements[0].path}" /> alt="...">
+				<img src=<c:url value="${listAdvertisements[0].filePath}" /> alt="...">
 				<div class="carousel-caption">
 					<h3>${listAdvertisements[0].title}</h3>
 				</div>
 			</div>
 			<c:forEach items="${listAdvertisements}" var="advertisements" begin="1">
 			<div class="item">
-				<img src=<c:url value="${advertisements.path}" /> alt="...">
+				<img src=<c:url value="${advertisements.filePath}" /> alt="...">
 				<div class="carousel-caption">
 					<h3>${advertisements.title}</h3>
 				</div>

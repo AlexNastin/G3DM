@@ -590,7 +590,8 @@ public class DesignerService implements IDesignerService {
 		return path;
 	}
 
-	private String createNewNameFile(String name) {
+	@Override
+	public String createNewNameFile(String name) {
 		int sizeFile = name.length();
 		String ext = name.substring(sizeFile - 4, sizeFile);
 		int hashCode = name.hashCode();

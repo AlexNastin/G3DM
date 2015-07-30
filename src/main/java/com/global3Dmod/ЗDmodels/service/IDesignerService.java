@@ -92,5 +92,7 @@ public interface IDesignerService {
 	public Post getPost(Integer idPost) throws ServiceException;
 	
 	public String createAvatarPath(int idUser) throws ServiceException;
+	
+	public String createNewNameFile(String name) throws ServiceException;
 
 }

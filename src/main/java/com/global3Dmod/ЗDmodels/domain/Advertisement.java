@@ -22,9 +22,6 @@ public class Advertisement implements Essence {
 	@Column(name = "title")
 	private String title;
 
-	@Column(name = "path")
-	private String path;
-
 	@Column(name = "description")
 	private String description;
 	
@@ -36,6 +33,12 @@ public class Advertisement implements Essence {
 	
 	@Column(name = "expiration_date")
 	private String expirationDate;
+	
+	@Column(name = "file_name")
+	private String fileName;
+	
+	@Column(name = "file_path")
+	private String filePath;
 
 	public Advertisement() {
 	}
@@ -54,14 +57,6 @@ public class Advertisement implements Essence {
 
 	public void setTitle(String title) {
 		this.title = title;
-	}
-
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
 	}
 
 	public String getDescription() {
@@ -96,6 +91,22 @@ public class Advertisement implements Essence {
 		this.expirationDate = expirationDate;
 	}
 
+	public String getFileName() {
+		return fileName;
+	}
+
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	public String getFilePath() {
+		return filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -105,8 +116,11 @@ public class Advertisement implements Essence {
 				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result
 				+ ((expirationDate == null) ? 0 : expirationDate.hashCode());
+		result = prime * result
+				+ ((fileName == null) ? 0 : fileName.hashCode());
+		result = prime * result
+				+ ((filePath == null) ? 0 : filePath.hashCode());
 		result = prime * result + idAdvertisement;
-		result = prime * result + ((path == null) ? 0 : path.hashCode());
 		result = prime
 				* result
 				+ ((registrationDate == null) ? 0 : registrationDate.hashCode());
@@ -138,12 +152,17 @@ public class Advertisement implements Essence {
 				return false;
 		} else if (!expirationDate.equals(other.expirationDate))
 			return false;
-		if (idAdvertisement != other.idAdvertisement)
-			return false;
-		if (path == null) {
-			if (other.path != null)
+		if (fileName == null) {
+			if (other.fileName != null)
 				return false;
-		} else if (!path.equals(other.path))
+		} else if (!fileName.equals(other.fileName))
+			return false;
+		if (filePath == null) {
+			if (other.filePath != null)
+				return false;
+		} else if (!filePath.equals(other.filePath))
+			return false;
+		if (idAdvertisement != other.idAdvertisement)
 			return false;
 		if (registrationDate == null) {
 			if (other.registrationDate != null)
@@ -161,11 +180,11 @@ public class Advertisement implements Essence {
 	@Override
 	public String toString() {
 		return "Advertisement [idAdvertisement=" + idAdvertisement + ", title="
-				+ title + ", path=" + path + ", description=" + description
+				+ title + ", description=" + description
 				+ ", client=" + client + ", registrationDate="
-				+ registrationDate + ", expirationDate=" + expirationDate + "]";
+				+ registrationDate + ", expirationDate=" + expirationDate
+				+ ", fileName=" + fileName + ", filePath=" + filePath + "]";
 	}
 
 	
-
 }

@@ -125,7 +125,7 @@
 								<c:forEach items="${listAdvertisementsLimit10}" var="advertisement">
 									<tr>
 										<td>${advertisement.title}</td>
-										<td><img alt="" src="<c:url value="${advertisement.path}" />"></td>
+										<td><img alt="" src="<c:url value="${advertisement.filePath}" />"></td>
 										<td>${advertisement.description}</td>
 										<td>${advertisement.client}</td>
 										<td>${advertisement.registrationDate}</td>

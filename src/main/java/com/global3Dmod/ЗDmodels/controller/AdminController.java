@@ -18,8 +18,11 @@ import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
+import com.global3Dmod.ÇDmodels.form.AddAdvertisementForm;
 import com.global3Dmod.ÇDmodels.form.AddModeratorForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IAdminService;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
@@ -39,6 +42,9 @@ public class AdminController {
 
 	@Autowired
 	private IGuestService guestService;
+	
+	@Autowired
+	private PropertyManagerG3DM propertyManager;
 
 	@RequestMapping(value = "/admin/profile", method = RequestMethod.GET)
 	public ModelAndView goProfile(
@@ -267,6 +273,21 @@ public class AdminController {
 		modelAndView = adminService.setParamsAdvertisementForSort(modelAndView, sort, desc);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/admin/addAdvertisementDB", method = RequestMethod.POST)
+	public ModelAndView addPostDB(AddAdvertisementForm addAdvertisementForm, Locale locale,
+			Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		adminService.addAdvertisement(addAdvertisementForm, propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
+		ModelAndView modelAndView2 = new ModelAndView(
+				"redirect:/admin/advertisements");
+		return modelAndView2;
 	}
 
 	// test

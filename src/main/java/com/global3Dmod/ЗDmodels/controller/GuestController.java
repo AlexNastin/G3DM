@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
@@ -23,6 +24,7 @@ import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
+import com.global3Dmod.ÇDmodels.service.IAdminService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 
@@ -34,6 +36,9 @@ public class GuestController {
 	
 	@Autowired
 	private IUserService userService;
+	
+	@Autowired
+	private IAdminService adminService;
 	
 	@Autowired
 	private PropertyManagerG3DM propertyManager;
@@ -49,8 +54,9 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("main");
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY,
 				guestService.getAllCategoriesSubcategoriesTop3());
-		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS,
-				guestService.getAllAdvertisement());
+		List<Advertisement> advertisements = guestService.getAllAdvertisement();
+		adminService.setPathToPhotos(advertisements);
+		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS, advertisements);
 		List<Post> posts = guestService.getTop4PostsByLike();
 		guestService.setRatingInPosts(posts);
 		userService.sortPosts(posts, "rating", false);

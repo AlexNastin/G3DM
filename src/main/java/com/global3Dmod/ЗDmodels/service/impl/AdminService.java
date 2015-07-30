@@ -1,10 +1,16 @@
 package com.global3Dmod.ÇDmodels.service.impl;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
@@ -14,9 +20,11 @@ import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
+import com.global3Dmod.ÇDmodels.form.AddAdvertisementForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IAdminService;
+import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.sort.advertisement.SortedAdvertisementsByClient;
 import com.global3Dmod.ÇDmodels.sort.advertisement.SortedAdvertisementsByClientDesc;
@@ -52,6 +60,9 @@ public class AdminService implements IAdminService{
 	
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private IDesignerService designerServise;
 	
 	@Autowired
 	private IAdvertisementDAO advertisementDAO;
@@ -259,11 +270,66 @@ public class AdminService implements IAdminService{
 	public void setPathToPhotos(List<Advertisement> advertisements)
 			throws ServiceException {
 		for (Advertisement advertisement : advertisements) {
-			String oldPath = advertisement.getPath();
+			String oldPath = advertisement.getFilePath();
 			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
 			fullPath.append(oldPath);
-			advertisement.setPath(fullPath.toString());
+			advertisement.setFilePath(fullPath.toString());
 		}
+	}
+
+	@Override
+	public void addAdvertisement(AddAdvertisementForm addAdvertisementForm,
+			String serverPath) throws ServiceException {
+		DateFormat dateFormat = new SimpleDateFormat(
+				ServiceParamConstant.FORMAT_DATE);
+		Date date = new Date();
+		String registrationDate = dateFormat.format(date);
+		Advertisement advertisement = new Advertisement();
+		advertisement.setTitle(addAdvertisementForm.getTitle());
+		advertisement.setClient(addAdvertisementForm.getClient());
+		advertisement.setDescription(addAdvertisementForm.getDescription());
+		advertisement.setRegistrationDate(registrationDate);
+		advertisement.setExpirationDate(addAdvertisementForm.getExpirationDate());
+		
+		String pathAdvertisement = createAdvertisementPath(addAdvertisementForm.getClient());
+		String fullPathAdvertisement = serverPath.concat(pathAdvertisement);
+		String newName = advertisementUpload(addAdvertisementForm.getAdvertisementPhoto(), fullPathAdvertisement);
+		advertisement.setFileName(newName);
+		advertisement.setFilePath(pathAdvertisement + newName);
+		
+		try {
+			advertisementDAO.insertAdvertisement(advertisement);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
+	}
+	
+	private String createAdvertisementPath(String client) {
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("advertisements/");
+		stringBuilder.append(client);
+		stringBuilder.append("/");
+		String path = stringBuilder.toString();
+		return path;
+	}
+	
+	@Override
+	public String advertisementUpload(MultipartFile file, String path)
+			throws ServiceException {
+		String orgName = file.getOriginalFilename();
+		String newName = designerServise.createNewNameFile(orgName);
+		String filePath = path + newName;
+		new File(path).mkdirs();
+		File dest = new File(filePath);
+		try {
+			file.transferTo(dest);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return newName;
 	}
 
 }

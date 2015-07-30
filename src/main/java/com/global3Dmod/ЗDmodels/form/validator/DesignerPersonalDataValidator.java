@@ -30,7 +30,7 @@ public class DesignerPersonalDataValidator implements Validator {
 		// Валидация Name
 		String name = personalDataForm.getName();
 		if (name.length() != 0) {
-			pattern = regExCollection.getRegEx(RegExName.REGEX_FULL_NAME_USER);
+			pattern = regExCollection.getRegExPattern(RegExName.REGEX_FULL_NAME_USER);
 			matcher = pattern.matcher(name);
 			// Количество от 1 символов до 50. Латиница. Нет спецсимволов. (кроме - _)
 			if (!matcher.matches()) {

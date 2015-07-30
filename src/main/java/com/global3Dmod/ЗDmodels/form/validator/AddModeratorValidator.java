@@ -52,7 +52,7 @@ public class AddModeratorValidator implements Validator {
 		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName","valid.nickName.empty");
 		String userNickName = addModeratorForm.getNickName();
-		pattern = regExCollection.getRegEx(RegExName.REGEX_NICKNAME_USER);
+		pattern = regExCollection.getRegExPattern(RegExName.REGEX_NICKNAME_USER);
 		matcher = pattern.matcher(userNickName);
 		// На пустую строку. Количество от 3 символов до 16. Латиница. Нет
 		// спецсимволов.
@@ -68,7 +68,7 @@ public class AddModeratorValidator implements Validator {
 		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
 				"valid.password.empty");
-		pattern = regExCollection.getRegEx(RegExName.REGEX_PASSWORD);
+		pattern = regExCollection.getRegExPattern(RegExName.REGEX_PASSWORD);
 		matcher = pattern.matcher(addModeratorForm.getPassword());
 		// Строчные и прописные латинские буквы, цифры, спецсимволы. От 8
 		// символов до 32
@@ -95,7 +95,7 @@ public class AddModeratorValidator implements Validator {
 		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "valid.name.empty");
 		String name = addModeratorForm.getName();
-		pattern = regExCollection.getRegEx(RegExName.REGEX_FULL_NAME_USER);
+		pattern = regExCollection.getRegExPattern(RegExName.REGEX_FULL_NAME_USER);
 		matcher = pattern.matcher(name);
 		// Количество от 1 символов до 50. Латиница. Нет спецсимволов. (кроме  - _)
 		if (!matcher.matches()) {

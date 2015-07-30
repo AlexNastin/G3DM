@@ -54,7 +54,7 @@ public class SignupValidator implements Validator {
 		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName", "valid.nickName.empty");
 		String userNickName = signupForm.getNickName();
-		pattern = regExCollection.getRegEx(RegExName.REGEX_NICKNAME_USER);
+		pattern = regExCollection.getRegExPattern(RegExName.REGEX_NICKNAME_USER);
 		matcher = pattern.matcher(userNickName);
 		// На пустую строку. Количество от 3 символов до 16. Латиница. Нет спецсимволов.
 		if (!matcher.matches()) {
@@ -68,7 +68,7 @@ public class SignupValidator implements Validator {
 		// Валидация Password и ConfirmPassword и их совпадение.
 		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "valid.password.empty");
-		pattern = regExCollection.getRegEx(RegExName.REGEX_PASSWORD);
+		pattern = regExCollection.getRegExPattern(RegExName.REGEX_PASSWORD);
 		matcher = pattern.matcher(signupForm.getPassword());
 		// Строчные и прописные латинские буквы, цифры, спецсимволы. От 8 символов до 32
 		if (!matcher.matches()) {

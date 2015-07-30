@@ -165,7 +165,7 @@ public class GuestService implements IGuestService {
 		comment.setDateTime(date);
 		comment.setPost_idPost(commentForm.getIdPost());
 		comment.setUser_idUser(person.getIdPerson());
-		comment.setText(commentForm.getText());
+		comment.setText(commentForm.getComment());
 		try {
 			commentDAO.insertComment(comment);
 		} catch (DaoException e) {

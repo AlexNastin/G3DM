@@ -4,6 +4,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class CommentForm implements Essence {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4369670076082219375L;
+
 	private String comment;
 	
 	private int idPost;

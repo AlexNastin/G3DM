@@ -17,7 +17,9 @@ public final class RegExCollection {
 	private Pattern PATTERN_TITLE_POST = Pattern.compile("^[a-zA-Z][a-zA-Z0-9-_\\.]{2,16}$");
 	private Pattern PATTERN_DESCRIPTION_POST = Pattern.compile("^[\\x00-\\x7F]{2,300}$");
 	private Pattern PATTERN_INSTRUCTION_POST = Pattern.compile("^[\\x00-\\x7F]{2,1500}$");
-
+	private Pattern PATTERN_MODEL_POST = Pattern.compile(".+\\.(rar|RAR|stl|STL|zip|ZIP)");
+	private Pattern PATTERN_PHOTO_POST = Pattern.compile(".+\\.(jpeg|JPEG|jpg|JPG|PNG|png|BMP|bmp|GIF|gif)");
+	
 	private Map<String, Pattern> regEx = new HashMap<String, Pattern>();
 
 	public RegExCollection() {
@@ -29,9 +31,11 @@ public final class RegExCollection {
 		regEx.put(RegExName.REGEX_TITLE_POST, PATTERN_TITLE_POST);
 		regEx.put(RegExName.REGEX_DESCRIPTION_POST, PATTERN_DESCRIPTION_POST);
 		regEx.put(RegExName.REGEX_INSTRUCTION_POST, PATTERN_INSTRUCTION_POST);
+		regEx.put(RegExName.REGEX_MODEL_POST, PATTERN_MODEL_POST);
+		regEx.put(RegExName.REGEX_PHOTO_POST, PATTERN_PHOTO_POST);
 	}
 
-	public Pattern getRegEx(String key) {
+	public Pattern getRegExPattern(String key) {
 		return regEx.get(key);
 	}
 

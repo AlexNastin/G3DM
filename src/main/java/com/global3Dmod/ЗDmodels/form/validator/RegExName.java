@@ -18,4 +18,8 @@ public final class RegExName {
 	
 	public static String REGEX_INSTRUCTION_POST = "instruction";
 
+	public static String REGEX_PHOTO_POST = "photo";
+	
+	public static String REGEX_MODEL_POST = "model";
+	
 }

@@ -7,18 +7,24 @@ import org.springframework.web.multipart.MultipartFile;
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class PostForm implements Essence {
-
-	private int category_idCategory;
-	private int subcategory_idSubcategory;
-	private int disProgram_idDisProgram;
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8708716890029067738L;
+	
 	private String title;
 	private String description;
 	private String instruction;
-
-	// file
+	private int category_idCategory;
+	private int subcategory_idSubcategory;
+	private int disProgram_idDisProgram;
+	
+	// File
 	private MultipartFile model;
 	private MultipartFile firstPhoto;
 
+	// Technologies
 	private String[] technologiesId;
 
 	public int getCategory_idCategory() {

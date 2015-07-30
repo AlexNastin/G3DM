@@ -3,6 +3,7 @@ package com.global3Dmod.ЗDmodels.form.validator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
@@ -11,10 +12,10 @@ import org.springframework.validation.Validator;
 import com.global3Dmod.ЗDmodels.form.PostForm;
 
 @Component
-public class PostFormValidator implements Validator{
-	
-	private final String MODEL = ".+\\.(rar|RAR|stl|STL|zip|ZIP)";
-	private final String PHOTO = ".+\\.(jpeg|JPEG|jpg|JPG|PNG|png)";
+public class PostFormValidator implements Validator {
+
+	@Autowired
+	private RegExCollection regExCollection;
 
 	@Override
 	public boolean supports(Class<?> arg0) {
@@ -24,63 +25,100 @@ public class PostFormValidator implements Validator{
 	@Override
 	public void validate(Object target, Errors errors) {
 		PostForm postForm = (PostForm) target;
-		
-		 Pattern model = Pattern.compile(MODEL);
-		 Pattern photo = Pattern.compile(PHOTO);
-		
-		
-		//title validation
+		Pattern pattern = null;
+		Matcher matcher = null;
+
+		// Валидация Title
+		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title",
-				"addPost.valid.title.empty");
+				"valid.title.empty");
+		// Количество от 2 символов до 16. Латиница. Нет спецсимволов. (кроме -
+		// _ .)
 		String title = postForm.getTitle();
-		// Не более 20 символов
-		if ((title.length()) > 20) {
-			errors.rejectValue("title", "addPost.valid.title.tooLong");
+		pattern = regExCollection.getRegExPattern(RegExName.REGEX_TITLE_POST);
+		matcher = pattern.matcher(title);
+		if (!matcher.matches()) {
+			errors.rejectValue("title", "valid.title.pattern");
 		}
-		
-		//description validation
+
+		// Валидация Description
+		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "description",
-				"addPost.valid.description.empty");
+				"valid.description.empty");
+		// Количество от 2 символов до 300. Латиница.
 		String description = postForm.getDescription();
-		// Не более 200 символов
-		if ((description.length()) > 200) {
-			errors.rejectValue("description", "addPost.valid.description.tooLong");
+		pattern = regExCollection
+				.getRegExPattern(RegExName.REGEX_DESCRIPTION_POST);
+		matcher = pattern.matcher(description);
+		if (!matcher.matches()) {
+			errors.rejectValue("description", "valid.description.pattern");
 		}
-		
-		//instruction validation
+
+		// Валидация Instruction
+		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "instruction",
-				"addPost.valid.instruction.empty");
+				"valid.instruction.empty");
 		String instruction = postForm.getInstruction();
-		// Не более 200 символов
-		if ((instruction.length()) > 200) {
-			errors.rejectValue("instruction", "addPost.valid.instruction.tooLong");
+		// Количество от 2 символов до 1500. Латиница.
+		pattern = regExCollection
+				.getRegExPattern(RegExName.REGEX_INSTRUCTION_POST);
+		matcher = pattern.matcher(instruction);
+		if (!matcher.matches()) {
+			errors.rejectValue("instruction", "valid.instruction.pattern");
 		}
+
+		// Валидация TechnologiesID
+		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "technologiesId",
-				"addPost.valid.technologiesId.empty");
-		
-		//model file validation
+				"valid.technologies.empty");
+
+		// Валидация DisProgram
+		// На пустое значение
+		if (postForm.getDisProgram_idDisProgram() == 0) {
+			errors.rejectValue("disProgram_idDisProgram",
+					"valid.disProgram.empty");
+		}
+
+		// Валидация Category
+		// На пустое значение
+		if (postForm.getCategory_idCategory() == 0) {
+			errors.rejectValue("category_idCategory", "valid.category.empty");
+		}
+		// Валидация Subcategory
+		// На пустое значение
+		if (postForm.getSubcategory_idSubcategory() == 0) {
+			errors.rejectValue("subcategory_idSubcategory",
+					"valid.subcategory.empty");
+		}
+
+		// Валидация ModelFile
+		// На пустое значение
 		if (!postForm.getModel().isEmpty()) {
 			String name = postForm.getModel().getOriginalFilename();
-			Matcher matcher = model.matcher(name);
-			if(!matcher.matches()) {
-				errors.rejectValue("model", "addPost.valid.file.format");
+			// Расширение.
+			pattern = regExCollection
+					.getRegExPattern(RegExName.REGEX_MODEL_POST);
+			matcher = pattern.matcher(name);
+			if (!matcher.matches()) {
+				errors.rejectValue("model", "valid.modelFile.pattern");
 			}
+		} else {
+			errors.rejectValue("model", "valid.modelFile.empty");
 		}
-		else {
-			errors.rejectValue("model", "addPost.valid.modelFile.empty");
-		}
-		
-		//first photo file validation
+
+		// Валидация FirstPhoto
+		// На пустое значение
 		if (!postForm.getFirstPhoto().isEmpty()) {
 			String name = postForm.getFirstPhoto().getOriginalFilename();
-			Matcher matcher = photo.matcher(name);
-			if(!matcher.matches()) {
-				errors.rejectValue("firstPhoto", "addPost.valid.file.format");
+			// Расширение.
+			pattern = regExCollection
+					.getRegExPattern(RegExName.REGEX_PHOTO_POST);
+			matcher = pattern.matcher(name);
+			if (!matcher.matches()) {
+				errors.rejectValue("firstPhoto", "valid.photoModelFile.pattern");
 			}
-		}
-		else {
-			errors.rejectValue("firstPhoto", "addPost.valid.photoModelFile.empty");
+		} else {
+			errors.rejectValue("firstPhoto", "valid.photoModelFile.empty");
 		}
 	}
-
 }

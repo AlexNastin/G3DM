@@ -133,11 +133,13 @@
 				<div class="form-group height-input-string-updatepost-category">
 				<form:select class="form-control" id="idCategory" path="category_idCategory">
 				</form:select>
+					<span class="error"><form:errors path="category_idCategory" /></span>
 				</div>
 				<div class="form-group height-input-string-updatepost-category">
 				<form:select class="form-control" id="idSubcategory" path="subcategory_idSubcategory">
 					<form:option value="0">Subcategory</form:option>
 				</form:select>
+					<span class="error"><form:errors path="subcategory_idSubcategory" /></span>
 				</div>
 			</div>
 		</fieldset>
@@ -149,6 +151,7 @@
 				<form:option value="${disProgram.idDisProgram}">${disProgram.title}</form:option>
 			</c:forEach>
 		</form:select>
+		<span class="error"><form:errors path="disProgram_idDisProgram" /></span>
 		</div>
 		
 		<div class="col-md-6">

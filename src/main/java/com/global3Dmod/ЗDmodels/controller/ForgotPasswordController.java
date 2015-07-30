@@ -64,7 +64,7 @@ public class ForgotPasswordController {
 			@RequestParam("email") String userEmail, Locale locale)
 			throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("redirect:/go/signin");
-		Pattern pattern = collectionRegEx.getRegEx(RegExName.REGEX_EMAIL);
+		Pattern pattern = collectionRegEx.getRegExPattern(RegExName.REGEX_EMAIL);
 		Matcher matcher = pattern.matcher(userEmail.toLowerCase());
 		boolean isValid = matcher.matches();
 		if (isValid) {
@@ -136,7 +136,7 @@ public class ForgotPasswordController {
 	public ModelAndView showChangePasswordPage(Locale locale, Model model,
 			@RequestParam("id") int id, @RequestParam("token") String token)
 			throws ServiceException {
-		Pattern pattern = collectionRegEx.getRegEx(RegExName.REGEX_UUID);
+		Pattern pattern = collectionRegEx.getRegExPattern(RegExName.REGEX_UUID);
 		Matcher matcher = pattern.matcher(token);
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		boolean isValid = matcher.matches();

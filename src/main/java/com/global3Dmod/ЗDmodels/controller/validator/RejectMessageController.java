@@ -4,6 +4,11 @@ import java.util.Locale;
 
 
 
+
+
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,7 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
+import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.RejectMessageForm;
 import com.global3Dmod.ÇDmodels.form.validator.RejectMessageValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
@@ -34,14 +41,22 @@ public class RejectMessageController {
 	private IUserService userService;
 	
 	@RequestMapping(method = RequestMethod.GET)
-	public ModelAndView rejectPost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model)
+	public ModelAndView rejectPost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model, HttpSession httpSession)
 			throws Exception {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
 		ModelAndView modelAndView = new ModelAndView("moderator/moderatorRejectMessage");
 		Post post = designerService.getPost(idPost);
 		userService.setPathToPhotos(post);
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		RejectMessageForm rejectMessageForm = new RejectMessageForm();
 		modelAndView.addObject(ControllerParamConstant.REJECT_MESSAGE_FORM, rejectMessageForm);
 		modelAndView.addObject(ControllerParamConstant.POST, post);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
 

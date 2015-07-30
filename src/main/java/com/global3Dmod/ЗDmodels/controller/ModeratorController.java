@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.Post;
+import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.RejectMessageForm;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
@@ -53,6 +54,8 @@ public class ModeratorController {
 		ModelAndView modelAndView = new ModelAndView("moderator/moderator");
 		List<Post> posts = moderatorService.getPostsByModeratingForSort();
 		moderatorService.sortPosts(posts, sort, desc);
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		int allPosts = posts.size();
 	    int maxPage = (int) Math.ceil((double)allPosts / ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
 		int startPost = page * ControllerParamConstant.LIMIT_POSTS_ON_PAGE - ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
@@ -80,6 +83,7 @@ public class ModeratorController {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, false);
 		}
 		modelAndView = moderatorService.setParamsForSort(modelAndView, sort, desc);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
 	
@@ -100,6 +104,8 @@ public class ModeratorController {
 		ModelAndView modelAndView = new ModelAndView("moderator/moderatorRejectingPosts");
 		List<Post> posts = moderatorService.getPostsByRejectingForSort();
 		moderatorService.sortPosts(posts, sort, desc);
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		int allPosts = posts.size();
 	    int maxPage = (int) Math.ceil((double)allPosts / ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
 		int startPost = page * ControllerParamConstant.LIMIT_POSTS_ON_PAGE - ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
@@ -127,6 +133,7 @@ public class ModeratorController {
 			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, false);
 		}
 		modelAndView = moderatorService.setParamsForSort(modelAndView, sort, desc);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
 	
@@ -143,7 +150,10 @@ public class ModeratorController {
 				"moderator/moderatorModerationPost");
 		Post post = designerService.getPost(idPost);
 		userService.setPathToPhotos(post);
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.POST, post);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
 	

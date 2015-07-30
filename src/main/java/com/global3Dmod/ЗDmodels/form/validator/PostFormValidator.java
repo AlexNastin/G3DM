@@ -14,7 +14,7 @@ import com.global3Dmod.ÇDmodels.form.PostForm;
 public class PostFormValidator implements Validator{
 	
 	private final String MODEL = ".+\\.(rar|RAR|stl|STL|zip|ZIP)";
-	private final String PHOTO = ".+\\.(jpeg|JPEG|jpg|JPG)";
+	private final String PHOTO = ".+\\.(jpeg|JPEG|jpg|JPG|PNG|png)";
 
 	@Override
 	public boolean supports(Class<?> arg0) {

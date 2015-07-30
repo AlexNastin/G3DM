@@ -4,16 +4,16 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class CommentForm implements Essence {
 	
-	private String text;
+	private String comment;
 	
 	private int idPost;
 
-	public String getText() {
-		return text;
+	public String getComment() {
+		return comment;
 	}
 
-	public void setText(String text) {
-		this.text = text;
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 	public int getIdPost() {
@@ -28,8 +28,8 @@ public class CommentForm implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
 		result = prime * result + idPost;
-		result = prime * result + ((text == null) ? 0 : text.hashCode());
 		return result;
 	}
 
@@ -42,22 +42,19 @@ public class CommentForm implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		CommentForm other = (CommentForm) obj;
-		if (idPost != other.idPost)
-			return false;
-		if (text == null) {
-			if (other.text != null)
+		if (comment == null) {
+			if (other.comment != null)
 				return false;
-		} else if (!text.equals(other.text))
+		} else if (!comment.equals(other.comment))
+			return false;
+		if (idPost != other.idPost)
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "CommentForm [text=" + text + ", idPost=" + idPost + "]";
+		return "CommentForm [comment=" + comment + ", idPost=" + idPost + "]";
 	}
 
-	
-
-	
 }

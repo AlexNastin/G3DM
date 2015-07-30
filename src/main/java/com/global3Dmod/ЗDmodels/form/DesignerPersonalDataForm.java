@@ -6,6 +6,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class DesignerPersonalDataForm implements Essence {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7318737303181127598L;
+	
 	private int country_idCountry;
 	private int city_idCity;
 	private String name;

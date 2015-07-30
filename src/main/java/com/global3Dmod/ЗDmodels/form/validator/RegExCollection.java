@@ -17,7 +17,6 @@ public final class RegExCollection {
 	private Pattern PATTERN_TITLE_POST = Pattern.compile("^[a-zA-Z][a-zA-Z0-9-_\\.]{2,16}$");
 	private Pattern PATTERN_DESCRIPTION_POST = Pattern.compile("^[\\x00-\\x7F]{2,300}$");
 	private Pattern PATTERN_INSTRUCTION_POST = Pattern.compile("^[\\x00-\\x7F]{2,1500}$");
-	private Pattern PATTERN_COMMENT_POST = Pattern.compile("^[\\x00-\\x7F]{2,300}$");
 
 	private Map<String, Pattern> regEx = new HashMap<String, Pattern>();
 
@@ -30,7 +29,6 @@ public final class RegExCollection {
 		regEx.put(RegExName.REGEX_TITLE_POST, PATTERN_TITLE_POST);
 		regEx.put(RegExName.REGEX_DESCRIPTION_POST, PATTERN_DESCRIPTION_POST);
 		regEx.put(RegExName.REGEX_INSTRUCTION_POST, PATTERN_INSTRUCTION_POST);
-		regEx.put(RegExName.REGEX_COMMENT_POST, PATTERN_COMMENT_POST);
 	}
 
 	public Pattern getRegEx(String key) {

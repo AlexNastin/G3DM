@@ -236,13 +236,14 @@
 							<div class="form-group">
 								<div class="col-md-6">
 									<div class="height-input-comments">
-										<form:textarea id="text" name="text" style="resize:none"
-											class="form-control input-md" path="text"
+										<form:textarea id="comment" name="comment" style="resize:none"
+											class="form-control input-md" path="comment"
 											placeholder="Type your comment here" rows="5" cols="30"></form:textarea>
+											<span class="error"><form:errors path="comment" /></span> <br>
 									</div>
 									<form:input type="hidden" id="idPost" name="idPost"
 										path="idPost" value="${post.idPost }"></form:input>
-									<span class="error"><form:errors path="text" /></span> <br>
+									
 									<input type="submit" class="btn btn-primary" value="Write" />
 								</div>
 							</div>

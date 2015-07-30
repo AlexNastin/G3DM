@@ -88,9 +88,11 @@ public class ModelController {
 	@RequestMapping(method = RequestMethod.POST)
 	public ModelAndView commentValid(CommentForm commentForm,
 			BindingResult result) throws Exception {
+		System.out.println(commentForm.getText());
+		System.out.println(commentForm.getIdPost());
 		commentValidator.validate(commentForm, result);
 		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/model");
+			ModelAndView modelAndView = new ModelAndView("redirect:/model?id="+commentForm.getIdPost());
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("forward:/guest/addComment");

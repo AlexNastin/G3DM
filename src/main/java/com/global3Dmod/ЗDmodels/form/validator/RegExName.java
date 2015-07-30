@@ -17,6 +17,5 @@ public final class RegExName {
 	public static String REGEX_DESCRIPTION_POST = "description";
 	
 	public static String REGEX_INSTRUCTION_POST = "instruction";
-	
-	public static String REGEX_COMMENT_POST = "comment";
+
 }

@@ -50,11 +50,11 @@ public class SignupValidator implements Validator {
 		if ((signupForm.getRole_idRole() == 0)) {
 			errors.rejectValue("role_idRole", "valid.role.empty");
 		}
-		pattern = regExCollection.getRegEx(RegExName.REGEX_NICKNAME_USER);
 		// Валидация NickName
 		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName", "valid.nickName.empty");
 		String userNickName = signupForm.getNickName();
+		pattern = regExCollection.getRegEx(RegExName.REGEX_NICKNAME_USER);
 		matcher = pattern.matcher(userNickName);
 		// На пустую строку. Количество от 3 символов до 16. Латиница. Нет спецсимволов.
 		if (!matcher.matches()) {

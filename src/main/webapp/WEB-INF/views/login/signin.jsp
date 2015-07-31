@@ -69,7 +69,9 @@
       </button>
       </div>  
     </div>
-    
+       <c:if test="${message != null}">
+			   ${message}
+			   </c:if>
 <div class="margin-forgot-password">
 <a href="<c:url value="/forgotPassword.html" />">Forgot your Password?</a>
 </div>

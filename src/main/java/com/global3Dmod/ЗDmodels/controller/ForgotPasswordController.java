@@ -138,10 +138,8 @@ public class ForgotPasswordController {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		boolean isValid = matcher.matches();
 		if (isValid) {
-			PasswordResetToken passwordResetToken = guestService
-					.getPasswordResetToken(token);
-			if (passwordResetToken == null
-					|| passwordResetToken.getUser_idUser() != id) {
+			PasswordResetToken passwordResetToken = guestService.getPasswordResetToken(token);
+			if (passwordResetToken == null || passwordResetToken.getUser_idUser() != id) {
 				String message = messages.getMessage(
 						"email.message.invalidToken", null, locale);
 				modelAndView.addObject("message", message);

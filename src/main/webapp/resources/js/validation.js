@@ -89,7 +89,7 @@ $(document).ready(function(){
 	    	  required: true
 	      },
 	      model: {
-	    	  accept: "stl"
+	    	  accept: "stl,zip,rar"
 	      },
 	      firstPhoto: {
 	    	  accept: "jpg,png,jpeg,gif"

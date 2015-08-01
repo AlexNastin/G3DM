@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 .sign-in-background{
-	background-color: #F8F8F8;
+	background-color: #FFFDFD;
 	margin-top: 10%;
 	border-radius: 10px;
 	margin-bottom: 8%;
@@ -8,7 +8,7 @@
 	
 }
 .sign-up-background{
-	background-color: #F8F8F8;
+	background-color: #FFFDFD;
 	margin-top: 5%;
 	border-radius: 10px;
 	margin-bottom: 10%;

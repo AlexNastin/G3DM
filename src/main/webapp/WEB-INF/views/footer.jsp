@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=utf8"
 	pageEncoding="utf8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,7 +82,9 @@
 				<div class="clearfix"></div>
 			</div>
 		</div>
+		© 2015 Global3Dmod
 	</div>
+
 
 
 

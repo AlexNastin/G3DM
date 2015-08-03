@@ -21,6 +21,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 	@NamedQuery(name="Technology.findCheckById", query="select t from Technology t where t.idTechnology in (:idTechnology)") })
 public class Technology implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4730556672346546546L;
+
 	@Id
 	@Column(name = "id_technology")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -67,6 +72,7 @@ public class Technology implements Essence {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idTechnology;
+		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -82,6 +88,11 @@ public class Technology implements Essence {
 		Technology other = (Technology) obj;
 		if (idTechnology != other.idTechnology)
 			return false;
+		if (posts == null) {
+			if (other.posts != null)
+				return false;
+		} else if (!posts.equals(other.posts))
+			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
@@ -92,8 +103,10 @@ public class Technology implements Essence {
 
 	@Override
 	public String toString() {
-		return "Printer [idPrinter=" + idTechnology + ", title=" + title + "]";
+		return "Technology [idTechnology=" + idTechnology + ", title=" + title
+				+ ", posts=" + posts + "]";
 	}
+
 	
 	
 

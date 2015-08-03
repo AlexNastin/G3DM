@@ -1,5 +1,6 @@
 package com.global3Dmod.ÇDmodels.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +32,18 @@ public class SearchController {
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "text", required = false) String text)
 			throws Exception {
+
+		if (!"".equals(text)) {
+
+		}
+
 		if (page == null) {
 			page = 1;
 		}
-
-		List<Post> posts = postSearch.search(text);
+		List<Post> posts = new ArrayList<Post>();
+		if (!"".equals(text)) {
+			posts = postSearch.search(text);
+		}
 
 		userService.setPathToPhotos(posts);
 		guestService.setRatingInPosts(posts);

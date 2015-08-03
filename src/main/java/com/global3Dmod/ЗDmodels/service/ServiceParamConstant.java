@@ -25,6 +25,8 @@ public final class ServiceParamConstant {
 	
 	public static String STATUS_DESC = "statusDesc";
 	
+	public static String COMPLAIN_DESC = "complainDesc";
+	
 	public static String SUBCATEGORY_DESC = "subcategoryDesc";
 	
 	public static String TITLE_DESC = "titleDesc";
@@ -34,6 +36,8 @@ public final class ServiceParamConstant {
 	public static String DATE = "date";
 	
 	public static String DOWNLOADS = "downloads";
+	
+	public static String COMPLAIN = "complain";
 	
 	public static String RATING = "rating";
 	

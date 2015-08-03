@@ -158,6 +158,60 @@ public class ModeratorController {
 		ModelAndView modelAndView2 = new ModelAndView("redirect:/moderator/profile");
 		return modelAndView2;
 	}
+	
+	@RequestMapping(value = "/moderator/complainedPosts", method = RequestMethod.GET)
+	public ModelAndView complainedPosts(@RequestParam(value = "page", required = false) Integer page,@RequestParam(value = "sort", required = false) String sort, @RequestParam(value = "desc", required = false) boolean desc, Locale locale, Model model, HttpSession httpSession)
+			throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		if (page == null) {
+			page=1;
+		}
+		if (sort==null) {
+			sort="date";
+		}
+		int startPage = page - 5 > 0?page - 5:1;
+	    int endPage = startPage + 9;
+	
+		ModelAndView modelAndView = new ModelAndView("moderator/moderatorComplainedPosts");
+		List<Post> posts = moderatorService.getComplainedPostsForSort();
+		moderatorService.setComplainInPosts(posts);
+		moderatorService.sortPosts(posts, sort, desc);
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
+		int allPosts = posts.size();
+	    int maxPage = (int) Math.ceil((double)allPosts / ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
+		int startPost = page * ControllerParamConstant.LIMIT_POSTS_ON_PAGE - ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
+		int endPost = startPost + ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
+		if(endPost>allPosts) {
+			posts = posts.subList(startPost, allPosts);
+		} else {
+			posts = posts.subList(startPost, endPost);
+		}
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10, posts);
+		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
+		if(endPage>maxPage) {
+			modelAndView.addObject(ControllerParamConstant.END_PAGE, maxPage);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.END_PAGE, endPage);
+		}
+		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
+		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
+		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, allPosts);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER, posts);
+		modelAndView.addObject(ControllerParamConstant.SORT_TYPE, sort);
+		if(desc){
+			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, true);
+		} else {
+			modelAndView.addObject(ControllerParamConstant.DESC_PAGE, false);
+		}
+		modelAndView = moderatorService.setParamsForSort(modelAndView, sort, desc);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
+		return modelAndView;
+	}
 
 }
 

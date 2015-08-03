@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.dao.IComplainDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.IRejectMessageDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
@@ -24,6 +25,8 @@ import com.global3Dmod.ÇDmodels.service.IModeratorService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByCategory;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByCategoryDesc;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByComplain;
+import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByComplainDesc;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDate;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDateDesc;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByDesigner;
@@ -42,6 +45,9 @@ public class ModeratorService implements IModeratorService{
 	
 	@Autowired
 	private IPostDAO postDAO;
+	
+	@Autowired
+	private IComplainDAO complainDAO;
 	
 	@Autowired
 	private IRejectMessageDAO rejectMessageDAO;
@@ -97,6 +103,11 @@ public class ModeratorService implements IModeratorService{
 		} else {
 			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, false);
 		}
+		if (ServiceParamConstant.COMPLAIN.equalsIgnoreCase(sort) && !desc) {
+			modelAndView.addObject(ServiceParamConstant.COMPLAIN_DESC, true);
+		} else {
+			modelAndView.addObject(ServiceParamConstant.COMPLAIN_DESC, false);
+		}
 		return modelAndView;
 	}
 	
@@ -133,6 +144,12 @@ public class ModeratorService implements IModeratorService{
 					Collections.sort(posts, new SortedPostsByDesignerDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByDesigner());
+				}
+			} else if (ServiceParamConstant.COMPLAIN.equals(sort)) {
+				if(desc){
+					Collections.sort(posts, new SortedPostsByComplainDesc());
+				} else {
+					Collections.sort(posts, new SortedPostsByComplain());
 				}
 			}
 		}
@@ -176,6 +193,35 @@ public class ModeratorService implements IModeratorService{
 			throw new ServiceException(e);
 		}
 		
+	}
+
+	@Override
+	public List<Post> getComplainedPostsForSort() throws ServiceException {
+		List<Post> posts;
+		try {
+			posts = postDAO.selectComplainedPostsForSort();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return posts;
+	}
+
+	@Override
+	public void setComplainInPosts(List<Post> posts) throws ServiceException {
+		for (Post post : posts) {
+			post.setComplain(getCountComplainByPost(post.getIdPost()));
+		}
+	}
+
+	@Override
+	public int getCountComplainByPost(Integer idPost) throws ServiceException {
+		int count;
+		try {
+			count = complainDAO.selectCountComplainByPost(idPost);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return count;
 	}
 
 }

@@ -245,4 +245,15 @@ public class PostDAOImpl implements IPostDAO {
 		return posts;
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Post> selectComplainedPostsForSort() throws DaoException {
+		List<Post> posts = em.createNamedQuery("Post.findComplainedPosts").getResultList();
+		for (Post post : posts) {
+			Hibernate.initialize(post.getUser());
+		}
+		return posts;
+	}
+
 }

@@ -39,4 +39,6 @@ public interface IPostDAO {
 	
 	public List<Post> selectTop4ByLike() throws DaoException;
 
+	public List<Post> selectComplainedPostsForSort() throws DaoException;
+
 }

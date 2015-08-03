@@ -128,7 +128,6 @@
                           </table>
                       </div>
                       <div class="col-md-12">
-                      <button type="button"  data-toggle="modal" data-target="#publish" class="btn btn-success left-designer btn-lg" >Publish</button>
       				  <button type="button" data-toggle="modal" data-target="#reject"  style="margin-right: 4em;"  class="btn btn-danger left-designer btn-lg"  >Reject</button>
         				  </div>                 
      </div>

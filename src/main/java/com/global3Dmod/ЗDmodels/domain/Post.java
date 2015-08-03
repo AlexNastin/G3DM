@@ -38,7 +38,8 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name = "Post.colPostByUser", query = "select count(p.user_idUser) from Post p where p.user_idUser = :user_idUser and p.isDisplay in (1,2,3)"),
 		@NamedQuery(name = "Post.findByModerating", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.isDisplay = 2"),
 		@NamedQuery(name = "Post.findByRejecting", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.isDisplay = 1"),
-		@NamedQuery(name = "Post.findTop4ByLike", query = "select p from Post p where p.idPost in (SELECT l.post_idPost from Like l group by l.post_idPost order by count(l.post_idPost) desc) and p.isDisplay = 3")})
+		@NamedQuery(name = "Post.findTop4ByLike", query = "select p from Post p where p.idPost in (SELECT l.post_idPost from Like l group by l.post_idPost order by count(l.post_idPost) desc) and p.isDisplay = 3"),
+		@NamedQuery(name = "Post.findComplainedPosts", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.idPost in (SELECT c.post_idPost from Complain c where (select count(d.post_idPost) from Complain d group by d.post_idPost) > 1 group by c.post_idPost) and p.isDisplay = 3")})
 														
 public class Post implements Essence {
 
@@ -87,6 +88,9 @@ public class Post implements Essence {
 
 	@Column(name = "rating")
 	private int rating;
+	
+	@Column(name = "complain")
+	private int complain;
 
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "posts_has_technology", joinColumns = { @JoinColumn(name = "post_id_post") }, inverseJoinColumns = { @JoinColumn(name = "technology_id_technology") })
@@ -242,6 +246,14 @@ public class Post implements Essence {
 		this.rating = rating;
 	}
 
+	public int getComplain() {
+		return complain;
+	}
+
+	public void setComplain(int complain) {
+		this.complain = complain;
+	}
+
 	public List<Technology> getTechnologies() {
 		return technologies;
 	}
@@ -334,42 +346,24 @@ public class Post implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((category == null) ? 0 : category.hashCode());
 		result = prime * result + category_idCategory;
-		result = prime * result
-				+ ((comments == null) ? 0 : comments.hashCode());
-		result = prime * result
-				+ ((complains == null) ? 0 : complains.hashCode());
+		result = prime * result + complain;
 		result = prime * result + countDownload;
 		result = prime * result + ((dateReg == null) ? 0 : dateReg.hashCode());
 		result = prime * result
 				+ ((dateUpdate == null) ? 0 : dateUpdate.hashCode());
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
-		result = prime * result
-				+ ((disProgram == null) ? 0 : disProgram.hashCode());
 		result = prime * result + disProgram_idDisProgram;
-		result = prime * result + ((file == null) ? 0 : file.hashCode());
 		result = prime * result + idPost;
 		result = prime * result
 				+ ((instruction == null) ? 0 : instruction.hashCode());
 		result = prime * result + isDisplay;
-		result = prime * result + ((likes == null) ? 0 : likes.hashCode());
 		result = prime * result
 				+ ((numberPost == null) ? 0 : numberPost.hashCode());
-		result = prime * result
-				+ ((postPhotos == null) ? 0 : postPhotos.hashCode());
 		result = prime * result + rating;
-		result = prime * result
-				+ ((rejectMessage == null) ? 0 : rejectMessage.hashCode());
-		result = prime * result
-				+ ((subcategory == null) ? 0 : subcategory.hashCode());
 		result = prime * result + subcategory_idSubcategory;
-		result = prime * result
-				+ ((technologies == null) ? 0 : technologies.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		result = prime * result + user_idUser;
 		return result;
 	}
@@ -383,22 +377,9 @@ public class Post implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		Post other = (Post) obj;
-		if (category == null) {
-			if (other.category != null)
-				return false;
-		} else if (!category.equals(other.category))
-			return false;
 		if (category_idCategory != other.category_idCategory)
 			return false;
-		if (comments == null) {
-			if (other.comments != null)
-				return false;
-		} else if (!comments.equals(other.comments))
-			return false;
-		if (complains == null) {
-			if (other.complains != null)
-				return false;
-		} else if (!complains.equals(other.complains))
+		if (complain != other.complain)
 			return false;
 		if (countDownload != other.countDownload)
 			return false;
@@ -417,17 +398,7 @@ public class Post implements Essence {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (disProgram == null) {
-			if (other.disProgram != null)
-				return false;
-		} else if (!disProgram.equals(other.disProgram))
-			return false;
 		if (disProgram_idDisProgram != other.disProgram_idDisProgram)
-			return false;
-		if (file == null) {
-			if (other.file != null)
-				return false;
-		} else if (!file.equals(other.file))
 			return false;
 		if (idPost != other.idPost)
 			return false;
@@ -438,49 +409,19 @@ public class Post implements Essence {
 			return false;
 		if (isDisplay != other.isDisplay)
 			return false;
-		if (likes == null) {
-			if (other.likes != null)
-				return false;
-		} else if (!likes.equals(other.likes))
-			return false;
 		if (numberPost == null) {
 			if (other.numberPost != null)
 				return false;
 		} else if (!numberPost.equals(other.numberPost))
 			return false;
-		if (postPhotos == null) {
-			if (other.postPhotos != null)
-				return false;
-		} else if (!postPhotos.equals(other.postPhotos))
-			return false;
 		if (rating != other.rating)
 			return false;
-		if (rejectMessage == null) {
-			if (other.rejectMessage != null)
-				return false;
-		} else if (!rejectMessage.equals(other.rejectMessage))
-			return false;
-		if (subcategory == null) {
-			if (other.subcategory != null)
-				return false;
-		} else if (!subcategory.equals(other.subcategory))
-			return false;
 		if (subcategory_idSubcategory != other.subcategory_idSubcategory)
-			return false;
-		if (technologies == null) {
-			if (other.technologies != null)
-				return false;
-		} else if (!technologies.equals(other.technologies))
 			return false;
 		if (title == null) {
 			if (other.title != null)
 				return false;
 		} else if (!title.equals(other.title))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
 			return false;
 		if (user_idUser != other.user_idUser)
 			return false;
@@ -497,7 +438,8 @@ public class Post implements Essence {
 				+ ", dateUpdate=" + dateUpdate + ", title=" + title
 				+ ", description=" + description + ", instruction="
 				+ instruction + ", isDisplay=" + isDisplay + ", countDownload="
-				+ countDownload + ", rating=" + rating + ", technologies=" + technologies + ", file=" + file + "]";
+				+ countDownload + ", rating=" + rating + ", complain="
+				+ complain + "]";
 	}
 
 	

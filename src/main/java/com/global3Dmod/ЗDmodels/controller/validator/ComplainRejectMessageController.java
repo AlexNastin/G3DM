@@ -28,8 +28,8 @@ import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
-@RequestMapping("/moderator/moderationPost")
-public class RejectMessageController {
+@RequestMapping("/moderator/moderationComplainPost")
+public class ComplainRejectMessageController {
 	
 	@Autowired
 	private RejectMessageValidator rejectMessageValidator;
@@ -48,7 +48,7 @@ public class RejectMessageController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("moderator/moderatorModerationPost");
+		ModelAndView modelAndView = new ModelAndView("moderator/moderatorComplainPost");
 		Post post = designerService.getPost(idPost);
 		userService.setPathToPhotos(post);
 		User user = designerService.getUser(person.getLogin());
@@ -65,7 +65,7 @@ public class RejectMessageController {
 			BindingResult result) throws Exception {
 		rejectMessageValidator.validate(rejectMessageForm, result);
 		if (result.hasErrors()) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/moderator/moderationPost?id=" + rejectMessageForm.getIdPost());
+			ModelAndView modelAndView = new ModelAndView("redirect:/moderator/moderationComplainPost?id=" + rejectMessageForm.getIdPost());
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("forward:/moderator/addRejectMessage");

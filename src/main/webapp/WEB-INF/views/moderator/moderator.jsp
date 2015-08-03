@@ -48,7 +48,8 @@
   <a href="<c:url value="/moderator/profile" />" class="list-group-item active">
     <i class="fa fa-exclamation-triangle"></i> ${unpblsd}
   </a>
-  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> Rejecting Posts</a>
+  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> Rejecting posts</a>
+  <a href="<c:url value="/moderator/complainedPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> Complained posts</a>
   
 </div>
       </div>

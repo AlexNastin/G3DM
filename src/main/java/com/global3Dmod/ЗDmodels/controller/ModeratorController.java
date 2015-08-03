@@ -137,29 +137,6 @@ public class ModeratorController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/moderator/moderationPost", method = RequestMethod.GET)
-	public ModelAndView personalData(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model,
-			HttpSession httpSession) throws ServiceException {
-		Person person = (Person) httpSession
-				.getAttribute(ControllerParamConstant.PERSON);
-		if (person == null) {
-			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
-			return modelAndView;
-		}
-		ModelAndView modelAndView = new ModelAndView(
-				"moderator/moderatorModerationPost");
-		RejectMessageForm rejectMessageForm = new RejectMessageForm();
-		modelAndView.addObject(ControllerParamConstant.REJECT_MESSAGE_FORM, rejectMessageForm);
-		
-		Post post = designerService.getPost(idPost);
-		userService.setPathToPhotos(post);
-		User user = designerService.getUser(person.getLogin());
-		userService.setPathToPhotos(user);
-		modelAndView.addObject(ControllerParamConstant.POST, post);
-		modelAndView.addObject(ControllerParamConstant.USER, user);
-		return modelAndView;
-	}
-	
 	@RequestMapping(value = "/moderator/publishPost", method = RequestMethod.GET)
 	public ModelAndView publishPost(@RequestParam(value = "id", required = false) Integer idPost, Locale locale, Model model)
 			throws ServiceException {

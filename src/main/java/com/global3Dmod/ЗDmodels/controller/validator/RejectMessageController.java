@@ -28,7 +28,7 @@ import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
-@RequestMapping("/moderator/rejectPost")
+@RequestMapping("/moderator/moderationPost")
 public class RejectMessageController {
 	
 	@Autowired
@@ -48,7 +48,7 @@ public class RejectMessageController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("moderator/moderatorRejectMessage");
+		ModelAndView modelAndView = new ModelAndView("moderator/moderatorModerationPost");
 		Post post = designerService.getPost(idPost);
 		userService.setPathToPhotos(post);
 		User user = designerService.getUser(person.getLogin());

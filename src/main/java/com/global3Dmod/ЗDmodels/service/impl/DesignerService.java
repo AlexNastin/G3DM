@@ -610,8 +610,7 @@ public class DesignerService implements IDesignerService {
 		}
 		StringBuilder newName = new StringBuilder(String.valueOf(hashCode));
 		while (matcher.find()) {	
-		newName.append(matcher.start());
-		newName.append(matcher.end());
+			newName.append(name.substring(matcher.start(), matcher.end()));
 		}
 		return newName.toString();
 	}

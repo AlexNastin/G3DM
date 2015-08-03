@@ -614,5 +614,4 @@ public class DesignerService implements IDesignerService {
 		}
 		return newName.toString();
 	}
-
 }

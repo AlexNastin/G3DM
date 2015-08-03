@@ -39,11 +39,12 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
-            <form class="navbar-form navbar-left" role="search">
+            <form class="navbar-form navbar-left" role="search"  action="<c:url value="/search"/>" method="GET">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control"   name="text" placeholder="${searchmain}">
         </div>
         <button type="submit" class="btn btn-default">${search}</button>
+        <input style="margin-top: 10px;" type="submit"  class="btn btn-primary" value="${search}" />
       </form>
             <ul class="nav navbar-nav navbar-right">
                	<li><a href="<c:url value="/about"/>">${about}</a></li>                

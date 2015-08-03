@@ -19,13 +19,14 @@ public class SearchController {
 	private PostSearch postSearch;
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView index(
-			@RequestParam(value = "text", required = false) String text)
-			throws Exception {
+	public ModelAndView index( @RequestParam(value = "text", required = false) String text) throws Exception {
+		
 		System.out.println(text);
 		List<Post> cate = postSearch.search(text);
-
+		System.out.println(cate.get(0).toString());
+		System.out.println(cate.get(0).getClass());
 		System.out.println(cate.size());
+
 		for (Post post : cate) {
 			System.out.println(post);
 		}

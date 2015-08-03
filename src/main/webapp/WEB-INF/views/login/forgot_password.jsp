@@ -33,7 +33,7 @@
                
                <form action="<c:url value="/resetPassword"></c:url>" method="POST">
 				<input class="form-control" required id="email" name="email"	type="email" value="" placeholder="Email" />
-				<input style="margin-top: 10px;" type="submit"  class="btn btn-primary" >
+				<input style="margin-top: 10px;" type="submit"  class="btn btn-primary" />
 			   </form>
 			   <c:if  test="${message != null}">
 			  <div class="alert alert-info" role="alert" style="margin-top: 3%; padding:1%">${message}</div> 

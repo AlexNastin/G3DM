@@ -44,7 +44,7 @@
 	</c:forEach>
 
 	<a href="<c:url value="/categoryMenu"/>">categoryMenu</a>
-	<a href="<c:url value="/search?text=java castle" />">AAAAAAAA</a>
+	<a href="<c:url value="/search?text=123 new" />">AAAAAAAA</a>
 	<a href="<c:url value="/designer/deletePost?id=6" />">delete post 6</a>
 	<a href="<c:url value="/designer/updatePost?id=6" />">update post 6</a>
 	<a href="<c:url value="/404" />">404</a>

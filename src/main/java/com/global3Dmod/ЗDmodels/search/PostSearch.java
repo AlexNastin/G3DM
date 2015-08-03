@@ -14,16 +14,16 @@ import org.hibernate.search.query.dsl.QueryBuilder;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.Post;
 
-@Repository("jpaCategorySearch")
+@Repository("jpaPostSearch")
 @Transactional
 public class PostSearch {
 
 	@PersistenceContext
 	private EntityManager em;
-
+	
+	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Post> search(String text) {
 
@@ -33,13 +33,12 @@ public class PostSearch {
 		QueryBuilder queryBuilder = fullTextEntityManager.getSearchFactory()
 				.buildQueryBuilder().forEntity(Post.class).get();
 
-		Query query = queryBuilder.keyword().onFields("title", "numberPost")
-				.matching(text).createQuery();
+		Query query = queryBuilder.keyword().onFields("title", "numberPost").matching(text).createQuery();
 
 		FullTextQuery jpaQuery = fullTextEntityManager.createFullTextQuery(
 				query, Post.class);
 
-		@SuppressWarnings("unchecked")
+
 		List<Post> posts = jpaQuery.getResultList();
 
 		for (Post post : posts) {

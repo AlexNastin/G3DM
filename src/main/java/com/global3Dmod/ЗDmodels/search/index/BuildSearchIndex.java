@@ -3,6 +3,7 @@ package com.global3Dmod.ÇDmodels.search.index;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import org.apache.log4j.Logger;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.springframework.context.ApplicationListener;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class BuildSearchIndex implements
 		ApplicationListener<ContextRefreshedEvent> {
+
+	private static Logger LOGGER = Logger.getLogger(BuildSearchIndex.class);
 
 	@PersistenceContext
 	private EntityManager entityManager;
@@ -27,9 +30,8 @@ public class BuildSearchIndex implements
 					.getFullTextEntityManager(entityManager);
 			fullTextEntityManager.createIndexer().startAndWait();
 		} catch (InterruptedException e) {
-			System.out
-					.println("An error occurred trying to build the serach index: "
-							+ e.toString());
+			LOGGER.error(
+					"An error occurred trying to build the serach index: ", e);
 		}
 		return;
 	}

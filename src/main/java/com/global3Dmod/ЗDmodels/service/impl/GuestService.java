@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -294,24 +295,17 @@ public class GuestService implements IGuestService {
 	@Override
 	public List<Advertisement> getAllAdvertisement() throws ServiceException {
 		List<Advertisement> advertisements = new ArrayList<Advertisement>();
-		List<Advertisement> newAdvertisements = null;
 		DateFormat dateFormat = new SimpleDateFormat(
 				ServiceParamConstant.FORMAT_DATE);
 		Date date = new Date();
 		String presentDate = dateFormat.format(date);
 		try {
 			advertisements = advertisementDAO.selectAllAdvertisements();
-			System.out.println(advertisements.toString());
-			for (Advertisement advertisement : advertisements) {
-				if (presentDate.compareTo(advertisement.getExpirationDate()) > 0) {
-					System.out.println(advertisement.getIdAdvertisement());
-//					advertisements.remove(advertisement);
-//					newAdvertisements.add(advertisement);
+			for (int i = 0; i < advertisements.size(); i++) {
+				if (presentDate.compareTo(advertisements.get(i).getExpirationDate()) > 0) {
+					advertisements.remove(i);
 				}
 			}
-//			for (Advertisement advertisement : advertisements) {
-//				System.out.println(advertisement.toString());
-//			}
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

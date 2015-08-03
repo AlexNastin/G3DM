@@ -40,11 +40,15 @@ public class PostSearch {
 				query, Post.class);
 
 		List<Post> posts = jpaQuery.getResultList();
-		for (Post post : posts) {
-			Hibernate.initialize(post.getPostPhotos());
-			Hibernate.initialize(post.getTechnologies());
-			Hibernate.initialize(post.getUser());
-			Hibernate.initialize(post.getComments());
+		for (int i = 0; i < posts.size(); i++) {
+			if (posts.get(i).getIsDisplay()==3) {
+				Hibernate.initialize(posts.get(i).getPostPhotos());
+				Hibernate.initialize(posts.get(i).getTechnologies());
+				Hibernate.initialize(posts.get(i).getUser());
+				Hibernate.initialize(posts.get(i).getComments());
+			} else {
+				posts.remove(i);
+			}
 		}
 		return posts;
 	}

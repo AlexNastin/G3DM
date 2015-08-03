@@ -23,4 +23,6 @@ public final class RegExName {
 	public static String REGEX_MODEL_POST = "model";
 	
 	public static String REGEX_MESSAGE_POST = "message";
+
+	public static String REGEX_FILE_EXT = "fileExt";
 }

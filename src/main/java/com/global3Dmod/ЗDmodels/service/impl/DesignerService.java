@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,8 @@ import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.DesignerPersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
+import com.global3Dmod.ÇDmodels.form.validator.RegExCollection;
+import com.global3Dmod.ÇDmodels.form.validator.RegExName;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.service.helper.ServiceHelper;
@@ -56,6 +60,9 @@ import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByTitleDesc;
 
 @Service
 public class DesignerService implements IDesignerService {
+	
+	@Autowired
+	private RegExCollection regExCollection;
 
 	@Autowired
 	private IDisProgramDAO disProgramDAO;
@@ -592,8 +599,8 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public String createNewNameFile(String name) {
-		int sizeFile = name.length();
-		String ext = name.substring(sizeFile - 4, sizeFile);
+	Pattern	pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
+	Matcher matcher = pattern.matcher(name);
 		int hashCode = name.hashCode();
 		if (hashCode < 0) {
 			hashCode = hashCode * (-1);
@@ -601,8 +608,12 @@ public class DesignerService implements IDesignerService {
 		if (hashCode == 0) {
 			++hashCode;
 		}
-		String newName = String.valueOf(hashCode) + ext;
-		return newName;
+		StringBuilder newName = new StringBuilder(String.valueOf(hashCode));
+		while (matcher.find()) {	
+		newName.append(matcher.start());
+		newName.append(matcher.end());
+		}
+		return newName.toString();
 	}
 
 }

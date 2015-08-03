@@ -52,7 +52,6 @@
 					style="width: 100%; text-align: center; margin: 0 auto;">
 					<input class="form-control input-lg" name="text" placeholder="${searchmain}"
 					 value="" type="text" >
-					  <span class="input-group-btn"><button class="btn btn-lg btn-primary" type="button">${search}</button></span>
 					<input style="margin-top: 10px;" type="submit"  class="btn btn-primary" value="${search}" />
 				</div>
 			</form>

@@ -43,7 +43,6 @@
         <div class="form-group">
           <input type="text" class="form-control"   name="text" placeholder="${searchmain}">
         </div>
-        <button type="submit" class="btn btn-default">${search}</button>
         <input style="margin-top: 10px;" type="submit"  class="btn btn-primary" value="${search}" />
       </form>
             <ul class="nav navbar-nav navbar-right">

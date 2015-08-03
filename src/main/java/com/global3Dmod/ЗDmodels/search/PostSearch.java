@@ -43,6 +43,8 @@ public class PostSearch {
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getTechnologies());
+			Hibernate.initialize(post.getUser());
+			Hibernate.initialize(post.getComments());
 		}
 		return posts;
 	}

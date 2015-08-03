@@ -22,7 +22,7 @@ public class PostSearch {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@SuppressWarnings("unchecked")
 	@Transactional
 	public List<Post> search(String text) {
@@ -33,14 +33,13 @@ public class PostSearch {
 		QueryBuilder queryBuilder = fullTextEntityManager.getSearchFactory()
 				.buildQueryBuilder().forEntity(Post.class).get();
 
-		Query query = queryBuilder.keyword().onFields("title", "numberPost").matching(text).createQuery();
+		Query query = queryBuilder.keyword().onFields("title", "numberPost")
+				.matching(text).createQuery();
 
 		FullTextQuery jpaQuery = fullTextEntityManager.createFullTextQuery(
 				query, Post.class);
 
-
 		List<Post> posts = jpaQuery.getResultList();
-
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getTechnologies());

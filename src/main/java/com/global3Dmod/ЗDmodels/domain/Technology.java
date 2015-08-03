@@ -104,7 +104,7 @@ public class Technology implements Essence {
 	@Override
 	public String toString() {
 		return "Technology [idTechnology=" + idTechnology + ", title=" + title
-				+ ", posts=" + posts + "]";
+				+ "]";
 	}
 
 	

@@ -75,7 +75,6 @@ public class Avatar implements Essence {
 		result = prime * result
 				+ ((fileName == null) ? 0 : fileName.hashCode());
 		result = prime * result + idAvatar;
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -99,11 +98,6 @@ public class Avatar implements Essence {
 		} else if (!fileName.equals(other.fileName))
 			return false;
 		if (idAvatar != other.idAvatar)
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
 			return false;
 		return true;
 	}

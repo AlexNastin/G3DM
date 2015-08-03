@@ -250,16 +250,13 @@ public class User implements Essence {
 		this.avatar = avatar;
 	}
 
+	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((avatar == null) ? 0 : avatar.hashCode());
-		result = prime * result + ((city == null) ? 0 : city.hashCode());
 		result = prime * result + city_id—ity;
-		result = prime * result
-				+ ((comments == null) ? 0 : comments.hashCode());
-		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + country_idCountry;
 		result = prime * result
 				+ ((dateBirth == null) ? 0 : dateBirth.hashCode());
@@ -271,7 +268,6 @@ public class User implements Essence {
 				+ ((nickName == null) ? 0 : nickName.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((posts == null) ? 0 : posts.hashCode());
 		long temp;
 		temp = Double.doubleToLongBits(rating);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -292,27 +288,7 @@ public class User implements Essence {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (avatar == null) {
-			if (other.avatar != null)
-				return false;
-		} else if (!avatar.equals(other.avatar))
-			return false;
-		if (city == null) {
-			if (other.city != null)
-				return false;
-		} else if (!city.equals(other.city))
-			return false;
 		if (city_id—ity != other.city_id—ity)
-			return false;
-		if (comments == null) {
-			if (other.comments != null)
-				return false;
-		} else if (!comments.equals(other.comments))
-			return false;
-		if (country == null) {
-			if (other.country != null)
-				return false;
-		} else if (!country.equals(other.country))
 			return false;
 		if (country_idCountry != other.country_idCountry)
 			return false;
@@ -344,11 +320,6 @@ public class User implements Essence {
 			if (other.password != null)
 				return false;
 		} else if (!password.equals(other.password))
-			return false;
-		if (posts == null) {
-			if (other.posts != null)
-				return false;
-		} else if (!posts.equals(other.posts))
 			return false;
 		if (Double.doubleToLongBits(rating) != Double
 				.doubleToLongBits(other.rating))

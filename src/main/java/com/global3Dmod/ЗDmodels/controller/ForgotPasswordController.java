@@ -156,13 +156,12 @@ public class ForgotPasswordController {
 			}
 			List<GrantedAuthority> grantedAuths = new ArrayList<>();
 			grantedAuths.add(new SimpleGrantedAuthority("ROLE_GUEST"));
-			User user = guestService.getUser(passwordResetToken
-					.getUser_idUser());
+			User user = guestService.getUser(passwordResetToken.getUser_idUser());
 			Authentication authentication = new UsernamePasswordAuthenticationToken(
 					user, null, grantedAuths);
-			SecurityContextHolder.getContext()
-					.setAuthentication(authentication);
+			SecurityContextHolder.getContext().setAuthentication(authentication);
 			modelAndView.setViewName("redirect:/updatePassword");
+			return modelAndView;
 		}
 		String message = messages.getMessage("email.message.invalidToken",
 				null, locale);

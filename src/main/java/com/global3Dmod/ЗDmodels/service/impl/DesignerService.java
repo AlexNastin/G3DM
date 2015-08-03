@@ -259,7 +259,26 @@ public class DesignerService implements IDesignerService {
 	@Override
 	public String modelFileUpload(MultipartFile file, String path, String oldFileName)
 			throws ServiceException {
-		String filePath = path + oldFileName;
+		String orgName = file.getOriginalFilename();
+		Pattern	pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Matcher matcher = pattern.matcher(orgName);
+		String orgNameExt = "";
+		String oldNameExt = "";
+		String nameFile = "";
+		while (matcher.find()) {	
+			orgNameExt = orgName.substring(matcher.start(), matcher.end());
+		}
+		matcher = pattern.matcher(oldFileName);
+		while (matcher.find()) {	
+			oldNameExt = oldFileName.substring(matcher.start(), matcher.end());
+		}
+		if(oldNameExt.equalsIgnoreCase(orgNameExt)) {
+			nameFile = oldFileName;
+		} else {
+			nameFile = createNewNameFile(orgName);
+			
+		}
+		String filePath = path + nameFile;
 		new File(path).mkdirs();
 		File dest = new File(filePath);
 		try {
@@ -269,7 +288,7 @@ public class DesignerService implements IDesignerService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return oldFileName;
+		return nameFile;
 	}
 
 	@Override
@@ -293,7 +312,26 @@ public class DesignerService implements IDesignerService {
 	@Override
 	public String photoModelFileUpload(MultipartFile file, String path, String oldFileName)
 			throws ServiceException {
-		String filePath = path + oldFileName;
+		String orgName = file.getOriginalFilename();
+		Pattern	pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Matcher matcher = pattern.matcher(orgName);
+		String orgNameExt = "";
+		String oldNameExt = "";
+		String nameFile = "";
+		while (matcher.find()) {	
+			orgNameExt = orgName.substring(matcher.start(), matcher.end());
+		}
+		matcher = pattern.matcher(oldFileName);
+		while (matcher.find()) {	
+			oldNameExt = oldFileName.substring(matcher.start(), matcher.end());
+		}
+		if(oldNameExt.equalsIgnoreCase(orgNameExt)) {
+			nameFile = oldFileName;
+		} else {
+			nameFile = createNewNameFile(orgName);
+			
+		}
+		String filePath = path + nameFile;
 		new File(path).mkdirs();
 		File dest = new File(filePath);
 		try {
@@ -303,7 +341,7 @@ public class DesignerService implements IDesignerService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return oldFileName;
+		return nameFile;
 	}
 
 	@Override
@@ -327,7 +365,26 @@ public class DesignerService implements IDesignerService {
 	@Override
 	public String avatarFileUpload(MultipartFile file, String path, String oldFileName)
 			throws ServiceException {
-		String filePath = path + oldFileName;
+		String orgName = file.getOriginalFilename();
+		Pattern	pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Matcher matcher = pattern.matcher(orgName);
+		String orgNameExt = "";
+		String oldNameExt = "";
+		String nameFile = "";
+		while (matcher.find()) {	
+			orgNameExt = orgName.substring(matcher.start(), matcher.end());
+		}
+		matcher = pattern.matcher(oldFileName);
+		while (matcher.find()) {	
+			oldNameExt = oldFileName.substring(matcher.start(), matcher.end());
+		}
+		if(oldNameExt.equalsIgnoreCase(orgNameExt)) {
+			nameFile = oldFileName;
+		} else {
+			nameFile = createNewNameFile(orgName);
+			
+		}
+		String filePath = path + nameFile;
 		new File(path).mkdirs();
 		File dest = new File(filePath);
 		try {
@@ -337,7 +394,7 @@ public class DesignerService implements IDesignerService {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return oldFileName;
+		return nameFile;
 	}
 
 	@Override

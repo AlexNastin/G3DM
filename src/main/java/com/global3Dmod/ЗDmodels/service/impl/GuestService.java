@@ -294,8 +294,24 @@ public class GuestService implements IGuestService {
 	@Override
 	public List<Advertisement> getAllAdvertisement() throws ServiceException {
 		List<Advertisement> advertisements = new ArrayList<Advertisement>();
+		List<Advertisement> newAdvertisements = null;
+		DateFormat dateFormat = new SimpleDateFormat(
+				ServiceParamConstant.FORMAT_DATE);
+		Date date = new Date();
+		String presentDate = dateFormat.format(date);
 		try {
 			advertisements = advertisementDAO.selectAllAdvertisements();
+			System.out.println(advertisements.toString());
+			for (Advertisement advertisement : advertisements) {
+				if (presentDate.compareTo(advertisement.getExpirationDate()) > 0) {
+					System.out.println(advertisement.getIdAdvertisement());
+//					advertisements.remove(advertisement);
+//					newAdvertisements.add(advertisement);
+				}
+			}
+//			for (Advertisement advertisement : advertisements) {
+//				System.out.println(advertisement.toString());
+//			}
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

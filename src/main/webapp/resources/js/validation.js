@@ -102,6 +102,9 @@ $(document).ready(function(){
 	      },
 	      avatar: {
 	    	  accept: "jpg,png,jpeg,gif"
+	      },
+	      dateBirth: {
+	    	  date: true
 	      }
 },
 messages:  {

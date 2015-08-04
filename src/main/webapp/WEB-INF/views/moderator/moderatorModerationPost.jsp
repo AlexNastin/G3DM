@@ -14,7 +14,7 @@
 <spring:message code="designer.menu.data" var="data"/>
 <spring:message code="designer.menu.add" var="add"/>
 <spring:message code="moderator.menu.postsunpublished" var="unpblsd"/>
-
+<spring:message code="javascript.validation" var="validation" />
 
 
  <meta charset="utf-8">
@@ -193,7 +193,8 @@
 	<%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
-   
+    <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/${validation}.js" />"> </script>
 	  
 
 </body>

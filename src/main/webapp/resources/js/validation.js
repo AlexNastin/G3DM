@@ -18,7 +18,7 @@ $(document).ready(function(){
 	        "Please check your input."
 	);
 	
-		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm').validate({
+		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm, #addModeratorForm').validate({
 			
 	    rules: {
 	    	nickName: {
@@ -105,7 +105,7 @@ $(document).ready(function(){
 	      },
 	      dateBirth: {
 	    	  date: true
-	      }
+	      },
 },
 messages:  {
 	confirmPassword: {

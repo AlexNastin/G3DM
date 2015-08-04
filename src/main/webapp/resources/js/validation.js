@@ -65,7 +65,9 @@ $(document).ready(function(){
 	    	 regexp: '^[^±!@£$%^&*_+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,50}$'
 	      },
 	      nickName: {
-	    	  regexp: '^[a-zA-Z]+$'
+	    	  regexp: '^[a-zA-Z0-9\-\_]+$',
+	    	  required: true,
+	    	  rangelength: [3, 16] 
 	      },
 	      title: {
 	    	  regexp: '^[a-zA-Z0-9\ \'-]{2,16}$',
@@ -97,6 +99,9 @@ $(document).ready(function(){
 	      comment: {
 	    	  required: true,
 	    	  rangelength: [1, 300] 
+	      },
+	      avatar: {
+	    	  accept: "jpg,png,jpeg,gif"
 	      }
 },
 messages:  {

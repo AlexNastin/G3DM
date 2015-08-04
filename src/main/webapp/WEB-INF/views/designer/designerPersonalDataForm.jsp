@@ -44,7 +44,7 @@
 	     
 	    
  <!-- Menu -->     
- <div class="row footerpadding">
+ <div class="row">
     <div class="col-md-2 nopadding1">
      <div class="list-group">
       <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">      
@@ -61,9 +61,9 @@
       <!--main content start-->
      <div class="nopadding2 col-md-10 ">
           <div class="mt">
-                  <div class="col-md-12 nopadding2">
+               <div class="col-md-12 nopadding2">
                   <div class="row">
-                      <div class="col-md-4" style="padding-left:0px;">
+                      <div class="col-md-4 height-div-updatepersonal" style="padding-left:0px;">
                       <div class="content-pael">                      
                       <h2>Personal data</h2>
                       
@@ -167,8 +167,10 @@
 			<form:option value="2">Male</form:option>
 		</form:select>
 		<br>
+		<div class="height-input-updatepersonal-avatar">
 		Avatar to upload: <input type="file" name="avatar">
 		<span class="error"><form:errors path="avatar" /></span>
+		</div>
 		<br>
 		
 		<div class="form-group">
@@ -182,6 +184,13 @@
                   </div>
                   </div>
                   </div>
+                  
+                  
+                  
+                  
+                  
+                  
+                  
               </div>
               
       </div>

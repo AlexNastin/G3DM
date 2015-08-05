@@ -15,6 +15,19 @@
 <spring:message code="moderator.menu.users" var="users" />
 <spring:message code="moderator.menu.designer" var="designers" />
 <spring:message code="javascript.validation" var="validation" />
+<spring:message code="moderator.menu.users" var="users" />
+<spring:message code="moderator.menu.designer" var="designers" />
+<spring:message code="admin.menu.moderators" var="moderators" />
+<spring:message code="admin.menu.designers" var="designers" />
+<spring:message code="admin.menu.users" var="users" />
+<spring:message code="admin.menu.advertisement" var="advertisement" />
+<spring:message code="admin.addmoderator.login" var="login" />
+<spring:message code="admin.addmoderator.password" var="password" />
+<spring:message code="admin.addmoderator.confirmpassword" var="confirmpassword" />
+<spring:message code="admin.addmoderator.nickname" var="nickname" />
+<spring:message code="admin.addmoderator.name" var="name" />
+<spring:message code="admin.addmoderator.surname" var="surname" />
+<spring:message code="admin.addmoderator.signupmoderator" var="signupmoderator" />
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,13 +62,13 @@
 					class="img-responsive img-thumbnail" alt="Global3Dmod avatar">
 				<a href="<c:url value="/admin/profile" />"
 					class="list-group-item active"> <i
-					class="fa fa-exclamation-triangle"></i> Moderators
+					class="fa fa-exclamation-triangle"></i> ${moderators}
 				</a> <a href="<c:url value="/admin/designers" />"
-					class="list-group-item"> <i class="fa fa-ban"></i> Designers
+					class="list-group-item"> <i class="fa fa-ban"></i> ${designers}
 				</a> <a href="<c:url value="/admin/users" />" class="list-group-item">
-					<i class="fa fa-user-plus"></i> Users
+					<i class="fa fa-user-plus"></i> ${users}
 				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item">
-					<i class="fa fa-user-plus"></i> Advertisement
+					<i class="fa fa-user-plus"></i> ${advertisement}
 				</a>
 			</div>
 		</div>
@@ -70,36 +83,36 @@
 			<form:form modelAttribute="addModeratorForm" method="POST">
 		<div class="form-group height-input-string-addModerator">
 		
-		<form:input placeholder="Login" class="form-control" id="login" name="login" path="login"></form:input>
+		<form:input placeholder="${login}" class="form-control" id="login" name="login" path="login"></form:input>
 		
 		<span class="error color-style-validation"><form:errors
 				path="login" /></span>
 				</div>	
 		<div class="form-group height-input-string-addModerator">
 		
-		<form:password placeholder="Password" class="form-control" id="password" name="password" path="password"></form:password>
+		<form:password placeholder="${password}" class="form-control" id="password" name="password" path="password"></form:password>
 		<form:errors path="password" />
 		
 		</div>
 		<div class="form-group height-input-string-addModerator">
-		<form:password placeholder="Confirm password" class="form-control" id="confirmPassword" name="confirmPassword"
+		<form:password placeholder="${confirmpassword}" class="form-control" id="confirmPassword" name="confirmPassword"
 			path="confirmPassword"></form:password>
 		<form:errors path="confirmPassword" />
 		</div>
 		<div class="form-group height-input-string-addModerator">
-		<form:input placeholder="Nickname" class="form-control" id="nickName" name="nickName" path="nickName"></form:input>
+		<form:input placeholder="${nickname}" class="form-control" id="nickName" name="nickName" path="nickName"></form:input>
 		<form:errors path="nickName" />
 		</div>
 		<div class="form-group height-input-string-addModerator">
-		<form:input placeholder="Name" class="form-control" id="name" name="name" path="name"></form:input>
+		<form:input placeholder="${name}" class="form-control" id="name" name="name" path="name"></form:input>
 		<form:errors path="name" />
 		</div>
 		<div class="form-group height-input-string-addModerator">
-		<form:input placeholder="Surname" class="form-control" id="surname" name="surname" path="surname"></form:input>
+		<form:input placeholder="${surname}" class="form-control" id="surname" name="surname" path="surname"></form:input>
 		<form:errors path="surname" />
 		</div>
 		<div style="text-align: center">
-		<input class="btn btn-primary" type="submit" value="${signup}" />
+		<input class="btn btn-primary" type="submit" value="${signupmoderator}" />
 		</div>
 	</form:form>
 			</div>

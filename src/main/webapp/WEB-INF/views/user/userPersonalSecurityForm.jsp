@@ -15,7 +15,10 @@
 <spring:message code="designer.menu.add" var="add" />
 <spring:message code="user.menu.mybookmarks" var="mybookmarks"/>
 <spring:message code="javascript.validation" var="validation" />
-
+<spring:message code="designer.menu.personalsecurity" var="personalsecurity" />
+<spring:message code="form.updatepassword" var="updatepassword" />
+<spring:message code="form.password" var="password" />
+<spring:message code="form.confirmpassword" var="confirmpassword" />
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,8 +61,8 @@
      <div class="list-group">
       <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">     
 				<a href="<c:url value="/user/profile" />" class="list-group-item "><i class="fa fa-briefcase"></i> ${mybookmarks}</a>
- <a href="<c:url value="/user/personalData" />" class="list-group-item"><i class="fa fa-cogs"></i> Personal Data  </a>
-  <a href="<c:url value="/user/personalSecurity" />" class="list-group-item active "><i class="fa fa-lock"></i> Personal Security  </a>
+ <a href="<c:url value="/user/personalData" />" class="list-group-item"><i class="fa fa-cogs"></i> ${data}  </a>
+  <a href="<c:url value="/user/personalSecurity" />" class="list-group-item active "><i class="fa fa-lock"></i> ${personalsecurity}  </a>
 			</div>
 		</div>
 		<!--main content start-->
@@ -69,7 +72,7 @@
 					<div class="row">
                       <div class="col-md-4"></div>
 						<div class="col-md-4">
-							<h2 style="text-align:center;padding-top: 1em;"><i class="fa fa-lock"></i> Update password <i class="fa fa-lock"></i></h2>
+							<h2 style="text-align:center;padding-top: 1em;"><i class="fa fa-lock"></i> ${updatepassword} <i class="fa fa-lock"></i></h2>
 							<form:form id="contact-form" name="contact-form"
 								class="form-horizontal" modelAttribute="personalSecurityForm"
 								method="POST">
@@ -78,7 +81,7 @@
 									<div class="col-md-12 height-input-string-security">
 										<form:password id="password" name="password"
 											class="form-control input-md" path="password"
-											placeholder="Password"></form:password>
+											placeholder="${password}"></form:password>
 										<span class="error"><form:errors path="password" /></span>
 									</div>
 								</div>
@@ -86,7 +89,7 @@
 									<div class="col-md-12 height-input-string-security">
 										<form:password id="confirmPassword" name="confirmPassword"
 											class="form-control input-md" path="confirmPassword"
-											placeholder="Confirm password"></form:password>
+											placeholder="${confirmpassword}"></form:password>
 										<span class="error"><form:errors path="confirmPassword" /></span>
 									</div>
 								</div>

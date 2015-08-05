@@ -7,7 +7,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Edit data | Global3dmod</title>
+<title>Edit data  | Global3dmod</title>
 <!-- Init search variable -->
 <spring:message code="headerWithSearch.header.search" var="search"/>
 <spring:message code="designer.menu.works" var="works"/>
@@ -15,7 +15,16 @@
 <spring:message code="designer.menu.add" var="add"/>
 <spring:message code="user.menu.mybookmarks" var="mybookmarks"/>
 <spring:message code="javascript.validation" var="validation" />
-
+<spring:message code="admin.menu.moderators" var="moderators" />
+<spring:message code="admin.menu.designers" var="designers" />
+<spring:message code="admin.menu.users" var="users" />
+<spring:message code="admin.menu.advertisement" var="advertisement" />
+<spring:message code="admin.advertisement.addadvertisement" var="addadvertisement" />
+<spring:message code="form.title" var="title" />
+<spring:message code="form.description" var="description" />
+<spring:message code="form.client" var="client" />
+<spring:message code="form.addadvertisement.date" var="date" />
+<spring:message code="admin.advertisement.addadvertisement.advertisementphoto" var="advertisementphoto" />
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -44,13 +53,13 @@
 				<img src="<c:url value="${user.avatar.avatarPath}" />"
 					class="img-responsive img-thumbnail" alt="Global3Dmod avatar">
 				<a href="<c:url value="/admin/profile" />"
-					class="list-group-item "> <i class="fa fa-exclamation-triangle"></i> Moderators
+					class="list-group-item "> <i class="fa fa-exclamation-triangle"></i> ${moderators}
 				</a> <a href="<c:url value="/admin/designers" />"
-					class="list-group-item"> <i class="fa fa-ban"></i> Designers
+					class="list-group-item"> <i class="fa fa-ban"></i> ${designers}
 				</a> <a href="<c:url value="/admin/users" />" class="list-group-item">
-					<i class="fa fa-user-plus"></i> Users
+					<i class="fa fa-user-plus"></i> ${users}
 				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item active">
-					<i class="fa fa-user-plus"></i> Advertisement
+					<i class="fa fa-user-plus"></i> ${advertisement}
 				</a>
 			</div>
     </div>
@@ -60,36 +69,36 @@
                   <div class="col-md-12 nopadding2">
                   <div class="row">  
                   <div class="col-md-8">
-                  <h2>Add advertisement</h2>
+                  <h2>${addadvertisement}</h2>
                    <form:form id="advertisement-form" name="advertisement-form" class="form-horizontal" modelAttribute="addAdvertisementForm" method="POST" enctype="multipart/form-data">
 	   <div class="form-group sign-feld-margin-top">
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-personal">
-		<form:input id="title" name="title" class="form-control input-md" path="title" placeholder="Title"></form:input>
+		<form:input id="title" name="title" class="form-control input-md" path="title" placeholder="${title}"></form:input>
 		<span class="error"><form:errors path="title" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-addAdvertisement">
-		<form:textarea id="description" name="description" class="form-control input-md" path="description" placeholder="Description"></form:textarea>
+		<form:textarea id="description" name="description" class="form-control input-md" path="description" placeholder="${description}"></form:textarea>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
 		</div>
 		<br>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-addAdvertisement-client" style=" padding-top: 10px;">
-		<form:input id="client" name="client" class="form-control input-md" path="client" placeholder="Client"></form:input>
+		<form:input id="client" name="client" class="form-control input-md" path="client" placeholder="${client}"></form:input>
 		<span class="error"><form:errors path="client" /></span>
 		</div>
 		</div>
 		<div class="height-input-string-addAdvertisement-client">
-		<form:input type="text" class="form-control" id="expirationDate" name="calendar" path="expirationDate" placeholder="Please select a date of expiration"/> 
+		<form:input type="text" class="form-control" id="expirationDate" name="calendar" path="expirationDate" placeholder="${date}"/> 
 			<span class="error"><form:errors path="expirationDate" /></span>
 		</div>
 		<br>
 		<div class="height-input-string-addAdvertisement-image">
-		Advertisement photo: <input type="file" name="advertisementPhoto">
+		${advertisementphoto}: <input type="file" name="advertisementPhoto">
 		<span class="error"><form:errors path="advertisementPhoto" /></span>
 		</div>
 		<br>

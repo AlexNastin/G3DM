@@ -13,8 +13,24 @@
 <spring:message code="designer.menu.works" var="works"/>
 <spring:message code="designer.menu.data" var="data"/>
 <spring:message code="designer.menu.add" var="add"/>
-
-
+<spring:message code="designer.menu.personalsecurity" var="personalsecurity" />
+<spring:message code="form.project" var="project" />
+<spring:message code="form.category" var="category" />
+<spring:message code="form.subcategory" var="subcategory" />
+<spring:message code="form.date" var="date" />
+<spring:message code="form.number" var="number" />
+<spring:message code="form.download" var="download" />
+<spring:message code="form.status" var="status" />
+<spring:message code="form.edit" var="edit" />
+<spring:message code="designer.mywork.published" var="published" />
+<spring:message code="designer.mywork.moderating" var="moderating" />
+<spring:message code="designer.mywork.rejected" var="rejected" />
+<spring:message code="designer.mywork.confirm" var="confirm" />
+<spring:message code="designer.mywork.close" var="close" />
+<spring:message code="designer.mywork.delmessage" var="delmessage" />
+<spring:message code="designer.mywork.deletepost" var="deletepost" />
+<spring:message code="designer.mywork.editmessage" var="editmessage" />
+<spring:message code="form.edit" var="edit" />
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,7 +63,7 @@
   </a>
   
   <a href="<c:url value="/designer/personalData" />" class="list-group-item"><i class="fa fa-cogs"></i> ${data}  </a>
-  <a href="<c:url value="/designer/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> Personal Security  </a>
+  <a href="<c:url value="/designer/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> ${personalsecurity}  </a>
   <a href="<c:url value="/designer/addPost" />" class="list-group-item"><i class="fa fa-plus-square"></i> ${add}  </a>
   
 	 </div>
@@ -61,7 +77,7 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <div> <h2> My works</h2>
+                             <div> <h2> ${works}</h2>
                              
                               <thead>
                               <c:if test="${sizePosts != 0}">
@@ -90,14 +106,14 @@
 </nav>
 </c:if>
                               <tr class="background-user-string">
-                              <th><i class="fa fa-folder-open-o"></i><a href="<c:url value="/designer/profile?sort=title&desc=${titleDesc}" />"> Project</a></th>
-                              <th><i class="fa fa-th-list"></i><a href="<c:url value="/designer/profile?sort=category&desc=${categoryDesc}" />"> Category</a></th>
-                              <th><i class="fa fa-list-alt"></i><a href="<c:url value="/designer/profile?sort=subcategory&desc=${subcategoryDesc}" />"> Subcategory</a></th>
-                              <th><i class="fa fa-calendar"></i><a href="<c:url value="/designer/profile?sort=date&desc=${dateDesc}" />"> Date</a></th>
-                              <th><i class="fa fa-book"></i> Number</th>
-                              <th><i class="fa fa-cloud-download"></i><a href="<c:url value="/designer/profile?sort=downloads&desc=${downloadsDesc}" />"> Downloads</a></th>
-                              <th><i class=" fa fa-edit"></i><a href="<c:url value="/designer/profile?sort=status&desc=${statusDesc}" />"> Status</a></th>
-                                                            <th><i class="fa fa-pencil"></i> Edit</th>
+                              <th><i class="fa fa-folder-open-o"></i><a href="<c:url value="/designer/profile?sort=title&desc=${titleDesc}" />"> ${project}</a></th>
+                              <th><i class="fa fa-th-list"></i><a href="<c:url value="/designer/profile?sort=category&desc=${categoryDesc}" />"> ${category}</a></th>
+                              <th><i class="fa fa-list-alt"></i><a href="<c:url value="/designer/profile?sort=subcategory&desc=${subcategoryDesc}" />"> ${subcategory}</a></th>
+                              <th><i class="fa fa-calendar"></i><a href="<c:url value="/designer/profile?sort=date&desc=${dateDesc}" />"> ${date}</a></th>
+                              <th><i class="fa fa-book"></i> ${number}</th>
+                              <th><i class="fa fa-cloud-download"></i><a href="<c:url value="/designer/profile?sort=downloads&desc=${downloadsDesc}" />"> ${download}</a></th>
+                              <th><i class=" fa fa-edit"></i><a href="<c:url value="/designer/profile?sort=status&desc=${statusDesc}" />"> ${status}</a></th>
+                                                            <th><i class="fa fa-pencil"></i> ${edit}</th>
                               </tr>
                               </thead>
                               <tbody>
@@ -110,13 +126,13 @@
                                   <td>${post.numberPost}</td>
                                   <td>${post.countDownload}</td>
                                   <c:if test="${post.isDisplay == 3}">
-                                  	<td><span class="label label-success label-mini">Published</span></td>
+                                  	<td><span class="label label-success label-mini">${published}</span></td>
                                   </c:if>
                                   <c:if test="${post.isDisplay == 2}">
-                                  	<td><span class="label label-warning label-mini">Moderating</span></td>
+                                  	<td><span class="label label-warning label-mini">${moderating}</span></td>
                                   </c:if>
                                      <c:if test="${post.isDisplay == 1}">
-                                  	<td><span class="label label-warning label-danger">Rejected</span> <i class="fa fa-question-circle" style="color:#357ebd;" data-toggle="tooltip" data-placement="top" title="${post.rejectMessage.message}"></i> </td>
+                                  	<td><span class="label label-warning label-danger">${rejected}</span> <i class="fa fa-question-circle" style="color:#357ebd;" data-toggle="tooltip" data-placement="top" title="${post.rejectMessage.message}"></i> </td>
                                   </c:if>
                                   
                                   <td>
@@ -130,14 +146,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Confirm?</h4>
+        <h4 class="modal-title" id="myModalLabel">${confirm}</h4>
       </div>
       <div class="modal-body">
-        Are you realy wanna delete this file?
+        ${delmessage}
       </div>
       <div class="modal-footer">
-        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
-        <a href="<c:url value="/designer/deletePost?id=${post.idPost}" />" type="button" class="btn btn-danger">Delete post</a>
+        <a type="button" class="btn btn-default" data-dismiss="modal">${close}</a>
+        <a href="<c:url value="/designer/deletePost?id=${post.idPost}" />" type="button" class="btn btn-danger">${deletepost}</a>
       </div>
     </div>
   </div>
@@ -148,14 +164,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Confirm?</h4>
+        <h4 class="modal-title" id="myModalLabel">${confirm}</h4>
       </div>
       <div class="modal-body">
-        After edditing, your post will go to the moderator
+        ${editmessage}
       </div>
       <div class="modal-footer">
-        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
-        <a href="<c:url value="/designer/updatePost?id=${post.idPost}" />" type="button" class="btn btn-primary">Edit</a>
+        <a type="button" class="btn btn-default" data-dismiss="modal">${close}</a>
+        <a href="<c:url value="/designer/updatePost?id=${post.idPost}" />" type="button" class="btn btn-primary">${edit}</a>
       </div>
     </div>
   </div>

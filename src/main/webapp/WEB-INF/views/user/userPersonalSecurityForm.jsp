@@ -90,12 +90,9 @@
 										<span class="error"><form:errors path="confirmPassword" /></span>
 									</div>
 								</div>
-								<spring:message
-									code="designerPersonalSecurityForm.updatepassword.successfully"
-									var="successfully" />
-								<c:if test="${updatePasswordSuccessfully != null}">
-									${successfully }
-							</c:if>
+									   <c:if  test="${message != null}">
+			  <div class="alert alert-info" role="alert" style="margin-top: 3%; padding:1%">${message}</div> 
+			   </c:if>
 								<br>
 
 								<div class="form-group" style="text-align: center;">

@@ -7,6 +7,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +33,9 @@ import com.global3Dmod.ÇDmodels.service.IUserService;
  */
 @Controller
 public class UserController {
+	
+	@Autowired
+	private MessageSource messages;
 	
 	@Autowired
 	private PropertyManagerG3DM propertyManager;
@@ -125,9 +129,9 @@ public class UserController {
 			return modelAndView;
 		}
 		userService.updateUser(personalDataForm, person.getLogin(), propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
-		ModelAndView modelAndView2 = new ModelAndView(
+		ModelAndView modelAndView = new ModelAndView(
 				"redirect:/user/personalData/updateForm");
-		return modelAndView2;
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/user/personalSecurity/updatePasswordFormAdd", method = RequestMethod.POST)
@@ -141,11 +145,11 @@ public class UserController {
 			return modelAndView;
 		}
 		userService.updatePassword(personalSecurityForm, person.getLogin());
-
-		ModelAndView modelAndView2 = new ModelAndView(
-				"/user/personalSecurity");
-		modelAndView2.addObject("updatePasswordSuccessfully", "successfully");
-		return modelAndView2;
+		ModelAndView modelAndView = new ModelAndView("user/userPersonalSecurityForm");
+		String message = messages.getMessage(
+				"email.message.resetpaswordsuccessful", null, locale);
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
+		return modelAndView;
 	}
 
 }

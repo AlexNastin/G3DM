@@ -73,7 +73,7 @@ public class ForgotPasswordController {
 			if (user == null) {
 				String message = messages.getMessage(
 						"email.message.resetPasswordNotUser", null, locale);
-				modelAndView.addObject("message", message);
+				modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 				return modelAndView;
 			}
 			String token = UUID.randomUUID().toString();
@@ -91,17 +91,17 @@ public class ForgotPasswordController {
 				mailSender.send(email);
 				String message = messages.getMessage(
 						"email.message.resetPasswordEmailSend", null, locale);
-				modelAndView.addObject("message", message);
+				modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 				return modelAndView;
 			}
 			String message = messages.getMessage(
 					"email.message.resetPasswordEmail", null, locale);
-			modelAndView.addObject("message", message);
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 			return modelAndView;
 		} else {
 			String message = messages.getMessage(
 					"email.message.resetPasswordNotUser", null, locale);
-			modelAndView.addObject("message", message);
+			modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 			return modelAndView;
 		}
 	}
@@ -142,7 +142,7 @@ public class ForgotPasswordController {
 			if (passwordResetToken == null || passwordResetToken.getUser_idUser() != id) {
 				String message = messages.getMessage(
 						"email.message.invalidToken", null, locale);
-				modelAndView.addObject("message", message);
+				modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 				return modelAndView;
 			}
 
@@ -151,7 +151,7 @@ public class ForgotPasswordController {
 					.getTime()) <= 0) {
 				String message = messages.getMessage("email.message.expired",
 						null, locale);
-				modelAndView.addObject("message", message);
+				modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 				return modelAndView;
 			}
 			List<GrantedAuthority> grantedAuths = new ArrayList<>();
@@ -165,7 +165,7 @@ public class ForgotPasswordController {
 		}
 		String message = messages.getMessage("email.message.invalidToken",
 				null, locale);
-		modelAndView.addObject("message", message);
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 		return modelAndView;
 	}
 
@@ -178,7 +178,7 @@ public class ForgotPasswordController {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		String message = messages.getMessage(
 				"email.message.resetpaswordsuccessful", null, locale);
-		modelAndView.addObject("message", message);
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 		return modelAndView;
 	}
 

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,6 +41,9 @@ public class DesignerController {
 
 	private static Logger LOGGER = Logger.getLogger(DesignerController.class);
 
+	@Autowired
+	private MessageSource messages;
+	
 	@Autowired
 	private IDesignerService designerService;
 
@@ -206,20 +210,10 @@ public class DesignerController {
 		}
 		designerService.updatePassword(personalSecurityForm, person.getLogin());
 
-		ModelAndView modelAndView2 = new ModelAndView(
-				"/designer/personalSecurity");
-		modelAndView2.addObject("updatePasswordSuccessfully", "successfully");
-		return modelAndView2;
-	}
-
-	// Test
-	@RequestMapping(value = "/test", method = RequestMethod.GET)
-	public ModelAndView test(Locale locale, Model model)
-			throws ServiceException {
-		ModelAndView modelAndView = new ModelAndView("designer/postsByDesigner");
-		List<Post> posts = designerService.getPostsByDesigner(3);
-		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_BY_DESIGNER,
-				posts);
+		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalSecurityForm");
+		String message = messages.getMessage(
+				"email.message.resetpaswordsuccessful", null, locale);
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 		return modelAndView;
 	}
 

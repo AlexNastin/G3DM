@@ -51,11 +51,12 @@
 	<%@include file="/WEB-INF/views/header/headerWithSearch.jsp"%>
 	<!-- Designer's page will start here -->
 
-<!-- Menu -->     
- <div class="row footerpadding">
-    <div class="col-md-2 nopadding1">
-     <div class="list-group">
-      <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar"> 
+	<!-- Menu -->
+	<div class="row footerpadding">
+		<div class="col-md-2 nopadding1">
+			<div class="list-group">
+				<img src="<c:url value="${user.avatar.avatarPath}" />"
+					class="img-responsive img-thumbnail" alt="Global3Dmod avatar">
 				<a href="<c:url value="/designer/profile?sort=date&page=1" />"
 					class="list-group-item"> <i class="fa fa-briefcase"></i>
 					${works}
@@ -75,8 +76,10 @@
 					<div class="row">
 						<div class="col-md-4"></div>
 						<div class="col-md-4">
-						
-							<h2 style="text-align:center;padding-top: 1em;"><i class="fa fa-lock"></i> Update password <i class="fa fa-lock"></i></h2>
+
+							<h2 style="text-align: center; padding-top: 1em;">
+								<i class="fa fa-lock"></i> Update password <i class="fa fa-lock"></i>
+							</h2>
 							<form:form id="contact-form" name="contact-form"
 								class="form-horizontal" modelAttribute="personalSecurityForm"
 								method="POST">
@@ -97,12 +100,11 @@
 										<span class="error"><form:errors path="confirmPassword" /></span>
 									</div>
 								</div>
-								<spring:message
-									code="designerPersonalSecurityForm.updatepassword.successfully"
-									var="successfully" />
-								<c:if test="${updatePasswordSuccessfully != null}">
-									${successfully }
-							</c:if>
+
+								<c:if test="${message != null}">
+									<div class="alert alert-info" role="alert"
+										style="margin-top: 3%; padding: 1%">${message}</div>
+								</c:if>
 								<br>
 
 								<div class="form-group" style="text-align: center;">
@@ -161,7 +163,11 @@
 		});
 	</script>
 
-<script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
-<script src="<c:url value="/resources/js/${validation}.js" />"> </script>
+	<script src="<c:url value="/resources/js/jquery.validate.min.js" />">
+		
+	</script>
+	<script src="<c:url value="/resources/js/${validation}.js" />">
+		
+	</script>
 </body>
 </html>

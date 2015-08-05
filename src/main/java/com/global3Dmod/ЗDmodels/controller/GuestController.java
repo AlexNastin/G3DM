@@ -146,7 +146,7 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		String message = messages.getMessage(
 				"signin.message.signup.successful", null, locale);
-		modelAndView.addObject("message", message);
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 		return modelAndView;
 	}
 

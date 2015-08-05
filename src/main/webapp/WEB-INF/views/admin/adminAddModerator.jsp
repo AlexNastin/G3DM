@@ -68,31 +68,33 @@
 					
 					
 			<form:form modelAttribute="addModeratorForm" method="POST">
-		<div class="form-group height-input-addModerator">
+		<div class="form-group height-input-string-addModerator">
 		
 		<form:input placeholder="Login" class="form-control" id="login" name="login" path="login"></form:input>
 		
 		<span class="error color-style-validation"><form:errors
 				path="login" /></span>
 				</div>	
-		<div class="form-group">	
+		<div class="form-group height-input-string-addModerator">
+		
 		<form:password placeholder="Password" class="form-control" id="password" name="password" path="password"></form:password>
 		<form:errors path="password" />
+		
 		</div>
-		<div class="form-group">
+		<div class="form-group height-input-string-addModerator">
 		<form:password placeholder="Confirm password" class="form-control" id="confirmPassword" name="confirmPassword"
 			path="confirmPassword"></form:password>
 		<form:errors path="confirmPassword" />
 		</div>
-		<div class="form-group">
+		<div class="form-group height-input-string-addModerator">
 		<form:input placeholder="Nickname" class="form-control" id="nickName" name="nickName" path="nickName"></form:input>
 		<form:errors path="nickName" />
 		</div>
-		<div class="form-group">
+		<div class="form-group height-input-string-addModerator">
 		<form:input placeholder="Name" class="form-control" id="name" name="name" path="name"></form:input>
 		<form:errors path="name" />
 		</div>
-		<div class="form-group">
+		<div class="form-group height-input-string-addModerator">
 		<form:input placeholder="Surname" class="form-control" id="surname" name="surname" path="surname"></form:input>
 		<form:errors path="surname" />
 		</div>

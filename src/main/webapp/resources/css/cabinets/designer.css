@@ -2884,3 +2884,18 @@ height: 9.7em;
  .footerpadding3{
   	 min-height: 38.86em;
   }
+ .height-input-string-addAdvertisement {
+ height: 3.5em;
+ }
+ .height-input-string-addAdvertisement-client {
+ height: 3.5em;
+ }
+ .height-input-string-addAdvertisement-image {
+  height: 3.5em;
+ }
+ .height-input-string-addModerator {
+ height: 2.7em;
+ }
+ .admin-addModerator-float{
+ float: right;
+ }

@@ -72,10 +72,18 @@
 				<div class="col-md-12 nopadding2">
 					<div class="content-panel">
 						<table class="table table-striped table-advance table-hover">
-						<h2>Advertisements <a href="<c:url value="/admin/addAdvertisement.html" />" class="btn btn-success"> <i class="fa fa-user-plus"></i>
-									Add advertisement
-								</a></h2>
-
+						<div class="row">			
+						<h2>
+						<div class="col-md-12">
+						Advertisements
+						
+						
+						<a href="<c:url value="/admin/addAdvertisement.html" />" class="btn btn-success admin-addModerator-float"> <i class="fa fa-user-plus"></i>
+						Add advertisement
+						</a>
+						</div>
+						</h2>
+                        </div>
 							<!-- Some sorts for table -->
 
 							<thead>

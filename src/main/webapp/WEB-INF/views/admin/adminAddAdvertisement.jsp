@@ -71,22 +71,27 @@
 		</div>
 		</div>
 		<div class="form-group">
-		<div class="col-md-12 height-input-string-personal">
+		<div class="col-md-12 height-input-string-addAdvertisement">
 		<form:textarea id="description" name="description" class="form-control input-md" path="description" placeholder="Description"></form:textarea>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
 		</div>
+		<br>
 		<div class="form-group">
-		<div class="col-md-12 height-input-string-personal" style=" padding-top: 10px;">
+		<div class="col-md-12 height-input-string-addAdvertisement-client" style=" padding-top: 10px;">
 		<form:input id="client" name="client" class="form-control input-md" path="client" placeholder="Client"></form:input>
 		<span class="error"><form:errors path="client" /></span>
 		</div>
 		</div>
+		<div class="height-input-string-addAdvertisement-client">
 		<form:input type="text" class="form-control" id="expirationDate" name="calendar" path="expirationDate" placeholder="Please select a date of expiration"/> 
 			<span class="error"><form:errors path="expirationDate" /></span>
+		</div>
 		<br>
+		<div class="height-input-string-addAdvertisement-image">
 		Advertisement photo: <input type="file" name="advertisementPhoto">
 		<span class="error"><form:errors path="advertisementPhoto" /></span>
+		</div>
 		<br>
 		
 		<div class="form-group">

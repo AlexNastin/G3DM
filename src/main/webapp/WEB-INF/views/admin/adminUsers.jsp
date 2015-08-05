@@ -14,7 +14,15 @@
 <spring:message code="moderator.menu.postspublished" var="publics"/>
 <spring:message code="moderator.menu.users" var="users"/>
 <spring:message code="moderator.menu.designer" var="designers"/>
-
+<spring:message code="admin.menu.moderators" var="moderators" />
+<spring:message code="admin.menu.designers" var="designers" />
+<spring:message code="admin.menu.users" var="users" />
+<spring:message code="admin.menu.advertisement" var="advertisement" />
+<spring:message code="admin.addmoderator.nickname" var="nickname" />
+<spring:message code="admin.addmoderator.name" var="name" />
+<spring:message code="admin.addmoderator.surname" var="surname" />
+<spring:message code="admin.addmoderator.login" var="login" />
+<spring:message code="admin.menu.moderators.dateregister" var="dateregister" />
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,13 +55,13 @@
 					class="img-responsive img-thumbnail" alt="Global3Dmod avatar">
 				<a href="<c:url value="/admin/profile" />"
 					class="list-group-item"> <i
-					class="fa fa-exclamation-triangle"></i> Moderators
+					class="fa fa-exclamation-triangle"></i> ${moderators}
 				</a> <a href="<c:url value="/admin/designers" />"
-					class="list-group-item"> <i class="fa fa-ban"></i> Designers
+					class="list-group-item"> <i class="fa fa-ban"></i> ${designers}
 				</a> <a href="<c:url value="/admin/users" />" class="list-group-item active">
-					<i class="fa fa-user-plus"></i> Users
+					<i class="fa fa-user-plus"></i> ${users}
 				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item">
-					<i class="fa fa-user-plus"></i> Advertisement
+					<i class="fa fa-user-plus"></i> ${advertisement}
 				</a>
 			</div>
       </div>
@@ -97,11 +105,11 @@
 </c:if>
                               
                               <tr class="background-user-string">
-                                  <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/admin/users?sort=nickName&desc=${nickNameDesc}" />"> NickName</a></th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i><a href="<c:url value="/admin/users?sort=login&desc=${loginDesc}" />"> Login</a> </th>
-                                  <th><a href="<c:url value="/admin/users?sort=name&desc=${nameDesc}" />">Name</a> </th>
-                                  <th> <i class="fa fa-calendar"></i><a href="<c:url value="/admin/users?sort=surname&desc=${surnameDesc}" />"> Surname</a> </th>
-                                  <th><i class="fa fa-th-list"></i><a href="<c:url value="/admin/users?sort=dateRegistration&desc=${dateRegistrationDesc}" />"> Date register</a> </th>
+                                  <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/admin/users?sort=nickName&desc=${nickNameDesc}" />"> ${nickname}</a></th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i><a href="<c:url value="/admin/users?sort=login&desc=${loginDesc}" />"> ${login}</a> </th>
+                                  <th><a href="<c:url value="/admin/users?sort=name&desc=${nameDesc}" />">${name}</a> </th>
+                                  <th> <i class="fa fa-calendar"></i><a href="<c:url value="/admin/users?sort=surname&desc=${surnameDesc}" />"> ${surname}</a> </th>
+                                  <th><i class="fa fa-th-list"></i><a href="<c:url value="/admin/users?sort=dateRegistration&desc=${dateRegistrationDesc}" />"> ${dateregister}</a> </th>
                               </tr>
                               </thead>
                               <tbody>

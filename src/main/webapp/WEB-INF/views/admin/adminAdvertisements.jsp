@@ -14,7 +14,18 @@
 <spring:message code="moderator.menu.postspublished" var="publics" />
 <spring:message code="moderator.menu.users" var="users" />
 <spring:message code="moderator.menu.designer" var="designers" />
-
+<spring:message code="admin.menu.moderators" var="moderators" />
+<spring:message code="admin.menu.designers" var="designers" />
+<spring:message code="admin.menu.users" var="users" />
+<spring:message code="admin.menu.advertisement" var="advertisement" />
+<spring:message code="admin.advertisement.addadvertisement" var="addadvertisement" />
+<spring:message code="form.title" var="title" />
+<spring:message code="form.miniature" var="miniature" />
+<spring:message code="form.description" var="description" />
+<spring:message code="form.client" var="client" />
+<spring:message code="admin.menu.moderators.dateregister" var="dateregister" />
+<spring:message code="form.expirationdate" var="expirationdate" />
+<spring:message code="form.edit" var="edit" />
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,13 +66,13 @@
 					class="img-responsive img-thumbnail" alt="Global3Dmod avatar">
 				<a href="<c:url value="/admin/profile" />"
 					class="list-group-item"> <i
-					class="fa fa-exclamation-triangle"></i> Moderators
+					class="fa fa-exclamation-triangle"></i> ${moderators}
 				</a> <a href="<c:url value="/admin/designers" />"
-					class="list-group-item"> <i class="fa fa-ban"></i> Designers
+					class="list-group-item"> <i class="fa fa-ban"></i> ${designers}
 				</a> <a href="<c:url value="/admin/users" />" class="list-group-item">
-					<i class="fa fa-user-plus"></i> Users
+					<i class="fa fa-user-plus"></i> ${users}
 				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item active">
-					<i class="fa fa-user-plus"></i> Advertisement
+					<i class="fa fa-user-plus"></i> ${advertisement}
 				</a>
 			</div>
 		</div>
@@ -75,11 +86,11 @@
 						<div class="row">			
 						<h2>
 						<div class="col-md-12">
-						Advertisements
+						${advertisement}
 						
 						
 						<a href="<c:url value="/admin/addAdvertisement.html" />" class="btn btn-success admin-addModerator-float"> <i class="fa fa-user-plus"></i>
-						Add advertisement
+						${addadvertisement}
 						</a>
 						</div>
 						</h2>
@@ -115,19 +126,19 @@
 								<tr class="background-user-string">
 									<th><i class="fa fa-bullhorn"></i><a
 										href="<c:url value="/admin/advertisements?sort=title&desc=${titleDesc}" />">
-											Title</a></th>
-									<th class="hidden-phone"><i class="fa fa-question-circle"></i>Miniature</th>
-									<th>Description</th>
+											${title}</a></th>
+									<th class="hidden-phone"><i class="fa fa-question-circle"></i> ${miniature}</th>
+									<th>${description}</th>
 									<th><i class="fa fa-calendar"></i><a
 										href="<c:url value="/admin/advertisements?sort=client&desc=${clientDesc}" />">
-											Client</a></th>
+											${client}</a></th>
 									<th><i class="fa fa-th-list"></i><a
 										href="<c:url value="/admin/advertisements?sort=dateRegistration&desc=${dateRegistrationDesc}" />">
-											Date register</a></th>
+											${dateregister}</a></th>
 									<th><i class="fa fa-list-alt"></i> <a
 										href="<c:url value="/admin/advertisements?sort=dateExpiration&desc=${dateExpirationDesc}" />">
-											Expiration date</a></th>
-											<th><i class="fa fa-pencil"></i> Edit</th>
+											${expirationdate}</a></th>
+											<th><i class="fa fa-pencil"></i> ${edit}</th>
 								</tr>
 							</thead>
 							<tbody>

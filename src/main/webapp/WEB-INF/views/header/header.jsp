@@ -49,7 +49,6 @@
                 
             </ul>
             <ul class="nav navbar-nav navbar-right">
-           		<li><a href="<c:url value="/test"/>">TEST</a></li>
                 <li><a href="<c:url value="/about"/>">${about}</a></li>
                 <li><a href="<c:url value="/contact"/>">${contact}</a></li>
                 <li><a class="supernav" href="index?locale=en">EN |</a>

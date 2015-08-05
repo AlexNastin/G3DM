@@ -50,7 +50,7 @@
 						<li><a href="<c:url value="/mission" />">${ourmission}</a></li>
 						<li><a href="<c:url value="/team" />">${team}</a></li>
 						<li><a href="<c:url value="/jobs" />">${jobs}</a></li>
-						<li><a href="<c:url value="/blog" />">${blog}</a></li>
+						<li><a href="#">${blog}</a></li>
 					</ul>
 				</div>
 				<div class="footer-grid">

@@ -26,12 +26,6 @@ public class OthersController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/blog", method = RequestMethod.GET)
-	public ModelAndView blog() {
-		ModelAndView modelAndView = new ModelAndView("others/blog");
-		return modelAndView;
-	}
-
 	@RequestMapping(value = "/fileConversions", method = RequestMethod.GET)
 	public ModelAndView fileConversions() {
 		ModelAndView modelAndView = new ModelAndView("others/fileConversions");

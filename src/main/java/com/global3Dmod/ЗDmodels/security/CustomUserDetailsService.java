@@ -41,6 +41,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 			userG3DM = userDAO.selectUser(login);
 			LOGGER.info("User: " + userG3DM.getLogin() +" i entered this system");
 		} catch (DaoException e) {
+			LOGGER.error("Problem dao");
 		}
 		return new org.springframework.security.core.userdetails.User(
 				userG3DM.getLogin(), userG3DM.getPassword().toLowerCase(),

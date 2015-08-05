@@ -32,4 +32,6 @@ public interface IUserDAO {
 	public List<User> selectDesignersForSort() throws DaoException;
 	
 	public List<User> selectUsersForSort() throws DaoException;
+
+	public List<User> selectTop4ByRating() throws DaoException;
 }

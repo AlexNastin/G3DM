@@ -65,6 +65,11 @@
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
                              <h2>Designers</h2>
+                             
+                             <a href="<c:url value="/admin/formTopDesigners" />" class="btn btn-success admin-addModerator-float"> <i class="fa fa-user-plus"></i>
+						Form top designers
+						</a>
+						<c:if test="${message == true}">Top is ready</c:if>
                               
                               <!-- Some sorts for table -->
                              

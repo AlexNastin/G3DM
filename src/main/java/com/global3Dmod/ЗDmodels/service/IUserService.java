@@ -37,5 +37,7 @@ public interface IUserService {
 	public void setPathToPhotos(Post post) throws ServiceException;
 	
 	public void setPathToPhotos(User user) throws ServiceException;
+	
+	public void setPathToPhotosUsers(List<User> users) throws ServiceException;
 
 }

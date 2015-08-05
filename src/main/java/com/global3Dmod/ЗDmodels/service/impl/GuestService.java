@@ -493,6 +493,17 @@ public class GuestService implements IGuestService {
 		}
 		return posts;
 	}
+	
+	@Override
+	public List<User> getTop4UsersByRating() throws ServiceException {
+		List<User> users;
+		try {
+			users = userDAO.selectTop4ByRating();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return users;
+	}
 
 	@Override
 	public String getFileFullPath(Integer idFile) throws ServiceException {

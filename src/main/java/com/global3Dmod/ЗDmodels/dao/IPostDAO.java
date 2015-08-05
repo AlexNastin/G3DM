@@ -1,6 +1,7 @@
 package com.global3Dmod.ÇDmodels.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
@@ -40,5 +41,8 @@ public interface IPostDAO {
 	public List<Post> selectTop4ByLike() throws DaoException;
 
 	public List<Post> selectComplainedPostsForSort() throws DaoException;
+	
+	public Map<Integer, Integer> selectColPostsForAllUsers() throws DaoException;
 
+	public List<Integer> selectIdDesignersHavePosts() throws DaoException;
 }

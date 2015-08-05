@@ -43,4 +43,6 @@ public interface IAdminService {
 
 	public void deleteAdvertisement(Integer idAdvertisement) throws ServiceException;
 
+	public void formTopDesigners() throws ServiceException;
+
 }

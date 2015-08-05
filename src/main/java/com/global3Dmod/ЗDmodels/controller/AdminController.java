@@ -19,6 +19,7 @@ import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.AddAdvertisementForm;
 import com.global3Dmod.ÇDmodels.form.AddModeratorForm;
+import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.UpdateAdvertisementForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
@@ -335,6 +336,21 @@ public class AdminController {
 		adminService.deleteAdvertisement(idAdvertisement);
 		ModelAndView modelAndView2 = new ModelAndView(
 				"redirect:/admin/advertisements");
+		return modelAndView2;
+	}
+	
+	@RequestMapping(value = "/admin/formTopDesigners", method = RequestMethod.GET)
+	public ModelAndView formTopDesigners(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		adminService.formTopDesigners();
+		ModelAndView modelAndView2 = new ModelAndView(
+				"redirect:/admin/designers");
+		modelAndView2.addObject(ControllerParamConstant.MESSAGE, true);
 		return modelAndView2;
 	}
 

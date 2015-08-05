@@ -81,6 +81,8 @@ public interface IGuestService {
 			throws ServiceException;
 
 	public List<Post> getTop4PostsByLike() throws ServiceException;
+	
+	public List<User> getTop4UsersByRating() throws ServiceException;
 
 	public String getFileFullPath(Integer idFile) throws ServiceException;
 }

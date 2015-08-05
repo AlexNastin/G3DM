@@ -128,22 +128,12 @@
 							</c:forEach>
 						</ul>
 						<ul>
-							<li><a href="#"><img class="respimg"
-									src=<c:url value="/resources/images/categories/toys.jpg" />
-									alt="">
-								<h4>Boots</h4></a></li>
-							<li><a href="#"><img
-									src=<c:url value="/resources/images/categories/architecture.jpg" />
-									alt="">
-								<h4>Boots</h4></a></li>
-							<li><a href="#"><img
-									src=<c:url value="/resources/images/categories/garden.jpg" />
-									alt="">
-								<h4>Boots</h4></a></li>
-							<li><a href="#"><img
-									src=<c:url value="/resources/images/categories/home.jpg" />
-									alt="">
-								<h4>Boots</h4></a></li>
+							<c:forEach items="${listTop4Users}" var="user">
+								<li><a href="<c:url value="/guest/designerProfile?id=${user.idUser}"/>"><img
+										class="respimg"
+										src=<c:url value="${user.avatar.avatarPath}" /> alt="">
+									<h4>${user.nickName}</h4></a></li>
+							</c:forEach>
 						</ul>
 
 

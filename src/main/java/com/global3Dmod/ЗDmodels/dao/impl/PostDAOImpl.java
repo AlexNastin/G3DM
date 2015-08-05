@@ -1,6 +1,11 @@
 package com.global3Dmod.ÇDmodels.dao.impl;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -254,6 +259,28 @@ public class PostDAOImpl implements IPostDAO {
 			Hibernate.initialize(post.getUser());
 		}
 		return posts;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public Map<Integer, Integer> selectColPostsForAllUsers()
+			throws DaoException {
+		Map<Integer, Integer> colPostsWithIdDesigners = new HashMap<Integer, Integer>();
+		List<Integer> idDesigners = em.createNamedQuery("Post.allDesignersHavePosts").getResultList();
+		List<Long> colPosts = em.createNamedQuery("Post.colPostAllUsers").getResultList();
+		for (int i = 0; i < idDesigners.size(); i++) {
+			colPostsWithIdDesigners.put(idDesigners.get(i), colPosts.get(i).intValue());
+		}
+		return colPostsWithIdDesigners;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Integer> selectIdDesignersHavePosts() throws DaoException {
+		List<Integer> idDesigners = em.createNamedQuery("Post.allDesignersHavePosts").getResultList();
+		return idDesigners;
 	}
 
 }

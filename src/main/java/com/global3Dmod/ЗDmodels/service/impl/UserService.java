@@ -194,5 +194,15 @@ public class UserService implements IUserService {
 		fullPath.append(oldPath);
 		user.getAvatar().setAvatarPath(fullPath.toString());
 	}
+	
+	@Override
+	public void setPathToPhotosUsers(List<User> users) throws ServiceException {
+		for (User user : users) {
+			String oldPath = user.getAvatar().getAvatarPath();
+			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+			fullPath.append(oldPath);
+			user.getAvatar().setAvatarPath(fullPath.toString());
+		}
+	}
 
 }

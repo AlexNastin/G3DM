@@ -59,6 +59,9 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS, advertisements);
 		List<Post> posts = guestService.getTop4PostsByLike();
 		guestService.setRatingInPosts(posts);
+		List<User> users = guestService.getTop4UsersByRating();
+		userService.setPathToPhotosUsers(users);
+		modelAndView.addObject(ControllerParamConstant.LIST_TOP4_USERS, users);
 		userService.sortPosts(posts, "rating", false);
 		modelAndView.addObject(ControllerParamConstant.LIST_TOP4_POSTS, posts);
 		return modelAndView;

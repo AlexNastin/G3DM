@@ -2,11 +2,14 @@ package com.global3Dmod.ÇDmodels.service.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
+import com.global3Dmod.ÇDmodels.dao.ILikeDAO;
+import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
 import com.global3Dmod.ÇDmodels.domain.User;
@@ -54,6 +59,12 @@ public class AdminService implements IAdminService{
 	
 	@Autowired
 	private IUserDAO userDAO;
+	
+	@Autowired
+	private ILikeDAO likeDAO;
+	
+	@Autowired
+	private IPostDAO postDAO;
 	
 	@Autowired
 	private IDesignerService designerServise;
@@ -390,6 +401,27 @@ public class AdminService implements IAdminService{
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
+	}
+
+	@Override
+	public void formTopDesigners() throws ServiceException {
+		try {
+			Map<Integer, Integer> colPostsWithIdDesigners = postDAO.selectColPostsForAllUsers();
+			List<Integer> idDesigners = postDAO.selectIdDesignersHavePosts();
+			for (Integer key : idDesigners) {
+				int allPosts = colPostsWithIdDesigners.get(key);
+				int allLikes = likeDAO.selectCountLikeByAllPosts(key);
+				double rating = new BigDecimal((double) allLikes / allPosts).setScale(1,
+						RoundingMode.UP).doubleValue();
+				User user = userDAO.selectUserById(key);
+				user.setRating(rating);
+				userDAO.updateUser(user);
+			}
+			
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		
 	}
 
 }

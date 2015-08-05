@@ -14,6 +14,16 @@
 <spring:message code="addPost.menu.data" var="data"/>
 <spring:message code="addPost.menu.add" var="add"/>
 <spring:message code="javascript.validation" var="validation" />
+<spring:message code="designer.menu.personalsecurity" var="personalsecurity" />
+<spring:message code="form.title" var="title" />
+<spring:message code="form.description" var="description" />
+<spring:message code="form.instruction" var="instruction" />
+<spring:message code="designer.addwork.enterinformation" var="enterinformation" />
+<spring:message code="designer.addwork.selecttechnologies" var="selecttechnologies" />
+<spring:message code="designer.addwork.modeltoupload" var="modeltoupload" />
+<spring:message code="designer.addwork.photomodeltoupload" var="photomodeltoupload" />
+<spring:message code="form.add" var="addbutton" />
+
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -46,32 +56,32 @@
   </a>
   
   <a href="<c:url value="/designer/personalData" />" class="list-group-item"><i class="fa fa-cogs"></i> ${data}  </a>
-  <a href="<c:url value="/designer/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> Personal Security  </a>
+  <a href="<c:url value="/designer/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> ${personalsecurity}  </a>
   <a href="<c:url value="/designer/addPost" />" class="list-group-item active"><i class="fa fa-plus-square"></i> ${add}  </a>
   
 </div>
       </div>
   <div class="row">
 		<div class="col-md-10 nopadding2">
-		<h2>Please, enter requred information</h2>
+		<h2>${enterinformation}</h2>
 				
 	<form:form role="form" modelAttribute="postForm" method="POST" id="add-post-form"
 		name="add-post-form" enctype="multipart/form-data">
 		<div class="row">
 		<div class="col-md-4">
 		<div class="form-group height-input-string-addpost">
-		<form:input class="form-control" id="title" name="title" path="title" placeholder="title"></form:input>
+		<form:input class="form-control" id="title" name="title" path="title" placeholder="${title}"></form:input>
 		
 		<span class="error"><form:errors path="title" /></span>
 		</div>
 		<div class="form-group height-input-string-addpost-description">
 		<form:textarea class="form-control" id="description" name="description" path="description"
-			placeholder="description"  rows="5" cols="30"></form:textarea>
+			placeholder="${description}"  rows="5" cols="30"></form:textarea>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
 		<div class="form-group height-input-string-addpost-instruction">
 		<form:textarea class="form-control" id="instruction" name="instruction" path="instruction"
-			placeholder="instruction"></form:textarea>
+			placeholder="${instruction}"></form:textarea>
 		<span class="error"><form:errors path="instruction" /></span>
 		</div>
 		<div class="form-group">
@@ -104,7 +114,7 @@
 		
 		<div class="col-md-4">
 		<div class="height-input-string-addpost-technologies">
-		<h3 style="margin-top:0px">Select technologies</h3>
+		<h3 style="margin-top:0px">${selecttechnologies}</h3>
 		
 		<c:forEach items="${listTechnologies}" var="technology">
 			<form:checkbox id="technologiesId"  path="technologiesId" value="${technology.idTechnology}" />${technology.title}<br>
@@ -114,16 +124,16 @@
 		</div>
 		<br>
 		<div class="height-input-string-addpost-stl">
-		Model to upload: <input type="file" name="model">
+		${modeltoupload} <input type="file" name="model">
 		<span class="error"><form:errors path="model" /></span>
 		</div>
 		<br>
 		<div class="height-input-string-addpost-stl">
-        Photo model to upload: <input type="file" name="firstPhoto">
+        ${photomodeltoupload} <input type="file" name="firstPhoto">
 		<span class="error"><form:errors path="firstPhoto" /></span>
 		</div>
 		<br>
-		<input class="btn btn-primary" type="submit" value="Add" />
+		<input class="btn btn-primary" type="submit" value="${addbutton}" />
 		</div>
 		</div>
 	</form:form>

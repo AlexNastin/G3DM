@@ -22,11 +22,12 @@
 <spring:message code="form.surname" var="surname" />
 <spring:message code="form.datebirth" var="datebirth" />
 <spring:message code="form.rating" var="rating" />
-<spring:message code="form.gender" var="gender" />
+<spring:message code="form.gender.male" var="male" />
 <spring:message code="form.gender.female" var="female" />
 <spring:message code="form.gender" var="gender" />
 <spring:message code="form.gender.none" var="none" />
 <spring:message code="form.update" var="update" />
+
 
 
  <meta charset="utf-8">

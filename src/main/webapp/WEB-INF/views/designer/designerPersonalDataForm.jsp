@@ -14,7 +14,23 @@
 <spring:message code="designer.menu.data" var="data"/>
 <spring:message code="designer.menu.add" var="add"/>
 <spring:message code="javascript.validation" var="validation" />
-
+<spring:message code="designer.menu.personalsecurity" var="personalsecurity" />
+<spring:message code="form.city" var="city" />
+<spring:message code="form.country" var="country" />
+<spring:message code="form.login" var="login" />
+<spring:message code="form.nickname" var="nickname" />
+<spring:message code="form.name" var="name" />
+<spring:message code="form.surname" var="surname" />
+<spring:message code="form.datebirth" var="datebirth" />
+<spring:message code="form.rating" var="rating" />
+<spring:message code="form.gender.male" var="male" />
+<spring:message code="form.gender.female" var="female" />
+<spring:message code="form.gender" var="gender" />
+<spring:message code="form.gender.none" var="none" />
+<spring:message code="form.updatedata" var="updatedata" />
+<spring:message code="designer.updatepersonaldata.birthdate" var="birthdate" />
+<spring:message code="form.save" var="save" />
+<spring:message code="form.avatarupload" var="avatarupload" />
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -53,7 +69,7 @@
   </a>
   
   <a href="<c:url value="/designer/personalData" />" class="list-group-item active"><i class="fa fa-cogs"></i> ${data}  </a>
-  <a href="<c:url value="/designer/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> Personal Security  </a>
+  <a href="<c:url value="/designer/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> ${personalsecurity}  </a>
   <a href="<c:url value="/designer/addPost" />" class="list-group-item"><i class="fa fa-plus-square"></i> ${add}  </a>
   
 	 </div>
@@ -65,60 +81,60 @@
                   <div class="row">
                       <div class="col-md-4 height-div-updatepersonal" style="padding-left:0px;">
                       <div class="content-pael">                      
-                      <h2>Personal data</h2>
+                      <h2>${data}</h2>
                       
                           <table class="table table-striped table-advance table-hover">
                                                                                       
                               <tbody>
                               <tr>
-                                  <td>NickName</td>
+                                  <td>${nickname}</td>
                                   <td class="hidden-phone">${user.nickName}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>City</td>
+                                   <td>${city}</td>
                                   	<td class="hidden-phone">${user.city.title}</td>
                                   
                               </tr>
                               <tr>
-                                  <td>Country</td>
+                                  <td>${country}</td>
                                   <td class="hidden-phone">${user.country.title}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Login</td>
+                                   <td>${login}</td>
                                   <td class="hidden-phone">${user.login}</td>
                               </tr>
                               <tr>
-                                   <td>Name</td>
+                                   <td>${name}</td>
                                   <td class="hidden-phone">${user.name}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Surname</td>
+                                   <td>${surname}</td>
                                   <td class="hidden-phone">${user.surname}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Date birth</td>
+                                   <td>${datebirth}</td>
                                   <td class="hidden-phone">${user.dateBirth}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Rating</td>
+                                   <td>${rating}</td>
                                   <td class="hidden-phone">${user.rating}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Gender</td>
+                                   <td>${gender}</td>
                                   <td class="hidden-phone"><c:if test="${user.gender == 2}">
-			Male
+			${male}
 		</c:if>
 		<c:if test="${user.gender == 1}">
-			Female
+			${female}
 		</c:if>
 		<c:if test="${user.gender == 0}">
-			None
+			${none}
 		</c:if></td>
                                   
                               </tr>
@@ -128,19 +144,19 @@
                                           
                   </div>
                   <div class="col-md-8">
-                  <h2>Update data</h2>
+                  <h2>${updatedata}</h2>
                    <form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="personalDataForm" method="POST" enctype="multipart/form-data">
 	   <div class="form-group sign-feld-margin-top">
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-personal">
-		<form:input id="name" name="name" class="form-control input-md" path="name" placeholder="Name" value="${user.name}"></form:input>
+		<form:input id="name" name="name" class="form-control input-md" path="name" placeholder="${name}" value="${user.name}"></form:input>
 		<span class="error"><form:errors path="name" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-personal">
-		<form:input id="surname" name="surname" class="form-control input-md" path="surname" placeholder="Surname" value="${user.surname}"></form:input>
+		<form:input id="surname" name="surname" class="form-control input-md" path="surname" placeholder="${surname}" value="${user.surname}"></form:input>
 		<span class="error"><form:errors path="surname" /></span>
 		</div>
 		</div>
@@ -158,25 +174,25 @@
 				<br>
 			</div>
 		<div class="height-input-updatepersonal-date">
-		<form:input type="text" class="form-control" id="dateBirth" name="calendar" path="dateBirth" placeholder="Please select a date of birth"/> 
+		<form:input type="text" class="form-control" id="dateBirth" name="calendar" path="dateBirth" placeholder="${birthdate}"/> 
 		</div>
 		<br>
 				<form:select class="form-control" id="gender"
 			name="gender" path="gender">
-			<form:option value="0">None</form:option>
-			<form:option value="1">Female</form:option>
-			<form:option value="2">Male</form:option>
+			<form:option value="0">${none}</form:option>
+			<form:option value="1">${female}</form:option>
+			<form:option value="2">${male}</form:option>
 		</form:select>
 		<br>
 		<div class="height-input-updatepersonal-avatar">
-		Avatar to upload: <input type="file" name="avatar">
+		${avatarupload} <input type="file" name="avatar">
 		<span class="error"><form:errors path="avatar" /></span>
 		</div>
 		<br>
 		
 		<div class="form-group">
 		<div class="col-md-12">
-		<input type="submit" class="btn btn-primary left-designer" value="Save" />
+		<input type="submit" class="btn btn-primary left-designer" value="${save}" />
 		</div>
 	    </div>
 	</form:form>

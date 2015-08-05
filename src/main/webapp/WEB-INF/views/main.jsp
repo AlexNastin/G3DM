@@ -63,11 +63,11 @@
 
 
 	<div class="group container categories">
-		<div class="item line"></div>
+		<div class="item line1"></div>
 		<div class="item text">
 			<spring:message code="main.categories.categories" />
 		</div>
-		<div class="item line"></div>
+		<div class="item line1"></div>
 	</div>
 	<div class="container col-lg-12 nomargin">
 
@@ -104,9 +104,9 @@
 
 	</div>
 	<div class="group container">
-		<div class="item line"></div>
+		<div class="item line1"></div>
 		<div class="item text">Our tops</div>
-		<div class="item line"></div>
+		<div class="item line1"></div>
 	</div>
 	<div class="clearfix"></div>
 
@@ -148,7 +148,6 @@
 		</div>
 	</div>
 
-	</div>
 	<div class="clearfix"></div>
 	<br>
 	<div class="row nomargin"><%@include

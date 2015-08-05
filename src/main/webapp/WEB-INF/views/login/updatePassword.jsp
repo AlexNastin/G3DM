@@ -57,12 +57,7 @@
 										<span class="error"><form:errors path="confirmPassword" /></span>
 									</div>
 								</div>
-								<spring:message
-									code="designerPersonalSecurityForm.updatepassword.successfully"
-									var="successfully" />
-								<c:if test="${updatePasswordSuccessfully != null}">
-									${successfully }
-							</c:if>
+								
 								<br>
 
 								<div class="form-group" style="text-align: center;">
@@ -71,8 +66,7 @@
 
 								</div>
 							</form:form>
-	<script
-		src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	
 	<script type="text/javascript">
 		function savePass() {
 			var pass = $("#pass").val();
@@ -109,7 +103,6 @@
 <%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
-    <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
-    <script src="<c:url value="/resources/js/${validation}.js" />"> </script>
+    
 </body>
 </html>

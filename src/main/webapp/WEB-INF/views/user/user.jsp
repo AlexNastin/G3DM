@@ -20,6 +20,7 @@
 <spring:message code="user.menu.rating" var="rating"/>
 <spring:message code="user.menu.miniature" var="miniature"/>
 <spring:message code="user.menu.designer" var="designer"/>
+<spring:message code="designer.menu.personalsecurity" var="personalsecurity" />
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -51,8 +52,8 @@
       
       <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">      
   <a href="<c:url value="/user/profile" />" class="list-group-item active "><i class="fa fa-briefcase"></i> ${mybookmarks}</a>
- <a href="<c:url value="/user/personalData" />" class="list-group-item"><i class="fa fa-cogs"></i> Personal Data  </a>
-  <a href="<c:url value="/user/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> Personal Security  </a>
+ <a href="<c:url value="/user/personalData" />" class="list-group-item"><i class="fa fa-cogs"></i> ${personaldata}  </a>
+  <a href="<c:url value="/user/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> ${personalsecurity}  </a>
   </div>
       </div>
       <!--main content start-->

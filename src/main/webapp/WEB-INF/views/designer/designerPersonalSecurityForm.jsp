@@ -14,7 +14,10 @@
 <spring:message code="designer.menu.data" var="data" />
 <spring:message code="designer.menu.add" var="add" />
 <spring:message code="javascript.validation" var="validation" />
-
+<spring:message code="designer.menu.personalsecurity" var="personalsecurity" />
+<spring:message code="form.updatepassword" var="updatepassword" />
+<spring:message code="form.password" var="password" />
+<spring:message code="form.confirmpassword" var="confirmpassword" />
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -64,7 +67,7 @@
 					class="list-group-item"><i class="fa fa-cogs"></i> ${data} </a> <a
 					href="<c:url value="/designer/personalSecurity" />"
 					class="list-group-item active"><i class="fa fa-lock"></i>
-					Personal Security </a> <a href="<c:url value="/designer/addPost" />"
+					${personalsecurity} </a> <a href="<c:url value="/designer/addPost" />"
 					class="list-group-item"><i class="fa fa-plus-square"></i>
 					${add} </a>
 			</div>
@@ -78,7 +81,7 @@
 						<div class="col-md-4">
 
 							<h2 style="text-align: center; padding-top: 1em;">
-								<i class="fa fa-lock"></i> Update password <i class="fa fa-lock"></i>
+								<i class="fa fa-lock"></i> ${updatepassword} <i class="fa fa-lock"></i>
 							</h2>
 							<form:form id="contact-form" name="contact-form"
 								class="form-horizontal" modelAttribute="personalSecurityForm"
@@ -88,7 +91,7 @@
 									<div class="col-md-12 height-input-string-security">
 										<form:password id="password" name="password"
 											class="form-control input-md" path="password"
-											placeholder="Password"></form:password>
+											placeholder="${password}"></form:password>
 										<span class="error"><form:errors path="password" /></span>
 									</div>
 								</div>
@@ -96,7 +99,7 @@
 									<div class="col-md-12 height-input-string-security">
 										<form:password id="confirmPassword" name="confirmPassword"
 											class="form-control input-md" path="confirmPassword"
-											placeholder="Confirm password"></form:password>
+											placeholder="${confirmpassword}"></form:password>
 										<span class="error"><form:errors path="confirmPassword" /></span>
 									</div>
 								</div>

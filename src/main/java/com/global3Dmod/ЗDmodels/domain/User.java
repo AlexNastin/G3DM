@@ -31,7 +31,7 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name = "User.findModerators", query = "select u from User u where u.role_idRole = 4"),
 		@NamedQuery(name = "User.findDesigners", query = "select u from User u where u.role_idRole = 3"),
 		@NamedQuery(name = "User.findUsers", query = "select u from User u where u.role_idRole = 2"),
-		@NamedQuery(name = "User.findTop4ByRating", query = "select u from User u order by u.rating desc")})
+		@NamedQuery(name = "User.findTop4ByRating", query = "select u from User u where u.role_idRole = 3 order by u.rating desc")})
 
 public class User implements Essence {
 

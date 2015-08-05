@@ -13,7 +13,20 @@
 <spring:message code="designer.menu.works" var="works"/>
 <spring:message code="designer.menu.data" var="data"/>
 <spring:message code="designer.menu.add" var="add"/>
-
+<spring:message code="designer.menu.personalsecurity" var="personalsecurity" />
+<spring:message code="form.city" var="city" />
+<spring:message code="form.country" var="country" />
+<spring:message code="form.login" var="login" />
+<spring:message code="form.nickname" var="nickname" />
+<spring:message code="form.name" var="name" />
+<spring:message code="form.surname" var="surname" />
+<spring:message code="form.datebirth" var="datebirth" />
+<spring:message code="form.rating" var="rating" />
+<spring:message code="form.gender" var="gender" />
+<spring:message code="form.gender.female" var="female" />
+<spring:message code="form.gender" var="gender" />
+<spring:message code="form.gender.none" var="none" />
+<spring:message code="form.update" var="update" />
 
 
  <meta charset="utf-8">
@@ -48,7 +61,7 @@
   </a>
   
   <a href="<c:url value="/designer/personalData" />" class="list-group-item active"><i class="fa fa-cogs"></i> ${data}  </a>
-  <a href="<c:url value="/designer/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> Personal Security  </a>
+  <a href="<c:url value="/designer/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> ${personalsecurity}  </a>
   <a href="<c:url value="/designer/addPost" />" class="list-group-item"><i class="fa fa-plus-square"></i> ${add}  </a>
   
 	 </div>
@@ -60,60 +73,60 @@
                   <div class="col-md-12 nopadding2">
                       <div class="col-md-4" style="padding-left:0px;">
                       <div class="content-pael">                      
-                      <h2>Personal data</h2>
+                      <h2>${data}</h2>
                       
                           <table class="table table-striped table-advance table-hover">
                                                                                       
                               <tbody>
                               <tr>
-                                  <td>NickName</td>
+                                  <td>${nickname}</td>
                                   <td class="hidden-phone">${user.nickName}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>City</td>
+                                   <td>${city}</td>
                                   	<td class="hidden-phone">${user.city.title}</td>
                                   
                               </tr>
                               <tr>
-                                  <td>Country</td>
+                                  <td>${country}</td>
                                   <td class="hidden-phone">${user.country.title}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Login</td>
+                                   <td>${login}</td>
                                   <td class="hidden-phone">${user.login}</td>
                               </tr>
                               <tr>
-                                   <td>Name</td>
+                                   <td>${name}</td>
                                   <td class="hidden-phone">${user.name}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Surname</td>
+                                   <td>${surname}</td>
                                   <td class="hidden-phone">${user.surname}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Date birth</td>
+                                   <td>${datebirth}</td>
                                   <td class="hidden-phone">${user.dateBirth}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Rating</td>
+                                   <td>${rating}</td>
                                   <td class="hidden-phone">${user.rating}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Gender</td>
+                                   <td>${gender}</td>
                                   <td class="hidden-phone"><c:if test="${user.gender == 2}">
-			Male
+			${male}
 		</c:if>
 		<c:if test="${user.gender == 1}">
-			Female
+			${female}
 		</c:if>
 		<c:if test="${user.gender == 0}">
-			None
+			${none}
 		</c:if></td>
                                   
                               </tr>
@@ -122,7 +135,7 @@
                       </div>
                       <div class="col-md-12">
                       <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/designer/personalData/updateForm"  />"'>
-      Update
+      ${update}
       </button>
       </div>                
                      

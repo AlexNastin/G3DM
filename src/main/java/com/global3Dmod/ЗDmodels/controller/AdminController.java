@@ -349,7 +349,7 @@ public class AdminController {
 		}
 		adminService.formTopDesigners();
 		ModelAndView modelAndView2 = new ModelAndView(
-				"redirect:/admin/designers");
+				"forward:/admin/designers");
 		modelAndView2.addObject(ControllerParamConstant.MESSAGE, true);
 		return modelAndView2;
 	}

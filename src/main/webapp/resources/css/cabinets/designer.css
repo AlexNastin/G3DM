@@ -2899,3 +2899,9 @@ height: 9.7em;
  .admin-addModerator-float{
  float: right;
  }
+ .height-input-string-updateAdvertisement {
+ height: 2.5em;
+ }
+  .height-input-string-updateAdvertisement-description {
+    height: 6.5em;
+  }

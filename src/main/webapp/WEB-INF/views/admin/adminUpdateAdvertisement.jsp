@@ -118,7 +118,7 @@
 								method="POST" enctype="multipart/form-data">
 								<div class="form-group sign-feld-margin-top"></div>
 								<div class="form-group">
-									<div class="col-md-12 height-input-string-personal">
+									<div class="col-md-12 height-input-string-updateAdvertisement">
 										<form:input id="title" name="title"
 											class="form-control input-md" path="title"
 											placeholder="Title"></form:input>
@@ -126,7 +126,7 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div class="col-md-12 height-input-string-personal"
+									<div class="col-md-12 height-input-string-updateAdvertisement-description"
 										style="padding-top: 10px;">
 										<form:textarea id="description" name="description"
 											class="form-control input-md" path="description"
@@ -134,14 +134,18 @@
 										<span class="error"><form:errors path="description" /></span>
 									</div>
 								</div>
+								<div class="height-input-string-updateAdvertisement">
 								<form:input type="text" class="form-control" id="expirationDate"
 									name="calendar" path="expirationDate"
 									placeholder="Please select a date of expiration" />
 								<span class="error"><form:errors path="expirationDate" /></span>
+								</div>
 								<br>
+								<div class="height-input-string-updateAdvertisement">
 		Advertisement photo: <input type="file" name="advertisementPhoto">
 								<span class="error"><form:errors
 										path="advertisementPhoto" /></span>
+								</div>
 								<br>
 								<form:input id="idAdvertisement" name="idAdvertisement"
 									path="idAdvertisement" value="${advertisement.idAdvertisement}"

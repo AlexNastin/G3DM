@@ -65,7 +65,7 @@ $(document).ready(function(){
 	    	 regexp: /^[^±!@£$%^&*+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,50}$/
 	      },
 	      nickName: {
-	    	  regexp: '^[a-zA-Z]+$',
+	    	  regexp: '^[a-zA-Z0-9]+$',
 	    	  required: true,
 	    	  rangelength: [3, 16] 
 	      },

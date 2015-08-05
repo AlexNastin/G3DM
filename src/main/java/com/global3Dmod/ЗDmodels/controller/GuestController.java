@@ -6,6 +6,7 @@ import java.util.Locale;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,9 @@ import com.global3Dmod.ÇDmodels.service.IUserService;
 @Controller
 public class GuestController {
 
+	@Autowired
+	private MessageSource messages;
+	
 	@Autowired
 	private IGuestService guestService;
 	
@@ -139,8 +143,11 @@ public class GuestController {
 	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,
 			Model model) throws ServiceException {
 		guestService.addUser(signupForm, propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
-		ModelAndView modelAndView2 = new ModelAndView("redirect:/go/signin");
-		return modelAndView2;
+		ModelAndView modelAndView = new ModelAndView("login/signin");
+		String message = messages.getMessage(
+				"signin.message.signup.successful", null, locale);
+		modelAndView.addObject("message", message);
+		return modelAndView;
 	}
 
 
@@ -157,12 +164,12 @@ public class GuestController {
 	}
 
 	// test
-	@RequestMapping(value = "/categoryMenu", method = RequestMethod.GET)
-	public ModelAndView categoryMenu(Locale locale, Model model)
-			throws ServiceException {
-		ModelAndView modelAndView = new ModelAndView("categoryMenu");
-		return modelAndView;
-	}
+//	@RequestMapping(value = "/categoryMenu", method = RequestMethod.GET)
+//	public ModelAndView categoryMenu(Locale locale, Model model)
+//			throws ServiceException {
+//		ModelAndView modelAndView = new ModelAndView("categoryMenu");
+//		return modelAndView;
+//	}
 	
 	@RequestMapping(value = "/token", method = RequestMethod.GET)
 	public ModelAndView token() {

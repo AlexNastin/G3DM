@@ -171,7 +171,7 @@ public class ModeratorController {
 			page=1;
 		}
 		if (sort==null) {
-			sort="date";
+			sort="complain";
 		}
 		int startPage = page - 5 > 0?page - 5:1;
 	    int endPage = startPage + 9;

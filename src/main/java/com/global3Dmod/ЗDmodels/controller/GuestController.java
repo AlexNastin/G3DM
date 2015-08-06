@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,6 +69,8 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.LIST_TOP4_USERS, users);
 		userService.sortPosts(posts, "rating", false);
 		modelAndView.addObject(ControllerParamConstant.LIST_TOP4_POSTS, posts);
+		List<GrantedAuthority> grantedAuths =  (List<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
+		System.out.println(grantedAuths.get(0));
 		return modelAndView;
 	}
 

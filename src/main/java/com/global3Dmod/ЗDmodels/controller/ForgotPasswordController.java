@@ -1,6 +1,4 @@
 package com.global3Dmod.ÇDmodels.controller;
-
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -17,7 +15,6 @@ import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -64,7 +61,6 @@ public class ForgotPasswordController {
 			@RequestParam("email") String userEmail, Locale locale)
 			throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("login/forgot_password");
-
 		Pattern pattern = collectionRegEx
 				.getRegExPattern(RegExName.REGEX_EMAIL);
 		Matcher matcher = pattern.matcher(userEmail.toLowerCase());
@@ -129,6 +125,7 @@ public class ForgotPasswordController {
 		return email;
 	}
 
+	@SuppressWarnings("unchecked")
 	@RequestMapping(value = "/changePassword", method = RequestMethod.GET)
 	public ModelAndView showChangePasswordPage(Locale locale, Model model,
 			@RequestParam("id") int id, @RequestParam("token") String token)
@@ -154,11 +151,10 @@ public class ForgotPasswordController {
 				modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 				return modelAndView;
 			}
-			List<GrantedAuthority> grantedAuths = new ArrayList<>();
-			grantedAuths.add(new SimpleGrantedAuthority("ROLE_GUEST"));
+
+			List<GrantedAuthority> grantedAuths =  (List<GrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
 			User user = guestService.getUser(passwordResetToken.getUser_idUser());
-			Authentication authentication = new UsernamePasswordAuthenticationToken(
-					user, null, grantedAuths);
+			Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, grantedAuths);
 			SecurityContextHolder.getContext().setAuthentication(authentication);
 			modelAndView.setViewName("redirect:/updatePassword");
 			return modelAndView;

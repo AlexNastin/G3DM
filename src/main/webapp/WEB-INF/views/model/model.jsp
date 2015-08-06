@@ -93,7 +93,7 @@
 						</a>
 												<button type="button" class="btn btn-danger fa fa-exclamation-circle" data-toggle="modal" data-target="#myModal"> ${issue}</button>
 					</security:authorize>
-					<security:authorize access="isAnonymous()">
+					<security:authorize access="hasRole('ROLE_GUEST')">
 						<a href="<c:url value="/go/signin" />"> <i
 							class="btn btn-success fa fa-thumbs-o-up"> ${like} <span
 								class="badge">${countLike} </span></i>

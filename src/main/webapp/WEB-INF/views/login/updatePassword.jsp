@@ -36,7 +36,7 @@
     <div class="col-md-4"></div>
         <div class="col-md-4">
             <div class="error-template" style="min-height:45em; padding-top:1em;">
-            
+            	<security:authorize access="hasRole('ROLE_GUEST')">
                 <form:form id="contact-form" name="contact-form"
 								class="form-horizontal" modelAttribute="updateForgotPasswordForm"
 								method="POST">
@@ -66,6 +66,7 @@
 
 								</div>
 							</form:form>
+							</security:authorize>
 	
 	<script type="text/javascript">
 		function savePass() {

@@ -25,6 +25,7 @@
 
 <spring:message code="403page.error.home" var="home" />
 <spring:message code="403page.error.contactss" var="contactss" />
+<spring:message code="moderation.error.message" var="message" />
 
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %>   
@@ -35,7 +36,7 @@
                 <h1>
                     ${oops}</h1>
                 <h2><i class="fa fa-check-circle fa-2x"></i>
-                    <p>This model under moderation. Wait for approving by moderator, baby</p></h2>
+                    <p>${message}</p></h2>
                  <div class="error-actions">
                     <a href="<c:url value="/index"/>" class="btn btn-primary btn-lg"><span class="fa fa-home"></span>
                         ${home} </a><a href="<c:url value="/index"/>" class="btn btn-default btn-lg"><span class="fa fa-envelope-o"></span> ${contactss} </a>

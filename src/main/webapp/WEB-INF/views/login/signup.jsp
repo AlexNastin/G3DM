@@ -18,16 +18,16 @@
 <link href="<c:url value="/resources/css/fontawesome430/css/font-awesome.min.css"  />" rel="stylesheet" />
 <link href="<c:url value="/resources/css/radio.css"  />" rel="stylesheet" />
 <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
-<title><spring:message code="signup.signup" /> | Global3dMod.com</title>
+<title>Sign Up | Global3dMod.com</title>
 <spring:message code="signup.login" var="login"/>
 <spring:message code="signup.password" var="password"/>
 <spring:message code="signup.confirmpassword" var="confirmpassword"/>
 <spring:message code="signup.nickname" var="nickname"/>
 <spring:message code="signup.designer" var="designer"/>
 <spring:message code="signup.user" var="user" />
-<spring:message code="signup.signup" var="signup" />
+<spring:message code="signup.signup" var="signupnew" />
 <spring:message code="javascript.validation" var="validation" />
-
+<spring:message code="signup.confirmpassword" var="confirmpassword" />
 
 </head>
 <body>
@@ -75,7 +75,7 @@
 		</div>
 		<div class="form-group">
 		<div class="col-md-5">
-		<input type="submit" class="btn btn-default btn-outline btn-circle" value="${signup}" />
+		<input type="submit" class="btn btn-default btn-outline btn-circle" value="${signupnew}" />
 		</div>
 	    </div>
 	</form:form>

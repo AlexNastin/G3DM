@@ -9,6 +9,10 @@
 <spring:message code="headerWithSearch.header.contact" var="contact"/>
 <spring:message code="header.header.signup"  var="signup"/>
 <spring:message code="header.header.signin" var="signin" />
+<spring:message code="header.header.partners" var="partners" />
+<spring:message code="headerWithSearch.header.search" var="search" />
+<spring:message code="headerWithSearch.header.searchplaceholder" var="searchplaceholder" />
+
 
 
 <c:if test="${userBool}">
@@ -41,14 +45,14 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-2">
             <form class="navbar-form navbar-left" role="search"  action="<c:url value="/search"/>" method="GET">
         <div class="form-group">
-          <input type="text" placeholder="Type some words..." class="form-control"   name="text" placeholder="${searchmain}">
+          <input type="text" placeholder="${searchplaceholder}" class="form-control"   name="text">
         </div>
         <button  type="submit"  class="btn btn-default" > ${search} </button>
       </form>
             <ul class="nav navbar-nav navbar-right">
                	<li><a href="<c:url value="/about"/>">${about}</a></li>  
                	<li class="dropdown">		
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Partners <span class="caret"></span></a>		
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${partners} <span class="caret"></span></a>		
          <ul class="dropdown-menu" role="menu">		
            <li><a href="#">Become a partner</a></li>		
            

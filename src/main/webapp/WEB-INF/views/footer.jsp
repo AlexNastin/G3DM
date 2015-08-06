@@ -11,7 +11,6 @@
 <spring:message code="footer.footer.contact" var="contact" />
 <spring:message code="footer.footer.ourmission" var="ourmission" />
 <spring:message code="footer.footer.team" var="team" />
-<spring:message code="footer.footer.whywe" var="whywe" />
 <spring:message code="footer.footer.jobs" var="jobs" />
 <spring:message code="footer.footer.blog" var="blog" />
 <spring:message code="footer.footer.tocustomers" var="tocustomers" />

@@ -47,10 +47,10 @@ Follow us in social networks
 <div class="col-md-2 "></div>
 </div>
 <ul class="list-group">
- 				<li class="list-group-item"><a class="fa fa-facebook-official fa-2x"></a></li>
-                <li class="list-group-item"><a class="fa fa-twitter fa-2x"></a></li>
-                <li class="list-group-item"><a class="fa fa-vk fa-2x"></a></li>
-                <li class="list-group-item"><a class="fa fa-instagram fa-2x"></a>   </li>
+ 				<li class="list-group-item"><a class="fa fa-facebook-official fa-2x"> Facebook</a></li>
+                <li class="list-group-item"><a class="fa fa-twitter fa-2x"> Twitter</a></li>
+                <li class="list-group-item"><a class="fa fa-vk fa-2x"> VK</a></li>
+                <li class="list-group-item"><a class="fa fa-instagram fa-2x"> Instagram</a>   </li>
  </ul>
 </div>
 </div>

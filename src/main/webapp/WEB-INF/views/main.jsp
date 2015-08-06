@@ -14,6 +14,7 @@
 <spring:message code="main.search.searchInto" var="searchmain" />
 <spring:message code="main.top.topModels" var="topmodel" />
 <spring:message code="main.top.topDesigners" var="topdesigner" />
+<spring:message code="main.top.ourtops" var="ourtops" />
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -105,7 +106,7 @@
 	</div>
 	<div class="group container">
 		<div class="item line1"></div>
-		<div class="item text">Our tops</div>
+		<div class="item text">${ourtops}</div>
 		<div class="item line1"></div>
 	</div>
 	<div class="clearfix"></div>

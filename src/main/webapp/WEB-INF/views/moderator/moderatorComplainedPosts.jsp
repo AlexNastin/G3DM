@@ -26,6 +26,7 @@
 <spring:message code="form.author" var="author" />
 <spring:message code="form.check" var="check" />
 <spring:message code="form.complain" var="complain" />
+<spring:message code="moderator.complainedpost.checkintable" var="checkintable" />
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -127,7 +128,7 @@
                                   <td>${post.user.nickName}</td>
                                   <td>${post.complain}</td>
                                   <td>
-                                  <a href="<c:url value="/moderator/moderationComplainPost?id=${post.idPost}" />" type="button" class="btn btn-success btn-xs">Check</a>
+                                  <a href="<c:url value="/moderator/moderationComplainPost?id=${post.idPost}" />" type="button" class="btn btn-success btn-xs">${checkintable}</a>
                               	  </td>
                               </tr>
                               </c:forEach>

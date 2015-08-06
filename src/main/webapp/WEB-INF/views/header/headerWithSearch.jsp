@@ -12,6 +12,8 @@
 <spring:message code="header.header.partners" var="partners" />
 <spring:message code="headerWithSearch.header.search" var="search" />
 <spring:message code="headerWithSearch.header.searchplaceholder" var="searchplaceholder" />
+<spring:message code="headerWithSearch.header.profile" var="profile" />
+<spring:message code="headerWithSearch.header.logout" var="logout" />
 
 
 
@@ -74,14 +76,14 @@
       				</security:authorize>
       				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
                     <a href="<c:url value="${profileURL}" />"'>
-      				Profile <i class="fa fa-suitcase"></i>
+      				${profile} <i class="fa fa-suitcase"></i>
       				</a>
       				</security:authorize>
       				</li>
             <li>
       				<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
                     <a href="<c:url value="/logout" />"'>
-      				Logout <i class="fa fa-user-times"></i>
+      				${logout} <i class="fa fa-user-times"></i>
       				</a>
       				</security:authorize></li>            
           </ul>                                    

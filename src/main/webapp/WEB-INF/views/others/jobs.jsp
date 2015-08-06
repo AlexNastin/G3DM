@@ -32,21 +32,11 @@ Jobs
 </div>
 
 
-<div class="col-md-6 jobs-background">
+<div class="col-md-6 jobs-background " style="text-align:center;" >
 <div class="row">
-<div class="col-md-5"></div>
-<div class="col-md-6 text-jobs-title">Wanted!</div>
+<div class="text-jobs-title" style="text-align:center; margin-bottom: 4%">THERE ARE CURRENTLY NO JOB VACANCIES</div>
 </div>
- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at est nisl. 
- Ut dictum magna finibus leo venenatis, sed lacinia arcu bibendum. Nulla facilisi. 
- Donec sed eleifend ipsum. Duis suscipit venenatis purus, hendrerit rhoncus mauris bibendum ac. 
- In dictum metus lorem, vitae iaculis lorem porta ac. Ut eget ullamcorper mi, non accumsan tortor. 
- Morbi mattis arcu sed dui convallis, nec egestas est aliquam. Fusce lacinia pellentesque faucibus. 
- Nam vehicula pharetra sem, ut ultrices justo egestas nec. Quisque ultrices non massa sit amet suscipit. 
- Pellentesque lacus metus, egestas quis augue nec, iaculis gravida mi. Morbi sit amet dolor nunc. 
- Maecenas pulvinar nulla id risus imperdiet elementum nec non lorem. 
- Nullam tincidunt volutpat nisi, a mollis ipsum mattis eget. 
- Aenean pellentesque ex sed ligula condimentum, sed vehicula odio malesuada. 
+ Please check the website at a later date for any future vacancies.
 </div>
 </div>
 </div>

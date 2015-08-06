@@ -21,6 +21,7 @@ public final class RegExCollection {
 	private Pattern PATTERN_PHOTO_POST = Pattern.compile("([^.]+(\\.(?i)(jpg|JPEG|png|PNG|bmp|BMP))$)");
 	private Pattern PATTERN_MESSAGE_POST = Pattern.compile("^[\\x00-\\x7F]{2,300}$");
 	private Pattern PATTERN_FILE_EXT = Pattern.compile("((\\.(?i)(.{1,4}))$)");
+	private Pattern PATTERN_DATE = Pattern.compile("[0-9]{4}-[0-9]{2}-[0-9]{2}");
 
 	private Map<String, Pattern> regEx = new HashMap<String, Pattern>();
 
@@ -37,6 +38,7 @@ public final class RegExCollection {
 		regEx.put(RegExName.REGEX_PHOTO_POST, PATTERN_PHOTO_POST);
 		regEx.put(RegExName.REGEX_MESSAGE_POST, PATTERN_MESSAGE_POST);
 		regEx.put(RegExName.REGEX_FILE_EXT, PATTERN_FILE_EXT);
+		regEx.put(RegExName.REGEX_DATE, PATTERN_DATE);
 	}
 
 	public Pattern getRegExPattern(String key) {

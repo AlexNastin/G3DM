@@ -166,6 +166,7 @@
 			</div>
 		<div class="height-input-updatepersonal-date">
 		<form:input type="text" class="form-control" id="dateBirth" name="calendar" path="dateBirth" placeholder="${birthdate}"/> 
+		<span class="error"><form:errors path="dateBirth" /></span>
 		</div>
 		<br>
 				<form:select class="form-control" id="gender"

@@ -71,7 +71,16 @@ public class AddAdvertisementValidator implements Validator {
 		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "expirationDate",
 				"valid.expirationDate.empty");
-
+		// Валидация ExpirationDate
+		String date = addAdvertisementForm.getExpirationDate();
+		// На строку типа XXXX-XX-XX, где X - это число от 0 до 9
+			pattern = regExCollection.getRegExPattern(RegExName.REGEX_DATE);
+			matcher = pattern.matcher(date);
+			// Количество от 1 символов до 50. Латиница. Нет спецсимволов.
+			// (кроме - _)
+			if (!matcher.matches()) {
+				errors.rejectValue("expirationDate", "valid.date.pattern");
+			}
 		// Валидация AdvertisementPhoto
 		// На пустое значение
 		if (!addAdvertisementForm.getAdvertisementPhoto().isEmpty()) {

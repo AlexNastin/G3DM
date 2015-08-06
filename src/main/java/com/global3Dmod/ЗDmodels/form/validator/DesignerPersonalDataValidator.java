@@ -50,6 +50,21 @@ public class DesignerPersonalDataValidator implements Validator {
 				errors.rejectValue("surname", "valid.surname.pattern.notempty");
 			}
 		}
+		
+
+		// Валидация Date
+		String date = personalDataForm.getDateBirth();
+		// На строку типа XXXX-XX-XX, где X - это число от 0 до 9
+		if (date.length() != 0) {
+			pattern = regExCollection.getRegExPattern(RegExName.REGEX_DATE);
+			matcher = pattern.matcher(date);
+			// Количество от 1 символов до 50. Латиница. Нет спецсимволов.
+			// (кроме - _)
+			if (!matcher.matches()) {
+				errors.rejectValue("dateBirth", "valid.date.pattern");
+			}
+		}
+		
 		// Валидация Avatar
 		if (!personalDataForm.getAvatar().isEmpty()) {
 			String nameAvatar = personalDataForm.getAvatar()

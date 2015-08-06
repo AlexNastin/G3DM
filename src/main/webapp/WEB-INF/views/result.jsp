@@ -64,7 +64,7 @@
 
     <hgroup class="mb20">
         <h1>${result}</h1>
-        <h2 class="lead"><strong class="text-danger">${sizePosts}</strong> ${quantity}</h2>
+        <h2 class="lead">${quantity}<strong class="text-danger">${sizePosts}</strong></h2>
     </hgroup>
     <c:if test="${sizePosts != 0}">
  <nav style="text-align:center">

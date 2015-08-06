@@ -30,12 +30,11 @@
 <title>Sign In | Global3dMod.com</title>
 <spring:message code="signin.password" var="password" />
 <spring:message code="signin.rememberme" var="rememberme" />
-<spring:message code="signin.signin" var="signin" />
-<spring:message code="signin.signup" var="signup" />
+<spring:message code="signin.signin" var="signinnew" />
+<spring:message code="signin.signup" var="signupnew" />
 <spring:message code="javascript.validation" var="validation" />
 <spring:message code="signin.forgotpassword" var="forgotpassword" />
-<spring:message code="signin.signinn" var="signinn" />
-<spring:message code="signin.signupp" var="signupp" />
+
 </head>
 <body>
 	<%@include file="/WEB-INF/views/header/header.jsp"%>
@@ -79,11 +78,11 @@
 				<div class="form-group">
 					<div class="col-md-8">
 						<button type="submit"
-							class="btn btn-default btn-outline btn-circle">${signinn}</button>
+							class="btn btn-default btn-outline btn-circle">${signinnew}</button>
 						<button type="button"
 							class="btn btn-default btn-outline btn-circle"
 							onClick='location.href="<c:url value="/signup"  />"'>
-							${signupp}</button>
+							${signupnew}</button>
 					</div>
 				</div>
 				<c:if test="${message != null}">

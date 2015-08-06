@@ -10,6 +10,7 @@
 .contact-background {
 	background-color: #F8F8F8;
 	margin-bottom: 5%;
+	min-height: 300px;
 }
 .contact-vertical-linen {
 	border-right: 5px solid white;

@@ -14,6 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="global3dmod team">
+    <spring:message code="email.message.resetPassword.enteremailmessage" var="enteremailmessage"/>
    
     <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
     <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
@@ -26,7 +27,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12" style="padding-top: 3em;" >
-    <h1 style="text-align:center"><i class="fa fa-envelope-o"></i> Please, enter your Email <i class="fa fa-envelope-o"></i></h1>
+    <h1 style="text-align:center"><i class="fa fa-envelope-o"></i> ${enteremailmessage} <i class="fa fa-envelope-o"></i></h1>
     <div class="col-md-4"></div>
     <div class="col-md-4">
             <div class="error-template" style="min-height:45em;">

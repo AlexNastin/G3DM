@@ -27,13 +27,15 @@
 	type="image/x-icon">
 
 <spring:url var="authUrl" value="/static/j_spring_security_check" />
-<title><spring:message code="signin.signin" /> |
-	Global3dMod.com</title>
+<title>Sign In | Global3dMod.com</title>
 <spring:message code="signin.password" var="password" />
 <spring:message code="signin.rememberme" var="rememberme" />
 <spring:message code="signin.signin" var="signin" />
 <spring:message code="signin.signup" var="signup" />
 <spring:message code="javascript.validation" var="validation" />
+<spring:message code="signin.forgotpassword" var="forgotpassword" />
+<spring:message code="signin.signinn" var="signinn" />
+<spring:message code="signin.signupp" var="signupp" />
 </head>
 <body>
 	<%@include file="/WEB-INF/views/header/header.jsp"%>
@@ -77,19 +79,19 @@
 				<div class="form-group">
 					<div class="col-md-8">
 						<button type="submit"
-							class="btn btn-default btn-outline btn-circle">${signin}</button>
+							class="btn btn-default btn-outline btn-circle">${signinn}</button>
 						<button type="button"
 							class="btn btn-default btn-outline btn-circle"
 							onClick='location.href="<c:url value="/signup"  />"'>
-							${signup}</button>
+							${signupp}</button>
 					</div>
 				</div>
 				<c:if test="${message != null}">
 			   ${message}
 			   </c:if>
 				<div class="margin-forgot-password">
-					<a href="<c:url value="/forgotPassword.html" />">Forgot your
-						Password?</a>
+					<a href="<c:url value="/forgotPassword.html" />">${forgotpassword}
+					</a>
 				</div>
 			</form>
 		</div>

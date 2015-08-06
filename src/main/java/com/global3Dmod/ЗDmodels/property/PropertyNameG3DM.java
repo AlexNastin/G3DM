@@ -19,5 +19,7 @@ public final class PropertyNameG3DM {
 	
 	public static final String DEFAULT_AVATAR_PATH = "default.avatar.path";
 	
+	public static final String LIMIT_DOWNLOAD = "limit.download";
+	
 
 }

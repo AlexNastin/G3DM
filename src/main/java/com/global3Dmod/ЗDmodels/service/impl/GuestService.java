@@ -54,7 +54,7 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private IUserDAO userDAO;
-	
+
 	@Autowired
 	private IDesignerService designerService;
 
@@ -92,7 +92,8 @@ public class GuestService implements IGuestService {
 	private PropertyManagerG3DM propertyManager;
 
 	@Override
-	public void addUser(SignupForm signupForm, String serverPath) throws ServiceException {
+	public void addUser(SignupForm signupForm, String serverPath)
+			throws ServiceException {
 		User user = new User();
 		DateFormat dateFormat = new SimpleDateFormat(
 				ServiceParamConstant.FORMAT_DATE);
@@ -109,15 +110,16 @@ public class GuestService implements IGuestService {
 		user.setSurname(ServiceParamConstant.EMPTY);
 		user.setGender(0);
 		user.setRegistrationDate(registrationDate);
-		
+
 		Avatar avatar = new Avatar();
 		String newName = ServiceParamConstant.DEFAULT_NAME_AVATAR;
 		avatar.setFileName(newName);
-		avatar.setAvatarPath(ServiceParamConstant.PATH_TO_DEFAULT_AVATAR + newName);
+		avatar.setAvatarPath(ServiceParamConstant.PATH_TO_DEFAULT_AVATAR
+				+ newName);
 		avatar.setUser(user);
-		
+
 		user.setAvatar(avatar);
-		
+
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {
@@ -126,7 +128,8 @@ public class GuestService implements IGuestService {
 	}
 
 	@Override
-	public void addModerator(AddModeratorForm addModeratorForm) throws ServiceException {
+	public void addModerator(AddModeratorForm addModeratorForm)
+			throws ServiceException {
 		User user = new User();
 		DateFormat dateFormat = new SimpleDateFormat(
 				ServiceParamConstant.FORMAT_DATE);
@@ -143,20 +146,22 @@ public class GuestService implements IGuestService {
 		user.setSurname(addModeratorForm.getSurname());
 		user.setGender(0);
 		user.setRegistrationDate(registrationDate);
-		
+
 		Avatar avatar = new Avatar();
 		String newName = ServiceParamConstant.DEFAULT_NAME_AVATAR;
 		avatar.setFileName(newName);
-		avatar.setAvatarPath(ServiceParamConstant.PATH_TO_DEFAULT_AVATAR + newName);
+		avatar.setAvatarPath(ServiceParamConstant.PATH_TO_DEFAULT_AVATAR
+				+ newName);
 		avatar.setUser(user);
 		user.setAvatar(avatar);
-		
+
 		try {
 			userDAO.insertUser(user);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
 	}
+
 	@Override
 	public void addComment(CommentForm commentForm, Person person)
 			throws ServiceException {
@@ -301,7 +306,8 @@ public class GuestService implements IGuestService {
 		try {
 			advertisements = advertisementDAO.selectAllAdvertisements();
 			for (int i = 0; i < advertisements.size(); i++) {
-				if (presentDate.compareTo(advertisements.get(i).getExpirationDate()) > 0) {
+				if (presentDate.compareTo(advertisements.get(i)
+						.getExpirationDate()) > 0) {
 					advertisements.remove(i);
 				}
 			}
@@ -493,7 +499,7 @@ public class GuestService implements IGuestService {
 		}
 		return posts;
 	}
-	
+
 	@Override
 	public List<User> getTop4UsersByRating() throws ServiceException {
 		List<User> users;
@@ -513,10 +519,22 @@ public class GuestService implements IGuestService {
 			File file = fileDAO.selectFileById(idFile);
 			String pathFile = file.getFilePath();
 			fullPath.append(pathFile);
-			System.out.println(fullPath.toString());
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
 		return fullPath.toString();
+	}
+
+	@Override
+	public void updateCountDownload(Integer idFile, short countDownload)
+			throws ServiceException {
+		try {
+			File file = fileDAO.selectFileById(idFile);
+			Post post = file.getPost();
+			post.setCountDownload(countDownload);
+			postDAO.updatePost(post);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
 	}
 }

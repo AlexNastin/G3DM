@@ -17,6 +17,11 @@ import javax.persistence.Table;
 public class Advertisement implements Essence {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -680734570061371968L;
+
 	@Id
 	@Column(name = "id_advertisement")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

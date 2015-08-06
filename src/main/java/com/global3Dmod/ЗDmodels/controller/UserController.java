@@ -174,8 +174,7 @@ public class UserController {
 				null, locale);
 		User user = designerService.getUser(person.getLogin());
 		designerService.deleteAvatar(user.getAvatar());
-		ModelAndView modelAndView = new ModelAndView(
-				"user/userPersonalData");
+		ModelAndView modelAndView = new ModelAndView("user/userPersonalData");
 		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);

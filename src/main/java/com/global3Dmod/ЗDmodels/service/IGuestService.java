@@ -17,9 +17,11 @@ import com.global3Dmod.ÇDmodels.form.SignupForm;
 
 public interface IGuestService {
 
-	public void addUser(SignupForm signupForm, String serverPath) throws ServiceException;
-	
-	public void addModerator(AddModeratorForm addModeratorForm) throws ServiceException;
+	public void addUser(SignupForm signupForm, String serverPath)
+			throws ServiceException;
+
+	public void addModerator(AddModeratorForm addModeratorForm)
+			throws ServiceException;
 
 	public void addComment(CommentForm commentForm, Person person)
 			throws ServiceException;
@@ -81,8 +83,10 @@ public interface IGuestService {
 			throws ServiceException;
 
 	public List<Post> getTop4PostsByLike() throws ServiceException;
-	
+
 	public List<User> getTop4UsersByRating() throws ServiceException;
 
 	public String getFileFullPath(Integer idFile) throws ServiceException;
+
+	public void updateCountDownload(Integer idFile, short countDownload) throws ServiceException;
 }

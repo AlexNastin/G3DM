@@ -14,16 +14,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
+import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Controller
 public class FileDownloadController {
 
+	private short countDownload = 0;
+
 	@Autowired
 	private IGuestService guestService;
+
+	@Autowired
+	private IDesignerService designerService;
 
 	@Autowired
 	private PropertyManagerG3DM propertyManager;
@@ -39,7 +45,12 @@ public class FileDownloadController {
 	public void doDownload(HttpServletRequest request,
 			HttpServletResponse response, @RequestParam("id") int idFile)
 			throws ServiceException, IOException {
-
+		increment();
+		boolean isLimit = isLimit();
+		if (isLimit) {
+			guestService.updateCountDownload(idFile, countDownload);
+			zeroing();
+		}
 		String fullPath = guestService.getFileFullPath(idFile);
 
 		File downloadFile = new File(fullPath);
@@ -62,7 +73,6 @@ public class FileDownloadController {
 
 		OutputStream outStream = null;
 		try {
-
 			outStream = response.getOutputStream();
 			while ((bytesRead = inputStream.read(buffer)) != -1) {
 				outStream.write(buffer, 0, bytesRead);
@@ -76,4 +86,21 @@ public class FileDownloadController {
 
 	}
 
+	private void increment() {
+		countDownload++;
+	}
+
+	private boolean isLimit() {
+		short limit = Short.parseShort(propertyManager
+				.getValue(PropertyNameG3DM.LIMIT_DOWNLOAD));
+		boolean isLimit = false;
+		if (countDownload > limit) {
+			isLimit = true;
+		}
+		return isLimit;
+	}
+
+	private void zeroing() {
+		countDownload = 0;
+	}
 }

@@ -226,11 +226,28 @@ public class DesignerController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView(
-				"designer/designerPersonalData");
+		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalData");
 		User user = designerService.getUser(person.getLogin());
 		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/designer/deleteAvatar", method = RequestMethod.GET)
+	public ModelAndView deleteAvatar(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		String message = messages.getMessage("users.message.deleteAvatar", null, locale);
+		User user = designerService.getUser(person.getLogin());
+		designerService.deleteAvatar(user.getAvatar());
+		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalData");
+		userService.setPathToPhotos(user);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 		return modelAndView;
 	}
 

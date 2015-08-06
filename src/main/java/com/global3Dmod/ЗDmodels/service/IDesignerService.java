@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.domain.Avatar;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.domain.City;
 import com.global3Dmod.ÇDmodels.domain.Country;
@@ -86,6 +87,8 @@ public interface IDesignerService {
 			throws ServiceException;
 
 	public void deletePost(Integer idPost) throws ServiceException;
+	
+	public void deleteAvatar(Avatar avatar) throws ServiceException;
 
 	public Post getPost(Integer idPost) throws ServiceException;
 	

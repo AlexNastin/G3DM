@@ -25,6 +25,12 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name = "Category.findAll", query = "select c from Category c"),
 		@NamedQuery(name = "Category.findCategoryById", query = "select c from Category c join fetch c.subcategories where c.idCategory = :idCategory") })
 public class Category implements Essence {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8317281787365057557L;
+
 	@Id
 	@Column(name = "id_category")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

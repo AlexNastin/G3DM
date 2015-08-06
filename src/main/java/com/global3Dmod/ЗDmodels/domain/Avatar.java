@@ -6,14 +6,22 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "avatars")
-@NamedQuery(name="Avatar.findAll", query="select a from Avatar a")
+
+@NamedQueries({
+	@NamedQuery(name="Avatar.findAll", query="select a from Avatar a")})
 public class Avatar implements Essence {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2343695704915602325L;
 
 	@Id
 	@Column(name = "id_avatar")

@@ -14,5 +14,10 @@ import org.springframework.stereotype.Component;
 public final class PropertyNameG3DM {
 
 	public static final String PATH_FILE = "path_file";
+	
+	public static final String DEFAULT_AVATAR_NAME = "default.avatar.name";
+	
+	public static final String DEFAULT_AVATAR_PATH = "default.avatar.path";
+	
 
 }

@@ -138,6 +138,12 @@
                       <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/designer/personalData/updateForm"  />"'>
       ${update}
       </button>
+     <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/designer/deleteAvatar"  />"'>
+     Delete avatar
+      </button>
+       <c:if  test="${message != null}">
+			  <div class="alert alert-info" role="alert" style="margin-top: 3%; padding:1%">${message}</div> 
+			   </c:if>
       </div>                
                      
                   </div>

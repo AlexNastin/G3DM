@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.dao.IAvatarDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICountryDAO;
 import com.global3Dmod.ÇDmodels.dao.IDisProgramDAO;
@@ -41,6 +42,8 @@ import com.global3Dmod.ÇDmodels.form.PostForm;
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
 import com.global3Dmod.ÇDmodels.form.validator.RegExCollection;
 import com.global3Dmod.ÇDmodels.form.validator.RegExName;
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.service.helper.ServiceHelper;
@@ -60,6 +63,9 @@ import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByTitleDesc;
 
 @Service
 public class DesignerService implements IDesignerService {
+
+	@Autowired
+	private PropertyManagerG3DM propertyManager;
 	
 	@Autowired
 	private RegExCollection regExCollection;
@@ -75,6 +81,9 @@ public class DesignerService implements IDesignerService {
 
 	@Autowired
 	private ITechnologyDAO printerDAO;
+
+	@Autowired
+	private IAvatarDAO avatarDAO;
 
 	@Autowired
 	private IPostDAO postDAO;
@@ -214,7 +223,8 @@ public class DesignerService implements IDesignerService {
 
 		PostPhoto firstPostPhoto = new PostPhoto();
 		firstPostPhoto.setFolder(time);
-		String newName = photoModelFileUpload(postForm.getFirstPhoto(),	fullPathModelPhoto);
+		String newName = photoModelFileUpload(postForm.getFirstPhoto(),
+				fullPathModelPhoto);
 		firstPostPhoto.setFileName(newName);
 		firstPostPhoto.setPhotoPath(pathModelPhoto + newName);
 		firstPostPhoto.setPost(post);
@@ -255,28 +265,29 @@ public class DesignerService implements IDesignerService {
 		}
 		return newName;
 	}
-	
+
 	@Override
-	public String modelFileUpload(MultipartFile file, String path, String oldFileName)
-			throws ServiceException {
+	public String modelFileUpload(MultipartFile file, String path,
+			String oldFileName) throws ServiceException {
 		String orgName = file.getOriginalFilename();
-		Pattern	pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Pattern pattern = regExCollection
+				.getRegExPattern(RegExName.REGEX_FILE_EXT);
 		Matcher matcher = pattern.matcher(orgName);
 		String orgNameExt = "";
 		String oldNameExt = "";
 		String nameFile = "";
-		while (matcher.find()) {	
+		while (matcher.find()) {
 			orgNameExt = orgName.substring(matcher.start(), matcher.end());
 		}
 		matcher = pattern.matcher(oldFileName);
-		while (matcher.find()) {	
+		while (matcher.find()) {
 			oldNameExt = oldFileName.substring(matcher.start(), matcher.end());
 		}
-		if(oldNameExt.equalsIgnoreCase(orgNameExt)) {
+		if (oldNameExt.equalsIgnoreCase(orgNameExt)) {
 			nameFile = oldFileName;
 		} else {
 			nameFile = createNewNameFile(orgName);
-			
+
 		}
 		String filePath = path + nameFile;
 		new File(path).mkdirs();
@@ -308,28 +319,29 @@ public class DesignerService implements IDesignerService {
 		}
 		return newName;
 	}
-	
+
 	@Override
-	public String photoModelFileUpload(MultipartFile file, String path, String oldFileName)
-			throws ServiceException {
+	public String photoModelFileUpload(MultipartFile file, String path,
+			String oldFileName) throws ServiceException {
 		String orgName = file.getOriginalFilename();
-		Pattern	pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Pattern pattern = regExCollection
+				.getRegExPattern(RegExName.REGEX_FILE_EXT);
 		Matcher matcher = pattern.matcher(orgName);
 		String orgNameExt = "";
 		String oldNameExt = "";
 		String nameFile = "";
-		while (matcher.find()) {	
+		while (matcher.find()) {
 			orgNameExt = orgName.substring(matcher.start(), matcher.end());
 		}
 		matcher = pattern.matcher(oldFileName);
-		while (matcher.find()) {	
+		while (matcher.find()) {
 			oldNameExt = oldFileName.substring(matcher.start(), matcher.end());
 		}
-		if(oldNameExt.equalsIgnoreCase(orgNameExt)) {
+		if (oldNameExt.equalsIgnoreCase(orgNameExt)) {
 			nameFile = oldFileName;
 		} else {
 			nameFile = createNewNameFile(orgName);
-			
+
 		}
 		String filePath = path + nameFile;
 		new File(path).mkdirs();
@@ -361,28 +373,29 @@ public class DesignerService implements IDesignerService {
 		}
 		return newName;
 	}
-	
+
 	@Override
-	public String avatarFileUpload(MultipartFile file, String path, String oldFileName)
-			throws ServiceException {
+	public String avatarFileUpload(MultipartFile file, String path,
+			String oldFileName) throws ServiceException {
 		String orgName = file.getOriginalFilename();
-		Pattern	pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Pattern pattern = regExCollection
+				.getRegExPattern(RegExName.REGEX_FILE_EXT);
 		Matcher matcher = pattern.matcher(orgName);
 		String orgNameExt = "";
 		String oldNameExt = "";
 		String nameFile = "";
-		while (matcher.find()) {	
+		while (matcher.find()) {
 			orgNameExt = orgName.substring(matcher.start(), matcher.end());
 		}
 		matcher = pattern.matcher(oldFileName);
-		while (matcher.find()) {	
+		while (matcher.find()) {
 			oldNameExt = oldFileName.substring(matcher.start(), matcher.end());
 		}
-		if(oldNameExt.equalsIgnoreCase(orgNameExt)) {
+		if (oldNameExt.equalsIgnoreCase(orgNameExt)) {
 			nameFile = oldFileName;
 		} else {
 			nameFile = createNewNameFile(orgName);
-			
+
 		}
 		String filePath = path + nameFile;
 		new File(path).mkdirs();
@@ -532,13 +545,15 @@ public class DesignerService implements IDesignerService {
 			user.setSurname(personalDataForm.getSurname());
 			user.setGender(personalDataForm.getGender());
 			user.setDateBirth(personalDataForm.getDateBirth());
-			
+
 			String pathAvatar = createAvatarPath(user.getIdUser());
 			String fullPathAvatar = serverPath.concat(pathAvatar);
 			Avatar avatar = user.getAvatar();
-			avatar.setAvatarPath(pathAvatar + avatarFileUpload(personalDataForm.getAvatar(), fullPathAvatar, avatar.getFileName()));
+			avatar.setAvatarPath(pathAvatar
+					+ avatarFileUpload(personalDataForm.getAvatar(),
+							fullPathAvatar, avatar.getFileName()));
 			user.setAvatar(avatar);
-			
+
 			userDAO.updateUser(user);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
@@ -586,23 +601,27 @@ public class DesignerService implements IDesignerService {
 			post.setTechnologies(getCheckPrintersById(updatePostForm
 					.getTechnologiesId()));
 
-			String pathModel = createPostPath(post.getUser_idUser(),
-					post.getFile().getFolder());
-			String pathModelPhoto = createPostPath(post.getUser_idUser(),
-					post.getPostPhotos().get(0).getFolder());
-			
+			String pathModel = createPostPath(post.getUser_idUser(), post
+					.getFile().getFolder());
+			String pathModelPhoto = createPostPath(post.getUser_idUser(), post
+					.getPostPhotos().get(0).getFolder());
+
 			String fullPathModel = serverPath.concat(pathModel);
 			String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
 
 			PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
-			firstPostPhoto.setPhotoPath(pathModelPhoto + photoModelFileUpload(updatePostForm.getFirstPhoto(), fullPathModelPhoto, firstPostPhoto.getFileName()));
+			firstPostPhoto.setPhotoPath(pathModelPhoto
+					+ photoModelFileUpload(updatePostForm.getFirstPhoto(),
+							fullPathModelPhoto, firstPostPhoto.getFileName()));
 
 			List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 			postPhotos.add(firstPostPhoto);
 			post.setPostPhotos(postPhotos);
 
 			com.global3Dmod.ÇDmodels.domain.File file = post.getFile();
-			file.setFilePath(pathModel + modelFileUpload(updatePostForm.getModel(), fullPathModel, file.getFileName()));
+			file.setFilePath(pathModel
+					+ modelFileUpload(updatePostForm.getModel(), fullPathModel,
+							file.getFileName()));
 
 			post.setFile(file);
 
@@ -635,6 +654,17 @@ public class DesignerService implements IDesignerService {
 		return post;
 	}
 
+	@Override
+	public void deleteAvatar(Avatar avatar) throws ServiceException {
+		try {
+			avatar.setAvatarPath(propertyManager.getValue(PropertyNameG3DM.DEFAULT_AVATAR_PATH));
+			avatar.setFileName(propertyManager.getValue(PropertyNameG3DM.DEFAULT_AVATAR_NAME));
+			avatarDAO.updateAvatar(avatar);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+	}
+
 	private String createPostPath(int idUser, long time) {
 		StringBuilder stringBuilder = new StringBuilder();
 		stringBuilder.append(idUser);
@@ -656,8 +686,9 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public String createNewNameFile(String name) {
-	Pattern	pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
-	Matcher matcher = pattern.matcher(name);
+		Pattern pattern = regExCollection
+				.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Matcher matcher = pattern.matcher(name);
 		int hashCode = name.hashCode();
 		if (hashCode < 0) {
 			hashCode = hashCode * (-1);
@@ -666,7 +697,7 @@ public class DesignerService implements IDesignerService {
 			++hashCode;
 		}
 		StringBuilder newName = new StringBuilder(String.valueOf(hashCode));
-		while (matcher.find()) {	
+		while (matcher.find()) {
 			newName.append(name.substring(matcher.start(), matcher.end()));
 		}
 		return newName.toString();

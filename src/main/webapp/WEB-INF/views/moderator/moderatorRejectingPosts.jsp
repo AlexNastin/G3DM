@@ -14,6 +14,18 @@
 <spring:message code="moderator.menu.postspublished" var="publics"/>
 <spring:message code="moderator.menu.users" var="users"/>
 <spring:message code="moderator.menu.designer" var="designers"/>
+<spring:message code="moderator.menu.rejectingposts" var="rejectingposts"/>
+<spring:message code="moderator.menu.complainedposts" var="complainedposts"/>
+<spring:message code="moderator.postsunpublished.posts" var="posts"/>
+<spring:message code="form.project" var="project" />
+<spring:message code="form.description" var="description" />
+<spring:message code="form.number" var="number" />
+<spring:message code="form.date" var="date" />
+<spring:message code="form.category" var="category" />
+<spring:message code="form.subcategory" var="subcategory" />
+<spring:message code="form.author" var="author" />
+<spring:message code="moderator.rejectingpost.messagefortable" var="messagefortable" />
+<spring:message code="moderator.postsunpublished.posts" var="posts"/>
 
 
  <meta charset="utf-8">
@@ -47,8 +59,8 @@
   <a href="<c:url value="/moderator/profile" />" class="list-group-item ">
     <i class="fa fa-exclamation-triangle"></i> ${unpblsd}
   </a>
-  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> Rejecting posts</a>
-  <a href="<c:url value="/moderator/complainedPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> Complained posts</a>
+  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> ${rejectingposts}</a>
+  <a href="<c:url value="/moderator/complainedPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> ${complainedposts}</a>
   
 </div>
       </div>
@@ -59,7 +71,7 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <h2>Posts</h2>
+                             <h2>${posts}</h2>
                               
                               <!-- Some sorts for table -->
                              
@@ -92,14 +104,14 @@
 </c:if>
                               
                               <tr class="background-user-string">
-                                  <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/moderator/rejectingPosts?sort=title&desc=${titleDesc}" />"> Project</a></th>
-                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> Description</th>
-                                  <th>Number</th>
-                                  <th> <i class="fa fa-calendar"></i><a href="<c:url value="/moderator/rejectingPosts?sort=date&desc=${dateDesc}" />"> Date</a> </th>
-                                  <th><i class="fa fa-th-list"></i><a href="<c:url value="/moderator/rejectingPosts?sort=category&desc=${categoryDesc}" />"> Category</a> </th>
-                                  <th><i class="fa fa-list-alt"></i> <a href="<c:url value="/moderator/rejectingPosts?sort=subcategory&desc=${subcategoryDesc}" />"> Subcategory</a></th>
-                                  <th><i class="fa fa-user"></i><a href="<c:url value="/moderator/rejectingPosts?sort=designer&desc=${designerDesc}" />"> Author</a> </th>
-                             	  <th>Message</th>
+                                  <th><i class="fa fa-bullhorn"></i><a href="<c:url value="/moderator/rejectingPosts?sort=title&desc=${titleDesc}" />"> ${project}</a></th>
+                                  <th class="hidden-phone"><i class="fa fa-question-circle"></i> ${description}</th>
+                                  <th>${number}</th>
+                                  <th> <i class="fa fa-calendar"></i><a href="<c:url value="/moderator/rejectingPosts?sort=date&desc=${dateDesc}" />"> ${date}</a> </th>
+                                  <th><i class="fa fa-th-list"></i><a href="<c:url value="/moderator/rejectingPosts?sort=category&desc=${categoryDesc}" />"> ${category}</a> </th>
+                                  <th><i class="fa fa-list-alt"></i> <a href="<c:url value="/moderator/rejectingPosts?sort=subcategory&desc=${subcategoryDesc}" />"> ${subcategory}</a></th>
+                                  <th><i class="fa fa-user"></i><a href="<c:url value="/moderator/rejectingPosts?sort=designer&desc=${designerDesc}" />"> ${author}</a> </th>
+                             	  <th>${messagefortable}</th>
                               </tr>
                               </thead>
                               <tbody>

@@ -16,17 +16,30 @@
 <spring:message code="model.info.tab1" var="info" />
 <spring:message code="model.info.tab2" var="instruct" />
 <spring:message code="model.info.author" var="author" />
-<spring:message code="model.info.category" var="category" />
+<spring:message code="model.info.category" var="category1" />
+<spring:message code="model.info.subcategory" var="subcategory1" />
 <spring:message code="model.info.idpost" var="id" />
 <spring:message code="model.info.soft" var="soft" />
 <spring:message code="model.info.desrciption" var="desc" />
 <spring:message code="model.body.photo" var="photo" />
-<spring:message code="model.body.comments" var="comms" />
+<spring:message code="model.body.commentaries" var="comms" />
 <spring:message code="model.body.comcol" var="colcom" />
 <spring:message code="model.body.download" var="down" />
 <spring:message code="model.body.rating" var="like" />
 <spring:message code="model.body.issue" var="issue" />
 <spring:message code="javascript.validation" var="validation" />
+<spring:message code="model.body.comments" var="comments" />
+<spring:message code="form.close" var="close" />
+<spring:message code="model.body.confirm" var="confirm" />
+<spring:message code="model.body.confirmmessage" var="confirmmessage" />
+<spring:message code="model.body.commentsplaceholder" var="commentsplaceholder" />
+<spring:message code="form.write" var="write" />
+<spring:message code="model.body.guestcommentmessage0" var="guestcommentmessage0" />
+<spring:message code="model.body.guestcommentmessage1" var="guestcommentmessage1" />
+<spring:message code="model.body.guestcommentmessage2" var="guestcommentmessage2" />
+<spring:message code="model.body.guestcommentmessage3" var="guestcommentmessage3" />
+<spring:message code="model.body.guestcommentmessage4" var="guestcommentmessage4" />
+
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -117,16 +130,16 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Confirm</h4>
+        <h4 class="modal-title">${confirm}</h4>
       </div>
       <div class="modal-body">
-        <p>Are you really wanna to complain this post?</p>
+        <p>${confirmmessage}</p>
       </div>
       <div class="modal-footer">
       <a href="<c:url value="/complain?id=${post.idPost}" />"
 						class="btn btn-danger"> ${issue}
 						</a>
-        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-info" data-dismiss="modal">${close}</button>
       </div>
     </div>
 
@@ -150,11 +163,11 @@
 										href="<c:url value="/guest/designerProfile?id=${post.user.idUser }"  />">${post.user.nickName}</a>
 								</p>
 								<p>
-									<i class="fa fa-cubes"></i> Category: <a
+									<i class="fa fa-cubes"></i> ${category1}: <a
 										href="<c:url value="/result?idCategory=${post.category.idCategory}" />">${post.category.title}</a>
 								</p>
 								<p>
-									<i class="fa fa-cubes"></i> Subcategory: <a
+									<i class="fa fa-cubes"></i> ${subcategory1}: <a
 										href="<c:url value="/result?idCategory=${post.category.idCategory}&idSubcategory=${post.subcategory.idSubcategory}" />">${post.subcategory.title}</a>
 								</p>
 								<p>
@@ -197,8 +210,8 @@
 			<div class="col-md-12">
 				<div class="page-header">
 					<h3>
-						<small class="pull-right">${sizeComments} comments</small>
-						Comments
+						<small class="pull-right">${sizeComments} ${comms}</small>
+						${comments}
 					</h3>
 				</div>
 				<div class="comments-list">
@@ -222,9 +235,8 @@
 					</c:forEach>
 					<security:authorize access="isAnonymous()">
 						<p>
-							<a href="<c:url value="/go/signin"/>">Войдите</a> или <a
-								href="<c:url value="/signup"/>">зарегистрируйтесь</a> для
-							отправления комментариев
+							${guestcommentmessage0} <a href="<c:url value="/go/signin"/>">${guestcommentmessage1}</a> ${guestcommentmessage2} <a
+								href="<c:url value="/signup"/>">${guestcommentmessage3}</a> ${guestcommentmessage4}
 						</p>
 					</security:authorize>
 					<security:authorize
@@ -238,13 +250,13 @@
 									<div class="height-input-comments">
 										<form:textarea id="comment" name="comment" style="resize:none"
 											class="form-control input-md" path="comment"
-											placeholder="Type your comment here" rows="5" cols="30"></form:textarea>
+											placeholder="${commentsplaceholder}" rows="5" cols="30"></form:textarea>
 											<span class="error"><form:errors path="comment" /></span> <br>
 									</div>
 									<form:input type="hidden" id="idPost" name="idPost"
 										path="idPost" value="${post.idPost }"></form:input>
 									
-									<input type="submit" class="btn btn-primary" value="Write" />
+									<input type="submit" class="btn btn-primary" value="${write}" />
 								</div>
 							</div>
 						</form:form>

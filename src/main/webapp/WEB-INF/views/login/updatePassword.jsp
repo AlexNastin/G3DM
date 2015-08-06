@@ -27,12 +27,17 @@
 <spring:message code="403page.error.home" var="home" />
 <spring:message code="403page.error.contactss" var="contactss" />
 <spring:message code="javascript.validation" var="validation" />
+<spring:message code="email.message.updatepassword.enterpasswordmessage" var="enterpasswordmessage" />
+<spring:message code="form.password" var="password" />
+<spring:message code="form.confirmpassword" var="confirmpassword" />
+<spring:message code="form.save" var="save" />
+
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %>   
 <div class="container">
     <div class="row">
     <div class="col-md-12" style="padding-top: 3em;" >
-    <h1 style="text-align:center"><i class="fa fa-lock"></i> Please, enter your new password <i class="fa fa-lock"></i></h1>
+    <h1 style="text-align:center"><i class="fa fa-lock"></i> ${enterpasswordmessage} <i class="fa fa-lock"></i></h1>
     <div class="col-md-4"></div>
         <div class="col-md-4">
             <div class="error-template" style="min-height:45em; padding-top:1em;">
@@ -45,7 +50,7 @@
 									<div class="col-md-12 height-input-string-update-password">
 										<form:password id="password" name="password"
 											class="form-control input-md" path="password"
-											placeholder="Password"></form:password>
+											placeholder="${password}"></form:password>
 										<span class="error"><form:errors path="password" /></span>
 									</div>
 								</div>
@@ -53,7 +58,7 @@
 									<div class="col-md-12 height-input-string-update-password">
 										<form:password id="confirmPassword" name="confirmPassword"
 											class="form-control input-md" path="confirmPassword"
-											placeholder="Confirm password"></form:password>
+											placeholder="${confirmpassword}"></form:password>
 										<span class="error"><form:errors path="confirmPassword" /></span>
 									</div>
 								</div>
@@ -62,7 +67,7 @@
 
 								<div class="form-group" style="text-align: center;">
 
-									<input type="submit" class="btn btn-primary" value="Save" />
+									<input type="submit" class="btn btn-primary" value="${save}" />
 
 								</div>
 							</form:form>
@@ -103,7 +108,9 @@
 
 <%@include file="/WEB-INF/views/footer.jsp" %>  
     <script src="<c:url value="/resources/js/jquery-1.7.min.js" />"> </script>
-    <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script> 
+    <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
+    <script src="<c:url value="/resources/js/${validation}.js" />"> </script>
     
 </body>
 </html>

@@ -71,7 +71,7 @@ public class GuestController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/go/signin", method = RequestMethod.GET)
+	@RequestMapping(value = "/signin", method = RequestMethod.GET)
 	public ModelAndView signIn() {
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		return modelAndView;
@@ -139,7 +139,7 @@ public class GuestController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/signupAddUser", method = RequestMethod.POST)
+	@RequestMapping(value = "/signup/addUser", method = RequestMethod.POST)
 	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,
 			Model model) throws ServiceException {
 		guestService.addUser(signupForm, propertyManager.getValue(PropertyNameG3DM.PATH_FILE));

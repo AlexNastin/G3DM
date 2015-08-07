@@ -110,7 +110,7 @@ public class ForgotPasswordController {
 				"email.message.resetPasswordSubject", null, locale);
 
 		StringBuilder url = new StringBuilder(contextPath);
-		url.append("/changePassword?id=");
+		url.append("/secure/changePassword?id=");
 		url.append(user.getIdUser());
 		url.append("&token=");
 		url.append(token);
@@ -126,7 +126,7 @@ public class ForgotPasswordController {
 	}
 
 	@SuppressWarnings("unchecked")
-	@RequestMapping(value = "/changePassword", method = RequestMethod.GET)
+	@RequestMapping(value = "/secure/changePassword", method = RequestMethod.GET)
 	public ModelAndView showChangePasswordPage(Locale locale, Model model,
 			@RequestParam("id") int id, @RequestParam("token") String token)
 			throws ServiceException {
@@ -156,7 +156,7 @@ public class ForgotPasswordController {
 			User user = guestService.getUser(passwordResetToken.getUser_idUser());
 			Authentication authentication = new UsernamePasswordAuthenticationToken(user, null, grantedAuths);
 			SecurityContextHolder.getContext().setAuthentication(authentication);
-			modelAndView.setViewName("redirect:/updatePassword");
+			modelAndView.setViewName("redirect:/secure/updatePassword");
 			return modelAndView;
 		}
 		String message = messages.getMessage("email.message.invalidToken",
@@ -165,7 +165,7 @@ public class ForgotPasswordController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/savePassword", method = RequestMethod.POST)
+	@RequestMapping(value = "/secure/savePassword", method = RequestMethod.POST)
 	public ModelAndView saveNewPassword(Locale locale, Model model,
 			@RequestParam("password") String password) throws ServiceException {
 		User user = (User) SecurityContextHolder.getContext()

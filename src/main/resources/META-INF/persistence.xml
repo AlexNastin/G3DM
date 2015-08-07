@@ -5,26 +5,27 @@
 	<persistence-unit name="jpaPersistenceUnitG3DM"
 		transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
 		<class>com.global3Dmod.printer.domain.Advertisement</class>
-		<class>com.global3Dmod.printer.domain.User </class>
-		<class>com.global3Dmod.printer.domain.Сity </class>
-		<class>com.global3Dmod.printer.domain.Сomment </class>
-		<class>com.global3Dmod.printer.domain.Сountry</class>
 		<class>com.global3Dmod.printer.domain.Avatar</class>
 		<class>com.global3Dmod.printer.domain.Blacklist</class>
-		<class>com.global3Dmod.printer.domain.Role</class>
-		<class>com.global3Dmod.printer.domain.Subcategory</class>
-		<class>com.global3Dmod.printer.domain.Votecheck</class>
 		<class>com.global3Dmod.printer.domain.Category</class>
+		<class>com.global3Dmod.printer.domain.Сity </class>
+		<class>com.global3Dmod.printer.domain.Сomment </class>
+		<class>com.global3Dmod.printer.domain.Complain</class>
+		<class>com.global3Dmod.printer.domain.Сountry</class>
 		<class>com.global3Dmod.printer.domain.DisProgram</class>
 		<class>com.global3Dmod.printer.domain.File</class>
+		<class>com.global3Dmod.printer.domain.Like</class>
+		<class>com.global3Dmod.printer.domain.PasswordResetToken</class>
 		<class>com.global3Dmod.printer.domain.Post</class>
 		<class>com.global3Dmod.printer.domain.PostPhoto</class>
-		<class>com.global3Dmod.printer.domain.Printer</class>
-		<class>com.global3Dmod.printer.domain.Rating</class>
-		<class>com.global3Dmod.printer.domain.Like</class>
-		<class>com.global3Dmod.printer.domain.Complain</class>
-		<class>com.global3Dmod.printer.domain.PasswordResetToken</class>
+		<class>com.global3Dmod.printer.domain.RejectMessage</class>
+		<class>com.global3Dmod.printer.domain.Role</class>
+		<class>com.global3Dmod.printer.domain.Subcategory</class>
+		<class>com.global3Dmod.printer.domain.Technology</class>
+		<class>com.global3Dmod.printer.domain.User </class>
+
 		<properties>
 			<property name="hibernate.search.default.directory_provider"
 				value="filesystem" />

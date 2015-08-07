@@ -22,7 +22,7 @@ import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
-@RequestMapping("/user/personalSecurity")
+@RequestMapping("/user/secure/personalSecurity")
 public class UserPersonalSecurityController {
 	
 	@Autowired
@@ -68,7 +68,7 @@ public class UserPersonalSecurityController {
 			modelAndView.addObject(ControllerParamConstant.USER, user);
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("forward:/user/personalSecurity/updatePasswordFormAdd");
+		ModelAndView modelAndView = new ModelAndView("forward:/user/secure/personalSecurity/updatePasswordFormAdd");
 		modelAndView.addObject("personalSecurityForm", personalSecurityForm);
 		return modelAndView;
 	}

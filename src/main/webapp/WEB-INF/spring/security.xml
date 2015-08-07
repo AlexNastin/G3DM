@@ -10,35 +10,45 @@ http://www.springframework.org/schema/security/spring-security-3.1.xsd">
 		<anonymous username="GUEST" granted-authority="ROLE_GUEST" />
 		<remember-me />
 
-
-
-		<form-login login-page="/go/signin"
+		<form-login login-page="/signin"
 			authentication-failure-url="/go/signin?login_error=true"
 			login-processing-url="/static/j_spring_security_check"
 			default-target-url="/putperson" />
 
 		<logout logout-url="/logout" logout-success-url="/index" />
 
+		<!-- HTTPS links -->
+			<!--<intercept-url pattern="/secure/**" requires-channel="https" />
+	 	<intercept-url pattern="/user/secure/**" requires-channel="https" />
+	 	<intercept-url pattern="/designer/secure/**" requires-channel="https" />
+		<intercept-url pattern="/signup/**" requires-channel="https" />
+		<intercept-url pattern="/signin/**" requires-channel="https" />-->
+
+
+		<!--<port-mappings> <port-mapping http="8080" https="8443" /> </port-mappings> -->
+
+		<!-- Role links -->
+		<intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/user/**" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/designer/**" access="hasRole('ROLE_DESIGNER')" />
 		<intercept-url pattern="/moderator/**" access="hasRole('ROLE_MODERATOR')" />
 		<intercept-url pattern="/**"
 			access="hasAnyRole('ROLE_GUEST', 'ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN','ROLE_DESIGNER')" />
 
+
+
 	</http>
 	<authentication-manager>
 		<!--<authentication-provider> <user-service> <user name="admin" password="pass" 
 			authorities="ROLE_ADMIN,ROLE_USER" /> <user name="user1" password="1111" 
 			authorities="ROLE_USER" /> <user name="user2" password="2222" disabled="true" 
-			authorities="ROLE_USER" /> </user-service> </authentication-provider><authentication-provider>
-			<jdbc-user-service data-source-ref="dataSource"
-				users-by-username-query="select login, password, 1 as enabled from users where login=?"
-				authorities-by-username-query="select login, title from users, roles where 
-			role_id_role=id_role and login=?" />
+			authorities="ROLE_USER" /> </user-service> </authentication-provider><authentication-provider> 
+			<jdbc-user-service data-source-ref="dataSource" users-by-username-query="select 
+			login, password, 1 as enabled from users where login=?" authorities-by-username-query="select 
+			login, title from users, roles where role_id_role=id_role and login=?" /> 
+			<password-encoder hash="md5" /> </authentication-provider> -->
+		<authentication-provider user-service-ref="customUserDetailsService">
 			<password-encoder hash="md5" />
-		</authentication-provider> -->
-		   <authentication-provider user-service-ref="customUserDetailsService">
-	        		<password-encoder hash="md5"/>
-	        </authentication-provider>
+		</authentication-provider>
 	</authentication-manager>
 </beans:beans>

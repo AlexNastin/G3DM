@@ -198,7 +198,7 @@ public class DesignerController {
 		return modelAndView2;
 	}
 
-	@RequestMapping(value = "/designer/personalSecurity/updatePasswordFormAdd", method = RequestMethod.POST)
+	@RequestMapping(value = "/designer/secure/personalSecurity/updatePasswordFormAdd", method = RequestMethod.POST)
 	public ModelAndView updatePasswordFormAdd(
 			DesignerPersonalSecurityForm personalSecurityForm, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {

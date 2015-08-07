@@ -16,7 +16,7 @@ import com.global3Dmod.ÇDmodels.form.UpdateForgotPasswordForm;
 import com.global3Dmod.ÇDmodels.form.validator.UpdateForgotPasswordValidator;
 
 @Controller
-@RequestMapping("/updatePassword")
+@RequestMapping("/secure/updatePassword")
 public class UpdateForgotPasswordController {
 
 	@Autowired
@@ -39,7 +39,7 @@ public class UpdateForgotPasswordController {
 			ModelAndView modelAndView = new ModelAndView("login/updatePassword");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("forward:/savePassword");
+		ModelAndView modelAndView = new ModelAndView("forward:/secure/savePassword");
 		modelAndView.addObject("password", updateForgotPasswordForm.getPassword());
 		return modelAndView;
 	}

@@ -142,7 +142,7 @@ public class UserController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/user/personalSecurity/updatePasswordFormAdd", method = RequestMethod.POST)
+	@RequestMapping(value = "/user/secure/personalSecurity/updatePasswordFormAdd", method = RequestMethod.POST)
 	public ModelAndView updatePasswordFormAdd(
 			UserPersonalSecurityForm personalSecurityForm, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {

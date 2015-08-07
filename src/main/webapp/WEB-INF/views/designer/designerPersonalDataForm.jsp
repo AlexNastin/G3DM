@@ -80,7 +80,7 @@
 					${works}
 				</a> <a href="<c:url value="/designer/personalData" />"
 					class="list-group-item active"><i class="fa fa-cogs"></i>
-					${data} </a> <a href="<c:url value="/designer/personalSecurity" />"
+					${data} </a> <a href="<c:url value="/designer/secure/personalSecurity" />"
 					class="list-group-item"><i class="fa fa-lock"></i>
 					${personalsecurity} </a> <a href="<c:url value="/designer/addPost" />"
 					class="list-group-item"><i class="fa fa-plus-square"></i>

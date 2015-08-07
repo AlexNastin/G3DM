@@ -60,7 +60,7 @@
   
   <a href="<c:url value="/user/profile" />" class="list-group-item  "><i class="fa fa-briefcase"></i> ${mybookmarks}</a>
  <a href="<c:url value="/user/personalData" />" class="list-group-item active"><i class="fa fa-cogs"></i> ${data}  </a>
-  <a href="<c:url value="/user/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> ${personalsecurity}  </a>
+  <a href="<c:url value="/user/secure/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> ${personalsecurity}  </a>
   
 	 </div>
     </div>

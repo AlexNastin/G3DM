@@ -37,7 +37,7 @@
 	<beans:bean id="localeResolver"
 		class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
 		<beans:property name="defaultLocale" value="en" />
-		<beans:property name="cookieName" value="myAppLocaleCookie"></beans:property>
+		<beans:property name="cookieName" value="global3dmod"></beans:property>
 		<beans:property name="cookieMaxAge" value="3600"></beans:property>
 	</beans:bean>
 

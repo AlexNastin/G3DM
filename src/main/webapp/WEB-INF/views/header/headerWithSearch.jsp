@@ -67,7 +67,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${account} <i class="fa fa-user"></i></a>
           <ul class="dropdown-menu" role="menu">
             <li><security:authorize access="hasRole('ROLE_GUEST')">
-                   <a href="<c:url value="/go/signin" />"'>
+                   <a href="<c:url value="/signin" />"'>
       				${signin} <i class="fa fa-sign-in"></i>
       				</a>
       				<a href="<c:url value="/signup" />"'>

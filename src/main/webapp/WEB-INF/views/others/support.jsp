@@ -25,6 +25,8 @@
 <spring:message code="headerWithSearch.header.search" var="search" />
 <spring:message code="support.email" var="email" />
 <spring:message code="support.text" var="text" />
+<spring:message code="javascript.validation" var="validation" />
+<spring:message code="support.placeholder" var="placeholder" />
 </head>
 <body>
 	<%@include file="/WEB-INF/views/header/headerWithSearch.jsp"%>
@@ -43,9 +45,9 @@
 						class="img-responsive img-thumbnail miniature-image" alt="jobs">
 				</div>
 				<div class="col-md-6 background-color-support ">
-					<div class="form-group">
+					<div class="form-group input-height-support-email">
 						<div
-							class="col-md-12 margin-bottom-input-support margin-top-support-input">
+							class="col-md-12 margin-bottom-input-support margin-top-support-input input-height-support-email">
 							<form:input id="email" name="email" class="form-control input-md"
 								path="email" placeholder="${email}"></form:input>
 							<span class="error color-style-validation"><form:errors
@@ -53,24 +55,31 @@
 						</div>
 					</div>
 					<div class="form-group">
-						<div class="col-md-12">
+						<div class="col-md-12 input-height-support-message">
 							<form:textarea id="textSupport" name="textSupport"
 								style="resize:none" class="form-control input-md"
-								path="textSupport" placeholder="${text}" rows="5" cols="30"></form:textarea>
+								path="textSupport" placeholder="${placeholder}" rows="5" cols="30"></form:textarea>
 							<span class="error"><form:errors path="textSupport" /></span> <br>
 						</div>
 					</div>
+					<div class="row">
+					<div class="col-md-9">
+					<c:if test="${message != null}">
+			        <div class="alert alert-info" role="alert"
+				        style="margin-left: 1em; margin-top: 5.5%; padding: 0.5%; text-align: center;">${message}</div>
+		           </c:if>
+					</div>
+					<div class="col-md-3">
 					<div class="right-support">
 						<input class="btn btn-primary" type="submit" value="Submit" />
 					</div>
+				   </div>
+				   </div>
 				</div>
 
 			</div>
 		</form:form>
-		<c:if test="${message != null}">
-			<div class="alert alert-info" role="alert"
-				style="margin-top: 3%; padding: 1%">${message}</div>
-		</c:if>
+		
 	</div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
 	<script src="<c:url value="/resources/js/jquery.min.js" />">
@@ -80,6 +89,12 @@
 		
 	</script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js" />">
+		
+	</script>
+	<script src="<c:url value="/resources/js/jquery.validate.min.js" />">
+		
+	</script>
+	<script src="<c:url value="/resources/js/${validation}.js" />">
 		
 	</script>
 </body>

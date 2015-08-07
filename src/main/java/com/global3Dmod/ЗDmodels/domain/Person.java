@@ -2,6 +2,11 @@ package com.global3Dmod.ÇDmodels.domain;
 
 public class Person implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1984628744053343237L;
+
 	private int idPerson;
 
 	private String login;
@@ -13,6 +18,7 @@ public class Person implements Essence {
 	private String surName;
 
 	public Person() {
+		super();
 	}
 
 	public int getIdPerson() {

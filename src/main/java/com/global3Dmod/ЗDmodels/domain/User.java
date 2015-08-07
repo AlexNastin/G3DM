@@ -35,6 +35,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class User implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 951675885861940220L;
+
 	@Id
 	@Column(name = "id_user")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

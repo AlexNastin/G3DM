@@ -22,6 +22,11 @@ import javax.persistence.Table;
 
 public class Like implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5207786697051770764L;
+
 	@Id
 	@Column(name = "id_like")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +41,10 @@ public class Like implements Essence {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "posts_id_post", insertable=false, updatable=false)
 	private Post post;
+	
+	public Like() {
+		super();
+	}
 
 	public int getIdLike() {
 		return idLike;

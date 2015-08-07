@@ -21,6 +21,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name="RejectMessage.findByPost", query="select m from RejectMessage m where m.post.idPost = :post_idPost")})
 public class RejectMessage implements Essence {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1231853720761575653L;
+
 	@Id
 	@Column(name = "id_message")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -22,7 +22,6 @@ import com.global3Dmod.ÇDmodels.dao.IFileDAO;
 import com.global3Dmod.ÇDmodels.dao.ILikeDAO;
 import com.global3Dmod.ÇDmodels.dao.IPasswordResetTokenDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
-import com.global3Dmod.ÇDmodels.dao.IRatingDAO;
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
@@ -72,9 +71,6 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private ICommentDAO commentDAO;
-
-	@Autowired
-	private IRatingDAO ratingDAO;
 
 	@Autowired
 	private ILikeDAO likeDAO;

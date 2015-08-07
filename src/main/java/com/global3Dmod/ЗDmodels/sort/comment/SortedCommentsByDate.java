@@ -4,7 +4,6 @@ import java.util.Comparator;
 import java.util.Date;
 
 import com.global3Dmod.ÇDmodels.domain.Comment;
-import com.global3Dmod.ÇDmodels.domain.Post;
 
 public class SortedCommentsByDate implements Comparator<Comment>{
 

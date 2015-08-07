@@ -3,7 +3,6 @@ package com.global3Dmod.ÇDmodels.sort.country;
 import java.util.Comparator;
 
 import com.global3Dmod.ÇDmodels.domain.Country;
-import com.global3Dmod.ÇDmodels.domain.Post;
 
 public class SortedCountriesById implements Comparator<Country>{
 

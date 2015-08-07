@@ -2,7 +2,6 @@ package com.global3Dmod.ÇDmodels.sort.user;
 
 import java.util.Comparator;
 
-import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.domain.User;
 
 public class SortedUsersBySurnameDesc implements Comparator<User>{

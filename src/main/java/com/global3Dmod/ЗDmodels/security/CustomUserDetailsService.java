@@ -14,7 +14,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.global3Dmod.ÇDmodels.aop.annotation.AspectLogG3DM;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;

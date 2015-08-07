@@ -20,6 +20,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @NamedQuery(name="DisProgram.findAll", query="select d from DisProgram d")
 public class DisProgram implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3040870465375382020L;
+
 	@Id
 	@Column(name = "id_disprogram")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

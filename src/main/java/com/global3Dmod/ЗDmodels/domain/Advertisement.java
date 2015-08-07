@@ -12,10 +12,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "advertisement")
 @NamedQueries({
-		@NamedQuery(name="Advertisement.findAll", query="select a from Advertisement a"),
-		@NamedQuery(name="Advertisement.findOneById", query="select a from Advertisement a where a.idAdvertisement = :idAdvertisement")})
+		@NamedQuery(name = "Advertisement.findAll", query = "select a from Advertisement a"),
+		@NamedQuery(name = "Advertisement.findOneById", query = "select a from Advertisement a where a.idAdvertisement = :idAdvertisement") })
 public class Advertisement implements Essence {
-
 
 	/**
 	 * 
@@ -32,23 +31,24 @@ public class Advertisement implements Essence {
 
 	@Column(name = "description")
 	private String description;
-	
+
 	@Column(name = "client")
 	private String client;
-	
+
 	@Column(name = "registration_date")
 	private String registrationDate;
-	
+
 	@Column(name = "expiration_date")
 	private String expirationDate;
-	
+
 	@Column(name = "file_name")
 	private String fileName;
-	
+
 	@Column(name = "file_path")
 	private String filePath;
 
 	public Advertisement() {
+		super();
 	}
 
 	public int getIdAdvertisement() {
@@ -188,11 +188,10 @@ public class Advertisement implements Essence {
 	@Override
 	public String toString() {
 		return "Advertisement [idAdvertisement=" + idAdvertisement + ", title="
-				+ title + ", description=" + description
-				+ ", client=" + client + ", registrationDate="
-				+ registrationDate + ", expirationDate=" + expirationDate
-				+ ", fileName=" + fileName + ", filePath=" + filePath + "]";
+				+ title + ", description=" + description + ", client=" + client
+				+ ", registrationDate=" + registrationDate
+				+ ", expirationDate=" + expirationDate + ", fileName="
+				+ fileName + ", filePath=" + filePath + "]";
 	}
 
-	
 }

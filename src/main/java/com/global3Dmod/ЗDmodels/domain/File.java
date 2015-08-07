@@ -20,6 +20,11 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name = "File.findFileById", query = "select f from File f where f.idFile = :idFile")})
 public class File implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3872172969551746192L;
+
 	@Id
 	@Column(name = "id_file")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -14,6 +14,11 @@ import javax.persistence.Table;
 @NamedQuery(name="Blacklist.findAll", query="select b from Blacklist b")
 public class Blacklist implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8461822807280534133L;
+
 	@Id
 	@Column(name = "id_blacklist")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

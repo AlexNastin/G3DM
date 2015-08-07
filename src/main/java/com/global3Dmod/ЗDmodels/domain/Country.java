@@ -22,6 +22,11 @@ import javax.persistence.Table;
 	@NamedQuery(name = "Country.findCountryById", query = "select c from Country c join fetch c.cities where c.idCountry = :idCountry")})
 public class Country implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1556669955610883767L;
+
 	@Id
 	@Column(name = "id_country")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

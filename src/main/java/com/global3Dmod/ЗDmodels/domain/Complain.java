@@ -22,6 +22,11 @@ import javax.persistence.Table;
 
 public class Complain implements Essence{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3208000478041795821L;
+
 	@Id
 	@Column(name = "id_complain")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -36,6 +41,10 @@ public class Complain implements Essence{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "posts_id_post", insertable=false, updatable=false)
 	private Post post;
+	
+	public Complain() {
+		super();
+	}
 
 	public int getIdComplain() {
 		return idComplain;

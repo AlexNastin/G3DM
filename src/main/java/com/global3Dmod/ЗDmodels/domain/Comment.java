@@ -21,6 +21,11 @@ import javax.persistence.Table;
 	@NamedQuery(name="Comment.findByPost", query="select c from Comment c where c.post_idPost = :post_idPost")})
 public class Comment implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1553486589409738413L;
+
 	@Id
 	@Column(name = "id_comment")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

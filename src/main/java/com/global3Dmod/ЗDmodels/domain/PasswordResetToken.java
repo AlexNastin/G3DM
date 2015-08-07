@@ -21,6 +21,11 @@ import javax.persistence.Table;
 public class PasswordResetToken implements Essence {
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7955005647844576256L;
+
 	@Id
 	@Column(name = "id_token")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +39,10 @@ public class PasswordResetToken implements Essence {
 
 	@Column(name = "expiry_date")
 	private Date expiryDate;
+	
+	public PasswordResetToken() {
+		super();
+	}
 
 	public int getIdToken() {
 		return idToken;

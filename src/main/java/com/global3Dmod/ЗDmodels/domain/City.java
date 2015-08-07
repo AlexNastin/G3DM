@@ -20,6 +20,11 @@ import javax.persistence.Table;
 @NamedQuery(name="Ñity.findAll", query="select c from City c")
 public class City implements Essence {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 3207824537216244815L;
+
 	@Id
 	@Column(name = "id_city")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

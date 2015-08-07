@@ -85,14 +85,15 @@
 							${signupnew}</button>
 					</div>
 				</div>
-				<c:if test="${message != null}">
-			   ${message}
-			   </c:if>
+				
 				<div class="margin-forgot-password">
 					<a href="<c:url value="/forgotPassword.html" />">${forgotpassword}
 					</a>
 				</div>
 			</form>
+			<c:if test="${message != null}">
+			  <div class="alert alert-success" role="alert" style="padding: 1%; text-align:center">${message}</div> 
+			   </c:if>
 		</div>
 		<div class="clearfix"></div>
 	</div>

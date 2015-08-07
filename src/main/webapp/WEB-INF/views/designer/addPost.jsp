@@ -62,7 +62,8 @@
 </div>
       </div>
   <div class="row">
-		<div class="col-md-10 nopadding2">
+  
+		<div class="col-md-10 nopadding2" style="padding-left:20%">
 		<h2>${enterinformation}</h2>
 				
 	<form:form role="form" modelAttribute="postForm" method="POST" id="add-post-form"

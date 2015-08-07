@@ -42,7 +42,9 @@ public interface IAdminService {
 	public void updateAdvertisement(UpdateAdvertisementForm updateAdvertisementForm, String serverPath) throws ServiceException;
 
 	public void deleteAdvertisement(Integer idAdvertisement) throws ServiceException;
-
+	
+	public void deleteModerator(Integer idUser) throws ServiceException;
+	
 	public void formTopDesigners() throws ServiceException;
 
 }

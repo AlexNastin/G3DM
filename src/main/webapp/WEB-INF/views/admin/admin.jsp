@@ -18,12 +18,16 @@
 <spring:message code="admin.menu.designers" var="designers" />
 <spring:message code="admin.menu.users" var="users" />
 <spring:message code="admin.menu.advertisement" var="advertisement" />
-<spring:message code="admin.menu.moderators.addmoderator" var="addmoderator" />
+<spring:message code="admin.menu.moderators.addmoderator"
+	var="addmoderator" />
 <spring:message code="admin.menu.moderators.nickname" var="nickname" />
 <spring:message code="admin.menu.moderators.login" var="login" />
 <spring:message code="admin.menu.moderators.name" var="name" />
 <spring:message code="admin.menu.moderators.surname" var="surname" />
-<spring:message code="admin.menu.moderators.dateregister" var="dateregister" />
+<spring:message code="admin.menu.moderators.dateregister"
+	var="dateregister" />
+	<spring:message code="admin.menu.moderators.deleteModerator"
+	var="deleteModerator" />
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -69,8 +73,9 @@
 					class="list-group-item"> <i class="fa fa-ban"></i> ${designers}
 				</a> <a href="<c:url value="/admin/users" />" class="list-group-item">
 					<i class="fa fa-user-plus"></i> ${users}
-				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item">
-					<i class="fa fa-user-plus"></i> ${advertisement}
+				</a> <a href="<c:url value="/admin/advertisements" />"
+					class="list-group-item"> <i class="fa fa-user-plus"></i>
+					${advertisement}
 				</a>
 			</div>
 		</div>
@@ -82,20 +87,20 @@
 					<div class="content-panel">
 						<table class="table table-striped table-advance table-hover">
 							<div class="row">
-							<h2>
-							<div class="col-md-12">
-							${moderators}
-							
-							<a href="<c:url value="/admin/addModerator.html" />" class="btn btn-success admin-addModerator-float"> <i class="fa fa-user-plus"></i>
-							${addmoderator}
-							</a>
+								<h2>
+									<div class="col-md-12">
+										${moderators} <a
+											href="<c:url value="/admin/addModerator.html" />"
+											class="btn btn-success admin-addModerator-float"> <i
+											class="fa fa-user-plus"></i> ${addmoderator}
+										</a>
+									</div>
+								</h2>
 							</div>
-							</h2>
-                            </div>
 							<!-- Some sorts for table -->
-							
+
 							<thead>
-								
+
 								<c:if test="${sizeUsers != 0}">
 									<nav style="text-align: center">
 										<ul class="pagination">
@@ -137,6 +142,7 @@
 									<th><i class="fa fa-th-list"></i><a
 										href="<c:url value="/admin/profile?sort=dateRegistration&desc=${dateRegistrationDesc}" />">
 											${dateregister}</a></th>
+									<th><i class="fa fa-th-list"></i>Удалить</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -147,6 +153,9 @@
 										<td>${user.name}</td>
 										<td>${user.surname}</td>
 										<td>${user.registrationDate}</td>
+										<td><a
+											href="<c:url value="/admin/deleteModerator?id=${user.idUser}" />"
+											type="button" class="btn btn-danger">${deleteModerator}</a></td>
 									</tr>
 								</c:forEach>
 							</tbody>

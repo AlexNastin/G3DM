@@ -142,7 +142,7 @@
 									<th><i class="fa fa-th-list"></i><a
 										href="<c:url value="/admin/profile?sort=dateRegistration&desc=${dateRegistrationDesc}" />">
 											${dateregister}</a></th>
-									<th><i class="fa fa-th-list"></i>Удалить</th>
+									<th><i class="fa fa-th-list"></i> Удалить</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -153,10 +153,27 @@
 										<td>${user.name}</td>
 										<td>${user.surname}</td>
 										<td>${user.registrationDate}</td>
-										<td><a
-											href="<c:url value="/admin/deleteModerator?id=${user.idUser}" />"
-											type="button" class="btn btn-danger">${deleteModerator}</a></td>
+										<td>
+										<button class="btn btn-danger btn-xs" data-toggle="modal" data-target="#myModal${user.idUser}"><i class="fa fa-trash-o "></i></button>
+										</td>
 									</tr>
+									<div class="modal fade" id="myModal${user.idUser}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete?</h4>
+      </div>
+      <div class="modal-body">
+        Are you really wanna delete this moderator?
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
+        <a href="<c:url value="/admin/deleteModerator?id=${user.idUser}" />"type="button" class="btn btn-danger">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
 								</c:forEach>
 							</tbody>
 						</table>

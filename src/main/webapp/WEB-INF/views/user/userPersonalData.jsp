@@ -127,7 +127,7 @@
                       </div>
                        <div class="height-message-avatar">
                        <c:if  test="${message != null}">
-			             <div class="alert alert-info" role="alert" style="margin-top: 3%; padding: 1%; text-align:center">${message}</div> 
+			             <div class="alert alert-info" role="alert" style="margin-top:0%; padding: 1%; text-align:center">${message}</div> 
 			           </c:if> 
                       </div>
                       <div class="row">

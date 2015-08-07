@@ -134,7 +134,7 @@
                       <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/user/personalData/updateForm"  />"'>
                        ${update}
                       </button>
-                      <button type="button" style="text-align: center; margin-right: 1em;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/user/deleteAvatar"  />"'>
+                      <button type="button" style="text-align: center; margin-right: 1em;" class="btn btn-primary left-designer" data-toggle="modal" data-target="#myModal" >
                        ${deleteavatar}
                       </button>
                      </div>      
@@ -148,6 +148,27 @@
      </div> 
           
   </div> 
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-sm">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you really want to delete avatar?</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger"  onClick='location.href="<c:url value="/user/deleteAvatar"  />"'>Delete</button>
+        
+      </div>
+    </div>
+
+  </div>
+</div>
   <div class="clearfix"> </div>
  
 	<%@include file="/WEB-INF/views/footer.jsp" %>  

@@ -27,7 +27,7 @@
 <spring:message code="form.gender" var="gender" />
 <spring:message code="form.gender.none" var="none" />
 <spring:message code="form.update" var="update" />
-
+<spring:message code="designer.personaldata.deleteavatar" var="deleteavatar" />
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -125,17 +125,20 @@
                                   </tbody>
                           </table>
                       </div>
-                      <div class="col-md-12">
+                       <div class="height-message-avatar">
+                       <c:if  test="${message != null}">
+			             <div class="alert alert-info" role="alert" style="margin-top: 3%; padding: 1%; text-align:center">${message}</div> 
+			           </c:if> 
+                      </div>
+                      <div class="row">
                       <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/user/personalData/updateForm"  />"'>
-      ${update}
-      </button>
-        <button type="button" style="text-align: center;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/user/deleteAvatar"  />"'>
-     Delete avatar
-      </button>
-      </div>                
-                <c:if  test="${message != null}">
-			  <div class="alert alert-info" role="alert" style="margin-top: 3%; padding:1%">${message}</div> 
-			   </c:if>      
+                       ${update}
+                      </button>
+                      <button type="button" style="text-align: center; margin-right: 1em;" class="btn btn-primary left-designer"  onClick='location.href="<c:url value="/user/deleteAvatar"  />"'>
+                       ${deleteavatar}
+                      </button>
+                     </div>      
+                    
                   </div>
               </div>
               

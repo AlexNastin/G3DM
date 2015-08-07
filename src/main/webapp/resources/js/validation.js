@@ -18,7 +18,7 @@ $(document).ready(function(){
 	        "Please check your input."
 	);
 	
-		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm, #addModeratorForm, #advertisement-form').validate({
+		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm, #addModeratorForm, #advertisement-form, #support-form').validate({
 			
 	    rules: {
 	    	nickName: {
@@ -116,6 +116,14 @@ $(document).ready(function(){
 	      },
 	      advertisementPhoto: {
 	    	  accept: "jpg,png,jpeg,gif"
+	      },
+	      email: {
+	    	  required: true,
+	    	  email: true
+	      },
+	      textSupport: {
+	    	  required: true,
+	    	  rangelength: [1, 300]
 	      }
 },
 messages:  {

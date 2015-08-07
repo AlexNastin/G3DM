@@ -440,3 +440,9 @@ background-color: #F8F8F8;
     display: none;
   }
 }
+.input-height-support-email {
+	height: 4em;
+}
+.input-height-support-message {
+	height: 10em;
+}

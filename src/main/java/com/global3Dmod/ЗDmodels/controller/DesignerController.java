@@ -43,7 +43,7 @@ public class DesignerController {
 
 	@Autowired
 	private MessageSource messages;
-	
+
 	@Autowired
 	private IDesignerService designerService;
 
@@ -58,7 +58,7 @@ public class DesignerController {
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "sort", required = false) String sort,
 			@RequestParam(value = "desc", required = false) boolean desc,
-			Locale locale, Model model, HttpSession httpSession) {
+			Locale locale, Model model, HttpSession httpSession)  throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
@@ -71,18 +71,12 @@ public class DesignerController {
 		if (sort == null) {
 			sort = "date";
 		}
-		User user = new User();
-		List<Post> posts = new ArrayList<Post>();
-		try {
-			user = designerService.getUser(person.getLogin());
-			userService.setPathToPhotos(user);
-			posts = designerService.getPostsByDesignerForSort(person
-					.getIdPerson());
-			designerService.sortPosts(posts, sort, desc);
-		} catch (ServiceException e) {
-			LOGGER.info("TROROLO");
-			LOGGER.error("OLO", e);
-		}
+		
+	
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
+		List<Post> posts  = designerService.getPostsByDesignerForSort(person.getIdPerson());
+		designerService.sortPosts(posts, sort, desc);
 
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
@@ -210,7 +204,8 @@ public class DesignerController {
 		}
 		designerService.updatePassword(personalSecurityForm, person.getLogin());
 
-		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalSecurityForm");
+		ModelAndView modelAndView = new ModelAndView(
+				"designer/designerPersonalSecurityForm");
 		String message = messages.getMessage(
 				"email.message.resetpaswordsuccessful", null, locale);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
@@ -226,25 +221,29 @@ public class DesignerController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalData");
+		ModelAndView modelAndView = new ModelAndView(
+				"designer/designerPersonalData");
 		User user = designerService.getUser(person.getLogin());
 		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/designer/deleteAvatar", method = RequestMethod.GET)
-	public ModelAndView deleteAvatar(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+	public ModelAndView deleteAvatar(Locale locale, Model model,
+			HttpSession httpSession) throws ServiceException {
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		String message = messages.getMessage("users.message.deleteAvatar", null, locale);
+		String message = messages.getMessage("users.message.deleteAvatar",
+				null, locale);
 		User user = designerService.getUser(person.getLogin());
 		designerService.deleteAvatar(user.getAvatar());
-		ModelAndView modelAndView = new ModelAndView("designer/designerPersonalData");
+		ModelAndView modelAndView = new ModelAndView(
+				"designer/designerPersonalData");
 		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);

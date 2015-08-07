@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectLogG3DM;
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.ILikeDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
@@ -75,6 +76,7 @@ public class AdminService implements IAdminService {
 	@Autowired
 	private PropertyManagerG3DM propertyManagerG3DM;
 
+	@AspectLogG3DM
 	@Override
 	public List<User> getModeratorsForSort() throws ServiceException {
 		List<User> users = null;
@@ -86,6 +88,7 @@ public class AdminService implements IAdminService {
 		return users;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<User> getDesignersForSort() throws ServiceException {
 		List<User> users = null;
@@ -97,6 +100,7 @@ public class AdminService implements IAdminService {
 		return users;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<User> getUsersForSort() throws ServiceException {
 		List<User> users = null;
@@ -108,6 +112,7 @@ public class AdminService implements IAdminService {
 		return users;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Advertisement> getAdvertisementsForSort()
 			throws ServiceException {
@@ -122,7 +127,7 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public ModelAndView setParamsForSort(ModelAndView modelAndView,
-			String sort, boolean desc) throws ServiceException {
+			String sort, boolean desc) {
 		if (ServiceParamConstant.NICKNAME.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.NICKNAME_DESC, true);
 		} else {
@@ -166,8 +171,7 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public ModelAndView setParamsAdvertisementForSort(
-			ModelAndView modelAndView, String sort, boolean desc)
-			throws ServiceException {
+			ModelAndView modelAndView, String sort, boolean desc) {
 		if (ServiceParamConstant.TITLE.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, true);
 		} else {
@@ -198,8 +202,7 @@ public class AdminService implements IAdminService {
 	}
 
 	@Override
-	public List<User> sortUsers(List<User> users, String sort, boolean desc)
-			throws ServiceException {
+	public List<User> sortUsers(List<User> users, String sort, boolean desc) {
 		if (sort != null) {
 			if (ServiceParamConstant.NICKNAME.equals(sort)) {
 				if (desc) {
@@ -292,8 +295,7 @@ public class AdminService implements IAdminService {
 	}
 
 	@Override
-	public void setPathToPhotos(List<Advertisement> advertisements)
-			throws ServiceException {
+	public void setPathToPhotos(List<Advertisement> advertisements) {
 		for (Advertisement advertisement : advertisements) {
 			String oldPath = advertisement.getFilePath();
 			StringBuilder fullPath = new StringBuilder(
@@ -304,8 +306,7 @@ public class AdminService implements IAdminService {
 	}
 
 	@Override
-	public void setPathToPhotos(Advertisement advertisement)
-			throws ServiceException {
+	public void setPathToPhotos(Advertisement advertisement) {
 		String oldPath = advertisement.getFilePath();
 		StringBuilder fullPath = new StringBuilder(
 				propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
@@ -313,6 +314,7 @@ public class AdminService implements IAdminService {
 		advertisement.setFilePath(fullPath.toString());
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void addAdvertisement(AddAdvertisementForm addAdvertisementForm,
 			String serverPath) throws ServiceException {
@@ -345,6 +347,7 @@ public class AdminService implements IAdminService {
 
 	}
 
+	@AspectLogG3DM
 	@Override
 	public String advertisementUpload(MultipartFile file, String path)
 			throws ServiceException {
@@ -363,6 +366,7 @@ public class AdminService implements IAdminService {
 		return newName;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public Advertisement getAdvertisement(Integer idAdvertisement)
 			throws ServiceException {
@@ -376,6 +380,7 @@ public class AdminService implements IAdminService {
 		return advertisement;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void updateAdvertisement(
 			UpdateAdvertisementForm updateAdvertisementForm, String serverPath)
@@ -399,7 +404,6 @@ public class AdminService implements IAdminService {
 									.getAdvertisementPhoto(),
 									fullPathAdvertisement, advertisement
 											.getFileName()));
-			System.out.println(advertisement.getFilePath());
 			advertisementDAO.updateAdvertisement(advertisement);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
@@ -408,16 +412,16 @@ public class AdminService implements IAdminService {
 	}
 
 	private String advertisementUpload(MultipartFile file, String path,
-			String oldFileName) {
+			String oldFileName) throws ServiceException {
 		String filePath = path + oldFileName;
 		new File(path).mkdirs();
 		File dest = new File(filePath);
 		try {
 			file.transferTo(dest);
 		} catch (IllegalStateException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		}
 		return oldFileName;
 	}
@@ -431,6 +435,7 @@ public class AdminService implements IAdminService {
 		return path;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void deleteAdvertisement(Integer idAdvertisement)
 			throws ServiceException {
@@ -441,6 +446,7 @@ public class AdminService implements IAdminService {
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void deleteModerator(Integer idUser) throws ServiceException {
 		try {
@@ -450,6 +456,7 @@ public class AdminService implements IAdminService {
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void formTopDesigners() throws ServiceException {
 		try {

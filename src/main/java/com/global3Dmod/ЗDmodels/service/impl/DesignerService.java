@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectLogG3DM;
 import com.global3Dmod.ÇDmodels.dao.IAvatarDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICountryDAO;
@@ -91,6 +92,7 @@ public class DesignerService implements IDesignerService {
 	@Autowired
 	private IUserDAO userDAO;
 
+	@AspectLogG3DM
 	@Override
 	public List<DisProgram> getAllDisPrograms() throws ServiceException {
 		List<DisProgram> disPrograms;
@@ -102,6 +104,7 @@ public class DesignerService implements IDesignerService {
 		return disPrograms;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Category> getAllCategories() throws ServiceException {
 		List<Category> categories;
@@ -116,6 +119,7 @@ public class DesignerService implements IDesignerService {
 		return categories;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Country> getAllCountries() throws ServiceException {
 		List<Country> countries;
@@ -131,6 +135,7 @@ public class DesignerService implements IDesignerService {
 		return countries;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory)
 			throws ServiceException {
@@ -142,12 +147,13 @@ public class DesignerService implements IDesignerService {
 			for (Subcategory subcategory : subcategories) {
 				subcategory.setCategory(null);
 			}
-		} catch (DaoException e1) {
-			e1.printStackTrace();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
 		}
 		return subcategories;
 	}
-
+	
+	@AspectLogG3DM
 	@Override
 	public List<City> getAllCityWithinCountry(int idCountry)
 			throws ServiceException {
@@ -160,12 +166,13 @@ public class DesignerService implements IDesignerService {
 				city.setCountry(null);
 				city.setUsers(null);
 			}
-		} catch (DaoException e1) {
-			e1.printStackTrace();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
 		}
 		return cities;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Technology> getAllTechnologies() throws ServiceException {
 		List<Technology> printers;
@@ -177,6 +184,7 @@ public class DesignerService implements IDesignerService {
 		return printers;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Technology> getCheckPrintersById(String[] printersId)
 			throws ServiceException {
@@ -189,6 +197,7 @@ public class DesignerService implements IDesignerService {
 		return printers;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void addPost(PostForm postForm, int idUser, String nickName,
 			String serverPath) throws ServiceException {
@@ -248,6 +257,7 @@ public class DesignerService implements IDesignerService {
 
 	}
 
+	@AspectLogG3DM
 	@Override
 	public String modelFileUpload(MultipartFile file, String path)
 			throws ServiceException {
@@ -259,13 +269,14 @@ public class DesignerService implements IDesignerService {
 		try {
 			file.transferTo(dest);
 		} catch (IllegalStateException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		}
 		return newName;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public String modelFileUpload(MultipartFile file, String path,
 			String oldFileName) throws ServiceException {
@@ -295,13 +306,14 @@ public class DesignerService implements IDesignerService {
 		try {
 			file.transferTo(dest);
 		} catch (IllegalStateException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		}
 		return nameFile;
 	}
-
+	
+	@AspectLogG3DM
 	@Override
 	public String photoModelFileUpload(MultipartFile file, String path)
 			throws ServiceException {
@@ -313,13 +325,14 @@ public class DesignerService implements IDesignerService {
 		try {
 			file.transferTo(dest);
 		} catch (IllegalStateException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		}
 		return newName;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public String photoModelFileUpload(MultipartFile file, String path,
 			String oldFileName) throws ServiceException {
@@ -349,13 +362,14 @@ public class DesignerService implements IDesignerService {
 		try {
 			file.transferTo(dest);
 		} catch (IllegalStateException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		}
 		return nameFile;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public String avatarFileUpload(MultipartFile file, String path)
 			throws ServiceException {
@@ -367,13 +381,14 @@ public class DesignerService implements IDesignerService {
 		try {
 			file.transferTo(dest);
 		} catch (IllegalStateException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		}
 		return newName;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public String avatarFileUpload(MultipartFile file, String path,
 			String oldFileName) throws ServiceException {
@@ -403,13 +418,14 @@ public class DesignerService implements IDesignerService {
 		try {
 			file.transferTo(dest);
 		} catch (IllegalStateException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw new ServiceException(e);
 		}
 		return nameFile;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Post> getPostsByDesigner(Integer idUser)
 			throws ServiceException {
@@ -422,6 +438,7 @@ public class DesignerService implements IDesignerService {
 		return posts;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Post> getPostsByDesignerForSort(Integer idUser)
 			throws ServiceException {
@@ -434,9 +451,9 @@ public class DesignerService implements IDesignerService {
 		return posts;
 	}
 
+	
 	@Override
-	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc)
-			throws ServiceException {
+	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc) {
 		if (sort != null) {
 			if (ServiceParamConstant.TITLE.equals(sort)) {
 				if (desc) {
@@ -480,15 +497,14 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public List<Country> sortCountries(List<Country> countries)
-			throws ServiceException {
+	public List<Country> sortCountries(List<Country> countries) {
 		Collections.sort(countries, new SortedCountriesById());
 		return countries;
 	}
 
 	@Override
 	public ModelAndView setParamsForSort(ModelAndView modelAndView,
-			String sort, boolean desc) throws ServiceException {
+			String sort, boolean desc) {
 		if (ServiceParamConstant.CATEGORY.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.CATEGORY_DESC, true);
 		} else {
@@ -523,6 +539,7 @@ public class DesignerService implements IDesignerService {
 		return modelAndView;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public User getUser(String login) throws ServiceException {
 		User user;
@@ -534,6 +551,7 @@ public class DesignerService implements IDesignerService {
 		return user;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void updateUser(DesignerPersonalDataForm personalDataForm,
 			String login, String serverPath) throws ServiceException {
@@ -561,6 +579,7 @@ public class DesignerService implements IDesignerService {
 
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void updatePassword(
 			DesignerPersonalSecurityForm personalSecurityForm, String login)
@@ -579,6 +598,7 @@ public class DesignerService implements IDesignerService {
 
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void updatePost(UpdatePostForm updatePostForm, Integer idPost,
 			String serverPath) throws ServiceException {
@@ -631,6 +651,7 @@ public class DesignerService implements IDesignerService {
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void deletePost(Integer idPost) throws ServiceException {
 		try {
@@ -640,9 +661,9 @@ public class DesignerService implements IDesignerService {
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-
 	}
 
+	@AspectLogG3DM
 	@Override
 	public Post getPost(Integer idPost) throws ServiceException {
 		Post post = null;
@@ -654,6 +675,7 @@ public class DesignerService implements IDesignerService {
 		return post;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void deleteAvatar(Avatar avatar) throws ServiceException {
 		try {

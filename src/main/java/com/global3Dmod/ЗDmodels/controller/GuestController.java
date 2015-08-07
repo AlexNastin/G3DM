@@ -162,14 +162,6 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("error/404");
 		return modelAndView;
 	}
-
-	// test
-//	@RequestMapping(value = "/categoryMenu", method = RequestMethod.GET)
-//	public ModelAndView categoryMenu(Locale locale, Model model)
-//			throws ServiceException {
-//		ModelAndView modelAndView = new ModelAndView("categoryMenu");
-//		return modelAndView;
-//	}
 	
 	@RequestMapping(value = "/token", method = RequestMethod.GET)
 	public ModelAndView token() {

@@ -16,7 +16,6 @@ import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
-import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 
 @Repository("jpaPostDAO")
 @Transactional
@@ -26,12 +25,9 @@ public class PostDAOImpl implements IPostDAO {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
 	@Autowired
 	private PropertyManagerG3DM propertyManagerG3DM;
-	
-	
-	
 
 	/**
 	 * Insert the object of type "Post" to the database
@@ -88,7 +84,7 @@ public class PostDAOImpl implements IPostDAO {
 		em.merge(post);
 
 	}
-	//update
+
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -108,13 +104,11 @@ public class PostDAOImpl implements IPostDAO {
 	@Transactional
 	public List<Post> selectPostsByDesignerForSort(Integer idDesigner)
 			throws DaoException {
-		 String serverPath = propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE);
-		 System.out.println(serverPath);
 		List<Post> posts = em.createNamedQuery("Post.findByDesigner")
 				.setParameter("idUser", idDesigner).getResultList();
 		return posts;
 	}
-	//update
+
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -128,7 +122,7 @@ public class PostDAOImpl implements IPostDAO {
 		}
 		return posts;
 	}
-	//update
+
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -143,7 +137,7 @@ public class PostDAOImpl implements IPostDAO {
 		}
 		return posts;
 	}
-	//update
+
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -162,7 +156,7 @@ public class PostDAOImpl implements IPostDAO {
 		}
 		return posts;
 	}
-	//update
+
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
@@ -182,7 +176,7 @@ public class PostDAOImpl implements IPostDAO {
 		}
 		return posts;
 	}
-	//update
+
 	@Override
 	@Transactional
 	public Post selectPost(Integer idPost) throws DaoException {
@@ -217,29 +211,32 @@ public class PostDAOImpl implements IPostDAO {
 	@Override
 	@Transactional
 	public List<Post> selectPostsByModeratingForSort() throws DaoException {
-		List<Post> posts = em.createNamedQuery("Post.findByModerating").getResultList();
+		List<Post> posts = em.createNamedQuery("Post.findByModerating")
+				.getResultList();
 		for (Post post : posts) {
 			Hibernate.initialize(post.getUser());
 		}
 		return posts;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<Post> selectPostsByRejectingForSort() throws DaoException {
-		List<Post> posts = em.createNamedQuery("Post.findByRejecting").getResultList();
+		List<Post> posts = em.createNamedQuery("Post.findByRejecting")
+				.getResultList();
 		for (Post post : posts) {
 			Hibernate.initialize(post.getUser());
 		}
 		return posts;
 	}
-	//update
+
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<Post> selectTop4ByLike() throws DaoException {
-		List<Post> posts = em.createNamedQuery("Post.findTop4ByLike").setMaxResults(4).getResultList();
+		List<Post> posts = em.createNamedQuery("Post.findTop4ByLike")
+				.setMaxResults(4).getResultList();
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 		}
@@ -250,7 +247,8 @@ public class PostDAOImpl implements IPostDAO {
 	@Override
 	@Transactional
 	public List<Post> selectComplainedPostsForSort() throws DaoException {
-		List<Post> posts = em.createNamedQuery("Post.findComplainedPosts").getResultList();
+		List<Post> posts = em.createNamedQuery("Post.findComplainedPosts")
+				.getResultList();
 		for (Post post : posts) {
 			Hibernate.initialize(post.getUser());
 		}
@@ -263,19 +261,23 @@ public class PostDAOImpl implements IPostDAO {
 	public Map<Integer, Integer> selectColPostsForAllUsers()
 			throws DaoException {
 		Map<Integer, Integer> colPostsWithIdDesigners = new HashMap<Integer, Integer>();
-		List<Integer> idDesigners = em.createNamedQuery("Post.allDesignersHavePosts").getResultList();
-		List<Long> colPosts = em.createNamedQuery("Post.colPostAllUsers").getResultList();
+		List<Integer> idDesigners = em.createNamedQuery(
+				"Post.allDesignersHavePosts").getResultList();
+		List<Long> colPosts = em.createNamedQuery("Post.colPostAllUsers")
+				.getResultList();
 		for (int i = 0; i < idDesigners.size(); i++) {
-			colPostsWithIdDesigners.put(idDesigners.get(i), colPosts.get(i).intValue());
+			colPostsWithIdDesigners.put(idDesigners.get(i), colPosts.get(i)
+					.intValue());
 		}
 		return colPostsWithIdDesigners;
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
 	public List<Integer> selectIdDesignersHavePosts() throws DaoException {
-		List<Integer> idDesigners = em.createNamedQuery("Post.allDesignersHavePosts").getResultList();
+		List<Integer> idDesigners = em.createNamedQuery(
+				"Post.allDesignersHavePosts").getResultList();
 		return idDesigners;
 	}
 

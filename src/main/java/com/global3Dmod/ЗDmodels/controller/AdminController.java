@@ -63,7 +63,6 @@ public class AdminController {
 		}
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
-
 		ModelAndView modelAndView = new ModelAndView("admin/admin");
 		User user = designerService.getUser(person.getLogin());
 		userService.setPathToPhotos(user);
@@ -316,13 +315,6 @@ public class AdminController {
 				"redirect:/admin/updateAdvertisement.html?id="
 						+ updateAdvertisementForm.getIdAdvertisement());
 		return modelAndView2;
-	}
-
-	// test
-	@RequestMapping(value = "/exception", method = RequestMethod.GET)
-	public ModelAndView goProfile(Locale locale, Model model,
-			HttpSession httpSession) throws ServiceException {
-		throw new ServiceException("exception SERVISE");
 	}
 
 	@RequestMapping(value = "/admin/addModertor", method = RequestMethod.POST)

@@ -76,13 +76,17 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <h2>${designers}</h2>
-                             
-                             <a href="<c:url value="/admin/formTopDesigners" />" class="btn btn-success admin-addModerator-float"> <i class="fa fa-user-plus"></i>
+                             <h2>${designers} <a href="<c:url value="/admin/formTopDesigners" />" class="btn btn-success admin-addModerator-float"> <i class="fa fa-user-plus"></i>
 						${formtopdesigners}
-						</a>
-						<c:if test="${message == true}">${topisready}</c:if>
-                              
+						</a></h2>
+                            <div class="row"> 
+                           <div class="col-md-5"></div>  
+						<c:if test="${message == true}">
+						
+						<div class="alert alert-info col-md-4" role="alert" style="margin-top: 3%; padding:1%; max-width:111px; text-align:center;">${topisready}
+						</div>
+						</c:if>
+                            </div>  
                               <!-- Some sorts for table -->
                              
                               <thead>

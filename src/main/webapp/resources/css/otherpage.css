@@ -446,3 +446,9 @@ background-color: #F8F8F8;
 .input-height-support-message {
 	height: 10em;
 }
+.padding-text-license {
+	padding: 4em;
+}
+p {
+	margin: 0px 0px 0px;
+}

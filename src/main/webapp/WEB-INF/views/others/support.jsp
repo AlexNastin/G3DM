@@ -41,10 +41,19 @@
 			modelAttribute="supportForm" method="POST">
 			<div class="row margin-top-support">
 				<div class=col-md-6>
-					<img src="<c:url value="/resources/images/support.jpg" />"
-						class="img-responsive img-thumbnail miniature-image" alt="jobs">
+					<p>Our friendly Support Team is available to help you 24 hours a day, seven days a week. We look forward to hearing from you! 
+				<p>Gathering specific information can help us gain some insight into the issues you need help resolving. To do so here's a basic guide of what information we're looking for:
+<ul>
+					<li>Your name.
+					<li>A description of the problem.
+					<li>History of the problem.
+					<li>Any error messages you are receiving.
+					<li>Steps we can take to replicate the problem.
+</ul>				
 				</div>
+					
 				<div class="col-md-6 background-color-support ">
+				
 					<div class="form-group input-height-support-email">
 						<div
 							class="col-md-12 margin-bottom-input-support margin-top-support-input input-height-support-email">

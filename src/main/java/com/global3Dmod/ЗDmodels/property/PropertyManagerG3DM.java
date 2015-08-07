@@ -7,13 +7,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-
-
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Component;
 
-
 @Component
-public class PropertyManagerG3DM{
+public class PropertyManagerG3DM {
+
+	private static Logger LOGGER = Logger.getLogger(PropertyManagerG3DM.class);
 
 	private final String PATH = "propertiesG3DM.properties";
 	private final String PREFIX = this.getClass().getResource("/").getPath();
@@ -28,9 +28,9 @@ public class PropertyManagerG3DM{
 			reader = new BufferedReader(new FileReader(file));
 			properties.load(reader);
 		} catch (FileNotFoundException e) {
-			System.out.println("FileNotFoundException AAAAAA");
+			LOGGER.error(e);
 		} catch (IOException e) {
-			System.out.println("IOException AAAAAA");
+			LOGGER.error(e);
 		}
 	}
 

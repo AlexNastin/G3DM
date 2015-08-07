@@ -86,12 +86,6 @@ public class OthersController {
 		ModelAndView modelAndView = new ModelAndView("others/policy");
 		return modelAndView;
 	}
-
-	@RequestMapping(value = "/support", method = RequestMethod.GET)
-	public ModelAndView support() {
-		ModelAndView modelAndView = new ModelAndView("others/support");
-		return modelAndView;
-	}
 	
 	@RequestMapping(value = "/aboutUserSignup", method = RequestMethod.GET)
 	public ModelAndView aboutUserSignup() {

@@ -21,5 +21,7 @@ public final class PropertyNameG3DM {
 	
 	public static final String LIMIT_DOWNLOAD = "limit.download";
 	
+	public static final String EMAIL_GLOBAL3DMOD = "our.email.global3dmod"; 
+	
 
 }

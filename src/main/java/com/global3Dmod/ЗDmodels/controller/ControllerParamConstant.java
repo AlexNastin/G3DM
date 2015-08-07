@@ -86,6 +86,8 @@ public  final class ControllerParamConstant {
 	
 	public static String SIGNUP_FORM = "signupForm";
 	
+	public static String SUPPORT_FORM = "supportForm";
+	
 	public static String ADD_MODERATOR_FORM = "addModeratorForm";
 	
 	public static String TEXT = "text";

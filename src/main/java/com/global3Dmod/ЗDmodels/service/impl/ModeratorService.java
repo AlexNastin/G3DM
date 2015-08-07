@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectLogG3DM;
 import com.global3Dmod.ÇDmodels.dao.IComplainDAO;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.IRejectMessageDAO;
@@ -32,17 +33,18 @@ import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByTitle;
 import com.global3Dmod.ÇDmodels.sort.post.SortedPostsByTitleDesc;
 
 @Service
-public class ModeratorService implements IModeratorService{
-	
+public class ModeratorService implements IModeratorService {
+
 	@Autowired
 	private IPostDAO postDAO;
-	
+
 	@Autowired
 	private IComplainDAO complainDAO;
-	
+
 	@Autowired
 	private IRejectMessageDAO rejectMessageDAO;
 
+	@AspectLogG3DM
 	@Override
 	public List<Post> getPostsByModeratingForSort() throws ServiceException {
 		List<Post> posts;
@@ -53,7 +55,8 @@ public class ModeratorService implements IModeratorService{
 		}
 		return posts;
 	}
-	
+
+	@AspectLogG3DM
 	@Override
 	public List<Post> getPostsByRejectingForSort() throws ServiceException {
 		List<Post> posts;
@@ -64,10 +67,10 @@ public class ModeratorService implements IModeratorService{
 		}
 		return posts;
 	}
-	
+
 	@Override
 	public ModelAndView setParamsForSort(ModelAndView modelAndView,
-			String sort, boolean desc) throws ServiceException {
+			String sort, boolean desc) {
 		if (ServiceParamConstant.CATEGORY.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.CATEGORY_DESC, true);
 		} else {
@@ -78,7 +81,7 @@ public class ModeratorService implements IModeratorService{
 		} else {
 			modelAndView.addObject(ServiceParamConstant.DATE_DESC, false);
 		}
-		if(ServiceParamConstant.DESIGNER.equalsIgnoreCase(sort) && !desc) {
+		if (ServiceParamConstant.DESIGNER.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.DESIGNER_DESC, true);
 		} else {
 			modelAndView.addObject(ServiceParamConstant.DESIGNER_DESC, false);
@@ -101,10 +104,9 @@ public class ModeratorService implements IModeratorService{
 		}
 		return modelAndView;
 	}
-	
+
 	@Override
-	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc)
-			throws ServiceException {
+	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc) {
 		if (sort != null) {
 			if (ServiceParamConstant.TITLE.equals(sort)) {
 				if (desc) {
@@ -131,13 +133,13 @@ public class ModeratorService implements IModeratorService{
 					Collections.sort(posts, new SortedPostsByDate());
 				}
 			} else if (ServiceParamConstant.DESIGNER.equals(sort)) {
-				if(desc){
+				if (desc) {
 					Collections.sort(posts, new SortedPostsByDesignerDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByDesigner());
 				}
 			} else if (ServiceParamConstant.COMPLAIN.equals(sort)) {
-				if(desc){
+				if (desc) {
 					Collections.sort(posts, new SortedPostsByComplainDesc());
 				} else {
 					Collections.sort(posts, new SortedPostsByComplain());
@@ -147,6 +149,7 @@ public class ModeratorService implements IModeratorService{
 		return posts;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void publishPost(Integer idPost) throws ServiceException {
 		Post post = null;
@@ -157,18 +160,21 @@ public class ModeratorService implements IModeratorService{
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-		
+
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void addRejectMessage(RejectMessageForm rejectMessageForm,
 			Person person) throws ServiceException {
 		RejectMessage rejectMessage;
 		try {
-			rejectMessage = rejectMessageDAO.selectRejectMessageByPost(rejectMessageForm.getIdPost());
-			if(rejectMessage==null) {
+			rejectMessage = rejectMessageDAO
+					.selectRejectMessageByPost(rejectMessageForm.getIdPost());
+			if (rejectMessage == null) {
 				rejectMessage = new RejectMessage();
-				rejectMessage.setPost(postDAO.selectPostWithoutAll(rejectMessageForm.getIdPost()));
+				rejectMessage.setPost(postDAO
+						.selectPostWithoutAll(rejectMessageForm.getIdPost()));
 				rejectMessage.setUser_idUser(person.getIdPerson());
 				rejectMessage.setMessage(rejectMessageForm.getText());
 				rejectMessageDAO.insertRejectMessage(rejectMessage);
@@ -177,15 +183,17 @@ public class ModeratorService implements IModeratorService{
 				rejectMessage.setMessage(rejectMessageForm.getText());
 				rejectMessageDAO.updateRejectMessage(rejectMessage);
 			}
-			Post post = postDAO.selectPostWithoutAll(rejectMessageForm.getIdPost());
+			Post post = postDAO.selectPostWithoutAll(rejectMessageForm
+					.getIdPost());
 			post.setIsDisplay(1);
 			postDAO.updatePost(post);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
-		
+
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Post> getComplainedPostsForSort() throws ServiceException {
 		List<Post> posts;
@@ -197,6 +205,7 @@ public class ModeratorService implements IModeratorService{
 		return posts;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void setComplainInPosts(List<Post> posts) throws ServiceException {
 		for (Post post : posts) {
@@ -204,6 +213,7 @@ public class ModeratorService implements IModeratorService{
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public int getCountComplainByPost(Integer idPost) throws ServiceException {
 		int count;

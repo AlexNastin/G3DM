@@ -14,6 +14,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectLogG3DM;
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
@@ -87,6 +88,7 @@ public class GuestService implements IGuestService {
 	@Autowired
 	private PropertyManagerG3DM propertyManager;
 
+	@AspectLogG3DM
 	@Override
 	public void addUser(SignupForm signupForm, String serverPath)
 			throws ServiceException {
@@ -123,6 +125,7 @@ public class GuestService implements IGuestService {
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void addModerator(AddModeratorForm addModeratorForm)
 			throws ServiceException {
@@ -158,6 +161,7 @@ public class GuestService implements IGuestService {
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void addComment(CommentForm commentForm, Person person)
 			throws ServiceException {
@@ -174,6 +178,7 @@ public class GuestService implements IGuestService {
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<String> getAllEmail() throws ServiceException {
 		List<String> emails;
@@ -185,6 +190,7 @@ public class GuestService implements IGuestService {
 		return emails;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void vote(Integer idUser, Integer idPost) throws ServiceException {
 		try {
@@ -203,6 +209,7 @@ public class GuestService implements IGuestService {
 
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void complain(Integer idUser, Integer idPost)
 			throws ServiceException {
@@ -220,6 +227,7 @@ public class GuestService implements IGuestService {
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<String> getAllNickName() throws ServiceException {
 		List<String> nickNames;
@@ -231,6 +239,7 @@ public class GuestService implements IGuestService {
 		return nickNames;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Category> getAllCategories() throws ServiceException {
 		List<Category> categories;
@@ -242,6 +251,7 @@ public class GuestService implements IGuestService {
 		return categories;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Subcategory> getAllSubcategories() throws ServiceException {
 		List<Subcategory> subcategories;
@@ -253,6 +263,7 @@ public class GuestService implements IGuestService {
 		return subcategories;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Subcategory> getTop3Subcategories(Integer id)
 			throws ServiceException {
@@ -265,6 +276,7 @@ public class GuestService implements IGuestService {
 		return subcategoriesTop;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Category> getAllCategoriesSubcategoriesTop3()
 			throws ServiceException {
@@ -276,6 +288,7 @@ public class GuestService implements IGuestService {
 		return categories;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public Person getPerson(String login) throws ServiceException {
 		Person person = new Person();
@@ -292,6 +305,7 @@ public class GuestService implements IGuestService {
 		return person;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Advertisement> getAllAdvertisement() throws ServiceException {
 		List<Advertisement> advertisements = new ArrayList<Advertisement>();
@@ -313,6 +327,7 @@ public class GuestService implements IGuestService {
 		return advertisements;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Post> getPostsLimit10(Integer page) throws ServiceException {
 		List<Post> posts = new ArrayList<Post>();
@@ -324,6 +339,7 @@ public class GuestService implements IGuestService {
 		return posts;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Post> getPostsLimit10ByCategory(Integer page, Integer idCategory)
 			throws ServiceException {
@@ -336,6 +352,7 @@ public class GuestService implements IGuestService {
 		return posts;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Post> getPostsLimit10BySubcategory(Integer page,
 			Integer idCategory, Integer idSubcategory) throws ServiceException {
@@ -349,6 +366,7 @@ public class GuestService implements IGuestService {
 		return posts;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public Post getPost(Integer idPost) throws ServiceException {
 		Post post = new Post();
@@ -360,6 +378,7 @@ public class GuestService implements IGuestService {
 		return post;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Comment> getCommentsByPost(Integer idPost)
 			throws ServiceException {
@@ -373,12 +392,12 @@ public class GuestService implements IGuestService {
 	}
 
 	@Override
-	public List<Comment> sortCommentsByDate(List<Comment> comments)
-			throws ServiceException {
+	public List<Comment> sortCommentsByDate(List<Comment> comments) {
 		Collections.sort(comments, new SortedCommentsByDate());
 		return comments;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public User getUser(Integer idUser) throws ServiceException {
 		User user = new User();
@@ -390,6 +409,7 @@ public class GuestService implements IGuestService {
 		return user;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public int getCountLikeByPost(Integer idPost) throws ServiceException {
 		int count;
@@ -401,6 +421,7 @@ public class GuestService implements IGuestService {
 		return count;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void setRatingInPosts(List<Post> posts) throws ServiceException {
 		for (Post post : posts) {
@@ -408,6 +429,7 @@ public class GuestService implements IGuestService {
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public double getRatingByDesigner(Integer idUser) throws ServiceException {
 		double rating = 0;
@@ -422,6 +444,7 @@ public class GuestService implements IGuestService {
 		return rating;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public boolean createPasswordResetTokenForUser(User user, String token)
 			throws ServiceException {
@@ -456,6 +479,7 @@ public class GuestService implements IGuestService {
 		return isCreate;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public PasswordResetToken getPasswordResetToken(String token)
 			throws ServiceException {
@@ -469,6 +493,7 @@ public class GuestService implements IGuestService {
 		return passwordResetToken;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void updateForgotPassword(User user, String password)
 			throws ServiceException {
@@ -485,6 +510,7 @@ public class GuestService implements IGuestService {
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Post> getTop4PostsByLike() throws ServiceException {
 		List<Post> posts;
@@ -496,6 +522,7 @@ public class GuestService implements IGuestService {
 		return posts;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<User> getTop4UsersByRating() throws ServiceException {
 		List<User> users;
@@ -507,6 +534,7 @@ public class GuestService implements IGuestService {
 		return users;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public String getFileFullPath(Integer idFile) throws ServiceException {
 		StringBuilder fullPath = new StringBuilder(
@@ -521,6 +549,7 @@ public class GuestService implements IGuestService {
 		return fullPath.toString();
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void updateCountDownload(Integer idFile, short countDownload)
 			throws ServiceException {

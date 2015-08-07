@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.aop.annotation.AspectLogG3DM;
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Avatar;
@@ -44,6 +45,7 @@ public class UserService implements IUserService {
 	@Autowired
 	private IDesignerService designerService;
 
+	@AspectLogG3DM
 	@Override
 	public List<User> getAllUsers() throws ServiceException {
 		List<User> users = null;
@@ -57,6 +59,7 @@ public class UserService implements IUserService {
 		return users;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<User> getTop3Users() throws ServiceException {
 		List<User> users = null;
@@ -68,9 +71,9 @@ public class UserService implements IUserService {
 		return users;
 	}
 
+	
 	@Override
-	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc)
-			throws ServiceException {
+	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc) {
 		if (sort != null) {
 			if (ServiceParamConstant.TITLE.equals(sort)) {
 				if(desc){
@@ -95,8 +98,9 @@ public class UserService implements IUserService {
 		return posts;
 	}
 	
+	
 	@Override
-	public ModelAndView setParamsForSort(ModelAndView modelAndView,	String sort, boolean desc) throws ServiceException {
+	public ModelAndView setParamsForSort(ModelAndView modelAndView,	String sort, boolean desc) {
 		if(ServiceParamConstant.RATING.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.RATING_DESC, true);
 		} else {
@@ -115,6 +119,7 @@ public class UserService implements IUserService {
 		return modelAndView;
 	}
 
+	@AspectLogG3DM
 	@Override
 	public List<Post> getPostsByUserForSort(Integer idUser)
 			throws ServiceException {
@@ -127,6 +132,7 @@ public class UserService implements IUserService {
 		return posts;
 	}
 	
+	@AspectLogG3DM
 	@Override
 	public void updateUser(UserPersonalDataForm personalDataForm, String login, String serverPath)
 			throws ServiceException {
@@ -152,6 +158,7 @@ public class UserService implements IUserService {
 
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void updatePassword(UserPersonalSecurityForm personalSecurityForm,
 			String login) throws ServiceException {
@@ -169,6 +176,7 @@ public class UserService implements IUserService {
 
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void setPathToPhotos(List<Post> posts) throws ServiceException {
 		for (Post post : posts) {
@@ -179,6 +187,7 @@ public class UserService implements IUserService {
 		}
 	}
 
+	@AspectLogG3DM
 	@Override
 	public void setPathToPhotos(Post post) throws ServiceException {
 		String oldPath = post.getPostPhotos().get(0).getPhotoPath();
@@ -187,6 +196,7 @@ public class UserService implements IUserService {
 		post.getPostPhotos().get(0).setPhotoPath(fullPath.toString());
 	}
 	
+	@AspectLogG3DM
 	@Override
 	public void setPathToPhotos(User user) throws ServiceException {
 		String oldPath = user.getAvatar().getAvatarPath();
@@ -195,6 +205,7 @@ public class UserService implements IUserService {
 		user.getAvatar().setAvatarPath(fullPath.toString());
 	}
 	
+	@AspectLogG3DM
 	@Override
 	public void setPathToPhotosUsers(List<User> users) throws ServiceException {
 		for (User user : users) {

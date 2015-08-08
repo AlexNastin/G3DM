@@ -42,6 +42,7 @@
 		<div class="col-md-4"></div>
 		<div class="col-md-4"></div>
 		<div class="container col-md-3 sign-in-background">
+		
 			<form id="contact-form" class="form-horizontal" method="post"
 				action="${authUrl}">
 				<input type="hidden" name="${_csrf.parameterName}"
@@ -52,6 +53,7 @@
 							name="j_username" placeholder="&#xf003; E-mail"
 							style="font-family: Arial, FontAwesome">
 							<label class="error" generated="true" for="inputEmail3" style="font-size:9pt;"></label>
+							
 					</div>
 					
 				</div>
@@ -61,21 +63,28 @@
 							<input type="password" class="form-control" id="inputPassword3"
 								name="j_password" placeholder="&#xf084; ${password}"
 								style="font-family: Arial, FontAwesome">
-								<label class="error" generated="true" for="inputPassword3" style="font-size:9pt; line-height: 1.2;"></label>
+								
+							<label class="error" generated="true" for="inputPassword3" style="font-size:9pt; line-height: 1.2;"></label>
+								
 						</div>
 					</div>
 
 				</div>
-				<c:if test="${param.login_error == 'true'}">
-					<span>LOGIN ERROR</span>
-				</c:if>
+				
 				<div class="form-group">
-					<div class="col-md-8">
-						<div class="checkbox">
+					<div class="col-md-12">
+					<div class="col-md-6">
+						<div class="checkbox" style="padding-left:0px">
 							<label class="signin-text-color"> <input type="checkbox"
 								name="_spring_security_remember_me">${rememberme}
 							</label>
 						</div>
+						</div>
+						<div class="col-md-6">
+						<c:if test="${param.login_error == 'true'}">
+					<div style="text-align:center;"><span class="alert alert-danger" role="alert" style="padding: 1.1%; text-align:center">Invalid credentials</span></div>
+				</c:if>
+					</div>
 					</div>
 				</div>
 				<div class="form-group">
@@ -86,6 +95,7 @@
 							class="btn btn-default btn-outline btn-circle"
 							onClick='location.href="<c:url value="/signup"  />"'>
 							${signupnew}</button>
+							
 					</div>
 				</div>
 				
@@ -97,6 +107,7 @@
 			<c:if test="${message != null}">
 			  <div class="alert alert-success" role="alert" style="padding: 1%; text-align:center">${message}</div> 
 			   </c:if>
+			   
 		</div>
 		<div class="clearfix"></div>
 	</div>

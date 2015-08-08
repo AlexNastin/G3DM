@@ -174,10 +174,10 @@ messages:  {
     	required: 'Выберите категорию.'
     },
     model: {
-    	accept: 'Расширение файла должно быть: .stl .zip or .rar'
+    	accept: 'Расширение файла должно быть: .stl .zip или .rar'
     },
     firstPhoto: {
-    	accept: 'Расширение изображения должно быть: .jpg, .jpeg and .png'
+    	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png'
     },
     avatar: {
     	accept: 'Расширение изображения должно быть: .jpg, .jpeg and .png'

@@ -91,7 +91,7 @@
 		<div class="row">
 			<div class="col-md-4">
 				<h3>${post.title}</h3>
-				<a href="#" data-toggle="modal" data-target="#lightbox"><img
+				<a href="#" data-toggle="modal" data-target="#lightbox"><img style="max-height: 250px;"
 					src="<c:url value="${post.postPhotos[0].photoPath}" />"
 					class="img-responsive margination" alt="Responsive image"> </a>
 				<div>

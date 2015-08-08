@@ -82,9 +82,6 @@ $(document).ready(function(){
 	      category_idCategory: {
 	    	  required: true
 	      },
-	      subcategory_idSubcategory: {
-	    	  required: true 	    	 
-	      },
 	      technologiesId:{
 	    	  required: true
 	      },
@@ -160,9 +157,6 @@ messages:  {
     },
     category_idCategory: {
     	required: 'Please select cetegory.'
-    },
-    subcategory_idSubcategory: {
-    	required: 'Please select subcategory.'
     },
     model: {
     	accept: 'Extension should be .stl .zip or .rar'

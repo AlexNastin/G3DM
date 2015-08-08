@@ -82,9 +82,6 @@ $(document).ready(function(){
 	      category_idCategory: {
 	    	  required: true
 	      },
-	      subcategory_idSubcategory: {
-	    	  required: true 	    	 
-	      },
 	      technologiesId:{
 	    	  required: true
 	      },
@@ -175,9 +172,6 @@ messages:  {
     },
     category_idCategory: {
     	required: 'Выберите категорию.'
-    },
-    subcategory_idSubcategory: {
-    	required: 'Выберите подкатегорию.'
     },
     model: {
     	accept: 'Расширение файла должно быть: .stl .zip or .rar'

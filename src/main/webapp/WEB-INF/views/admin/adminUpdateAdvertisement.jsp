@@ -135,6 +135,7 @@
 										<form:input id="title" name="title"
 											class="form-control input-md" path="title"
 											placeholder="${title}"></form:input>
+										<label class="error" generated="true" for="title" style="font-size:9pt; line-height: 1.2;"></label>
 										<span class="error"><form:errors path="title" /></span>
 									</div>
 								</div>
@@ -144,6 +145,7 @@
 										<form:textarea id="description" name="description"
 											class="form-control input-md" path="description"
 											placeholder="${description}"></form:textarea>
+										<label class="error" generated="true" for="description" style="font-size:9pt; line-height: 1.2;"></label>
 										<span class="error"><form:errors path="description" /></span>
 									</div>
 								</div>
@@ -151,11 +153,13 @@
 								<form:input type="text" class="form-control" id="expirationDate"
 									name="calendar" path="expirationDate"
 									placeholder="${date}" />
+								<label class="error" generated="true" for="expirationDate" style="font-size:9pt; line-height: 1.2;"></label>
 								<span class="error"><form:errors path="expirationDate" /></span>
 								</div>
 								<br>
 								<div class="height-input-string-updateAdvertisement">
 		${advertisementphoto}<input type="file" name="advertisementPhoto">
+								<label class="error" generated="true" for="advertisementPhoto" style="font-size:9pt; line-height: 1.2;"></label>
 								<span class="error"><form:errors
 										path="advertisementPhoto" /></span>
 								</div>

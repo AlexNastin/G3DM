@@ -113,7 +113,7 @@
 											<c:forEach begin="${startPage}" end="${endPage}" var="page">
 
 												<li <c:if test="${page==thisPage}">class="active"</c:if>><a
-													href="<c:url value="/user/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
+													href="<c:url value="/admin/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
 											</c:forEach>
 
 											<c:if test="${thisPage!=maxPage}">
@@ -183,19 +183,19 @@
 							<ul class="pagination">
 								<c:if test="${thisPage>1}">
 									<li><a
-										href="<c:url value="/user/profile?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />"
+										href="<c:url value="/admin/profile?sort=${sortType}&page=${thisPage-1}&desc=${descPage}" />"
 										aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 									</a></li>
 								</c:if>
 								<c:forEach begin="${startPage}" end="${endPage}" var="page">
 
 									<li <c:if test="${page==thisPage}">class="active"</c:if>><a
-										href="<c:url value="/user/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
+										href="<c:url value="/admin/profile?sort=${sortType}&page=${page}&desc=${descPage}" />">${page}</a></li>
 								</c:forEach>
 
 								<c:if test="${thisPage!=maxPage}">
 									<li><a
-										href="<c:url value="/user/profile?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />"
+										href="<c:url value="/admin/profile?sort=${sortType}&page=${thisPage+1}&desc=${descPage}" />"
 										aria-label="Next"> <span aria-hidden="true">&raquo;</span>
 									</a></li>
 								</c:if>

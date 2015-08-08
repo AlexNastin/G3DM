@@ -10,8 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="<c:url value="/resources/css/bootstrap.css" />"
 	rel="stylesheet">
-<link
-	href="<c:url value="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"  />"
+<link href="<c:url value="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"  />"
 	rel="stylesheet" />
 <link
 	href="<c:url value="/resources/css/fontawesome430/css/font-awesome.css"  />"
@@ -27,6 +26,8 @@
 <spring:message code="support.text" var="text" />
 <spring:message code="javascript.validation" var="validation" />
 <spring:message code="support.placeholder" var="placeholder" />
+<meta name="keywords" content="3d printer, 3d model, 3d model free, 3d model download, 3d model download free, model to print 3d printer free, stl, stl download,stl download free, 3d designer, 3d model robot, 3д модель, 3д принтер, 3д модель скачать, 3д модель скачать напечатать, 3д дизайнер, stl бесплатные, stl скачать, global3dmod, global 3d mod "> 
+
 </head>
 <body>
 	<%@include file="/WEB-INF/views/header/headerWithSearch.jsp"%>

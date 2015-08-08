@@ -10,7 +10,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Global3Dmod | Model</title>
+<title>${post.title} | Global3Dmod</title>
 
 <spring:message code="main.search.search" var="search" />
 <spring:message code="model.info.tab1" var="info" />
@@ -45,6 +45,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
 <meta name="author" content="global3dmod team">
+<meta name="keywords" content="3d printer, 3d model, 3d model free, 3d model download, 3d model download free, model to print 3d printer free, stl, stl download,stl download free, 3d designer, 3d model robot, 3д модель, 3д принтер, 3д модель скачать, 3д модель скачать напечатать, 3д дизайнер, stl бесплатные, stl скачать, global3dmod, global 3d mod "> 
 
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">

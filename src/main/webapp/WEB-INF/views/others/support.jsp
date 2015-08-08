@@ -59,6 +59,7 @@
 							class="col-md-12 margin-bottom-input-support margin-top-support-input input-height-support-email">
 							<form:input id="email" name="email" class="form-control input-md"
 								path="email" placeholder="${email}"></form:input>
+							<label class="error" generated="true" for="email" style="font-size:9pt; line-height: 1.2;"></label>
 							<span class="error color-style-validation"><form:errors
 									path="email" /></span>
 						</div>
@@ -68,6 +69,7 @@
 							<form:textarea id="textSupport" name="textSupport"
 								style="resize:none" class="form-control input-md"
 								path="textSupport" placeholder="${placeholder}" rows="5" cols="30"></form:textarea>
+							<label class="error" generated="true" for="textSupport" style="font-size:9pt; line-height: 1.2;"></label>
 							<span class="error"><form:errors path="textSupport" /></span> <br>
 						</div>
 					</div>

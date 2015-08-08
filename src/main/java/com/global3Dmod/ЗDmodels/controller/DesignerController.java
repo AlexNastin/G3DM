@@ -1,13 +1,11 @@
 package com.global3Dmod.ÇDmodels.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
@@ -38,8 +36,6 @@ import com.global3Dmod.ÇDmodels.service.IUserService;
 
 @Controller
 public class DesignerController {
-
-	private static Logger LOGGER = Logger.getLogger(DesignerController.class);
 
 	@Autowired
 	private MessageSource messages;

@@ -21,6 +21,7 @@
 <spring:message code="user.menu.miniature" var="miniature"/>
 <spring:message code="user.menu.designer" var="designer"/>
 <spring:message code="designer.menu.personalsecurity" var="personalsecurity" />
+<spring:message code="user.post.empty" var="postEmpty" />
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -114,6 +115,9 @@
                               </div>
                           </table>
                       </div>
+                	<c:if test="${empty listPostsLimit10}">
+   								 ${postEmpty}
+								</c:if>
                       <c:if test="${sizePosts != 0}">
                       <nav style="text-align:center">
   <ul class="pagination">

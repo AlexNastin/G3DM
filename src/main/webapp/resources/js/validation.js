@@ -68,7 +68,7 @@ $(document).ready(function(){
 	    	  rangelength: [3, 16] 
 	      },
 	      title: {
-	    	  regexp: '^[a-zA-Z0-9\ \'-\_\.]{2,16}$',
+	    	  regexp: '^[a-zA-Z0-9\ \'-\_\.]{1,16}$',
 	    	  required: true
 	      },
 	      description: {

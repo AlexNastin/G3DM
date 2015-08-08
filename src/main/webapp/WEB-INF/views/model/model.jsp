@@ -251,6 +251,7 @@
 										<form:textarea id="comment" name="comment" style="resize:none"
 											class="form-control input-md" path="comment"
 											placeholder="${commentsplaceholder}" rows="5" cols="30"></form:textarea>
+											<label class="error" generated="true" for="comment" style="font-size:9pt; line-height: 1.2;"></label>
 											<span class="error"><form:errors path="comment" /></span> <br>
 									</div>
 									<form:input type="hidden" id="idPost" name="idPost"

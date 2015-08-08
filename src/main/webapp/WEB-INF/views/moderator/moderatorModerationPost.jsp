@@ -177,9 +177,11 @@
 		<form:textarea id="text" name="text" style="resize:none"
 											class="form-control input-md" path="text"
 											placeholder="Type your comment here" rows="5" cols="30"></form:textarea>
+											<label class="error" generated="true" for="text" style="font-size:9pt; line-height: 1.2;"></label>
 											</div>
 									<form:input type="hidden" id="idPost" name="idPost"
 										path="idPost" value="${post.idPost }"></form:input>
+									
 									<span class="error"><form:errors path="text" /></span> <br>
 									<input type="submit" class="btn btn-primary" value="Send message" />
 	</form:form>

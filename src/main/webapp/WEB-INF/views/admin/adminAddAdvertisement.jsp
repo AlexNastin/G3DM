@@ -76,12 +76,14 @@
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-personal">
 		<form:input id="title" name="title" class="form-control input-md" path="title" placeholder="${title}"></form:input>
+		<label class="error" generated="true" for="title" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="title" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-addAdvertisement">
 		<form:textarea id="description" name="description" class="form-control input-md" path="description" placeholder="${description}"></form:textarea>
+		<label class="error" generated="true" for="description" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
 		</div>
@@ -89,16 +91,19 @@
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-addAdvertisement-client" style=" padding-top: 10px;">
 		<form:input id="client" name="client" class="form-control input-md" path="client" placeholder="${client}"></form:input>
+		<label class="error valid" generated="true" for="client" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="client" /></span>
 		</div>
 		</div>
 		<div class="height-input-string-addAdvertisement-client">
 		<form:input type="text" class="form-control" id="expirationDate" name="calendar" path="expirationDate" placeholder="${date}"/> 
+			<label class="error" generated="true" for="expirationDate" style="font-size:9pt; line-height: 1.2;"></label>
 			<span class="error"><form:errors path="expirationDate" /></span>
 		</div>
 		<br>
 		<div class="height-input-string-addAdvertisement-image">
-		${advertisementphoto}: <input type="file" name="advertisementPhoto">
+		${advertisementphoto} <input type="file" name="advertisementPhoto">
+		<label class="error" generated="true" for="advertisementPhoto" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="advertisementPhoto" /></span>
 		</div>
 		<br>

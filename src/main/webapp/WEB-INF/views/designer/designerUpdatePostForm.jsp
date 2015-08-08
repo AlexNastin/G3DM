@@ -14,6 +14,22 @@
 <spring:message code="designer.menu.data" var="data"/>
 <spring:message code="designer.menu.add" var="add"/>
 <spring:message code="javascript.validation" var="validation" />
+<spring:message code="designer.menu.personalsecurity" var="personalsecurity" />
+<spring:message code="designer.updatepost.post" var="postforupdate" />
+<spring:message code="form.image" var="image"/>
+<spring:message code="form.description" var="description" />
+<spring:message code="form.category" var="category" />
+<spring:message code="form.subcategory" var="subcategory" />
+<spring:message code="form.title" var="title" />
+<spring:message code="form.instruction" var="instruction" />
+<spring:message code="designer.updatepost.designerprogram" var="designerprogram" />
+<spring:message code="designer.updatepost.technologies" var="technologies" />
+<spring:message code="form.file" var="file" />
+<spring:message code="form.updatedata" var="updatedata" />
+<spring:message code="designer.updatepost.selecttechnologies" var="selecttechnologies" />
+<spring:message code="designer.updatepost.modeltoupload" var="modeltoupload" />
+<spring:message code="designer.updatepost.photomodeltoupload" var="photomodeltoupload" />
+<spring:message code="form.save" var="save" />
 
 
  <meta charset="utf-8">
@@ -52,7 +68,7 @@
   </a>
   
   <a href="<c:url value="/designer/personalData" />" class="list-group-item active"><i class="fa fa-cogs"></i> ${data}  </a>
-  <a href="<c:url value="/designer/secure/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> Personal Security  </a>
+  <a href="<c:url value="/designer/secure/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> ${personalsecurity}  </a>
   <a href="<c:url value="/designer/addPost" />" class="list-group-item"><i class="fa fa-plus-square"></i> ${add}  </a>
   
 	 </div>
@@ -64,53 +80,53 @@
                   <div class="row">
                       <div class="col-md-4" style="padding-left:0px;">
                       <div class="content-pael">                      
-                      <h2>Post</h2>
+                      <h2>${postforupdate}</h2>
                       
                           <table class="table table-striped table-advance table-hover">
                                                                                       
                               <tbody>
                               <tr>
-                              		<td>Image</td>
+                              		<td>${image}</td>
                               		<td><img alt="" src="<c:url value="${post.postPhotos[0].photoPath}" />"></td>
                               </tr>
                               <tr>
-                                  <td>Category</td>
+                                  <td>${category}</td>
                                   <td class="hidden-phone">${post.category.title}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Subcategory</td>
+                                   <td>${subcategory}</td>
                                   	<td class="hidden-phone">${post.subcategory.title}</td>
                                   
                               </tr>
                               <tr>
-                                  <td>Designer program</td>
+                                  <td>${designerprogram}</td>
                                   <td class="hidden-phone">${post.disProgram.title}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Technologies</td>
+                                   <td>${technologies}</td>
                                    
                                   <td class="hidden-phone"><c:forEach items="${post.technologies}" var="technology"> ${technology.title} </c:forEach>  </td> 
                                   
                               </tr>
                               <tr>
-                                   <td>Title</td>
+                                   <td>${title}</td>
                                   <td class="hidden-phone">${post.title}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Description</td>
+                                   <td>${description}</td>
                                   <td class="hidden-phone">${post.description}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Instruction</td>
+                                   <td>${instruction}</td>
                                   <td class="hidden-phone">${post.instruction}</td>
                                   
                               </tr>
                               <tr>
-                              		<td>File</td>
+                              		<td>${file}</td>
                               		<td>
                               		<a href="<c:url value="/download?id=${post.file.idFile}" />"> <i
 							class="btn btn-primary fa fa-download"> ${down}</i>
@@ -123,7 +139,7 @@
                                           
                   </div>
                   <div class="col-md-8">
-                  <h2>Update data</h2>
+                  <h2>${updatedata}</h2>
                    <form:form id="contact-form" name="contact-form" class="form-horizontal" modelAttribute="updatePostForm" method="POST" enctype="multipart/form-data">
 	   <div class="form-group sign-feld-margin-top">
 		</div>
@@ -156,7 +172,7 @@
 		</div>
 		
 		<div class="col-md-6">
-		<h3 style="margin-top:0px">Select technologies</h3>
+		<h3 style="margin-top:0px">${selecttechnologies}</h3>
 		<div class="height-input-string-updatepost-technologies" style="margin-bottom: 5%;">
 		<c:forEach items="${listTechnologies}" var="technology">
 			<form:checkbox path="technologiesId" value="${technology.idTechnology}" />${technology.title}<br>
@@ -168,21 +184,21 @@
 		
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-updatepost-title">
-		<form:input id="title" name="title" class="form-control input-md" path="title" placeholder="Title" value="${post.title}"></form:input>
+		<form:input id="title" name="title" class="form-control input-md" path="title" placeholder="${title}" value="${post.title}"></form:input>
 		<label class="error valid" generated="true" for="title" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="title" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-updatepost-description">
-		<form:input id="description" name="description" class="form-control input-md" path="description" placeholder="Description" value="${post.description}"></form:input>
+		<form:input id="description" name="description" class="form-control input-md" path="description" placeholder="${description}" value="${post.description}"></form:input>
 		<label class="error valid" generated="true" for="description" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-updatepost-instruction">
-		<form:input id="instruction" name="instruction" class="form-control input-md" path="instruction" placeholder="Instruction" value="${post.instruction}"></form:input>
+		<form:input id="instruction" name="instruction" class="form-control input-md" path="instruction" placeholder="${instruction}" value="${post.instruction}"></form:input>
 		<label class="error valid" generated="true" for="instruction" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="instruction" /></span>
 		</div>
@@ -190,13 +206,13 @@
 		<form:input id="idPost" name="idPost" path="idPost" value="${post.idPost}" type="hidden"></form:input>
 		<br>
 		<div class="height-input-string-updatepost-stl">
-        Model to upload: <input type="file" name="model">
+        ${modeltoupload} <input type="file" name="model">
 		<label class="error" generated="true" for="model" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="model" /></span>
 		</div>
 		<br>
 		<div class="height-input-string-updatepost-stl">
-        Photo model to upload: <input type="file" name="firstPhoto">
+        ${photomodeltoupload} <input type="file" name="firstPhoto">
 		<label class="error" generated="true" for="firstPhoto" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="firstPhoto" /></span>
 		</div>
@@ -204,7 +220,7 @@
 		
 		<div class="form-group">
 		<div class="col-md-5">
-		<input type="submit" class="btn btn-primary" value="Save" />
+		<input type="submit" class="btn btn-primary" value="${save}" />
 		</div>
 	    </div>
 

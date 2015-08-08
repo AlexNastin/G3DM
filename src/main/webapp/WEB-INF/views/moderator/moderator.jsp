@@ -25,6 +25,7 @@
 <spring:message code="form.subcategory" var="subcategory" />
 <spring:message code="form.author" var="author" />
 <spring:message code="form.check" var="check" />
+<spring:message code="moderator.complainedpost.checkintable" var="checkintable" />
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -124,7 +125,7 @@
                                   <td>${post.subcategory.title}</td>
                                   <td>${post.user.nickName}</td>
                                   <td>
-                                  <a href="<c:url value="/moderator/moderationPost?id=${post.idPost}" />" type="button" class="btn btn-success btn-xs">Check</a>
+                                  <a href="<c:url value="/moderator/moderationPost?id=${post.idPost}" />" type="button" class="btn btn-success btn-xs">${checkintable}</a>
                               	  </td>
                               </tr>
                               </c:forEach>

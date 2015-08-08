@@ -15,7 +15,9 @@
 <spring:message code="designer.menu.add" var="add"/>
 <spring:message code="moderator.menu.postsunpublished" var="unpblsd"/>
 <spring:message code="javascript.validation" var="validation" />
-
+<spring:message code="moderator.menu.rejectingposts" var="rejectingposts"/>
+<spring:message code="moderator.menu.complainedposts" var="complainedposts"/>
+<spring:message code="moderator.moderationpost.postfortitle" var="postfortitle"/>
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -47,8 +49,8 @@
  <a href="<c:url value="/moderator/profile" />" class="list-group-item active">
     <i class="fa fa-exclamation-triangle"></i> ${unpblsd}
   </a>
-  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> Rejecting posts</a>
-  <a href="<c:url value="/moderator/complainedPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> Complained posts</a>
+  <a href="<c:url value="/moderator/rejectingPosts" />" class="list-group-item"> <i class="fa fa-ban"></i>  ${rejectingposts}</a>
+  <a href="<c:url value="/moderator/complainedPosts" />" class="list-group-item"> <i class="fa fa-ban"></i> ${complainedposts}</a>
 
   
 	 </div>
@@ -59,7 +61,7 @@
                   <div class="col-md-12 nopadding2">
                       <div class="col-md-4" style="padding-left:0px;">
                       <div class="content-pael">                      
-                      <h2>Post</h2>
+                      <h2>${postfortitle}</h2>
                       
                           <table class="table table-striped table-advance table-hover">
                                                                                       

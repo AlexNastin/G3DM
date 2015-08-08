@@ -52,24 +52,28 @@
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-signup">
 		<form:input id="login" name="login" class="form-control input-md" path="login" placeholder="${login}"></form:input>
+		<label class="error" generated="true" for="login" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error color-style-validation"><form:errors path="login" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-signup">
 		<form:password id="password" name="password" class="form-control input-md" path="password" placeholder="${password}"></form:password>
+		<label class="error" generated="true" for="password" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error color-style-validation"><form:errors path="password" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-signup">
 		<form:password id="confirmPassword" name="confirmPassword" class="form-control input-md" path="confirmPassword" placeholder="${confirmpassword}"></form:password>
+		<label class="error" generated="true" for="confirmPassword" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error color-style-validation"><form:errors path="confirmPassword" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-signup">
 		<form:input id="nickName" name="nickName" class="form-control input-md" path="nickName" placeholder="${nickname}"></form:input>
+		<label class="error" generated="true" for="nickName" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error color-style-validation"><form:errors path="nickName" /></span>
 		</div>
 		</div>

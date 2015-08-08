@@ -51,7 +51,9 @@
 						<input type="text" class="form-control" id="inputEmail3"
 							name="j_username" placeholder="&#xf003; E-mail"
 							style="font-family: Arial, FontAwesome">
+							<label class="error" generated="true" for="inputEmail3" style="font-size:9pt;"></label>
 					</div>
+					
 				</div>
 				<div class="form-group">
 					<div class="col-md-12 ">
@@ -59,6 +61,7 @@
 							<input type="password" class="form-control" id="inputPassword3"
 								name="j_password" placeholder="&#xf084; ${password}"
 								style="font-family: Arial, FontAwesome">
+								<label class="error" generated="true" for="inputPassword3" style="font-size:9pt; line-height: 1.2;"></label>
 						</div>
 					</div>
 

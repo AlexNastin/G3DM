@@ -28,7 +28,10 @@
 <spring:message code="form.gender.none" var="none" />
 <spring:message code="form.update" var="update" />
 <spring:message code="designer.personaldata.deleteavatar" var="deleteavatar" />
-
+<spring:message code="designeruser.personaldata.confirm" var="confirm" />
+<spring:message code="designeruser.personaldata.confirmmessage" var="confirmmessage" />
+<spring:message code="designeruser.personaldata.confirdelete" var="confirdelete" />
+<spring:message code="form.close" var="close" />
 
 
  <meta charset="utf-8">
@@ -169,14 +172,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Confirmation</h4>
+        <h4 class="modal-title">${confirm}</h4>
       </div>
       <div class="modal-body">
-        <p>Are you really want to delete avatar?</p>
+        <p>${confirmmessage}</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger"  onClick='location.href="<c:url value="/designer/deleteAvatar"  />"'>Delete</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">${close}</button>
+        <button type="button" class="btn btn-danger"  onClick='location.href="<c:url value="/designer/deleteAvatar"  />"'>${confirdelete}</button>
         
       </div>
     </div>

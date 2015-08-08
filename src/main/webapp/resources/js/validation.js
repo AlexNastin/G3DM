@@ -21,11 +21,7 @@ $(document).ready(function(){
 		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm, #addModeratorForm, #advertisement-form, #support-form').validate({
 			
 	    rules: {
-	    	nickName: {
-	        minlength: 3,
-	        required: true
-	      },
-	      login: {
+	        login: {
 	        required: true,
 	        email: true
 	      },
@@ -39,6 +35,7 @@ $(document).ready(function(){
 	        digits:true
 	      },
 	      password: {
+	      rangelength: [8, 32],
 	      regexp: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
 	      required: true
 	      },
@@ -47,8 +44,9 @@ $(document).ready(function(){
 		        email: true
 	      },
 	      j_password: {
+	      rangelength: [8, 32],
 	      regexp: /(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/,
-	      required: true  
+	      required: true
 	      },
 	      text: {
 	      required: true,
@@ -59,10 +57,10 @@ $(document).ready(function(){
 	      required: true 	  
 	      },
 	      name: {
-	    	 regexp: /^[^±!@£$%^&*+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,50}$/
+	    	 regexp: /^[A-Za-z^±!@£$%^&*+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,50}$/
 	      },
 	      surname: {
-	    	 regexp: /^[^±!@£$%^&*+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,50}$/
+	    	 regexp: /^[A-Za-z^±!@£$%^&*+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,50}$/
 	      },
 	      nickName: {
 	    	  regexp: '^[a-zA-Z0-9]+$',
@@ -94,28 +92,28 @@ $(document).ready(function(){
 	    	  accept: "stl,zip,rar"
 	      },
 	      firstPhoto: {
-	    	  accept: "jpg,png,jpeg,gif"
+	    	  accept: "jpg,png,jpeg"
 	      },
 	      comment: {
 	    	  required: true,
 	    	  rangelength: [1, 300] 
 	      },
 	      avatar: {
-	    	  accept: "jpg,png,jpeg,gif"
+	    	  accept: "jpg,png,jpeg"
 	      },
 	      dateBirth: {
 	    	  date: true
 	      },
 	      client: { 
 	    	  required: true,
-	    	  rangelength: [1, 30]
+	    	  rangelength: [1, 50]
 	      },
 	      expirationDate: {
 	    	  required: true,
 	    	  date: true
 	      },
 	      advertisementPhoto: {
-	    	  accept: "jpg,png,jpeg,gif"
+	    	  accept: "jpg,png,jpeg"
 	      },
 	      email: {
 	    	  required: true,
@@ -131,10 +129,31 @@ messages:  {
 	equalTo: 'The passwords do not match.'
 		},
     password: {
-    	rangelength: 'At least 8 characters, but no more than 32.'	
+    	regexp: 'At least  one character, one upper case character, one digit.',	
+    	rangelength: 'Lenght should be from 8 to 32 characters.'
     },
     j_password: {
-    	rangelength: 'Please check your input.'	
+    	regexp: 'At least  one character, one upper case character, one digit.',
+    	rangelength: 'Lenght should be from 8 to 32 characters.'
+    },
+    nickName:{
+    	regexp: 'Latin characters only.',
+    	rangelength: 'Lenght should be from 3 to 16 characters.' 
+    },
+    name: {
+    	regexp: 'Lenght should be from 1 to 50 characters. Latin characters only.'
+    },
+    surname: {
+    	regexp: 'Lenght should be from 1 to 50 characters. Latin characters only.'
+    },
+    title: {
+    	regexp: 'Lenght should be from 1 to 16 characters. Latin characters only.'
+    },
+    description: {
+    	regexp: 'Lenght should be from 2 to 300 characters. Latin characters only.'
+    },
+    instruction: {
+    	regexp: 'Lenght should be from 2 to 1500 characters. Latin characters only.'
     },
     technologiesId: {
     	required: 'Please select technology.'
@@ -145,7 +164,37 @@ messages:  {
     subcategory_idSubcategory: {
     	required: 'Please select subcategory.'
     },
-    
+    model: {
+    	accept: 'Extension should be .stl .zip or .rar'
+    },
+    firstPhoto: {
+    	accept: 'Allowed .jpg, .jpeg and .png images only'
+    },
+    avatar: {
+    	accept: 'Allowed .jpg, .jpeg and .png images only'
+    },
+    advertisementPhoto: {
+    	accept: 'Allowed .jpg, .jpeg and .png images only'
+    },
+    text: {
+    	regexp: 'Lenght should be from 2 to 300 characters. Latin characters only.'
+    },
+    textSupport: {
+    	rangelength: 'Lenght should be from 2 to 300 characters.'
+    },
+    comment: {
+    	rangelength: 'Lenght should be from 2 to 300 characters.',
+    	required: 'Comment cannot be empty.'
+    },
+    dateBirth: {
+    	date: 'Wrong format. It should be yyyy-mm-dd'
+    },
+    client: {
+    	rangelength: 'Lenght should be from 1 to 50 characters.'
+    },
+    expirationDate: {
+    	date: 'Wrong format. It should be yyyy-mm-dd'
+    }
 },	
 
 			highlight: function(element) {

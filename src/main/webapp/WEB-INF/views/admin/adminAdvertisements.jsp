@@ -26,6 +26,12 @@
 <spring:message code="admin.menu.moderators.dateregister" var="dateregister" />
 <spring:message code="form.expirationdate" var="expirationdate" />
 <spring:message code="form.edit" var="edit" />
+<spring:message code="admin.advertisement.confirm" var="confirm" />
+<spring:message code="admin.advertisement.deletemessage" var="deletemessage" />
+<spring:message code="form.close" var="close" />
+<spring:message code="admin.advertisement.deletebutton" var="deletebutton" />
+<spring:message code="admin.advertisement.editmessage" var="editmessage" />
+<spring:message code="admin.advertisement.editbutton" var="editbutton" />
 
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -161,14 +167,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Confirm?</h4>
+        <h4 class="modal-title" id="myModalLabel">${confirm}</h4>
       </div>
       <div class="modal-body">
-        Are you realy wanna delete this advertisement?
+        ${deletemessage}
       </div>
       <div class="modal-footer">
-        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
-        <a href="<c:url value="/admin/deleteAdvertisement.html?id=${advertisement.idAdvertisement}" />" type="button" class="btn btn-danger">Delete advertisement</a>
+        <a type="button" class="btn btn-default" data-dismiss="modal">${close}</a>
+        <a href="<c:url value="/admin/deleteAdvertisement.html?id=${advertisement.idAdvertisement}" />" type="button" class="btn btn-danger">${deletebutton}</a>
       </div>
     </div>
   </div>
@@ -179,14 +185,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Confirm?</h4>
+        <h4 class="modal-title" id="myModalLabel">${confirm}</h4>
       </div>
       <div class="modal-body">
-        Are you realy wanna edit this advertisement?
+        ${editmessage}
       </div>
       <div class="modal-footer">
-        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
-        <a href="<c:url value="/admin/updateAdvertisement.html?id=${advertisement.idAdvertisement}" />" type="button" class="btn btn-primary">Edit</a>
+        <a type="button" class="btn btn-default" data-dismiss="modal">${close}</a>
+        <a href="<c:url value="/admin/updateAdvertisement.html?id=${advertisement.idAdvertisement}" />" type="button" class="btn btn-primary">${editbutton}</a>
       </div>
     </div>
   </div>

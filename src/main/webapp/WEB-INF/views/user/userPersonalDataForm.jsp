@@ -142,30 +142,35 @@
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-personal">
 		<form:input id="name" name="name" class="form-control input-md" path="name" placeholder="${name}" value="${user.name}"></form:input>
+		<label class="error valid" generated="true" for="name" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="name" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-personal">
 		<form:input id="surname" name="surname" class="form-control input-md" path="surname" placeholder="${surname}" value="${user.surname}"></form:input>
+		<label class="error valid" generated="true" for="surname" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="surname" /></span>
 		</div>
 		</div>
 		
 		
 			<div>
-				
+				<div class="height-input-string-personal">
 				<form:select class="form-control" id="idCountry" path="country_idCountry">
 				</form:select>
-				
+				</div>
 				<br>
+				<div class="height-input-string-personal">
 				<form:select class="form-control" id="idCity" path="city_idCity">
 					<form:option value="0">None</form:option>
 				</form:select>
+				</div>
 				<br>
 			</div>
 		<div class="height-input-updatepersonal-date">
 		<form:input type="text" class="form-control" id="dateBirth" name="calendar" path="dateBirth" placeholder="${birthdate}"/> 
+		<label class="error" generated="true" for="dateBirth" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="dateBirth" /></span>
 		</div>
 		<br>
@@ -177,6 +182,7 @@
 		</form:select>
 		<br>
 		${avatarupload} <input type="file" name="avatar">
+		<label class="error" generated="true" for="avatar" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="avatar" /></span>
 		<br>
 		

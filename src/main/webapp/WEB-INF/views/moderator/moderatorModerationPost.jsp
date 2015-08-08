@@ -18,6 +18,25 @@
 <spring:message code="moderator.menu.rejectingposts" var="rejectingposts"/>
 <spring:message code="moderator.menu.complainedposts" var="complainedposts"/>
 <spring:message code="moderator.moderationpost.postfortitle" var="postfortitle"/>
+<spring:message code="form.image" var="image"/>
+<spring:message code="moderator.complainpost.designer" var="designerfortable"/>
+<spring:message code="form.description" var="description" />
+<spring:message code="form.category" var="category" />
+<spring:message code="form.subcategory" var="subcategory" />
+<spring:message code="form.title" var="title" />
+<spring:message code="form.number" var="number" />
+<spring:message code="form.instruction" var="instruction" />
+<spring:message code="form.file" var="file" />
+<spring:message code="moderator.complainpost.uploaddate" var="uploaddate" />
+<spring:message code="moderator.complainpost.changedate" var="changedate" />
+<spring:message code="moderator.complainpost.designerprogram" var="designerprogram" />
+<spring:message code="moderator.complainpost.reject" var="rejectbutton" />
+<spring:message code="moderator.complainpost.publish" var="publish" />
+<spring:message code="form.close" var="close" />
+<spring:message code="moderator.complainpost.confirmpublishing" var="confirmpublishing" />
+<spring:message code="moderator.complainpost.typeyourmessagehere" var="typeyourmessagehere" />
+<spring:message code="moderator.complainpost.sendmessage" var="sendmessage" />
+<spring:message code="moderator.complainpost.messagetodesigner" var="messagetodesigner" />
 
  <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -67,60 +86,60 @@
                                                                                       
                               <tbody>
                               <tr>
-                              		<td>Image</td>
+                              		<td>${image}</td>
                               		<td><img alt="" src="<c:url value="${post.postPhotos[0].photoPath}" />"></td>
                               </tr>
                               <tr>
-                                  <td>Designer</td>
+                                  <td>${designerfortable}</td>
                                   <td class="hidden-phone">${post.user.nickName}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Category</td>
+                                   <td>${category}</td>
                                   	<td class="hidden-phone">${post.category.title}</td>
                                   
                               </tr>
                               <tr>
-                                  <td>Subcategory</td>
+                                  <td>${subcategory}</td>
                                   <td class="hidden-phone">${post.subcategory.title}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Designer program</td>
+                                   <td>${designerprogram}</td>
                                   <td class="hidden-phone">${post.disProgram.title}</td>
                               </tr>
                               <tr>
-                                   <td>Number</td>
+                                   <td>${number}</td>
                                   <td class="hidden-phone">${post.numberPost}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Title</td>
+                                   <td>${title}</td>
                                   <td class="hidden-phone">${post.title}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Description</td>
+                                   <td>${description}</td>
                                   <td class="hidden-phone">${post.description}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Instruction</td>
+                                   <td>${instruction}</td>
                                   <td class="hidden-phone">${post.instruction}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Upload date</td>
+                                   <td>${uploaddate}</td>
                                   <td class="hidden-phone">${post.dateReg}</td>
                                   
                               </tr>
                               <tr>
-                                   <td>Change date</td>
+                                   <td>${changedate}</td>
                                   <td class="hidden-phone">${post.dateUpdate}</td>
                                   
                               </tr>
                               <tr>
-                              <td>File</td>
+                              <td>${file}</td>
                               		<td>
                               		<a href="<c:url value="/download?id=${post.file.idFile}" />"> <i
 							class="btn btn-primary fa fa-download"> ${down}</i>	</a>
@@ -131,8 +150,8 @@
                       </div>
                       <div class="col-md-12">
                       
-                      <button type="button"  data-toggle="modal" data-target="#publish" class="btn btn-success left-designer btn-lg" >Publish</button>   				  
-      				  <button type="button" data-toggle="modal" data-target="#reject"  style="margin-right: 0.5em;"  class="btn btn-danger left-designer btn-lg"  >Reject</button>
+                      <button type="button"  data-toggle="modal" data-target="#publish" class="btn btn-success left-designer btn-lg" >${publish}</button>   				  
+      				  <button type="button" data-toggle="modal" data-target="#reject"  style="margin-right: 0.5em;"  class="btn btn-danger left-designer btn-lg"  >${rejectbutton}</button>
         			  
         				  </div>                 
      </div>
@@ -148,13 +167,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Confirm publishing </h4>
+        <h4 class="modal-title">${confirmpublishing} </h4>
       </div>
       <div class="modal-body">
         </div>
       <div class="modal-footer">
-       <a href="<c:url value="/moderator/publishPost?id=${post.idPost}"  />" class="btn btn-success"> Publish </a>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       <a href="<c:url value="/moderator/publishPost?id=${post.idPost}"  />" class="btn btn-success"> ${publish} </a>
+        <button type="button" class="btn btn-default" data-dismiss="modal">${close}</button>
       </div>
     </div>
 
@@ -169,7 +188,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Send message to designer </h4>
+        <h4 class="modal-title">${messagetodesigner}  </h4>
       </div>
       <div class="modal-body">
       <form:form id="rejectMessageForm" name="rejectMessageForm" class="form-horizontal" modelAttribute="rejectMessageForm" method="POST">
@@ -178,14 +197,14 @@
 		<div class="height-input-string-messages">
 		<form:textarea id="text" name="text" style="resize:none"
 											class="form-control input-md" path="text"
-											placeholder="Type your comment here" rows="5" cols="30"></form:textarea>
+											placeholder="${typeyourmessagehere}" rows="5" cols="30"></form:textarea>
 											<label class="error" generated="true" for="text" style="font-size:9pt; line-height: 1.2;"></label>
 											</div>
 									<form:input type="hidden" id="idPost" name="idPost"
 										path="idPost" value="${post.idPost }"></form:input>
 									
 									<span class="error"><form:errors path="text" /></span> <br>
-									<input type="submit" class="btn btn-primary" value="Send message" />
+									<input type="submit" class="btn btn-primary" value="${sendmessage}" />
 	</form:form>
         </div>
       

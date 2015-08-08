@@ -63,29 +63,31 @@
       </div>
   <div class="row">
   
-		<div class="col-md-10 nopadding2" style="padding-left:20%">
+		<div class="col-md-10 nopadding2" style="padding-left:9%">
 		<h2>${enterinformation}</h2>
 				
 	<form:form role="form" modelAttribute="postForm" method="POST" id="add-post-form"
 		name="add-post-form" enctype="multipart/form-data">
 		<div class="row">
-		<div class="col-md-4">
+		<div class="col-md-7">
 		<div class="form-group height-input-string-addpost">
 		<form:input class="form-control" id="title" name="title" path="title" placeholder="${title}"></form:input>
-		
+		<label class="error" generated="true" for="title" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="title" /></span>
 		</div>
 		<div class="form-group height-input-string-addpost-description">
 		<form:textarea class="form-control" id="description" name="description" path="description"
 			placeholder="${description}"  rows="5" cols="30"></form:textarea>
+		<label class="error" generated="true" for="description" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
 		<div class="form-group height-input-string-addpost-instruction">
 		<form:textarea class="form-control" id="instruction" name="instruction" path="instruction"
 			placeholder="${instruction}"></form:textarea>
+		<label class="error" generated="true" for="instruction" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="instruction" /></span>
 		</div>
-		<div class="form-group">
+		<div class="form-group height-input-string-addpost-category">
 		<form:select class="form-control" id="disProgram_idDisProgram"
 			name="disProgram_idDisProgram" path="disProgram_idDisProgram">
 			<c:forEach items="${listDisProgram}" var="disProgram">
@@ -99,6 +101,7 @@
 				<div class="form-group height-input-string-addpost-category">
 				<form:select class="form-control" id="idCategory" path="category_idCategory">
 				</form:select>
+					<label class="error" generated="true" for="idCategory" style="font-size:9pt; line-height: 1.2;"></label>
 					<span class="error"><form:errors path="category_idCategory" /></span>
 				</div>
 				<div class="form-group height-input-string-addpost-subcategory">
@@ -121,16 +124,18 @@
 			<form:checkbox id="technologiesId"  path="technologiesId" value="${technology.idTechnology}" />${technology.title}<br>
 		</c:forEach>
 		<span class="error"><form:errors path="technologiesId" /></span>
-		<label for="technologiesId" class="error" generated="true"></label>
+		<label for="technologiesId" class="error" generated="true" style="font-size:9pt; line-height: 1.2;"></label>
 		</div>
 		<br>
 		<div class="height-input-string-addpost-stl">
 		${modeltoupload} <input type="file" name="model">
+		<label class="error" generated="true" for="model" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="model" /></span>
 		</div>
 		<br>
-		<div class="height-input-string-addpost-stl">
+		<div class="height-input-string-addpost-img">
         ${photomodeltoupload} <input type="file" name="firstPhoto">
+		<label class="error" generated="true" for="firstPhoto" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="firstPhoto" /></span>
 		</div>
 		<br>

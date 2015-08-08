@@ -2822,10 +2822,10 @@ float: right;
 }
 
 .height-input-string-security{
-height:2.9em;
+height:3.35em;
 }
 .height-input-string-personal{
-height:2.9em;	
+height: 3.35em;	
 }
 .font-weight-name-designer {
 font-weight: bold;
@@ -2834,43 +2834,46 @@ font-weight: bold;
 height: 10em;
 }
 .height-input-string-addpost {
-height: 2.7em;
+height: 3.35em;
 }
 .height-input-string-addpost-description {
-height: 9.7em;	
+height: 10.4em;	
 }
 .height-input-string-addpost-instruction {
-	height: 5.7em;
+	height: 6.4em;
 }
 .height-input-string-addpost-category {
-	height: 2.7em;
+	height: 3.35em;
 }
 .height-input-string-addpost-subcategory {
 	height: 2.7em;
 }
 .height-input-string-addpost-technologies {
-	height: 14em;
+	height: 17em;
 }
 .height-input-string-addpost-stl {
-	height: 3em;
+	height: 3.7em;
+}
+.height-input-string-addpost-img {
+	height: 4em;
 }
 .height-input-string-updatepost-category {
-	height: 2.7em;
+	height: 3.35em;
 }
 .height-input-string-updatepost-technologies {
 	height: 13em;
 }
 .height-input-string-updatepost-instruction {
-height: 5.7em;
+height: 3em;
 }
 .height-input-string-updatepost-description {
-height: 9.7em;
+height: 3.35em;
 }
 .height-input-string-updatepost-title {
-	height: 2.7em;
+	height: 3.35em;
 }
 .height-input-string-updatepost-stl {
-	height: 3em;
+	height: 4em;
 }
 .height-input-updatepersonal-avatar {
 	height: 3em;
@@ -2879,7 +2882,7 @@ height: 9.7em;
   	 min-height: 38.75em;
   }
  .height-input-updatepersonal-date {
- height: 2.5em;
+ height: 3.35em;
  }
  .footerpadding3{
   	 min-height: 38.86em;

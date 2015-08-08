@@ -133,6 +133,7 @@
 				<div class="form-group height-input-string-updatepost-category">
 				<form:select class="form-control" id="idCategory" path="category_idCategory">
 				</form:select>
+					<label class="error" generated="true" for="idCategory" style="font-size:9pt; line-height: 1.2;"></label>
 					<span class="error"><form:errors path="category_idCategory" /></span>
 				</div>
 				<div class="form-group height-input-string-updatepost-category">
@@ -156,30 +157,33 @@
 		
 		<div class="col-md-6">
 		<h3 style="margin-top:0px">Select technologies</h3>
-		<div class="height-input-string-updatepost-technologies">
+		<div class="height-input-string-updatepost-technologies" style="margin-bottom: 5%;">
 		<c:forEach items="${listTechnologies}" var="technology">
 			<form:checkbox path="technologiesId" value="${technology.idTechnology}" />${technology.title}<br>
 		</c:forEach>
 		<span class="error"><form:errors path="technologiesId" /></span>
-		<label for="technologiesId" class="error" generated="true"></label>
+		<label for="technologiesId" class="error" generated="true" style="font-size:9pt; line-height: 1.2;"></label>
 		</div>
 		</div>
 		
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-updatepost-title">
 		<form:input id="title" name="title" class="form-control input-md" path="title" placeholder="Title" value="${post.title}"></form:input>
+		<label class="error valid" generated="true" for="title" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="title" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-updatepost-description">
 		<form:input id="description" name="description" class="form-control input-md" path="description" placeholder="Description" value="${post.description}"></form:input>
+		<label class="error valid" generated="true" for="description" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="description" /></span>
 		</div>
 		</div>
 		<div class="form-group">
 		<div class="col-md-12 height-input-string-updatepost-instruction">
 		<form:input id="instruction" name="instruction" class="form-control input-md" path="instruction" placeholder="Instruction" value="${post.instruction}"></form:input>
+		<label class="error valid" generated="true" for="instruction" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="instruction" /></span>
 		</div>
 		</div>
@@ -187,11 +191,13 @@
 		<br>
 		<div class="height-input-string-updatepost-stl">
         Model to upload: <input type="file" name="model">
+		<label class="error" generated="true" for="model" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="model" /></span>
 		</div>
 		<br>
 		<div class="height-input-string-updatepost-stl">
         Photo model to upload: <input type="file" name="firstPhoto">
+		<label class="error" generated="true" for="firstPhoto" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="firstPhoto" /></span>
 		</div>
 		<br>

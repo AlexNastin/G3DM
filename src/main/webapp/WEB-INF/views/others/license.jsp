@@ -90,10 +90,11 @@
 <p>"Contractor" undertakes to use personal data hosted "User" on the site exclusively for the needs of improving the operation of the site. "Contractor" reserves the right, if necessary, contact the "User": send informational messages to the email address provided during registration, as well as a fixed or mobile phone "Users."
 <p>"Contractor" does not bear responsibility for failure or improper fulfillment of their obligations under this Agreement, if their inability to perform due to force majeure, legislation or regulations, or the lack of an unstable supply of electricity or other utilities, lack of (open) link, malfunction of the hosting site, or any other independent of the will of "the Contractor" cause.
 <br>
+<a name="user"></a>
 </div>
 <div class="text-file-conversions-name"><p>IV. Rights of "Client"</div>
 <br>
-<div class="text-file-conversions-text"><p>“Client” is entitled to:
+<div class="text-file-conversions-text"><p> “Client” is entitled to:
 <p>-	see all the content of the site;
 <p>-	download any number of "Digital file" from the site;
 <p>-	to use for an indefinite term of use and the territory downloaded from the site, "Digital files" on your own, but without violating the laws (requirements) of international law, the moral and ethical standards of behavior of mankind.
@@ -105,6 +106,7 @@
 <p>"Client" is obliged to immediately change the data that is used to access the site if it has reason to suspect that its e-mail addresses and / or passwords used to access the site, have been disclosed or may be used by third parties.
 <br>
 </div>
+<a name="designer"></a>
 <div class="text-file-conversions-name"><p>V. Rights of “Designer”</div>
 <br>
 <div class="text-file-conversions-text">

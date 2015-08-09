@@ -55,7 +55,7 @@
 				<div class="footer-grid">
 					<h4>${tocustomers}</h4>
 					<ul class="list1">
-						<li><a href="<c:url value="/howItWorksUser" />">${tocustomershowitworks}</a></li>
+						<li><a href="<c:url value="/license#user" />">${tocustomershowitworks}</a></li>
 						<li><a href="<c:url value="/safety" />">${tocustomerssafety}</a></li>
 						<li><a href="<c:url value="/aboutUserSignup" />">${tocustomerssignup}</a></li>
 					</ul>
@@ -63,7 +63,7 @@
 				<div class="footer-grid">
 					<h4>${todesigners}</h4>
 					<ul class="list1">
-						<li><a href="<c:url value="/howItWorksDesigner" />">${todesignershowitworks}</a></li>
+						<li><a href="<c:url value="/license#designer" />">${todesignershowitworks}</a></li>
 						<li><a href="<c:url value="/license" />">${todesignerslicense}</a></li>
 						<li><a href="<c:url value="/aboutDesignerSignup" />">${todesignerssignup}</a></li>
 					</ul>

@@ -48,7 +48,7 @@
         </li>
         <li class="timeline-inverted">
           <div class="timeline-image">
-            <img class="img-circle img-responsive" src="http://lorempixel.com/250/250/cats/2" alt="">
+            <img class="img-circle img-responsive" src="<c:url value="/resources/images/team/philip.jpg" />" alt="Philip Fursov">
           </div>
           <div class="timeline-panel">
             <div class="timeline-heading">
@@ -65,7 +65,7 @@
         </li>
         <li>
           <div class="timeline-image">
-            <img class="img-circle img-responsive" src="http://lorempixel.com/250/250/cats/3" alt="">
+            <img class="img-circle img-responsive" src="<c:url value="/resources/images/team/nickita.jpg" />" alt="Никита Степанов">
           </div>
           <div class="timeline-panel">
             <div class="timeline-heading">
@@ -82,7 +82,7 @@
         </li>
         <li class="timeline-inverted">
           <div class="timeline-image">
-            <img class="img-circle img-responsive" src="http://lorempixel.com/250/250/cats/4" alt="">
+            <img class="img-circle img-responsive" src="<c:url value="/resources/images/team/dima.jpg" />" alt="Дмитрий Гусев">
           </div>
           <div class="timeline-panel">
             <div class="timeline-heading">
@@ -99,7 +99,7 @@
         </li>
         <li>
           <div class="timeline-image">
-            <img class="img-circle img-responsive" src="http://lorempixel.com/250/250/cats/5" alt="">
+            <img class="img-circle img-responsive" src="<c:url value="/resources/images/team/yuriy.jpg" />" alt="Юрий Большунов">
           </div>
           <div class="timeline-panel">
             <div class="timeline-heading">

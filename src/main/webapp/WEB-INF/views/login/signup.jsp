@@ -28,6 +28,8 @@
 <spring:message code="signup.signup" var="signupnew" />
 <spring:message code="javascript.validation" var="validation" />
 <spring:message code="signup.confirmpassword" var="confirmpassword" />
+<spring:message code="signup.role.designer" var="descdesigner" />
+<spring:message code="signup.role.user" var="descuser" />
 <meta name="keywords" content="3d printer, 3d model, 3d model free, 3d model download, 3d model download free, model to print 3d printer free, stl, stl download,stl download free, 3d designer, 3d model robot, 3д модель, 3д принтер, 3д модель скачать, 3д модель скачать напечатать, 3д дизайнер, stl бесплатные, stl скачать, global3dmod, global 3d mod "> 
 
 
@@ -43,9 +45,9 @@
 	   <div class="col-md-12">
 	   <div class="row">
 	   <div class="col-md-12">
-	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio1" value="3"  /><label for="radio1" class="css-label" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">${designer}</label>
+	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio1" value="3"  /><label for="radio1" class="css-label" data-toggle="tooltip" data-placement="top" title="${descdesigner}">${designer}</label>
 	  
-	   <form:radiobutton style="margin-left:7%" class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label style="margin-left:7%" for="radio2" class="css-label" data-toggle="tooltip" data-placement="top" title="Lorem ipsum dolor sit amet, consectetur adipiscing elit.">${user}</label>
+	   <form:radiobutton style="margin-left:7%" class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label style="margin-left:7%" for="radio2" class="css-label" data-toggle="tooltip" data-placement="top" title="${descuser}">${user}</label>
 	   </div>
 	   </div>
 	   <span class="error color-style-validation"><form:errors path="role_idRole" /></span>

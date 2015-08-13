@@ -7,16 +7,14 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<link href="<c:url value="/resources/css/bootstrap.css" />"
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
-<link href="<c:url value="/resources/css/font-awesome.min.css"  />"
-	rel="stylesheet" />
+
 <link href="<c:url value="/resources/css/prettyPhoto.css"  />"
 	rel="stylesheet" />
 <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />
-<link href="<c:url value="/resources/css/feature-carousel.css"  />"
-	rel="stylesheet" />
+
 <link href="<c:url value="/resources/css/sign.css"  />" rel="stylesheet" />
 <link rel="stylesheet"
 	href="<c:url value="/resources/css/formValidation.css"/>">

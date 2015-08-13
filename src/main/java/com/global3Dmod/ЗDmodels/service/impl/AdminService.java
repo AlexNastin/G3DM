@@ -296,22 +296,22 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public void setPathToPhotos(List<Advertisement> advertisements) {
-		for (Advertisement advertisement : advertisements) {
-			String oldPath = advertisement.getFilePath();
-			StringBuilder fullPath = new StringBuilder(
-					propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
-			fullPath.append(oldPath);
-			advertisement.setFilePath(fullPath.toString());
-		}
+//		for (Advertisement advertisement : advertisements) {
+//			String oldPath = advertisement.getFilePath();
+//			StringBuilder fullPath = new StringBuilder(
+//					propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+//			fullPath.append(oldPath);
+//			advertisement.setFilePath(fullPath.toString());
+//		}
 	}
 
 	@Override
 	public void setPathToPhotos(Advertisement advertisement) {
-		String oldPath = advertisement.getFilePath();
-		StringBuilder fullPath = new StringBuilder(
-				propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
-		fullPath.append(oldPath);
-		advertisement.setFilePath(fullPath.toString());
+//		String oldPath = advertisement.getFilePath();
+//		StringBuilder fullPath = new StringBuilder(
+//				propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+//		fullPath.append(oldPath);
+//		advertisement.setFilePath(fullPath.toString());
 	}
 
 	@AspectLogG3DM

@@ -179,41 +179,41 @@ public class UserService implements IUserService {
 	@AspectLogG3DM
 	@Override
 	public void setPathToPhotos(List<Post> posts) throws ServiceException {
-		for (Post post : posts) {
-			String oldPath = post.getPostPhotos().get(0).getPhotoPath();
-			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
-			fullPath.append(oldPath);
-			post.getPostPhotos().get(0).setPhotoPath(fullPath.toString());
-		}
+//		for (Post post : posts) {
+//			String oldPath = post.getPostPhotos().get(0).getPhotoPath();
+//			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+//			fullPath.append(oldPath);
+//			post.getPostPhotos().get(0).setPhotoPath(fullPath.toString());
+//		}
 	}
 
 	@AspectLogG3DM
 	@Override
 	public void setPathToPhotos(Post post) throws ServiceException {
-		String oldPath = post.getPostPhotos().get(0).getPhotoPath();
-		StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
-		fullPath.append(oldPath);
-		post.getPostPhotos().get(0).setPhotoPath(fullPath.toString());
+//		String oldPath = post.getPostPhotos().get(0).getPhotoPath();
+//		StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+//		fullPath.append(oldPath);
+//		post.getPostPhotos().get(0).setPhotoPath(fullPath.toString());
 	}
 	
 	@AspectLogG3DM
 	@Override
 	public void setPathToPhotos(User user) throws ServiceException {
-		String oldPath = user.getAvatar().getAvatarPath();
-		StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
-		fullPath.append(oldPath);
-		user.getAvatar().setAvatarPath(fullPath.toString());
+//		String oldPath = user.getAvatar().getAvatarPath();
+//		StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+//		fullPath.append(oldPath);
+//		user.getAvatar().setAvatarPath(fullPath.toString());
 	}
 	
 	@AspectLogG3DM
 	@Override
 	public void setPathToPhotosUsers(List<User> users) throws ServiceException {
-		for (User user : users) {
-			String oldPath = user.getAvatar().getAvatarPath();
-			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
-			fullPath.append(oldPath);
-			user.getAvatar().setAvatarPath(fullPath.toString());
-		}
+//		for (User user : users) {
+//			String oldPath = user.getAvatar().getAvatarPath();
+//			StringBuilder fullPath = new StringBuilder(propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+//			fullPath.append(oldPath);
+//			user.getAvatar().setAvatarPath(fullPath.toString());
+//		}
 	}
 
 }

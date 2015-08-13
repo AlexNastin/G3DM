@@ -148,7 +148,7 @@ public class UserService implements IUserService {
 			String pathAvatar = designerService.createAvatarPath(user.getIdUser());
 			String fullPathAvatar = serverPath.concat(pathAvatar);
 			Avatar avatar = user.getAvatar();
-			avatar.setAvatarPath(pathAvatar + designerService.avatarFileUpload(personalDataForm.getAvatar(), fullPathAvatar, avatar.getFileName()));
+			avatar.setAvatarPath(ServiceParamConstant.PATH_TO_FILES + pathAvatar + designerService.avatarFileUpload(personalDataForm.getAvatar(), fullPathAvatar, avatar.getFileName()));
 			user.setAvatar(avatar);
 			
 			userDAO.updateUser(user);

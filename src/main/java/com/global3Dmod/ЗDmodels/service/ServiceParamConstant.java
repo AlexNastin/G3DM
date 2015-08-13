@@ -12,6 +12,7 @@ public final class ServiceParamConstant {
 	public static final int DEFAULT_IS_DISPLAY = 2;
 	public static final String DEFAULT_NAME_AVATAR = "avatar.jpg";
 	public static final String PATH_TO_DEFAULT_AVATAR = "/resources/images/";
+	public static final String PATH_TO_FILES = "/resources/files/";
 //	public static final String PATH_TO_DEFAULT_AVATAR = "resources/images/";
 	
 	public static String CATEGORY_DESC = "categoryDesc";

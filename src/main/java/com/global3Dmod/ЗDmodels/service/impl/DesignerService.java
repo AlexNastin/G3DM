@@ -241,6 +241,7 @@ public class DesignerService implements IDesignerService {
 		postPhotos.add(firstPostPhoto);
 		post.setPostPhotos(postPhotos);
 
+		
 		com.global3Dmod.ÇDmodels.domain.File file = new com.global3Dmod.ÇDmodels.domain.File();
 		file.setFolder(time);
 		newName = modelFileUpload(postForm.getModel(), fullPathModel);

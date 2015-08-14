@@ -537,8 +537,7 @@ public class GuestService implements IGuestService {
 	@AspectLogG3DM
 	@Override
 	public String getFileFullPath(Integer idFile) throws ServiceException {
-		StringBuilder fullPath = new StringBuilder(
-				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
+		StringBuilder fullPath = new StringBuilder(propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
 		try {
 			File file = fileDAO.selectFileById(idFile);
 			String pathFile = file.getFilePath();

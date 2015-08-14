@@ -427,6 +427,7 @@ public class AdminService implements IAdminService {
 
 	private String createAdvertisementPath(String client) {
 		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("/resources/files/");
 		stringBuilder.append("advertisements/");
 		stringBuilder.append(client);
 		stringBuilder.append("/");

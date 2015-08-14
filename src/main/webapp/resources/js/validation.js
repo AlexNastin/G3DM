@@ -102,7 +102,7 @@ $(document).ready(function(){
 	      model: {
 	    	  accept: "stl,zip,rar",
 	    	  required: true,
-	    	  filesize: 5242880
+	    	  filesize: 1073741824
 	      },
 	      firstPhoto: {
 	    	  accept: "jpg,png,jpeg",
@@ -129,7 +129,8 @@ $(document).ready(function(){
 	    	  date: true
 	      },
 	      advertisementPhoto: {
-	    	  accept: "jpg,png,jpeg"
+	    	  accept: "jpg,png,jpeg",
+	    	  filesize: 5242880
 	      },
 	      email: {
 	    	  required: true,
@@ -189,19 +190,21 @@ messages:  {
     model: {
     	accept: 'Extension should be .stl .zip or .rar',
     	required: 'Please select file.',
-    	filesize: 'dxfdgdfhdfh'
+    	filesize: 'The maximum file size upload for site is 1GB.'
     },
     firstPhoto: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',
     	required: 'Please select photo.',
-    	filesize: 'gfhgfhgfhfg'
+    	filesize: 'The maximum photo size upload for site is 5MB.'
     },
     avatar: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',
-    	filesize: 'dsgsdvdvsds'
+    	filesize: 'The maximum photo size upload for site is 5MB.'
     },
     advertisementPhoto: {
-    	accept: 'Allowed .jpg, .jpeg and .png images only'
+    	accept: 'Allowed .jpg, .jpeg and .png images only',
+    	filesize: 'The maximum photo size upload for site is 5MB.'
+    	
     },
     text: {
     	regexp: 'Lenght should be from 2 to 300 characters. Latin characters only.'

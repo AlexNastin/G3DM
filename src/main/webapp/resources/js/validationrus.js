@@ -17,6 +17,12 @@ $(document).ready(function(){
 	        },
 	        "Please check your input."
 	);
+	$.validator.addMethod('filesize', function(value, element, param) {
+	    // param = size (en bytes) 
+	    // element = element to validate (<input>)
+	    // value = value of the element (file name)
+	    return this.optional(element) || (element.files[0].size <= param) 
+	});
 	
 		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm, #addModeratorForm, #advertisement-form, #support-form').validate({
 			
@@ -87,18 +93,21 @@ $(document).ready(function(){
 	      },
 	      model: {
 	    	  accept: "stl,zip,rar",
-	    	  required: true
+	    	  required: true,
+	    	  filesize: 5242880
 	      },
 	      firstPhoto: {
 	    	  accept: "jpg,png,jpeg",
-	    	  required: true
+	    	  required: true,
+	    	  filesize: 5242880
 	      },
 	      comment: {
 	    	  required: true,
 	    	  rangelength: [1, 300] 
 	      },
 	      avatar: {
-	    	  accept: "jpg,png,jpeg"
+	    	  accept: "jpg,png,jpeg",
+	    	  filesize: 5242880
 	      },
 	      dateBirth: {
 	    	  date: true
@@ -184,17 +193,20 @@ messages:  {
     },
     model: {
     	accept: 'Расширение файла должно быть: .stl .zip или .rar',
-    	required: 'Пожалуйста, выберите файл.'
+    	required: 'Пожалуйста, выберите файл.',
+    	filesize: 'авпвапвапук'
     },
     firstPhoto: {
     	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png',
-    	required: 'Пожалуйста, выберите изображение.'
+    	required: 'Пожалуйста, выберите изображение.',
+    	filesize: 'пвапвкакпвапк'
     },
     avatar: {
-    	accept: 'Расширение изображения должно быть: .jpg, .jpeg and .png'
+    	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png',
+    	filesize: 'гшлдгшшлп'
     },
     advertisementPhoto: {
-    	accept: 'Расширение изображения должно быть: .jpg, .jpeg and .png'
+    	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png'
     },
     text: {
     	regexp: 'Длина должна быть от 2 до 300 символов. Только латинские символы.',

@@ -182,11 +182,12 @@
 			<form:option value="2">${male}</form:option>
 		</form:select>
 		<br>
+		<div class="height-input-updatepersonal-avatar">
 		${avatarupload} <input type="file" name="avatar">
 		<label class="error" generated="true" for="avatar" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="avatar" /></span>
+		</div>
 		<br>
-		
 		<div class="form-group">
 		<div class="col-md-12">
 		<input type="submit" class="btn btn-primary left-designer" value="${save}" />

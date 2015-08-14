@@ -130,13 +130,13 @@
 		</div>
 		<br>
 		<div class="height-input-string-addpost-stl">
-		${modeltoupload} <input type="file" name="model">
+		${modeltoupload}<input type="file" name="model" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
 		<label class="error" generated="true" for="model" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="model" /></span>
 		</div>
 		<br>
 		<div class="height-input-string-addpost-img">
-        ${photomodeltoupload} <input type="file" name="firstPhoto">
+        ${photomodeltoupload} <input type="file" name="firstPhoto" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 100%;">
 		<label class="error" generated="true" for="firstPhoto" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error"><form:errors path="firstPhoto" /></span>
 		</div>

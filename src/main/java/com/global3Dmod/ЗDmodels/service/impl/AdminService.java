@@ -28,7 +28,6 @@ import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.AddAdvertisementForm;
 import com.global3Dmod.ÇDmodels.form.UpdateAdvertisementForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
-import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IAdminService;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;

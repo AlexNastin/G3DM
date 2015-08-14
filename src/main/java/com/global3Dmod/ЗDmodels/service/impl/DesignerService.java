@@ -234,7 +234,7 @@ public class DesignerService implements IDesignerService {
 		firstPostPhoto.setFolder(time);
 		String newName = photoModelFileUpload(postForm.getFirstPhoto(), fullPathModelPhoto);
 		firstPostPhoto.setFileName(newName);
-		firstPostPhoto.setPhotoPath(ServiceParamConstant.PATH_TO_FILES + pathModelPhoto + newName);
+		firstPostPhoto.setPhotoPath(pathModelPhoto + newName);
 		firstPostPhoto.setPost(post);
 		List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 		postPhotos.add(firstPostPhoto);
@@ -567,7 +567,7 @@ public class DesignerService implements IDesignerService {
 			String pathAvatar = createAvatarPath(user.getIdUser());
 			String fullPathAvatar = serverPath.concat(pathAvatar);
 			Avatar avatar = user.getAvatar();
-			avatar.setAvatarPath(ServiceParamConstant.PATH_TO_FILES + pathAvatar + 
+			avatar.setAvatarPath(pathAvatar + 
 					avatarFileUpload(personalDataForm.getAvatar(),
 							fullPathAvatar, avatar.getFileName()));
 			user.setAvatar(avatar);
@@ -630,7 +630,7 @@ public class DesignerService implements IDesignerService {
 			String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
 
 			PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
-			firstPostPhoto.setPhotoPath(ServiceParamConstant.PATH_TO_FILES + pathModelPhoto
+			firstPostPhoto.setPhotoPath(pathModelPhoto
 					+ photoModelFileUpload(updatePostForm.getFirstPhoto(),
 							fullPathModelPhoto, firstPostPhoto.getFileName()));
 

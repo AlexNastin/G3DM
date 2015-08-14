@@ -19,7 +19,6 @@ import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.UserPersonalDataForm;
 import com.global3Dmod.ÇDmodels.form.UserPersonalSecurityForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
-import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
@@ -148,7 +147,7 @@ public class UserService implements IUserService {
 			String pathAvatar = designerService.createAvatarPath(user.getIdUser());
 			String fullPathAvatar = serverPath.concat(pathAvatar);
 			Avatar avatar = user.getAvatar();
-			avatar.setAvatarPath(ServiceParamConstant.PATH_TO_FILES + pathAvatar + designerService.avatarFileUpload(personalDataForm.getAvatar(), fullPathAvatar, avatar.getFileName()));
+			avatar.setAvatarPath(pathAvatar + designerService.avatarFileUpload(personalDataForm.getAvatar(), fullPathAvatar, avatar.getFileName()));
 			user.setAvatar(avatar);
 			
 			userDAO.updateUser(user);

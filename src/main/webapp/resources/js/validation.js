@@ -23,6 +23,14 @@ $(document).ready(function(){
 	    // value = value of the element (file name)
 	    return this.optional(element) || (element.files[0].size <= param) 
 	});
+	$.validator.addMethod("aFunction",
+		    function(value, element) {
+		        if (value == "0")
+		            return false;
+		        else
+		            return true;
+		    },
+		    "Please select a value");
 	
 		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm, #addModeratorForm, #advertisement-form, #support-form').validate({
 			
@@ -133,6 +141,9 @@ $(document).ready(function(){
 	      },
 	      role_idRole: {
 	    	  required: true
+	      },
+	      subcategory_idSubcategory: {
+	    	  aFunction: true
 	      }
 },
 messages:  {
@@ -170,8 +181,11 @@ messages:  {
     	required: 'Please select technology.'
     },
     category_idCategory: {
-    	required: 'Please select cetegory.'
+    	required: 'Please select a category.'
     },
+    subcategory_idSubcategory: {
+    	aFunction: 'Please select a subcategory.'
+    	},
     model: {
     	accept: 'Extension should be .stl .zip or .rar',
     	required: 'Please select file.',

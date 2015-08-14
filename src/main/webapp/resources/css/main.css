@@ -751,7 +751,7 @@ div#carousel ~ span:hover { color: #888; cursor: pointer; }
 	-o-background-size: cover;
 	min-height: 250px;
 	text-align: center;
-	padding-top:4em;
+	padding-top:3em;
 	margin-top: 3%;
 }
 .footer h3{

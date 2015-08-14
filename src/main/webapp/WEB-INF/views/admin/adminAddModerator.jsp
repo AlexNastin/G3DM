@@ -85,7 +85,7 @@
 		<div class="form-group height-input-string-addModerator">
 		
 		<form:input placeholder="${login}" class="form-control" id="login" name="login" path="login"></form:input>
-		
+		<label class="error" generated="true" for="login" style="font-size:9pt; line-height: 1.2;"></label>
 		<span class="error color-style-validation"><form:errors
 				path="login" /></span>
 				</div>	
@@ -93,24 +93,28 @@
 		
 		<form:password placeholder="${password}" class="form-control" id="password" name="password" path="password"></form:password>
 		<form:errors path="password" />
-		
+		<label class="error" generated="true" for="password" style="font-size:9pt; line-height: 1.2;"></label>
 		</div>
 		<div class="form-group height-input-string-addModerator">
 		<form:password placeholder="${confirmpassword}" class="form-control" id="confirmPassword" name="confirmPassword"
 			path="confirmPassword"></form:password>
 		<form:errors path="confirmPassword" />
+		<label class="error" generated="true" for="confirmPassword" style="font-size:9pt; line-height: 1.2;"></label>
 		</div>
 		<div class="form-group height-input-string-addModerator">
 		<form:input placeholder="${nickname}" class="form-control" id="nickName" name="nickName" path="nickName"></form:input>
 		<form:errors path="nickName" />
+		<label class="error" generated="true" for="nickName" style="font-size:9pt; line-height: 1.2;"></label>
 		</div>
 		<div class="form-group height-input-string-addModerator">
 		<form:input placeholder="${name}" class="form-control" id="name" name="name" path="name"></form:input>
 		<form:errors path="name" />
+		<label class="error" generated="true" for="name" style="font-size:9pt; line-height: 1.2;"></label>
 		</div>
 		<div class="form-group height-input-string-addModerator">
 		<form:input placeholder="${surname}" class="form-control" id="surname" name="surname" path="surname"></form:input>
 		<form:errors path="surname" />
+		<label class="error" generated="true" for="surname" style="font-size:9pt; line-height: 1.2;"></label>
 		</div>
 		<div style="text-align: center">
 		<input class="btn btn-primary" type="submit" value="${signupmoderator}" />

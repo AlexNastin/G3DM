@@ -232,8 +232,7 @@ public class DesignerService implements IDesignerService {
 
 		PostPhoto firstPostPhoto = new PostPhoto();
 		firstPostPhoto.setFolder(time);
-		String newName = photoModelFileUpload(postForm.getFirstPhoto(),
-				fullPathModelPhoto);
+		String newName = photoModelFileUpload(postForm.getFirstPhoto(), fullPathModelPhoto);
 		firstPostPhoto.setFileName(newName);
 		firstPostPhoto.setPhotoPath(ServiceParamConstant.PATH_TO_FILES + pathModelPhoto + newName);
 		firstPostPhoto.setPost(post);
@@ -568,10 +567,8 @@ public class DesignerService implements IDesignerService {
 			String pathAvatar = createAvatarPath(user.getIdUser());
 			String fullPathAvatar = serverPath.concat(pathAvatar);
 			Avatar avatar = user.getAvatar();
-			System.out.println(111111);
-			System.out.println(ServiceParamConstant.PATH_TO_FILES + pathAvatar);
-			avatar.setAvatarPath(ServiceParamConstant.PATH_TO_FILES + pathAvatar
-					+ avatarFileUpload(personalDataForm.getAvatar(),
+			avatar.setAvatarPath(ServiceParamConstant.PATH_TO_FILES + pathAvatar + 
+					avatarFileUpload(personalDataForm.getAvatar(),
 							fullPathAvatar, avatar.getFileName()));
 			user.setAvatar(avatar);
 
@@ -692,6 +689,7 @@ public class DesignerService implements IDesignerService {
 
 	private String createPostPath(int idUser, long time) {
 		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("/resources/files/");
 		stringBuilder.append(idUser);
 		stringBuilder.append("/posts/");
 		stringBuilder.append(time);
@@ -703,6 +701,7 @@ public class DesignerService implements IDesignerService {
 	@Override
 	public String createAvatarPath(int idUser) {
 		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("/resources/files/");
 		stringBuilder.append(idUser);
 		stringBuilder.append("/avatar/");
 		String path = stringBuilder.toString();

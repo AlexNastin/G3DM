@@ -86,10 +86,12 @@ $(document).ready(function(){
 	    	  required: true
 	      },
 	      model: {
-	    	  accept: "stl,zip,rar"
+	    	  accept: "stl,zip,rar",
+	    	  required: true
 	      },
 	      firstPhoto: {
-	    	  accept: "jpg,png,jpeg"
+	    	  accept: "jpg,png,jpeg",
+	    	  required: true
 	      },
 	      comment: {
 	    	  required: true,
@@ -181,10 +183,12 @@ messages:  {
     	required: 'Выберите категорию.'
     },
     model: {
-    	accept: 'Расширение файла должно быть: .stl .zip или .rar'
+    	accept: 'Расширение файла должно быть: .stl .zip или .rar',
+    	required: 'Пожалуйста, выберите файл.'
     },
     firstPhoto: {
-    	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png'
+    	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png',
+    	required: 'Пожалуйста, выберите изображение.'
     },
     avatar: {
     	accept: 'Расширение изображения должно быть: .jpg, .jpeg and .png'

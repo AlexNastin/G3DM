@@ -86,10 +86,12 @@ $(document).ready(function(){
 	    	  required: true
 	      },
 	      model: {
-	    	  accept: "stl,zip,rar"
+	    	  accept: "stl,zip,rar",
+	    	  required: true
 	      },
 	      firstPhoto: {
-	    	  accept: "jpg,png,jpeg"
+	    	  accept: "jpg,png,jpeg",
+	    	  required: true
 	      },
 	      comment: {
 	    	  required: true,
@@ -162,10 +164,12 @@ messages:  {
     	required: 'Please select cetegory.'
     },
     model: {
-    	accept: 'Extension should be .stl .zip or .rar'
+    	accept: 'Extension should be .stl .zip or .rar',
+    	required: 'Please select file.'
     },
     firstPhoto: {
-    	accept: 'Allowed .jpg, .jpeg and .png images only'
+    	accept: 'Allowed .jpg, .jpeg and .png images only',
+    	required: 'Please select photo.'
     },
     avatar: {
     	accept: 'Allowed .jpg, .jpeg and .png images only'

@@ -23,6 +23,14 @@ $(document).ready(function(){
 	    // value = value of the element (file name)
 	    return this.optional(element) || (element.files[0].size <= param) 
 	});
+	$.validator.addMethod("aFunction",
+		    function(value, element) {
+		        if (value == "0")
+		            return false;
+		        else
+		            return true;
+		    },
+		    "Please select a value");
 	
 		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm, #addModeratorForm, #advertisement-form, #support-form').validate({
 			
@@ -94,7 +102,7 @@ $(document).ready(function(){
 	      model: {
 	    	  accept: "stl,zip,rar",
 	    	  required: true,
-	    	  filesize: 5242880
+	    	  filesize: 1073741824
 	      },
 	      firstPhoto: {
 	    	  accept: "jpg,png,jpeg",
@@ -121,7 +129,8 @@ $(document).ready(function(){
 	    	  date: true
 	      },
 	      advertisementPhoto: {
-	    	  accept: "jpg,png,jpeg"
+	    	  accept: "jpg,png,jpeg",
+	    	  filesize: 5242880
 	      },
 	      email: {
 	    	  required: true,
@@ -133,6 +142,9 @@ $(document).ready(function(){
 	      },
 	      role_idRole: {
 	    	  required: true
+	      },
+	      subcategory_idSubcategory: {
+	    	  aFunction: true
 	      }
 },
 messages:  {
@@ -170,24 +182,29 @@ messages:  {
     	required: 'Please select technology.'
     },
     category_idCategory: {
-    	required: 'Please select cetegory.'
+    	required: 'Please select a category.'
     },
+    subcategory_idSubcategory: {
+    	aFunction: 'Please select a subcategory.'
+    	},
     model: {
     	accept: 'Extension should be .stl .zip or .rar',
     	required: 'Please select file.',
-    	filesize: 'dxfdgdfhdfh'
+    	filesize: 'The maximum file size upload for site is 1GB.'
     },
     firstPhoto: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',
     	required: 'Please select photo.',
-    	filesize: 'gfhgfhgfhfg'
+    	filesize: 'The maximum photo size upload for site is 5MB.'
     },
     avatar: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',
-    	filesize: 'dsgsdvdvsds'
+    	filesize: 'The maximum photo size upload for site is 5MB.'
     },
     advertisementPhoto: {
-    	accept: 'Allowed .jpg, .jpeg and .png images only'
+    	accept: 'Allowed .jpg, .jpeg and .png images only',
+    	filesize: 'The maximum photo size upload for site is 5MB.'
+    	
     },
     text: {
     	regexp: 'Lenght should be from 2 to 300 characters. Latin characters only.'

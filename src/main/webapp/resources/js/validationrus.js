@@ -23,7 +23,14 @@ $(document).ready(function(){
 	    // value = value of the element (file name)
 	    return this.optional(element) || (element.files[0].size <= param) 
 	});
-	
+	$.validator.addMethod("aFunction",
+		    function(value, element) {
+		        if (value == "0")
+		            return false;
+		        else
+		            return true;
+		    },
+		    "Please select a value");
 		$('#contact-form, #comment-form, #add-post-form, #rejectMessageForm, #addModeratorForm, #advertisement-form, #support-form').validate({
 			
 	    rules: {
@@ -94,7 +101,7 @@ $(document).ready(function(){
 	      model: {
 	    	  accept: "stl,zip,rar",
 	    	  required: true,
-	    	  filesize: 5242880
+	    	  filesize: 1073741824
 	      },
 	      firstPhoto: {
 	    	  accept: "jpg,png,jpeg",
@@ -121,7 +128,8 @@ $(document).ready(function(){
 	    	  date: true
 	      },
 	      advertisementPhoto: {
-	    	  accept: "jpg,png,jpeg"
+	    	  accept: "jpg,png,jpeg",
+	    	  filesize: 5242880
 	      },
 	      email: {
 	    	  required: true,
@@ -133,7 +141,10 @@ $(document).ready(function(){
 	      },
 	      role_idRole: {
 	    	  required: true
-	      }
+	      },
+	      subcategory_idSubcategory: {
+	      	  aFunction: true
+	        }
 },
 messages:  {
 	confirmPassword: {
@@ -191,22 +202,26 @@ messages:  {
     category_idCategory: {
     	required: 'Выберите категорию.'
     },
+    subcategory_idSubcategory: {
+    	aFunction: 'Выберите подкатегорию.'
+    },
     model: {
     	accept: 'Расширение файла должно быть: .stl .zip или .rar',
     	required: 'Пожалуйста, выберите файл.',
-    	filesize: 'авпвапвапук'
+    	filesize: 'Максимальный размер файла - 1Гб'
     },
     firstPhoto: {
     	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png',
     	required: 'Пожалуйста, выберите изображение.',
-    	filesize: 'пвапвкакпвапк'
+    	filesize: 'Максимальный размер изображения - 5Мб'
     },
     avatar: {
     	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png',
-    	filesize: 'гшлдгшшлп'
+    	filesize: 'Максимальный размер изображения - 5Мб'
     },
     advertisementPhoto: {
-    	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png'
+    	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png',
+    	filesize: 'Максимальный размер изображения - 5Мб'
     },
     text: {
     	regexp: 'Длина должна быть от 2 до 300 символов. Только латинские символы.',

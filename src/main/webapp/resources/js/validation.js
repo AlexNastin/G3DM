@@ -57,10 +57,10 @@ $(document).ready(function(){
 	      required: true 	  
 	      },
 	      name: {
-	    	 regexp: /^[A-Za-z^±!@£$%^&*+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,50}$/
+	    	 regexp: '^[A-Za-z\-_]{1,50}$'
 	      },
 	      surname: {
-	    	 regexp: /^[A-Za-z^±!@£$%^&*+§¡€#¢§¶•ªº«\\/<>?:;|=.,]{1,50}$/
+	    	 regexp: '^[A-Za-z\-_]{1,50}$'
 	      },
 	      nickName: {
 	    	  regexp: '^[a-zA-Z0-9]+$',

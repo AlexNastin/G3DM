@@ -63,7 +63,7 @@
  <div class="row footerpadding">
     <div class="col-md-2 nopadding1">
      <div class="list-group">
-      <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar">      
+      <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive avatar-img img-thumbnail" alt="Global3Dmod avatar">      
   
   <a href="<c:url value="/user/profile" />" class="list-group-item  "><i class="fa fa-briefcase"></i> ${mybookmarks}</a>
  <a href="<c:url value="/user/personalData" />" class="list-group-item active"><i class="fa fa-cogs"></i> ${data}  </a>

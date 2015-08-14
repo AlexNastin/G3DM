@@ -44,7 +44,7 @@
  <div class="row footerpadding">
     <div class="col-md-2 nopadding1">
      <div class="list-group">
-      <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive img-thumbnail" alt="Global3Dmod avatar"> 
+      <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive avatar-img img-thumbnail" alt="Global3Dmod avatar"> 
   <a class="list-group-item font-weight-name-designer">${user.name} ${user.surname}</a>
   <a class="list-group-item">
   <i class="fa fa-archive"></i> Have posts: ${sizePosts}</a>

@@ -46,7 +46,7 @@
 <link href="<c:url value="/resources/css/cabinets/designer.css"  />"
 	rel="stylesheet" />
 <link
-	href="<c:url value="/resources/css//fontawesome430/css/font-awesome.css"  />"
+	href="<c:url value="/resources/css/fontawesome430/css/font-awesome.css"  />"
 	rel="stylesheet" />
 
 <!--[if lt IE 9]>
@@ -67,7 +67,7 @@
 		<div class="col-md-2 nopadding1">
 			<div class="list-group">
 				<img src="<c:url value="${user.avatar.avatarPath}" />"
-					class="img-responsive img-thumbnail" alt="Global3Dmod avatar">
+					class="img-responsive avatar-img img-thumbnail" alt="Global3Dmod avatar">
 				<a href="<c:url value="/designer/profile?sort=date&page=1" />"
 					class="list-group-item active"> <i class="fa fa-briefcase"></i>
 					${works}

@@ -119,6 +119,9 @@ $(document).ready(function(){
 	      textSupport: {
 	    	  required: true,
 	    	  rangelength: [1, 300]
+	      },
+	      role_idRole: {
+	    	  required: true
 	      }
 },
 messages:  {
@@ -188,6 +191,9 @@ messages:  {
     },
     expirationDate: {
     	date: 'Wrong format. It should be yyyy-mm-dd'
+    },
+    role_idRole: {
+    	required: 'Please select a role'
     }
 },	
 

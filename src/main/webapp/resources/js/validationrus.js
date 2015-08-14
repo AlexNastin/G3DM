@@ -119,6 +119,9 @@ $(document).ready(function(){
 	      textSupport: {
 	    	  required: true,
 	    	  rangelength: [1, 300]
+	      },
+	      role_idRole: {
+	    	  required: true
 	      }
 },
 messages:  {
@@ -211,6 +214,9 @@ messages:  {
     expirationDate: {
     	date: 'Неверный формат. Дата должна соответствовать yyyy-mm-dd.',
     	required: 'Это поле обязательное.'
+    },
+    role_idRole: {
+    	required: 'Пожалуйста, выберите роль'
     }
 },	
 

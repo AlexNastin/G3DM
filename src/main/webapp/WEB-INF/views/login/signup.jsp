@@ -41,10 +41,11 @@
 	   <div class="form-group sign-feld-margin-top">
 	   <div class="col-md-12">
 	   <div class="row">
-	   <div class="col-md-12">
+	   <div class="col-md-12 radio-height">
 	   <form:radiobutton class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio1" value="3"  /><label for="radio1" class="css-label" data-toggle="tooltip" data-placement="top" title="${descdesigner}">${designer}</label>
 	  
-	   <form:radiobutton style="margin-left:7%" class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label style="margin-left:7%" for="radio2" class="css-label" data-toggle="tooltip" data-placement="top" title="${descuser}">${user}</label>
+	   <form:radiobutton style="margin-left:7%" class="css-checkbox" path="role_idRole" name="radiog_lite" id="radio2" value="2"  /><label style="margin-left:7%" for="radio2" class="css-label" data-toggle="tooltip" data-placement="top" title="${descuser}">${user}</label><br>
+	   <label class="error" generated="true" for="role_idRole" style="font-size:9pt; line-height: 1.2;"></label>
 	   </div>
 	   </div>
 	   <span class="error color-style-validation"><form:errors path="role_idRole" /></span>

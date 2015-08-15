@@ -58,7 +58,7 @@
 	<!-- Designer's page will start here -->     
 	        
  <!-- Menu -->     
- <div class="row footerpadding2">
+ <div class="row footerpadding">
     <div class="col-md-2 nopadding1">
      <div class="list-group">
       <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive avatar-img img-thumbnail" alt="Global3Dmod avatar">    

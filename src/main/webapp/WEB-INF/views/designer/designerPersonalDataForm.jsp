@@ -70,7 +70,7 @@
 
 
 	<!-- Menu -->
-	<div class="row">
+	<div class="row footerpadding">
 		<div class="col-md-2 nopadding1">
 			<div class="list-group">
 				<img src="<c:url value="${user.avatar.avatarPath}" />"

@@ -82,14 +82,14 @@
                       <div class="col-md-4" style="padding-left:0px;">
                       <div class="content-pael">                      
                       <h2>${postforupdate}</h2>
-                      
+                       
+                              		${image}
+                              		<img alt="" class="img-responsive" src="<c:url value="${post.postPhotos[0].photoPath}" />">
+                              
                           <table class="table table-striped table-advance table-hover">
                                                                                       
                               <tbody>
-                              <tr>
-                              		<td>${image}</td>
-                              		<td><img alt="" src="<c:url value="${post.postPhotos[0].photoPath}" />"></td>
-                              </tr>
+                             
                               <tr>
                                   <td>${category}</td>
                                   <td class="hidden-phone">${post.category.title}</td>

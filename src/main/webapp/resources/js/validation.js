@@ -82,7 +82,7 @@ $(document).ready(function(){
 	    	  rangelength: [3, 16] 
 	      },
 	      title: {
-	    	  regexp: '^[a-zA-Z0-9\ \'-\_\.]{1,16}$',
+	    	  regexp: '^[a-zA-Z0-9\ \'-\_\.]{1,50}$',
 	    	  required: true
 	      },
 	      description: {
@@ -170,7 +170,7 @@ messages:  {
     	regexp: 'Lenght should be from 1 to 50 characters. Latin characters only.'
     },
     title: {
-    	regexp: 'Lenght should be from 1 to 16 characters. Latin characters only.'
+    	regexp: 'Lenght should be from 1 to 50 characters. Latin characters only.'
     },
     description: {
     	regexp: 'Lenght should be from 2 to 300 characters. Latin characters only.'

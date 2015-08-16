@@ -12,6 +12,8 @@
 <spring:message code="header.header.partners" var="partners" />
 <spring:message code="header.header.profile" var="profile" />
 <spring:message code="header.header.logout" var="logout" />
+<spring:message code="header.header.partner" var="partner" />
+
 
 <c:if test="${userBool}">
 <c:set value="/user/profile?sort=rating&page=1" var="profileURL" />
@@ -56,7 +58,7 @@
       <li class="dropdown">		
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">${partners} <span class="caret"></span></a>		
          <ul class="dropdown-menu" role="menu">		
-           <li><a href="<c:url value="/contact" />">Become a partner</a></li>		
+           <li><a href="<c:url value="/contact" />">${partner}</a></li>		
            
          </ul>		
       </li>

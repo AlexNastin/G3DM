@@ -25,6 +25,7 @@
 <spring:message code="form.client" var="client" />
 <spring:message code="form.addadvertisement.date" var="date" />
 <spring:message code="admin.advertisement.addadvertisement.advertisementphoto" var="advertisementphoto" />
+<spring:message code="form.save" var="save" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -112,7 +113,7 @@
 		
 		<div class="form-group">
 		<div class="col-md-12">
-		<input type="submit" class="btn btn-primary left-designer" value="Save" />
+		<input type="submit" class="btn btn-primary left-designer" value="${save}" />
 		</div>
 	    </div>
 	</form:form>

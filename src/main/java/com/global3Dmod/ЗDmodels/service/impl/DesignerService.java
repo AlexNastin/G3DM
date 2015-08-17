@@ -67,7 +67,7 @@ public class DesignerService implements IDesignerService {
 
 	@Autowired
 	private PropertyManagerG3DM propertyManager;
-	
+
 	@Autowired
 	private RegExCollection regExCollection;
 
@@ -152,7 +152,7 @@ public class DesignerService implements IDesignerService {
 		}
 		return subcategories;
 	}
-	
+
 	@AspectLogG3DM
 	@Override
 	public List<City> getAllCityWithinCountry(int idCountry)
@@ -232,7 +232,8 @@ public class DesignerService implements IDesignerService {
 
 		PostPhoto firstPostPhoto = new PostPhoto();
 		firstPostPhoto.setFolder(time);
-		String newName = photoModelFileUpload(postForm.getFirstPhoto(), fullPathModelPhoto);
+		String newName = photoModelFileUpload(postForm.getFirstPhoto(),
+				fullPathModelPhoto);
 		firstPostPhoto.setFileName(newName);
 		firstPostPhoto.setPhotoPath(pathModelPhoto + newName);
 		firstPostPhoto.setPost(post);
@@ -240,7 +241,6 @@ public class DesignerService implements IDesignerService {
 		postPhotos.add(firstPostPhoto);
 		post.setPostPhotos(postPhotos);
 
-		
 		com.global3Dmod.ÇDmodels.domain.File file = new com.global3Dmod.ÇDmodels.domain.File();
 		file.setFolder(time);
 		newName = modelFileUpload(postForm.getModel(), fullPathModel);
@@ -312,7 +312,7 @@ public class DesignerService implements IDesignerService {
 		}
 		return nameFile;
 	}
-	
+
 	@AspectLogG3DM
 	@Override
 	public String photoModelFileUpload(MultipartFile file, String path)
@@ -451,7 +451,6 @@ public class DesignerService implements IDesignerService {
 		return posts;
 	}
 
-	
 	@Override
 	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc) {
 		if (sort != null) {
@@ -563,15 +562,15 @@ public class DesignerService implements IDesignerService {
 			user.setSurname(personalDataForm.getSurname());
 			user.setGender(personalDataForm.getGender());
 			user.setDateBirth(personalDataForm.getDateBirth());
-
-			String pathAvatar = createAvatarPath(user.getIdUser());
-			String fullPathAvatar = serverPath.concat(pathAvatar);
-			Avatar avatar = user.getAvatar();
-			avatar.setAvatarPath(pathAvatar + 
-					avatarFileUpload(personalDataForm.getAvatar(),
-							fullPathAvatar, avatar.getFileName()));
-			user.setAvatar(avatar);
-
+			if (!personalDataForm.getAvatar().isEmpty()) {
+				String pathAvatar = createAvatarPath(user.getIdUser());
+				String fullPathAvatar = serverPath.concat(pathAvatar);
+				Avatar avatar = user.getAvatar();
+				avatar.setAvatarPath(pathAvatar
+						+ avatarFileUpload(personalDataForm.getAvatar(),
+								fullPathAvatar, avatar.getFileName()));
+				user.setAvatar(avatar);
+			}
 			userDAO.updateUser(user);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
@@ -679,8 +678,10 @@ public class DesignerService implements IDesignerService {
 	@Override
 	public void deleteAvatar(Avatar avatar) throws ServiceException {
 		try {
-			avatar.setAvatarPath(propertyManager.getValue(PropertyNameG3DM.DEFAULT_AVATAR_PATH));
-			avatar.setFileName(propertyManager.getValue(PropertyNameG3DM.DEFAULT_AVATAR_NAME));
+			avatar.setAvatarPath(propertyManager
+					.getValue(PropertyNameG3DM.DEFAULT_AVATAR_PATH));
+			avatar.setFileName(propertyManager
+					.getValue(PropertyNameG3DM.DEFAULT_AVATAR_NAME));
 			avatarDAO.updateAvatar(avatar);
 		} catch (DaoException e) {
 			throw new ServiceException(e);

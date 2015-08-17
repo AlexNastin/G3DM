@@ -31,6 +31,7 @@
 <spring:message code="form.password" var="password" />
 <spring:message code="form.confirmpassword" var="confirmpassword" />
 <spring:message code="form.save" var="save" />
+<spring:message code="email.message.updatepassword.user.auth" var="auth" />
 <meta name="keywords" content="3d printer, 3d model, 3d model free, 3d model download, 3d model download free, model to print 3d printer free, stl, stl download,stl download free, 3d designer, 3d model robot, 3д модель, 3д принтер, 3д модель скачать, 3д модель скачать напечатать, 3д дизайнер, stl бесплатные, stl скачать, global3dmod, global 3d mod "> 
 
 
@@ -74,7 +75,9 @@
 								</div>
 							</form:form>
 							</security:authorize>
-	
+	<security:authorize access="hasAnyRole('ROLE_DESIGNER','ROLE_USER', 'ROLE_MODERATOR', 'ROLE_ADMIN')">
+	${auth}
+		</security:authorize>
 	<script type="text/javascript">
 		function savePass() {
 			var pass = $("#pass").val();

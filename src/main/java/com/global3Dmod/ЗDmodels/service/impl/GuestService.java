@@ -436,8 +436,10 @@ public class GuestService implements IGuestService {
 		try {
 			int allPosts = postDAO.countPostByDesigner(idUser);
 			int allLikes = likeDAO.selectCountLikeByAllPosts(idUser);
-			rating = new BigDecimal((double) allLikes / allPosts).setScale(1,
-					RoundingMode.UP).doubleValue();
+			if (allPosts != 0) {
+				rating = new BigDecimal((double) allLikes / allPosts).setScale(1,
+						RoundingMode.UP).doubleValue();
+			}
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

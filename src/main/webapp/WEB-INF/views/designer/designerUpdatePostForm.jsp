@@ -64,11 +64,11 @@
     <div class="col-md-2 nopadding1">
      <div class="list-group">
       <img src="<c:url value="${user.avatar.avatarPath}" />" class="img-responsive avatar-img img-thumbnail" alt="Global3Dmod avatar">     
-  <a href="<c:url value="/designer/profile?sort=date&page=1" />" class="list-group-item">
+  <a href="<c:url value="/designer/profile?sort=date&page=1" />" class="list-group-item active">
     <i class="fa fa-briefcase"></i> ${works} 
   </a>
   
-  <a href="<c:url value="/designer/personalData" />" class="list-group-item active"><i class="fa fa-cogs"></i> ${data}  </a>
+  <a href="<c:url value="/designer/personalData" />" class="list-group-item"><i class="fa fa-cogs"></i> ${data}  </a>
   <a href="<c:url value="/designer/secure/personalSecurity" />" class="list-group-item"><i class="fa fa-lock"></i> ${personalsecurity}  </a>
   <a href="<c:url value="/designer/addPost" />" class="list-group-item"><i class="fa fa-plus-square"></i> ${add}  </a>
   

@@ -93,23 +93,23 @@ public class AddModeratorValidator implements Validator {
 		
 		// Валидация Name
 		// На пустое значение
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "name", "valid.name.empty");
-		String name = addModeratorForm.getName();
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nameModerator", "valid.name.empty");
+		String name = addModeratorForm.getNameModerator();
 		pattern = regExCollection.getRegExPattern(RegExName.REGEX_FULL_NAME_USER);
 		matcher = pattern.matcher(name);
 		// Количество от 1 символов до 50. Латиница. Нет спецсимволов. (кроме  - _)
 		if (!matcher.matches()) {
-			errors.rejectValue("name", "valid.name.pattern");
+			errors.rejectValue("nameModerator", "valid.name.pattern");
 		}
 
 		// Валидация Surname
 		// На пустое значение
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surname", "vaild.surname.empty");
-		String surname = addModeratorForm.getSurname();
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "surnameModerator", "vaild.surname.empty");
+		String surname = addModeratorForm.getSurnameModerator();
 		// Количество от 1 символов до 50. Латиница. Нет спецсимволов. (кроме  - _)
 		matcher.reset(surname);
 		if (!matcher.matches()) {
-			errors.rejectValue("surname", "valid.surname.pattern");
+			errors.rejectValue("surnameModerator", "valid.surname.pattern");
 		}
 	}
 

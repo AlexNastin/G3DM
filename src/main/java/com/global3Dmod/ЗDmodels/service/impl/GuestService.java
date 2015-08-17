@@ -141,8 +141,8 @@ public class GuestService implements IGuestService {
 		user.setNickName(addModeratorForm.getNickName());
 		user.setLogin(addModeratorForm.getLogin().toLowerCase());
 		user.setPassword(md5Password);
-		user.setName(addModeratorForm.getName());
-		user.setSurname(addModeratorForm.getSurname());
+		user.setName(addModeratorForm.getNameModerator());
+		user.setSurname(addModeratorForm.getSurnameModerator());
 		user.setGender(0);
 		user.setRegistrationDate(registrationDate);
 

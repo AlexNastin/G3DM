@@ -8,13 +8,13 @@ public class AddModeratorForm implements Essence {
 	 * 
 	 */
 	private static final long serialVersionUID = 9030371630080102347L;
-	
+
 	private String login;
 	private String password;
 	private String confirmPassword;
 	private String nickName;
-	private String name;
-	private String surname;
+	private String nameModerator;
+	private String surnameModerator;
 
 	public AddModeratorForm() {
 		super();
@@ -52,20 +52,20 @@ public class AddModeratorForm implements Essence {
 		this.nickName = nickName;
 	}
 
-	public String getName() {
-		return name;
+	public String getNameModerator() {
+		return nameModerator;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setNameModerator(String nameModerator) {
+		this.nameModerator = nameModerator;
 	}
 
-	public String getSurname() {
-		return surname;
+	public String getSurnameModerator() {
+		return surnameModerator;
 	}
 
-	public void setSurname(String surname) {
-		this.surname = surname;
+	public void setSurnameModerator(String surnameModerator) {
+		this.surnameModerator = surnameModerator;
 	}
 
 	@Override
@@ -75,12 +75,15 @@ public class AddModeratorForm implements Essence {
 		result = prime * result
 				+ ((confirmPassword == null) ? 0 : confirmPassword.hashCode());
 		result = prime * result + ((login == null) ? 0 : login.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result
+				+ ((nameModerator == null) ? 0 : nameModerator.hashCode());
 		result = prime * result
 				+ ((nickName == null) ? 0 : nickName.hashCode());
 		result = prime * result
 				+ ((password == null) ? 0 : password.hashCode());
-		result = prime * result + ((surname == null) ? 0 : surname.hashCode());
+		result = prime
+				* result
+				+ ((surnameModerator == null) ? 0 : surnameModerator.hashCode());
 		return result;
 	}
 
@@ -103,10 +106,10 @@ public class AddModeratorForm implements Essence {
 				return false;
 		} else if (!login.equals(other.login))
 			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (nameModerator == null) {
+			if (other.nameModerator != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!nameModerator.equals(other.nameModerator))
 			return false;
 		if (nickName == null) {
 			if (other.nickName != null)
@@ -118,10 +121,10 @@ public class AddModeratorForm implements Essence {
 				return false;
 		} else if (!password.equals(other.password))
 			return false;
-		if (surname == null) {
-			if (other.surname != null)
+		if (surnameModerator == null) {
+			if (other.surnameModerator != null)
 				return false;
-		} else if (!surname.equals(other.surname))
+		} else if (!surnameModerator.equals(other.surnameModerator))
 			return false;
 		return true;
 	}
@@ -130,7 +133,8 @@ public class AddModeratorForm implements Essence {
 	public String toString() {
 		return "AddModeratorForm [login=" + login + ", password=" + password
 				+ ", confirmPassword=" + confirmPassword + ", nickName="
-				+ nickName + ", name=" + name + ", surname=" + surname + "]";
+				+ nickName + ", nameModerator=" + nameModerator
+				+ ", surnameModerator=" + surnameModerator + "]";
 	}
 
 }

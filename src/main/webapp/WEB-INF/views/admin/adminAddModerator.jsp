@@ -107,13 +107,13 @@
 		<label class="error" generated="true" for="nickName" style="font-size:9pt; line-height: 1.2;"></label>
 		</div>
 		<div class="form-group height-input-string-addModerator">
-		<form:input placeholder="${name}" class="form-control" id="name" name="name" path="name"></form:input>
-		<form:errors path="name" />
+		<form:input placeholder="${name}" class="form-control" id="name" name="name" path="nameModerator"></form:input>
+		<form:errors path="nameModerator" />
 		<label class="error" generated="true" for="name" style="font-size:9pt; line-height: 1.2;"></label>
 		</div>
 		<div class="form-group height-input-string-addModerator">
-		<form:input placeholder="${surname}" class="form-control" id="surname" name="surname" path="surname"></form:input>
-		<form:errors path="surname" />
+		<form:input placeholder="${surname}" class="form-control" id="surname" name="surname" path="surnameModerator"></form:input>
+		<form:errors path="surnameModerator" />
 		<label class="error" generated="true" for="surname" style="font-size:9pt; line-height: 1.2;"></label>
 		</div>
 		<div style="text-align: center">

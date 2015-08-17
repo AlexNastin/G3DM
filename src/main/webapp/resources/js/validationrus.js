@@ -129,7 +129,8 @@ $(document).ready(function(){
 	      },
 	      advertisementPhoto: {
 	    	  accept: "jpg,png,jpeg",
-	    	  filesize: 5242880
+	    	  filesize: 5242880,
+	    	  required: true
 	      },
 	      email: {
 	    	  required: true,
@@ -229,7 +230,8 @@ messages:  {
     },
     advertisementPhoto: {
     	accept: 'Расширение изображения должно быть: .jpg, .jpeg или .png',
-    	filesize: 'Максимальный размер изображения - 5Мб'
+    	filesize: 'Максимальный размер изображения - 5Мб',
+    	required: 'Пожалуйста, выберите изображение.'
     },
     text: {
     	regexp: 'Длина должна быть от 2 до 300 символов. Только латинские символы.',

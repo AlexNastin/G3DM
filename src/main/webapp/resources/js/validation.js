@@ -130,7 +130,8 @@ $(document).ready(function(){
 	      },
 	      advertisementPhoto: {
 	    	  accept: "jpg,png,jpeg",
-	    	  filesize: 5242880
+	    	  filesize: 5242880,
+	    	  required: true
 	      },
 	      email: {
 	    	  required: true,
@@ -211,8 +212,8 @@ messages:  {
     },
     advertisementPhoto: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',
-    	filesize: 'The maximum photo size upload for site is 5MB.'
-    	
+    	filesize: 'The maximum photo size upload for site is 5MB.',
+    	required: 'Please select photo.'
     },
     text: {
     	regexp: 'Lenght should be from 2 to 300 characters. Latin characters only.'

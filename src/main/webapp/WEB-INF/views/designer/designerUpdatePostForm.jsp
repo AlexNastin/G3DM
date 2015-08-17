@@ -157,6 +157,7 @@
 				<form:select class="form-control" id="idSubcategory" path="subcategory_idSubcategory">
 					<form:option value="0">Subcategory</form:option>
 				</form:select>
+					<label class="error" generated="true" for="idSubcategory" style="font-size:9pt; line-height: 1.2;"></label>
 					<span class="error"><form:errors path="subcategory_idSubcategory" /></span>
 				</div>
 			</div>

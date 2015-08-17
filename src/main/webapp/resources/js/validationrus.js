@@ -144,7 +144,15 @@ $(document).ready(function(){
 	      },
 	      subcategory_idSubcategory: {
 	      	  aFunction: true
-	        }
+	      },
+	      nameModerator: {
+	    	  regexp: '^[A-Za-z\-_]{1,50}$',
+	    	  required: true
+	      },
+	      surnameModerator: {
+	    	  regexp: '^[A-Za-z\-_]{1,50}$',
+	    	  required: true
+	      }
 },
 messages:  {
 	confirmPassword: {
@@ -248,6 +256,14 @@ messages:  {
     },
     role_idRole: {
     	required: 'Пожалуйста, выберите роль'
+    },
+    nameModerator: {
+    	regexp: 'Длина должна быть от 1 до 50 символов. Только латинские символы.',
+    	required: 'Это поле обязательное.'
+    },
+    surnameModerator: {
+    	regexp: 'Длина должна быть от 1 до 50 символов. Только латинские символы.',
+    	required: 'Это поле обязательное.'
     }
 },	
 

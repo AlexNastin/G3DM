@@ -145,6 +145,14 @@ $(document).ready(function(){
 	      },
 	      subcategory_idSubcategory: {
 	    	  aFunction: true
+	      },
+	      nameModerator: {
+	    	  regexp: '^[A-Za-z\-_]{1,50}$',
+	    	  required: true
+	      },
+	      surnameModerator: {
+	    	  regexp: '^[A-Za-z\-_]{1,50}$',
+	    	  required: true
 	      }
 },
 messages:  {
@@ -227,6 +235,12 @@ messages:  {
     },
     role_idRole: {
     	required: 'Please select a role'
+    },
+    nameModerator: {
+    	regexp: 'Lenght should be from 1 to 50 characters. Latin characters only.'
+    },
+    surnameModerator: {
+    	regexp: 'Lenght should be from 1 to 50 characters. Latin characters only.'
     }
 },	
 

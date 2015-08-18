@@ -111,7 +111,7 @@
 	</div>
 	<div class="clearfix"></div>
 
-	<div class="backgroundslider">
+	<div class="backgroundslider" style="max-height: 24em;">
 		<div class="container">
 			<div class="row nomargin">
 				<div class="carousel-container contanier col-md-12 sliderup">
@@ -119,7 +119,7 @@
 					<!-- Codrops top bar -->
 
 
-					<div id="mi-slider" class="mi-slider respimg">
+					<div id="mi-slider" class="mi-slider respimg" style="max-height: 26em;">
 						<ul>
 							<c:forEach items="${listTop4Posts}" var="post">
 								<li><a href="<c:url value="/model?id=${post.idPost}"/>"><img
@@ -151,13 +151,12 @@
 
 	<div class="clearfix"></div>
 	<br>
-	<div class="row nomargin"><%@include
-			file="/WEB-INF/views/adslider.jsp"%>
+	<div class="row nomargin"><%@include file="/WEB-INF/views/adslider.jsp"%>
 
 	</div>
 	<div class="clearfix"></div>
 	<%@include file="/WEB-INF/views/footer.jsp"%>
-	<script src="<c:url value="/resources/js/jquery-1.7.min.js" />">
+	<script src="<c:url value="/resources/js/jquery-2.1.1.js" />">
 		
 	</script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js" />">

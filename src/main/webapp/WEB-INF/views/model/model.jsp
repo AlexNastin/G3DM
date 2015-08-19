@@ -211,7 +211,7 @@
 			<div class="col-md-12">
 				<div class="page-header">
 					<h3>
-						<small class="pull-right">${sizeComments} ${comms}</small>
+						<small class="pull-right">${comms} ${sizeComments} </small>
 						${comments}
 					</h3>
 				</div>

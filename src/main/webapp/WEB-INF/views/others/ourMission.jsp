@@ -17,23 +17,22 @@
 <spring:message code="aboutus.title" var="title" />
 <title>Our mission | Global3dMod</title>
 <spring:message code="headerWithSearch.header.search" var="search"/>
+<spring:message code="footer.footer.ourmission" var="ourmission" />
+<spring:message code="other.ourmission.text" var="text" />
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>
 <div class="container holycontent">
 <div class="row">
 <div class="font-contact line-contact col-md-12">
-Our mission 
+${ourmission}
 </div>
 </div>
 <div class="col-md-6">
 <img src="<c:url value="/resources/images/ourmission.jpeg" />" class="img-responsive img-thumbnail miniature-image" alt="jobs">
 </div>
 <div class="col-md-6 font-size-ourmission">
-<p>  We are ... We are a group of enthusiasts who do not want to be just another consumer of the goods of society, using someone else’s inventions, ideas and work.  We do not agree with the position of dependency and inability to voice complaints that would make changes to better this world.  We want to feel the joy and satisfaction from implementing our own ideas.  We appreciate and love what we do!  We want to reveal the human potential, embody our dreams, surprise!  
-<p>  We understand our purpose and it is clear!   
-<p>  Be useful to society!   
-<p>  Join!
+${text}
 </div>
 </div>
 <%@include file="/WEB-INF/views/footer.jsp" %>

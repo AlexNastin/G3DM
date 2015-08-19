@@ -24,6 +24,9 @@
 
 <spring:message code="403page.error.home" var="home" />
 <spring:message code="403page.error.contactss" var="contactss" />
+<spring:message code="service.error.title" var="titleerror" />
+<spring:message code="service.error.message" var="messageerror" />
+
 
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %>   
@@ -31,8 +34,8 @@
     <div class="row">
         <div class="col-md-12">
             <div class="error-template" style="min-height:45em;">
-                <h1><i class="fa fa-exclamation-triangle"></i> Service error <i class="fa fa-exclamation-triangle"></i></h1>
-                <h2>Sorry, but your actions caused a service error</h2>
+                <h1><i class="fa fa-exclamation-triangle"></i> ${titleerror} <i class="fa fa-exclamation-triangle"></i></h1>
+                <h2>${messageerror}</h2>
                 <div class="error-details">
                     ${sorry2}
                 </div>

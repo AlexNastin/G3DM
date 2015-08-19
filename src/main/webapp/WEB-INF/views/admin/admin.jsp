@@ -28,6 +28,8 @@
 	var="dateregister" />
 	<spring:message code="admin.menu.moderators.deleteModerator"
 	var="deleteModerator" />
+<spring:message code="form.close" var="close" />
+<spring:message code="admin.moderator.deletemessage" var="deletemessage" />
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -140,7 +142,7 @@
 									<th><i class="fa fa-th-list"></i><a
 										href="<c:url value="/admin/profile?sort=dateRegistration&desc=${dateRegistrationDesc}" />">
 											${dateregister}</a></th>
-									<th><i class="fa fa-th-list"></i> Удалить</th>
+									<th><i class="fa fa-th-list"></i> ${deleteModerator}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -160,14 +162,14 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Delete?</h4>
+        <h4 class="modal-title" id="myModalLabel">${deleteModerator}?</h4>
       </div>
       <div class="modal-body">
-        Are you really wanna delete this moderator?
+        ${deletemessage}
       </div>
       <div class="modal-footer">
-        <a type="button" class="btn btn-default" data-dismiss="modal">Close</a>
-        <a href="<c:url value="/admin/deleteModerator?id=${user.idUser}" />"type="button" class="btn btn-danger">Delete</a>
+        <a type="button" class="btn btn-default" data-dismiss="modal">${close}</a>
+        <a href="<c:url value="/admin/deleteModerator?id=${user.idUser}" />"type="button" class="btn btn-danger">${deleteModerator}</a>
       </div>
     </div>
   </div>

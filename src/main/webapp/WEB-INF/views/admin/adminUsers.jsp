@@ -74,7 +74,7 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <h2>Users</h2>
+                             <h2>${users}</h2>
                               
                               <!-- Some sorts for table -->
                              

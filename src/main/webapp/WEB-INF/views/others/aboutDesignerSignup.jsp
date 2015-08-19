@@ -15,13 +15,14 @@
 <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
 <title>Sign up for designers | Global3dMod</title>
 <spring:message code="headerWithSearch.header.search" var="search"/>
+<spring:message code="other.signupfordesigners.title" var="title"/>
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>
 <div class="container holycontent">
 <div class="row">
 <div class="font-contact line-contact col-md-12">
-<i class="fa fa-sign-in"></i> Sign up for designers  
+<i class="fa fa-sign-in"></i> ${title}
 </div>
 </div>
 <div class="col-md-12 background-howitworks">

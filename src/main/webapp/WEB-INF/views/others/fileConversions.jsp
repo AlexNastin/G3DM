@@ -17,6 +17,8 @@
 <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
 <title>File conversions | Global3dMod</title>
 <spring:message code="headerWithSearch.header.search" var="search"/>
+<spring:message code="footer.footer.fileconversions"
+	var="fileconversions" />
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>
@@ -24,7 +26,7 @@
 <div class="container holycontent">
 <div class="row">
 <div class="font-contact line-contact col-md-12">
-<i class="fa fa-file"></i> File conversions  
+<i class="fa fa-file"></i> ${fileconversions}  
 </div>
 </div>
 <div class="container">

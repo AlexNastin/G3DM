@@ -16,6 +16,11 @@
 <link rel="icon" href="<c:url value="/resources/images/favicon.png" />" type="image/x-icon">
 <meta http-equiv="Content-Type" content="text/html; charset=utf8">
 <meta name="keywords" content="3d printer, 3d model, 3d model free, 3d model download, 3d model download free, model to print 3d printer free, stl, stl download,stl download free, 3d designer, 3d model robot, 3д модель, 3д принтер, 3д модель скачать, 3д модель скачать напечатать, 3д дизайнер, stl бесплатные, stl скачать, global3dmod, global 3d mod "> 
+<spring:message code="footer.footer.contact" var="contact" />
+<spring:message code="other.contact.text" var="text" />
+<spring:message code="other.contact.howtocontactus" var="howtocontactus" />
+<spring:message code="other.contact.follow" var="followus" />
+
 
 <title>Contact us | Global3dMod.com</title>
 </head>
@@ -24,7 +29,7 @@
 <div class="container holycontent">
 <div class="row">
 <div class="font-contact line-contact col-md-8">
-Contact
+${contact}
 </div>
 </div>
 <div class="row">
@@ -32,19 +37,18 @@ Contact
 <div class="row">
 <div class="col-md-3"></div>
 <div class="col-md-8 text-contact-title"> 
-How to contact us?
+${howtocontactus}
 </div>
 <div class="col-md-2"></div>
 </div>
-We are happy to answer any questions you may have about our website. We will deal with any comments or questions you may have about our organisation and services. For more information or if you have a query about a Global3Dmod please email <a href="mailto:info@global3dmod.com">info@global3dmod.com</a> 
-<p>For more information on advertising opportunities with Global3Dmod please contact the relevant department below: <a href="mailto:advertising@global3dmod.com">advertising@global3dmod.com</a></p>
+${text}
 </div>
 
 <div class="col-md-4 contact-background">
 <div class="row">
 <div class="col-md-3"></div>
 <div class="col-md-8 text-contact-title"> 
-Follow us in social networks
+${followus}
 </div>
 <div class="col-md-2 "></div>
 </div>

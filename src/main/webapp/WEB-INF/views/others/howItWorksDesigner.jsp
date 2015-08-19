@@ -16,13 +16,14 @@
 <title>
 How does it work for designers? | Global3dMod</title>
 <spring:message code="headerWithSearch.header.search" var="search"/>
+<spring:message code="other.howdoesitworkfordesigners.title" var="title"/>
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>
 <div class="container holycontent">
 <div class="row">
 <div class="font-contact line-contact col-md-12">
-<i class="fa fa-cog"></i> How does it work for designers?  
+<i class="fa fa-cog"></i> ${title}  
 </div>
 </div>
 <div class="col-md-12 background-howitworks">

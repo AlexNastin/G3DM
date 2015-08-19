@@ -119,7 +119,7 @@
                               <c:forEach items="${listPostsLimit10}" var="post" >
                              <tr>
                                   <td>${post.title}</td>
-                                  <td class="hidden-phone">${post.description}</td>
+                                  <td style="max-width: 15em" class="hidden-phone">${post.description}</td>
                                   <td>${post.numberPost}</td>
                                   <td>${post.dateUpdate}</td>
                                   <td>${post.category.title}</td>

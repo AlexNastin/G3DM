@@ -18,6 +18,7 @@
 <spring:message code="form.updatepassword" var="updatepassword" />
 <spring:message code="form.password" var="password" />
 <spring:message code="form.confirmpassword" var="confirmpassword" />
+<spring:message code="form.save" var="save" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -114,7 +115,7 @@
 
 								<div class="form-group" style="text-align: center;">
 
-									<input type="submit" class="btn btn-primary" value="Save" />
+									<input type="submit" class="btn btn-primary" value="${save}" />
 
 								</div>
 							</form:form>

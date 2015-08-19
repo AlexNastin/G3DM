@@ -17,13 +17,15 @@
 
 <title>Safety | Global3dMod</title>
 <spring:message code="headerWithSearch.header.search" var="search"/>
+<spring:message code="footer.footer.tocustomerssafety"
+	var="tocustomerssafety" />
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>
 <div class="container holycontent">
 <div class="row">
 <div class="font-contact line-contact col-md-12">
-<i class="fa fa-shield"></i> Safety  
+<i class="fa fa-shield"></i> ${tocustomerssafety} 
 </div>
 </div>
 <div class="col-md-12 background-howitworks">

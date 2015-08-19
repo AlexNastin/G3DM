@@ -17,13 +17,14 @@
 
 <title>Privacy Policy | Global3dMod</title>
 <spring:message code="headerWithSearch.header.search" var="search"/>
+<spring:message code="footer.footer.privacypolicy" var="privacypolicy" />
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>
 <div class="container holycontent">
 <div class="row">
 <div class="font-contact line-contact col-md-12">
-<i class="fa fa-user-secret"></i> Privacy Policy  
+<i class="fa fa-user-secret"></i> ${privacypolicy}  
 </div>
 </div>
 <div class="col-md-12 background-howitworks">

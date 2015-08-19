@@ -18,13 +18,19 @@
 <spring:message code="aboutus.title" var="title" />
 <title>Team | Global3dMod</title>
 <spring:message code="headerWithSearch.header.search" var="search"/>
+<spring:message code="other.team.ourteam" var="ourteam"/>
+<spring:message code="other.team.name1" var="name1"/>
+<spring:message code="other.team.name2" var="name2"/>
+<spring:message code="other.team.name3" var="name3"/>
+<spring:message code="other.team.name4" var="name4"/>
+<spring:message code="other.team.name5" var="name5"/>
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/headerWithSearch.jsp" %>
 <div class="container">
   <div class="row">
     <div class="col-lg-12">
-      <h3 class="text-center">Our Team</h3>
+      <h3 class="text-center">${ourteam}</h3>
       
       <ul class="timeline">
         <li>
@@ -33,7 +39,7 @@
           </div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="subheading">Alex Nastin</h4>
+              <h4 class="subheading">${name1}</h4>
              </div>
             <div class="timeline-body">
               <p class="text-muted">
@@ -49,7 +55,7 @@
           </div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="subheading">Philip Fursov</h4>
+              <h4 class="subheading">${name2}</h4>
             </div>
             <div class="timeline-body">
               <p class="text-muted">Front-End Developer, QA Manager
@@ -64,7 +70,7 @@
           </div>
           <div class="timeline-panel">
             <div class="timeline-heading">
-              <h4 class="subheading">Nikita Stepanov</h4>
+              <h4 class="subheading">${name3}</h4>
             </div>
             <div class="timeline-body">
               <p class="text-muted">
@@ -81,7 +87,7 @@
           <div class="timeline-panel">
             <div class="timeline-heading">
               
-              <h4 class="subheading">Dmitriy Gusev</h4>
+              <h4 class="subheading">${name4}</h4>
             </div>
             <div class="timeline-body">
               <p class="text-muted">
@@ -98,7 +104,7 @@
           <div class="timeline-panel">
             <div class="timeline-heading">
               
-              <h4 class="subheading">Yury Bolshynov</h4>
+              <h4 class="subheading">${name5}</h4>
             </div>
             <div class="timeline-body">
               <p class="text-muted">

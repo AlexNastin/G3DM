@@ -25,6 +25,10 @@
 <spring:message code="support.text" var="text" />
 <spring:message code="javascript.validation" var="validation" />
 <spring:message code="support.placeholder" var="placeholder" />
+<spring:message code="footer.footer.support" var="support" />
+<spring:message code="other.support.text" var="text" />
+<spring:message code="form.submit" var="submit" />
+
 <meta name="keywords" content="3d printer, 3d model, 3d model free, 3d model download, 3d model download free, model to print 3d printer free, stl, stl download,stl download free, 3d designer, 3d model robot, 3д модель, 3д принтер, 3д модель скачать, 3д модель скачать напечатать, 3д дизайнер, stl бесплатные, stl скачать, global3dmod, global 3d mod "> 
 
 </head>
@@ -33,7 +37,7 @@
 	<div class="container holycontent">
 		<div class="row">
 			<div class="font-contact line-contact col-md-12">
-				<i class="fa fa-life-ring"></i> 24/7 Support
+				<i class="fa fa-life-ring"></i> ${support}
 			</div>
 		</div>
 
@@ -41,15 +45,7 @@
 			modelAttribute="supportForm" method="POST">
 			<div class="row margin-top-support">
 				<div class=col-md-6>
-					<p>Our friendly Support Team is available to help you 24 hours a day, seven days a week. We look forward to hearing from you! 
-				<p>Gathering specific information can help us gain some insight into the issues you need help resolving. To do so here's a basic guide of what information we're looking for:
-<ul>
-					<li>Your name.
-					<li>A description of the problem.
-					<li>History of the problem.
-					<li>Any error messages you are receiving.
-					<li>Steps we can take to replicate the problem.
-</ul>				
+					${text}
 				</div>
 					
 				<div class="col-md-6 background-color-support ">
@@ -82,7 +78,7 @@
 					</div>
 					<div class="col-md-3">
 					<div class="right-support">
-						<input class="btn btn-primary" type="submit" value="Submit" />
+						<input class="btn btn-primary" type="submit" value="${submit}" />
 					</div>
 				   </div>
 				   </div>

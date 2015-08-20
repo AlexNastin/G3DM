@@ -7,7 +7,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Moderator's page | Global3dmod</title>
+<title>Complained posts | Global3dmod</title>
 <!-- Init search variable -->
 <spring:message code="headerWithSearch.header.search" var="search"/>
 <spring:message code="moderator.menu.postsunpublished" var="unpblsd"/>

@@ -7,7 +7,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Personal data | Global3dmod</title>
+<title>Post on moderation | Global3dmod</title>
 <!-- Init search variable -->
 <spring:message code="headerWithSearch.header.search" var="search"/>
 <spring:message code="designer.menu.works" var="works"/>
@@ -87,10 +87,7 @@
                           <table class="table table-striped table-advance table-hover">
                                                                                       
                               <tbody>
-                              <tr>
-                              		<td>${image}</td>
-                              		<td><img alt="" src="<c:url value="${post.postPhotos[0].photoPath}" />"></td>
-                              </tr>
+                             
                               <tr>
                                   <td>${designerfortable}</td>
                                   <td class="hidden-phone">${post.user.nickName}</td>
@@ -154,7 +151,13 @@
       				  <button type="button" data-toggle="modal" data-target="#reject"  style="margin-right: 4em;"  class="btn btn-danger left-designer btn-lg"  >${rejectbutton}</button>
         			  </div>                 
      </div>
+      <div class="col-md-6">
+     
+                             		
+                              		<img class="img-responsive" alt="" src="<c:url value="${post.postPhotos[0].photoPath}" />">
+                              </div>
     </div>
+   
    </div> 		
   </div>           	
  </div> 

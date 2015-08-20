@@ -108,11 +108,11 @@
 												<button type="button" class="btn btn-danger fa fa-exclamation-circle" data-toggle="modal" data-target="#myModal"> ${issue}</button>
 					</security:authorize>
 					<security:authorize access="hasRole('ROLE_GUEST')">
-						<a href="<c:url value="/go/signin" />"> <i
+						<a href="<c:url value="/signin" />"> <i
 							class="btn btn-success fa fa-thumbs-o-up"> ${like} <span
 								class="badge">${countLike} </span></i>
 						</a>
-						<a href="<c:url value="/go/signin" />"
+						<a href="<c:url value="/signin" />"
 						class="btn btn-danger fa fa-exclamation-circle" > ${issue}
 						</a>
 					</security:authorize>
@@ -236,7 +236,7 @@
 					</c:forEach>
 					<security:authorize access="isAnonymous()">
 						<p>
-							${guestcommentmessage0} <a href="<c:url value="/go/signin"/>">${guestcommentmessage1}</a> ${guestcommentmessage2} <a
+							${guestcommentmessage0} <a href="<c:url value="/signin"/>">${guestcommentmessage1}</a> ${guestcommentmessage2} <a
 								href="<c:url value="/signup"/>">${guestcommentmessage3}</a> ${guestcommentmessage4}
 						</p>
 					</security:authorize>

@@ -329,10 +329,10 @@ public class GuestService implements IGuestService {
 
 	@AspectLogG3DM
 	@Override
-	public List<Post> getPostsLimit10(Integer page) throws ServiceException {
+	public List<Post> getPosts() throws ServiceException {
 		List<Post> posts = new ArrayList<Post>();
 		try {
-			posts = postDAO.selectPostsLimit10(page);
+			posts = postDAO.selectPosts();
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -341,11 +341,11 @@ public class GuestService implements IGuestService {
 
 	@AspectLogG3DM
 	@Override
-	public List<Post> getPostsLimit10ByCategory(Integer page, Integer idCategory)
+	public List<Post> getPostsByCategory(Integer idCategory)
 			throws ServiceException {
 		List<Post> posts = new ArrayList<Post>();
 		try {
-			posts = postDAO.selectPostsLimit10ByCategory(page, idCategory);
+			posts = postDAO.selectPostsByCategory(idCategory);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -354,11 +354,10 @@ public class GuestService implements IGuestService {
 
 	@AspectLogG3DM
 	@Override
-	public List<Post> getPostsLimit10BySubcategory(Integer page,
-			Integer idCategory, Integer idSubcategory) throws ServiceException {
+	public List<Post> getPostsByCategoryBySubcategory(Integer idCategory, Integer idSubcategory) throws ServiceException {
 		List<Post> posts = new ArrayList<Post>();
 		try {
-			posts = postDAO.selectPostsLimit10BySubcategory(page, idCategory,
+			posts = postDAO.selectPostsByCategoryBySubcategory(idCategory,
 					idSubcategory);
 		} catch (DaoException e) {
 			throw new ServiceException(e);

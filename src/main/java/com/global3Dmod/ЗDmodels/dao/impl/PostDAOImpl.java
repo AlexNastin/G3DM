@@ -8,26 +8,19 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.hibernate.Hibernate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
-import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 
 @Repository("jpaPostDAO")
 @Transactional
 public class PostDAOImpl implements IPostDAO {
 
-	int limitPostsOnPage = 5;
-
 	@PersistenceContext
 	private EntityManager em;
-
-	@Autowired
-	private PropertyManagerG3DM propertyManagerG3DM;
 
 	/**
 	 * Insert the object of type "Post" to the database
@@ -126,11 +119,8 @@ public class PostDAOImpl implements IPostDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Post> selectPostsLimit10(Integer page) throws DaoException {
-		int startPost = page * limitPostsOnPage - limitPostsOnPage;
-		List<Post> posts = em.createNamedQuery("Post.findAll")
-				.setFirstResult(startPost).setMaxResults(limitPostsOnPage)
-				.getResultList();
+	public List<Post> selectPosts() throws DaoException {
+		List<Post> posts = em.createNamedQuery("Post.findAll").getResultList();
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getTechnologies());
@@ -141,13 +131,9 @@ public class PostDAOImpl implements IPostDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Post> selectPostsLimit10ByCategory(Integer page,
-			Integer idCategory) throws DaoException {
-		int startPost = page * limitPostsOnPage - limitPostsOnPage;
+	public List<Post> selectPostsByCategory(Integer idCategory) throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByCategory")
-				.setParameter("category_idCategory", idCategory)
-				.setFirstResult(startPost).setMaxResults(limitPostsOnPage)
-				.getResultList();
+				.setParameter("category_idCategory", idCategory).getResultList();
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getTechnologies());
@@ -160,14 +146,10 @@ public class PostDAOImpl implements IPostDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	@Transactional
-	public List<Post> selectPostsLimit10BySubcategory(Integer page,
-			Integer idCategory, Integer idSubcategory) throws DaoException {
-		int startPost = page * limitPostsOnPage - limitPostsOnPage;
+	public List<Post> selectPostsByCategoryBySubcategory(Integer idCategory, Integer idSubcategory) throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findBySubcategory")
 				.setParameter("category_idCategory", idCategory)
-				.setParameter("subcategory_idSubcategory", idSubcategory)
-				.setFirstResult(startPost).setMaxResults(limitPostsOnPage)
-				.getResultList();
+				.setParameter("subcategory_idSubcategory", idSubcategory).getResultList();
 		for (Post post : posts) {
 			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getTechnologies());

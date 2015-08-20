@@ -42,7 +42,7 @@
 		<servlet-name>appServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- Фильтр для перекодировки в utf8 -->
 	<filter>
 		<filter-name>charsetFilter</filter-name>
@@ -70,12 +70,7 @@
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
-	<!-- Error-pages -->
-	<error-page>
-		<error-code>404</error-code>
-		<location>/WEB-INF/views/error/404.jsp</location>
-	</error-page>
+
 	<!-- Error-pages -->
 	<error-page>
 		<error-code>404</error-code>

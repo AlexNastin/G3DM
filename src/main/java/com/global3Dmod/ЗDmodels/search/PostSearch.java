@@ -1,5 +1,6 @@
 package com.global3Dmod.ÇDmodels.search;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -40,17 +41,17 @@ public class PostSearch {
 				query, Post.class);
 
 		List<Post> posts = jpaQuery.getResultList();
+		List<Post> finalPosts = new ArrayList<Post>();
 		for (int i = 0; i < posts.size(); i++) {
-			if (posts.get(i).getIsDisplay()==3) {
+			if (posts.get(i).getIsDisplay() == 3) {
 				Hibernate.initialize(posts.get(i).getPostPhotos());
 				Hibernate.initialize(posts.get(i).getTechnologies());
 				Hibernate.initialize(posts.get(i).getUser());
 				Hibernate.initialize(posts.get(i).getComments());
-			} else {
-				posts.remove(i);
+				finalPosts.add(posts.get(i));
 			}
 		}
-		return posts;
+		return finalPosts;
 	}
 
 }

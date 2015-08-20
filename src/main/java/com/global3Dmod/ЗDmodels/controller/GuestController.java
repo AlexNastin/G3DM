@@ -34,19 +34,19 @@ public class GuestController {
 
 	@Autowired
 	private MessageSource messages;
-	
+
 	@Autowired
 	private IGuestService guestService;
-	
+
 	@Autowired
 	private IUserService userService;
-	
+
 	@Autowired
 	private IAdminService adminService;
-	
+
 	@Autowired
 	private PropertyManagerG3DM propertyManager;
-	
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
@@ -54,13 +54,15 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView main(Locale locale, Model model) throws ServiceException {
+	public ModelAndView main(Locale locale, Model model)
+			throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("main");
 		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY,
 				guestService.getAllCategoriesSubcategoriesTop3());
 		List<Advertisement> advertisements = guestService.getAllAdvertisement();
 		adminService.setPathToPhotos(advertisements);
-		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS, advertisements);
+		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS,
+				advertisements);
 		List<Post> posts = guestService.getTop4PostsByLike();
 		guestService.setRatingInPosts(posts);
 		List<User> users = guestService.getTop4UsersByRating();
@@ -90,7 +92,7 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
-	public ModelAndView getPostsLimit10BySubcategory(
+	public ModelAndView getPostsLimit10(
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "idCategory", required = false) Integer idCategory,
 			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory,
@@ -100,9 +102,9 @@ public class GuestController {
 		}
 		List<Post> posts;
 		if (idSubcategory == null) {
-			posts = guestService.getPostsLimit10ByCategory(page, idCategory);
+			posts = guestService.getPostsByCategory(idCategory);
 		} else {
-			posts = guestService.getPostsLimit10BySubcategory(page, idCategory,
+			posts = guestService.getPostsByCategoryBySubcategory(idCategory,
 					idSubcategory);
 		}
 		userService.setPathToPhotos(posts);
@@ -121,7 +123,9 @@ public class GuestController {
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
 		ModelAndView modelAndView = new ModelAndView("result");
-		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY_WITH_ALL_SUBCATEGORY, guestService.getAllCategories());
+		modelAndView.addObject(
+				ControllerParamConstant.LIST_CATEGORY_WITH_ALL_SUBCATEGORY,
+				guestService.getAllCategories());
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10,
 				posts);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
@@ -142,14 +146,14 @@ public class GuestController {
 	@RequestMapping(value = "/signup/addUser", method = RequestMethod.POST)
 	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,
 			Model model) throws ServiceException {
-		guestService.addUser(signupForm, propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
+		guestService.addUser(signupForm,
+				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
 		ModelAndView modelAndView = new ModelAndView("login/signin");
 		String message = messages.getMessage(
 				"signin.message.signup.successful", null, locale);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 		return modelAndView;
 	}
-
 
 	@RequestMapping("403page")
 	public ModelAndView ge403denied() {
@@ -162,13 +166,13 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("error/404");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/token", method = RequestMethod.GET)
 	public ModelAndView token() {
 		ModelAndView modelAndView = new ModelAndView("testMy");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/guest/addComment", method = RequestMethod.POST)
 	public ModelAndView addComment(CommentForm commentForm, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {
@@ -185,7 +189,7 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = "/guest/designerProfile", method = RequestMethod.GET)
-	public ModelAndView designerPrifile(
+	public ModelAndView designerProfile(
 			@RequestParam(value = "id", required = false) Integer idUser,
 			Locale locale, Model model) throws ServiceException {
 		User user = guestService.getUser(idUser);
@@ -195,7 +199,8 @@ public class GuestController {
 		userService.setPathToPhotos(posts);
 		ModelAndView modelAndView = new ModelAndView("designer/designerProfile");
 		modelAndView.addObject(ControllerParamConstant.USER, user);
-		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, posts.size());
+		modelAndView
+				.addObject(ControllerParamConstant.SIZE_POSTS, posts.size());
 		modelAndView.addObject(ControllerParamConstant.RATING_DESIGNER,
 				guestService.getRatingByDesigner(idUser));
 		return modelAndView;

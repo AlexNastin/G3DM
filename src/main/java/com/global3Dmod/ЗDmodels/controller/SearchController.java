@@ -28,30 +28,24 @@ public class SearchController {
 	private PostSearch postSearch;
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView index(
+	public ModelAndView search(
 			@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "text", required = false) String text)
 			throws Exception {
-
-		if (!"".equals(text)) {
-
-		}
-
 		if (page == null) {
 			page = 1;
 		}
 		List<Post> posts = new ArrayList<Post>();
 		if (!"".equals(text)) {
+			System.out.println("1 con "+posts.size());
 			posts = postSearch.search(text);
+			System.out.println("2 con "+posts.size());
 		}
-
 		userService.setPathToPhotos(posts);
 		guestService.setRatingInPosts(posts);
 		int allPosts = posts.size();
-		int maxPage = (int) Math.ceil((double) allPosts
-				/ ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
-		int startPost = page * ControllerParamConstant.LIMIT_POSTS_ON_PAGE
-				- ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
+		int maxPage = (int) Math.ceil((double) allPosts/ ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
+		int startPost = page * ControllerParamConstant.LIMIT_POSTS_ON_PAGE - ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
 		int endPost = startPost + ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
 		if (endPost > allPosts) {
 			posts = posts.subList(startPost, allPosts);

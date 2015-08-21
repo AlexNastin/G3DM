@@ -79,7 +79,7 @@
 								method="POST">
 								<div class="form-group sign-feld-margin-top"></div>
 								<div class="form-group">
-									<div class="col-md-12 height-input-string-security">
+									<div class="col-md-12 height-input-string-security" style="height: 4.35em">
 										<form:password id="password" name="password"
 											class="form-control input-md" path="password"
 											placeholder="${password}"></form:password>

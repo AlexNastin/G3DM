@@ -226,4 +226,14 @@ public class ModeratorService implements IModeratorService {
 		return count;
 	}
 
+	@AspectLogG3DM
+	@Override
+	public void removeComplainsPost(Integer idPost) throws ServiceException {
+		try {
+			complainDAO.deleteComplains(idPost);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+	}
+
 }

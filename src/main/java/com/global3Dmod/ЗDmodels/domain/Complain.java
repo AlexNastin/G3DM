@@ -18,9 +18,9 @@ import javax.persistence.Table;
 		@NamedQuery(name = "Complain.findAll", query = "select c from Complain c"),
 		@NamedQuery(name = "Complain.findComplainByUser", query = "select c from Complain c where c.user_idUser = :user_idUser and c.post_idPost = :post_idPost"),
 		@NamedQuery(name = "Complain.colComplainByPost", query = "SELECT COUNT(c.post_idPost) from Complain c where c.post_idPost= :post_idPost"),
-		@NamedQuery(name = "Complain.colComplainByAllPosts", query = "SELECT COUNT(c.post_idPost) from Complain c where c.post_idPost in (select p.idPost from Post p where p.user_idUser = :user_idUser)")})
-
-public class Complain implements Essence{
+		@NamedQuery(name = "Complain.colComplainByAllPosts", query = "SELECT COUNT(c.post_idPost) from Complain c where c.post_idPost in (select p.idPost from Post p where p.user_idUser = :user_idUser)"),
+		@NamedQuery(name = "Complain.deleteComplainByIdPost", query = "DELETE FROM Complain c WHERE c.post_idPost= :post_idPost") })
+public class Complain implements Essence {
 
 	/**
 	 * 
@@ -37,11 +37,11 @@ public class Complain implements Essence{
 
 	@Column(name = "users_id_user")
 	private int user_idUser;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "posts_id_post", insertable=false, updatable=false)
+	@JoinColumn(name = "posts_id_post", insertable = false, updatable = false)
 	private Post post;
-	
+
 	public Complain() {
 		super();
 	}
@@ -117,7 +117,5 @@ public class Complain implements Essence{
 		return "Complain [idComplain=" + idComplain + ", post_idPost="
 				+ post_idPost + ", user_idUser=" + user_idUser + "]";
 	}
-
-	
 
 }

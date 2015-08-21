@@ -21,4 +21,6 @@ public interface IComplainDAO {
 	public int selectCountComplainByPost(Integer idPost) throws DaoException;
 	
 	public int selectCountComplainByAllPosts(Integer idUser) throws DaoException;
+	
+	public void deleteComplains(Integer idPost) throws DaoException;
 }

@@ -35,7 +35,8 @@ public class ComplainDAOImpl implements IComplainDAO {
 	@Override
 	@Transactional
 	public List<Complain> selectAllComplains() throws DaoException {
-		List<Complain> complains = em.createNamedQuery("Complain.findAll").getResultList();
+		List<Complain> complains = em.createNamedQuery("Complain.findAll")
+				.getResultList();
 		return complains;
 	}
 
@@ -52,7 +53,8 @@ public class ComplainDAOImpl implements IComplainDAO {
 	public List<Complain> selectComplainNotExists(Integer idUser, Integer idPost)
 			throws DaoException {
 
-		List<Complain> complains = em.createNamedQuery("Complain.findComplainByUser")
+		List<Complain> complains = em
+				.createNamedQuery("Complain.findComplainByUser")
 				.setParameter("user_idUser", idUser)
 				.setParameter("post_idPost", idPost).getResultList();
 		return complains;
@@ -62,17 +64,28 @@ public class ComplainDAOImpl implements IComplainDAO {
 	@Override
 	@Transactional
 	public int selectCountComplainByPost(Integer idPost) throws DaoException {
-		long resut = (long) em.createNamedQuery("Complain.colComplainByPost").setParameter("post_idPost", idPost).getSingleResult();
+		long resut = (long) em.createNamedQuery("Complain.colComplainByPost")
+				.setParameter("post_idPost", idPost).getSingleResult();
 		int count = (int) resut;
 		return count;
 	}
-	
+
 	@Override
 	@Transactional
-	public int selectCountComplainByAllPosts(Integer idUser) throws DaoException {
-		long resut = (long) em.createNamedQuery("Complain.colComplainByAllPosts").setParameter("user_idUser", idUser).getSingleResult();
+	public int selectCountComplainByAllPosts(Integer idUser)
+			throws DaoException {
+		long resut = (long) em
+				.createNamedQuery("Complain.colComplainByAllPosts")
+				.setParameter("user_idUser", idUser).getSingleResult();
 		int count = (int) resut;
 		return count;
+	}
+
+	@Override
+	@Transactional
+	public void deleteComplains(Integer idPost) throws DaoException {
+		em.createNamedQuery("Complain.deleteComplainByIdPost")
+				.setParameter("post_idPost", idPost).executeUpdate();
 	}
 
 }

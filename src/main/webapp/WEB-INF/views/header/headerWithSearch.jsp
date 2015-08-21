@@ -17,7 +17,6 @@
 <spring:message code="headerWithSearch.header.partner" var="partner" />
 
 
-
 <c:if test="${userBool}">
 <c:set value="/user/profile?sort=rating&page=1" var="profileURL" />
 </c:if>

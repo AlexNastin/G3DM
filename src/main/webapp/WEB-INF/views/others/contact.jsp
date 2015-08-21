@@ -21,6 +21,10 @@
 <spring:message code="other.contact.howtocontactus" var="howtocontactus" />
 <spring:message code="other.contact.follow" var="followus" />
 
+<spring:message code="facebook" var="facebook" />
+<spring:message code="twitter" var="twitter" />
+<spring:message code="vk" var="vk" />
+<spring:message code="instagram" var="instagram" />
 
 <title>Contact us | Global3dMod.com</title>
 </head>

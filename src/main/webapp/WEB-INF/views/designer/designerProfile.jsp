@@ -78,7 +78,7 @@
                 <div class="portfolio-item apps  col-md-3">
                         <div class="item-inner">
                             <div class="portfolio-image">
-                                <img src="<c:url value="${post.postPhotos[0].photoPath}" />" alt="">
+                                <img style="height:12em;" src="<c:url value="${post.postPhotos[0].photoPath}" />" alt="${post.title}">
                                 <div class="overlay container">
                                     <div class="menuis">
                                     <a href="<c:url value="/model?id=${post.idPost}" />">${post.title}</a>

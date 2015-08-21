@@ -162,11 +162,11 @@ messages:  {
 	equalTo: 'The passwords do not match.'
 		},
     password: {
-    	regexp: 'At least  one character, one upper case character, one digit.',	
+    	regexp: 'At least  one character, one upper case character, one digit. Latin characters and special characters are allowed only.',	
     	rangelength: 'Lenght should be from 8 to 32 characters.'
     },
     j_password: {
-    	regexp: 'At least  one character, one upper case character, one digit.',
+    	regexp: 'At least  one character, one upper case character, one digit. Latin characters and special characters are allowed only.',
     	rangelength: 'Lenght should be from 8 to 32 characters.'
     },
     nickName:{

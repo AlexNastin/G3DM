@@ -59,7 +59,7 @@
 				</div>
 				<div class="form-group">
 					<div class="col-md-12 ">
-						<div class="signin-margin-input height-input-string-signin">
+						<div class="signin-margin-input height-input-string-signin" style="height:4em;">
 							<input type="password" class="form-control" id="inputPassword3"
 								name="j_password" placeholder="&#xf084; ${password}"
 								style="font-family: Arial, FontAwesome">

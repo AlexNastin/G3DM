@@ -1,12 +1,25 @@
 package com.global3Dmod.ÇDmodels.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
+
 @Controller
 public class OthersController {
+
+	@Autowired
+	private PropertyManagerG3DM propertyManager;
+
+	@RequestMapping("403page")
+	public ModelAndView ge403denied() {
+		ModelAndView modelAndView = new ModelAndView("error/403page");
+		return modelAndView;
+	}
 
 	@RequestMapping(value = "/jobs", method = RequestMethod.GET)
 	public ModelAndView jobs() {
@@ -23,6 +36,14 @@ public class OthersController {
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
 	public ModelAndView contact() {
 		ModelAndView modelAndView = new ModelAndView("others/contact");
+		modelAndView.addObject(ControllerParamConstant.VK,
+				propertyManager.getValue(PropertyNameG3DM.VK));
+		modelAndView.addObject(ControllerParamConstant.TWITTER,
+				propertyManager.getValue(PropertyNameG3DM.TWITTER));
+		modelAndView.addObject(ControllerParamConstant.FACEBOOK,
+				propertyManager.getValue(PropertyNameG3DM.FACEBOOK));
+		modelAndView.addObject(ControllerParamConstant.INSTAGRAM,
+				propertyManager.getValue(PropertyNameG3DM.INSTAGRAM));
 		return modelAndView;
 	}
 
@@ -86,16 +107,17 @@ public class OthersController {
 		ModelAndView modelAndView = new ModelAndView("others/policy");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/aboutUserSignup", method = RequestMethod.GET)
 	public ModelAndView aboutUserSignup() {
 		ModelAndView modelAndView = new ModelAndView("others/aboutUserSignup");
 		return modelAndView;
 	}
-	
+
 	@RequestMapping(value = "/aboutDesignerSignup", method = RequestMethod.GET)
 	public ModelAndView aboutDesignerSignup() {
-		ModelAndView modelAndView = new ModelAndView("others/aboutDesignerSignup");
+		ModelAndView modelAndView = new ModelAndView(
+				"others/aboutDesignerSignup");
 		return modelAndView;
 	}
 }

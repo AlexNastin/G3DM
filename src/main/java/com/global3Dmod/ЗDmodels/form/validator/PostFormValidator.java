@@ -32,7 +32,7 @@ public class PostFormValidator implements Validator {
 		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "title",
 				"valid.title.empty");
-		// Количество от 2 символов до 16. Латиница. Нет спецсимволов. (кроме -
+		// Количество от 2 символов до 50. Латиница. Нет спецсимволов. (кроме -
 		// _ .)
 		String title = postForm.getTitle();
 		pattern = regExCollection.getRegExPattern(RegExName.REGEX_TITLE_POST);

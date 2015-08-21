@@ -155,24 +155,6 @@ public class GuestController {
 		return modelAndView;
 	}
 
-	@RequestMapping("403page")
-	public ModelAndView ge403denied() {
-		ModelAndView modelAndView = new ModelAndView("error/403page");
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/404", method = RequestMethod.GET)
-	public ModelAndView page404() {
-		ModelAndView modelAndView = new ModelAndView("error/404");
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/token", method = RequestMethod.GET)
-	public ModelAndView token() {
-		ModelAndView modelAndView = new ModelAndView("testMy");
-		return modelAndView;
-	}
-
 	@RequestMapping(value = "/guest/addComment", method = RequestMethod.POST)
 	public ModelAndView addComment(CommentForm commentForm, Locale locale,
 			Model model, HttpSession httpSession) throws ServiceException {

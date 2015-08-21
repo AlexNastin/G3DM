@@ -8,14 +8,15 @@
 	<appender name="console" class="org.apache.log4j.ConsoleAppender">
 		<param name="Target" value="System.out" />
 		<layout class="org.apache.log4j.PatternLayout">
-			<param name="ConversionPattern" value= "%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
 		</layout>
 	</appender>
 
-	<appender name="debug-log" class="org.apache.log4j.FileAppender">
-		<param name="append" value="false" />
+	<appender name="debug-log" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
 		<param name="MaxFileSize" value="1MB" />
-		<param name="MaxBackupIndex" value="10" />
+		<param name="MaxBackupIndex" value="4" />
 		<param name="File" value="${catalina.home}/Global3dMOD_Logs/debug.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
@@ -27,9 +28,10 @@
 		</filter>
 	</appender>
 
-	<appender name="info-log" class="org.apache.log4j.FileAppender">
-		<param name="append" value="false" />
-		<param name="maxFileSize" value="10MB" />
+	<appender name="info-log" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<param name="maxFileSize" value="3MB" />
 		<param name="maxBackupIndex" value="10" />
 		<param name="File" value="${catalina.home}/Global3dMOD_Logs/info.log" />
 		<layout class="org.apache.log4j.PatternLayout">
@@ -42,9 +44,10 @@
 		</filter>
 	</appender>
 
-	<appender name="error-log" class="org.apache.log4j.FileAppender">
-		<param name="append" value="false" />
-		<param name="MaxFileSize" value="10MB" />
+	<appender name="error-log" class="org.apache.log4j.RollingFileAppender">
+		<param name="append" value="true" />
+		<param name="encoding" value="UTF-8" />
+		<param name="MaxFileSize" value="1MB" />
 		<param name="MaxBackupIndex" value="10" />
 		<param name="File" value="${catalina.home}/Global3dMOD_Logs/error.log" />
 		<layout class="org.apache.log4j.PatternLayout">

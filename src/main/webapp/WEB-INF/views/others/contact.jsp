@@ -53,10 +53,10 @@ ${followus}
 <div class="col-md-2 "></div>
 </div>
 <ul class="list-group">
- 				<li class="list-group-item"><a class="fa fa-facebook-official fa-2x"> Facebook</a></li>
-                <li class="list-group-item"><a class="fa fa-twitter fa-2x"> Twitter</a></li>
-                <li class="list-group-item"><a class="fa fa-vk fa-2x"> VK</a></li>
-                <li class="list-group-item"><a class="fa fa-instagram fa-2x"> Instagram</a>   </li>
+ 				<li class="list-group-item"><a  href="${facebook}" class="fa fa-facebook-official fa-2x"> Facebook</a></li>
+                <li class="list-group-item"><a href="${twitter}" class="fa fa-twitter fa-2x"> Twitter</a></li>
+                <li class="list-group-item"><a href="${vk}" class="fa fa-vk fa-2x"> VK</a></li>
+                <li class="list-group-item"><a  href="${instagram}" class="fa fa-instagram fa-2x"> Instagram</a>   </li>
  </ul>
 </div>
 <div class="col-md-4">

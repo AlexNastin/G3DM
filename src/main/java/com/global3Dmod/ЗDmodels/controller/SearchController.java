@@ -37,9 +37,7 @@ public class SearchController {
 		}
 		List<Post> posts = new ArrayList<Post>();
 		if (!"".equals(text)) {
-			System.out.println("1 con "+posts.size());
 			posts = postSearch.search(text);
-			System.out.println("2 con "+posts.size());
 		}
 		userService.setPathToPhotos(posts);
 		guestService.setRatingInPosts(posts);

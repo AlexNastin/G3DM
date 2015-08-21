@@ -122,7 +122,8 @@ $(document).ready(function(){
 	      },
 	      client: { 
 	    	  required: true,
-	    	  rangelength: [1, 50]
+	    	  rangelength: [3, 16],
+	          regexp: '^[A-Za-z ]+$'
 	      },
 	      expirationDate: {
 	    	  required: true,
@@ -229,7 +230,8 @@ messages:  {
     	date: 'Wrong format. It should be yyyy-mm-dd'
     },
     client: {
-    	rangelength: 'Lenght should be from 1 to 50 characters.'
+    	rangelength: 'Lenght should be from 3 to 16 characters.',
+        regexp: 'Latin characters only.'
     },
     expirationDate: {
     	date: 'Wrong format. It should be yyyy-mm-dd'

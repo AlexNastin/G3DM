@@ -121,7 +121,8 @@ $(document).ready(function(){
 	      },
 	      client: { 
 	    	  required: true,
-	    	  rangelength: [1, 50]
+	    	  rangelength: [3, 16],
+	          regexp: '^[A-Za-z ]+$'
 	      },
 	      expirationDate: {
 	    	  required: true,
@@ -249,8 +250,9 @@ messages:  {
     	date: 'Неверный формат. Дата должна соответствовать yyyy-mm-dd.'
     },
     client: {
-    	rangelength: 'Длина должна быть от 1 до 50.',
-    	required: 'Это поле обязательное.'
+    	rangelength: 'Длина должна быть от 3 до 16.',
+    	required: 'Это поле обязательное.',
+        regexp: 'Только латинские символы.'
     },
     expirationDate: {
     	date: 'Неверный формат. Дата должна соответствовать yyyy-mm-dd.',

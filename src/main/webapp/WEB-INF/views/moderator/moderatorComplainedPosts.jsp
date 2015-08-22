@@ -27,7 +27,6 @@
 <spring:message code="form.subcategory" var="subcategory" />
 <spring:message code="form.author" var="author" />
 <spring:message code="form.check" var="check" />
-<spring:message code="form.zeroing" var="zeroing" />
 <spring:message code="form.complain" var="complain" />
 <spring:message code="moderator.complainedpost.checkintable"
 	var="checkintable" />
@@ -145,8 +144,6 @@
 											${complain}</a></th>
 									<th class="hidden-phone"><i class="fa fa-question-circle"></i>
 										${check}</th>
-									<th class="hidden-phone"><i class="fa fa-question-circle"></i>
-										${zeroing}</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -164,10 +161,7 @@
 											href="<c:url value="/moderator/moderationComplainPost?id=${post.idPost}" />"
 											type="button" class="btn btn-success btn-xs">${checkintable}</a>
 										</td>
-										<td><a
-											href="<c:url value="/moderator/zeroingComplainPost?id=${post.idPost}" />"
-											type="button" class="btn btn-success btn-xs">${zeroing}</a>
-										</td>
+										
 									</tr>
 								</c:forEach>
 							</tbody>

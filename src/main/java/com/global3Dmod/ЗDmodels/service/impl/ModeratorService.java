@@ -186,7 +186,6 @@ public class ModeratorService implements IModeratorService {
 			Post post = postDAO.selectPostWithoutAll(rejectMessageForm
 					.getIdPost());
 			post.setIsDisplay(1);
-			post.setComplain(0);
 			postDAO.updatePost(post);
 		} catch (DaoException e) {
 			throw new ServiceException(e);

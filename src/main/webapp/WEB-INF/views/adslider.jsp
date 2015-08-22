@@ -21,6 +21,7 @@
 				</div>
 				<div class="carousel-caption">
 					<h3>${listAdvertisements[0].title}</h3>
+						<p>${listAdvertisements[0].description}</p>
 				</div>
 			</div>
 			<c:forEach items="${listAdvertisements}" var="advertisements"
@@ -32,6 +33,7 @@
 					</div>
 					<div class="carousel-caption">
 						<h3>${advertisements.title}</h3>
+						<p>${advertisements.description}</p>
 					</div>
 				</div>
 			</c:forEach>

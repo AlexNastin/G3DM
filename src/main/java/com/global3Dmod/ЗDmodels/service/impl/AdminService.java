@@ -498,7 +498,6 @@ public class AdminService implements IAdminService {
 						.getValue(PropertyNameG3DM.ADVERTISEMENT_DEFAULT_EXPIRATION_DATE));
 		advertisement.setFileName(propertyManagerG3DM.getValue(PropertyNameG3DM.ADVERTISEMENT_DEFAULT_FILE_NAME));
 		advertisement.setFilePath(propertyManagerG3DM.getValue(PropertyNameG3DM.ADVERTISEMENT_DEFAULT_FILE_PATH));
-		System.out.println(advertisement);
 		try {
 			advertisementDAO.insertAdvertisement(advertisement);
 		} catch (DaoException e) {

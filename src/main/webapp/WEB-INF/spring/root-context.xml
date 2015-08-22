@@ -26,7 +26,7 @@
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.aop" />
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.dao" />
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.service" />
-	<context:component-scan base-package="com.global3Dmod.ЗDmodels.form.validator" />
+	<context:component-scan base-package="com.global3Dmod.ЗDmodels.form" />
 	<context:component-scan base-package="com.global3Dmod.ЗDmodels.search" />
 
 

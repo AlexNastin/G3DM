@@ -35,6 +35,8 @@ public interface IAdminService {
 
 	public void addAdvertisement(AddAdvertisementForm addAdvertisementForm, String serverPath) throws ServiceException;
 	
+	public void addDefaultAdvertisement() throws ServiceException;
+	
 	public String advertisementUpload(MultipartFile file, String path) throws ServiceException;
 	
 	public Advertisement getAdvertisement(Integer idAdvertisement) throws ServiceException;

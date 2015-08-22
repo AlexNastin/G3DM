@@ -6,10 +6,11 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
-
 import org.springframework.validation.Validator;
 
 import com.global3Dmod.ÇDmodels.form.UpdateAdvertisementForm;
+import com.global3Dmod.ÇDmodels.form.regex.RegExCollection;
+import com.global3Dmod.ÇDmodels.form.regex.RegExName;
 
 @Component
 public class UpdateAdvertisementValidator implements Validator {

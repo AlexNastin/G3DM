@@ -16,6 +16,7 @@ public class ServiceHelper {
 		numberPost.append(month);
 		numberPost.append(day);
 		numberPost.append(result);
+		numberPost.append(" ");
 		numberPost.append(nickName);
 		return numberPost.toString();
 	}

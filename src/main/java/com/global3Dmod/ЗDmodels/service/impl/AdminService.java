@@ -28,6 +28,7 @@ import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.form.AddAdvertisementForm;
 import com.global3Dmod.ÇDmodels.form.UpdateAdvertisementForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
 import com.global3Dmod.ÇDmodels.service.IAdminService;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
@@ -295,22 +296,22 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public void setPathToPhotos(List<Advertisement> advertisements) {
-//		for (Advertisement advertisement : advertisements) {
-//			String oldPath = advertisement.getFilePath();
-//			StringBuilder fullPath = new StringBuilder(
-//					propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
-//			fullPath.append(oldPath);
-//			advertisement.setFilePath(fullPath.toString());
-//		}
+		// for (Advertisement advertisement : advertisements) {
+		// String oldPath = advertisement.getFilePath();
+		// StringBuilder fullPath = new StringBuilder(
+		// propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+		// fullPath.append(oldPath);
+		// advertisement.setFilePath(fullPath.toString());
+		// }
 	}
 
 	@Override
 	public void setPathToPhotos(Advertisement advertisement) {
-//		String oldPath = advertisement.getFilePath();
-//		StringBuilder fullPath = new StringBuilder(
-//				propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
-//		fullPath.append(oldPath);
-//		advertisement.setFilePath(fullPath.toString());
+		// String oldPath = advertisement.getFilePath();
+		// StringBuilder fullPath = new StringBuilder(
+		// propertyManagerG3DM.getValue(PropertyNameG3DM.PATH_FILE));
+		// fullPath.append(oldPath);
+		// advertisement.setFilePath(fullPath.toString());
 	}
 
 	@AspectLogG3DM
@@ -472,7 +473,34 @@ public class AdminService implements IAdminService {
 				user.setRating(rating);
 				userDAO.updateUser(user);
 			}
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+	}
 
+	@AspectLogG3DM
+	@Override
+	public void addDefaultAdvertisement() throws ServiceException {
+		DateFormat dateFormat = new SimpleDateFormat(
+				ServiceParamConstant.FORMAT_DATE);
+		Date date = new Date();
+		String registrationDate = dateFormat.format(date);
+		Advertisement advertisement = new Advertisement();
+		advertisement.setTitle(propertyManagerG3DM
+				.getValue(PropertyNameG3DM.ADVERTISEMENT_DEFAULT_TITLE));
+		advertisement.setClient(propertyManagerG3DM
+				.getValue(PropertyNameG3DM.ADVERTISEMENT_DEFAULT_CLIENT));
+		advertisement.setDescription(propertyManagerG3DM
+				.getValue(PropertyNameG3DM.ADVERTISEMENT_DEFAULT_DESCRIPTION));
+		advertisement.setRegistrationDate(registrationDate);
+		advertisement
+				.setExpirationDate(propertyManagerG3DM
+						.getValue(PropertyNameG3DM.ADVERTISEMENT_DEFAULT_EXPIRATION_DATE));
+		advertisement.setFileName(propertyManagerG3DM.getValue(PropertyNameG3DM.ADVERTISEMENT_DEFAULT_FILE_NAME));
+		advertisement.setFilePath(propertyManagerG3DM.getValue(PropertyNameG3DM.ADVERTISEMENT_DEFAULT_FILE_PATH));
+		System.out.println(advertisement);
+		try {
+			advertisementDAO.insertAdvertisement(advertisement);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}

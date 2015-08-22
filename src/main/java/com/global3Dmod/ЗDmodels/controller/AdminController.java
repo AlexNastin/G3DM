@@ -294,9 +294,9 @@ public class AdminController {
 		}
 		adminService.addAdvertisement(addAdvertisementForm,
 				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
-		ModelAndView modelAndView2 = new ModelAndView(
+		ModelAndView modelAndView = new ModelAndView(
 				"redirect:/admin/advertisements");
-		return modelAndView2;
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/admin/updateAdvertisementAdd", method = RequestMethod.POST)
@@ -311,10 +311,10 @@ public class AdminController {
 		}
 		adminService.updateAdvertisement(updateAdvertisementForm,
 				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
-		ModelAndView modelAndView2 = new ModelAndView(
+		ModelAndView modelAndView = new ModelAndView(
 				"redirect:/admin/updateAdvertisement.html?id="
 						+ updateAdvertisementForm.getIdAdvertisement());
-		return modelAndView2;
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/admin/addModertor", method = RequestMethod.POST)
@@ -338,9 +338,9 @@ public class AdminController {
 			return modelAndView;
 		}
 		adminService.deleteAdvertisement(idAdvertisement);
-		ModelAndView modelAndView2 = new ModelAndView(
+		ModelAndView modelAndView = new ModelAndView(
 				"redirect:/admin/advertisements");
-		return modelAndView2;
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/admin/formTopDesigners", method = RequestMethod.GET)
@@ -353,19 +353,26 @@ public class AdminController {
 			return modelAndView;
 		}
 		adminService.formTopDesigners();
-		ModelAndView modelAndView2 = new ModelAndView(
+		ModelAndView modelAndView = new ModelAndView(
 				"forward:/admin/designers");
-		modelAndView2.addObject(ControllerParamConstant.MESSAGE, true);
-		return modelAndView2;
+		modelAndView.addObject(ControllerParamConstant.MESSAGE, true);
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/admin/deleteModerator", method = RequestMethod.GET)
 	public ModelAndView deleteModerator(
 			@RequestParam(value = "id", required = false) Integer idUser)
 			throws ServiceException {
-		System.out.println();
 		adminService.deleteModerator(idUser);
-		ModelAndView modelAndView2 = new ModelAndView("redirect:/admin/profile");
-		return modelAndView2;
+		ModelAndView modelAndView = new ModelAndView("redirect:/admin/profile");
+		return modelAndView;
+	}
+	
+	@RequestMapping(value = "/admin/addDefaultAdvertisement", method = RequestMethod.GET)
+	public ModelAndView addDefaultAdvertisement()
+			throws ServiceException {
+		ModelAndView modelAndView = new ModelAndView("redirect:/admin/advertisements");
+		adminService.addDefaultAdvertisement();
+		return modelAndView;
 	}
 }

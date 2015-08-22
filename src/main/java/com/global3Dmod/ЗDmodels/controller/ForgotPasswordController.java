@@ -26,8 +26,8 @@ import org.springframework.web.servlet.ModelAndView;
 import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
-import com.global3Dmod.ÇDmodels.form.validator.RegExCollection;
-import com.global3Dmod.ÇDmodels.form.validator.RegExName;
+import com.global3Dmod.ÇDmodels.form.regex.RegExCollection;
+import com.global3Dmod.ÇDmodels.form.regex.RegExName;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 

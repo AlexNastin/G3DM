@@ -63,6 +63,8 @@ public class GuestController {
 		adminService.setPathToPhotos(advertisements);
 		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS,
 				advertisements);
+		modelAndView.addObject(ControllerParamConstant.SIZE_ADVIRTISEMENTS,
+				advertisements.size());
 		List<Post> posts = guestService.getTop4PostsByLike();
 		guestService.setRatingInPosts(posts);
 		List<User> users = guestService.getTop4UsersByRating();

@@ -19,6 +19,7 @@
 <spring:message code="admin.menu.users" var="users" />
 <spring:message code="admin.menu.advertisement" var="advertisement" />
 <spring:message code="admin.advertisement.addadvertisement" var="addadvertisement" />
+<spring:message code="admin.advertisement.adddefaultadvertisement" var="adddefaultadvertisement" />
 <spring:message code="form.title" var="title" />
 <spring:message code="form.miniature" var="miniature" />
 <spring:message code="form.description" var="description" />
@@ -96,6 +97,9 @@
 						
 						<a href="<c:url value="/admin/addAdvertisement.html" />" class="btn btn-success admin-addModerator-float"> <i class="fa fa-user-plus"></i>
 						${addadvertisement}
+						</a>
+							<a href="<c:url value="/admin/addDefaultAdvertisement" />" class="btn btn-success admin-addModerator-float"> <i class="fa fa-user-plus"></i>
+						${adddefaultadvertisement}
 						</a>
 						</div>
 						</h2>

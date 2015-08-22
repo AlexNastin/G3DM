@@ -1,4 +1,4 @@
-package com.global3Dmod.ÇDmodels.form.validator;
+package com.global3Dmod.ÇDmodels.form.regex;
 
 import java.util.HashMap;
 import java.util.Map;

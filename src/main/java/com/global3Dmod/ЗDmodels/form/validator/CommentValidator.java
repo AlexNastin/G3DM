@@ -10,7 +10,10 @@ import org.springframework.validation.Validator;
 
 
 
+
+
 import com.global3Dmod.ÇDmodels.form.CommentForm;
+import com.global3Dmod.ÇDmodels.form.regex.RegExCollection;
 
 
 @Component

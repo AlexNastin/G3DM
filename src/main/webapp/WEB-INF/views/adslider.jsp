@@ -7,25 +7,33 @@
 		<ol class="carousel-indicators">
 			<li data-target="#carousel-example-generic" data-slide-to="0"
 				class="active"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="1"></li>
-			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			<c:forEach var="i" begin="1" end="${sizeAdvertisements-1}">
+				<li data-target="#carousel-example-generic" data-slide-to="${i}"></li>
+			</c:forEach>
 		</ol>
 
 		<!-- Wrapper for slides -->
 		<div class="carousel-inner">
 			<div class="item active">
-				<div style="text-align:center"><img src=<c:url value="${listAdvertisements[0].filePath}" /> alt="..." style="max-height:20em; max-width:30em;"></div>
+				<div style="text-align: center">
+					<img src=<c:url value="${listAdvertisements[0].filePath}" />
+						alt="..." style="max-height: 20em; max-width: 30em;">
+				</div>
 				<div class="carousel-caption">
 					<h3>${listAdvertisements[0].title}</h3>
 				</div>
 			</div>
-			<c:forEach items="${listAdvertisements}" var="advertisements" begin="1">
-			<div class="item">
-				<div style="text-align:center"><img src=<c:url value="${advertisements.filePath}" /> alt="..." style="max-height:20em; max-width:30em;"></div>
-				<div class="carousel-caption">
-					<h3>${advertisements.title}</h3>
+			<c:forEach items="${listAdvertisements}" var="advertisements"
+				begin="1">
+				<div class="item">
+					<div style="text-align: center">
+						<img src=<c:url value="${advertisements.filePath}" /> alt="..."
+							style="max-height: 20em; max-width: 30em;">
+					</div>
+					<div class="carousel-caption">
+						<h3>${advertisements.title}</h3>
+					</div>
 				</div>
-			</div>
 			</c:forEach>
 		</div>
 

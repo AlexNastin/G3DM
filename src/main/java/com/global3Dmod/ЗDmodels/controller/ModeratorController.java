@@ -188,9 +188,9 @@ public class ModeratorController {
 			return modelAndView;
 		}
 		moderatorService.addRejectMessage(rejectMessageForm, person);
-		ModelAndView modelAndView2 = new ModelAndView(
+		ModelAndView modelAndView = new ModelAndView(
 				"redirect:/moderator/profile");
-		return modelAndView2;
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/moderator/complainedPosts", method = RequestMethod.GET)

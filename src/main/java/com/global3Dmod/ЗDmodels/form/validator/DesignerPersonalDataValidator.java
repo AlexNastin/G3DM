@@ -9,6 +9,8 @@ import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
 import com.global3Dmod.ÇDmodels.form.DesignerPersonalDataForm;
+import com.global3Dmod.ÇDmodels.form.regex.RegExCollection;
+import com.global3Dmod.ÇDmodels.form.regex.RegExName;
 
 @Component
 public class DesignerPersonalDataValidator implements Validator {

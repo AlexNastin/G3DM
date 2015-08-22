@@ -131,9 +131,9 @@ public class DesignerController {
 		designerService.addPost(postForm, person.getIdPerson(),
 				person.getNickName(),
 				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
-		ModelAndView modelAndView2 = new ModelAndView(
+		ModelAndView modelAndView = new ModelAndView(
 				"redirect:/designer/profile");
-		return modelAndView2;
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/designer/deletePost", method = RequestMethod.GET)
@@ -165,9 +165,9 @@ public class DesignerController {
 		}
 		designerService.updateUser(personalDataForm, person.getLogin(),
 				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
-		ModelAndView modelAndView2 = new ModelAndView(
+		ModelAndView modelAndView = new ModelAndView(
 				"redirect:/designer/personalData/updateForm");
-		return modelAndView2;
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/designer/updatePost/updateFormAdd", method = RequestMethod.POST)
@@ -182,10 +182,10 @@ public class DesignerController {
 		}
 		designerService.updatePost(updatePostForm, updatePostForm.getIdPost(),
 				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
-		ModelAndView modelAndView2 = new ModelAndView(
+		ModelAndView modelAndView = new ModelAndView(
 				"redirect:/designer/updatePost?id="
 						+ updatePostForm.getIdPost());
-		return modelAndView2;
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/designer/secure/personalSecurity/updatePasswordFormAdd", method = RequestMethod.POST)

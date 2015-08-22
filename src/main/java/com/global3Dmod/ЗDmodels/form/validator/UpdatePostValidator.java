@@ -10,6 +10,8 @@ import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import com.global3Dmod.ÇDmodels.form.UpdatePostForm;
+import com.global3Dmod.ÇDmodels.form.regex.RegExCollection;
+import com.global3Dmod.ÇDmodels.form.regex.RegExName;
 
 @Component
 public class UpdatePostValidator implements Validator {

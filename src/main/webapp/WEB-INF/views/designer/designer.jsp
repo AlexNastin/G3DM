@@ -227,7 +227,7 @@
 							</table>
 						</div>
 			<c:if test="${empty listPostsLimit10}">
-   								 ${myWorkEmpty}
+   								 <div class="alert alert-info" role="alert" style="margin-top: 3%; padding:1%; text-align:center">${myWorkEmpty}</div>
 								</c:if>
 						<c:if test="${sizePosts != 0}">
 							<nav style="text-align: center">

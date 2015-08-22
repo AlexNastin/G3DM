@@ -114,10 +114,12 @@
                               </c:forEach>
                               </tbody>
                               </div>
+                              
                           </table>
+                          
                       </div>
                 	<c:if test="${empty listPostsLimit10}">
-   								 ${postEmpty}
+   								<div class="alert alert-info" role="alert" style="margin-top: 3%; padding:1%; text-align:center"> ${postEmpty} </div>
 								</c:if>
                       <c:if test="${sizePosts != 0}">
                       <nav style="text-align:center">

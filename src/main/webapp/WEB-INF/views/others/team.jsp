@@ -92,7 +92,7 @@
                         <ul class="list-inline social-buttons">
                             <li><a target="_blank" href="https://vk.com/rock_patriot"><i class="fa fa-vk"></i></a>
                             </li>
-                            <li><a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
+                            <li><a target="_blank" href="https://www.facebook.com/pilip.fursau"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li><a target="_blank" href="https://www.linkedin.com/in/philipfursov"><i class="fa fa-linkedin"></i></a>
                             </li>

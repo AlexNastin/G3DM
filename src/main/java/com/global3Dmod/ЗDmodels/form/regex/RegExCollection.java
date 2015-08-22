@@ -14,7 +14,7 @@ public final class RegExCollection {
 	private Pattern PATTERN_UUID = Pattern.compile("^[0-9A-Fa-f]{8}\\-[0-9A-Fa-f]{4}\\-[0-9A-Fa-f]{4}\\-[0-9A-Fa-f]{4}\\-[0-9A-Fa-f]{12}$");
 	private Pattern PATTERN_EMAIL = Pattern.compile("^[-\\w.]+@([A-z0-9][-A-z0-9]+\\.)+[A-z]{2,4}$");	
 	private Pattern PATTERN_FULL_NAME_USER = Pattern.compile("^[a-zA-Z][a-zA-Z0-9-_\\.]{1,50}$");
-	private Pattern PATTERN_TITLE_POST = Pattern.compile("^[a-zA-Z][a-zA-Z0-9-_\\.]{2,50}$");
+	private Pattern PATTERN_TITLE_POST = Pattern.compile("^[a-zA-Z0-9\\ \\'-\\_\\.]{1,50}$");
 	private Pattern PATTERN_DESCRIPTION_POST = Pattern.compile("^[\\x00-\\x7F]{2,300}$");
 	private Pattern PATTERN_INSTRUCTION_POST = Pattern.compile("^[\\x00-\\x7F]{2,1500}$");
 	private Pattern PATTERN_MODEL_POST = Pattern.compile("([^.]+(\\.(?i)(rar|RAR|stl|STL|zip|ZIP))$)");

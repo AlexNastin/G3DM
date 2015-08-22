@@ -15,8 +15,8 @@
 	<appender name="debug-log" class="org.apache.log4j.RollingFileAppender">
 		<param name="append" value="true" />
 		<param name="encoding" value="UTF-8" />
-		<param name="MaxFileSize" value="1MB" />
-		<param name="MaxBackupIndex" value="4" />
+		<param name="MaxFileSize" value="10MB" />
+		<param name="MaxBackupIndex" value="5" />
 		<param name="File" value="${catalina.home}/Global3dMOD_Logs/debug.log" />
 		<layout class="org.apache.log4j.PatternLayout">
 			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n" />
@@ -47,7 +47,7 @@
 	<appender name="error-log" class="org.apache.log4j.RollingFileAppender">
 		<param name="append" value="true" />
 		<param name="encoding" value="UTF-8" />
-		<param name="MaxFileSize" value="1MB" />
+		<param name="MaxFileSize" value="7MB" />
 		<param name="MaxBackupIndex" value="10" />
 		<param name="File" value="${catalina.home}/Global3dMOD_Logs/error.log" />
 		<layout class="org.apache.log4j.PatternLayout">

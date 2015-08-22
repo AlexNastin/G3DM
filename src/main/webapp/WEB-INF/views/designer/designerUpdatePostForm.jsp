@@ -103,7 +103,7 @@
 
 								${image} <img alt="" class="img-responsive"
 									src="<c:url value="${post.postPhotos[0].photoPath}" />">
-
+								<div class="table-responsive">
 								<table class="table table-striped table-advance table-hover">
 
 									<tbody>
@@ -154,6 +154,7 @@
 										</tr>
 									</tbody>
 								</table>
+								</div>
 							</div>
 
 						</div>
@@ -177,13 +178,9 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div
-										class="col-md-12 height-input-string-updatepost-description">
-										<textarea id="description" name="description"
-											class="form-control input-md" path="description"
-											placeholder="${description}">
-											${post.description}
-											</textarea>
+									<div style="margin-bottom: 6em;" class="col-md-12 height-input-string-updatepost-description">
+										<textarea rows="5" id="description" name="description"
+											class="form-control input-md" path="description">${post.description}</textarea>
 
 										<label class="error valid" generated="true" for="description"
 											style="font-size: 9pt; line-height: 1.2;"></label> <span
@@ -191,12 +188,9 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<div
-										class="col-md-12 height-input-string-updatepost-instruction">
-										<textarea id="instruction" name="instruction"
-											class="form-control input-md" path="instruction">
-											${post.instruction}
-											</textarea>
+									<div style="margin-bottom: 6em;" class="col-md-12 height-input-string-updatepost-instruction">
+										<textarea rows="5" id="instruction" name="instruction"
+											class="form-control input-md" path="instruction">${post.instruction}</textarea>
 										<label class="error valid" generated="true" for="instruction"
 											style="font-size: 9pt; line-height: 1.2;"></label> <span
 											class="error"><form:errors path="instruction" /></span>

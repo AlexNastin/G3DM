@@ -75,4 +75,5 @@ ${text}
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/32035491" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter --> 
+</body>
 </html>

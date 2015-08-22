@@ -171,12 +171,11 @@
 							</table>
 						</div>
 						<div class="col-md-12">
-							<button type="button" data-toggle="modal" data-target="#reject"
-								style="margin-right: 4em;"
-								class="btn btn-danger left-designer btn-lg">${rejectbutton}</button>
-							<a
-								href="<c:url value="/moderator/zeroingComplainPost?id=${post.idPost}" />"
-								type="button" class="btn btn-success btn-lg">${zeroing}</a>
+							<button style="margin-right: 4em;" type="button" data-toggle="modal" data-target="#reject"
+								
+								class="btn btn-danger left-designer">${rejectbutton}</button>
+							<button style="margin-right: 4em;" type="button" data-toggle="modal" data-target="#tozero" class="btn btn-info left-designer">${zeroing}</button>
+							
 
 						</div>
 					</div>
@@ -192,7 +191,7 @@
 		</div>
 	</div>
 	<!-- Publish -->
-	<div id="publish" class="modal fade" role="dialog">
+	<div id="tozero" class="modal fade" role="dialog">
 		<div class="modal-dialog modal-sm">
 
 			<!-- Modal content-->
@@ -201,11 +200,11 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title">${confirmpublishing}</h4>
 				</div>
-				<div class="modal-body"></div>
+				<div class="modal-body">
+				Are you really want to set complains to 0</div>
 				<div class="modal-footer">
-					<a
-						href="<c:url value="/moderator/publishPost?id=${post.idPost}"  />"
-						class="btn btn-success"> ${publish} </a>
+					<a	href="<c:url value="/moderator/zeroingComplainPost?id=${post.idPost}" />"
+								type="button" class="btn btn-info">${zeroing}</a>
 					<button type="button" class="btn btn-default" data-dismiss="modal">${close}</button>
 				</div>
 			</div>

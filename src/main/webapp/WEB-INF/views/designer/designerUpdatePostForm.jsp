@@ -177,7 +177,7 @@
 											class="error"><form:errors path="title" /></span>
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="form-group" style="height: 10.5em;">
 									<div style="margin-bottom: 6em;" class="col-md-12 height-input-string-updatepost-description">
 										<textarea rows="5" id="description" name="description"
 											class="form-control input-md" path="description">${post.description}</textarea>
@@ -187,7 +187,7 @@
 											class="error"><form:errors path="description" /></span>
 									</div>
 								</div>
-								<div class="form-group">
+								<div class="form-group" style="height: 10.5em;">
 									<div style="margin-bottom: 6em;" class="col-md-12 height-input-string-updatepost-instruction">
 										<textarea rows="5" id="instruction" name="instruction"
 											class="form-control input-md" path="instruction">${post.instruction}</textarea>
@@ -248,7 +248,7 @@
 								</div>
 
 								<br>
-
+                                <div class="col-md-6"  style="margin-bottom: 3em;">
 								<div class="height-input-string-updatepost-stl">
 									${modeltoupload} <input type="file" name="modelUpdate"> <label
 										class="error" generated="true" for="modelUpdate"
@@ -256,11 +256,12 @@
 										class="error"><form:errors path="modelUpdate" /></span>
 								</div>
 								<br>
-								<div class="height-input-string-updatepost-stl">
+								<div class="height-input-string-updatepost-stl row">
 									${photomodeltoupload} <input type="file" name="firstPhotoUpdate">
 									<label class="error" generated="true" for="firstPhotoUpdate"
 										style="font-size: 9pt; line-height: 1.2;"></label> <span
 										class="error"><form:errors path="firstPhotoUpdate" /></span>
+								</div>
 								</div>
 								<br>
 

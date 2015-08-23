@@ -103,9 +103,17 @@ $(document).ready(function(){
 	    	  required: true,
 	    	  filesize: 1073741824
 	      },
+	      modelUpdate: {
+	    	  accept: "stl,zip,rar",
+	    	  filesize: 1073741824
+	      },
 	      firstPhoto: {
 	    	  accept: "jpg,png,jpeg",
 	    	  required: true,
+	    	  filesize: 5242880
+	      },
+	      firstPhotoUpdate: {
+	    	  accept: "jpg,png,jpeg",
 	    	  filesize: 5242880
 	      },
 	      comment: {
@@ -220,9 +228,17 @@ messages:  {
     	required: 'Пожалуйста, выберите файл.',
     	filesize: 'Максимальный размер файла - 1Гб'
     },
+    modelUpdate:{
+    	accept: 'Расширение файла должно быть .stl, .zip или .rar',
+    	filesize: 'Максимальный размер файла - 1Гб'
+    },
     firstPhoto: {
     	accept: 'Расширение изображения должно быть .jpg, .jpeg или .png',
     	required: 'Пожалуйста, выберите изображение.',
+    	filesize: 'Максимальный размер изображения - 5Мб'
+    },
+    firstPhotoUpdate: {
+    	accept: 'Расширение изображения должно быть .jpg, .jpeg или .png',
     	filesize: 'Максимальный размер изображения - 5Мб'
     },
     avatar: {

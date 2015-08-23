@@ -104,9 +104,17 @@ $(document).ready(function(){
 	    	  required: true,
 	    	  filesize: 1073741824
 	      },
+	      modelUpdate: {
+	    	  accept: "stl,zip,rar",
+	    	  filesize: 1073741824
+	      },
 	      firstPhoto: {
 	    	  accept: "jpg,png,jpeg",
 	    	  required: true,
+	    	  filesize: 5242880
+	      },
+	      firstPhotoUpdate: {
+	    	  accept: "jpg,png,jpeg",
 	    	  filesize: 5242880
 	      },
 	      comment: {
@@ -202,9 +210,17 @@ messages:  {
     	required: 'Please select file.',
     	filesize: 'The maximum file size upload for site is 1GB.'
     },
+    modelUpdate:{
+    	accept: 'Extension should be .stl .zip or .rar',
+    	filesize: 'The maximum file size upload for site is 1GB.'
+    },
     firstPhoto: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',
     	required: 'Please select photo.',
+    	filesize: 'The maximum photo size upload for site is 5MB.'
+    },
+    firstPhotoUpdate: {
+    	accept: 'Allowed .jpg, .jpeg and .png images only',
     	filesize: 'The maximum photo size upload for site is 5MB.'
     },
     avatar: {

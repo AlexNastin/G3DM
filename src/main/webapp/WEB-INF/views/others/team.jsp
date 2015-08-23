@@ -25,7 +25,8 @@
 <link href="<c:url value="/resources/css/main.css"  />" rel="stylesheet" />   
 <!-- Custom Fonts -->
    <link href="<c:url value="/resources/css//fontawesome430/css/font-awesome.css"  />" rel="stylesheet" />
-    
+    <link rel="icon" href="<c:url value="/resources/images/favicon.png" />"
+	type="image/x-icon">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -73,7 +74,7 @@
                     <div class="team-member">
                         <img src="<c:url value="/resources/images/team/alexey.jpg" />" class="img-responsive img-circle" alt="">
                         <h4>${name1}</h4>
-                        <p class="text-muted">Project manager, Java Developer</p>
+                        <p class="text-muted">Project manager, Java Developer, Database Architect</p>
                         <ul class="list-inline social-buttons">
                             <li><a target="_blank" href="https://vk.com/alex_nastin"><i class="fa fa-vk"></i></a>
                             </li>
@@ -88,7 +89,7 @@
                     <div class="team-member">
                         <img src="<c:url value="/resources/images/team/philip.jpg" />" class="img-responsive img-circle" alt="">
                         <h4>${name2}</h4>
-                        <p class="text-muted">QA Manager, Front-end</p>
+                        <p class="text-muted">QA Manager, Front-end Developer</p>
                         <ul class="list-inline social-buttons">
                             <li><a target="_blank" href="https://vk.com/rock_patriot"><i class="fa fa-vk"></i></a>
                             </li>
@@ -123,11 +124,11 @@
                     <div class="team-member">
                         <img src="<c:url value="/resources/images/team/yuriy.jpg" />" class="img-responsive img-circle" alt="">
                         <h4>${name5}</h4>
-                        <p class="text-muted">Lead Designer</p>
+                        <p class="text-muted">Web-Designer, UI/UX Designer</p>
                         <ul class="list-inline social-buttons">
                             <li><a target="_blank" href="https://vk.com/y.bolshynov"><i class="fa fa-vk"></i></a>
                             </li>
-                            <li><a target="_blank" href="#"><i class="fa fa-facebook"></i></a>
+                            <li><a target="_blank" href="https://www.facebook.com/yuri.bolshynov"><i class="fa fa-facebook"></i></a>
                             </li>
                             <li><a target="_blank" href="#"><i class="fa fa-linkedin"></i></a>
                             </li>

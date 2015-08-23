@@ -250,17 +250,17 @@
 								<br>
 
 								<div class="height-input-string-updatepost-stl">
-									${modeltoupload} <input type="file" name="model"> <label
-										class="error" generated="true" for="model"
+									${modeltoupload} <input type="file" name="modelUpdate"> <label
+										class="error" generated="true" for="modelUpdate"
 										style="font-size: 9pt; line-height: 1.2;"></label> <span
-										class="error"><form:errors path="model" /></span>
+										class="error"><form:errors path="modelUpdate" /></span>
 								</div>
 								<br>
 								<div class="height-input-string-updatepost-stl">
-									${photomodeltoupload} <input type="file" name="firstPhoto">
-									<label class="error" generated="true" for="firstPhoto"
+									${photomodeltoupload} <input type="file" name="firstPhotoUpdate">
+									<label class="error" generated="true" for="firstPhotoUpdate"
 										style="font-size: 9pt; line-height: 1.2;"></label> <span
-										class="error"><form:errors path="firstPhoto" /></span>
+										class="error"><form:errors path="firstPhotoUpdate" /></span>
 								</div>
 								<br>
 

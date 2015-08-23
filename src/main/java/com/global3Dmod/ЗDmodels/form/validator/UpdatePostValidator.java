@@ -95,25 +95,25 @@ public class UpdatePostValidator implements Validator {
 				"valid.technologies.empty");
 
 		// Валидация ModelFile
-		if (!updatePostForm.getModel().isEmpty()) {
-			String name = updatePostForm.getModel().getOriginalFilename();
+		if (!updatePostForm.getModelUpdate().isEmpty()) {
+			String name = updatePostForm.getModelUpdate().getOriginalFilename();
 			// Расширение.
 			pattern = regExCollection
 					.getRegExPattern(RegExName.REGEX_MODEL_POST);
 			matcher = pattern.matcher(name);
 			if (!matcher.matches()) {
-				errors.rejectValue("model", "valid.modelFile.pattern");
+				errors.rejectValue("modelUpdate", "valid.modelFile.pattern");
 			}
 		}
 		// Валидация FirstPhoto
-		if (!updatePostForm.getFirstPhoto().isEmpty()) {
-			String name = updatePostForm.getFirstPhoto().getOriginalFilename();
+		if (!updatePostForm.getFirstPhotoUpdate().isEmpty()) {
+			String name = updatePostForm.getFirstPhotoUpdate().getOriginalFilename();
 			// Расширение.
 			pattern = regExCollection
 					.getRegExPattern(RegExName.REGEX_PHOTO_POST);
 			matcher = pattern.matcher(name);
 			if (!matcher.matches()) {
-				errors.rejectValue("firstPhoto", "valid.photoModelFile.pattern");
+				errors.rejectValue("firstPhotoUpdate", "valid.photoModelFile.pattern");
 			}
 		}
 	}

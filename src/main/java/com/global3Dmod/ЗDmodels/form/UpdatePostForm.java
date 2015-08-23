@@ -7,12 +7,12 @@ import org.springframework.web.multipart.MultipartFile;
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 public class UpdatePostForm implements Essence {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -480818592804137463L;
-	
+
 	private int idPost;
 	private int category_idCategory;
 	private int subcategory_idSubcategory;
@@ -20,13 +20,13 @@ public class UpdatePostForm implements Essence {
 	private String title;
 	private String description;
 	private String instruction;
-	
+
 	// file
-	private MultipartFile model;
-	private MultipartFile firstPhoto;
-	
-	private String []technologiesId;
-	
+	private MultipartFile modelUpdate;
+	private MultipartFile firstPhotoUpdate;
+
+	private String[] technologiesId;
+
 	public int getIdPost() {
 		return idPost;
 	}
@@ -38,47 +38,47 @@ public class UpdatePostForm implements Essence {
 	public int getCategory_idCategory() {
 		return category_idCategory;
 	}
-	
+
 	public void setCategory_idCategory(int category_idCategory) {
 		this.category_idCategory = category_idCategory;
 	}
-	
+
 	public int getSubcategory_idSubcategory() {
 		return subcategory_idSubcategory;
 	}
-	
+
 	public void setSubcategory_idSubcategory(int subcategory_idSubcategory) {
 		this.subcategory_idSubcategory = subcategory_idSubcategory;
 	}
-	
+
 	public int getDisProgram_idDisProgram() {
 		return disProgram_idDisProgram;
 	}
-	
+
 	public void setDisProgram_idDisProgram(int disProgram_idDisProgram) {
 		this.disProgram_idDisProgram = disProgram_idDisProgram;
 	}
-	
+
 	public String getTitle() {
 		return title;
 	}
-	
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	
+
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public String getInstruction() {
 		return instruction;
 	}
-	
+
 	public void setInstruction(String instruction) {
 		this.instruction = instruction;
 	}
@@ -91,20 +91,20 @@ public class UpdatePostForm implements Essence {
 		this.technologiesId = technologiesId;
 	}
 
-	public MultipartFile getModel() {
-		return model;
+	public MultipartFile getModelUpdate() {
+		return modelUpdate;
 	}
 
-	public void setModel(MultipartFile model) {
-		this.model = model;
+	public void setModelUpdate(MultipartFile modelUpdate) {
+		this.modelUpdate = modelUpdate;
 	}
 
-	public MultipartFile getFirstPhoto() {
-		return firstPhoto;
+	public MultipartFile getFirstPhotoUpdate() {
+		return firstPhotoUpdate;
 	}
 
-	public void setFirstPhoto(MultipartFile firstPhoto) {
-		this.firstPhoto = firstPhoto;
+	public void setFirstPhotoUpdate(MultipartFile firstPhotoUpdate) {
+		this.firstPhotoUpdate = firstPhotoUpdate;
 	}
 
 	@Override
@@ -115,12 +115,14 @@ public class UpdatePostForm implements Essence {
 		result = prime * result
 				+ ((description == null) ? 0 : description.hashCode());
 		result = prime * result + disProgram_idDisProgram;
-		result = prime * result
-				+ ((firstPhoto == null) ? 0 : firstPhoto.hashCode());
+		result = prime
+				* result
+				+ ((firstPhotoUpdate == null) ? 0 : firstPhotoUpdate.hashCode());
 		result = prime * result + idPost;
 		result = prime * result
 				+ ((instruction == null) ? 0 : instruction.hashCode());
-		result = prime * result + ((model == null) ? 0 : model.hashCode());
+		result = prime * result
+				+ ((modelUpdate == null) ? 0 : modelUpdate.hashCode());
 		result = prime * result + subcategory_idSubcategory;
 		result = prime * result + Arrays.hashCode(technologiesId);
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
@@ -145,10 +147,10 @@ public class UpdatePostForm implements Essence {
 			return false;
 		if (disProgram_idDisProgram != other.disProgram_idDisProgram)
 			return false;
-		if (firstPhoto == null) {
-			if (other.firstPhoto != null)
+		if (firstPhotoUpdate == null) {
+			if (other.firstPhotoUpdate != null)
 				return false;
-		} else if (!firstPhoto.equals(other.firstPhoto))
+		} else if (!firstPhotoUpdate.equals(other.firstPhotoUpdate))
 			return false;
 		if (idPost != other.idPost)
 			return false;
@@ -157,10 +159,10 @@ public class UpdatePostForm implements Essence {
 				return false;
 		} else if (!instruction.equals(other.instruction))
 			return false;
-		if (model == null) {
-			if (other.model != null)
+		if (modelUpdate == null) {
+			if (other.modelUpdate != null)
 				return false;
-		} else if (!model.equals(other.model))
+		} else if (!modelUpdate.equals(other.modelUpdate))
 			return false;
 		if (subcategory_idSubcategory != other.subcategory_idSubcategory)
 			return false;
@@ -181,10 +183,9 @@ public class UpdatePostForm implements Essence {
 				+ subcategory_idSubcategory + ", disProgram_idDisProgram="
 				+ disProgram_idDisProgram + ", title=" + title
 				+ ", description=" + description + ", instruction="
-				+ instruction + ", model=" + model + ", firstPhoto="
-				+ firstPhoto + ", technologiesId="
-				+ Arrays.toString(technologiesId) + "]";
+				+ instruction + ", modelUpdate=" + modelUpdate
+				+ ", firstPhotoUpdate=" + firstPhotoUpdate
+				+ ", technologiesId=" + Arrays.toString(technologiesId) + "]";
 	}
 
-	
 }

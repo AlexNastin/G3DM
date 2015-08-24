@@ -122,7 +122,7 @@
 					<div id="mi-slider" class="mi-slider respimg" style="max-height: 26em;">
 						<ul>
 							<c:forEach items="${listTop4Posts}" var="post">
-								<li><a href="<c:url value="/model?id=${post.idPost}"/>"><img
+								<li><a href="<c:url value="/model?id=${post.idPost}"/>"><img style="max-height: 120px;"
 										class="respimg"
 										src=<c:url value="${post.postPhotos[0].photoPath}" /> alt="">
 									<h4>${post.title}</h4></a></li>

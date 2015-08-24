@@ -112,7 +112,7 @@
 	<div class="clearfix"></div>
 
 	<div class="backgroundslider" style="max-height: 24em;">
-		<div class="container">
+		<div class="container topslider">
 			<div class="row nomargin">
 				<div class="carousel-container contanier col-md-12 sliderup">
 

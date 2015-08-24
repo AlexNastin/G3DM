@@ -1422,3 +1422,13 @@ input:-moz-placeholder {
   .height-input-string-update-password {
   height: 2.9em;
   }
+  @media (max-width:343px){
+  	.topslider{
+  		margin-bottom: 400px
+  	}
+  }
+  @media (min-width:344px) and (max-width:490px){
+  	.topslider{
+  		margin-bottom: 150px
+  	}
+  }

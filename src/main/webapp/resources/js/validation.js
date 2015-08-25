@@ -182,10 +182,10 @@ messages:  {
     	rangelength: 'Lenght should be from 3 to 16 characters.' 
     },
     name: {
-    	regexp: 'Lenght should be from 1 to 50 characters. Latin characters only.'
+    	regexp: 'Lenght should be from 0 to 50 characters. Latin characters only.'
     },
     surname: {
-    	regexp: 'Lenght should be from 1 to 50 characters. Latin characters only.'
+    	regexp: 'Lenght should be from 0 to 50 characters. Latin characters only.'
     },
     title: {
     	regexp: 'Lenght should be from 1 to 50 characters. Latin characters only.'
@@ -239,7 +239,7 @@ messages:  {
     	rangelength: 'Lenght should be from 2 to 300 characters.'
     },
     comment: {
-    	rangelength: 'Lenght should be from 2 to 300 characters.',
+    	rangelength: 'Lenght should be from 1 to 300 characters.',
     	required: 'Comment cannot be empty.'
     },
     dateBirth: {

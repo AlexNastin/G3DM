@@ -45,4 +45,14 @@ public interface IPostDAO {
 	public Map<Integer, Integer> selectColPostsForAllUsers() throws DaoException;
 
 	public List<Integer> selectIdDesignersHavePosts() throws DaoException;
+
+	public int selectNumberOfAllPosts() throws DaoException;;
+
+	public int selectNumberOfDeletedPosts() throws DaoException;;
+
+	public int selectNumberOfRejectedPosts() throws DaoException;;
+
+	public int selectNumberOfModeratingPosts() throws DaoException;;
+
+	public int selectNumberOfPublishingPosts() throws DaoException;;
 }

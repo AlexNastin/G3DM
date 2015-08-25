@@ -263,4 +263,39 @@ public class PostDAOImpl implements IPostDAO {
 		return idDesigners;
 	}
 
+	@Override
+	public int selectNumberOfAllPosts() throws DaoException {
+		long resut = (long) em.createNamedQuery("Post.numberOfAllPosts").getSingleResult();
+		int allPosts = (int) resut;
+		return allPosts;
+	}
+
+	@Override
+	public int selectNumberOfDeletedPosts() throws DaoException {
+		long resut = (long) em.createNamedQuery("Post.numberOfDeletedPosts").getSingleResult();
+		int deletedPosts = (int) resut;
+		return deletedPosts;
+	}
+
+	@Override
+	public int selectNumberOfRejectedPosts() throws DaoException {
+		long resut = (long) em.createNamedQuery("Post.numberOfRejectedPosts").getSingleResult();
+		int rejectedPosts = (int) resut;
+		return rejectedPosts;
+	}
+
+	@Override
+	public int selectNumberOfModeratingPosts() throws DaoException {
+		long resut = (long) em.createNamedQuery("Post.numberOfModeratingPosts").getSingleResult();
+		int moderatingPosts = (int) resut;
+		return moderatingPosts;
+	}
+
+	@Override
+	public int selectNumberOfPublishingPosts() throws DaoException {
+		long resut = (long) em.createNamedQuery("Post.numberOfPublishingPosts").getSingleResult();
+		int publishingPosts = (int) resut;
+		return publishingPosts;
+	}
+
 }

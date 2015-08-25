@@ -375,4 +375,40 @@ public class AdminController {
 		adminService.addDefaultAdvertisement();
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "/admin/statistic", method = RequestMethod.GET)
+	public ModelAndView statistic(Locale locale, Model model, HttpSession httpSession)
+			throws ServiceException {
+		Person person = (Person) httpSession
+				.getAttribute(ControllerParamConstant.PERSON);
+		if (person == null) {
+			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
+			return modelAndView;
+		}
+		ModelAndView modelAndView = new ModelAndView("admin/adminStatistic");
+		User user = designerService.getUser(person.getLogin());
+		userService.setPathToPhotos(user);
+		int allUsers = adminService.getNumberOfAllUsers();
+		int designers = adminService.getNumberOfDesigners();
+		int moderators = adminService.getNumberOfModerators();
+		int admins = adminService.getNumberOfAdmins();
+		int users = adminService.getNumberOfUsers();
+		int allPosts = adminService.getNumberOfAllPosts();
+		int deletedPosts = adminService.getNumberOfDeletedPosts();
+		int rejectedPosts = adminService.getNumberOfRejectedPosts();
+		int moderatingPosts = adminService.getNumberOfModeratingPosts();
+		int publishingPosts = adminService.getNumberOfPublishingPosts();
+		modelAndView.addObject(ControllerParamConstant.NUMBER_OF_ALL_USERS, allUsers);
+		modelAndView.addObject(ControllerParamConstant.NUMBER_OF_DESIGNERS, designers);
+		modelAndView.addObject(ControllerParamConstant.NUMBER_OF_MODERATORS, moderators);
+		modelAndView.addObject(ControllerParamConstant.NUMBER_OF_ADMINS, admins);
+		modelAndView.addObject(ControllerParamConstant.NUMBER_OF_USERS, users);
+		modelAndView.addObject(ControllerParamConstant.NUMBER_OF_ALL_POSTS, allPosts);
+		modelAndView.addObject(ControllerParamConstant.NUMBER_OF_DELETED_POSTS, deletedPosts);
+		modelAndView.addObject(ControllerParamConstant.NUMBER_OF_REJECTED_POSTS, rejectedPosts);
+		modelAndView.addObject(ControllerParamConstant.NUMBER_OF_MODERATING_POSTS, moderatingPosts);
+		modelAndView.addObject(ControllerParamConstant.NUMBER_OF_PUBLISHING_POSTS, publishingPosts);
+		modelAndView.addObject(ControllerParamConstant.USER, user);
+		return modelAndView;
+	}
 }

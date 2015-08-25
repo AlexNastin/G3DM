@@ -203,4 +203,39 @@ public class UserDAOImpl implements IUserDAO {
 		return users;
 	}
 
+	@Override
+	public int selectNumberOfAllUsers() throws DaoException {
+		long resut = (long) em.createNamedQuery("User.numberOfAllUsers").getSingleResult();
+		int allUsers = (int) resut;
+		return allUsers;
+	}
+
+	@Override
+	public int selectNumberOfDesigners() throws DaoException {
+		long resut = (long) em.createNamedQuery("User.numberOfDesigners").getSingleResult();
+		int designers = (int) resut;
+		return designers;
+	}
+
+	@Override
+	public int selectNumberOfModerators() throws DaoException {
+		long resut = (long) em.createNamedQuery("User.numberOfModerators").getSingleResult();
+		int moderators = (int) resut;
+		return moderators;
+	}
+
+	@Override
+	public int selectNumberOfUsers() throws DaoException {
+		long resut = (long) em.createNamedQuery("User.numberOfUsers").getSingleResult();
+		int users = (int) resut;
+		return users;
+	}
+
+	@Override
+	public int selectNumberOfAdmins() throws DaoException {
+		long resut = (long) em.createNamedQuery("User.numberOfAdmins").getSingleResult();
+		int admins = (int) resut;
+		return admins;
+	}
+
 }

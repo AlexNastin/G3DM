@@ -49,4 +49,24 @@ public interface IAdminService {
 	
 	public void formTopDesigners() throws ServiceException;
 
+	public int getNumberOfAllUsers() throws ServiceException;
+
+	public int getNumberOfDesigners() throws ServiceException;
+
+	public int getNumberOfModerators() throws ServiceException;
+
+	public int getNumberOfUsers() throws ServiceException;
+
+	public int getNumberOfAllPosts() throws ServiceException;
+
+	public int getNumberOfDeletedPosts() throws ServiceException;
+
+	public int getNumberOfRejectedPosts() throws ServiceException;
+
+	public int getNumberOfModeratingPosts() throws ServiceException;
+
+	public int getNumberOfPublishingPosts() throws ServiceException;
+
+	public int getNumberOfAdmins() throws ServiceException;
+
 }

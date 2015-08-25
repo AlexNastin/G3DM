@@ -41,7 +41,12 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name = "Post.findTop4ByLike", query = "select p from Post p where p.idPost in (SELECT l.post_idPost from Like l group by l.post_idPost order by count(l.post_idPost) desc) and p.isDisplay = 3"),
 		@NamedQuery(name = "Post.findComplainedPosts", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.idPost in (SELECT c.post_idPost from Complain c group by c.post_idPost) and p.isDisplay = 3"),
 		@NamedQuery(name = "Post.colPostAllUsers", query = "select count(p.user_idUser) from Post p where p.isDisplay in (1,2,3) group by p.user_idUser"),
-		@NamedQuery(name = "Post.allDesignersHavePosts", query = "select p.user_idUser from Post p where p.isDisplay in (1,2,3) group by p.user_idUser")})
+		@NamedQuery(name = "Post.allDesignersHavePosts", query = "select p.user_idUser from Post p where p.isDisplay in (1,2,3) group by p.user_idUser"),
+		@NamedQuery(name = "Post.numberOfAllPosts", query = "select count(p.user_idUser) from Post p"),
+		@NamedQuery(name = "Post.numberOfDeletedPosts", query = "select count(p.user_idUser) from Post p where p.isDisplay = 0"),
+		@NamedQuery(name = "Post.numberOfRejectedPosts", query = "select count(p.user_idUser) from Post p where p.isDisplay = 1"),
+		@NamedQuery(name = "Post.numberOfModeratingPosts", query = "select count(p.user_idUser) from Post p where p.isDisplay = 2"),
+		@NamedQuery(name = "Post.numberOfPublishingPosts", query = "select count(p.user_idUser) from Post p where p.isDisplay = 3")})
 								
 public class Post implements Essence {
 

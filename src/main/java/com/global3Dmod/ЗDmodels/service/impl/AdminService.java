@@ -506,4 +506,114 @@ public class AdminService implements IAdminService {
 
 	}
 
+	@Override
+	public int getNumberOfAllUsers() throws ServiceException {
+		int allUsers = 0;
+		try {
+			allUsers = userDAO.selectNumberOfAllUsers();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return allUsers;
+	}
+
+	@Override
+	public int getNumberOfDesigners() throws ServiceException {
+		int designers = 0;
+		try {
+			designers = userDAO.selectNumberOfDesigners();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return designers;
+	}
+
+	@Override
+	public int getNumberOfModerators() throws ServiceException {
+		int moderators = 0;
+		try {
+			moderators = userDAO.selectNumberOfModerators();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return moderators;
+	}
+
+	@Override
+	public int getNumberOfUsers() throws ServiceException {
+		int users = 0;
+		try {
+			users = userDAO.selectNumberOfUsers();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return users;
+	}
+
+	@Override
+	public int getNumberOfAllPosts() throws ServiceException {
+		int allPosts = 0;
+		try {
+			allPosts = postDAO.selectNumberOfAllPosts();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return allPosts;
+	}
+
+	@Override
+	public int getNumberOfDeletedPosts() throws ServiceException {
+		int deletedPosts = 0;
+		try {
+			deletedPosts = postDAO.selectNumberOfDeletedPosts();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return deletedPosts;
+	}
+
+	@Override
+	public int getNumberOfRejectedPosts() throws ServiceException {
+		int rejectedPosts = 0;
+		try {
+			rejectedPosts = postDAO.selectNumberOfRejectedPosts();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return rejectedPosts;
+	}
+
+	@Override
+	public int getNumberOfModeratingPosts() throws ServiceException {
+		int moderatingPosts = 0;
+		try {
+			moderatingPosts = postDAO.selectNumberOfModeratingPosts();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return moderatingPosts;
+	}
+
+	@Override
+	public int getNumberOfPublishingPosts() throws ServiceException {
+		int publishingPosts = 0;
+		try {
+			publishingPosts = postDAO.selectNumberOfPublishingPosts();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return publishingPosts;
+	}
+
+	@Override
+	public int getNumberOfAdmins() throws ServiceException {
+		int admins = 0;
+		try {
+			admins = userDAO.selectNumberOfAdmins();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return admins;
+	}
+
 }

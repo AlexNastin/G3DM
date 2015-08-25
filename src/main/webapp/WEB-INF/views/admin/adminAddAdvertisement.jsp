@@ -17,6 +17,7 @@
 <spring:message code="javascript.validation" var="validation" />
 <spring:message code="admin.menu.moderators" var="moderators" />
 <spring:message code="admin.menu.designers" var="designers" />
+<spring:message code="admin.menu.statictic" var="statictic" />
 <spring:message code="admin.menu.users" var="users" />
 <spring:message code="admin.menu.advertisement" var="advertisement" />
 <spring:message code="admin.advertisement.addadvertisement" var="addadvertisement" />
@@ -63,6 +64,9 @@
 					<i class="fa fa-user-plus"></i> ${users}
 				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item active">
 					<i class="fa fa-user-plus"></i> ${advertisement}
+				</a> <a href="<c:url value="/admin/statistic" />"
+					class="list-group-item"> <i class="fa fa-user-plus"></i>
+					${statictic}
 				</a>
 			</div>
     </div>

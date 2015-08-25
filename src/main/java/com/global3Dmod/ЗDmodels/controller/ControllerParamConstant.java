@@ -101,5 +101,27 @@ public final class ControllerParamConstant {
 	public static final String VK = "vk";
 
 	public static final String INSTAGRAM = "instagram";
+	
+	//statistic
+	public static final String NUMBER_OF_ALL_USERS = "numberOfAllUsers";
+	
+	public static final String NUMBER_OF_DESIGNERS = "numberOfDesigners";
+	
+	public static final String NUMBER_OF_MODERATORS = "numberOfModerators";
+	
+	public static final String NUMBER_OF_ADMINS = "numberOfAdmins";
+	
+	public static final String NUMBER_OF_USERS = "numberOfUsers";
+	
+	public static final String NUMBER_OF_ALL_POSTS = "numberOfAllPosts";
+	
+	public static final String NUMBER_OF_DELETED_POSTS = "numberOfDeletedPosts";
+	
+	public static final String NUMBER_OF_REJECTED_POSTS = "numberOfRejectedPosts";
+	
+	public static final String NUMBER_OF_MODERATING_POSTS = "numberOfModeratingPosts";
+	
+	public static final String NUMBER_OF_PUBLISHING_POSTS = "numberOfPublishingPosts";
+	//end statistic
 
 }

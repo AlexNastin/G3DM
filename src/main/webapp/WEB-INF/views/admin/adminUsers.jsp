@@ -16,8 +16,11 @@
 <spring:message code="moderator.menu.designer" var="designers"/>
 <spring:message code="admin.menu.moderators" var="moderators" />
 <spring:message code="admin.menu.designers" var="designers" />
+<spring:message code="admin.menu.statictic" var="statictic" />
 <spring:message code="admin.menu.users" var="users" />
 <spring:message code="admin.menu.advertisement" var="advertisement" />
+<spring:message code="admin.users.total"
+	var="total" />
 <spring:message code="admin.addmoderator.nickname" var="nickname" />
 <spring:message code="admin.addmoderator.name" var="name" />
 <spring:message code="admin.addmoderator.surname" var="surname" />
@@ -64,6 +67,9 @@
 					<i class="fa fa-user-plus"></i> ${users}
 				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item">
 					<i class="fa fa-user-plus"></i> ${advertisement}
+				</a> <a href="<c:url value="/admin/statistic" />"
+					class="list-group-item"> <i class="fa fa-user-plus"></i>
+					${statictic}
 				</a>
 			</div>
       </div>
@@ -79,7 +85,7 @@
                               <!-- Some sorts for table -->
                              
                               <thead>
-                              
+                               ${total} ${sizeUsers}
                               <c:if test="${sizeUsers != 0}">
                                <nav style="text-align:center">
   <ul class="pagination">

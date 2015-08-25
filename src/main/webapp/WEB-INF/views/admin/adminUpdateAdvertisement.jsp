@@ -93,18 +93,13 @@
 								<h2>${advertisementUpdate}</h2>
 
 								<table class="table table-striped table-advance table-hover">
-
+								<img alt="" class="img-responsive" src="<c:url value="${advertisement.filePath}" />">
 									<tbody>
 										<tr>
 											<td>${title}</td>
 											<td class="hidden-phone">${advertisement.title}</td>
 										</tr>
-										<tr>
-											<td>${image}</td>
-											<td><img alt=""
-												src="<c:url value="${advertisement.filePath}" />"></td>
-
-										</tr>
+										
 										<tr>
 											<td>${description}</td>
 											<td class="hidden-phone">${advertisement.description}</td>

@@ -98,18 +98,52 @@
 								</h2>
 							</div>
 							<!-- Some sorts for table -->
+<thead>
+<tr class="background-user-string">
+<th>Type of user
+<th> Quantity
+<th> 
+<th>Type of post
+<th> Quantity
+</tr>
 
-							${numberOfAllUsers},
-							${numberOfDesigners},
-							${numberOfModerators},
-							${numberOfAdmins},
-							${numberOfUsers},
-							${numberOfAllPosts},
-							${numberOfDeletedPosts},
-							${numberOfRejectedPosts},
-							${numberOfModeratingPosts},
-							${numberOfPublishingPosts}
-						</table>
+</thead>
+<tr>
+		<td> All users
+		<td> ${numberOfAllUsers}
+		<td>
+		<td> All posts
+		<td>${numberOfAllPosts}
+</tr>
+<tr>
+		<td> Moderators
+		<td> ${numberOfModerators}
+		<td>
+		<td> Deleted posts
+		<td>${numberOfDeletedPosts}
+</tr>
+<tr>
+		<td> Admins
+		<td> ${numberOfAdmins}
+		<td>
+		<td> Rejected posts
+		<td>${numberOfRejectedPosts}
+</tr>
+<tr>
+		<td> Users
+		<td> ${numberOfUsers}
+		<td>
+		<td> Under moderation
+		<td>${numberOfModeratingPosts}
+</tr>
+<tr>
+		<td> 
+		<td> 
+		<td>
+		<td> Published
+		<td>${numberOfPublishingPosts}
+</tr>
+</table>
 					</div>
 				</div>
 			</div>

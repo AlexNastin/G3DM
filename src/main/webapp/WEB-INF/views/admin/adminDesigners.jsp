@@ -84,7 +84,7 @@
                   <div class="col-md-12 nopadding2">
                       <div class="content-panel">
                           <table class="table table-striped table-advance table-hover">
-                             <h2>${designers} <a href="<c:url value="/admin/formTopDesigners" />" class="btn btn-success admin-addModerator-float"> <i class="fa fa-user-plus"></i>
+                             <h2>${designers}: ${sizeUsers} <a href="<c:url value="/admin/formTopDesigners" />" class="btn btn-success admin-addModerator-float"> <i class="fa fa-user-plus"></i>
 						${formtopdesigners}
 						</a></h2>
                             <div class="row"> 
@@ -98,7 +98,7 @@
                               <!-- Some sorts for table -->
                              
                               <thead>
-                              ${total} ${sizeUsers}
+
                               <c:if test="${sizeUsers != 0}">
                                <nav style="text-align:center">
   <ul class="pagination">

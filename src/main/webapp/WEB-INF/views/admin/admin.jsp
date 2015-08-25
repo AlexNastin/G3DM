@@ -95,7 +95,7 @@
 							<div class="row">
 								<h2>
 									<div class="col-md-12">
-										${moderators} <a
+										${moderators}: ${sizeUsers}<a
 											href="<c:url value="/admin/addModerator.html" />"
 											class="btn btn-success admin-addModerator-float"> <i
 											class="fa fa-user-plus"></i> ${addmoderator}
@@ -106,7 +106,7 @@
 							<!-- Some sorts for table -->
 
 							<thead>
-								${total} ${sizeUsers}
+								 
 								<c:if test="${sizeUsers != 0}">
 									<nav style="text-align: center">
 										<ul class="pagination">

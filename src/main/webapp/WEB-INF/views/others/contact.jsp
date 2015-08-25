@@ -71,8 +71,7 @@ ${followus}
 </div>
 
 <%@include file="/WEB-INF/views/footer.jsp" %>
-<script src="<c:url value="/resources/js/jquery.min.js" />"> </script>
-<script src="<c:url value="/resources/js/jquery-2.1.1.js" />"> </script>
+<script src="<c:url value="/resources/js/jquery-2.1.4.min.js" />"> </script>
 <script src="<c:url value="/resources/js/jquery.validate.min.js" />"> </script>
 <script src="<c:url value="/resources/js/bootstrap.min.js" />"> </script>
 <script>

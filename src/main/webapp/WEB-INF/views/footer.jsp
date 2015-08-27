@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Footer</title>
+
 <spring:message code="footer.footer.about" var="about" />
 <spring:message code="footer.footer.contact" var="contact" />
 <spring:message code="footer.footer.ourmission" var="ourmission" />

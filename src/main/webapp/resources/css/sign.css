@@ -19,7 +19,7 @@
 }
 .signup-background {
 background: url(../images/logosign3.jpg) center top;
-background-size:auto;
+background-size:cover;
 padding-bottom:10em;
 
   }

@@ -20,7 +20,7 @@
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %> 
 <div class="holycontent">
-<div class="col-md-12" style=" min-height: 40em; padding:0px"><img src="<c:url value="/resources/images/11111.png" />" class="img-responsive" alt="jobs"></div>
+<div class="col-md-12" style=" min-height: 40em; padding:0px"><img src="<c:url value="/resources/images/g3dm.png" />" class="img-responsive" alt="jobs"></div>
 <div class="col-md-12 line-about font-about ">
 Who are we?
 </div>

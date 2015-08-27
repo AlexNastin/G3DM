@@ -103,9 +103,9 @@ public class UpdatePostValidator implements Validator {
 		// Валидация ModelFile
 		if (!updatePostForm.getModelUpdate().isEmpty()) {
 			// На размер файла (100MB)
-			if (updatePostForm.getModelUpdate().getSize() > Long
+			if (!(updatePostForm.getModelUpdate().getSize() > Long
 					.parseLong(propertyManagerG3DM
-							.getValue(PropertyNameG3DM.MAX_SIZE_MODEL))) {
+							.getValue(PropertyNameG3DM.MAX_SIZE_MODEL)))) {
 				String name = updatePostForm.getModelUpdate()
 						.getOriginalFilename();
 				// Расширение.
@@ -122,9 +122,9 @@ public class UpdatePostValidator implements Validator {
 		// Валидация FirstPhoto
 		if (!updatePostForm.getFirstPhotoUpdate().isEmpty()) {
 			// На размер файла (3MB)
-			if (updatePostForm.getFirstPhotoUpdate().getSize() > Long
+			if (!(updatePostForm.getFirstPhotoUpdate().getSize() > Long
 					.parseLong(propertyManagerG3DM
-							.getValue(PropertyNameG3DM.MAX_SIZE_PHOTO))) {
+							.getValue(PropertyNameG3DM.MAX_SIZE_PHOTO)))) {
 				String name = updatePostForm.getFirstPhotoUpdate()
 						.getOriginalFilename();
 				// Расширение.

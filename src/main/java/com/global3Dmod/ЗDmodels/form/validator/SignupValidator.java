@@ -52,13 +52,34 @@ public class SignupValidator implements Validator {
 		if ((signupForm.getRole_idRole() == 0)) {
 			errors.rejectValue("role_idRole", "valid.role.empty");
 		}
+
+		// Валидация Login (email)
+		// На пустое значение
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login",
+				"valid.login.empty");
+		// Количество до 45.
+		if (!(signupForm.getLogin().length() > 45)) {
+			errors.rejectValue("login", "valid.login.maxsize");
+		}
+		// На сам тип email
+		if (!EmailValidator.getInstance().isValid(signupForm.getLogin())) {
+			errors.rejectValue("login", "valid.login.pattern");
+		}
+		// Содержиться ли такой Email в БД
+		if (emails.contains(signupForm.getLogin())) {
+			errors.rejectValue("login", "valid.login.exists");
+		}
+
 		// Валидация NickName
 		// На пустое значение
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName", "valid.nickName.empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nickName",
+				"valid.nickName.empty");
 		String userNickName = signupForm.getNickName();
-		pattern = regExCollection.getRegExPattern(RegExName.REGEX_NICKNAME_USER);
+		pattern = regExCollection
+				.getRegExPattern(RegExName.REGEX_NICKNAME_USER);
 		matcher = pattern.matcher(userNickName);
-		// На пустую строку. Количество от 3 символов до 16. Латиница. Нет спецсимволов.
+		// На пустую строку. Количество от 3 символов до 16. Латиница. Нет
+		// спецсимволов.
 		if (!matcher.matches()) {
 			errors.rejectValue("nickName", "valid.nickName.pattern");
 		}
@@ -69,27 +90,19 @@ public class SignupValidator implements Validator {
 
 		// Валидация Password и ConfirmPassword и их совпадение.
 		// На пустое значение
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "valid.password.empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password",
+				"valid.password.empty");
 		pattern = regExCollection.getRegExPattern(RegExName.REGEX_PASSWORD);
 		matcher = pattern.matcher(signupForm.getPassword());
-		// Строчные и прописные латинские буквы, цифры, спецсимволы. От 8 символов до 32
+		// Строчные и прописные латинские буквы, цифры, спецсимволы. От 8
+		// символов до 32
 		if (!matcher.matches()) {
 			errors.rejectValue("password", "valid.password.pattern");
 		}
 		if (!(signupForm.getPassword()).equals(signupForm.getConfirmPassword())) {
-			errors.rejectValue("confirmPassword", "valid.confirmPassword.passwordDontMatch");
+			errors.rejectValue("confirmPassword",
+					"valid.confirmPassword.passwordDontMatch");
 		}
-		
-		// Валидация Login (email)
-		// На пустое значение
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login", "valid.login.empty");
-		// На сам тип email
-		if (!EmailValidator.getInstance().isValid(signupForm.getLogin())) {
-			errors.rejectValue("login", "valid.login.pattern");
-		}
-		// Содержиться ли такой Email в БД
-		if (emails.contains(signupForm.getLogin())) {
-			errors.rejectValue("login", "valid.login.exists");
-		}
+
 	}
 }

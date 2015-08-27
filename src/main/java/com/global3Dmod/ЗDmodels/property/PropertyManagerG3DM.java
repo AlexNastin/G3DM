@@ -24,7 +24,6 @@ public class PropertyManagerG3DM {
 
 	public PropertyManagerG3DM() {
 		try {
-			System.out.println(PREFIX + PATH);
 			reader = new BufferedReader(new FileReader(file));
 			properties.load(reader);
 		} catch (FileNotFoundException e) {

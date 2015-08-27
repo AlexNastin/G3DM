@@ -102,11 +102,11 @@ $(document).ready(function(){
 	      model: {
 	    	  accept: "stl,zip,rar",
 	    	  required: true,
-	    	  filesize: 1073741824
+	    	  filesize: 104857600
 	      },
 	      modelUpdate: {
 	    	  accept: "stl,zip,rar",
-	    	  filesize: 1073741824
+	    	  filesize: 104857600
 	      },
 	      firstPhoto: {
 	    	  accept: "jpg,png,jpeg",
@@ -208,11 +208,11 @@ messages:  {
     model: {
     	accept: 'Extension should be .stl .zip or .rar',
     	required: 'Please select file.',
-    	filesize: 'The maximum file size upload for site is 1GB.'
+    	filesize: 'The maximum file size upload for site is 100MB.'
     },
     modelUpdate:{
     	accept: 'Extension should be .stl .zip or .rar',
-    	filesize: 'The maximum file size upload for site is 1GB.'
+    	filesize: 'The maximum file size upload for site is 100MB.'
     },
     firstPhoto: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',

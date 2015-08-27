@@ -111,11 +111,11 @@ $(document).ready(function(){
 	      firstPhoto: {
 	    	  accept: "jpg,png,jpeg",
 	    	  required: true,
-	    	  filesize: 5242880
+	    	  filesize: 3145728
 	      },
 	      firstPhotoUpdate: {
 	    	  accept: "jpg,png,jpeg",
-	    	  filesize: 5242880
+	    	  filesize: 3145728
 	      },
 	      comment: {
 	    	  required: true,
@@ -123,7 +123,7 @@ $(document).ready(function(){
 	      },
 	      avatar: {
 	    	  accept: "jpg,png,jpeg",
-	    	  filesize: 5242880
+	    	  filesize: 3145728
 	      },
 	      dateBirth: {
 	    	  date: true
@@ -139,7 +139,7 @@ $(document).ready(function(){
 	      },
 	      advertisementPhoto: {
 	    	  accept: "jpg,png,jpeg",
-	    	  filesize: 5242880,
+	    	  filesize: 3145728,
 	    	  required: true
 	      },
 	      email: {

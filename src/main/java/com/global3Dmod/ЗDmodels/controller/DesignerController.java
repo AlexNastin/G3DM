@@ -180,6 +180,8 @@ public class DesignerController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
+		System.out.println(updatePostForm.getModelUpdate().getName());
+		System.out.println(updatePostForm.getFirstPhotoUpdate().getName());
 		designerService.updatePost(updatePostForm, updatePostForm.getIdPost(),
 				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
 		ModelAndView modelAndView = new ModelAndView(

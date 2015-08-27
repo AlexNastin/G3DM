@@ -619,30 +619,33 @@ public class DesignerService implements IDesignerService {
 			post.setIsDisplay(2);
 			post.setTechnologies(getCheckPrintersById(updatePostForm
 					.getTechnologiesId()));
+			if (!updatePostForm.getModelUpdate().isEmpty()) {
+				String pathModel = createPostPath(post.getUser_idUser(), post
+						.getFile().getFolder());
+				String fullPathModel = serverPath.concat(pathModel);
+				com.global3Dmod.ÇDmodels.domain.File file = post.getFile();
+				file.setFilePath(pathModel
+						+ modelFileUpload(updatePostForm.getModelUpdate(),
+								fullPathModel, file.getFileName()));
+				post.setFile(file);
+			}
+			if (!updatePostForm.getFirstPhotoUpdate().isEmpty()) {
+				String pathModelPhoto = createPostPath(post.getUser_idUser(),
+						post.getPostPhotos().get(0).getFolder());
 
-			String pathModel = createPostPath(post.getUser_idUser(), post
-					.getFile().getFolder());
-			String pathModelPhoto = createPostPath(post.getUser_idUser(), post
-					.getPostPhotos().get(0).getFolder());
+				String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
 
-			String fullPathModel = serverPath.concat(pathModel);
-			String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
+				PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
+				firstPostPhoto.setPhotoPath(pathModelPhoto
+						+ photoModelFileUpload(
+								updatePostForm.getFirstPhotoUpdate(),
+								fullPathModelPhoto,
+								firstPostPhoto.getFileName()));
 
-			PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
-			firstPostPhoto.setPhotoPath(pathModelPhoto
-					+ photoModelFileUpload(updatePostForm.getFirstPhotoUpdate(),
-							fullPathModelPhoto, firstPostPhoto.getFileName()));
-
-			List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
-			postPhotos.add(firstPostPhoto);
-			post.setPostPhotos(postPhotos);
-
-			com.global3Dmod.ÇDmodels.domain.File file = post.getFile();
-			file.setFilePath(pathModel
-					+ modelFileUpload(updatePostForm.getModelUpdate(), fullPathModel,
-							file.getFileName()));
-
-			post.setFile(file);
+				List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
+				postPhotos.add(firstPostPhoto);
+				post.setPostPhotos(postPhotos);
+			}
 
 			postDAO.updatePost(post);
 		} catch (DaoException e) {

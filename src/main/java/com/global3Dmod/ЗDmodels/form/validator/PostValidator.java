@@ -12,16 +12,21 @@ import org.springframework.validation.Validator;
 import com.global3Dmod.ЗDmodels.form.PostForm;
 import com.global3Dmod.ЗDmodels.form.regex.RegExCollection;
 import com.global3Dmod.ЗDmodels.form.regex.RegExName;
+import com.global3Dmod.ЗDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ЗDmodels.property.PropertyNameG3DM;
 
 @Component
-public class PostFormValidator implements Validator {
+public class PostValidator implements Validator {
+
+	@Autowired
+	private PropertyManagerG3DM propertyManagerG3DM;
 
 	@Autowired
 	private RegExCollection regExCollection;
 
 	@Override
 	public boolean supports(Class<?> arg0) {
-		return PostFormValidator.class.isAssignableFrom(arg0);
+		return PostValidator.class.isAssignableFrom(arg0);
 	}
 
 	@Override
@@ -96,13 +101,20 @@ public class PostFormValidator implements Validator {
 		// Валидация ModelFile
 		// На пустое значение
 		if (!postForm.getModel().isEmpty()) {
-			String name = postForm.getModel().getOriginalFilename();
-			// Расширение.
-			pattern = regExCollection
-					.getRegExPattern(RegExName.REGEX_MODEL_POST);
-			matcher = pattern.matcher(name);
-			if (!matcher.matches()) {
-				errors.rejectValue("model", "valid.modelFile.pattern");
+			// На размер файла (100MB)
+			if (postForm.getModel().getSize() > Long
+					.parseLong(propertyManagerG3DM
+							.getValue(PropertyNameG3DM.MAX_SIZE_MODEL))) {
+				String name = postForm.getModel().getOriginalFilename();
+				// Расширение.
+				pattern = regExCollection
+						.getRegExPattern(RegExName.REGEX_MODEL_POST);
+				matcher = pattern.matcher(name);
+				if (!matcher.matches()) {
+					errors.rejectValue("model", "valid.modelFile.pattern");
+				}
+			} else {
+				errors.rejectValue("model", "valid.modelFile.maxsize");
 			}
 		} else {
 			errors.rejectValue("model", "valid.modelFile.empty");
@@ -111,13 +123,21 @@ public class PostFormValidator implements Validator {
 		// Валидация FirstPhoto
 		// На пустое значение
 		if (!postForm.getFirstPhoto().isEmpty()) {
-			String name = postForm.getFirstPhoto().getOriginalFilename();
-			// Расширение.
-			pattern = regExCollection
-					.getRegExPattern(RegExName.REGEX_PHOTO_POST);
-			matcher = pattern.matcher(name);
-			if (!matcher.matches()) {
-				errors.rejectValue("firstPhoto", "valid.photoModelFile.pattern");
+			// На размер файла (3MB)
+			if (postForm.getFirstPhoto().getSize() > Long
+					.parseLong(propertyManagerG3DM
+							.getValue(PropertyNameG3DM.MAX_SIZE_PHOTO))) {
+				String name = postForm.getFirstPhoto().getOriginalFilename();
+				// Расширение.
+				pattern = regExCollection
+						.getRegExPattern(RegExName.REGEX_PHOTO_POST);
+				matcher = pattern.matcher(name);
+				if (!matcher.matches()) {
+					errors.rejectValue("firstPhoto",
+							"valid.photoModelFile.pattern");
+				}
+			} else {
+				errors.rejectValue("firstPhoto", "valid.photoModelFile.maxsize");
 			}
 		} else {
 			errors.rejectValue("firstPhoto", "valid.photoModelFile.empty");

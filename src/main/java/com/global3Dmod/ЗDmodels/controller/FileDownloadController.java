@@ -45,6 +45,7 @@ public class FileDownloadController {
 	public void doDownload(HttpServletRequest request,
 			HttpServletResponse response, @RequestParam("id") int idFile)
 			throws ServiceException, IOException {
+		
 		increment();
 		boolean isLimit = isLimit();
 		if (isLimit) {

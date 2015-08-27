@@ -18,7 +18,7 @@ import com.global3Dmod.ÇDmodels.controller.ControllerParamConstant;
 import com.global3Dmod.ÇDmodels.domain.Person;
 import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.form.PostForm;
-import com.global3Dmod.ÇDmodels.form.validator.PostFormValidator;
+import com.global3Dmod.ÇDmodels.form.validator.PostValidator;
 import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IUserService;
 
@@ -27,7 +27,7 @@ import com.global3Dmod.ÇDmodels.service.IUserService;
 public class PostFormController {
 
 	@Autowired
-	private PostFormValidator postValidator;
+	private PostValidator postValidator;
 	
 	@Autowired
 	private IDesignerService designerService;

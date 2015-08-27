@@ -12,9 +12,14 @@ import org.springframework.validation.Validator;
 import com.global3Dmod.ЗDmodels.form.UpdatePostForm;
 import com.global3Dmod.ЗDmodels.form.regex.RegExCollection;
 import com.global3Dmod.ЗDmodels.form.regex.RegExName;
+import com.global3Dmod.ЗDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ЗDmodels.property.PropertyNameG3DM;
 
 @Component
 public class UpdatePostValidator implements Validator {
+
+	@Autowired
+	private PropertyManagerG3DM propertyManagerG3DM;
 
 	@Autowired
 	private RegExCollection regExCollection;
@@ -70,11 +75,12 @@ public class UpdatePostValidator implements Validator {
 		if (!matcher.matches()) {
 			errors.rejectValue("instruction", "valid.instruction.pattern");
 		}
-		
+
 		// Валидация DisProgram
 		// На пустое значение
 		if (updatePostForm.getDisProgram_idDisProgram() == 0) {
-			errors.rejectValue("disProgram_idDisProgram", "valid.disProgram.empty");
+			errors.rejectValue("disProgram_idDisProgram",
+					"valid.disProgram.empty");
 		}
 
 		// Валидация Category
@@ -82,7 +88,7 @@ public class UpdatePostValidator implements Validator {
 		if (updatePostForm.getCategory_idCategory() == 0) {
 			errors.rejectValue("category_idCategory", "valid.category.empty");
 		}
-		
+
 		// Валидация Subcategory
 		// На пустое значение
 		if (updatePostForm.getSubcategory_idSubcategory() == 0) {
@@ -96,24 +102,42 @@ public class UpdatePostValidator implements Validator {
 
 		// Валидация ModelFile
 		if (!updatePostForm.getModelUpdate().isEmpty()) {
-			String name = updatePostForm.getModelUpdate().getOriginalFilename();
-			// Расширение.
-			pattern = regExCollection
-					.getRegExPattern(RegExName.REGEX_MODEL_POST);
-			matcher = pattern.matcher(name);
-			if (!matcher.matches()) {
-				errors.rejectValue("modelUpdate", "valid.modelFile.pattern");
+			// На размер файла (100MB)
+			if (updatePostForm.getModelUpdate().getSize() > Long
+					.parseLong(propertyManagerG3DM
+							.getValue(PropertyNameG3DM.MAX_SIZE_MODEL))) {
+				String name = updatePostForm.getModelUpdate()
+						.getOriginalFilename();
+				// Расширение.
+				pattern = regExCollection
+						.getRegExPattern(RegExName.REGEX_MODEL_POST);
+				matcher = pattern.matcher(name);
+				if (!matcher.matches()) {
+					errors.rejectValue("modelUpdate", "valid.modelFile.pattern");
+				}
+			} else {
+				errors.rejectValue("modelUpdate", "valid.modelFile.maxsize");
 			}
 		}
 		// Валидация FirstPhoto
 		if (!updatePostForm.getFirstPhotoUpdate().isEmpty()) {
-			String name = updatePostForm.getFirstPhotoUpdate().getOriginalFilename();
-			// Расширение.
-			pattern = regExCollection
-					.getRegExPattern(RegExName.REGEX_PHOTO_POST);
-			matcher = pattern.matcher(name);
-			if (!matcher.matches()) {
-				errors.rejectValue("firstPhotoUpdate", "valid.photoModelFile.pattern");
+			// На размер файла (3MB)
+			if (updatePostForm.getFirstPhotoUpdate().getSize() > Long
+					.parseLong(propertyManagerG3DM
+							.getValue(PropertyNameG3DM.MAX_SIZE_PHOTO))) {
+				String name = updatePostForm.getFirstPhotoUpdate()
+						.getOriginalFilename();
+				// Расширение.
+				pattern = regExCollection
+						.getRegExPattern(RegExName.REGEX_PHOTO_POST);
+				matcher = pattern.matcher(name);
+				if (!matcher.matches()) {
+					errors.rejectValue("firstPhotoUpdate",
+							"valid.photoModelFile.pattern");
+				}
+			} else {
+				errors.rejectValue("firstPhotoUpdate",
+						"valid.photoModelFile.maxsize");
 			}
 		}
 	}

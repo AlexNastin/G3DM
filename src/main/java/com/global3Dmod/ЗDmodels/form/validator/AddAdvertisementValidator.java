@@ -12,9 +12,14 @@ import org.springframework.validation.Validator;
 import com.global3Dmod.ЗDmodels.form.AddAdvertisementForm;
 import com.global3Dmod.ЗDmodels.form.regex.RegExCollection;
 import com.global3Dmod.ЗDmodels.form.regex.RegExName;
+import com.global3Dmod.ЗDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ЗDmodels.property.PropertyNameG3DM;
 
 @Component
 public class AddAdvertisementValidator implements Validator {
+
+	@Autowired
+	private PropertyManagerG3DM propertyManagerG3DM;
 
 	@Autowired
 	private RegExCollection regExCollection;
@@ -58,7 +63,8 @@ public class AddAdvertisementValidator implements Validator {
 
 		// Валидация Client
 		// На пустое значение
-		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "client", "valid.client.empty");
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "client",
+				"valid.client.empty");
 		String client = addAdvertisementForm.getClient();
 		pattern = regExCollection
 				.getRegExPattern(RegExName.REGEX_NICKNAME_USER);
@@ -76,25 +82,33 @@ public class AddAdvertisementValidator implements Validator {
 		// Валидация ExpirationDate
 		String date = addAdvertisementForm.getExpirationDate();
 		// На строку типа XXXX-XX-XX, где X - это число от 0 до 9
-			pattern = regExCollection.getRegExPattern(RegExName.REGEX_DATE);
-			matcher = pattern.matcher(date);
-			// Количество от 1 символов до 50. Латиница. Нет спецсимволов.
-			// (кроме - _)
-			if (!matcher.matches()) {
-				errors.rejectValue("expirationDate", "valid.date.pattern");
-			}
+		pattern = regExCollection.getRegExPattern(RegExName.REGEX_DATE);
+		matcher = pattern.matcher(date);
+		// Количество от 1 символов до 50. Латиница. Нет спецсимволов.
+		// (кроме - _)
+		if (!matcher.matches()) {
+			errors.rejectValue("expirationDate", "valid.date.pattern");
+		}
 		// Валидация AdvertisementPhoto
 		// На пустое значение
 		if (!addAdvertisementForm.getAdvertisementPhoto().isEmpty()) {
-			String name = addAdvertisementForm.getAdvertisementPhoto()
-					.getOriginalFilename();
-			// Расширение.
-			pattern = regExCollection
-					.getRegExPattern(RegExName.REGEX_PHOTO_POST);
-			matcher = pattern.matcher(name);
-			if (!matcher.matches()) {
+			// На размер файла (3MB)
+			if (addAdvertisementForm.getAdvertisementPhoto().getSize() > Long
+					.parseLong(propertyManagerG3DM
+							.getValue(PropertyNameG3DM.MAX_SIZE_PHOTO))) {
+				String name = addAdvertisementForm.getAdvertisementPhoto()
+						.getOriginalFilename();
+				// Расширение.
+				pattern = regExCollection
+						.getRegExPattern(RegExName.REGEX_PHOTO_POST);
+				matcher = pattern.matcher(name);
+				if (!matcher.matches()) {
+					errors.rejectValue("advertisementPhoto",
+							"valid.advertisementPhoto.pattern");
+				}
+			} else {
 				errors.rejectValue("advertisementPhoto",
-						"valid.advertisementPhoto.pattern");
+						"valid.advertisementPhoto.maxsize");
 			}
 		} else {
 			errors.rejectValue("advertisementPhoto",

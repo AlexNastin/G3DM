@@ -16,20 +16,18 @@
 <meta name="keywords" content="3d printer, 3d model, 3d model free, 3d model download, 3d model download free, model to print 3d printer free, stl, stl download,stl download free, 3d designer, 3d model robot, 3д модель, 3д принтер, 3д модель скачать, 3д модель скачать напечатать, 3д дизайнер, stl бесплатные, stl скачать, global3dmod, global 3d mod "> 
 
 <title>About | Global3dMod.com</title>
+<spring:message code="other.about.text" var="text" />
+<spring:message code="other.about.about" var="about" />
 </head>
 <body>
 <%@include file="/WEB-INF/views/header/header.jsp" %> 
 <div class="holycontent">
 <div class="col-md-12" style=" min-height: 40em; padding:0px"><img src="<c:url value="/resources/images/g3dm.png" />" class="img-responsive" alt="jobs"></div>
 <div class="col-md-12 line-about font-about ">
-Who are we?
+${about}
 </div>
 <div class="col-md-12 about-footer-margin сontainer">
-Morbi varius mauris id neque ornare, et pretium ex pellentesque. 
-Fusce volutpat, quam laoreet ultrices tincidunt, tellus elit sodales risus, vitae blandit orci neque at est. 
-Integer ultrices, odio nec placerat laoreet, lectus arcu laoreet purus, eget gravida metus nibh id augue. 
-Nulla convallis condimentum eros. Phasellus rhoncus ante nec tellus scelerisque, ac pulvinar lectus tincidunt.
-Curabitur sit amet magna gravida, ullamcorper nisi vitae, efficitur dolor. Cras quis tempus mi. 
+${text}
 </div>
 </div>
 <div class="clearfix"> </div>

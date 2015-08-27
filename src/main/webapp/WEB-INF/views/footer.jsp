@@ -33,7 +33,7 @@
 <spring:message code="footer.footer.fileconversions"
 	var="fileconversions" />
 <spring:message code="footer.footer.privacypolicy" var="privacypolicy" />
-
+<spring:message code="blog" var="blogLink" />
 
 
 
@@ -49,7 +49,7 @@
 						<li><a href="<c:url value="/mission" />">${ourmission}</a></li>
 						<li><a href="<c:url value="/team" />">${team}</a></li>
 						<li><a href="<c:url value="/jobs" />">${jobs}</a></li>
-						<li><a href="#">${blog}</a></li>
+						<li><a href="<c:url value="${blogLink}" />">${blog}</a></li>
 					</ul>
 				</div>
 				<div class="footer-grid">

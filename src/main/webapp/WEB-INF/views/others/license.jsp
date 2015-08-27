@@ -25,7 +25,7 @@
 <div class="container holycontent">
 <div class="row">
 <div class="font-contact line-contact col-md-12">
-<i class="fa fa-file-text"></i> ${todesignerslicense}  
+<i class="fa fa-shield"></i> ${todesignerslicense}  
 </div>
 </div>
 <ul class="nav nav-tabs">

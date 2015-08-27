@@ -158,11 +158,15 @@ background-color: #F8F8F8;
     font-size: 20px;
 }
 .text-file-conversions-text {
+	text-align: justify;
 	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
     text-transform: none;	
     color: #999;
     font-size: 16px;
     margin-bottom: 1em;
+}
+.text-align-justify {
+	text-align: justify;
 }
 .margin-bottom-input-support {
 	 margin-bottom: 1.5em;

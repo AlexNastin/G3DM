@@ -45,7 +45,9 @@ ${howtocontactus}
 </div>
 <div class="col-md-2"></div>
 </div>
+<div class="text-align-justify">
 ${text}
+</div>
 </div>
 
 <div class="col-md-4 contact-background">

@@ -25,7 +25,7 @@
 <div class="font-contact line-contact col-md-12">
 FAQ  
 </div>
-<div class="container">
+<div class="container text-align-justify">
    <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">In English</a></li>
     <li><a data-toggle="tab" href="#menu1">На русском языке</a></li>

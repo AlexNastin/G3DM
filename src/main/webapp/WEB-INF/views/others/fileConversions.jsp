@@ -29,7 +29,7 @@
 <i class="fa fa-file"></i> ${fileconversions}  
 </div>
 </div>
-<div class="container">
+<div class="container text-align-justify">
    <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">In English</a></li>
     <li><a data-toggle="tab" href="#menu1">На русском языке</a></li>
@@ -39,7 +39,7 @@
   <div class="tab-content">
     <div id="home" class="tab-pane fade in active">
       <div class="col-md-12" >
-      <p>If you need to print a model on the 3D printer, but it is not saved in .stl format or .wrl, you can use the free online converters, for example <a href=http://assimp.sourceforge.net/>greentoken.de</a>  (limited to 50 MB), or use a graphics program with built-in export format files for 3D printers, such as Google Sketchup, AutoCAD, Autodesk 3ds Max (3D Studio Max), Autodesk Inventor, Mechanical Desktop, Blender, Solidworks, 123D Design, Pixil Bits, OpenSCAD, FreeCAD, Pro ENGINEER, Rhino, Tinkercad (online) 3Dtin (online), and others.</p>
+      <p>If you need to print a model on the 3D printer, but it is not saved in .stl format or .wrl, you can use the free online converters, for example <a href=http://assimp.sourceforge.net/>greentoken.de</a>  (limited to 50 MB), or use a graphics program with built-in export format files for 3D printers, such as Google Sketchup, AutoCAD, Autodesk 3ds Max (3D Studio Max), Autodesk Inventor, Mechanical Desktop, Blender, Solidworks, 123D Design, Pixil Bits, OpenSCAD, FreeCAD, Pro ENGINEER, Rhino, Tinkercad (online) 3Dtin (online), and others.</p><br>
 <div class="text-file-conversions-name">AutoCAD:</div>
 <div class="text-file-conversions-text ">
 Important: export into STL format avialable for integer 3D-objects only. <br>
@@ -140,7 +140,7 @@ Export in STL:<br>
     </div>
     <div id="menu1" class="tab-pane fade">
       <div class="col-md-12" >
-      <p>Если вам нужно распечатать модель на 3D принтере, но она не сохранена в формате .stl или .wrl, то можно воспользоваться бесплатными онлайн конвертерами, например <a href=http://assimp.sourceforge.net/>greentoken.de</a>  (ограничения до 50 Мбайт) или использовать графические программы со встроенными функциями экспорта в формат файлов для 3D принтеров, например Google Sketchup, AutoCAD, Autodesk 3ds Max (3D Studio Max), Autodesk Inventor, Mechanical Desktop, Blender, Solidworks, 123D Design, Pixil Bits, OpenSCAD, FreeCAD, Pro ENGINEER, Rhino, Tinkercad (онлайн), 3Dtin (онлайн) и др.</p>
+      <p>Если вам нужно распечатать модель на 3D принтере, но она не сохранена в формате .stl или .wrl, то можно воспользоваться бесплатными онлайн конвертерами, например <a href=http://assimp.sourceforge.net/>greentoken.de</a>  (ограничения до 50 Мбайт) или использовать графические программы со встроенными функциями экспорта в формат файлов для 3D принтеров, например Google Sketchup, AutoCAD, Autodesk 3ds Max (3D Studio Max), Autodesk Inventor, Mechanical Desktop, Blender, Solidworks, 123D Design, Pixil Bits, OpenSCAD, FreeCAD, Pro ENGINEER, Rhino, Tinkercad (онлайн), 3Dtin (онлайн) и др.</p><br>
 <div class="text-file-conversions-name">AutoCAD:</div>
 <div class="text-file-conversions-text ">
 Важно: экспорт в формат STL возможен только для целых 3D-объектов<br>

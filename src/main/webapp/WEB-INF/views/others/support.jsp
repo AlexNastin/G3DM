@@ -44,7 +44,7 @@
 		<form:form id="support-form" name="support-form"
 			modelAttribute="supportForm" method="POST">
 			<div class="row margin-top-support">
-				<div class=col-md-6>
+				<div class="col-md-6 text-align-justify">
 					${text}
 				</div>
 					

@@ -31,7 +31,7 @@ ${ourmission}
 <div class="col-md-6">
 <img src="<c:url value="/resources/images/ourmission.jpeg" />" class="img-responsive img-thumbnail miniature-image" alt="jobs">
 </div>
-<div class="col-md-6 font-size-ourmission">
+<div class="col-md-6 font-size-ourmission text-align-justify">
 ${text}
 </div>
 </div>

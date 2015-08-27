@@ -224,7 +224,7 @@
 								style="float: left; margin-right: 1em; width: 6em;"
 								src="<c:url value="${comment.user.avatar.avatarPath }"/>">
 							</a>
-							<div class="media-body" style="word-wrap:break-word">
+							<div class="media-body" style="word-wrap:break-word; word-break: break-all;">
 
 								<h4 class="media-heading user_name">${comment.user.nickName }</h4>
 								${comment.text }

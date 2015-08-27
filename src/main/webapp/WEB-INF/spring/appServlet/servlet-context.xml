@@ -52,6 +52,7 @@
 	<!-- Загрузка файлов -->
 	<beans:bean id="multipartResolver"
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<beans:property name="maxUploadSize" value="100000000" />
+		<beans:property name="maxUploadSize" value="419430400" />
 	</beans:bean>
+	
 </beans:beans>

@@ -11,9 +11,14 @@ import org.springframework.validation.Validator;
 import com.global3Dmod.ЗDmodels.form.DesignerPersonalDataForm;
 import com.global3Dmod.ЗDmodels.form.regex.RegExCollection;
 import com.global3Dmod.ЗDmodels.form.regex.RegExName;
+import com.global3Dmod.ЗDmodels.property.PropertyManagerG3DM;
+import com.global3Dmod.ЗDmodels.property.PropertyNameG3DM;
 
 @Component
 public class DesignerPersonalDataValidator implements Validator {
+
+	@Autowired
+	private PropertyManagerG3DM propertyManagerG3DM;
 
 	@Autowired
 	private RegExCollection regExCollection;
@@ -52,7 +57,6 @@ public class DesignerPersonalDataValidator implements Validator {
 				errors.rejectValue("surname", "valid.surname.pattern.notempty");
 			}
 		}
-		
 
 		// Валидация Date
 		String date = personalDataForm.getDateBirth();
@@ -66,18 +70,26 @@ public class DesignerPersonalDataValidator implements Validator {
 				errors.rejectValue("dateBirth", "valid.date.pattern");
 			}
 		}
-		
+
 		// Валидация Avatar
 		if (!personalDataForm.getAvatar().isEmpty()) {
-			String nameAvatar = personalDataForm.getAvatar()
-					.getOriginalFilename();
-			// Расширение.
-			pattern = regExCollection
-					.getRegExPattern(RegExName.REGEX_PHOTO_POST);
-			matcher = pattern.matcher(nameAvatar);
-			if (!matcher.matches()) {
-				errors.rejectValue("avatar", "valid.avatar.pattern");
+			// На размер файла (3MB)
+			if (personalDataForm.getAvatar().getSize() > Long
+					.parseLong(propertyManagerG3DM
+							.getValue(PropertyNameG3DM.MAX_SIZE_AVATAR))) {
+				String nameAvatar = personalDataForm.getAvatar()
+						.getOriginalFilename();
+				// Расширение.
+				pattern = regExCollection
+						.getRegExPattern(RegExName.REGEX_PHOTO_POST);
+				matcher = pattern.matcher(nameAvatar);
+				if (!matcher.matches()) {
+					errors.rejectValue("avatar", "valid.avatar.pattern");
+				}
+			} else {
+				errors.rejectValue("avatar", "valid.avatar.maxsize");
 			}
+
 		}
 	}
 

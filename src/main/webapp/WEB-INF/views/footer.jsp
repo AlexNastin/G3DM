@@ -18,15 +18,11 @@
 	var="tocustomershowitworks" />
 <spring:message code="footer.footer.tocustomerssafety"
 	var="tocustomerssafety" />
-<spring:message code="footer.footer.tocustomerssignup"
-	var="tocustomerssignup" />
 <spring:message code="footer.footer.todesigners" var="todesigners" />
 <spring:message code="footer.footer.todesignershowitworks"
 	var="todesignershowitworks" />
 <spring:message code="footer.footer.todesignerslicense"
 	var="todesignerslicense" />
-<spring:message code="footer.footer.todesignerssignup"
-	var="todesignerssignup" />
 <spring:message code="footer.footer.questions" var="questions" />
 <spring:message code="footer.footer.needhelp" var="needhelp" />
 <spring:message code="footer.footer.support" var="support" />
@@ -57,7 +53,6 @@
 					<ul class="list1">
 						<li><a href="<c:url value="/license#user" />">${tocustomershowitworks}</a></li>
 						<li><a href="<c:url value="/safety" />">${tocustomerssafety}</a></li>
-						<li><a href="<c:url value="/aboutUserSignup" />">${tocustomerssignup}</a></li>
 					</ul>
 				</div>
 				<div class="footer-grid">
@@ -65,7 +60,6 @@
 					<ul class="list1">
 						<li><a href="<c:url value="/license#designer" />">${todesignershowitworks}</a></li>
 						<li><a href="<c:url value="/license" />">${todesignerslicense}</a></li>
-						<li><a href="<c:url value="/aboutDesignerSignup" />">${todesignerssignup}</a></li>
 					</ul>
 				</div>
 				<div class="footer-grid">

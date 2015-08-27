@@ -93,17 +93,4 @@ public class OthersController {
 		return modelAndView;
 	}
 
-	@RequestMapping(value = "/aboutUserSignup", method = RequestMethod.GET)
-	public ModelAndView aboutUserSignup() {
-		ModelAndView modelAndView = new ModelAndView("others/aboutUserSignup");
-		return modelAndView;
-	}
-
-	@RequestMapping(value = "/aboutDesignerSignup", method = RequestMethod.GET)
-	public ModelAndView aboutDesignerSignup() {
-		ModelAndView modelAndView = new ModelAndView(
-				"others/aboutDesignerSignup");
-		return modelAndView;
-	}
-
 }

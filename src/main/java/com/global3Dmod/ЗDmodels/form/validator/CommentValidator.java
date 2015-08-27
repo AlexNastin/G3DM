@@ -35,8 +35,8 @@ public class CommentValidator implements Validator {
 		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "comment", "valid.comment.empty");
 		
-		//Количество от 1 символов до 300. 
-		if (commentForm.getComment().length() < 1 && commentForm.getComment().length() > 300) {
+		//Количество от 2 символов до 300. 
+		if (commentForm.getComment().length() > 2 && commentForm.getComment().length() < 300) {
 			errors.rejectValue("comment", "valid.comment.long");
 		}
 	}

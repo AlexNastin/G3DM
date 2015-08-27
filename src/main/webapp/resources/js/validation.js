@@ -217,19 +217,19 @@ messages:  {
     firstPhoto: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',
     	required: 'Please select photo.',
-    	filesize: 'The maximum photo size upload for site is 5MB.'
+    	filesize: 'The maximum photo size upload for site is 3MB.'
     },
     firstPhotoUpdate: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',
-    	filesize: 'The maximum photo size upload for site is 5MB.'
+    	filesize: 'The maximum photo size upload for site is 3MB.'
     },
     avatar: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',
-    	filesize: 'The maximum photo size upload for site is 5MB.'
+    	filesize: 'The maximum photo size upload for site is 3MB.'
     },
     advertisementPhoto: {
     	accept: 'Allowed .jpg, .jpeg and .png images only',
-    	filesize: 'The maximum photo size upload for site is 5MB.',
+    	filesize: 'The maximum photo size upload for site is 3MB.',
     	required: 'Please select photo.'
     },
     text: {

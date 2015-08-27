@@ -21,7 +21,6 @@
 <spring:message code="model.info.idpost" var="id" />
 <spring:message code="model.info.soft" var="soft" />
 <spring:message code="model.info.desrciption" var="desc" />
-<spring:message code="model.body.photo" var="photo" />
 <spring:message code="model.body.commentaries" var="comms" />
 <spring:message code="model.body.comcol" var="colcom" />
 <spring:message code="model.body.download" var="down" />

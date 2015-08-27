@@ -1,1 +1,3 @@
-Test Robots
+User-agent: *
+Disallow: /admin/
+Disallow: /moderator/

@@ -76,9 +76,9 @@ public class UserPersonalDataValidator implements Validator {
 		// Валидация Avatar
 		if (!personalDataForm.getAvatar().isEmpty()) {
 			// На размер файла (3MB)
-			if (personalDataForm.getAvatar().getSize() > Long
+			if (!(personalDataForm.getAvatar().getSize() > Long
 					.parseLong(propertyManagerG3DM
-							.getValue(PropertyNameG3DM.MAX_SIZE_AVATAR))) {
+							.getValue(PropertyNameG3DM.MAX_SIZE_AVATAR)))) {
 				String nameAvatar = personalDataForm.getAvatar()
 						.getOriginalFilename();
 				// Расширение.

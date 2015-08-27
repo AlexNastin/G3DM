@@ -102,9 +102,9 @@ public class PostValidator implements Validator {
 		// На пустое значение
 		if (!postForm.getModel().isEmpty()) {
 			// На размер файла (100MB)
-			if (postForm.getModel().getSize() > Long
+			if (!(postForm.getModel().getSize() > Long
 					.parseLong(propertyManagerG3DM
-							.getValue(PropertyNameG3DM.MAX_SIZE_MODEL))) {
+							.getValue(PropertyNameG3DM.MAX_SIZE_MODEL)))) {
 				String name = postForm.getModel().getOriginalFilename();
 				// Расширение.
 				pattern = regExCollection
@@ -124,9 +124,9 @@ public class PostValidator implements Validator {
 		// На пустое значение
 		if (!postForm.getFirstPhoto().isEmpty()) {
 			// На размер файла (3MB)
-			if (postForm.getFirstPhoto().getSize() > Long
+			if (!(postForm.getFirstPhoto().getSize() > Long
 					.parseLong(propertyManagerG3DM
-							.getValue(PropertyNameG3DM.MAX_SIZE_PHOTO))) {
+							.getValue(PropertyNameG3DM.MAX_SIZE_PHOTO)))) {
 				String name = postForm.getFirstPhoto().getOriginalFilename();
 				// Расширение.
 				pattern = regExCollection

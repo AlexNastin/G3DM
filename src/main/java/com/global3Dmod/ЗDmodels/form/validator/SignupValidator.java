@@ -58,7 +58,7 @@ public class SignupValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "login",
 				"valid.login.empty");
 		// Количество до 45.
-		if (!(signupForm.getLogin().length() > 45)) {
+		if (signupForm.getLogin().length() > 45) {
 			errors.rejectValue("login", "valid.login.maxsize");
 		}
 		// На сам тип email

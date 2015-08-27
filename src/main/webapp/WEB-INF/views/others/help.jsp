@@ -83,12 +83,25 @@ A: The site visitor who has the role of the user can mark 3d-model that he likes
 </div>
 <div class="col-md-11">
 <div class="text-help-page-q col-md-12">
-Q:Why is your site has a models that I've seen on other websites? 
+Q: Why is your site has a models that I've seen on other websites? 
 </div>
 <div class="text-help-page-a col-md-12">
 A: The models on our website is not only a works of registred on our site Designers, it is also a models taken from open sources and with licenses for freely use. We respect the work of designers and to each of these models, we specify the resource from which it was taken and the author's name (or Nickname) of the model.
 </div>
-
+</div>
+</div>
+<div class="col-md-12" >
+      <div class="col-md-1">
+<i class="fa fa-question-circle fa-5x"></i>
+</div>
+<div class="col-md-11">
+<div class="text-help-page-q col-md-12">
+Q: Why this site isn’t fully translated to Russian language?
+</div>
+<div class="text-help-page-a col-md-12">
+A: This site is not fully translated to Russian, only the interface. That is made for giving an opportunity to Russian-speaking people to understand the basic idea and to take a first insight into this site.
+</div>
+</div>
 </div>
       </div>
       </div>
@@ -150,6 +163,15 @@ A: The models on our website is not only a works of registred on our site Design
 </div>
 <div class="text-help-page-a col-md-12">
 О: Модели на нашем сайте это не только авторские работы Дизайнеров сайта, это ещё и модели взятые из открытых источников с лицензией на свободное использование. Мы уважаем труд Дизайнеров и к каждой такой модели мы указываем ресурс с которого она была взята и автора модели.
+</div>
+
+</div>
+<div class="col-md-11">
+<div class="text-help-page-q col-md-12">
+В: Почему сайт не полностью переведён на русский язык?
+</div>
+<div class="text-help-page-a col-md-12">
+О: На русский язык переведён только пользовательский интерфейс, для ознакомления с сайтом и лучшего понимания его принципов работы рускоязычными пользователями.
 </div>
 
 </div>

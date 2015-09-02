@@ -78,7 +78,7 @@
 					class="list-group-item active"> <i class="fa fa-user-plus"></i>
 					${advertisementUpdate}
 				</a> <a href="<c:url value="/admin/statistic" />"
-					class="list-group-item"> <i class="fa fa-user-plus"></i>
+					class="list-group-item"> <i class="fa fa-line-chart"></i>
 					${statictic}
 				</a>
 			</div>

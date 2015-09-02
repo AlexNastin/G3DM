@@ -68,7 +68,7 @@
 				</a> <a href="<c:url value="/admin/advertisements" />" class="list-group-item">
 					<i class="fa fa-user-plus"></i> ${advertisement}
 				</a> <a href="<c:url value="/admin/statistic" />"
-					class="list-group-item"> <i class="fa fa-user-plus"></i>
+					class="list-group-item"> <i class="fa fa-line-chart"></i>
 					${statictic}
 				</a>
 			</div>

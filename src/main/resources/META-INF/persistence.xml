@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="jpaPersistenceUnitG3DM"
 		transaction-type="RESOURCE_LOCAL">
-		
+
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>com.global3Dmod.printer.domain.Advertisement</class>
 		<class>com.global3Dmod.printer.domain.Avatar</class>
@@ -27,10 +27,28 @@
 		<class>com.global3Dmod.printer.domain.User </class>
 
 		<properties>
+		
 			<property name="hibernate.search.default.directory_provider"
 				value="filesystem" />
 			<property name="hibernate.search.default.indexBase" value="/lucene_G3DM/indexes" />
+
+
+				<!--<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />-->
+
+			<!-- Hibernate Cache -->
+			
+			<!--<property name="hibernate.cache.provider_class"
+				value="net.sf.ehcache.hibernate.SingletonEhCacheProvider" />
+
+			<property name="hibernate.cache.use_query_cache" value="true" />
+			<property name="hibernate.cache.use_second_level_cache"
+				value="true" />
+
+			<property name="hibernate.generate_statistics" value="true" />
+			<property name="hibernate.cache.use_structured_entries" value="true" />-->
 		</properties>
+
 	</persistence-unit>
 
 </persistence>

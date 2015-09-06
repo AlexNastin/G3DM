@@ -5,7 +5,6 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
@@ -41,9 +40,6 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	@Override
 	public List<Category> selectAllCategories() throws DaoException {
 		List<Category> categories = em.createNamedQuery("Category.findAll").getResultList();
-		for (Category category : categories) {
-			Hibernate.initialize(category.getSubcategories());
-		}
 		return categories;
 	}
 
@@ -75,7 +71,9 @@ public class CategoryDAOImpl implements ICategoryDAO {
 
 	@Override
 	public Category selectCategoryById(int idCategory) throws DaoException {
-		Category category = (Category) em.createNamedQuery("Category.findCategoryById").setParameter("idCategory", idCategory).getSingleResult();
+		Category category = (Category) em
+				.createNamedQuery("Category.findCategoryById")
+				.setParameter("idCategory", idCategory).getSingleResult();
 		return category;
 
 	}

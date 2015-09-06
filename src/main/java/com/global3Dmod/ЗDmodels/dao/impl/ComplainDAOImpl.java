@@ -6,34 +6,29 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IComplainDAO;
 import com.global3Dmod.ÇDmodels.domain.Complain;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 @Repository("jpaComplainDAO")
-@Transactional
 public class ComplainDAOImpl implements IComplainDAO {
 
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
-	@Transactional
 	public void insertComplain(Complain complain) throws DaoException {
 		em.persist(complain);
 	}
 
 	@Override
-	@Transactional
 	public void updateComplain(Complain complain) throws DaoException {
 		em.merge(complain);
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Complain> selectAllComplains() throws DaoException {
 		List<Complain> complains = em.createNamedQuery("Complain.findAll")
 				.getResultList();
@@ -41,7 +36,6 @@ public class ComplainDAOImpl implements IComplainDAO {
 	}
 
 	@Override
-	@Transactional
 	public void deleteComplain(Integer idComplain) throws DaoException {
 		Complain complain = em.find(Complain.class, idComplain);
 		em.remove(complain);
@@ -49,7 +43,6 @@ public class ComplainDAOImpl implements IComplainDAO {
 
 	@Override
 	@SuppressWarnings("unchecked")
-	@Transactional
 	public List<Complain> selectComplainNotExists(Integer idUser, Integer idPost)
 			throws DaoException {
 
@@ -62,7 +55,6 @@ public class ComplainDAOImpl implements IComplainDAO {
 	}
 
 	@Override
-	@Transactional
 	public int selectCountComplainByPost(Integer idPost) throws DaoException {
 		long resut = (long) em.createNamedQuery("Complain.colComplainByPost")
 				.setParameter("post_idPost", idPost).getSingleResult();
@@ -71,7 +63,6 @@ public class ComplainDAOImpl implements IComplainDAO {
 	}
 
 	@Override
-	@Transactional
 	public int selectCountComplainByAllPosts(Integer idUser)
 			throws DaoException {
 		long resut = (long) em
@@ -82,7 +73,6 @@ public class ComplainDAOImpl implements IComplainDAO {
 	}
 
 	@Override
-	@Transactional
 	public void deleteComplains(Integer idPost) throws DaoException {
 		em.createNamedQuery("Complain.deleteComplainByIdPost")
 				.setParameter("post_idPost", idPost).executeUpdate();

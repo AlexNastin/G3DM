@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
@@ -14,7 +13,6 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
 @Repository("jpaSubcategoryDAO")
-@Transactional
 public class SubcategoryDAOImpl implements ISubcategoryDAO {
 
 	@PersistenceContext
@@ -26,7 +24,6 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void insertSubcategory(Subcategory subcategory) throws DaoException {
 		em.persist(subcategory);
 
@@ -39,7 +36,6 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Subcategory> selectAllSubcategories() throws DaoException {
 		List<Subcategory> subcategory = em.createNamedQuery("Subcategory.findAll").getResultList();
 		return subcategory;
@@ -51,7 +47,6 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void deleteSubcategory(Integer id) throws DaoException {
 		Subcategory subcategory = em.find(Subcategory.class, id);
 		em.remove(subcategory);
@@ -63,7 +58,6 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void updateSubcategory(Subcategory subcategory) throws DaoException {
 		em.merge(subcategory);
 		
@@ -76,7 +70,6 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Subcategory> selectTop3Subcategories(Integer id) throws DaoException {
 		List<Subcategory> subcategoriesTop = em.createNamedQuery("Subcategory.findTop3").setParameter("idCategory", id)
 				.setFirstResult(0).setMaxResults(3).getResultList();

@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IRejectMessageDAO;
 import com.global3Dmod.ÇDmodels.domain.RejectMessage;
@@ -14,7 +13,6 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
 @Repository("jpaRejectMessageDAO")
-@Transactional
 public class RejectMessageDAOImpl implements IRejectMessageDAO {
 	@PersistenceContext
 	private EntityManager em;
@@ -25,7 +23,6 @@ public class RejectMessageDAOImpl implements IRejectMessageDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void insertRejectMessage(RejectMessage rejectMessage) throws DaoException {
 		em.persist(rejectMessage);
 
@@ -38,7 +35,6 @@ public class RejectMessageDAOImpl implements IRejectMessageDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<RejectMessage> selectAllRejectMessages() throws DaoException {
 		List<RejectMessage> rejectMessages = em.createNamedQuery("RejectMessage.findAll").getResultList();
 		return rejectMessages;
@@ -50,7 +46,6 @@ public class RejectMessageDAOImpl implements IRejectMessageDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void deleteRejectMessage(Integer id) throws DaoException {
 		RejectMessage rejectMessage = em.find(RejectMessage.class, id);
 		em.remove(rejectMessage);
@@ -62,7 +57,6 @@ public class RejectMessageDAOImpl implements IRejectMessageDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void updateRejectMessage(RejectMessage rejectMessage) throws DaoException {
 		em.merge(rejectMessage);
 		
@@ -70,7 +64,6 @@ public class RejectMessageDAOImpl implements IRejectMessageDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public RejectMessage selectRejectMessageByPost(Integer idPost) throws DaoException {
 		RejectMessage rejectMessage = null;
 		List<RejectMessage> rejectMessages = em.createNamedQuery("RejectMessage.findByPost").setParameter("post_idPost", idPost).getResultList();

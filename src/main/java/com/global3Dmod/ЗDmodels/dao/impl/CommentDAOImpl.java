@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.ICommentDAO;
 import com.global3Dmod.ÇDmodels.domain.Comment;
@@ -15,7 +14,6 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
 @Repository("jpaCommentDAO")
-@Transactional
 public class CommentDAOImpl implements ICommentDAO {
 	@PersistenceContext
 	private EntityManager em;
@@ -26,7 +24,6 @@ public class CommentDAOImpl implements ICommentDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void insertComment(Comment comment) throws DaoException {
 		em.persist(comment);
 
@@ -39,7 +36,6 @@ public class CommentDAOImpl implements ICommentDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Comment> selectAllComments() throws DaoException {
 		List<Comment> comments = em.createNamedQuery("Comment.findAll").getResultList();
 		return comments;
@@ -51,7 +47,6 @@ public class CommentDAOImpl implements ICommentDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void deleteComment(Integer id) throws DaoException {
 		Comment comment = em.find(Comment.class, id);
 		em.remove(comment);
@@ -63,7 +58,6 @@ public class CommentDAOImpl implements ICommentDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void updateComment(Comment comment) throws DaoException {
 		em.merge(comment);
 		
@@ -71,7 +65,6 @@ public class CommentDAOImpl implements ICommentDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Comment> selectCommentsByPost(Integer idPost) throws DaoException {
 		List<Comment> comments = em.createNamedQuery("Comment.findByPost").setParameter("post_idPost", idPost).getResultList();
 		for (Comment comment : comments) {

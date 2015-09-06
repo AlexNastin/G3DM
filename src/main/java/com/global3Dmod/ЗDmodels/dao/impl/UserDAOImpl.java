@@ -7,7 +7,6 @@ import javax.persistence.PersistenceContext;
 
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
 import com.global3Dmod.ÇDmodels.domain.Post;
@@ -15,7 +14,6 @@ import com.global3Dmod.ÇDmodels.domain.User;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 @Repository("jpaUserDAO")
-@Transactional
 public class UserDAOImpl implements IUserDAO {
 
 	@PersistenceContext
@@ -29,7 +27,6 @@ public class UserDAOImpl implements IUserDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void insertUser(User user) throws DaoException {
 		em.persist(user);
 
@@ -43,7 +40,6 @@ public class UserDAOImpl implements IUserDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<User> selectAllUsers() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findAll").getResultList();
 		return users;
@@ -57,7 +53,6 @@ public class UserDAOImpl implements IUserDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void deleteUser(Integer id) throws DaoException {
 		User user = em.find(User.class, id);
 		em.remove(user);
@@ -71,7 +66,6 @@ public class UserDAOImpl implements IUserDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void updateUser(User user) throws DaoException {
 		em.merge(user);
 
@@ -85,7 +79,6 @@ public class UserDAOImpl implements IUserDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<User> selectTop3Users() throws DaoException {
 		List<User> usersTop = em.createNamedQuery("User.findTop3")
 				.setFirstResult(0).setMaxResults(3).getResultList();
@@ -158,7 +151,6 @@ public class UserDAOImpl implements IUserDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<User> selectModeratorsForSort() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findModerators").getResultList();
 		for (User user : users) {
@@ -170,7 +162,6 @@ public class UserDAOImpl implements IUserDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<User> selectDesignersForSort() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findDesigners").getResultList();
 		for (User user : users) {
@@ -182,7 +173,6 @@ public class UserDAOImpl implements IUserDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<User> selectUsersForSort() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findUsers").getResultList();
 		for (User user : users) {
@@ -194,7 +184,6 @@ public class UserDAOImpl implements IUserDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<User> selectTop4ByRating() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findTop4ByRating").setMaxResults(4).getResultList();
 		for (User user : users) {

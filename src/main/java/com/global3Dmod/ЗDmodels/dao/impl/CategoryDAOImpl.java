@@ -7,14 +7,12 @@ import javax.persistence.PersistenceContext;
 
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.ICategoryDAO;
 import com.global3Dmod.ÇDmodels.domain.Category;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 @Repository("jpaCategoryDAO")
-@Transactional
 public class CategoryDAOImpl implements ICategoryDAO {
 
 	@PersistenceContext
@@ -28,7 +26,6 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void insertCategory(Category category) throws DaoException {
 		em.persist(category);
 
@@ -42,7 +39,6 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Category> selectAllCategories() throws DaoException {
 		List<Category> categories = em.createNamedQuery("Category.findAll").getResultList();
 		for (Category category : categories) {
@@ -59,7 +55,6 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void deleteCategory(Integer id) throws DaoException {
 		Category category = em.find(Category.class, id);
 		em.remove(category);
@@ -73,14 +68,12 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void updateCategory(Category category) throws DaoException {
 		em.merge(category);
 
 	}
 
 	@Override
-	@Transactional
 	public Category selectCategoryById(int idCategory) throws DaoException {
 		Category category = (Category) em.createNamedQuery("Category.findCategoryById").setParameter("idCategory", idCategory).getSingleResult();
 		return category;

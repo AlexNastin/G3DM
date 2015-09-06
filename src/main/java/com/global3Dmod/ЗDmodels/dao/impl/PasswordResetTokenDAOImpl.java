@@ -6,21 +6,18 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IPasswordResetTokenDAO;
 import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 @Repository("jpaPasswordResetTokenDAO")
-@Transactional
 public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 
 	@PersistenceContext
 	private EntityManager em;
 
 	@Override
-	@Transactional
 	public void updatePasswordResetToken(PasswordResetToken passwordResetToken)
 			throws DaoException {
 		em.merge(passwordResetToken);
@@ -28,7 +25,6 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 	}
 
 	@Override
-	@Transactional
 	public void insertPasswordResetToken(PasswordResetToken passwordResetToken)
 			throws DaoException {
 		em.persist(passwordResetToken);
@@ -37,7 +33,6 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<PasswordResetToken> selectAllPasswordResetTokens()
 			throws DaoException {
 		List<PasswordResetToken> passwordResetTokens = em.createNamedQuery(
@@ -46,7 +41,6 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 	}
 
 	@Override
-	@Transactional
 	public void deletePasswordResetToken(Integer idToken) throws DaoException {
 		PasswordResetToken passwordResetToken = em.find(PasswordResetToken.class, idToken);
 		em.remove(passwordResetToken);
@@ -54,7 +48,6 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public PasswordResetToken selectTokenByUser(Integer idUser)
 			throws DaoException {
 		PasswordResetToken passwordResetToken = null;
@@ -69,7 +62,6 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 	}
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public PasswordResetToken selectTokenByToken(String token) throws DaoException {
 		PasswordResetToken passwordResetToken = null;
 		List<PasswordResetToken> passwordResetTokens = em

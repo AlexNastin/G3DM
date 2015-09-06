@@ -9,14 +9,12 @@ import javax.persistence.PersistenceContext;
 
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.domain.Post;
 import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 @Repository("jpaPostDAO")
-@Transactional
 public class PostDAOImpl implements IPostDAO {
 
 	@PersistenceContext
@@ -30,7 +28,6 @@ public class PostDAOImpl implements IPostDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void insertPost(Post post) throws DaoException {
 		em.persist(post);
 
@@ -44,7 +41,6 @@ public class PostDAOImpl implements IPostDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectAllPosts() throws DaoException {
 		List<Post> post = em.createNamedQuery("Post.findAll").getResultList();
 		return post;
@@ -58,7 +54,6 @@ public class PostDAOImpl implements IPostDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void deletePost(Integer idPost) throws DaoException {
 		Post post = em.find(Post.class, idPost);
 		em.remove(post);
@@ -72,7 +67,6 @@ public class PostDAOImpl implements IPostDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void updatePost(Post post) throws DaoException {
 		em.merge(post);
 
@@ -80,7 +74,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectPostsByDesigner(Integer idDesigner)
 			throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByDesigner")
@@ -94,7 +87,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectPostsByDesignerForSort(Integer idDesigner)
 			throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByDesigner")
@@ -104,7 +96,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectPostsByUserForSort(Integer idUser)
 			throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByUser")
@@ -118,7 +109,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectPosts() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findAll").getResultList();
 		for (Post post : posts) {
@@ -130,7 +120,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectPostsByCategory(Integer idCategory) throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByCategory")
 				.setParameter("category_idCategory", idCategory).getResultList();
@@ -145,7 +134,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectPostsByCategoryBySubcategory(Integer idCategory, Integer idSubcategory) throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findBySubcategory")
 				.setParameter("category_idCategory", idCategory)
@@ -160,7 +148,6 @@ public class PostDAOImpl implements IPostDAO {
 	}
 
 	@Override
-	@Transactional
 	public Post selectPost(Integer idPost) throws DaoException {
 		Post post = (Post) em.createNamedQuery("Post.findOneById")
 				.setParameter("idPost", idPost).getSingleResult();
@@ -174,7 +161,6 @@ public class PostDAOImpl implements IPostDAO {
 	}
 
 	@Override
-	@Transactional
 	public Post selectPostWithoutAll(Integer idPost) throws DaoException {
 		Post post = (Post) em.createNamedQuery("Post.findOneById")
 				.setParameter("idPost", idPost).getSingleResult();
@@ -191,7 +177,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectPostsByModeratingForSort() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByModerating")
 				.getResultList();
@@ -203,7 +188,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectPostsByRejectingForSort() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByRejecting")
 				.getResultList();
@@ -215,7 +199,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectTop4ByLike() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findTop4ByLike")
 				.setMaxResults(4).getResultList();
@@ -227,7 +210,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectComplainedPostsForSort() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findComplainedPosts")
 				.getResultList();
@@ -239,7 +221,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public Map<Integer, Integer> selectColPostsForAllUsers()
 			throws DaoException {
 		Map<Integer, Integer> colPostsWithIdDesigners = new HashMap<Integer, Integer>();
@@ -256,7 +237,6 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Integer> selectIdDesignersHavePosts() throws DaoException {
 		List<Integer> idDesigners = em.createNamedQuery(
 				"Post.allDesignersHavePosts").getResultList();

@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.ITechnologyDAO;
 import com.global3Dmod.ÇDmodels.domain.Technology;
@@ -15,7 +14,6 @@ import com.global3Dmod.ÇDmodels.exception.DaoException;
 
 
 @Repository("jpaTechnologyDAO")
-@Transactional
 public class TechnologyDAOImpl implements ITechnologyDAO {
 	
 	@PersistenceContext
@@ -27,7 +25,6 @@ public class TechnologyDAOImpl implements ITechnologyDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void insertTechnology(Technology technology) throws DaoException {
 		em.persist(technology);
 
@@ -40,7 +37,6 @@ public class TechnologyDAOImpl implements ITechnologyDAO {
 	 * */
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Technology> selectAllTechnologies() throws DaoException {
 		List<Technology> printer = em.createNamedQuery("Technology.findAll").getResultList();
 		return printer;
@@ -48,7 +44,6 @@ public class TechnologyDAOImpl implements ITechnologyDAO {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Technology> selectCheckTechnologiesById(String [] technologiesId) throws DaoException {
 		List<Integer> listIdTechnology = new ArrayList<Integer>();
 		for (String technologyId : technologiesId) {
@@ -64,7 +59,6 @@ public class TechnologyDAOImpl implements ITechnologyDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void deleteTechnology(Integer id) throws DaoException {
 		Technology printer = em.find(Technology.class, id);
 		em.remove(printer);
@@ -76,7 +70,6 @@ public class TechnologyDAOImpl implements ITechnologyDAO {
 	 * @throws DaoException
 	 * */
 	@Override
-	@Transactional
 	public void updateTechnolog(Technology printer) throws DaoException {
 		em.merge(printer);
 		

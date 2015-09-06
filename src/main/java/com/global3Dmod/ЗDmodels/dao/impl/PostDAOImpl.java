@@ -6,6 +6,7 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
@@ -199,6 +200,7 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<Post> selectTop4ByLike() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findTop4ByLike")
 				.setMaxResults(4).getResultList();

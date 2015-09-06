@@ -33,6 +33,8 @@ public interface IGuestService {
 	public List<String> getAllNickName() throws ServiceException;
 
 	public List<Category> getAllCategories() throws ServiceException;
+	
+	public List<Category> getAllCategoriesWithSubcategories()throws ServiceException;
 
 	public List<Subcategory> getAllSubcategories() throws ServiceException;
 

@@ -38,7 +38,7 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name = "Post.colPostByUser", query = "select count(p.user_idUser) from Post p where p.user_idUser = :user_idUser and p.isDisplay in (1,2,3)"),
 		@NamedQuery(name = "Post.findByModerating", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.isDisplay = 2"),
 		@NamedQuery(name = "Post.findByRejecting", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.isDisplay = 1"),
-		@NamedQuery(name = "Post.findTop4ByLike", query = "select p from Post p where p.idPost in (SELECT l.post_idPost from Like l group by l.post_idPost order by count(l.post_idPost) desc) and p.isDisplay = 3"),
+		@NamedQuery(name = "Post.findTop4ByLike", query = "select p from Post p left join fetch p.postPhotos where p.idPost in (SELECT l.post_idPost from Like l group by l.post_idPost order by count(l.post_idPost) desc) and p.isDisplay = 3"),
 		@NamedQuery(name = "Post.findComplainedPosts", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.idPost in (SELECT c.post_idPost from Complain c group by c.post_idPost) and p.isDisplay = 3"),
 		@NamedQuery(name = "Post.colPostAllUsers", query = "select count(p.user_idUser) from Post p where p.isDisplay in (1,2,3) group by p.user_idUser"),
 		@NamedQuery(name = "Post.allDesignersHavePosts", query = "select p.user_idUser from Post p where p.isDisplay in (1,2,3) group by p.user_idUser"),

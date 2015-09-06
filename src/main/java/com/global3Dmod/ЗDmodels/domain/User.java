@@ -31,7 +31,7 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 		@NamedQuery(name = "User.findModerators", query = "select u from User u where u.role_idRole = 4"),
 		@NamedQuery(name = "User.findDesigners", query = "select u from User u where u.role_idRole = 3"),
 		@NamedQuery(name = "User.findUsers", query = "select u from User u where u.role_idRole = 2"),
-		@NamedQuery(name = "User.findTop4ByRating", query = "select u from User u where u.role_idRole = 3 order by u.rating desc"),
+		@NamedQuery(name = "User.findTop4ByRating", query = "select u from User u join fetch u.avatar where u.role_idRole = 3 order by u.rating desc"),
 		@NamedQuery(name = "User.numberOfAllUsers", query = "select count(u.idUser) from User u"),
 		@NamedQuery(name = "User.numberOfDesigners", query = "select count(u.idUser) from User u where u.role_idRole = 3"),
 		@NamedQuery(name = "User.numberOfModerators", query = "select count(u.idUser) from User u where u.role_idRole = 4"),

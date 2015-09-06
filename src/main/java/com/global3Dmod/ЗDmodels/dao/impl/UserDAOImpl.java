@@ -186,9 +186,6 @@ public class UserDAOImpl implements IUserDAO {
 	@Override
 	public List<User> selectTop4ByRating() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findTop4ByRating").setMaxResults(4).getResultList();
-		for (User user : users) {
-			Hibernate.initialize(user.getAvatar());
-		}
 		return users;
 	}
 

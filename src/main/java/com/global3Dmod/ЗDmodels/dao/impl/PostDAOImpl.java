@@ -200,13 +200,9 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	@Transactional
 	public List<Post> selectTop4ByLike() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findTop4ByLike")
 				.setMaxResults(4).getResultList();
-		for (Post post : posts) {
-			Hibernate.initialize(post.getPostPhotos());
-		}
 		return posts;
 	}
 

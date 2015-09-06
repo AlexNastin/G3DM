@@ -57,8 +57,8 @@ public class GuestController {
 	public ModelAndView main(Locale locale, Model model)
 			throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("main");
-		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY,
-				guestService.getAllCategoriesSubcategoriesTop3());
+		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY,	
+		guestService.getAllCategoriesSubcategoriesTop3());
 		List<Advertisement> advertisements = guestService.getAllAdvertisement();
 		adminService.setPathToPhotos(advertisements);
 		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS,

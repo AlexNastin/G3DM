@@ -3,7 +3,6 @@ package com.global3Dmod.ÇDmodels.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,8 +23,7 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "categories")
-@Cacheable
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 @NamedQueries({
 		@NamedQuery(name = "Category.findAll", query = "select c from Category c", hints = { @QueryHint(name = "org.hibernate.cacheable", value = "true") }),
 		@NamedQuery(name = "Category.findCategoryById", query = "select c from Category c join fetch c.subcategories where c.idCategory = :idCategory") })

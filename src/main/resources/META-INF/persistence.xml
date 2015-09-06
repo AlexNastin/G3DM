@@ -26,27 +26,33 @@
 		<class>com.global3Dmod.printer.domain.Technology</class>
 		<class>com.global3Dmod.printer.domain.User </class>
 
+		<!--<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode> -->
+
 		<properties>
-		
 			<property name="hibernate.search.default.directory_provider"
 				value="filesystem" />
 			<property name="hibernate.search.default.indexBase" value="/lucene_G3DM/indexes" />
 
-
-				<!--<property name="hibernate.show_sql" value="true" />
-			<property name="hibernate.format_sql" value="true" />-->
+			<!-- General Hibernate settings -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="use_sql_comments" value="true" />
 
 			<!-- Hibernate Cache -->
-			
-			<!--<property name="hibernate.cache.provider_class"
-				value="net.sf.ehcache.hibernate.SingletonEhCacheProvider" />
 
-			<property name="hibernate.cache.use_query_cache" value="true" />
+			<!--<property name="hibernate.cache.provider_class" value="net.sf.ehcache.hibernate.SingletonEhCacheProvider" 
+				/> <property name="hibernate.cache.use_query_cache" value="true" /> <property 
+				name="hibernate.cache.use_second_level_cache" value="true" /> <property name="hibernate.generate_statistics" 
+				value="true" /> <property name="hibernate.cache.use_structured_entries" value="true" 
+				/> -->
+			<property name="hibernate.cache.region.factory_class"
+				value="org.hibernate.cache.ehcache.EhCacheRegionFactory" />
+			<property name="net.sf.ehcache.configurationResourceName"
+				value="/hibernate-ehcache.xml" />
 			<property name="hibernate.cache.use_second_level_cache"
 				value="true" />
+			<property name="hibernate.cache.use_query_cache" value="true" />
 
-			<property name="hibernate.generate_statistics" value="true" />
-			<property name="hibernate.cache.use_structured_entries" value="true" />-->
 		</properties>
 
 	</persistence-unit>

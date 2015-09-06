@@ -14,8 +14,12 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "subcategories")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @NamedQueries({
 	@NamedQuery(name = "Subcategory.findTop3", query = "select s from Subcategory s where s.category_idCategory = :idCategory and s.top=true"),
 	@NamedQuery(name="Subcategory.findAll", query="select s from Subcategory s")})

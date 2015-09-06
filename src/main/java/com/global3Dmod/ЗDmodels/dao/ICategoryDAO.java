@@ -12,6 +12,8 @@ public interface ICategoryDAO {
 	public void insertCategory(Category category) throws DaoException;
 
 	public List<Category> selectAllCategories() throws DaoException;
+	
+	public List<Category> selectAllCategoriesWithSubcategories() throws DaoException;
 
 	public void deleteCategory(Integer id) throws DaoException;
 

@@ -250,6 +250,17 @@ public class GuestService implements IGuestService {
 		}
 		return categories;
 	}
+	
+	@Override
+	public List<Category> getAllCategoriesWithSubcategories() throws ServiceException {
+		List<Category> categories;
+		try {
+			categories = categoryDAO.selectAllCategoriesWithSubcategories();
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return categories;
+	}
 
 	@AspectLogG3DM
 	@Override

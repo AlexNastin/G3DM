@@ -45,6 +45,7 @@ public class Category implements Essence {
 	@Column(name = "image_path")
 	private String imagePath;
 
+	@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Subcategory> subcategories = new ArrayList<Subcategory>();
 

@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
@@ -116,6 +117,7 @@ public class UserDAOImpl implements IUserDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public User selectUser(String login) throws DaoException {
 		List<User> users = em.createNamedQuery("User.findUserByLogin").setParameter("login", login).getResultList();
 		User user = null;

@@ -127,7 +127,7 @@ public class GuestController {
 		ModelAndView modelAndView = new ModelAndView("result");
 		modelAndView.addObject(
 				ControllerParamConstant.LIST_CATEGORY_WITH_ALL_SUBCATEGORY,
-				guestService.getAllCategories());
+				guestService.getAllCategoriesWithSubcategories());
 		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10,
 				posts);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);

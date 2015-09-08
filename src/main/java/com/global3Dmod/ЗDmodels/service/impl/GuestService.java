@@ -197,7 +197,7 @@ public class GuestService implements IGuestService {
 	public void vote(Integer idUser, Integer idPost) throws ServiceException {
 		try {
 			List<Like> likes = likeDAO.selectLikeNotExists(idUser, idPost);
-			if (likes.isEmpty()) {
+			if (likes.isEmpty()) {  
 				Like likeUser = new Like();
 				likeUser.setUsers_idUser(idUser);
 				likeUser.setPosts_idPost(idPost);

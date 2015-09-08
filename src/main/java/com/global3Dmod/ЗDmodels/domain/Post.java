@@ -29,10 +29,10 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @Indexed
 @Table(name = "posts")
 @NamedQueries({
-		@NamedQuery(name = "Post.findAll", query = "select p from Post p"),
-		@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory where p.user_idUser = :idUser and p.isDisplay in (1,2,3)"),
+		@NamedQuery(name = "Post.findAll", query = "select p from Post p join fetch p.postPhotos"),
+		@NamedQuery(name = "Post.findByDesigner", query = "select p from Post p join fetch p.category join fetch p.subcategory join fetch p.postPhotos where p.user_idUser = :idUser and p.isDisplay in (1,2,3)"),
 		@NamedQuery(name = "Post.findByDesignerPublished", query = "select p from Post p join fetch p.category join fetch p.subcategory join fetch p.postPhotos where p.user_idUser = :idUser and p.isDisplay = 3"),
-		@NamedQuery(name = "Post.findByUser", query = "select p from Post p where p.isDisplay = 3 and p.idPost in ((select l.post_idPost from Like l where user_idUser = :user_idUser))"),
+		@NamedQuery(name = "Post.findByUser", query = "select p from Post p join fetch p.user join fetch p.postPhotos where p.isDisplay = 3 and p.idPost in ((select l.post_idPost from Like l where user_idUser = :user_idUser))"),
 		@NamedQuery(name = "Post.findOneById", query = "select p from Post p join fetch p.category join fetch p.subcategory join fetch p.user join fetch p.postPhotos join fetch p.disProgram where p.idPost = :idPost"),
 		@NamedQuery(name = "Post.findByCategory", query = "select p from Post p join fetch p.user join fetch p.postPhotos where p.category_idCategory = :category_idCategory and p.isDisplay = 3"),
 		@NamedQuery(name = "Post.findBySubcategory", query = "select p from Post p join fetch p.user join fetch p.postPhotos where p.category_idCategory = :category_idCategory and p.subcategory_idSubcategory = :subcategory_idSubcategory and p.isDisplay = 3"),

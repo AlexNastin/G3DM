@@ -6,7 +6,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
 
 import com.global3Dmod.ÇDmodels.dao.IUserDAO;
@@ -148,10 +147,6 @@ public class UserDAOImpl implements IUserDAO {
 	@Override
 	public List<User> selectModeratorsForSort() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findModerators").getResultList();
-		for (User user : users) {
-			Hibernate.initialize(user.getCountry());
-			Hibernate.initialize(user.getCity());
-		}
 		return users;
 	}
 
@@ -159,10 +154,6 @@ public class UserDAOImpl implements IUserDAO {
 	@Override
 	public List<User> selectDesignersForSort() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findDesigners").getResultList();
-		for (User user : users) {
-			Hibernate.initialize(user.getCountry());
-			Hibernate.initialize(user.getCity());
-		}
 		return users;
 	}
 
@@ -170,10 +161,6 @@ public class UserDAOImpl implements IUserDAO {
 	@Override
 	public List<User> selectUsersForSort() throws DaoException {
 		List<User> users = em.createNamedQuery("User.findUsers").getResultList();
-		for (User user : users) {
-			Hibernate.initialize(user.getCountry());
-			Hibernate.initialize(user.getCity());
-		}
 		return users;
 	}
 

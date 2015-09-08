@@ -75,12 +75,12 @@ public class PostDAOImpl implements IPostDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<Post> selectPostsByDesigner(Integer idDesigner)
 			throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByDesigner")
 				.setParameter("idUser", idDesigner).getResultList();
 		for (Post post : posts) {
-			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getTechnologies());
 		}
 		return posts;
@@ -101,19 +101,15 @@ public class PostDAOImpl implements IPostDAO {
 			throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByUser")
 				.setParameter("user_idUser", idUser).getResultList();
-		for (Post post : posts) {
-			Hibernate.initialize(post.getUser());
-			Hibernate.initialize(post.getPostPhotos());
-		}
 		return posts;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
+	@Transactional
 	public List<Post> selectPosts() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findAll").getResultList();
 		for (Post post : posts) {
-			Hibernate.initialize(post.getPostPhotos());
 			Hibernate.initialize(post.getTechnologies());
 		}
 		return posts;

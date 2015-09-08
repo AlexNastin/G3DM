@@ -70,7 +70,6 @@ public class RejectMessageDAOImpl implements IRejectMessageDAO {
 		if(!rejectMessages.isEmpty()) {
 			rejectMessage = rejectMessages.get(0);
 		}
-//		Hibernate.initialize(rejectMessage.getUser());
 		return rejectMessage;
 	}
 

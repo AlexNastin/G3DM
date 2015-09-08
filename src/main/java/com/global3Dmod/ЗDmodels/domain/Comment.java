@@ -18,7 +18,7 @@ import javax.persistence.Table;
 @Table(name = "comments")
 @NamedQueries({
 	@NamedQuery(name="Ñomment.findAll", query="select c from Comment c"),
-	@NamedQuery(name="Comment.findByPost", query="select c from Comment c where c.post_idPost = :post_idPost")})
+	@NamedQuery(name="Comment.findByPost", query="select c from Comment c join fetch c.user where c.post_idPost = :post_idPost")})
 public class Comment implements Essence {
 
 	/**

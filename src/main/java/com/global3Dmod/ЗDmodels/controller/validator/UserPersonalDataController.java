@@ -42,7 +42,7 @@ public class UserPersonalDataController {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
-		User user = designerService.getUser(person.getLogin());
+		User user = designerService.getUserWithCountry(person.getLogin());
 		userService.setPathToPhotos(user);
 		ModelAndView modelAndView = new ModelAndView("user/userPersonalDataForm");
 		UserPersonalDataForm personalDataForm = new UserPersonalDataForm();
@@ -66,7 +66,7 @@ public class UserPersonalDataController {
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("user/userPersonalDataForm");
 			modelAndView.addObject("listCountry", designerService.getAllCountries());
-			User user = designerService.getUser(person.getLogin());
+			User user = designerService.getUserWithCountry(person.getLogin());
 			userService.setPathToPhotos(user);
 			modelAndView.addObject(ControllerParamConstant.USER, user);
 			return modelAndView;

@@ -6,10 +6,10 @@ import java.util.Map;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
 
 import org.hibernate.Hibernate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IPostDAO;
 import com.global3Dmod.ÇDmodels.domain.Post;
@@ -124,12 +124,6 @@ public class PostDAOImpl implements IPostDAO {
 	public List<Post> selectPostsByCategory(Integer idCategory) throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByCategory")
 				.setParameter("category_idCategory", idCategory).getResultList();
-		for (Post post : posts) {
-			Hibernate.initialize(post.getPostPhotos());
-			Hibernate.initialize(post.getTechnologies());
-			Hibernate.initialize(post.getUser());
-			Hibernate.initialize(post.getComments());
-		}
 		return posts;
 	}
 
@@ -139,25 +133,15 @@ public class PostDAOImpl implements IPostDAO {
 		List<Post> posts = em.createNamedQuery("Post.findBySubcategory")
 				.setParameter("category_idCategory", idCategory)
 				.setParameter("subcategory_idSubcategory", idSubcategory).getResultList();
-		for (Post post : posts) {
-			Hibernate.initialize(post.getPostPhotos());
-			Hibernate.initialize(post.getTechnologies());
-			Hibernate.initialize(post.getUser());
-			Hibernate.initialize(post.getComments());
-		}
 		return posts;
 	}
 
 	@Override
+	@Transactional
 	public Post selectPost(Integer idPost) throws DaoException {
 		Post post = (Post) em.createNamedQuery("Post.findOneById")
 				.setParameter("idPost", idPost).getSingleResult();
-		Hibernate.initialize(post.getPostPhotos());
 		Hibernate.initialize(post.getTechnologies());
-		Hibernate.initialize(post.getUser());
-		Hibernate.initialize(post.getCategory());
-		Hibernate.initialize(post.getSubcategory());
-		Hibernate.initialize(post.getDisProgram());
 		return post;
 	}
 
@@ -181,9 +165,6 @@ public class PostDAOImpl implements IPostDAO {
 	public List<Post> selectPostsByModeratingForSort() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByModerating")
 				.getResultList();
-		for (Post post : posts) {
-			Hibernate.initialize(post.getUser());
-		}
 		return posts;
 	}
 
@@ -192,9 +173,6 @@ public class PostDAOImpl implements IPostDAO {
 	public List<Post> selectPostsByRejectingForSort() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findByRejecting")
 				.getResultList();
-		for (Post post : posts) {
-			Hibernate.initialize(post.getUser());
-		}
 		return posts;
 	}
 
@@ -211,9 +189,6 @@ public class PostDAOImpl implements IPostDAO {
 	public List<Post> selectComplainedPostsForSort() throws DaoException {
 		List<Post> posts = em.createNamedQuery("Post.findComplainedPosts")
 				.getResultList();
-		for (Post post : posts) {
-			Hibernate.initialize(post.getUser());
-		}
 		return posts;
 	}
 

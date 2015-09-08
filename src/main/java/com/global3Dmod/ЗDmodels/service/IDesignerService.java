@@ -76,6 +76,8 @@ public interface IDesignerService {
 			String sort, boolean desc) throws ServiceException;
 
 	public User getUser(String login) throws ServiceException;
+	
+	public User getUserWithCountry(String login) throws ServiceException;
 
 	public void updateUser(DesignerPersonalDataForm personalDataForm, String login, String serverPath)
 			throws ServiceException;

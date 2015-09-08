@@ -119,7 +119,7 @@ public class UserController {
 			return modelAndView;
 		}
 		ModelAndView modelAndView = new ModelAndView("user/userPersonalData");
-		User user = designerService.getUser(person.getLogin());
+		User user = designerService.getUserWithCountry(person.getLogin());
 		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
@@ -172,7 +172,7 @@ public class UserController {
 		}
 		String message = messages.getMessage("users.message.deleteAvatar",
 				null, locale);
-		User user = designerService.getUser(person.getLogin());
+		User user = designerService.getUserWithCountry(person.getLogin());
 		designerService.deleteAvatar(user.getAvatar());
 		ModelAndView modelAndView = new ModelAndView("user/userPersonalData");
 		userService.setPathToPhotos(user);

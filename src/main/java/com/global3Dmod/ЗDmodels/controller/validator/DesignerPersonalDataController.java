@@ -46,7 +46,7 @@ public class DesignerPersonalDataController {
 		DesignerPersonalDataForm personalDataForm = new DesignerPersonalDataForm();
 		modelAndView.addObject(ControllerParamConstant.PERSONAL_DATA_FORM, personalDataForm);
 		modelAndView.addObject("listCountry", designerService.getAllCountries());
-		User user = designerService.getUser(person.getLogin());
+		User user = designerService.getUserWithCountry(person.getLogin());
 		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
@@ -65,7 +65,7 @@ public class DesignerPersonalDataController {
 		if (result.hasErrors()) {
 			ModelAndView modelAndView = new ModelAndView("designer/designerPersonalDataForm");
 			modelAndView.addObject("listCountry", designerService.getAllCountries());
-			User user = designerService.getUser(person.getLogin());
+			User user = designerService.getUserWithCountry(person.getLogin());
 			userService.setPathToPhotos(user);
 			modelAndView.addObject(ControllerParamConstant.USER, user);
 			return modelAndView;

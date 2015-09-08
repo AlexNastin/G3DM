@@ -58,18 +58,6 @@ public class UserService implements IUserService {
 		return users;
 	}
 
-	@AspectLogG3DM
-	@Override
-	public List<User> getTop3Users() throws ServiceException {
-		List<User> users = null;
-		try {
-			users = userDAO.selectTop3Users();
-		} catch (DaoException e) {
-			throw new ServiceException(e);
-		}
-		return users;
-	}
-
 	
 	@Override
 	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc) {

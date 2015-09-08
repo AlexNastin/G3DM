@@ -14,6 +14,7 @@ import java.util.regex.Pattern;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -199,6 +200,7 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
+	@Transactional
 	public void addPost(PostForm postForm, int idUser, String nickName,
 			String serverPath) throws ServiceException {
 		DateFormat dateFormat = new SimpleDateFormat(
@@ -549,9 +551,22 @@ public class DesignerService implements IDesignerService {
 		}
 		return user;
 	}
+	
+	@AspectLogG3DM
+	@Override
+	public User getUserWithCountry(String login) throws ServiceException {
+		User user;
+		try {
+			user = userDAO.selectUserWithCountry(login);
+		} catch (DaoException e) {
+			throw new ServiceException(e);
+		}
+		return user;
+	}
 
 	@AspectLogG3DM
 	@Override
+	@Transactional
 	public void updateUser(DesignerPersonalDataForm personalDataForm,
 			String login, String serverPath) throws ServiceException {
 		try {
@@ -580,6 +595,7 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
+	@Transactional
 	public void updatePassword(
 			DesignerPersonalSecurityForm personalSecurityForm, String login)
 			throws ServiceException {
@@ -599,6 +615,7 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
+	@Transactional
 	public void updatePost(UpdatePostForm updatePostForm, Integer idPost,
 			String serverPath) throws ServiceException {
 		try {
@@ -655,6 +672,7 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
+	@Transactional
 	public void deletePost(Integer idPost) throws ServiceException {
 		try {
 			Post post = postDAO.selectPostWithoutAll(idPost);

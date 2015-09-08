@@ -14,8 +14,6 @@ public interface IUserService {
 
 	public List<User> getAllUsers() throws ServiceException;
 
-	public List<User> getTop3Users() throws ServiceException;
-
 	public List<Post> sortPosts(List<Post> posts, String sort, boolean desc)
 			throws ServiceException;
 

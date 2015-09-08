@@ -22,12 +22,13 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 @Entity
 @Table(name = "users")
 @NamedQueries({
-		@NamedQuery(name = "User.findTop3", query = "select u from User u order by u.rating desc"),
 		@NamedQuery(name = "User.findAll", query = "select u from User u"),
 		@NamedQuery(name = "User.findAllEmail", query = "select u.login from User u"),
 		@NamedQuery(name = "User.findAllNickName", query = "select u.nickName from User u"),
 		@NamedQuery(name = "User.findUserByLogin", query = "select u from User u where u.login = :login"),
-		@NamedQuery(name = "User.findUserById", query = "select u from User u where u.idUser = :idUser"),
+		@NamedQuery(name = "User.findUserByLoginWithCountry", query = "select u from User u join fetch u.country join fetch u.city where u.login = :login"),
+		@NamedQuery(name = "User.findUserById", query = "select u from User u join fetch u.country join fetch u.city where u.idUser = :idUser"),
+		@NamedQuery(name = "User.findUserByIdWithoutAll", query = "select u from User u where u.idUser = :idUser"),
 		@NamedQuery(name = "User.findModerators", query = "select u from User u where u.role_idRole = 4"),
 		@NamedQuery(name = "User.findDesigners", query = "select u from User u where u.role_idRole = 3"),
 		@NamedQuery(name = "User.findUsers", query = "select u from User u where u.role_idRole = 2"),

@@ -73,20 +73,6 @@ public class UserDAOImpl implements IUserDAO {
 	}
 
 	/**
-	 * Receipt of 3 elements of the table "users" from the database
-	 * 
-	 * @return usersTop collection of objects of type "User"
-	 * @throws DaoException
-	 * */
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<User> selectTop3Users() throws DaoException {
-		List<User> usersTop = em.createNamedQuery("User.findTop3")
-				.setFirstResult(0).setMaxResults(3).getResultList();
-		return usersTop;
-	}
-
-	/**
 	 * Receipt of all user`s email address of the table "users" from the
 	 * database
 	 * 
@@ -123,30 +109,37 @@ public class UserDAOImpl implements IUserDAO {
 		User user = null;
 		if (!users.isEmpty()) {
 			user = users.get(0);
-			Hibernate.initialize(user.getCity());
-			Hibernate.initialize(user.getCountry());
+		}
+		
+		return user;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public User selectUserWithCountry(String login) throws DaoException {
+		List<User> users = em.createNamedQuery("User.findUserByLoginWithCountry").setParameter("login", login).getResultList();
+		User user = null;
+		if (!users.isEmpty()) {
+			user = users.get(0);
 		}
 		
 		return user;
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public User selectUserById(Integer id) throws DaoException {
 		User user = (User) em.createNamedQuery("User.findUserById")
 				.setParameter("idUser", id).getSingleResult();
-		Hibernate.initialize(user.getCity());
-		Hibernate.initialize(user.getCountry());
-		Hibernate.initialize(user.getPosts());
-		List<Post> posts = user.getPosts();
-		for (Post post : posts) {
-			Hibernate.initialize(post.getPostPhotos());
-		}
+		List<Post> posts = em.createNamedQuery("Post.findByDesignerPublished").setParameter("idUser", id).getResultList();
+		user.setPosts(posts);
 		return user;
 	}
 
 	@Override
 	public User selectUserByIdWithoutAll(Integer id) throws DaoException {
-		User user = (User) em.createNamedQuery("User.findUserById")
+		User user = (User) em.createNamedQuery("User.findUserByIdWithoutAll")
 				.setParameter("idUser", id).getSingleResult();
 		return user;
 	}

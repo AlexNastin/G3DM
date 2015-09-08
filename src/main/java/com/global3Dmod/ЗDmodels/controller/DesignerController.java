@@ -221,7 +221,7 @@ public class DesignerController {
 		}
 		ModelAndView modelAndView = new ModelAndView(
 				"designer/designerPersonalData");
-		User user = designerService.getUser(person.getLogin());
+		User user = designerService.getUserWithCountry(person.getLogin());
 		userService.setPathToPhotos(user);
 		modelAndView.addObject(ControllerParamConstant.USER, user);
 		return modelAndView;
@@ -238,7 +238,7 @@ public class DesignerController {
 		}
 		String message = messages.getMessage("users.message.deleteAvatar",
 				null, locale);
-		User user = designerService.getUser(person.getLogin());
+		User user = designerService.getUserWithCountry(person.getLogin());
 		designerService.deleteAvatar(user.getAvatar());
 		ModelAndView modelAndView = new ModelAndView(
 				"designer/designerPersonalData");

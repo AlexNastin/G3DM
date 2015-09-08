@@ -11,13 +11,13 @@ public interface IUserDAO {
 	
 	public User selectUser(String login) throws DaoException;
 	
+	public User selectUserWithCountry(String login) throws DaoException;
+	
 	public User selectUserById(Integer id) throws DaoException;
 
 	public void insertUser(User user) throws DaoException;
 
 	public List<User> selectAllUsers() throws DaoException;
-	
-	public List<User> selectTop3Users() throws DaoException;
 
 	public void deleteUser(Integer id) throws DaoException;
 

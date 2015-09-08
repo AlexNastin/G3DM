@@ -13,6 +13,7 @@ import java.util.List;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.aop.annotation.AspectLogG3DM;
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
@@ -192,6 +193,7 @@ public class GuestService implements IGuestService {
 
 	@AspectLogG3DM
 	@Override
+	@Transactional
 	public void vote(Integer idUser, Integer idPost) throws ServiceException {
 		try {
 			List<Like> likes = likeDAO.selectLikeNotExists(idUser, idPost);

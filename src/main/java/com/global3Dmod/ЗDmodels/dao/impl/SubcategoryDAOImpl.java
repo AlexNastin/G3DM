@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.ISubcategoryDAO;
 import com.global3Dmod.ÇDmodels.domain.Subcategory;
@@ -24,6 +25,7 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void insertSubcategory(Subcategory subcategory) throws DaoException {
 		em.persist(subcategory);
 
@@ -47,6 +49,7 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void deleteSubcategory(Integer id) throws DaoException {
 		Subcategory subcategory = em.find(Subcategory.class, id);
 		em.remove(subcategory);
@@ -58,6 +61,7 @@ public class SubcategoryDAOImpl implements ISubcategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void updateSubcategory(Subcategory subcategory) throws DaoException {
 		em.merge(subcategory);
 		

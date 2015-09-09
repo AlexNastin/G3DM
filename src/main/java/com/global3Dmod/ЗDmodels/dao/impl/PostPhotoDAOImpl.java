@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IPostPhotoDAO;
 import com.global3Dmod.ÇDmodels.domain.PostPhoto;
@@ -24,6 +25,7 @@ public class PostPhotoDAOImpl implements IPostPhotoDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void insertPostPhoto(PostPhoto postPhoto) throws DaoException {
 		em.persist(postPhoto);
 
@@ -47,6 +49,7 @@ public class PostPhotoDAOImpl implements IPostPhotoDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void deletePostPhoto(Integer id) throws DaoException {
 		PostPhoto postPhoto = em.find(PostPhoto.class, id);
 		em.remove(postPhoto);
@@ -58,6 +61,7 @@ public class PostPhotoDAOImpl implements IPostPhotoDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void updatePostPhoto(PostPhoto postPhoto) throws DaoException {
 		em.merge(postPhoto);
 		

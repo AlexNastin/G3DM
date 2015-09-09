@@ -29,6 +29,7 @@ public class PostDAOImpl implements IPostDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void insertPost(Post post) throws DaoException {
 		em.persist(post);
 
@@ -55,6 +56,7 @@ public class PostDAOImpl implements IPostDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void deletePost(Integer idPost) throws DaoException {
 		Post post = em.find(Post.class, idPost);
 		em.remove(post);
@@ -68,6 +70,7 @@ public class PostDAOImpl implements IPostDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void updatePost(Post post) throws DaoException {
 		em.merge(post);
 

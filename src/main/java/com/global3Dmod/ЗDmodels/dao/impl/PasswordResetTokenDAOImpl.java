@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IPasswordResetTokenDAO;
 import com.global3Dmod.ÇDmodels.domain.PasswordResetToken;
@@ -18,6 +19,7 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 	private EntityManager em;
 
 	@Override
+	@Transactional
 	public void updatePasswordResetToken(PasswordResetToken passwordResetToken)
 			throws DaoException {
 		em.merge(passwordResetToken);
@@ -25,6 +27,7 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 	}
 
 	@Override
+	@Transactional
 	public void insertPasswordResetToken(PasswordResetToken passwordResetToken)
 			throws DaoException {
 		em.persist(passwordResetToken);
@@ -41,6 +44,7 @@ public class PasswordResetTokenDAOImpl implements IPasswordResetTokenDAO {
 	}
 
 	@Override
+	@Transactional
 	public void deletePasswordResetToken(Integer idToken) throws DaoException {
 		PasswordResetToken passwordResetToken = em.find(PasswordResetToken.class, idToken);
 		em.remove(passwordResetToken);

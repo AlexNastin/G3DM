@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IRejectMessageDAO;
 import com.global3Dmod.ÇDmodels.domain.RejectMessage;
@@ -23,6 +24,7 @@ public class RejectMessageDAOImpl implements IRejectMessageDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void insertRejectMessage(RejectMessage rejectMessage) throws DaoException {
 		em.persist(rejectMessage);
 
@@ -46,6 +48,7 @@ public class RejectMessageDAOImpl implements IRejectMessageDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void deleteRejectMessage(Integer id) throws DaoException {
 		RejectMessage rejectMessage = em.find(RejectMessage.class, id);
 		em.remove(rejectMessage);
@@ -57,6 +60,7 @@ public class RejectMessageDAOImpl implements IRejectMessageDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void updateRejectMessage(RejectMessage rejectMessage) throws DaoException {
 		em.merge(rejectMessage);
 		

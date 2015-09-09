@@ -27,6 +27,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void insertCategory(Category category) throws DaoException {
 		em.persist(category);
 
@@ -65,6 +66,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void deleteCategory(Integer id) throws DaoException {
 		Category category = em.find(Category.class, id);
 		em.remove(category);
@@ -78,6 +80,7 @@ public class CategoryDAOImpl implements ICategoryDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void updateCategory(Category category) throws DaoException {
 		em.merge(category);
 

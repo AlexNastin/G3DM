@@ -27,6 +27,7 @@ public class UserDAOImpl implements IUserDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void insertUser(User user) throws DaoException {
 		em.persist(user);
 
@@ -53,6 +54,7 @@ public class UserDAOImpl implements IUserDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void deleteUser(Integer id) throws DaoException {
 		User user = em.find(User.class, id);
 		em.remove(user);
@@ -66,6 +68,7 @@ public class UserDAOImpl implements IUserDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void updateUser(User user) throws DaoException {
 		em.merge(user);
 

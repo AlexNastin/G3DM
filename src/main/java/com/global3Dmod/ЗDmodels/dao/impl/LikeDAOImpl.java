@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.ILikeDAO;
 import com.global3Dmod.ÇDmodels.domain.Like;
@@ -18,11 +19,13 @@ public class LikeDAOImpl implements ILikeDAO {
 	private EntityManager em;
 
 	@Override
+	@Transactional
 	public void insertLike(Like like) throws DaoException {
 		em.persist(like);
 	}
 
 	@Override
+	@Transactional
 	public void updateLike(Like like) throws DaoException {
 		em.merge(like);
 	}
@@ -35,6 +38,7 @@ public class LikeDAOImpl implements ILikeDAO {
 	}
 
 	@Override
+	@Transactional
 	public void deleteLike(Integer idLike) throws DaoException {
 		Like like = em.find(Like.class, idLike);
 		em.remove(like);

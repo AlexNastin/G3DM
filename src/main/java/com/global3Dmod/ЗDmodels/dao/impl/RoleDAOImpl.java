@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IRoleDAO;
 import com.global3Dmod.ÇDmodels.domain.Role;
@@ -24,6 +25,7 @@ public class RoleDAOImpl implements IRoleDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void insertRole(Role role) throws DaoException {
 		em.persist(role);
 
@@ -47,6 +49,7 @@ public class RoleDAOImpl implements IRoleDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void deleteRole(Integer id) throws DaoException {
 		Role role = em.find(Role.class, id);
 		em.remove(role);
@@ -58,6 +61,7 @@ public class RoleDAOImpl implements IRoleDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void updateRole(Role role) throws DaoException {
 		em.merge(role);
 		

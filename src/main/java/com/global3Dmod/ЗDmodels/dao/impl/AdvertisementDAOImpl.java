@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IAdvertisementDAO;
 import com.global3Dmod.ÇDmodels.domain.Advertisement;
@@ -25,6 +26,7 @@ public class AdvertisementDAOImpl implements IAdvertisementDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void insertAdvertisement(Advertisement advertisement)
 			throws DaoException {
 		em.persist(advertisement);
@@ -52,6 +54,7 @@ public class AdvertisementDAOImpl implements IAdvertisementDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void deleteAdvertisement(Integer idAdvertisement)
 			throws DaoException {
 		Advertisement advertisement = em.find(Advertisement.class,
@@ -68,6 +71,7 @@ public class AdvertisementDAOImpl implements IAdvertisementDAO {
 	 * @throws DaoException
 	 * */
 	@Override
+	@Transactional
 	public void updateAdvertisement(Advertisement advertisement)
 			throws DaoException {
 		em.merge(advertisement);

@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.global3Dmod.ÇDmodels.dao.IComplainDAO;
 import com.global3Dmod.ÇDmodels.domain.Complain;
@@ -18,11 +19,13 @@ public class ComplainDAOImpl implements IComplainDAO {
 	private EntityManager em;
 
 	@Override
+	@Transactional
 	public void insertComplain(Complain complain) throws DaoException {
 		em.persist(complain);
 	}
 
 	@Override
+	@Transactional
 	public void updateComplain(Complain complain) throws DaoException {
 		em.merge(complain);
 	}
@@ -36,6 +39,7 @@ public class ComplainDAOImpl implements IComplainDAO {
 	}
 
 	@Override
+	@Transactional
 	public void deleteComplain(Integer idComplain) throws DaoException {
 		Complain complain = em.find(Complain.class, idComplain);
 		em.remove(complain);
@@ -45,7 +49,6 @@ public class ComplainDAOImpl implements IComplainDAO {
 	@SuppressWarnings("unchecked")
 	public List<Complain> selectComplainNotExists(Integer idUser, Integer idPost)
 			throws DaoException {
-
 		List<Complain> complains = em
 				.createNamedQuery("Complain.findComplainByUser")
 				.setParameter("user_idUser", idUser)
@@ -73,6 +76,7 @@ public class ComplainDAOImpl implements IComplainDAO {
 	}
 
 	@Override
+	@Transactional
 	public void deleteComplains(Integer idPost) throws DaoException {
 		em.createNamedQuery("Complain.deleteComplainByIdPost")
 				.setParameter("post_idPost", idPost).executeUpdate();

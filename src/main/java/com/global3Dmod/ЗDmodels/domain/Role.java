@@ -8,9 +8,13 @@ import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "roles")
-@NamedQuery(name="Role.findAll", query="select r from Role r")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@NamedQuery(name = "Role.findAll", query = "select r from Role r")
 public class Role implements Essence {
 
 	/**

@@ -11,11 +11,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+
 @Entity
 @Table(name = "avatars")
-
-@NamedQueries({
-	@NamedQuery(name="Avatar.findAll", query="select a from Avatar a")})
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@NamedQueries({ @NamedQuery(name = "Avatar.findAll", query = "select a from Avatar a") })
 public class Avatar implements Essence {
 
 	/**
@@ -30,10 +32,10 @@ public class Avatar implements Essence {
 
 	@Column(name = "avatar_path")
 	private String avatarPath;
-	
+
 	@Column(name = "file_name")
 	private String fileName;
-	
+
 	@OneToOne
 	@JoinColumn(name = "user_id_user")
 	private User user;
@@ -49,7 +51,7 @@ public class Avatar implements Essence {
 	public void setIdAvatar(int idAvatar) {
 		this.idAvatar = idAvatar;
 	}
-	
+
 	public String getAvatarPath() {
 		return avatarPath;
 	}
@@ -78,10 +80,8 @@ public class Avatar implements Essence {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((avatarPath == null) ? 0 : avatarPath.hashCode());
-		result = prime * result
-				+ ((fileName == null) ? 0 : fileName.hashCode());
+		result = prime * result + ((avatarPath == null) ? 0 : avatarPath.hashCode());
+		result = prime * result + ((fileName == null) ? 0 : fileName.hashCode());
 		result = prime * result + idAvatar;
 		return result;
 	}
@@ -115,5 +115,4 @@ public class Avatar implements Essence {
 		return "Avatar [idAvatar=" + idAvatar + ", avatarPath=" + avatarPath + ", fileName=" + fileName + "]";
 	}
 
-	
 }

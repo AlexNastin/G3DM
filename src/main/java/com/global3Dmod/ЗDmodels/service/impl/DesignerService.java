@@ -138,13 +138,12 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory)
-			throws ServiceException {
+	public List<Subcategory> getAllSubcategoryWithinCategory(int idCategory) throws ServiceException {
 		List<Subcategory> subcategories = new ArrayList<Subcategory>();
-		Category category1;
+		Category category;
 		try {
-			category1 = categoryDAO.selectCategoryById(idCategory);
-			subcategories = category1.getSubcategories();
+			category = categoryDAO.selectCategoryById(idCategory);
+			subcategories = category.getSubcategories();
 			for (Subcategory subcategory : subcategories) {
 				subcategory.setCategory(null);
 			}
@@ -156,17 +155,17 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public List<City> getAllCityWithinCountry(int idCountry)
-			throws ServiceException {
+	public List<City> getAllCityWithinCountry(int idCountry) throws ServiceException {
 		List<City> cities = new ArrayList<City>();
-		Country country1;
+		Country country;
 		try {
-			country1 = countryDAO.selectCountryById(idCountry);
-			cities = country1.getCities();
+			country = countryDAO.selectCountryById(idCountry);
+			cities = country.getCities();
 			for (City city : cities) {
 				city.setCountry(null);
 				city.setUsers(null);
 			}
+
 		} catch (DaoException e) {
 			throw new ServiceException(e);
 		}
@@ -187,8 +186,7 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public List<Technology> getCheckPrintersById(String[] printersId)
-			throws ServiceException {
+	public List<Technology> getCheckPrintersById(String[] printersId) throws ServiceException {
 		List<Technology> printers;
 		try {
 			printers = printerDAO.selectCheckTechnologiesById(printersId);
@@ -201,19 +199,15 @@ public class DesignerService implements IDesignerService {
 	@AspectLogG3DM
 	@Override
 	@Transactional
-	public void addPost(PostForm postForm, int idUser, String nickName,
-			String serverPath) throws ServiceException {
-		DateFormat dateFormat = new SimpleDateFormat(
-				ServiceParamConstant.FORMAT_DATE);
+	public void addPost(PostForm postForm, int idUser, String nickName, String serverPath) throws ServiceException {
+		DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
 		Date date = new Date();
 		String registrationDate = dateFormat.format(date);
 		Post post = new Post();
 		post.setUser_idUser(idUser);
 		post.setCategory_idCategory(postForm.getCategory_idCategory());
-		post.setSubcategory_idSubcategory(postForm
-				.getSubcategory_idSubcategory());
-		post.setNumberPost(ServiceHelper.generationNumberPost(date, nickName,
-				postForm.getCategory_idCategory(),
+		post.setSubcategory_idSubcategory(postForm.getSubcategory_idSubcategory());
+		post.setNumberPost(ServiceHelper.generationNumberPost(date, nickName, postForm.getCategory_idCategory(),
 				postForm.getSubcategory_idSubcategory()));
 		post.setDisProgram_idDisProgram(postForm.getDisProgram_idDisProgram());
 		post.setDateReg(registrationDate);
@@ -234,8 +228,7 @@ public class DesignerService implements IDesignerService {
 
 		PostPhoto firstPostPhoto = new PostPhoto();
 		firstPostPhoto.setFolder(time);
-		String newName = photoModelFileUpload(postForm.getFirstPhoto(),
-				fullPathModelPhoto);
+		String newName = photoModelFileUpload(postForm.getFirstPhoto(), fullPathModelPhoto);
 		firstPostPhoto.setFileName(newName);
 		firstPostPhoto.setPhotoPath(pathModelPhoto + newName);
 		firstPostPhoto.setPost(post);
@@ -261,8 +254,7 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public String modelFileUpload(MultipartFile file, String path)
-			throws ServiceException {
+	public String modelFileUpload(MultipartFile file, String path) throws ServiceException {
 		String orgName = file.getOriginalFilename();
 		String newName = createNewNameFile(orgName);
 		String filePath = path + newName;
@@ -280,11 +272,9 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public String modelFileUpload(MultipartFile file, String path,
-			String oldFileName) throws ServiceException {
+	public String modelFileUpload(MultipartFile file, String path, String oldFileName) throws ServiceException {
 		String orgName = file.getOriginalFilename();
-		Pattern pattern = regExCollection
-				.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Pattern pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
 		Matcher matcher = pattern.matcher(orgName);
 		String orgNameExt = "";
 		String oldNameExt = "";
@@ -317,8 +307,7 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public String photoModelFileUpload(MultipartFile file, String path)
-			throws ServiceException {
+	public String photoModelFileUpload(MultipartFile file, String path) throws ServiceException {
 		String orgName = file.getOriginalFilename();
 		String newName = createNewNameFile(orgName);
 		String filePath = path + newName;
@@ -336,11 +325,9 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public String photoModelFileUpload(MultipartFile file, String path,
-			String oldFileName) throws ServiceException {
+	public String photoModelFileUpload(MultipartFile file, String path, String oldFileName) throws ServiceException {
 		String orgName = file.getOriginalFilename();
-		Pattern pattern = regExCollection
-				.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Pattern pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
 		Matcher matcher = pattern.matcher(orgName);
 		String orgNameExt = "";
 		String oldNameExt = "";
@@ -373,8 +360,7 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public String avatarFileUpload(MultipartFile file, String path)
-			throws ServiceException {
+	public String avatarFileUpload(MultipartFile file, String path) throws ServiceException {
 		String orgName = file.getOriginalFilename();
 		String newName = createNewNameFile(orgName);
 		String filePath = path + newName;
@@ -392,11 +378,9 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public String avatarFileUpload(MultipartFile file, String path,
-			String oldFileName) throws ServiceException {
+	public String avatarFileUpload(MultipartFile file, String path, String oldFileName) throws ServiceException {
 		String orgName = file.getOriginalFilename();
-		Pattern pattern = regExCollection
-				.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Pattern pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
 		Matcher matcher = pattern.matcher(orgName);
 		String orgNameExt = "";
 		String oldNameExt = "";
@@ -429,8 +413,7 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public List<Post> getPostsByDesigner(Integer idUser)
-			throws ServiceException {
+	public List<Post> getPostsByDesigner(Integer idUser) throws ServiceException {
 		List<Post> posts;
 		try {
 			posts = postDAO.selectPostsByDesigner(idUser);
@@ -442,8 +425,7 @@ public class DesignerService implements IDesignerService {
 
 	@AspectLogG3DM
 	@Override
-	public List<Post> getPostsByDesignerForSort(Integer idUser)
-			throws ServiceException {
+	public List<Post> getPostsByDesignerForSort(Integer idUser) throws ServiceException {
 		List<Post> posts;
 		try {
 			posts = postDAO.selectPostsByDesignerForSort(idUser);
@@ -504,8 +486,7 @@ public class DesignerService implements IDesignerService {
 	}
 
 	@Override
-	public ModelAndView setParamsForSort(ModelAndView modelAndView,
-			String sort, boolean desc) {
+	public ModelAndView setParamsForSort(ModelAndView modelAndView, String sort, boolean desc) {
 		if (ServiceParamConstant.CATEGORY.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.CATEGORY_DESC, true);
 		} else {
@@ -529,8 +510,7 @@ public class DesignerService implements IDesignerService {
 		if (ServiceParamConstant.SUBCATEGORY.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.SUBCATEGORY_DESC, true);
 		} else {
-			modelAndView
-					.addObject(ServiceParamConstant.SUBCATEGORY_DESC, false);
+			modelAndView.addObject(ServiceParamConstant.SUBCATEGORY_DESC, false);
 		}
 		if (ServiceParamConstant.TITLE.equalsIgnoreCase(sort) && !desc) {
 			modelAndView.addObject(ServiceParamConstant.TITLE_DESC, true);
@@ -551,7 +531,7 @@ public class DesignerService implements IDesignerService {
 		}
 		return user;
 	}
-	
+
 	@AspectLogG3DM
 	@Override
 	public User getUserWithCountry(String login) throws ServiceException {
@@ -567,8 +547,8 @@ public class DesignerService implements IDesignerService {
 	@AspectLogG3DM
 	@Override
 	@Transactional
-	public void updateUser(DesignerPersonalDataForm personalDataForm,
-			String login, String serverPath) throws ServiceException {
+	public void updateUser(DesignerPersonalDataForm personalDataForm, String login, String serverPath)
+			throws ServiceException {
 		try {
 			User user = userDAO.selectUser(login);
 			user.setCountry_idCountry(personalDataForm.getCountry_idCountry());
@@ -582,8 +562,7 @@ public class DesignerService implements IDesignerService {
 				String fullPathAvatar = serverPath.concat(pathAvatar);
 				Avatar avatar = user.getAvatar();
 				avatar.setAvatarPath(pathAvatar
-						+ avatarFileUpload(personalDataForm.getAvatar(),
-								fullPathAvatar, avatar.getFileName()));
+						+ avatarFileUpload(personalDataForm.getAvatar(), fullPathAvatar, avatar.getFileName()));
 				user.setAvatar(avatar);
 			}
 			userDAO.updateUser(user);
@@ -596,8 +575,7 @@ public class DesignerService implements IDesignerService {
 	@AspectLogG3DM
 	@Override
 	@Transactional
-	public void updatePassword(
-			DesignerPersonalSecurityForm personalSecurityForm, String login)
+	public void updatePassword(DesignerPersonalSecurityForm personalSecurityForm, String login)
 			throws ServiceException {
 		try {
 			User user = userDAO.selectUser(login);
@@ -616,48 +594,37 @@ public class DesignerService implements IDesignerService {
 	@AspectLogG3DM
 	@Override
 	@Transactional
-	public void updatePost(UpdatePostForm updatePostForm, Integer idPost,
-			String serverPath) throws ServiceException {
+	public void updatePost(UpdatePostForm updatePostForm, Integer idPost, String serverPath) throws ServiceException {
 		try {
 			Post post = postDAO.selectPost(idPost);
-			DateFormat dateFormat = new SimpleDateFormat(
-					ServiceParamConstant.FORMAT_DATE);
+			DateFormat dateFormat = new SimpleDateFormat(ServiceParamConstant.FORMAT_DATE);
 			Date date = new Date();
 			String dateUpdate = dateFormat.format(date);
 			post.setCategory_idCategory(updatePostForm.getCategory_idCategory());
-			post.setSubcategory_idSubcategory(updatePostForm
-					.getSubcategory_idSubcategory());
-			post.setDisProgram_idDisProgram(updatePostForm
-					.getDisProgram_idDisProgram());
+			post.setSubcategory_idSubcategory(updatePostForm.getSubcategory_idSubcategory());
+			post.setDisProgram_idDisProgram(updatePostForm.getDisProgram_idDisProgram());
 			post.setDateUpdate(dateUpdate);
 			post.setTitle(updatePostForm.getTitle());
 			post.setDescription(updatePostForm.getDescription());
 			post.setInstruction(updatePostForm.getInstruction());
 			post.setIsDisplay(2);
-			post.setTechnologies(getCheckPrintersById(updatePostForm
-					.getTechnologiesId()));
+			post.setTechnologies(getCheckPrintersById(updatePostForm.getTechnologiesId()));
 			if (!updatePostForm.getModelUpdate().isEmpty()) {
-				String pathModel = createPostPath(post.getUser_idUser(), post
-						.getFile().getFolder());
+				String pathModel = createPostPath(post.getUser_idUser(), post.getFile().getFolder());
 				String fullPathModel = serverPath.concat(pathModel);
 				com.global3Dmod.ÇDmodels.domain.File file = post.getFile();
 				file.setFilePath(pathModel
-						+ modelFileUpload(updatePostForm.getModelUpdate(),
-								fullPathModel, file.getFileName()));
+						+ modelFileUpload(updatePostForm.getModelUpdate(), fullPathModel, file.getFileName()));
 				post.setFile(file);
 			}
 			if (!updatePostForm.getFirstPhotoUpdate().isEmpty()) {
-				String pathModelPhoto = createPostPath(post.getUser_idUser(),
-						post.getPostPhotos().get(0).getFolder());
+				String pathModelPhoto = createPostPath(post.getUser_idUser(), post.getPostPhotos().get(0).getFolder());
 
 				String fullPathModelPhoto = serverPath.concat(pathModelPhoto);
 
 				PostPhoto firstPostPhoto = post.getPostPhotos().get(0);
-				firstPostPhoto.setPhotoPath(pathModelPhoto
-						+ photoModelFileUpload(
-								updatePostForm.getFirstPhotoUpdate(),
-								fullPathModelPhoto,
-								firstPostPhoto.getFileName()));
+				firstPostPhoto.setPhotoPath(pathModelPhoto + photoModelFileUpload(updatePostForm.getFirstPhotoUpdate(),
+						fullPathModelPhoto, firstPostPhoto.getFileName()));
 
 				List<PostPhoto> postPhotos = new ArrayList<PostPhoto>();
 				postPhotos.add(firstPostPhoto);
@@ -699,10 +666,8 @@ public class DesignerService implements IDesignerService {
 	@Override
 	public void deleteAvatar(Avatar avatar) throws ServiceException {
 		try {
-			avatar.setAvatarPath(propertyManager
-					.getValue(PropertyNameG3DM.DEFAULT_AVATAR_PATH));
-			avatar.setFileName(propertyManager
-					.getValue(PropertyNameG3DM.DEFAULT_AVATAR_NAME));
+			avatar.setAvatarPath(propertyManager.getValue(PropertyNameG3DM.DEFAULT_AVATAR_PATH));
+			avatar.setFileName(propertyManager.getValue(PropertyNameG3DM.DEFAULT_AVATAR_NAME));
 			avatarDAO.updateAvatar(avatar);
 		} catch (DaoException e) {
 			throw new ServiceException(e);
@@ -732,8 +697,7 @@ public class DesignerService implements IDesignerService {
 
 	@Override
 	public String createNewNameFile(String name) {
-		Pattern pattern = regExCollection
-				.getRegExPattern(RegExName.REGEX_FILE_EXT);
+		Pattern pattern = regExCollection.getRegExPattern(RegExName.REGEX_FILE_EXT);
 		Matcher matcher = pattern.matcher(name);
 		int hashCode = name.hashCode();
 		if (hashCode < 0) {

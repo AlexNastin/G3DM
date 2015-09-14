@@ -13,11 +13,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.QueryHint;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "cities")
-@NamedQuery(name="—ity.findAll", query="select c from City c")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "informstatic")
+@NamedQuery(name = "—ity.findAll", query = "select c from City c", hints = {
+		@QueryHint(name = "org.hibernate.cacheable", value = "true") })
 public class City implements Essence {
 
 	/**
@@ -35,11 +41,11 @@ public class City implements Essence {
 
 	@Column(name = "title")
 	private String title;
-	
+
 	@OneToMany(mappedBy = "city", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<User> users;
-	
-	@JoinColumn(name = "country_id_country", referencedColumnName = "id_country", insertable=false, updatable=false)
+
+	@JoinColumn(name = "country_id_country", referencedColumnName = "id_country", insertable = false, updatable = false)
 	@ManyToOne(optional = false)
 	private Country country;
 
@@ -51,13 +57,9 @@ public class City implements Essence {
 		return idCity;
 	}
 
-
-
 	public void setIdCity(int idCity) {
 		this.idCity = idCity;
 	}
-
-
 
 	public int getCountry_idCountry() {
 		return country_idCountry;
@@ -124,11 +126,8 @@ public class City implements Essence {
 
 	@Override
 	public String toString() {
-		return "City [id—ity=" + idCity + ", country_idCountry="
-				+ country_idCountry + ", title=" + title + ", users=" + users
-				+ ", country=" + country + "]";
+		return "City [id—ity=" + idCity + ", country_idCountry=" + country_idCountry + ", title=" + title + ", users="
+				+ users + ", country=" + country + "]";
 	}
-
-
 
 }

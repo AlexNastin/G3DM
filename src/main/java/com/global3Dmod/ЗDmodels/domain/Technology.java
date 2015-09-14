@@ -10,15 +10,22 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.QueryHint;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "technology")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "informstatic")
 @NamedQueries({
-	@NamedQuery(name="Technology.findAll", query="select t from Technology t"),
-	@NamedQuery(name="Technology.findCheckById", query="select t from Technology t where t.idTechnology in (:idTechnology)") })
+	@NamedQuery(name="Technology.findAll", query="select t from Technology t", hints = {
+			@QueryHint(name = "org.hibernate.cacheable", value = "true") }),
+	@NamedQuery(name="Technology.findCheckById", query="select t from Technology t where t.idTechnology in (:idTechnology)", hints = {
+			@QueryHint(name = "org.hibernate.cacheable", value = "true") }) })
 public class Technology implements Essence {
 
 	/**

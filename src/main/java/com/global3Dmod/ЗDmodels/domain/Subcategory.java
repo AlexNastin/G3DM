@@ -20,7 +20,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "subcategories")
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region="informstatic")
 @NamedQueries({
 	@NamedQuery(name = "Subcategory.findTop3", query = "select s from Subcategory s where s.category_idCategory = :idCategory and s.top=true", hints = { @QueryHint(name = "org.hibernate.cacheable", value = "true") }),
 	@NamedQuery(name="Subcategory.findAll", query="select s from Subcategory s")})

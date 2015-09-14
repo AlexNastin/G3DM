@@ -13,13 +13,20 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.QueryHint;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "countries")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "informstatic")
 @NamedQueries({
-	@NamedQuery(name="Country.findAll", query="select c from Country c"),
-	@NamedQuery(name = "Country.findCountryById", query = "select c from Country c join fetch c.cities where c.idCountry = :idCountry")})
+		@NamedQuery(name = "Country.findAll", query = "select c from Country c", hints = {
+				@QueryHint(name = "org.hibernate.cacheable", value = "true") }),
+		@NamedQuery(name = "Country.findCountryById", query = "select c from Country c join fetch c.cities where c.idCountry = :idCountry", hints = {
+				@QueryHint(name = "org.hibernate.cacheable", value = "true") }) })
 public class Country implements Essence {
 
 	/**
@@ -34,10 +41,11 @@ public class Country implements Essence {
 
 	@Column(name = "title")
 	private String title;
-	
+
 	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<User> users;
-	
+
+	@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 	@OneToMany(mappedBy = "country", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<City> cities = new ArrayList<City>();
 
@@ -49,11 +57,9 @@ public class Country implements Essence {
 		return idCountry;
 	}
 
-
 	public void setIdCountry(int idCountry) {
 		this.idCountry = idCountry;
 	}
-
 
 	public String getTitle() {
 		return title;
@@ -109,10 +115,7 @@ public class Country implements Essence {
 
 	@Override
 	public String toString() {
-		return "Country [idCountry=" + idCountry + ", title=" + title
-				+ ", users=" + users + ", cities=" + cities + "]";
+		return "Country [idCountry=" + idCountry + ", title=" + title + ", users=" + users + ", cities=" + cities + "]";
 	}
-
-	
 
 }

@@ -23,9 +23,10 @@ import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "categories")
-@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "informstatic")
 @NamedQueries({
-		@NamedQuery(name = "Category.findAll", query = "select c from Category c", hints = { @QueryHint(name = "org.hibernate.cacheable", value = "true") }),
+		@NamedQuery(name = "Category.findAll", query = "select c from Category c", hints = {
+				@QueryHint(name = "org.hibernate.cacheable", value = "true") }),
 		@NamedQuery(name = "Category.findCategoryById", query = "select c from Category c join fetch c.subcategories where c.idCategory = :idCategory") })
 public class Category implements Essence {
 
@@ -93,8 +94,7 @@ public class Category implements Essence {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + idCategory;
-		result = prime * result
-				+ ((imagePath == null) ? 0 : imagePath.hashCode());
+		result = prime * result + ((imagePath == null) ? 0 : imagePath.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -125,8 +125,7 @@ public class Category implements Essence {
 
 	@Override
 	public String toString() {
-		return "Category [idCategory=" + idCategory + ", title=" + title
-				+ ", imagePath=" + imagePath + "]";
+		return "Category [idCategory=" + idCategory + ", title=" + title + ", imagePath=" + imagePath + "]";
 	}
 
 }

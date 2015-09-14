@@ -7,13 +7,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.QueryHint;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
 @Table(name = "advertisement")
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @NamedQueries({
-		@NamedQuery(name = "Advertisement.findAll", query = "select a from Advertisement a"),
-		@NamedQuery(name = "Advertisement.findOneById", query = "select a from Advertisement a where a.idAdvertisement = :idAdvertisement") })
+		@NamedQuery(name = "Advertisement.findAll", query = "select a from Advertisement a", hints = {
+				@QueryHint(name = "org.hibernate.cacheable", value = "true") }),
+		@NamedQuery(name = "Advertisement.findOneById", query = "select a from Advertisement a where a.idAdvertisement = :idAdvertisement", hints = {
+				@QueryHint(name = "org.hibernate.cacheable", value = "true") }) })
 public class Advertisement implements Essence {
 
 	/**
@@ -120,18 +127,12 @@ public class Advertisement implements Essence {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((client == null) ? 0 : client.hashCode());
-		result = prime * result
-				+ ((description == null) ? 0 : description.hashCode());
-		result = prime * result
-				+ ((expirationDate == null) ? 0 : expirationDate.hashCode());
-		result = prime * result
-				+ ((fileName == null) ? 0 : fileName.hashCode());
-		result = prime * result
-				+ ((filePath == null) ? 0 : filePath.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
+		result = prime * result + ((expirationDate == null) ? 0 : expirationDate.hashCode());
+		result = prime * result + ((fileName == null) ? 0 : fileName.hashCode());
+		result = prime * result + ((filePath == null) ? 0 : filePath.hashCode());
 		result = prime * result + idAdvertisement;
-		result = prime
-				* result
-				+ ((registrationDate == null) ? 0 : registrationDate.hashCode());
+		result = prime * result + ((registrationDate == null) ? 0 : registrationDate.hashCode());
 		result = prime * result + ((title == null) ? 0 : title.hashCode());
 		return result;
 	}
@@ -187,11 +188,9 @@ public class Advertisement implements Essence {
 
 	@Override
 	public String toString() {
-		return "Advertisement [idAdvertisement=" + idAdvertisement + ", title="
-				+ title + ", description=" + description + ", client=" + client
-				+ ", registrationDate=" + registrationDate
-				+ ", expirationDate=" + expirationDate + ", fileName="
-				+ fileName + ", filePath=" + filePath + "]";
+		return "Advertisement [idAdvertisement=" + idAdvertisement + ", title=" + title + ", description=" + description
+				+ ", client=" + client + ", registrationDate=" + registrationDate + ", expirationDate=" + expirationDate
+				+ ", fileName=" + fileName + ", filePath=" + filePath + "]";
 	}
 
 }

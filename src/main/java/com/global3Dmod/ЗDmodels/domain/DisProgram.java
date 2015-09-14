@@ -11,13 +11,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.QueryHint;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import com.global3Dmod.ÇDmodels.domain.Essence;
 
 @Entity
 @Table(name = "disprograms")
-@NamedQuery(name="DisProgram.findAll", query="select d from DisProgram d")
+@Cache(usage = CacheConcurrencyStrategy.READ_ONLY, region = "informstatic")
+@NamedQuery(name = "DisProgram.findAll", query = "select d from DisProgram d", hints = {
+		@QueryHint(name = "org.hibernate.cacheable", value = "true") })
 public class DisProgram implements Essence {
 
 	/**
@@ -29,13 +35,13 @@ public class DisProgram implements Essence {
 	@Column(name = "id_disprogram")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idDisProgram;
-	
+
 	@Column(name = "title")
 	private String title;
-	
+
 	@OneToMany(mappedBy = "disProgram", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Post> posts;
-	
+
 	public DisProgram() {
 		super();
 	}
@@ -94,10 +100,7 @@ public class DisProgram implements Essence {
 
 	@Override
 	public String toString() {
-		return "DisProgram [idDisProgram=" + idDisProgram + ", title=" + title
-				+ "]";
+		return "DisProgram [idDisProgram=" + idDisProgram + ", title=" + title + "]";
 	}
-	
-	
 
 }

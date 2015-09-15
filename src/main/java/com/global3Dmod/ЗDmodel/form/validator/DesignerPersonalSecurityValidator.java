@@ -1,0 +1,51 @@
+package com.global3Dmod.ЗDmodel.form.validator;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.validation.Errors;
+import org.springframework.validation.ValidationUtils;
+import org.springframework.validation.Validator;
+
+import com.global3Dmod.ЗDmodel.form.DesignerPersonalSecurityForm;
+import com.global3Dmod.ЗDmodel.form.regex.RegExCollection;
+import com.global3Dmod.ЗDmodel.form.regex.RegExName;
+
+@Component
+public class DesignerPersonalSecurityValidator implements Validator {
+
+	@Autowired
+	private RegExCollection regExCollection;
+
+	@Override
+	public boolean supports(Class<?> arg0) {
+		return DesignerPersonalSecurityForm.class.isAssignableFrom(arg0);
+	}
+
+	@Override
+	public void validate(Object target, Errors errors) {
+
+		DesignerPersonalSecurityForm personalSecurityForm = (DesignerPersonalSecurityForm) target;
+		Matcher matcher = null;
+		Pattern pattern = null;
+
+		// Валидация Password и ConfirmPassword и их совпадение.
+		// На пустое значение
+		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "valid.password.empty");
+		pattern = regExCollection.getRegExPattern(RegExName.REGEX_PASSWORD);
+		matcher = pattern.matcher(personalSecurityForm.getPassword());
+		// Строчные и прописные латинские буквы, цифры, спецсимволы. От 8 символов до 32
+		if (!matcher.matches()) {
+			errors.rejectValue("password", "valid.password.pattern");
+		}
+		if (!(personalSecurityForm.getPassword()).equals(personalSecurityForm
+				.getConfirmPassword())) {
+			errors.rejectValue("confirmPassword",
+					"valid.confirmPassword.passwordDontMatch");
+		}
+
+	}
+
+}

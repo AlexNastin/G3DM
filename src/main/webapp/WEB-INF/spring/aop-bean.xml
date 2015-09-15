@@ -17,7 +17,7 @@
 	<aop:aspectj-autoproxy />
 	
 	<!-- AOP beans -->
-	<bean id="loggerErrorAnnotationAspect" class="com.global3Dmod.ЗDmodels.aop.aspect.LoggerErrorAnnotationAspect">
+	<bean id="loggerErrorAnnotationAspect" class="com.global3Dmod.ЗDmodel.aop.aspect.LoggerErrorAnnotationAspect">
 	</bean>
 	
 </beans>

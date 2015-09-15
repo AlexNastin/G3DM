@@ -1,0 +1,58 @@
+package com.global3Dmod.ÇDmodel.dao;
+
+import java.util.List;
+import java.util.Map;
+
+import com.global3Dmod.ÇDmodel.domain.Post;
+import com.global3Dmod.ÇDmodel.exception.DaoException;
+
+public interface IPostDAO {
+	
+	public void updatePost(Post post) throws DaoException;
+
+	public void insertPost(Post post) throws DaoException;
+
+	public List<Post> selectAllPosts() throws DaoException;
+	
+	public List<Post> selectPostsByDesigner(Integer idDesigner) throws DaoException;
+	
+	public List<Post> selectPostsByDesignerForSort(Integer idDesigner) throws DaoException;
+	
+	public List<Post> selectPostsByUserForSort(Integer idDesigner) throws DaoException;
+	
+	public List<Post> selectPosts() throws DaoException;
+	
+	public List<Post> selectPostsByCategory(Integer idCategory) throws DaoException;
+	
+	public List<Post> selectPostsByCategoryBySubcategory(Integer idCategory, Integer idSubcategory) throws DaoException;
+
+	public void deletePost(Integer idPost) throws DaoException;
+	
+	public Post selectPost(Integer idPost) throws DaoException;
+	
+	public Post selectPostWithoutAll(Integer idPost) throws DaoException;
+	
+	public int countPostByDesigner(Integer idUser) throws DaoException;
+	
+	public List<Post> selectPostsByModeratingForSort() throws DaoException;
+	
+	public List<Post> selectPostsByRejectingForSort() throws DaoException;
+	
+	public List<Post> selectTop4ByLike() throws DaoException;
+
+	public List<Post> selectComplainedPostsForSort() throws DaoException;
+	
+	public Map<Integer, Integer> selectColPostsForAllUsers() throws DaoException;
+
+	public List<Integer> selectIdDesignersHavePosts() throws DaoException;
+
+	public int selectNumberOfAllPosts() throws DaoException;;
+
+	public int selectNumberOfDeletedPosts() throws DaoException;;
+
+	public int selectNumberOfRejectedPosts() throws DaoException;;
+
+	public int selectNumberOfModeratingPosts() throws DaoException;;
+
+	public int selectNumberOfPublishingPosts() throws DaoException;;
+}

@@ -11,7 +11,7 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd
 http://www.springframework.org/schema/tx
 http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<context:component-scan base-package="com.global3Dmod.ЗDmodels.domain" />
+	<context:component-scan base-package="com.global3Dmod.ЗDmodel.domain" />
 
 	<!-- Настройки фабрики сессий Хибернейта -->
 	<bean id="entityManagerFactory"

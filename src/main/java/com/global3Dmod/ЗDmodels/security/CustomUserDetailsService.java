@@ -27,10 +27,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
 	private static final Logger LOGGER = Logger.getLogger(CustomUserDetailsService.class);
 
-	
 	@Override
-	public UserDetails loadUserByUsername(String login)
-			throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
 		User userG3DM = null;
 		boolean enabled = true;
 		boolean accountNonExpired = true;
@@ -38,13 +36,12 @@ public class CustomUserDetailsService implements UserDetailsService {
 		boolean accountNonLocked = true;
 		try {
 			userG3DM = userDAO.selectUser(login);
-			LOGGER.info("User: " + userG3DM.getLogin() +" i entered this system");
+			LOGGER.info("User: " + userG3DM.getLogin() + " i entered this system");
 		} catch (DaoException e) {
 			LOGGER.error("Problem dao");
 		}
-		return new org.springframework.security.core.userdetails.User(
-				userG3DM.getLogin(), userG3DM.getPassword().toLowerCase(),
-				enabled, accountNonExpired, credentialsNonExpired,
+		return new org.springframework.security.core.userdetails.User(userG3DM.getLogin(),
+				userG3DM.getPassword().toLowerCase(), enabled, accountNonExpired, credentialsNonExpired,
 				accountNonLocked, getAuthorities(userG3DM.getRole_idRole()));
 
 	}
@@ -55,7 +52,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 	 * 
 	 * @param role
 	 *            the numerical role
-	 * @return a collection of {@link GrantedAuthority
+	 * @return a collection of {@link GrantedAuthority
+	 * 
 	 */
 	public Collection<? extends GrantedAuthority> getAuthorities(Integer role) {
 		List<GrantedAuthority> authList = getGrantedAuthorities(getRoles(role));
@@ -90,8 +88,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	 *            {@link String} of roles
 	 * @return list of granted authorities
 	 */
-	public static List<GrantedAuthority> getGrantedAuthorities(
-			List<String> roles) {
+	public static List<GrantedAuthority> getGrantedAuthorities(List<String> roles) {
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		for (String role : roles) {
 			authorities.add(new SimpleGrantedAuthority(role));

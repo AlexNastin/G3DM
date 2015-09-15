@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.global3Dmod.ÇDmodels.exception.ServiceException;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
-import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 
 @Controller
@@ -27,10 +26,7 @@ public class FileDownloadController {
 
 	@Autowired
 	private IGuestService guestService;
-
-	@Autowired
-	private IDesignerService designerService;
-
+	
 	@Autowired
 	private PropertyManagerG3DM propertyManager;
 

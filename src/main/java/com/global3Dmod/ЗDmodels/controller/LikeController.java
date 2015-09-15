@@ -27,7 +27,6 @@ public class LikeController {
 	public ModelAndView like(Model model,
 			@RequestParam(value = "id", required = false) Integer idPost,
 			HttpSession httpSession) throws ServiceException {
-
 		Person person = (Person) httpSession
 				.getAttribute(ControllerParamConstant.PERSON);
 		guestService.vote(person.getIdPerson(), idPost);

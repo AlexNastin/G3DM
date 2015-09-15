@@ -93,6 +93,8 @@ public final class ControllerParamConstant {
 	public static final String TEXT = "text";
 
 	public static final String MESSAGE = "message";
+	
+	public static final String LOGIN_ERROR = "login_error";
 
 	public static final String FACEBOOK = "facebook";
 

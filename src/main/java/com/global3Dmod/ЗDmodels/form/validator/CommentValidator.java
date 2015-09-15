@@ -1,26 +1,14 @@
 package com.global3Dmod.ЗDmodels.form.validator;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
-
-
-
-
-
-
 import com.global3Dmod.ЗDmodels.form.CommentForm;
-import com.global3Dmod.ЗDmodels.form.regex.RegExCollection;
-
 
 @Component
 public class CommentValidator implements Validator {
-
-	@Autowired
-	private RegExCollection regExCollection;
 
 	@Override
 	public boolean supports(Class<?> arg0) {
@@ -30,12 +18,12 @@ public class CommentValidator implements Validator {
 	@Override
 	public void validate(Object target, Errors errors) {
 		CommentForm commentForm = (CommentForm) target;
-		
+
 		// Валидация Comment
 		// На пустое значение
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "comment", "valid.comment.empty");
-		
-		//Количество от 2 символов до 300. 
+
+		// Количество от 2 символов до 300.
 		if (commentForm.getComment().length() < 1 || commentForm.getComment().length() > 300) {
 			errors.rejectValue("comment", "valid.comment.long");
 		}

@@ -1,17 +1,18 @@
 package com.global3Dmod.ÇDmodels.domain;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "blacklists")
-@NamedQuery(name="Blacklist.findAll", query="select b from Blacklist b")
+@NamedQueries({ @NamedQuery(name = "Blacklist.findAll", query = "select b from Blacklist b"),
+		@NamedQuery(name = "Blacklist.findBlacklistByIdUser", query = "select b from Blacklist b where b.user_idUser = :user_idUser") })
 public class Blacklist implements Essence {
 
 	/**
@@ -32,9 +33,6 @@ public class Blacklist implements Essence {
 
 	@Column(name = "date_time")
 	private String dateTime;
-
-	@Column(name = "is_banned")
-	private boolean isBanned;
 
 	public Blacklist() {
 		super();
@@ -72,22 +70,12 @@ public class Blacklist implements Essence {
 		this.dateTime = dateTime;
 	}
 
-	public boolean isBanned() {
-		return isBanned;
-	}
-
-	public void setBanned(boolean isBanned) {
-		this.isBanned = isBanned;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result
-				+ ((dateTime == null) ? 0 : dateTime.hashCode());
+		result = prime * result + ((dateTime == null) ? 0 : dateTime.hashCode());
 		result = prime * result + idBlacklist;
-		result = prime * result + (isBanned ? 1231 : 1237);
 		result = prime * result + ((reason == null) ? 0 : reason.hashCode());
 		result = prime * result + user_idUser;
 		return result;
@@ -109,8 +97,6 @@ public class Blacklist implements Essence {
 			return false;
 		if (idBlacklist != other.idBlacklist)
 			return false;
-		if (isBanned != other.isBanned)
-			return false;
 		if (reason == null) {
 			if (other.reason != null)
 				return false;
@@ -123,9 +109,8 @@ public class Blacklist implements Essence {
 
 	@Override
 	public String toString() {
-		return "Blacklist [idBlacklist=" + idBlacklist + ", user_idUser="
-				+ user_idUser + ", reason=" + reason + ", dateTime=" + dateTime
-				+ ", isBanned=" + isBanned + "]";
+		return "Blacklist [idBlacklist=" + idBlacklist + ", user_idUser=" + user_idUser + ", reason=" + reason
+				+ ", dateTime=" + dateTime + "]";
 	}
 
 }

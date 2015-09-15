@@ -32,6 +32,7 @@
 <spring:message code="signin.signup" var="signupnew" />
 <spring:message code="javascript.validation" var="validation" />
 <spring:message code="signin.forgotpassword" var="forgotpassword" />
+<spring:message code="signin.message.failedlogin" var="failedlogin" />
 <meta name="keywords" content="3d printer, 3d model, 3d model free, 3d model download, 3d model download free, model to print 3d printer free, stl, stl download,stl download free, 3d designer, 3d model robot, 3д модель, 3д принтер, 3д модель скачать, 3д модель скачать напечатать, 3д дизайнер, stl бесплатные, stl скачать, global3dmod, global 3d mod "> 
 
 
@@ -81,8 +82,8 @@
 						</div>
 						</div>
 						<div class="col-md-6">
-						<c:if test="${param.login_error == 'true'}">
-					<div style="text-align:center;"><span class="alert alert-danger" role="alert" style="padding: 1.1%; text-align:center">Invalid credentials</span></div>
+						<c:if test="${login_error != null}">
+					<div style="text-align:center;"><span class="alert alert-danger" role="alert" style="padding: 1.1%; text-align:center">${login_error}</span></div>
 				</c:if>
 					</div>
 					</div>

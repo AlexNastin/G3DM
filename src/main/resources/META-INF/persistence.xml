@@ -35,11 +35,11 @@
 			<property name="hibernate.search.default.indexBase" value="/lucene_G3DM/indexes" />
 
 			<!-- General Hibernate settings -->
-			<property name="hibernate.show_sql" value="true" />
+			<!--<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="use_sql_comments" value="true" />
 			<property name="hibernate.cache.use_structured_entries" value="true" />
-			<property name="hibernate.generate_statistics" value="true" />
+			<property name="hibernate.generate_statistics" value="true" /> -->
 			
 			<!-- Hibernate Cache -->
 			<property name="hibernate.cache.region.factory_class"

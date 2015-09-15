@@ -3,6 +3,7 @@ package com.global3Dmod.ЗDmodels.controller;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -54,17 +55,13 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
-	public ModelAndView main(Locale locale, Model model)
-			throws ServiceException {
+	public ModelAndView main(Locale locale, Model model) throws ServiceException {
 		ModelAndView modelAndView = new ModelAndView("main");
-		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY,	
-		guestService.getAllCategoriesSubcategoriesTop3());
+		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY, guestService.getAllCategoriesSubcategoriesTop3());
 		List<Advertisement> advertisements = guestService.getAllAdvertisement();
 		adminService.setPathToPhotos(advertisements);
-		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS,
-				advertisements);
-		modelAndView.addObject(ControllerParamConstant.SIZE_ADVIRTISEMENTS,
-				advertisements.size());
+		modelAndView.addObject(ControllerParamConstant.LIST_ADVERTISEMENTS, advertisements);
+		modelAndView.addObject(ControllerParamConstant.SIZE_ADVIRTISEMENTS, advertisements.size());
 		List<Post> posts = guestService.getTop4PostsByLike();
 		guestService.setRatingInPosts(posts);
 		List<User> users = guestService.getTop4UsersByRating();
@@ -82,23 +79,20 @@ public class GuestController {
 	}
 
 	@RequestMapping(value = "/putperson", method = RequestMethod.GET)
-	public ModelAndView putPerson(Locale locale, Model model,
-			HttpSession httpSession) throws ServiceException {
-		Authentication auth = SecurityContextHolder.getContext()
-				.getAuthentication();
-		String login = auth.getName();
-		Person person = guestService.getPerson(login);
+	public ModelAndView putPerson(Locale locale, Model model, HttpSession httpSession) throws ServiceException {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = (User) auth.getPrincipal();
+		Person person = guestService.getPerson(user.getLogin());
 		httpSession.setAttribute(ControllerParamConstant.PERSON, person);
 		ModelAndView modelAndView = new ModelAndView("redirect:/index");
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/result", method = RequestMethod.GET)
-	public ModelAndView getPostsLimit10(
-			@RequestParam(value = "page", required = false) Integer page,
+	public ModelAndView getPostsLimit10(@RequestParam(value = "page", required = false) Integer page,
 			@RequestParam(value = "idCategory", required = false) Integer idCategory,
-			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory,
-			Model model) throws ServiceException {
+			@RequestParam(value = "idSubcategory", required = false) Integer idSubcategory, Model model)
+					throws ServiceException {
 		if (page == null) {
 			page = 1;
 		}
@@ -106,14 +100,12 @@ public class GuestController {
 		if (idSubcategory == null) {
 			posts = guestService.getPostsByCategory(idCategory);
 		} else {
-			posts = guestService.getPostsByCategoryBySubcategory(idCategory,
-					idSubcategory);
+			posts = guestService.getPostsByCategoryBySubcategory(idCategory, idSubcategory);
 		}
 		userService.setPathToPhotos(posts);
 		guestService.setRatingInPosts(posts);
 		int allPosts = posts.size();
-		int maxPage = (int) Math.ceil((double) allPosts
-				/ ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
+		int maxPage = (int) Math.ceil((double) allPosts / ControllerParamConstant.LIMIT_POSTS_ON_PAGE);
 		int startPost = page * ControllerParamConstant.LIMIT_POSTS_ON_PAGE
 				- ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
 		int endPost = startPost + ControllerParamConstant.LIMIT_POSTS_ON_PAGE;
@@ -125,11 +117,9 @@ public class GuestController {
 		int startPage = page - 5 > 0 ? page - 5 : 1;
 		int endPage = startPage + 9;
 		ModelAndView modelAndView = new ModelAndView("result");
-		modelAndView.addObject(
-				ControllerParamConstant.LIST_CATEGORY_WITH_ALL_SUBCATEGORY,
+		modelAndView.addObject(ControllerParamConstant.LIST_CATEGORY_WITH_ALL_SUBCATEGORY,
 				guestService.getAllCategoriesWithSubcategories());
-		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10,
-				posts);
+		modelAndView.addObject(ControllerParamConstant.LIST_POSTS_LIMIT_10, posts);
 		modelAndView.addObject(ControllerParamConstant.START_PAGE, startPage);
 		if (endPage > maxPage) {
 			modelAndView.addObject(ControllerParamConstant.END_PAGE, maxPage);
@@ -139,43 +129,36 @@ public class GuestController {
 		modelAndView.addObject(ControllerParamConstant.MAX_PAGE, maxPage);
 		modelAndView.addObject(ControllerParamConstant.THIS_PAGE, page);
 		modelAndView.addObject(ControllerParamConstant.ID_CATEGORY, idCategory);
-		modelAndView.addObject(ControllerParamConstant.ID_SUBCATEGORY,
-				idSubcategory);
+		modelAndView.addObject(ControllerParamConstant.ID_SUBCATEGORY, idSubcategory);
 		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, allPosts);
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/signup/addUser", method = RequestMethod.POST)
-	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale,
-			Model model) throws ServiceException {
-		guestService.addUser(signupForm,
-				propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
+	public ModelAndView signupAddUser(SignupForm signupForm, Locale locale, Model model) throws ServiceException {
+		guestService.addUser(signupForm, propertyManager.getValue(PropertyNameG3DM.PATH_FILE));
 		ModelAndView modelAndView = new ModelAndView("login/signin");
-		String message = messages.getMessage(
-				"signin.message.signup.successful", null, locale);
+		String message = messages.getMessage("signin.message.signup.successful", null, locale);
 		modelAndView.addObject(ControllerParamConstant.MESSAGE, message);
 		return modelAndView;
 	}
 
 	@RequestMapping(value = "/guest/addComment", method = RequestMethod.POST)
-	public ModelAndView addComment(CommentForm commentForm, Locale locale,
-			Model model, HttpSession httpSession) throws ServiceException {
-		Person person = (Person) httpSession
-				.getAttribute(ControllerParamConstant.PERSON);
+	public ModelAndView addComment(CommentForm commentForm, Locale locale, Model model, HttpSession httpSession)
+			throws ServiceException {
+		Person person = (Person) httpSession.getAttribute(ControllerParamConstant.PERSON);
 		if (person == null) {
 			ModelAndView modelAndView = new ModelAndView("redirect:/putperson");
 			return modelAndView;
 		}
 		guestService.addComment(commentForm, person);
-		ModelAndView modelAndView2 = new ModelAndView("redirect:/model?id="
-				+ commentForm.getIdPost());
+		ModelAndView modelAndView2 = new ModelAndView("redirect:/model?id=" + commentForm.getIdPost());
 		return modelAndView2;
 	}
 
 	@RequestMapping(value = "/guest/designerProfile", method = RequestMethod.GET)
-	public ModelAndView designerProfile(
-			@RequestParam(value = "id", required = false) Integer idUser,
-			Locale locale, Model model) throws ServiceException {
+	public ModelAndView designerProfile(@RequestParam(value = "id", required = false) Integer idUser, Locale locale,
+			Model model) throws ServiceException {
 		User user = guestService.getUser(idUser);
 		List<Post> posts = user.getPosts();
 		userService.setPathToPhotos(user);
@@ -183,10 +166,24 @@ public class GuestController {
 		userService.setPathToPhotos(posts);
 		ModelAndView modelAndView = new ModelAndView("designer/designerProfile");
 		modelAndView.addObject(ControllerParamConstant.USER, user);
-		modelAndView
-				.addObject(ControllerParamConstant.SIZE_POSTS, posts.size());
-		modelAndView.addObject(ControllerParamConstant.RATING_DESIGNER,
-				guestService.getRatingByDesigner(idUser));
+		modelAndView.addObject(ControllerParamConstant.SIZE_POSTS, posts.size());
+		modelAndView.addObject(ControllerParamConstant.RATING_DESIGNER, guestService.getRatingByDesigner(idUser));
 		return modelAndView;
 	}
+
+	@RequestMapping(value = "/failedLogin", method = RequestMethod.GET)
+	public ModelAndView showLoginFailurePage(Model model, HttpServletRequest request, Locale locale)
+			throws ServiceException {
+		/**
+		 * Будет использоваться когда добавится бан. AuthenticationException
+		 * authEx = (AuthenticationException) request.getSession()
+		 * .getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION); String
+		 * authExClass = authEx.getClass().getSimpleName();
+		 */
+		String message = messages.getMessage("signin.message.failedlogin", null, locale);
+		model.addAttribute(ControllerParamConstant.LOGIN_ERROR, message);
+		ModelAndView modelAndView = new ModelAndView("login/signin");
+		return modelAndView;
+	}
+
 }

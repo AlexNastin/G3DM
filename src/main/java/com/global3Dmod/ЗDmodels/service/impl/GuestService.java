@@ -45,7 +45,6 @@ import com.global3Dmod.ÇDmodels.form.CommentForm;
 import com.global3Dmod.ÇDmodels.form.SignupForm;
 import com.global3Dmod.ÇDmodels.property.PropertyManagerG3DM;
 import com.global3Dmod.ÇDmodels.property.PropertyNameG3DM;
-import com.global3Dmod.ÇDmodels.service.IDesignerService;
 import com.global3Dmod.ÇDmodels.service.IGuestService;
 import com.global3Dmod.ÇDmodels.service.ServiceParamConstant;
 import com.global3Dmod.ÇDmodels.sort.comment.SortedCommentsByDate;
@@ -55,9 +54,6 @@ public class GuestService implements IGuestService {
 
 	@Autowired
 	private IUserDAO userDAO;
-
-	@Autowired
-	private IDesignerService designerService;
 
 	@Autowired
 	private IPostDAO postDAO;

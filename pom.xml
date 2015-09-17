@@ -230,6 +230,13 @@
 			<version>1.9</version>
 		</dependency>
 
+		<!-- Jmagick -->
+		<dependency>
+			<groupId>jmagick</groupId>
+			<artifactId>jmagick</artifactId>
+			<version>6.6.9</version>
+		</dependency>
+
 		<!-- Logging -->
 		<dependency>
 			<groupId>log4j</groupId>

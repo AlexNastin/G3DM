@@ -558,7 +558,7 @@ public class GuestService implements IGuestService {
 		}
 		return fullPath.toString();
 	}
-
+	
 	@AspectLogG3DM
 	@Override
 	public void updateCountDownload(Integer idFile, short countDownload)
@@ -566,7 +566,8 @@ public class GuestService implements IGuestService {
 		try {
 			File file = fileDAO.selectFileById(idFile);
 			Post post = file.getPost();
-			post.setCountDownload(countDownload);
+			int count = post.getCountDownload();
+			post.setCountDownload(countDownload + count);
 			postDAO.updatePost(post);
 		} catch (DaoException e) {
 			throw new ServiceException(e);

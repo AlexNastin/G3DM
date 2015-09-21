@@ -27,7 +27,7 @@ public class BlacklistDAOImpl implements IBlacklistDAO {
 	 */
 	@Override
 	@Transactional
-	public void insertBlacklist(Blacklist blacklist) throws DaoException {
+	public void insertBlacklist(Blacklist blacklist) throws DaoException { 
 		em.persist(blacklist);
 
 	}

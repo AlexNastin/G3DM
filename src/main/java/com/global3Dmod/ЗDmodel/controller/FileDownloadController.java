@@ -42,15 +42,12 @@ public class FileDownloadController {
 	public void doDownload(HttpServletRequest request,
 			HttpServletResponse response, @RequestParam("id") int idFile)
 			throws ServiceException, IOException {
-		System.out.println(countDownload);
 		increment();
 		boolean isLimit = isLimit();
 		if (isLimit) {
 			guestService.updateCountDownload(idFile, countDownload);
 			zeroing();
 		}
-		
-		System.out.println(countDownload);
 		
 		String fullPath = guestService.getFileFullPath(idFile);
 

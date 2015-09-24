@@ -1,8 +1,13 @@
 package com.global3Dmod.ÇDmodel.exception;
 
+/**
+ * This exception appears from Service.
+ * 
+ * @author Alex Nastin
+ */
+
 public class ServiceException extends ProjectException {
-	
-	
+
 	/**
 	 * 
 	 */

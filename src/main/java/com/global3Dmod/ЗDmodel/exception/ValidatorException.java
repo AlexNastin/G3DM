@@ -1,7 +1,7 @@
 package com.global3Dmod.ÇDmodel.exception;
 
 /**
- * This exception appears from DAO.
+ * This exception appears from Validator.
  * 
  * @author Alex Nastin
  */

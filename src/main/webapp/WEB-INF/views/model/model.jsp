@@ -118,7 +118,13 @@
 
 					
 				</div>
-
+				<div style="text-align:left">
+<div class="social-likes" style="margin-top: 3px;" data-counters="no">
+	<div class="facebook" title="Share via facebook">Facebook</div>
+	<div class="twitter" title="Share via twitter">Twitter</div>
+	<div class="vkontakte" title="Share via VK">VK</div>	
+</div>
+				</div>
 			</div>
 			
 			

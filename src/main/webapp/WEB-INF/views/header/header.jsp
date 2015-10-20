@@ -54,10 +54,10 @@
 		<div class="collapse navbar-collapse" id="navbar-collapse-2">
 			<ul class="nav navbar-nav navbar-left">
 				<!-- put some links here -->
-				<li><a href="${facebook}" class="fa fa-facebook-official fa-2x"></a></li>
-				<li><a href="${twitter}" class="fa fa-twitter fa-2x"></a></li>
-				<li><a href="${vk}" class="fa fa-vk fa-2x"></a></li>
-				<li><a href="${instagram}" class="fa fa-instagram fa-2x"></a></li>
+				<li><a href="${facebook}" target="_blank" class="fa fa-facebook-official fa-2x"></a></li>
+				<li><a href="${twitter}" target="_blank" class="fa fa-twitter fa-2x"></a></li>
+				<li><a href="${vk}" target="_blank" class="fa fa-vk fa-2x"></a></li>
+				<li><a href="${instagram}" target="_blank" class="fa fa-instagram fa-2x"></a></li>
 
 
 			</ul>

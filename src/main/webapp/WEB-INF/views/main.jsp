@@ -104,6 +104,7 @@
 		</section>
 
 	</div>
+	<div class="tops">
 	<div class="group container">
 		<div class="item line1"></div>
 		<div class="item text">${ourtops}</div>
@@ -148,7 +149,7 @@
 			<!-- /container -->
 		</div>
 	</div>
-
+</div>
 	<div class="clearfix"></div>
 	<br>
 	<div class="row nomargin"><%@include file="/WEB-INF/views/adslider.jsp"%>

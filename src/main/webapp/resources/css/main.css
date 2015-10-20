@@ -1393,7 +1393,9 @@ input:-moz-placeholder {
 .backgroundslider{
 	background-color:rgb(244, 244, 244);
 }
-
+.tops{
+	min-height:100px;
+}
 
 /*Social icons */
 .fa-facebook-official:before {
@@ -1422,14 +1424,20 @@ input:-moz-placeholder {
   .height-input-string-update-password {
   height: 2.9em;
   }
-  @media (max-width:343px){
+  @media (max-width:360px){
   	.topslider{
-  		margin-bottom: 400px
+  		margin-bottom: 1000px
+  	}
+  	.backgroundslider{
+  		background-color:white
   	}
   }
-  @media (min-width:344px) and (max-width:490px){
+  @media (min-width:361px) and (max-width:490px){
   	.topslider{
-  		margin-bottom: 150px
+  		margin-bottom: 350px
+  	}
+  	.backgroundslider{
+  		background-color:white
   	}
   }
 /*! Social Likes v3.0.14 by Artem Sapegin - http://sapegin.github.com/social-likes - Licensed MIT */

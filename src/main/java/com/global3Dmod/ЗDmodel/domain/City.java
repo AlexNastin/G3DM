@@ -46,7 +46,7 @@ public class City implements Essence {
 	private List<User> users;
 
 	@JoinColumn(name = "country_id_country", referencedColumnName = "id_country", insertable = false, updatable = false)
-	@ManyToOne(optional = false)
+	@ManyToOne(optional = false, cascade = CascadeType.ALL)
 	private Country country;
 
 	public City() {

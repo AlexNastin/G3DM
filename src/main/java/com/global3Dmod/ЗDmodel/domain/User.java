@@ -94,7 +94,7 @@ public class User implements Essence {
 	@JoinColumn(name = "country_id_country", insertable=false, updatable=false)
 	private Country country;
 	
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name = "city_id_city", insertable=false, updatable=false)
 	private City city;
 	

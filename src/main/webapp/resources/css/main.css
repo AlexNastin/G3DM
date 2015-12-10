@@ -657,7 +657,7 @@ div#carousel ~ span:hover { color: #888; cursor: pointer; }
   margin-bottom: 0px;
 }
 .banner{
-  background: url(../images/banner.jpg) no-repeat center top;
+  background: url(../images/banner1.jpg) no-repeat center top;
   background-size:cover;
   -webkit-background-size:cover;
   -moz-background-size:cover;

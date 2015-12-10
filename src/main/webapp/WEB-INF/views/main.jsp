@@ -8,7 +8,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Global3Dmod</title>
+<title>Global3Dmod | 3D printable models repository</title>
 <!-- Init search variable -->
 <spring:message code="main.search.search" var="search" />
 <spring:message code="main.search.searchInto" var="searchmain" />
@@ -44,7 +44,7 @@
 
 	<div class="banner">
 		<div class="container_wrap">
-			<h1>
+			<h1 style="color:#000000">
 				<spring:message code="main.search.searchUp" />
 			</h1>
 			<div class="col-md-4"></div>
@@ -97,7 +97,9 @@
 									</div>
 								</div>
 							</div>
-							<h5>${category.title}</h5>
+							<h5><a href="<c:url value="/result?idCategory=${category.idCategory}" />"
+											
+											>${category.title}</a></h5>
 						</div>
 					</div>
 				</c:forEach>

@@ -74,7 +74,7 @@
 				<div class="clearfix"></div>
 			</div>
 		</div>
-		© 2016 Global3Dmod
+		© 2016 Global3Dmod.com
 	</div>
 
 
